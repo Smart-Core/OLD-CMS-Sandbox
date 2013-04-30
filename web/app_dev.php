@@ -1,4 +1,7 @@
 <?php
+define('START_TIME', microtime(true));
+define('START_MEMORY', memory_get_usage());
+define('DIR_WEB', getcwd());
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
@@ -18,7 +21,7 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 }
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
-Debug::enable();
+//Debug::enable(); // Since v2.3
 
 require_once __DIR__.'/../app/AppKernel.php';
 
