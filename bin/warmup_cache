@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+$rootDir = dirname(__DIR__);
+
+// php on windows can't use the shebang line from system()
+$interpreter = defined('PHP_WINDOWS_VERSION_BUILD') ? 'php.exe' : '';
+
+// Warmup the cache
+echo "Warmup the cache... \n";
+system(sprintf('%s %s cache:warmup --env=dev', $interpreter, escapeshellarg($rootDir.'/app/console')));
+system(sprintf('%s %s cache:warmup --env=prod', $interpreter, escapeshellarg($rootDir.'/app/console')));
+system(sprintf('%s %s cache:warmup --env=prod --no-debug', $interpreter, escapeshellarg($rootDir.'/app/console')));
+
+if (!defined('PHP_WINDOWS_VERSION_BUILD')) {
+    // Ubuntu
+    system('chown -hR www-data:www-data ' . $rootDir . '/var/cache/prod/');
+    
+    // Gentoo
+    //system('chown -hR apache:apache ' . $rootDir . '/var/cache/prod/');
+}

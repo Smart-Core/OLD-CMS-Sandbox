@@ -1,0 +1,12 @@
+/.idea/
+/!_info/*
+/app/bootstrap.php.cache
+/var/*
+/bin/doctrine*
+/vendor/
+/web/bundles/
+/web/photos/
+/composer.phar
+!*.gitkeep
+!*.gitignore
+*.php~

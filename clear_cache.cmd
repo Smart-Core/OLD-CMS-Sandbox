@@ -1,0 +1,6 @@
+rd /S /Q "var\cache\prod"
+rd /S /Q "var\cache\prod_old"
+rd /S /Q "var\cache\dev"
+rd /S /Q "var\cache\dev_old"
+del /Q   "var\logs\dev.log"
+del /Q   "var\logs\prod.log"
