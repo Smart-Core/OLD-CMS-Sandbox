@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DIR="var"
+
+if [ -d "$DIR" ]
+then
+    echo "$DIR directory exists!"
+else
+    mkdir $DIR
+    mkdir $DIR/cache
+    mkdir $DIR/log
+    mkdir $DIR/mailspool
+
+    chmod -R 0777 $DIR
+
+    echo "$DIR directory created!"
+fi
