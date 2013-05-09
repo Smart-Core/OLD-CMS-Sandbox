@@ -6,6 +6,7 @@
 /vendor/
 /web/bundles/
 /web/photos/
+/composer.lock
 /composer.phar
 !*.gitkeep
 !*.gitignore
