@@ -5,6 +5,7 @@ DIR="var"
 if [ -d "$DIR" ]
 then
     echo "$DIR directory exists!"
+    chmod -R 0777 $DIR
 else
     mkdir $DIR
     mkdir $DIR/cache
