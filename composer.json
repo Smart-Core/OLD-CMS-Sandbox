@@ -1,5 +1,5 @@
 {
-    "name": "smart-core/my-framework-standard-edition",
+    "name": "smart-core/symfony-boilerplate",
     "license": "MIT",
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
@@ -22,11 +22,13 @@
         "symfony/monolog-bundle": "2.2.*",
         "sensio/distribution-bundle": "2.2.*",
         "sensio/generator-bundle": "2.2.*",
+        "incenteev/composer-parameter-handler": "~2.0",
         "smart-core/html-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
             "sh bin/init_var",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -34,6 +36,7 @@
         ],
         "post-update-cmd": [
             "sh bin/init_var",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -49,6 +52,9 @@
         "symfony-web-dir": "web",
         "branch-alias": {
             "dev-master": "2.3-dev"
-        }
+        },
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }        
     }
 }

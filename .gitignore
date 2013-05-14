@@ -1,11 +1,12 @@
 /.idea/
+/nbproject/
 /!_info/*
 /app/bootstrap.php.cache
+/app/config/parameters.yml
 /var/*
 /bin/doctrine*
 /vendor/
 /web/bundles/
-/web/photos/
 /composer.lock
 /composer.phar
 !*.gitkeep
