@@ -1,2 +1,2 @@
-my-symfony-standard
-===================
+Symfony Standard Edition
+========================
