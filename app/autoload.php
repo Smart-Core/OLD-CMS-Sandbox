@@ -13,14 +13,16 @@ $loader = require __DIR__.'/../vendor/autoload.php';
 // Кеширование автозагрузчика.
 if (function_exists('apc_store') and ini_get('apc.enabled')) {
     $loader = new \Symfony\Component\ClassLoader\ApcClassLoader(md5(__FILE__), $loader);
+    $loader->register(true);
 } else if (function_exists('wincache_ucache_set')) {
     $loader = new \Symfony\Component\ClassLoader\WinCacheClassLoader(md5(__FILE__), $loader);
+    $loader->register(true);
 } else if ((PHP_SAPI != 'cli' || (isset($_SERVER['DOCUMENT_ROOT']) && isset($_SERVER['REQUEST_URI'])))
     and function_exists('xcache_set') and (int) ini_get('xcache.var_size') > 0
     ) {
     $loader = new \Symfony\Component\ClassLoader\XcacheClassLoader(md5(__FILE__), $loader);
+    $loader->register(true);
 }
-$loader->register(true);
 
 // intl
 if (!function_exists('intl_get_error_code')) {
