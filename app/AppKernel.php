@@ -30,7 +30,7 @@ class AppKernel extends Kernel
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
-            $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
+            //$bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this); "jms/debugging-bundle": "dev-master",
         }
 
         return $bundles;
@@ -41,6 +41,7 @@ class AppKernel extends Kernel
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 
+    /*
     protected function getContainerBaseClass()
     {
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -49,6 +50,7 @@ class AppKernel extends Kernel
 
         return parent::getContainerBaseClass();
     }
+    */
 
     public function getCacheDir()
     {
