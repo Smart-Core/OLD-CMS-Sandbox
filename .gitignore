@@ -3,6 +3,7 @@
 /!_info/*
 /app/bootstrap.php.cache
 /app/config/parameters.yml
+/app/SymfonyRequirements.php
 /var/*
 /bin/doctrine*
 /vendor/
