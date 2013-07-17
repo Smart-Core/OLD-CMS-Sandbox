@@ -14,6 +14,7 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "elao/web-profiler-extra-bundle": "dev-master",
+        "raulfraile/ladybug": "dev-master",
         "raulfraile/ladybug-bundle": "dev-master",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
