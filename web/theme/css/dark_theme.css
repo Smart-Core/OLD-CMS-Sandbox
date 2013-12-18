@@ -1,0 +1,32 @@
+body {
+    background-color: #505050;
+}
+body > .container {
+    color: white;
+}
+body > .container label {
+    color: white;
+}
+body > .container a,
+body > .container a:hover,
+body > .container a:focus {
+    color: yellow;
+}
+ul.main_menu li.current > a {
+    color: orange;
+}
+/*
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: #666666;
+}
+*/
+ul.dropdown-menu {
+    margin: 0;
+}
+ul.dropdown-menu a {
+    color: black;
+}
+ul.dropdown-menu a:hover {
+    color: white;
+}

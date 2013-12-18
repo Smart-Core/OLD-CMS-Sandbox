@@ -1,0 +1,38 @@
+* {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    /*font-size: 14px;*/
+}
+.color-blue {
+    background-color: #005580;
+}
+body > .container {
+    margin: 40px auto;
+}
+p {
+	margin: 4px 0px;
+    /*text-align: justify;*/
+}
+#footer {
+    border: 1px solid #7a7a7a;
+    margin: 10px 0px;
+}
+#footer>div {
+    padding: 10px 15px;
+}
+#breadcrumbs > div {
+    font-size: 70%;
+	display: block;
+	margin: 0px 0px 14px 0px;
+}
+#breadcrumbs > div > a {
+    font-size: 100%;
+}
+ul.main_menu li.current > a {
+    color: #191970;
+}
+pre {
+    font-family: Consolas;
+    font-size: 16px;
+    background-color: #585858;
+    color: white;
+}
