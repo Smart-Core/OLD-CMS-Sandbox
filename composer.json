@@ -12,7 +12,7 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "twig/extensions": "1.0.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/orm": ">=2.3",
         "doctrine/doctrine-bundle": "1.2.*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
@@ -29,16 +29,7 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "liip/doctrine-cache-bundle": "dev-master",
         "liip/functional-test-bundle": "dev-master",
-        "raulfraile/ladybug-bundle": "v0.7",
-        "smart-core/engine-bundle": "dev-master",
-        "smart-core/fos-user-bundle": "dev-master",
-        "smart-core/session-bundle": "dev-master",
-        "smart-core/html-bundle": "dev-master",
-        "smart-core/module-breadcrumbs": "dev-master",
-        "smart-core/module-menu": "dev-master",
-        "smart-core/module-texter": "dev-master",
-        "smart-core/module-useraccount": "dev-master",
-        "smart-core/module-userregistration": "dev-master"
+        "raulfraile/ladybug-bundle": "v0.7"
     },
     "scripts": {
         "post-install-cmd": [
