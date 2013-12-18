@@ -1,3 +1,7 @@
+_assetic:
+    resource: .
+    type:     assetic
+
 _wdt:
     resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
     prefix:   /_wdt
@@ -12,3 +16,11 @@ _configurator:
 
 _main:
     resource: routing.yml
+
+#_sf2gencdt:
+#    resource: "@Sf2genConsoleBundle/Resources/config/routing.yml"
+#    prefix:   /_sf2gencdt
+
+#SmartCoreEngineBundle:
+#    resource: "@SmartCoreEngineBundle/Resources/config/routing.yml"
+#    prefix:   /

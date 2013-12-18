@@ -1,0 +1,43 @@
+{% extends '@Html/base.html.twig' %}
+
+{#
+{% block html_head_styles %}
+    <style media="all" type="text/css"> @import url({{ assets.vendor }}bootstrap/css/bootstrap.min.css); </style>
+{{ parent() }}{% endblock html_head_styles %}
+#}
+
+{% block body %}
+{#
+{{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
+{{ facebook_login_button({'autologoutlink': true}) }}
+#}
+<div class="container">
+<div class="row-fluid">
+    <div class="span3">
+        {% block main_menu block.main_menu %}
+    </div>
+
+    <div class="span9">
+        <div id="breadcrumbs">
+            {% block breadcrumbs block.breadcrumbs %}
+        </div>
+
+        <div id="content">
+            {% block content %}
+            {{ block.content }}
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid" id="footer">
+    <div class="span9">
+        {% block footer block.footer %}
+    </div>
+    <div class="span3" style="text-align: right">
+        Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>
+    </div>
+</div>
+
+</div>
+{% endblock body %}

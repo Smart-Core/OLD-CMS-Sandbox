@@ -1,15 +1,27 @@
 parameters:
-    database_driver:   pdo_mysql
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_driver:    pdo_mysql
+    database_host:      localhost
+    database_port:      ~
+    database_name:      smart_core
+    database_user:      smart_core
+    database_password:  123
 
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
+    database_driver_db1:   pdo_mysql
+    database_host_db1:     localhost
+    database_port_db1:     ~
+    database_name_db1:     smart_core_db1
+    database_user_db1:     smart_core
+    database_password_db1: 123
 
-    locale:            ru
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    database_table_prefix: aaa_
+
+    mailer_transport:   mail
+    mailer_host:        localhost
+    mailer_user:        ~
+    mailer_password:    ~
+
+    locale: ru
+
+    registration_email_confirmation: registration-email-confirmation@localhost.org
+
+    secret: SmartCoreThisTokenIsNotSoSecretChangeIt

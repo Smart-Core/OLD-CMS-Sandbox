@@ -1,15 +1,17 @@
 imports:
     - { resource: config.yml }
 
-#framework:
-#    validation:
-#        cache: apc
-
-#doctrine:
-#    orm:
+doctrine:
+    orm:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
+#        metadata_cache_driver: wincache
+#        result_cache_driver: wincache
+#        query_cache_driver: wincache
+#        metadata_cache_driver: xcache
+#        result_cache_driver: xcache
+#        query_cache_driver: xcache
 
 monolog:
     handlers:
