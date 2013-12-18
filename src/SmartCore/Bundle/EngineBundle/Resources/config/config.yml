@@ -1,0 +1,25 @@
+imports:
+    - { resource: "@HtmlBundle/Resources/config/config.yml" }
+
+# Пример конфигурирования
+smart_core_engine:
+    storage: db
+
+knp_menu:
+    twig:
+        template: SmartCoreEngineBundle:Menu:knp_menu.html.twig
+
+mopa_bootstrap:
+    form:
+        templating: false
+        show_legend: false # default is true
+        checkbox_label: label
+        error_type: block # or inline which is default
+        render_optional_text: false
+        render_required_asterisk: true
+
+security:
+    role_hierarchy:
+        ROLE_ROOT:        [ROLE_USER, ROLE_ADMIN, ROLE_GUEST, ROLE_SUPER_ADMIN]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_GUEST]
+        #ROLE_USER:        [ROLE_COMMENTER]

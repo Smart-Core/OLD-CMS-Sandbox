@@ -1,0 +1,17 @@
+{
+    "name": "smart-core/session-bundle",
+    "description": "Doctrine ORM Session Storage Handler",
+    "keywords": ["session"],
+    "type": "symfony-bundle",
+    "homepage": "http://smart-core.org",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": ">=2.1"
+    },                
+    "autoload": {
+        "psr-0": {
+            "SmartCore\\Bundle\\SessionBundle": ""
+        }
+    },                
+    "target-dir": "SmartCore/Bundle/SessionBundle"
+}

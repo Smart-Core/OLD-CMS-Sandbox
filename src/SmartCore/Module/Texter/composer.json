@@ -1,0 +1,9 @@
+{
+    "name": "smart-core/module-texter",
+    "autoload": {
+        "psr-0": {
+            "SmartCore\\Module\\Texter": ""
+        }
+    },                
+    "target-dir": "SmartCore/Module/Texter"
+}

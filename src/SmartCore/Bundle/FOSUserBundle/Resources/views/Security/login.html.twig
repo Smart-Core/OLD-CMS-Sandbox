@@ -1,0 +1,31 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+<a href="{{ path("fos_user_registration_register") }}" xmlns="http://www.w3.org/1999/html">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</a> |
+<a href="{{ path("fos_user_resetting_request") }}">Восстановление пароля</a>
+<br /><br />
+
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+{# fos_user_security_check , fos_user_profile_show   <input type="hidden" name="_node_id" value="{{ node_id }}" />   #}
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <div>
+        <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    </div>
+    <div>
+        <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+        <input type="password" id="password" name="_password" />
+    </div>
+    <div>
+        <label class="checkbox"><input type="checkbox" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+    </div>
+
+    <input type="submit" class="btn" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>
+{% endblock fos_user_content %}

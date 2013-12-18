@@ -1,0 +1,25 @@
+{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/index.html.twig' %}
+
+{% block html_head_title %}{{ 'Structure'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block html_head_styles %}
+{{ parent() }}
+    <style media="all" type="text/css"> @import url({{ asset('assets/jquery-dynatree/1.2.5/src/skin-vista/ui.dynatree.css') }}); </style>
+{% endblock html_head_styles %}
+
+{% block html_head_scripts %}
+{{ parent() }}
+    {#<script src="{{ app.request.basePath }}/assets/jquery-cookie/1.3.1/jquery.cookie.js" type="text/javascript"></script>#}
+    <script src="{{ asset('assets/jquery-dynatree/1.2.5/jquery/jquery.cookie.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/jquery-dynatree/1.2.5/jquery/jquery-ui.custom.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/jquery-dynatree/1.2.5/src/jquery.dynatree.js') }}" type="text/javascript"></script>
+{% endblock html_head_scripts %}
+
+{% block subnav %}
+    {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
+{% endblock subnav %}
+
+{% block content %}
+{{ parent() }}
+    {{ render(controller('SmartCoreEngineBundle:AdminStructure:showTree', {'folder_id': folder_id, 'node_id': node_id} )) }}
+{% endblock content %}

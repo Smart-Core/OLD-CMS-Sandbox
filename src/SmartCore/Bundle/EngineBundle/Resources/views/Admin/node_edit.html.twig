@@ -1,0 +1,35 @@
+{% extends '@SmartCoreEngine/Admin/structure_edit.html.twig' %}
+
+{% block form_body %}
+{% if form_properties.count > 0 %}
+<ul class="nav nav-pills" id="nodeTab">
+    <li class="active"><a href="#node-properties">Параметры подключения модуля</a></li>
+    <li><a href="#node-common">Основные свойства ноды</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="node-properties">
+        {% form_theme form_properties 'SmartCoreEngineBundle:Form:bootstrap.html.twig' %}
+        {{ form_widget(form_properties) }}
+    </div>
+    <div class="tab-pane" id="node-common">
+        {{ parent() }}
+    </div>
+</div>
+{% else %}
+    {{ parent() }}
+{% endif %}
+{% endblock form_body %}
+
+
+{% block body_js %}
+{{ parent() }}
+{% if form_properties.count > 0 %}
+<script>
+    $('#nodeTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+        $(this.hash + ' input.focused').focus();
+    });
+</script>
+{% endif %}
+{% endblock body_js %}

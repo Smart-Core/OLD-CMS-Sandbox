@@ -1,0 +1,9 @@
+{
+    "name": "smart-core/module-useraccount",
+    "autoload": {
+        "psr-0": {
+            "SmartCore\\Module\\UserAccount": ""
+        }
+    },                
+    "target-dir": "SmartCore/Module/UserAccount"
+}

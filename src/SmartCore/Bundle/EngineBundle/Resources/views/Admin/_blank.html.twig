@@ -1,0 +1,14 @@
+{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/index.html.twig' %}
+
+{% block html_head_title %}{{ 'Structure'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{#{% block subnav %}#}
+    {#{{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}#}
+{#{% endblock subnav %}#}
+
+{% block content %}
+{#{{ parent() }}#}
+    404 Not Found
+    <br />@todo
+{#{{ render(controller('SmartCoreEngineBundle:AdminStructure:showTree', {'folder_id': folder_id, 'node_id': node_id} )) }}#}
+{% endblock content %}

@@ -1,0 +1,9 @@
+{
+    "name": "smart-core/fos-user-bundle",
+    "autoload": {
+        "psr-0": {
+            "SmartCore\\Bundle\\FOSUserBundle": ""
+        }
+    },                
+    "target-dir": "SmartCore/Bundle/FOSUserBundle"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "smart-core/html-bundle",
+    "description": "Html boilerplate.",
+    "keywords": ["html", "bundle"],
+    "type": "symfony-bundle",
+    "homepage": "http://smart-core.org",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": ">=2.1",
+        "symfony/twig-bundle": ">=2.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "SmartCore\\Bundle\\HtmlBundle": ""
+        }
+    },                
+    "target-dir": "SmartCore/Bundle/HtmlBundle"
+}

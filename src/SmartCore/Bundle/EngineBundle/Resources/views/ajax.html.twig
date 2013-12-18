@@ -1,0 +1,44 @@
+{% block html_head_links '' %}
+{% block html_head_styles %}
+    {# @todo вынести стили #}
+    <style media="all" type="text/css"> @import url({{ app.request.basePath }}/assets/cmf/docs.css); </style>
+    <style media="all" type="text/css">
+        label span {
+            color: red;
+        }
+        .form-horizontal {
+            margin: 5px 0 5px;
+        }
+        .form-horizontal .control-group {
+            margin-bottom: 12px;
+        }
+        .form-horizontal .control-label {
+            width: 180px;
+        }
+        .form-horizontal .controls {
+            margin-left: 200px;
+        }
+        .form-horizontal option[selected=selected] {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+{% endblock html_head_styles %}
+{% block html_head_scripts '' %}
+{% block html_head_general_data '' %}
+{% block body %}
+    {% block content %}
+        {% block subnav '' %}
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ flashMessage }}</div>
+        {% endfor %}
+    {% endblock content %}
+{% endblock body %}
+
+
+{% block body_js %}
+<script>
+    $('.focused:first').focus();
+</script>
+{% endblock body_js %}

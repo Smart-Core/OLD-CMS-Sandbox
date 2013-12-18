@@ -1,0 +1,86 @@
+{% extends '@SmartCoreEngine/admin.html.twig' %}
+
+{% block html_head_styles %}
+{{ parent() }}
+    <style media="all" type="text/css"> @import url({{ asset('assets/cmf/docs.css') }}); </style>
+    <style media="all" type="text/css">
+        label span {
+            color: red;
+        }
+        .form-horizontal {
+            margin: 5px 0 5px;
+        }
+        .form-horizontal .control-group {
+            margin-bottom: 12px;
+        }
+        .form-horizontal .control-label {
+            width: 180px;
+        }
+        .form-horizontal .controls {
+            margin-left: 200px;
+        }
+        .form-horizontal option[selected=selected] {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+{% endblock html_head_styles %}
+
+{% block body %}
+{% block navbar %}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            {% block navbar_inner %}
+            <!-- Be sure to leave the brand out there if you want it shown -->
+            <a class="brand" href="{{ app.request.basePath }}/" title="Перейти на сайт"><i class="icon-home icon-white"></i>{#Smart Core CMF#}</a>
+
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <!-- .nav, .navbar-search, .navbar-form, etc -->
+                {#{% set admin_main_menu = knp_menu_get('SmartCoreEngineBundle:AdminMenu:main' , [], {'class': 'nav'}) %}#}
+                {#{{ knp_menu_render('admin_main_menu', {'currentClass': 'active'})  }}#}
+                {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:main', { 'currentClass': 'active', 'clear_matcher': false })}}
+
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {{ app.user.userName }} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="#"><i class="icon-cog"></i> {{ 'My profile'|trans }}</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="{{ path('fos_user_security_logout') }}"><i class="icon-off"></i> {{ 'Exit'|trans }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            {% endblock navbar_inner %}
+        </div>
+    </div>
+</div>
+{% endblock navbar %}
+
+<div class="container">
+    {% block flashMessages %}
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="row-fluid">
+                <div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ flashMessage }}</div>
+            </div>
+        {% endfor %}
+    {% endblock flashMessages %}
+    <div class="row-fluid">
+        {% block content %}
+
+            {% block subnav '' %}
+
+        {% endblock content %}
+
+        {% block nav '' %}
+    </div>
+</div>
+{% endblock body %}

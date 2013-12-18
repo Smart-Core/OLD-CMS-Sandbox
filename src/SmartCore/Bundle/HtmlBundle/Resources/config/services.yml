@@ -1,0 +1,3 @@
+services:
+    html:
+        class: SmartCore\Bundle\HtmlBundle\Html

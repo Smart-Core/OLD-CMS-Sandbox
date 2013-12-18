@@ -1,0 +1,26 @@
+{% extends 'MenuModule:Admin:index.html.twig' %}
+
+{% block html_head_title %}Группа / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+{% if not app.request.xmlHttpRequest %}
+    <ul class="nav nav-pills" id="myTab">
+        <li><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu'}) }}">Список всех групп меню</a></li>
+        <li><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': item.group.id}) }}">Редактирование группы меню</a></li>
+        <li class="active"><a>Редактирование пункта меню</a></li>
+    </ul>
+{% endif %}
+<div class="well well-small">
+    {% form_theme form_edit 'MopaBootstrapBundle:Form:fields.html.twig' %}
+    <form action="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': 'item/' ~ item.id}) }}" {{ form_enctype(form_edit) }} method="post" class="form-horizontal">
+        {{ form_widget(form_edit) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="update" class="btn btn-primary"><i class="icon-ok icon-white"></i> {{ 'Save'|trans }}</button>
+                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить пункт меню?')"><i class="icon-trash icon-white"></i> {{ 'Delete'|trans }}</button>
+                <a class="btn" href="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': item.group.id}) }}"> {{ 'Cancel'|trans }}</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

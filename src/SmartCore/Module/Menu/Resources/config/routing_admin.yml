@@ -1,0 +1,18 @@
+# @todo
+sc_menu_admin:
+    path: /
+    defaults:
+        _controller: MenuModule:Admin:index
+sc_menu_admin_group:
+    path: /{group_id}
+    defaults:
+        _controller: MenuModule:Admin:group
+    requirements:
+        id: \d+
+sc_menu_admin_item:
+    path: /{group_id}/{item_id}
+    defaults:
+        _controller: MenuModule:Admin:item
+    requirements:
+        group_id: \d+
+        item_id: \d+

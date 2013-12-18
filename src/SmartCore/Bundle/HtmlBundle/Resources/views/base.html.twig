@@ -1,0 +1,55 @@
+{% block html_doctype html.getDoctype|raw %}
+<head>
+    <title>{% block html_head_title %}{% if html.title %}{{ html.title }}{% endif %}{% endblock html_head_title %}</title>
+{# Meta #}    <!-- Meta -->
+{% block html_head_meta %}
+{% for type, vals in html.meta %}
+{% for name, content in vals %}
+    <meta {{ type }}="{{ name }}" content="{{ content }}"{{ html.end }}>
+{% endfor %}
+{% endfor %}
+{% endblock html_head_meta %}
+{# Links #}    <!-- Links -->
+{% block html_head_links %}
+{% for href, link in html.links %}
+{% if link._ie %}    <!--[if {{ link._ie }}]>
+{% endif %}
+    <link{% for attr, value in link %}{% if attr == '_ie' %}{% else %} {{ attr }}="{{ value }}"{% endif %}{% endfor %}{{ html.end }}>
+{% if link._ie %}    <![endif]-->
+{% endif %}
+{% endfor %}
+{% endblock html_head_links %}
+{# Styles #}    <!-- Styles -->
+{% block html_head_styles %}
+{% for name, style in html.styles %}
+{% if style._ie %}    <!--[if {{ style._ie }}]>
+{% endif %}
+    <style{% for attr, value in style %}{% if attr == '_code' or attr == '_ie' or attr == 'href' %}{% else %} {{ attr }}="{{ value }}"{% endif %}{% endfor %}>{% if style.href %} @import url({{ style.href | raw }}); {% endif %}
+{% if style._code %}{{ style._code | raw }}{% endif %}</style>
+{% if style._ie %}    <![endif]-->
+{% endif %}
+{% endfor %}
+{% endblock html_head_styles %}
+{# Scripts #}    <!-- Scripts -->
+{% block html_head_scripts %}
+    <script type="text/javascript">var basePath = "{{ app.request.basePath }}/"</script>
+{% for name, script in html.scripts %}
+{% if script._ie %}    <!--[if {{ script._ie }}]>
+{% endif %}
+    <script{% for attr, value in script %}{% if attr == '_code' or attr == '_ie' %}{% else %} {{ attr }}="{{ value | raw }}"{% endif %}{% endfor %}>{% if script._code %}{{ script._code | raw }}{% endif %}</script>
+{% if script._ie %}    <![endif]-->
+{% endif %}
+{% endfor %}
+{% endblock html_head_scripts %}
+{% block html_head_general_data %}
+    <!-- general_data -->
+    {{ html.general_data }}
+{% if html.document_ready %}<!-- document_ready -->{{ html.document_ready }}{% endif %}
+{% endblock html_head_general_data %}
+</head>
+<body{% block html_body_attributes %}{% for attr, value in html.body_attributes %} {{ attr }}="{{ value | raw }}"{% endfor %}{% endblock html_body_attributes %}>
+{% block body html.body %}
+{% block body_js %}
+{% endblock body_js %}
+</body>
+</html>
