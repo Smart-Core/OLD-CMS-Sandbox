@@ -5,7 +5,7 @@ namespace SmartCore\Bundle\EngineBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use SmartCore\Bundle\EngineBundle\Engine\View;
 
-class Controller extends BaseController
+abstract class Controller extends BaseController
 {
     /**
      * View object

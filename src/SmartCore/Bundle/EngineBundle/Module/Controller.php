@@ -52,21 +52,36 @@ abstract class Controller extends BaseController
 
         $this->container = Container::getContainer();
 
-        // @todo возможно есть смысл отказаться от такого метода...
         // Запуск метода init(), который является заменой конструктора для модулей.
         if (method_exists($this, 'init')) {
             $this->init();
         }
     }
 
+    /**
+     * @param $eip
+     */
     public function setEip($eip)
     {
         $this->_eip = $eip;
     }
 
-    public function getEip()
+    /**
+     * @return bool
+     */
+    public function isEip()
     {
         return $this->_eip;
+    }
+
+    /**
+     * Проверка, включен ли тулбар.
+     *
+     * @return bool
+     */
+    public function isToolbar()
+    {
+        return true;
     }
 
     /**
@@ -132,26 +147,6 @@ abstract class Controller extends BaseController
     }
 
     /**
-     * Проверка, включен ли тулбар.
-     *
-     * @return bool
-     */
-    public function isToolbar()
-    {
-        return true;
-    }
-
-    /**
-     * Проверка, включен ли режим Edit-in-place.
-     *
-     * @return bool
-     */
-    public function isEip()
-    {
-        return true;
-    }
-
-    /**
      * Обработчик POST данных.
      *
      * @return Response
@@ -163,50 +158,13 @@ abstract class Controller extends BaseController
 
     // @todo пересмотреть нижеописанные методы!
     // -------------------------------------------------------------------------------------
-
-    /**
-     * Ajax.
-     *
-     * @param string $uri_path - часть URI, адресованная модулю.
-     * @return ?
-     */
-    public function __ajax($uri_path)
-    {
-        return null;
-    }
-    
-    /**
-     * Метод управления модулем.
-     *
-     * @param string $uri_path
-     * @return array
-     */
-    public function __admin($uri_path)
-    {
-        return false;
-    }
-
-    /**
-     * Вызывается при создании ноды.
-     * 
-     * @access public
-     * @return array $params
-     */
-    public function __createNode()
-    {
-        $params = $this->Node->getDefaultParams();
-        return empty($params) ? 'NULL' : $params;
-    }
-    
     /**
      * Метод-заглушка, для модулей, которые не имеют фронт администрирования. 
      * Возвращает пустой массив или null или 0, следовательно движок ничего не отображает.
      * 
      * @access public
      * @returns array|false
-     * 
-     * @todo определиться какое значение лучше возвращать 0 или false.
-     */
+     *
     public function __getFrontControls()
     {
         return $this->frontend_controls;
@@ -217,7 +175,7 @@ abstract class Controller extends BaseController
      * 
      * @access public
      * @returns array|false
-     */
+     *
     public function __getFrontControlsInner()
     {
         return $this->frontend_inner_controls;
@@ -228,20 +186,10 @@ abstract class Controller extends BaseController
      * 
      * @access public
      * @returns string|false
-     */
+     *
     public function __getFrontControlsDefaultAction()
     {
         return $this->default_action;
     }
-    
-    /**
-     * Выполнение задач по расписанию.
-     *
-     * @access public
-     * @return bool|null
-     */
-    public function __cron()
-    {
-        return null;
-    }
+    */
 }

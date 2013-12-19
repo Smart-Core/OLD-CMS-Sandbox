@@ -2,23 +2,35 @@
 
 namespace SmartCore\Bundle\EngineBundle;
 
-/**
- * @todo избавиться
- */
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 class Container
 {
+    /**
+     * @var ContainerInterface
+     */
     static private $container;
 
+    /**
+     * @param $name
+     * @return ContainerInterface
+     */
     static public function get($name)
     {
         return self::$container->get($name);
     }
 
-    static public function set($container)
+    /**
+     * @param ContainerInterface $container
+     */
+    static public function set(ContainerInterface $container)
     {
         self::$container = $container;
     }
 
+    /**
+     * @return ContainerInterface
+     */
     static public function getContainer()
     {
         return self::$container;

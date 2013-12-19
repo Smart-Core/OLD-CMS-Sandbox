@@ -31,7 +31,7 @@ class MenuController extends Controller
 
         $response = new Response($this->View);
 
-        if ($this->getEip()) {
+        if ($this->isEip()) {
             $response->setFrontControls([
                 'edit' => [
                     'title' => 'Редактировать',

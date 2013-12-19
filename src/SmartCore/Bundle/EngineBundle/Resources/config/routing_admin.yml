@@ -14,7 +14,7 @@ cmf_admin_structure:
 cmf_admin_structure_block:
     path: /structure/block/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminBlock:index
+        _controller: SmartCoreEngineBundle:Admin\Block:index
 
 cmf_admin_structure_block_edit:
     path: /structure/block/{id}/

@@ -1,10 +1,11 @@
 <?php
 
-namespace SmartCore\Bundle\EngineBundle\Controller;
+namespace SmartCore\Bundle\EngineBundle\Controller\Admin;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class AdminBlockController extends Controller
+class BlockController extends Controller
 {
     /**
      * Отображение списка всех блоков, а также форма добавления нового.

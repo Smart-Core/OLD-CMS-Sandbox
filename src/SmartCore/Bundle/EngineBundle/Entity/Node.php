@@ -5,7 +5,6 @@ namespace SmartCore\Bundle\EngineBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use SmartCore\Bundle\EngineBundle\Module\RouterResponse;
-use SmartCore\Bundle\EngineBundle\Container;
 
 /**
  * @ORM\Entity(repositoryClass="NodeRepository")
@@ -25,22 +24,26 @@ class Node implements \Serializable
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @var int
      */
     protected $node_id;
 
     /**
      * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
      */
     protected $is_active;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank()
+     * @var string
      */
     protected $module;
 
     /**
      * @ORM\Column(type="array", nullable=FALSE)
+     * @var array
      */
     protected $params;
 
@@ -48,11 +51,14 @@ class Node implements \Serializable
      * @ORM\ManyToOne(targetEntity="Folder", inversedBy="nodes")
      * @ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")
      * @Assert\NotBlank()
+     * @var Folder
      */
     protected $folder;
 
     /**
      * Хранение folder_id для минимизации кол-ва запросов.
+     *
+     * @var int|null
      */
     protected $folder_id = null;
 
@@ -60,6 +66,7 @@ class Node implements \Serializable
      * @ORM\ManyToOne(targetEntity="Block")
      * @ORM\JoinColumn(name="block_id", referencedColumnName="block_id")
      * @Assert\NotBlank()
+     * @var Block
      */
     protected $block;
 
@@ -67,6 +74,7 @@ class Node implements \Serializable
      * Позиция в внутри блока.
      *
      * @ORM\Column(type="smallint", nullable=true)
+     * @var int
      */
     protected $position;
 
@@ -74,6 +82,7 @@ class Node implements \Serializable
      * Приоритет порядка выполнения.
      *
      * @ORM\Column(type="smallint")
+     * @var int
      */
     protected $priority;
 
@@ -81,6 +90,7 @@ class Node implements \Serializable
      * Может ли нода кешироваться.
      *
      * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
      */
     protected $is_cached;
 
@@ -91,21 +101,15 @@ class Node implements \Serializable
 
     /**
      * @ORM\Column(type="text", nullable=TRUE)
-     * 
-     * @todo !!! Убрать !!! это временное поле...
      */
     //protected $cache_params_yaml;
 
     /**
-     * @todo пересмотреть.
-     * 
      * @ORM\Column(type="text", nullable=TRUE)
      */
     //protected $plugins;
 
     /**
-     * @todo пересмотреть.
-     * 
      * @ORM\Column(type="text", nullable=TRUE)
      */
     //protected $permissions;
@@ -122,6 +126,7 @@ class Node implements \Serializable
 
     /**
      * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
      */
     protected $descr;
 
@@ -137,6 +142,7 @@ class Node implements \Serializable
 
     /**
      * Ответ роутинга ноды, если таковой есть.
+     *
      * @var RouterResponse|null
      */
     protected $router_response = null;
@@ -145,6 +151,9 @@ class Node implements \Serializable
     protected $action = 'index';
     protected $arguments = [];
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->create_by_user_id = 0;
@@ -205,51 +214,81 @@ class Node implements \Serializable
         //) = igbinary_unserialize($serialized);
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->node_id;
     }
 
+    /**
+     * @param int $create_by_user_id
+     */
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
     }
 
+    /**
+     * @return int
+     */
     public function getCreateByUserId()
     {
         return $this->create_by_user_id;
     }
 
+    /**
+     * @param bool $is_active
+     */
     public function setIsActive($is_active)
     {
         $this->is_active = $is_active;
     }
 
+    /**
+     * @return bool
+     */
     public function getIsActive()
     {
         return $this->is_active;
     }
 
+    /**
+     * @param bool $is_cached
+     */
     public function setIsCached($is_cached)
     {
         $this->is_cached = $is_cached;
     }
 
+    /**
+     * @return bool
+     */
     public function getIsCached()
     {
         return $this->is_cached;
     }
 
+    /**
+     * @param string $descr
+     */
     public function setDescr($descr)
     {
         $this->descr = $descr;
     }
 
+    /**
+     * @return string
+     */
     public function getDescr()
     {
         return $this->descr;
     }
 
+    /**
+     * @param int $position
+     */
     public function setPosition($position)
     {
         if (empty($position)) {
@@ -259,46 +298,73 @@ class Node implements \Serializable
         $this->position = $position;
     }
 
+    /**
+     * @return int
+     */
     public function getPosition()
     {
         return $this->position;
     }
 
-    public function setBlock($block)
+    /**
+     * @param Block $block
+     */
+    public function setBlock(Block $block)
     {
         $this->block = $block;
     }
 
+    /**
+     * @return Block
+     */
     public function getBlock()
     {
         return $this->block;
     }
 
-    public function setFolder($folder)
+    /**
+     * @param Folder $folder
+     */
+    public function setFolder(Folder $folder)
     {
         $this->folder = $folder;
     }
 
+    /**
+     * @return Folder
+     */
     public function getFolder()
     {
         return $this->folder;
     }
 
+    /**
+     * @param string $module
+     */
     public function setModule($module)
     {
         $this->module = $module;
     }
 
+    /**
+     * @return string
+     */
     public function getModule()
     {
         return $this->module;
     }
 
-    public function setParams($params)
+    /**
+     * @param array $params
+     */
+    public function setParams(array $params)
     {
         $this->params = $params;
     }
 
+    /**
+     * @return array
+     */
     public function getParams()
     {
         if (empty($this->params)) {
@@ -307,7 +373,10 @@ class Node implements \Serializable
             return $this->params;
         }
     }
-    
+
+    /**
+     * @return int
+     */
     public function getFolderId()
     {
         if ($this->folder_id == null) {
@@ -317,6 +386,9 @@ class Node implements \Serializable
         return $this->folder_id;
     }
 
+    /**
+     * @param RouterResponse $router_response
+     */
     public function setRouterResponse(RouterResponse $router_response)
     {
         $this->setController($router_response->getController());
@@ -326,36 +398,57 @@ class Node implements \Serializable
         $this->router_response = $router_response;
     }
 
+    /**
+     * @return null|RouterResponse
+     */
     public function getRouterResponse()
     {
         return $this->router_response;
     }
 
+    /**
+     * @param string $action
+     */
     public function setAction($action)
     {
         $this->action = $action;
     }
 
+    /**
+     * @return string
+     */
     public function getAction()
     {
         return $this->action;
     }
 
-    public function setArguments($arguments)
+    /**
+     * @param array $arguments
+     */
+    public function setArguments(array $arguments)
     {
         $this->arguments = $arguments;
     }
 
+    /**
+     * @return array
+     */
     public function getArguments()
     {
         return $this->arguments;
     }
 
+    /**
+     * @param string $controller
+     */
     public function setController($controller)
     {
         $this->controller = $controller;
     }
 
+    /**
+     * @return string
+     */
     public function getController()
     {
         if (!empty($this->controller)) {

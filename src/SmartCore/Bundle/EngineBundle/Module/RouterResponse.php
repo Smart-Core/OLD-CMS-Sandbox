@@ -25,44 +25,72 @@ class RouterResponse extends Response
         parent::__construct($content, 404, $headers);
     }
 
+    /**
+     * @return string|null
+     */
     public function getController()
     {
         return $this->controller;
     }
 
+    /**
+     * @param string $name
+     */
     public function setController($name)
     {
         $this->setStatusCode(200);
         $this->controller = $name;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAction()
     {
         return $this->action;
     }
 
+    /**
+     * @param string $name
+     */
     public function setAction($name)
     {
         $this->setStatusCode(200);
         $this->action = $name;
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
     public function getArgument($name)
     {
         return $this->arguments[$name];
     }
 
+    /**
+     * @return array
+     */
     public function getAllArguments()
     {
         return $this->arguments;
     }
 
+    /**
+     * @param string $name
+     * @param mixed $value
+     */
     public function setArgument($name, $value)
     {
         $this->setStatusCode(200);
         $this->arguments[$name] = $value;
     }
 
+    /**
+     * @param string $uri
+     * @param string $title
+     * @param bool $descr
+     */
     public function addBreadcrumb($uri, $title, $descr = false)
     {
         $this->breadcrumbs[] = [
@@ -72,6 +100,9 @@ class RouterResponse extends Response
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getBreadcrumbs()
     {
         return $this->breadcrumbs;

@@ -1,7 +1,5 @@
 <?php
-/**
- * Хлебные крошки (Дублирующая навигация).
- */
+
 namespace SmartCore\Module\Breadcrumbs\Controller;
 
 use SmartCore\Bundle\EngineBundle\Module\Controller;

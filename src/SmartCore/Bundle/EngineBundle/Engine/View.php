@@ -7,7 +7,6 @@ use SmartCore\Bundle\EngineBundle\Container;
 class View
 {
     /**
-     * Опции.
      * @var array
      */
     protected $__options = [];
@@ -41,6 +40,7 @@ class View
 
     /**
      * Получить данные свойств.
+     *
      * @return array
      */
     public function all()
@@ -65,18 +65,28 @@ class View
     final public function getTemplateName()
     {
         return $this->__options['template'];
-    }    
-    
+    }
+
+    /**
+     * @param string $method
+     */
     public function setEngine($method)
     {
         $this->__options['engine'] = $method;
     }
-    
+
+    /**
+     * @param string $before
+     * @param string $after
+     */
     public function setDecorators($before, $after)
     {
         $this->__options['decorators'] = [$before, $after];
     }
-    
+
+    /**
+     * @param string $name
+     */
     public function setTemplateName($name)
     {
         $this->__options['template'] = strtolower($name);
@@ -86,7 +96,7 @@ class View
      * Установка свойства.
      * 
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      */
     public function set($name, $value)
     {
@@ -97,7 +107,7 @@ class View
      * Магическая установка свойства.
      * 
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      */
     public function __set($name, $value)
     {
@@ -108,7 +118,7 @@ class View
      * Получить свойство.
      * 
      * @param string $name
-     * @return bool
+     * @return mixed|null
      */
     public function get($name)
     {
@@ -129,7 +139,7 @@ class View
     /**
      * Проверить существует ли свойство.
      *
-     * @param $name
+     * @param string $name
      * @return bool
      */
     public function has($name)
@@ -139,7 +149,8 @@ class View
     
     /**
      * Отрисовка формы.
-     * @return text
+     *
+     * @return string
      */
     public function __toString()
     {
@@ -150,6 +161,8 @@ class View
 
     /**
      * Отображение данных вида.
+     *
+     * @return void
      */
     public function display()
     {        

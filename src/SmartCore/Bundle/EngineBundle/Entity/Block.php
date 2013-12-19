@@ -196,7 +196,7 @@ class Block
     /**
      * Получить кол-во включенных нод.
      *
-     * @todo убрать отсюда.
+     * @todo убрать в сервис.
      */
     public function getNodesCount()
     {

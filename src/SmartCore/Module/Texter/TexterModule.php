@@ -9,6 +9,7 @@ class TexterModule extends Bundle
 {
     /**
      * Действие при создании ноды.
+     * @param \SmartCore\Bundle\EngineBundle\Entity\Node $node
      */
     public function createNode($node)
     {
