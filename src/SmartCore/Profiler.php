@@ -244,6 +244,8 @@ class Profiler
 
         $exec_time = microtime(true) - self::$globalStartTime;
 
+        echo "<div style='background-color: #6a6a6a; color: #f3f3f3; font-family: Arial;margin: 10px;'>";
+
         echo 'Execution time: <b>', round($exec_time, $precision) * 1000 , '</b> ms',
         '. Memory usage <b>' , round((memory_get_usage() - self::$globalStartMemory) / 1024 / 1024, 2), '</b> MB (<b>',
         round((memory_get_peak_usage(true) - self::$globalStartMemory) / 1024 / 1024, 2), '</b> peak).',
@@ -281,10 +283,12 @@ class Profiler
             and self::$kernel->getContainer()->has('ladybug')
             and self::$kernel->getContainer()->get('ladybug')->getVars() !== null
         ) {
-            foreach (self::$kernel->getContainer()->get('ladybug')->getVars() as $key => $value) {
+            foreach (self::$kernel->getContainer()->get('ladybug')->getVars() as $_dummy => $value) {
                 echo '<br />' . $value['file'] . ' : <b>' . $value['line'] . '</b>' . $value['content'] . "<hr />\n\n";
             }
         }
+
+        echo "</div>";
     }
 
     /**
