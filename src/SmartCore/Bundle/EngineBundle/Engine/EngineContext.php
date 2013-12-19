@@ -6,7 +6,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EngineContext
 {
-    //protected $base_path;
     protected $current_folder_id = 1;
     protected $current_folder_path;
     protected $current_node_id = null;
@@ -31,42 +30,11 @@ class EngineContext
      */
     public function __construct(ContainerInterface $container)
     {
-        //$kernel    = $container->get('kernel');
         $base_path = $container->get('request')->getBasePath() . '/';
 
         $this->setCurrentFolderPath($base_path);
         $this->setGlobalAssets($base_path . 'assets/');
         $this->setThemePath($base_path . 'theme/');
-
-        /* parent::__construct([
-            'base_path'             => $base_path,
-            //'base_url'              => $container->get('request')->getBaseUrl() . '/',
-            'current_folder_id'     => 1,
-            'current_folder_path'   => $base_path,
-            'current_node_id'       => null,
-            'dir_app'               => $kernel->getRootDir()  . '/',
-            'dir_backup'            => $kernel->getRootDir()  . '/var/backup/',
-            'dir_cache'             => $kernel->getCacheDir() . '/',
-            'dir_var'               => $kernel->getRootDir()  . '/var/',
-            'dir_tmp'               => $kernel->getRootDir()  . '/var/tmp/',
-            'dir_web_root'          => getcwd() . DIRECTORY_SEPARATOR,
-            // Хост проекта, в формате "site.com" т.е. без префикса "www."
-            'http_host'             => str_replace('www.', '', $_SERVER['HTTP_HOST']),
-            // Относительный путь к теме оформления.
-            'theme_path'            => $base_path . 'theme/',
-            // Путь к глобальным ресурсам. Может быть на другом домене, например 'http://site.com/assets/'
-            'global_assets'         => $base_path . 'assets/',
-        ]); */
-    }
-
-    public function setBasePath($base_path)
-    {
-        $this->base_path = $base_path;
-    }
-
-    public function getBasePath()
-    {
-        return $this->base_path;
     }
 
     public function setCurrentFolderId($current_folder_id)

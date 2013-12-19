@@ -37,16 +37,15 @@ $(document).ready(function() {
                                 // сначала поиск действия по умолчанию.
                                 $.each(node, function(index, value) {
                                     if (value.default == true) {
-                                        if (value.overlay != undefined && value.overlay == false) {
-                                            node_buttons += '<button title="' +
-                                                value.descr +
-                                                '" class="btn btn-small popup-trigger cmf-no-overlay">' +
-                                                value.title + '</button>';
-
-                                        } else {
+                                        if (value.overlay != undefined && value.overlay == true) {
                                             node_buttons += '<button OnClick="window.location=\'#overlay=' + value.uri + '\'" title="' +
                                                 value.descr +
                                                 '" class="btn btn-small popup-trigger">' +
+                                                value.title + '</button>';
+                                        } else {
+                                            node_buttons += '<button OnClick="window.location=\'' + value.uri + '\'" title="' +
+                                                value.descr +
+                                                '" class="btn btn-small popup-trigger cmf-no-overlay">' +
                                                 value.title + '</button>';
                                         }
                                     }
@@ -57,10 +56,11 @@ $(document).ready(function() {
 
                                 // затем отрисовка пунктов меню.
                                 $.each(node, function(index, value) {
-                                    if (value.overlay != undefined && value.overlay == false) {
-                                        node_buttons += '<li><a class="popup-trigger cmf-no-overlay" title="' + value.descr + '" href="' + value.uri + '">' ;
-                                    } else {
+                                    if (value.overlay != undefined && value.overlay == true) {
                                         node_buttons += '<li><a class="popup-trigger" title="' + value.descr + '" href="' + value.uri + '">' ;
+
+                                    } else {
+                                        node_buttons += '<li><a class="popup-trigger cmf-no-overlay" title="' + value.descr + '" href="' + value.uri + '">' ;
                                     }
 
                                     if (value.default == true) {
@@ -249,6 +249,7 @@ $(document).ready(function() {
     });
 
     // обработчик кликов по ссылкам.
+    /*
     $('.navbar .dropdown-menu a').click(function() {
         // закрытие меню.
         $('[data-toggle="dropdown"]').parent().removeClass('open');
@@ -257,6 +258,7 @@ $(document).ready(function() {
             return false;
         }
     });
+    */
 
     // Bind an event to window.onhashchange that, when the hash changes, gets the
     // hash and adds the class "selected" to any matching nav link.
