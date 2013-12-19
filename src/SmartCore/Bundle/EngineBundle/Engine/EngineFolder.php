@@ -63,12 +63,13 @@ class EngineFolder
 
     /**
      * Получить данные роутинга.
+     *
      * @return array
      */
-    public function getRouterData()
+    public function getRouterData($slug = null)
     {
         if (null == $this->router_data) {
-            $this->router($this->container->get('request')->getPathInfo());
+            $this->router($slug);
         }
 
         return $this->router_data;
@@ -95,19 +96,19 @@ class EngineFolder
         }
 
         $data = [
-            'folders' => [],
-            'meta' => [],
-            'status' => 200,
-            'template' => 'index',
+            'folders'    => [],
+            'meta'       => [],
+            'status'     => 200,
+            'template'   => 'index',
             'node_route' => null, // @todo
         ];
         
         $current_folder_path = $this->container->get('request')->getBaseUrl() . '/';
-        $parent_folder = null;
-        $router_node_id = null;
-        $path_parts = explode('/', $slug);
+        $parent_folder       = null;
+        $router_node_id      = null;
+        $slug                = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду, как $this->container->get('request')->getPathInfo()
+        $path_parts          = explode('/', $slug);
 
-        /** @var $folder Folder */
         foreach ($path_parts as $key => $segment) {
             // Проверка строки запроса на допустимые символы.
             // @todo сделать проверку на разрешение круглых скобок.
@@ -126,7 +127,8 @@ class EngineFolder
             if ($router_node_id !== null) {
                 // Выполняется часть URI парсером модуля и возвращается результат работы, в дальнейшем он будет передан самой ноде.
                 // @todo запрос ноды только для получения имени модуля не сосвсем красиво...
-                // может быть как-то кешировать это дело, либо хранить имя модуля прямо в таблице папок, например в виде массива router_node_id и router_node_module.
+                //       может быть как-то кешировать это дело, либо хранить имя модуля прямо в таблице папок,
+                //       например в виде массива router_node_id и router_node_module.
                 $node = $this->container->get('engine.node')->get($router_node_id);
 
                 /** @var $ModuleRouter \SmartCore\Bundle\EngineBundle\Module\RouterResponse */
@@ -148,10 +150,11 @@ class EngineFolder
                 unset($ModuleRouter);
             }
 
+            /** @var $folder Folder */
             $folder = $this->repository->findOneBy([
-                'is_active' => true,
-                'is_deleted' => false,
-                'uri_part' => empty($segment) ? null : $segment,
+                'is_active'     => true,
+                'is_deleted'    => false,
+                'uri_part'      => empty($segment) ? null : $segment,
                 'parent_folder' => $parent_folder
             ]);
 

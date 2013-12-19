@@ -2,7 +2,6 @@
 
 namespace SmartCore\Bundle\EngineBundle\Controller;
 
-//use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,32 +18,46 @@ class EngineController extends Controller
 
     /**
      * @param Request $request
-     * @param $slug
+     * @param string $slug
      * @return Response
      */
     public function runAction(Request $request, $slug)
     {
-        $router_data = $this->get('engine.folder')->getRouterData();
-        //ld($router_data, $router_data['node_route']);
+        $router_data = $this->get('engine.folder')->getRouterData($slug);
 
         $nodes_list = $this->get('engine.node')->buildList($router_data);
 
-        $this->View->setOptions([
-            'comment'   => 'Базовый шаблон',
-            'template'  => $router_data['template'],
-        ]);
-
-        $this->View->set('blocks', new View([
-            'comment'   => 'Блоки',
-            'engine'    => 'echo',
-        ]));
+        $this->View
+            ->setOptions([
+                'comment'   => 'Базовый шаблон',
+                'template'  => $router_data['template'],
+            ])
+            ->set('blocks', new View([
+                'comment'   => 'Блоки',
+                'engine'    => 'echo',
+            ]));
 
         \Profiler::start('buildModulesData');
         $this->buildModulesData($nodes_list);
         \Profiler::end('buildModulesData');
 
         //\Profiler::start('EngineController::runAction body');
+        $this->buildBaseHtml($request);
+        //\Profiler::end('EngineController::runAction body');
 
+        \Profiler::start('Response');
+        return new Response($this->container->get('templating')->render("::{$this->View->getTemplateName()}.html.twig", [
+            'block' => $this->View->blocks,
+        ]), $router_data['status'] );
+    }
+
+    /**
+     * Временный метод...
+     *
+     * @todo отрефакторить!!!
+     */
+    protected function buildBaseHtml(Request $request)
+    {
         $this->get('html')->title('Smart Core CMS (based on Symfony2 Framework)');
 
         // @todo убрать в ini-шник шаблона.
@@ -89,13 +102,14 @@ class EngineController extends Controller
             ;
         }
 
+        // @todo подумать как задавать темы оформления и убрать отсюда.
         $theme_path = $this->get('engine.context')->getThemePath();
         $this->View->assets = [
-            'theme_path'        => $theme_path,
-            'theme_css_path'    => $theme_path . 'css/',
-            'theme_js_path'     => $theme_path . 'js/',
-            'theme_img_path'    => $theme_path . 'images/',
-            'vendor'            => $this->get('engine.context')->getGlobalAssets(),
+            'theme_path'     => $theme_path,
+            'theme_css_path' => $theme_path . 'css/',
+            'theme_js_path'  => $theme_path . 'js/',
+            'theme_img_path' => $theme_path . 'images/',
+            'vendor'         => $this->get('engine.context')->getGlobalAssets(),
         ];
 
         $this->get('engine.theme')->processConfig($this->View);
@@ -112,13 +126,6 @@ class EngineController extends Controller
                 }
             }
         }
-
-        //\Profiler::end('EngineController::runAction body');
-
-        \Profiler::start('Response');
-        return new Response($this->container->get('templating')->render("::{$this->View->getTemplateName()}.html.twig", [
-            'block' => $this->View->blocks,
-        ]), $router_data['status'] );
     }
     
     /**
@@ -203,16 +210,16 @@ class EngineController extends Controller
 
                     $this->cmf_front_controls['node']['__node_' . $node_id]['cmf_node_properties'] = [
                         'title' => 'Свойства ноды',
-                        'uri' => $this->generateUrl('cmf_admin_structure_node_properties', ['id' => $node_id])
+                        'uri'   => $this->generateUrl('cmf_admin_structure_node_properties', ['id' => $node_id])
                     ];
                 }
 
                 // Указать шаблонизатору, что надо сохранить эту ноду как html.
                 // @todo ПЕРЕДЕЛАТЬ!!! подумать где выполнять кеширование, внутри объекта View или где-то снаружи.
                 // @todo ВАЖНО подумать как тут поступить т.к. эта кука может стоять у гостя!!!
-                if (_IS_CACHE_NODES and !empty($cache_params) and $this->Cookie->sc_frontend_mode !== 'edit') {
-//                    $this->EE->data[$block_name][$node_id]['store_html_cache'] = $Module->getCacheParams($cache_params);
-                } 
+                //if (_IS_CACHE_NODES and !empty($cache_params) and $this->Cookie->sc_frontend_mode !== 'edit') {
+                //    $this->EE->data[$block_name][$node_id]['store_html_cache'] = $Module->getCacheParams($cache_params);
+                //}
 
                 // Получение данных для фронт-админки ноды.
                 // @todo сделать нормальную проверку на возможность управления нодой. сейчас пока считается, что юзер с ИД = 1 имеет право админить.
@@ -253,11 +260,9 @@ class EngineController extends Controller
                 */
             }
 
-            if (method_exists($Module, 'getContentRaw')) {
-                $this->View->blocks->$block_name->$node_id = $Module->getContentRaw();
-            } else {
-                $this->View->blocks->$block_name->$node_id = $Module->getContent();
-            }
+            $this->View->blocks->$block_name->$node_id = method_exists($Module, 'getContentRaw')
+                ? $Module->getContentRaw()
+                : $Module->getContent();
 
             // @todo пока так выставляются декораторы обрамления ноды.
             if ($this->get('security.context')->isGranted('ROLE_ADMIN')
@@ -275,7 +280,7 @@ class EngineController extends Controller
      * Обработчик POST запросов.
      *
      * @param Request $request
-     * @param $slug
+     * @param string $slug
      * @return JsonResponse|RedirectResponse|Response
      */
     public function postAction(Request $request, $slug)

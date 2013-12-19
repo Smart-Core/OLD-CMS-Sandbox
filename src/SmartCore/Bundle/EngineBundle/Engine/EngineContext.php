@@ -4,10 +4,6 @@ namespace SmartCore\Bundle\EngineBundle\Engine;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * Class EngineContext
- * @package SmartCore\Bundle\EngineBundle\Engine
- */
 class EngineContext
 {
     //protected $base_path;

@@ -32,10 +32,13 @@ class View
      * Утановить опции.
      *
      * @param array $options
+     * @return $this
      */
     public function setOptions(array $options = [])
     {
         $this->__options = $options + $this->__options;
+
+        return $this;
     }
 
     /**
@@ -52,6 +55,7 @@ class View
             }            
             $properties[$property] = $data;
         }
+
         return $properties;        
     }
     
@@ -69,27 +73,36 @@ class View
 
     /**
      * @param string $method
+     * @return $this
      */
     public function setEngine($method)
     {
         $this->__options['engine'] = $method;
+
+        return $this;
     }
 
     /**
      * @param string $before
      * @param string $after
+     * @return $this
      */
     public function setDecorators($before, $after)
     {
         $this->__options['decorators'] = [$before, $after];
+
+        return $this;
     }
 
     /**
      * @param string $name
+     * @return $this
      */
     public function setTemplateName($name)
     {
         $this->__options['template'] = strtolower($name);
+
+        return $this;
     }
     
     /**
@@ -97,10 +110,13 @@ class View
      * 
      * @param string $name
      * @param mixed $value
+     * @return $this
      */
     public function set($name, $value)
     {
         $this->$name = $value;
+
+        return $this;
     }
     
     /**
