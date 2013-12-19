@@ -66,7 +66,7 @@ cmf_admin_structure_node_properties:
 cmf_admin_node:
     path: /node/{id}/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin:nodeEdit
+        _controller: SmartCoreEngineBundle:Admin:node
     requirements:
         id: \d+
 
