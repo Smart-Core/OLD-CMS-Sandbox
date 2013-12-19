@@ -1,41 +1,41 @@
-{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/index.html.twig' %}
+{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/_layout.html.twig' %}
 
-{% block html_head_title %}Модули / {{ parent() }}{% endblock html_head_title %}
+{% block html_head_title %}{{ 'Modules'|trans }} / {{ parent() }}{% endblock html_head_title %}
 
 {% block content %}
-{{ parent() }}
+    {{ parent() }}
 
-<table class="table table-bordered table-hover">
-    <thead><tr>
-        <th>#</th>
-        <th>{{ 'Name'|trans }}</th>
-        <th>{{ 'Namespace'|trans }}</th>
-        <th>{{ 'Description'|trans }}</th>
-        <th>{{ 'Actions'|trans }}</th>
-    </tr></thead>
-    <tbody>
-    {% set modules_count = 1 %}
-    {% for module in modules %}
-        <tr>
-            <td>{{ modules_count }}{% set modules_count = modules_count + 1 %}</td>
-            {#<td><a href="{{ path('cmf_admin_structure_block_edit', {'id': block.id}) }}">{{ block.name }}</a></td>#}
-            <td>
-                {% if module.hasAdmin %}
-                    <a href="{{ path('cmf_admin_module_manage', {'module': module.shortName }) }}">{{ module.shortName }}</a>
-                {% else %}
-                    {{ module.shortName }}
-                {% endif %}
-            </td>
-            <td>{{ module.namespace }}</td>
-            <td>@todo</td>
-            <td>
-                {% if module.hasAdmin %}
-                    <a href="#">{{ 'Manage'|trans }}</a>
-                {% endif %}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th>#</th>
+            <th>{{ 'Name'|trans }}</th>
+            <th>{{ 'Namespace'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th>{{ 'Actions'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% set modules_count = 1 %}
+        {% for module in modules %}
+            <tr>
+                <td>{{ modules_count }}{% set modules_count = modules_count + 1 %}</td>
+                {#<td><a href="{{ path('cmf_admin_structure_block_edit', {'id': block.id}) }}">{{ block.name }}</a></td>#}
+                <td>
+                    {% if module.hasAdmin %}
+                        <a href="{{ path('cmf_admin_module_manage', {'module': module.shortName }) }}">{{ module.shortName }}</a>
+                    {% else %}
+                        {{ module.shortName }}
+                    {% endif %}
+                </td>
+                <td>{{ module.namespace }}</td>
+                <td>@todo</td>
+                <td>
+                    {% if module.hasAdmin %}
+                        <a href="#">{{ 'Manage'|trans }}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock content %}

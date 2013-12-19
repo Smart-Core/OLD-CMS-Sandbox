@@ -1,7 +1,8 @@
 {% block html_head_links '' %}
+
 {% block html_head_styles %}
     {# @todo вынести стили #}
-    <style media="all" type="text/css"> @import url({{ app.request.basePath }}/assets/cmf/docs.css); </style>
+    <style media="all" type="text/css"> @import url({{ asset('assets/cmf/docs.css')}}); </style>
     <style media="all" type="text/css">
         label span {
             color: red;
@@ -24,8 +25,11 @@
         }
     </style>
 {% endblock html_head_styles %}
+
 {% block html_head_scripts '' %}
+
 {% block html_head_general_data '' %}
+
 {% block body %}
     {% block content %}
         {% block subnav '' %}
@@ -36,9 +40,8 @@
     {% endblock content %}
 {% endblock body %}
 
-
 {% block body_js %}
-<script>
-    $('.focused:first').focus();
-</script>
+    <script>
+        $('.focused:first').focus();
+    </script>
 {% endblock body_js %}

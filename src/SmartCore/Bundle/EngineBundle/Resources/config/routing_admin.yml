@@ -8,18 +8,18 @@ cmf_admin_index:
 cmf_admin_structure:
     path: /structure/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminStructure:index
+        _controller: SmartCoreEngineBundle:Admin:structure
 
 # Admin Block
 cmf_admin_structure_block:
     path: /structure/block/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin\Block:index
+        _controller: SmartCoreEngineBundle:Admin:blockIndex
 
 cmf_admin_structure_block_edit:
     path: /structure/block/{id}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminBlock:edit
+        _controller: SmartCoreEngineBundle:Admin:blockEdit
     requirements:
         id: \d+
 
@@ -27,17 +27,17 @@ cmf_admin_structure_block_edit:
 cmf_admin_structure_folder_create:
     path: /structure/folder/create/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminFolder:create
+        _controller: SmartCoreEngineBundle:Admin:folderCreate
 
 cmf_admin_structure_folder_create_in_folder:
     path: /structure/folder/create/{folder_pid}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminFolder:create
+        _controller: SmartCoreEngineBundle:Admin:folderCreate
 
 cmf_admin_structure_folder:
     path: /structure/folder/{id}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminFolder:edit
+        _controller: SmartCoreEngineBundle:Admin:folderEdit
     requirements:
         id: \d+
 
@@ -45,11 +45,11 @@ cmf_admin_structure_folder:
 cmf_admin_structure_node_create:
     path: /structure/node/create/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminNode:create
+        _controller: SmartCoreEngineBundle:Admin:nodeCreate
 cmf_admin_structure_node_create_in_folder:
     path: /structure/node/create/{folder_pid}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminNode:create
+        _controller: SmartCoreEngineBundle:Admin:nodeCreate
 
 #cmf_admin_structure_node_all:
 #    path: /structure/node/
@@ -59,21 +59,21 @@ cmf_admin_structure_node_create_in_folder:
 cmf_admin_structure_node_properties:
     path: /structure/node/{id}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminNode:edit
+        _controller: SmartCoreEngineBundle:Admin:nodeEdit
     requirements:
         id: \d+
 
 cmf_admin_node:
     path: /node/{id}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminNode:node
+        _controller: SmartCoreEngineBundle:Admin:nodeEdit
     requirements:
         id: \d+
 
 cmf_admin_node_w_slug:
     path: /node/{id}/{slug}
     defaults:
-        _controller: SmartCoreEngineBundle:AdminNode:node
+        _controller: SmartCoreEngineBundle:Admin:node
     requirements:
         id: \d+
         slug: ".+"
@@ -82,22 +82,22 @@ cmf_admin_node_w_slug:
 cmf_admin_appearance:
     path: /appearance/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin:index
+        _controller: SmartCoreEngineBundle:Admin:notFound
 
 cmf_admin_users:
     path: /users/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin:index
+        _controller: SmartCoreEngineBundle:Admin:notFound
 
 cmf_admin_module:
     path: /module/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminModule:index
+        _controller: SmartCoreEngineBundle:Admin:module
 
 cmf_admin_module_manage:
     path: /module/{module}/{slug}
     defaults:
-        _controller: SmartCoreEngineBundle:AdminModule:manage
+        _controller: SmartCoreEngineBundle:Admin:moduleManage
         slug: ""
     requirements:
         slug: ".+"
@@ -105,23 +105,23 @@ cmf_admin_module_manage:
 cmf_admin_module_manage_w_slash:
     path: /module/{module}/
     defaults:
-        _controller: SmartCoreEngineBundle:AdminModule:manage
+        _controller: SmartCoreEngineBundle:Admin:moduleManage
         slug: ""
 
 cmf_admin_config:
     path: /config/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin:index
+        _controller: SmartCoreEngineBundle:Admin:notFound
 
 cmf_admin_reports:
     path: /reports/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin:index
+        _controller: SmartCoreEngineBundle:Admin:notFound
 
 cmf_admin_help:
     path: /help/
     defaults:
-        _controller: SmartCoreEngineBundle:Admin:index
+        _controller: SmartCoreEngineBundle:Admin:notFound
 
 cmf_admin:
     path: /{slug}

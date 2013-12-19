@@ -67,7 +67,7 @@
                      *  Any other return value will calc the hitMode from the cursor position.
                      */
                     logMsg("tree.onDragEnter(%o, %o)", node, sourceNode);
-//                        return true;
+                    // return true;
                     // Don't allow dropping *over* a node (would create a child)
                     if( node.data.isFolder){
                         return "over";
@@ -122,34 +122,6 @@
 {% set admin_folder = path('cmf_admin_structure') ~ 'folder/' %}
 {% set admin_node = path('cmf_admin_structure') ~ 'node/' %}
 
-{#
-
 <div id="tree">
-    <ul id="browser" class="filetree">
-        <li class="folder" id="folder_id_1"><a href="{{ admin_folder }}1/" title="">Главная</a>
-            <ul>
-                <li class="folder" id="folder_id_2"><a href="{{ admin_folder }}2/" title="Texter (6)">О компании</a>
-                    <ul>
-                        <li><a href="{{ admin_node }}1/">Описание компании</a></li>
-                    </ul>
-                </li>
-                <li class="folder" id="folder_id_3"><a href="{{ admin_folder }}3/">Аккаунт пользователя</a>
-                    <ul>
-                        <li class="folder" id="folder_id_4"><a href="{{ admin_folder }}4/">Регистрация</a>
-                        </li>
-                        <li><a href="?1.0" title="Texter (5)">Текстовка</a></li>
-                    </ul>
-                </li>
-                <li><a href="?1.0" title="Texter (4)">Текстовка на главной</a></li>
-                <li><a href="?1.0" title="Menu (1)">Меню</a></li>
-                <li><a href="?1.0" title="Breadcrumps (3)">Хлебные крошки</a></li>
-                <li><a href="?1.0" title="Texter (2)">Футер</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-#}
-
-<div id="tree">
-{{ knp_menu_render('SmartCoreEngineBundle:StructureMenu:full', {'currentClass': 'active'}) }}
+    {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structureTree', {'currentClass': 'active'}) }}
 </div>

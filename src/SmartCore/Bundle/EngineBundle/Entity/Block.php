@@ -28,7 +28,7 @@ class Block
 
     /**
      * @ORM\Column(type="smallint", nullable=TRUE)
-     * @Assert\Range(min = "-255", minMessage = "Минимальное значение -255.", max = "255", maxMessage = "Максимальное значение 255.")
+     * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
      *
      * -Assert\Type(type="integer", message="bad :(")
      * -Assert\Regex(pattern="/\d+/", match=FALSE, message="BAD!" )

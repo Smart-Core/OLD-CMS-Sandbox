@@ -1,0 +1,39 @@
+{% extends '@SmartCoreEngine/Admin/structure.html.twig' %}
+
+{% block html_head_title %}{{ 'Create folder'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+    {% if not app.request.xmlHttpRequest %}
+        <div class="span9">
+        {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
+    {% endif %}
+
+    <div class="well well-small">
+        {% form_theme form '@SmartCoreEngine/Form/bootstrap.html.twig' %}
+
+        <form action="{{ path('cmf_admin_structure_folder_create') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+            {% block form_body %}
+                {{ form_widget(form) }}
+            {% endblock form_body %}
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" name="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                    <a class="btn cmf-cancel" href="{{ path('cmf_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    {% if app.request.xmlHttpRequest == false %}
+        </div>
+    {% endif %}
+{% endblock content %}
+
+{% block nav %}
+    {% if not app.request.xmlHttpRequest %}
+        <div class="span3">
+            {{ include('@SmartCoreEngine/Admin/_tree.html.twig') }}
+        </div>
+    {% endif %}
+{% endblock nav %}
