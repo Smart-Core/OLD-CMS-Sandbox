@@ -29,7 +29,7 @@ class Theme extends ContainerAware
         $this->ini          = [];
     }
 
-    public function setPaths($paths)
+    public function setPaths(array $paths)
     {
         $this->paths = $paths;
     }
@@ -60,7 +60,7 @@ class Theme extends ContainerAware
         }
     }
 
-    public function processConfig($View)
+    public function processConfig(View $View)
     {
         // @todo продумать подключение ini-шников!!!
         $this->paths        = [

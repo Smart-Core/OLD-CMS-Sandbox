@@ -1,10 +1,10 @@
 {% extends '@Html/base.html.twig' %}
 
-{#
 {% block html_head_styles %}
-    <style media="all" type="text/css"> @import url({{ assets.vendor }}bootstrap/css/bootstrap.min.css); </style>
-{{ parent() }}{% endblock html_head_styles %}
-#}
+    {{ parent() }}
+    {#<style media="all" type="text/css"> @import url({{ asset('theme/css/screen.css')}}); </style>#}
+    {#<style media="all" type="text/css"> @import url({{ asset('theme/css/dark_theme.css')}}); </style>#}
+{% endblock html_head_styles %}
 
 {% block body %}
 {#

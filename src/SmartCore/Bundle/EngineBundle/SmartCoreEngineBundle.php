@@ -27,5 +27,4 @@ class SmartCoreEngineBundle extends Bundle
         $container->addCompilerPass(new TemplateResourcesPass());
     }
     */
-
 }
