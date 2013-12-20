@@ -7,6 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param null $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function indexAction(Request $request, $slug = null)
     {
         // @todo сделать роутинг
@@ -29,7 +34,9 @@ class AdminController extends Controller
     }
 
     /**
-     * NewFunction
+     * @param Request $request
+     * @param $item_id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function itemAction(Request $request, $item_id)
     {
@@ -45,6 +52,7 @@ class AdminController extends Controller
                 $em->persist($item);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('notice', 'Текст обновлён');
+                
                 return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
                     'module' => 'Texter',
                 ]));
@@ -55,14 +63,14 @@ class AdminController extends Controller
 
                 return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
                     'module' => 'Texter',
-                    'slug' => $item_id,
+                    'slug'   => $item_id,
                 ]));
             }
         }
 
         return $this->render('TexterModule:Admin:edit.html.twig', [
             '_node_id' => empty($this->node) ?: $this->node->getId(),
-            'item' => $item,
+            'item'     => $item,
         ]);
     }
 }
