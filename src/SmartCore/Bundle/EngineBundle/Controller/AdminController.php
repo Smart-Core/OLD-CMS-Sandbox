@@ -34,17 +34,11 @@ class AdminController extends Controller
     public function elfinderAction(Request $request)
     {
         $parameters = $this->container->getParameter('fm_elfinder');
-        //$editor = $parameters['editor'];
-        $locale = $parameters['locale'] ?: $request->getLocale();
-        //$fullscreen = $parameters['fullscreen'];
-        $includeAssets = $parameters['include_assets'];
-        //$compression = $parameters['compression'];
-        //$prefix = ($compression ? '/compressed' : '');
 
         return $this->render('SmartCoreEngineBundle:Admin:elfinder.html.twig', [
-            'locale' => $locale,
+            'locale' => $parameters['locale'] ?: $request->getLocale(),
             'fullscreen' => true,
-            'includeAssets' => $includeAssets,
+            'includeAssets' => $parameters['include_assets'],
         ]);
     }
 
