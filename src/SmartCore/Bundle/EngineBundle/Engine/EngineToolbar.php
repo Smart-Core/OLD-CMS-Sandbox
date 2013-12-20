@@ -19,10 +19,20 @@ class EngineToolbar extends ContainerAware
                     'descr' => 'Настройки',
                     'icon' => 'wrench',
                     'items' => [
+                        'files' => [
+                            'title' => 'Файлы',
+                            'icon' => 'cog',
+                            'uri' => $router->generate('cmf_admin_files'),
+                        ],
                         'blocks' => [
                             'title' => 'Блоки',
                             'icon' => 'th',
                             'uri' => $router->generate('cmf_admin_structure_block'),
+                        ],
+                        'modules' => [
+                            'title' => 'Модули',
+                            'icon' => 'cog',
+                            'uri' => $router->generate('cmf_admin_module'),
                         ],
                         'appearance' => [
                             'title' => 'Оформление',
@@ -33,11 +43,6 @@ class EngineToolbar extends ContainerAware
                             'title' => 'Пользователи',
                             'icon' => 'user',
                             'uri' => $router->generate('cmf_admin_users'),
-                        ],
-                        'modules' => [
-                            'title' => 'Модули',
-                            'icon' => 'cog',
-                            'uri' => $router->generate('cmf_admin_module'),
                         ],
                         'config' => [
                             'title' => 'Конфигруация',
