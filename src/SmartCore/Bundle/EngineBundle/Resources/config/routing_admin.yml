@@ -84,6 +84,11 @@ cmf_admin_appearance:
     defaults:
         _controller: SmartCoreEngineBundle:Admin:notFound
 
+cmf_admin_files:
+    path: /files/
+    defaults:
+        _controller: SmartCoreEngineBundle:Admin:files
+
 cmf_admin_users:
     path: /users/
     defaults:

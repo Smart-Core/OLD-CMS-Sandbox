@@ -25,9 +25,10 @@ class AdminMenu extends ContainerAware
         }
 
         $menu->addChild('Structure',     ['route' => 'cmf_admin_structure']);
+        $menu->addChild('Modules',       ['route' => 'cmf_admin_module']);
+        $menu->addChild('Files',         ['route' => 'cmf_admin_files']);
         $menu->addChild('Appearance',    ['route' => 'cmf_admin_appearance']);
         $menu->addChild('Users',         ['route' => 'cmf_admin_users']);
-        $menu->addChild('Modules',       ['route' => 'cmf_admin_module']);
         $menu->addChild('Configuration', ['route' => 'cmf_admin_config']);
         $menu->addChild('Reports',       ['route' => 'cmf_admin_reports']);
         $menu->addChild('Help',          ['route' => 'cmf_admin_help']);

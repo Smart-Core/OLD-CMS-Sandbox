@@ -4,6 +4,9 @@
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
 
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
 SmartCoreEngineBundle:
     resource: "@SmartCoreEngineBundle/Resources/config/routing.yml"
     prefix: /

@@ -27,6 +27,7 @@
         "egulias/listeners-debug-command-bundle": "*",
         "facebook/php-sdk": "*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+        "helios-ag/fm-elfinder-bundle": "1.x",
         "liip/doctrine-cache-bundle": "dev-master",
         "liip/functional-test-bundle": "dev-master",
         "raulfraile/ladybug-bundle": "v0.7"
