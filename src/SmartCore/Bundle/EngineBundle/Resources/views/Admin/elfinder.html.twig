@@ -1,0 +1,32 @@
+{% extends '@SmartCoreEngine/Admin/_layout.html.twig' %}
+
+{% block html_head_title %}{{ 'Files'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+    {% if includeAssets %}
+        {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" %}
+    {% endif %}
+
+    {% if includeAssets %}
+        {% include "FMElfinderBundle:Elfinder:helper/assets_js.html.twig" %}
+    {% endif %}
+    <script type="text/javascript" charset="utf-8">
+        $().ready(function() {
+            var $f = $('#elfinder').elfinder({
+                url : '{{path('ef_connect')}}',
+                lang : '{{locale}}'
+            });
+
+            {% if fullscreen %}
+            var $window = $(window);
+            $window.resize(function(){
+                var $win_height = $window.height() - 60;
+                if( $f.height() != $win_height ){
+                    $f.height($win_height).resize();
+                }
+            });
+            {% endif %}
+        });
+    </script>
+    <div id="elfinder"></div>
+{% endblock content %}

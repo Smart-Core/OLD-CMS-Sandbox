@@ -26,6 +26,29 @@ class AdminController extends Controller
     }
 
     /**
+     * Renders Elfinder.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function elfinderAction(Request $request)
+    {
+        $parameters = $this->container->getParameter('fm_elfinder');
+        //$editor = $parameters['editor'];
+        $locale = $parameters['locale'] ?: $request->getLocale();
+        //$fullscreen = $parameters['fullscreen'];
+        $includeAssets = $parameters['include_assets'];
+        //$compression = $parameters['compression'];
+        //$prefix = ($compression ? '/compressed' : '');
+
+        return $this->render('SmartCoreEngineBundle:Admin:elfinder.html.twig', [
+            'locale' => $locale,
+            'fullscreen' => true,
+            'includeAssets' => $includeAssets,
+        ]);
+    }
+
+    /**
      * @return Response
      */
     public function structureAction()
