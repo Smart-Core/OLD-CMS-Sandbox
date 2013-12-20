@@ -37,7 +37,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create')) {
-                $form->bind($request);
+                $form->submit($request);
                 if ($form->isValid()) {
                     $group = $form->getData();
                     $group->setCreateByUserId($this->getUser()->getId());
@@ -80,7 +80,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
-                $form->bind($request);
+                $form->submit($request);
                 if ($form->isValid()) {
                     $em->persist($form->getData());
                     $em->flush();
@@ -138,7 +138,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
-                $form->bind($request);
+                $form->submit($request);
                 if ($form->isValid()) {
                     $em->persist($form->getData());
                     $em->flush();
@@ -193,7 +193,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create_item')) {
-                $form->bind($request);
+                $form->submit($request);
                 if ($form->isValid()) {
                     /** @var Item $item */
                     $item = $form->getData();
@@ -205,14 +205,15 @@ class AdminController extends Controller
 
                     if ($request->isXmlHttpRequest()) {
                         return new JsonResponse([
-                            'status' => 'OK',
+                            'status'  => 'OK',
                             'message' => 'Menu item created successful.',
                         ]);
                     } else {
                         $this->get('session')->getFlashBag()->add('notice', 'Пункт меню создан.'); // @todo translate
+
                         return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
                             'module' => 'Menu',
-                            'slug' => $group_id,
+                            'slug'   => $group_id,
                         ]));
                     }
                 }
@@ -221,7 +222,7 @@ class AdminController extends Controller
 
         return $this->render('MenuModule:Admin:group.html.twig', [
             'group' => $group,
-            'form_item_create' => $form->createView(),
+            'form'  => $form->createView(),
         ]);
     }
 }

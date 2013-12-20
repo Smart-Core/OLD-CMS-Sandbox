@@ -66,32 +66,4 @@ trait TraitEngine
 
         return $this->container->get('form.factory')->create(new $form_class(), $data, $options);
     }
-
-    /**
-     * Get entity.
-     */
-    public function get($id)
-    {
-        return $this->repository->find($id);
-    }
-
-    /**
-     * Remove entity.
-     *
-     * @todo проверку зависимостей от нод и папок.
-     */
-    public function remove($entity)
-    {
-        $this->em->remove($entity);
-        $this->em->flush();
-    }
-
-    /**
-     * Update entity.
-     */
-    public function update($entity)
-    {
-        $this->em->persist($entity);
-        $this->em->flush();
-    }
 }

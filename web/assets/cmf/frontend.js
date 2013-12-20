@@ -43,10 +43,10 @@ $(document).ready(function() {
                                                 '" class="btn btn-small popup-trigger">' +
                                                 value.title + '</button>';
                                         } else {
-                                            node_buttons += '<button OnClick="window.location=\'' + value.uri + '\'" title="' +
-                                                value.descr +
-                                                '" class="btn btn-small popup-trigger cmf-no-overlay">' +
-                                                value.title + '</button>';
+                                            node_buttons += '<button OnClick="window.location=\'' + value.uri
+                                                + '?return=' + window.location.pathname + window.location.search
+                                                + '\'" title="' + value.descr
+                                                + '" class="btn btn-small popup-trigger cmf-no-overlay">' + value.title + '</button>';
                                         }
                                     }
                                 });
@@ -60,7 +60,8 @@ $(document).ready(function() {
                                         node_buttons += '<li><a class="popup-trigger" title="' + value.descr + '" href="' + value.uri + '">' ;
 
                                     } else {
-                                        node_buttons += '<li><a class="popup-trigger cmf-no-overlay" title="' + value.descr + '" href="' + value.uri + '">' ;
+                                        node_buttons += '<li><a class="popup-trigger cmf-no-overlay" title="' + value.descr
+                                            + '" href="' + value.uri + '?return=' + window.location.pathname + window.location.search + '">' ;
                                     }
 
                                     if (value.default == true) {
@@ -76,6 +77,8 @@ $(document).ready(function() {
                             }
 
                             // обработчик кликов по ссылкам.
+
+                            /*
                             $('.btn-group .dropdown-menu a').click(function() {
                                 if ($(this).hasClass('cmf-no-overlay')) {
                                     window.location = $(this).attr('href');
@@ -84,7 +87,7 @@ $(document).ready(function() {
                                 }
                                 return false;
                             });
-
+                            */
                         },
                         function(){
                             var elem = this;
@@ -360,8 +363,10 @@ function renderToolbar() {
                             } else {
                                 overalay = 'on';
                             }
-                            item += '<li><a href="' + value2.uri + '" class="popup-trigger" cmf-overlay="' + overalay + '"><i class="icon-' +
-                                value2.icon + '"></i>&nbsp;' + value2.title +'</a></li>';
+
+                            item += '<li><a href="' + value2.uri + '?redirect_to=front'
+                                + '" class="popup-trigger" cmf-overlay="' + overalay + '"><i class="icon-'
+                                + value2.icon + '"></i>&nbsp;' + value2.title +'</a></li>';
                         }
                     });
                     item += '</ul>';

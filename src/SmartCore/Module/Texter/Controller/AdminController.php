@@ -52,7 +52,7 @@ class AdminController extends Controller
                 $em->persist($item);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('notice', 'Текст обновлён');
-                
+
                 return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
                     'module' => 'Texter',
                 ]));

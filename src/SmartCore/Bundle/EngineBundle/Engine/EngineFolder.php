@@ -7,7 +7,7 @@ use SmartCore\Bundle\EngineBundle\Entity\Folder;
 
 class EngineFolder
 {
-    use TraitEngine;
+    use TraitEngine; // @todo избавиться от трейта.
 
     protected $router_data = null;
 
@@ -193,5 +193,45 @@ class EngineFolder
         }
 
         return $data;
+    }
+
+    /**
+     * @param int $id
+     * @return null|Folder
+     */
+    public function get($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * Remove entity.
+     *
+     * @todo проверку зависимостей от нод и папок.
+     */
+    public function remove(Folder $entity)
+    {
+        $this->em->remove($entity);
+        $this->em->flush();
+    }
+
+    /**
+     * @param Folder $folder
+     * @return $this
+     */
+    public function update(Folder $folder)
+    {
+        $this->em->persist($folder);
+        $this->em->flush($folder);
+
+        $uriPart = $folder->getUriPart();
+
+        if (empty($uriPart)) {
+            $folder->setUriPart($folder->getId());
+            $this->em->persist($folder);
+            $this->em->flush($folder);
+        }
+
+        return $this;
     }
 }

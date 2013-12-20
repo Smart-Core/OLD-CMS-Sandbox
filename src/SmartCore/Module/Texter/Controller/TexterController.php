@@ -19,9 +19,9 @@ class TexterController extends Controller
 
         $item = $em->find('TexterModule:Item', $item_id ? $item_id : $this->text_item_id);
 
-        $this->View->setEngine('echo');
-        //$this->View->setEngine('twig');
-        $this->View->text = $item->getText();
+        $this->View
+            ->setEngine('echo')
+            ->set('text', $item->getText());
 
         foreach ($item->getMeta() as $key => $value) {
             $this->get('html')->meta($key, $value);
@@ -32,9 +32,9 @@ class TexterController extends Controller
         if ($this->isEip()) {
             $response->setFrontControls([
                 'edit' => [
-                    'title' => 'Редактировать',
-                    'descr' => 'Текстовый блок',
-                    'uri' => $this->generateUrl('cmf_admin_node', ['id' => $this->node->getId()]),
+                    'title'   => 'Редактировать',
+                    'descr'   => 'Текстовый блок',
+                    'uri'     => $this->generateUrl('cmf_admin_node', ['id' => $this->node->getId()]),
                     'default' => true,
                 ],
             ]);

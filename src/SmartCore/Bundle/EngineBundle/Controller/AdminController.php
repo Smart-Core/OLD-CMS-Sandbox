@@ -98,8 +98,7 @@ class AdminController extends Controller
         }
 
         return $this->render('SmartCoreEngineBundle:Admin:block_edit.html.twig', [
-            'block_id'  => $id,
-            'form'      => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -112,23 +111,30 @@ class AdminController extends Controller
      */
     public function folderCreateAction(Request $request, $folder_pid = 1)
     {
-        /** @var Folder $folder */
-        $folder = $this->get('engine.folder')->create();
-        $folder->setCreateByUserId($this->getUser()->getId());
-        $folder->setParentFolder($this->get('engine.folder')->get($folder_pid));
+        $engineFolder = $this->get('engine.folder');
 
-        $form = $this->get('engine.folder')->createForm($folder);
+        /** @var Folder $folder */
+        $folder = $engineFolder->create();
+        $folder->setCreateByUserId($this->getUser()->getId());
+        $folder->setParentFolder($engineFolder->get($folder_pid));
+
+        $form = $engineFolder->createForm($folder);
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create')) {
                 $form->submit($request);
                 if ($form->isValid()) {
-                    $this->get('engine.folder')->update($form->getData());
+                    $engineFolder->update($form->getData());
 
                     if ($request->isXmlHttpRequest()) {
-                        return new JsonResponse(['redirect' => $this->get('engine.folder')->getUri($folder->getId())]);
+                        return new JsonResponse(['redirect' => $engineFolder->getUri($folder->getId())]);
                     } else {
                         $this->get('session')->getFlashBag()->add('notice', 'Папка создана.');
+
+                        if (isset($_GET['redirect_to']) or isset($_GET['return'])) {
+                            return $this->redirect($engineFolder->getUri($folder->getId()));
+                        }
+
                         return $this->redirect($this->generateUrl('cmf_admin_structure'));
                     }
                 }
@@ -151,13 +157,16 @@ class AdminController extends Controller
      */
     public function folderEditAction(Request $request, $id = 1)
     {
-        $folder = $this->get('engine.folder')->get($id);
+        $engineFolder = $this->get('engine.folder');
+
+        /** @var Folder $folder */
+        $folder = $engineFolder->get($id);
 
         if (empty($folder)) {
             return $this->redirect($this->generateUrl('cmf_admin_structure'));
         }
 
-        $form = $this->get('engine.folder')->createForm($folder);
+        $form = $engineFolder->createForm($folder);
 
         // Для корневой папки удаляются некоторые поля формы
         if (1 == $id) {
@@ -173,12 +182,17 @@ class AdminController extends Controller
             if ($request->request->has('update')) {
                 $form->submit($request);
                 if ($form->isValid()) {
-                    $this->get('engine.folder')->update($form->getData());
+                    $engineFolder->update($form->getData());
 
                     if ($request->isXmlHttpRequest()) {
-                        return new JsonResponse(['redirect' => $this->get('engine.folder')->getUri($folder->getId())]);
+                        return new JsonResponse(['redirect' => $engineFolder->getUri($folder->getId())]);
                     } else {
                         $this->get('session')->getFlashBag()->add('notice', 'Папка обновлена.');
+
+                        if (isset($_GET['redirect_to']) or isset($_GET['return'])) {
+                            return $this->redirect($engineFolder->getUri($folder->getId()));
+                        }
+
                         return $this->redirect($this->generateUrl('cmf_admin_structure'));
                     }
                 } else if ($request->isXmlHttpRequest()) {
@@ -191,9 +205,8 @@ class AdminController extends Controller
         }
 
         return $this->renderView('SmartCoreEngineBundle:Admin:folder_edit.html.twig', [
-            'folder_id'     => $id,
-            'form'          => $form->createView(),
             'allow_delete'  => $id != 1 ? true : false,
+            'form'          => $form->createView(),
         ]);
     }
 
@@ -206,7 +219,15 @@ class AdminController extends Controller
      */
     public function nodeAction($id, $slug = null)
     {
-        return $this->forward("$id:Admin:index", ['slug' => $slug]);
+        $response = $this->forward("$id:Admin:index", ['slug' => $slug]);
+
+        if ($response->isRedirection()) {
+            if (isset($_GET['return'])) {
+                return $this->redirect($_GET['return']);
+            }
+        }
+
+        return $response;
     }
 
     /**
@@ -229,13 +250,17 @@ class AdminController extends Controller
             if ($request->request->has('create')) {
                 $form->submit($request);
                 if ($form->isValid()) {
-                    /** @var $updated_node \SmartCore\Bundle\EngineBundle\Entity\Node */
+                    /** @var $created_node \SmartCore\Bundle\EngineBundle\Entity\Node */
                     $created_node = $form->getData();
                     $engineNode->update($created_node);
 
                     if ($request->isXmlHttpRequest()) {
                         return new JsonResponse(['redirect' => $this->get('engine.folder')->getUri($created_node->getFolder()->getId())]);
                     } else {
+                        if (isset($_GET['redirect_to']) and $_GET['redirect_to'] == 'front') {
+                            return $this->redirect($this->get('engine.folder')->getUri($created_node->getFolderId()));
+                        }
+
                         $this->get('session')->getFlashBag()->add('notice', 'Нода создана.');
                         return $this->redirect($this->generateUrl('cmf_admin_structure_node_properties', ['id' => $created_node->getId()]));
                     }
@@ -274,7 +299,7 @@ class AdminController extends Controller
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
                 $form->submit($request);
-                $form_properties->bind($request);
+                $form_properties->submit($request);
                 if ($form->isValid() and $form_properties->isValid()) {
                     /** @var $updated_node \SmartCore\Bundle\EngineBundle\Entity\Node */
                     $updated_node = $form->getData();
@@ -286,6 +311,11 @@ class AdminController extends Controller
                         return new JsonResponse(['redirect' => $this->get('engine.folder')->getUri($updated_node->getFolder()->getId())]);
                     } else {
                         $this->get('session')->getFlashBag()->add('notice', 'Нода обновлена.');
+
+                        if (isset($_GET['redirect_to']) or isset($_GET['return'])) {
+                            return $this->redirect($this->get('engine.folder')->getUri($updated_node->getFolderId()));
+                        }
+
                         return $this->redirect($this->generateUrl('cmf_admin_structure'));
                     }
                 }
@@ -295,7 +325,6 @@ class AdminController extends Controller
         }
 
         return $this->renderView('SmartCoreEngineBundle:Admin:node_edit.html.twig', [
-            'node_id'         => $id,
             'form'            => $form->createView(),
             'form_properties' => $form_properties->createView(),
         ]);
@@ -343,5 +372,4 @@ class AdminController extends Controller
 
         return $this->forward("{$module}Module:Admin:index", ['slug' => $slug]);
     }
-
 }

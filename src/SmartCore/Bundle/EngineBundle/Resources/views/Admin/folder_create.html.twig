@@ -11,7 +11,7 @@
     <div class="well well-small">
         {% form_theme form '@SmartCoreEngine/Form/bootstrap.html.twig' %}
 
-        <form action="{{ path('cmf_admin_structure_folder_create') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+        <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal">
             {% block form_body %}
                 {{ form_widget(form) }}
             {% endblock form_body %}
@@ -25,7 +25,7 @@
         </form>
     </div>
 
-    {% if app.request.xmlHttpRequest == false %}
+    {% if not app.request.xmlHttpRequest %}
         </div>
     {% endif %}
 {% endblock content %}

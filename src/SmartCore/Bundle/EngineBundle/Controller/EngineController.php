@@ -285,6 +285,7 @@ class EngineController extends Controller
      */
     public function postAction(Request $request, $slug)
     {
+        // @todo убрать - это был хак для оверлеев.
         if ($request->request->get('submit') === 'cancel') {
             return new RedirectResponse($request->server->get('HTTP_REFERER') . '#');
         }
@@ -314,8 +315,8 @@ class EngineController extends Controller
             isset($_POST['fos_user_profile_form']) or
             isset($_POST['fos_user_resetting_form']) or
             isset($_POST['fos_user_change_password_form']) or
-            $this->container->get('request')->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_send_email') or
-            $this->container->get('request')->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_check_email')
+            $request->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_send_email') or
+            $request->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_check_email')
         ) {
             return $this->runAction($request, $slug);
         }
