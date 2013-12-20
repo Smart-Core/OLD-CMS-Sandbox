@@ -2,14 +2,65 @@
 
 namespace SmartCore\Bundle\EngineBundle\Engine;
 
+use SmartCore\Bundle\EngineBundle\Form\Type\FolderFormType;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use SmartCore\Bundle\EngineBundle\Entity\Folder;
 
 class EngineFolder
 {
-    use TraitEngine; // @todo избавиться от трейта.
+    //use TraitEngine; // @todo избавиться от трейта.
 
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
+
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    protected $em;
+
+    /**
+     * @var \SmartCore\Bundle\EngineBundle\Entity\FolderRepository
+     */
+    protected $repository;
+
+    /**
+     * @var array|null
+     */
     protected $router_data = null;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+        $this->em = $container->get('doctrine.orm.entity_manager');
+        $this->repository = $this->em->getRepository('SmartCoreEngineBundle:Folder');
+    }
+
+    /**
+     * @return Folder
+     */
+    public function create()
+    {
+        return new Folder();
+    }
+
+    /**
+     * Creates and returns a Form instance from the type of the form.
+     *
+     * @param mixed $data    The initial data for the form
+     * @param array $options Options for the form
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function createForm($data = null, array $options = [])
+    {
+        return $this->container->get('form.factory')->create(new FolderFormType(), $data, $options);
+    }
 
     /**
      * Поиск по родительской папке.
