@@ -9,8 +9,6 @@ use SmartCore\Bundle\EngineBundle\Entity\Folder;
 
 class EngineFolder
 {
-    //use TraitEngine; // @todo избавиться от трейта.
-
     /**
      * @var ContainerInterface
      */
@@ -66,7 +64,7 @@ class EngineFolder
      * Поиск по родительской папке.
      *
      * @param Folder $parent_folder
-     * @return array
+     * @return Folder[]
      */
     public function findByParent(Folder $parent_folder = null)
     {
