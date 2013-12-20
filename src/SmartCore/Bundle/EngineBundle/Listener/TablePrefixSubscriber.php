@@ -8,18 +8,30 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 class TablePrefixSubscriber implements EventSubscriber
 {
+    /**
+     * @var string
+     */
     protected $prefix = '';
 
+    /**
+     * @param string $prefix
+     */
     public function __construct($prefix)
     {
         $this->prefix = (string) $prefix;
     }
 
+    /**
+     * @return array
+     */
     public function getSubscribedEvents()
     {
         return ['loadClassMetadata'];
     }
 
+    /**
+     * @param LoadClassMetadataEventArgs $args
+     */
     public function loadClassMetadata(LoadClassMetadataEventArgs $args)
     {
         $classMetadata = $args->getClassMetadata();

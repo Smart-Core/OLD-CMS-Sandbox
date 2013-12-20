@@ -3,7 +3,6 @@
 namespace SmartCore\Module\Texter\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -44,20 +43,29 @@ class Item
      * @ORM\Column(type="integer")
      */
     protected $user_id = 0;
-    
+
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->datetime = new \DateTime();
         $this->language = 'ru';
-        $this->meta = []; //new ArrayCollection();
+        $this->meta = [];
         $this->text = null;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getText();
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->item_id;
@@ -65,6 +73,7 @@ class Item
 
     /**
      * Получить анонс.
+     *
      * @return string
      */
     public function getAnnounce()
@@ -79,17 +88,29 @@ class Item
 
         return mb_substr($a, 0, 120, 'utf-8') . $dotted;
     }
-    
+
+    /**
+     * @return string
+     */
     public function getText()
     {
         return $this->text;
     }
 
+    /**
+     * @param string $text
+     * @return $this
+     */
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getMeta()
     {
         if ($this->meta) {
@@ -99,7 +120,11 @@ class Item
         }
     }
 
-    public function setMeta($meta)
+    /**
+     * @param array $meta
+     * @return $this
+     */
+    public function setMeta(array $meta)
     {
         if (is_array($meta)) {
             foreach($meta as $key => $value) {
@@ -116,11 +141,20 @@ class Item
         return $this;
     }
 
+    /**
+     * @param int $user_id
+     * @return $this
+     */
     public function setUserId($user_id)
     {
         $this->user_id = $user_id;
+
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getUserId()
     {
         return $this->user_id;

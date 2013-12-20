@@ -1,6 +1,6 @@
-{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/module.html.twig' %}
+{% extends '@SmartCoreEngine/Admin/module.html.twig' %}
 
-{% block html_head_title %}Редактирование: {{ item.id }} Текстер / {{ parent() }}{% endblock html_head_title %}
+{% block html_head_title %}Редактирование id: {{ item.id }} / Текстер / {{ parent() }}{% endblock html_head_title %}
 
 {% block html_head_scripts %}
     {{ parent() }}
@@ -100,15 +100,11 @@
 
     <p class="text-center">
         <button class="btn btn-primary" type="submit" name="submit" value="update">Сохранить</button>
-        {% if app.request.xmlHttpRequest %}
-            <button class="btn cmf-cancel" name="submit" value="cancel">Отменить</button>
-        {% else %}
-            <a class="btn cmf-cancel" href="{{ path('cmf_admin_module_manage', {'module': 'Texter'}) }}">Отменить</a>
-        {% endif %}
+        <a class="btn cmf-cancel" href="{{ path('cmf_admin_module_manage', {'module': 'Texter'}) }}">Отменить</a>
     </p>
+
     </form>
 {% endblock content %}
-
 
 {% block body_js %}
     {{ parent() }}

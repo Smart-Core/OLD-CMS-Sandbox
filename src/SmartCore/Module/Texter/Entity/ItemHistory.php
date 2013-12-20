@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  *             @ORM\Index(name="is_deleted", columns={"is_deleted"}),
  *         }
  * )
+ *
+ * @todo сделать.
  */
 class ItemHistory
 {

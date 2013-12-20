@@ -106,6 +106,7 @@ class Block
     public function setDescr($descr)
     {
         $this->descr = $descr;
+
         return $this;
     }
 
@@ -124,6 +125,7 @@ class Block
     public function setFolder(Folder $folder)
     {
         $this->folders->add($folder);
+
         return $this;
     }
 
@@ -142,6 +144,7 @@ class Block
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -164,6 +167,7 @@ class Block
         }
 
         $this->position = $pos;
+
         return $this;
     }
 
@@ -182,6 +186,7 @@ class Block
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
+
         return $this;
     }
 

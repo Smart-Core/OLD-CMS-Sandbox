@@ -1,11 +1,9 @@
-{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/_layout.html.twig' %}
+{% extends '@SmartCoreEngine/Admin/_layout.html.twig' %}
 
 {% block html_head_title %}{{ 'Blocks'|trans }} / {{ 'Structure'|trans }} / {{ parent() }}{% endblock html_head_title %}
 
 {% block subnav %}
-    {% if not app.request.xmlHttpRequest %}
-        {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
-    {% endif %}
+    {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 {% endblock subnav %}
 
 {% block content %}

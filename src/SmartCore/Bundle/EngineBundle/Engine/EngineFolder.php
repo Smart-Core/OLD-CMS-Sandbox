@@ -30,7 +30,7 @@ class EngineFolder
     protected $router_data = null;
 
     /**
-     * Constructor.
+     * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
@@ -113,6 +113,7 @@ class EngineFolder
     /**
      * Получить данные роутинга.
      *
+     * @param string $slug
      * @return array
      */
     public function getRouterData($slug = null)

@@ -2,15 +2,12 @@
 
 {% block html_head_title %}{{ group.name }} / {{ parent() }}{% endblock html_head_title %}
 
-
 {% block content %}
-    {% if not app.request.xmlHttpRequest %}
-        <ul class="nav nav-pills" id="myTab">
-            <li><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu'}) }}">Список всех групп меню</a></li>
-            <li class="active"><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': group.id }) }}">Редактирование группы меню</a></li>
-            <li><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': group.id ~ '/edit' }) }}">Свойства группы меню</a></li>
-        </ul>
-    {% endif %}
+    <ul class="nav nav-pills" id="myTab">
+        <li><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu'}) }}">Список всех групп меню</a></li>
+        <li class="active"><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': group.id }) }}">Редактирование группы меню</a></li>
+        <li><a href="{{ path('cmf_admin_module_manage', {'module': 'Menu', 'slug': group.id ~ '/edit' }) }}">Свойства группы меню</a></li>
+    </ul>
 
     <h4>Пункты меню</h4>
 

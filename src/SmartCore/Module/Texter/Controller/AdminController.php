@@ -9,14 +9,14 @@ class AdminController extends Controller
 {
     /**
      * @param Request $request
-     * @param null $slug
+     * @param string $slug
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function indexAction(Request $request, $slug = null)
     {
         // @todo сделать роутинг
         if (!empty($slug)) {
-            $parts = explode('/', $slug);
+            //$parts = explode('/', $slug);
 
             return $this->itemAction($request, $slug);
         }
@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     /**
      * @param Request $request
-     * @param $item_id
+     * @param int $item_id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function itemAction(Request $request, $item_id)

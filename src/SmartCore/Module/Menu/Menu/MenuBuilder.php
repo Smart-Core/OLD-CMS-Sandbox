@@ -64,7 +64,8 @@ class MenuBuilder extends ContainerAware
     }
 
     /**
-     * Обработка конфига
+     * Обработка конфига.
+     *
      * @param array $options
      */
     protected function processConfig(array $options)
@@ -72,10 +73,10 @@ class MenuBuilder extends ContainerAware
         $this->em = $this->container->get('doctrine.orm.default_entity_manager');
 
         $defaul_options = $options + [
+            'css_class' => null,
+            'depth'     => null,
             'group'     => null,
             'is_admin'  => false,
-            'depth'     => null,
-            'css_class' => null,
         ];
 
         foreach ($defaul_options as $key => $value) {
@@ -87,7 +88,7 @@ class MenuBuilder extends ContainerAware
      * Рекурсивное построение дерева.
      *
      * @param ItemInterface $menu
-     * @param Folder        $parent_folder
+     * @param Item          $parent_item
      */
     protected function addChild(ItemInterface $menu, Item $parent_item = null)
     {

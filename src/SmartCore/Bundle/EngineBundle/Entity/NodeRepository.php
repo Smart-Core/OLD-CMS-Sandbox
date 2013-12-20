@@ -6,6 +6,10 @@ use Doctrine\ORM\EntityRepository;
 
 class NodeRepository extends EntityRepository
 {
+    /**
+     * @param array $list
+     * @return Node[]
+     */
     public function findIn(array $list)
     {
         $list_string = '';

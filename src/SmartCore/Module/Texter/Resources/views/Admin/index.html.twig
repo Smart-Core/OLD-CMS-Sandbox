@@ -4,31 +4,25 @@
 
 
 {% block content %}
-    <ul class="nav nav-tabs" id="myTab">
-        {#<li class="active"><a>Список всех групп меню</a></li>#}
-        {#<li><a href="#create">Создать новую группу</a></li>#}
-    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="all">
+            <table class="table table-bordered table-hover">
+                <thead><tr>
+                    <th>id</th>
+                    <th>{{ 'Text'|trans }}</th>
+                </tr></thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td><a href="{{ path('cmf_admin_module_manage', {'module': 'Texter', 'slug': item.id}) }}">{{ item.id }}</a></td>
+                        <td><a href="{{ path('cmf_admin_module_manage', {'module': 'Texter', 'slug': item.id}) }}">{{ item.announce }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-<div class="tab-content">
-    <div class="tab-pane active" id="all">
-        <table class="table table-bordered table-hover">
-            <thead><tr>
-                <th>id</th>
-                <th>{{ 'Text'|trans }}</th>
-            </tr></thead>
-            <tbody>
-            {% for item in items %}
-                <tr>
-                    <td><a href="{{ path('cmf_admin_module_manage', {'module': 'Texter', 'slug': item.id}) }}">{{ item.id }}</a></td>
-                    <td><a href="{{ path('cmf_admin_module_manage', {'module': 'Texter', 'slug': item.id}) }}">{{ item.announce }}</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
+        </div>
     </div>
-    {#<div class="tab-pane" id="create">    </div>#}
-</div>
 
 {#
 <div class="well well-small">
@@ -45,23 +39,4 @@
 </div>
 #}
 
-{#<p class="text-center">#}
-    {#<button class="btn btn-primary" type="submit" name="submit" value="update">Сохранить</button>#}
-    {#<button class="btn cmf-cancel" name="submit" value="cancel">Отменить</button>#}
-{#</p>#}
-{#</form>#}
 {% endblock content %}
-
-{#
-{% block body_js %}
-{{ parent() }}
-<script>
-    $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-        $(this.hash + ' input.focused').focus();
-//        tinyMCE.get($(this.hash + ' textarea.focused').attr('id')).focus();
-    });
-</script>
-{% endblock body_js %}
-#}

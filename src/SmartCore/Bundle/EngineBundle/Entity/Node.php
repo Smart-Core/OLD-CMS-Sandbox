@@ -224,10 +224,13 @@ class Node implements \Serializable
 
     /**
      * @param int $create_by_user_id
+     * @return $this
      */
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
+
+        return $this;
     }
 
     /**
@@ -240,10 +243,13 @@ class Node implements \Serializable
 
     /**
      * @param bool $is_active
+     * @return $this
      */
     public function setIsActive($is_active)
     {
         $this->is_active = $is_active;
+
+        return $this;
     }
 
     /**
@@ -256,10 +262,13 @@ class Node implements \Serializable
 
     /**
      * @param bool $is_cached
+     * @return $this
      */
     public function setIsCached($is_cached)
     {
         $this->is_cached = $is_cached;
+
+        return $this;
     }
 
     /**
@@ -272,10 +281,13 @@ class Node implements \Serializable
 
     /**
      * @param string $descr
+     * @return $this
      */
     public function setDescr($descr)
     {
         $this->descr = $descr;
+
+        return $this;
     }
 
     /**
@@ -288,6 +300,7 @@ class Node implements \Serializable
 
     /**
      * @param int $position
+     * @return $this
      */
     public function setPosition($position)
     {
@@ -296,6 +309,8 @@ class Node implements \Serializable
         }
 
         $this->position = $position;
+
+        return $this;
     }
 
     /**
@@ -308,10 +323,13 @@ class Node implements \Serializable
 
     /**
      * @param Block $block
+     * @return $this
      */
     public function setBlock(Block $block)
     {
         $this->block = $block;
+
+        return $this;
     }
 
     /**
@@ -324,10 +342,13 @@ class Node implements \Serializable
 
     /**
      * @param Folder $folder
+     * @return $this
      */
     public function setFolder(Folder $folder)
     {
         $this->folder = $folder;
+
+        return $this;
     }
 
     /**
@@ -340,10 +361,13 @@ class Node implements \Serializable
 
     /**
      * @param string $module
+     * @return $this
      */
     public function setModule($module)
     {
         $this->module = $module;
+
+        return $this;
     }
 
     /**
@@ -356,10 +380,13 @@ class Node implements \Serializable
 
     /**
      * @param array $params
+     * @return $this
      */
     public function setParams(array $params)
     {
         $this->params = $params;
+
+        return $this;
     }
 
     /**
@@ -388,6 +415,7 @@ class Node implements \Serializable
 
     /**
      * @param RouterResponse $router_response
+     * @return $this
      */
     public function setRouterResponse(RouterResponse $router_response)
     {
@@ -396,6 +424,8 @@ class Node implements \Serializable
         $this->setArguments($router_response->getAllArguments());
 
         $this->router_response = $router_response;
+
+        return $this;
     }
 
     /**
@@ -408,10 +438,13 @@ class Node implements \Serializable
 
     /**
      * @param string $action
+     * @return $this
      */
     public function setAction($action)
     {
         $this->action = $action;
+
+        return $this;
     }
 
     /**
@@ -424,10 +457,13 @@ class Node implements \Serializable
 
     /**
      * @param array $arguments
+     * @return $this
      */
     public function setArguments(array $arguments)
     {
         $this->arguments = $arguments;
+
+        return $this;
     }
 
     /**
@@ -440,10 +476,13 @@ class Node implements \Serializable
 
     /**
      * @param string $controller
+     * @return $this
      */
     public function setController($controller)
     {
         $this->controller = $controller;
+
+        return $this;
     }
 
     /**

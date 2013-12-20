@@ -129,7 +129,7 @@ class Theme extends ContainerAware
                 case 'js_lib': // @todo 
                     $js_libs = explode(',', $value);
                     foreach ($js_libs as $js_lib) {
-                        $this->container->get('engine.JsLib')->request(trim($js_lib));
+                        $this->container->get('engine.jslib')->call(trim($js_lib));
                     }
                     break;
                 case 'icon':

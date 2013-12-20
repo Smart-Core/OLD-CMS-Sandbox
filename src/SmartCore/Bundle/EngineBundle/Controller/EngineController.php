@@ -4,7 +4,6 @@ namespace SmartCore\Bundle\EngineBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use SmartCore\Bundle\EngineBundle\Engine\View;
 
@@ -12,6 +11,7 @@ class EngineController extends Controller
 {
     /**
      * Коллекция фронтальных элементов управления.
+     *
      * @var array
      */
     protected $cmf_front_controls;
@@ -63,8 +63,9 @@ class EngineController extends Controller
         // @todo убрать в ini-шник шаблона.
         $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
 
-        if ($this->get('security.context')->isGranted('ROLE_ADMIN') && !$request->isXmlHttpRequest()) {
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             /*
+            // Пример формата массива $cmf_front_controls
             $cmf_front_controls = array(
                 'node' => array(
                     '__node_5' => array(
@@ -92,8 +93,8 @@ class EngineController extends Controller
                 'node' => $this->cmf_front_controls['node'],
             ];
 
-            $this->get('engine.jslib')->request('bootstrap');
-            $this->get('engine.jslib')->request('jquery-cookie');
+            $this->get('engine.jslib')->call('bootstrap');
+            $this->get('engine.jslib')->call('jquery-cookie');
             $this->get('html')
                 ->css($this->get('engine.context')->getGlobalAssets() . 'cmf/frontend.css')
                 ->js($this->get('engine.context')->getGlobalAssets() . 'cmf/frontend.js')
@@ -146,118 +147,20 @@ class EngineController extends Controller
                 $this->View->blocks->set($block_name, new View());
             }
 
-            // Обнаружены параметры кеша.
-            if (_IS_CACHE_NODES and $node['is_cached'] and !empty($node['cache_params']) ) { // and $this->get('engine.context')->cache_enable
-                $cache_params = unserialize($node['cache_params']);
-                if (isset($cache_params['id']) and is_array($cache_params['id'])) {
-                    $cache_id = [];
-                    foreach ($cache_params['id'] as $key => $dummy) {
-                        switch ($key) {
-                            case 'current_folder_id':
-                                $cache_id['current_folder_id'] = $this->get('engine.context')->getCurrentFolderId();
-                                break;
-                            case 'user_id':
-                                $cache_id['user_id'] = $this->getUser();
-                                break;
-                            case 'parser_data': // @todo route_data
-                                $cache_id['parser_data'] = $node_properties['parser_data'];
-                                break;
-                            case 'request_uri':
-                                $cache_id['parser_data'] = $_SERVER['REQUEST_URI'];
-                                break;
-                            case 'user_groups':
-                                $user_data = $this->User->getData(); // @todo
-                                $cache_id['user_groups'] = $user_data['groups'];
-                                break;
-                            default;
-                        }
-                    }
-                    $cache_params['id'] = $cache_id;
-                }
-                $cache_params['id']['node_id'] = $node_id;
-                $cache_params['nodes'][$node_id] = 1;
-            } else {
-                $cache_params = null;
-            }
+            // Выполняется модуль, все параметры ноды берутся в SmartCore\Bundle\EngineBundle\Listener\ModuleControllerModifierListener
+            \Profiler::start($node_id . ' ' . $node->getModule(), 'node');
+            $Module = $this->forward($node_id, [ '_eip' => true ]);
+            \Profiler::end($node_id . ' ' . $node->getModule(), 'node');
 
-            // Попытка взять HTML кеш ноды.
-            if (_IS_CACHE_NODES
-                and !empty($cache_params)
-                and $this->Cookie->sc_frontend_mode !== 'edit'
-                and $html_cache = $this->Cache_Node->loadHtml($cache_params['id'])
-            ) {
-                // $this->EE->data[$block_name][$node_id]['html_cache'] = $html_cache; @todo !!!!!!!!
-            } else {
-                // Кеша нет.
-
-                // Если разрешены права на запись ноды, то создаётся объект с административными методами и запрашивается у него данные для фронтальных элементов управления.
-                /*
-                if ($this->Permissions->isAllowed('node', 'write', $node_properties['permissions']) and ($this->Permissions->isRoot() or $this->Permissions->isAdmin()) ) {
-                    $Module = $Node->getModuleInstance($node_id, true);
-                } else {
-                    $Module = $Node->getModuleInstance($node_id, false);
-                } */
-
-                // Выполняется модуль, все параметры ноды берутся в SmartCore\Bundle\EngineBundle\Listener\ModuleControllerModifierListener
-                \Profiler::start($node_id . ' ' . $node->getModule(), 'node');
-                $Module = $this->forward($node_id, [ '_eip' => true ]);
-                \Profiler::end($node_id . ' ' . $node->getModule(), 'node');
-
-                if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                    if (method_exists($Module, 'getFrontControls')) {
-                        $this->cmf_front_controls['node']['__node_' . $node_id] = $Module->getFrontControls();
-                    }
-
-                    $this->cmf_front_controls['node']['__node_' . $node_id]['cmf_node_properties'] = [
-                        'title' => 'Свойства ноды',
-                        'uri'   => $this->generateUrl('cmf_admin_structure_node_properties', ['id' => $node_id])
-                    ];
+            if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                if (method_exists($Module, 'getFrontControls')) {
+                    $this->cmf_front_controls['node']['__node_' . $node_id] = $Module->getFrontControls();
                 }
 
-                // Указать шаблонизатору, что надо сохранить эту ноду как html.
-                // @todo ПЕРЕДЕЛАТЬ!!! подумать где выполнять кеширование, внутри объекта View или где-то снаружи.
-                // @todo ВАЖНО подумать как тут поступить т.к. эта кука может стоять у гостя!!!
-                //if (_IS_CACHE_NODES and !empty($cache_params) and $this->Cookie->sc_frontend_mode !== 'edit') {
-                //    $this->EE->data[$block_name][$node_id]['store_html_cache'] = $Module->getCacheParams($cache_params);
-                //}
-
-                // Получение данных для фронт-админки ноды.
-                // @todo сделать нормальную проверку на возможность управления нодой. сейчас пока считается, что юзер с ИД = 1 имеет право админить.
-                // @todo также тут надо учитывать режим Фронт-Админки. если он выключен, то вытягивать фронт-контролсы нет смысла.
-                
-                //if ($this->Permissions->isAllowed('node', 'write', $node_properties['permissions']) and $this->Cookie->sc_frontend_mode == 'edit') {
-                /*
-                if ( false ) {
-                    $front_controls = $Module->getFrontControls();
-                    
-                    // Для рута добавляется пунктик "свойства ноды"
-                    if ($this->Permissions->isRoot()) {
-                        $front_controls['_node_properties'] = [
-                            'popup_window_title' => 'Свойства ноды' . " ( $node_id )",
-                            'title'              => 'Свойства',
-                            'link'               => HTTP_ROOT . ADMIN . '/structure/node/' . $node_id . '/?popup',
-                            'ico'                => 'edit',
-                        ];
-                    }
-
-                    if(is_array($front_controls)) {
-                        // @todo сделать выбор типа фронт админки popup/built-in/ajax.
-                        $this->View->admin['frontend'][$node_id] = [
-                            // 'type' => 'popup',
-                            'node_action_mode'  => $node_properties['node_action_mode'],
-                            'doubleclick'       => '@todo двойной щелчок по блоку НОДЫ.',
-                            'default_action'    => $Module->getFrontControlsDefaultAction(),
-                            // элементы управления, относящиеся ко всей ноде.
-                            'controls'          => $front_controls,
-                            // элементы управления блоков внутри ноды.
-                            //'controls_inner_default_action' = $Module->getFrontControlsInnerDefaultAction(),
-                            'controls_inner'    => $Module->getFrontControlsInner(),
-                        ];
-                    }
-
-                    $Module->View->setDecorators("<div class=\"cmf-frontadmin-node\" id=\"_node$node_id\">", "</div>");
-                }
-                */
+                $this->cmf_front_controls['node']['__node_' . $node_id]['cmf_node_properties'] = [
+                    'title' => 'Свойства ноды', // @todo translate
+                    'uri'   => $this->generateUrl('cmf_admin_structure_node_properties', ['id' => $node_id])
+                ];
             }
 
             $this->View->blocks->$block_name->$node_id = method_exists($Module, 'getContentRaw')
@@ -265,10 +168,7 @@ class EngineController extends Controller
                 : $Module->getContent();
 
             // @todo пока так выставляются декораторы обрамления ноды.
-            if ($this->get('security.context')->isGranted('ROLE_ADMIN')
-                and !$this->get('request')->isXmlHttpRequest()
-                and $this->View->blocks->$block_name->$node_id instanceof View
-            ) {
+            if ($this->get('security.context')->isGranted('ROLE_ADMIN') and $this->View->blocks->$block_name->$node_id instanceof View) {
                 $this->View->blocks->$block_name->$node_id->setDecorators("<div class=\"cmf-frontadmin-node\" id=\"__node_{$node_id}\">", "</div>");
             }
 
@@ -281,7 +181,9 @@ class EngineController extends Controller
      *
      * @param Request $request
      * @param string $slug
-     * @return JsonResponse|RedirectResponse|Response
+     * @return RedirectResponse|Response
+     *
+     * @todo продумать!
      */
     public function postAction(Request $request, $slug)
     {
@@ -319,13 +221,6 @@ class EngineController extends Controller
             $request->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_check_email')
         ) {
             return $this->runAction($request, $slug);
-        }
-
-        if (!$this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            return new JsonResponse([
-                'status'  => 'INVALID',
-                'message' => 'Access denied',
-            ], 403);
         }
 
         $module_name = $this->get('engine.node')->get($node_id)->getModule();

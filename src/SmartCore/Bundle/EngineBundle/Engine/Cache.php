@@ -1,8 +1,12 @@
 <?php
 namespace SmartCore\Bundle\EngineBundle\Engine;
 
+use Symfony\Component\HttpKernel\KernelInterface;
 use SmartCore\Bundle\EngineBundle\Entity\Node;
 
+/**
+ * Простенькое кеширование на файлах.
+ */
 class Cache
 {
     /**
@@ -10,7 +14,10 @@ class Cache
      */
     protected $cache_path;
 
-    public function __construct($kernel)
+    /**
+     * @param KernelInterface $kernel
+     */
+    public function __construct(KernelInterface $kernel)
     {
         $this->cache_path = realpath($kernel->getCacheDir()) . '/smart_core/';
 
@@ -33,7 +40,7 @@ class Cache
      * Получить ноду из кеша.
      *
      * @param integer $node_id
-     * @return Node
+     * @return Node|null
      */
     public function getNode($node_id)
     {
@@ -60,7 +67,8 @@ class Cache
     }
 
     /**
-     * Удаление ноды из кеша
+     * Удаление ноды из кеша.
+     *
      * @param integer $node_id
      */
     public function removeNode($node_id)

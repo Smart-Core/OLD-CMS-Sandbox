@@ -70,14 +70,18 @@ class EngineNode
     protected $is_just_created = false;
 
     /**
-     * Constructor.
+     * @param ContainerInterface $container
+     * @param EntityManager $em
+     * @param FormFactoryInterface $form_factory
+     * @param KernelInterface $kernel
+     * @param $engine_context
      */
     public function __construct(
         ContainerInterface $container,
         EntityManager $em,
         FormFactoryInterface $form_factory,
         KernelInterface $kernel,
-        $engine_context
+        EngineContext $engine_context
     ) {
         $this->context      = $engine_context;
         $this->em           = $em;

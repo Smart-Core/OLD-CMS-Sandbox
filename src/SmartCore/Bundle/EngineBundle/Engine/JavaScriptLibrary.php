@@ -5,36 +5,22 @@ namespace SmartCore\Bundle\EngineBundle\Engine;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 /**
- * @todo переделать!
+ * @todo переделать! выделить в отдельный бандл.
  */
 class JavaScriptLibrary extends ContainerAware
 {
     /**
      * Список всех прописаных скриптов.
+     *
      * @var array
      */
     protected $scripts;
-    
-    /**
-     * Профиль по умолчанию.
-     * @var string
-     */
-    protected $default_profile;
-    
-    /**
-     * Список профилей, которые можно применять.
-     * @var string
-     */
-    protected $profiles;
-    
+
     /**
      * Список запрошенных библиотек.
      */
-    protected $requested_libs = [];
+    protected $called_libs = [];
     
-    protected $table_libs;
-    protected $table_paths;
-
     /**
      * @var \Doctrine\DBAL\Connection
      */
@@ -45,26 +31,18 @@ class JavaScriptLibrary extends ContainerAware
      */
     public function __construct(\Doctrine\DBAL\Connection $db)
     {
-        $this->db = $db;
+        $this->db      = $db;
+        $this->scripts = [];
 
-        // @todo пока принимается только один профиль, далее надо сделать перебор...
-        $this->default_profile  = 'local';
-        //$this->profiles = $this->Settings->getParam('scripts_profiles');
-        $this->profiles         = 'local';
-        $this->scripts          = [];
-        //$this->table_libs       = $this->db->prefix() . 'javascript_library';
-        $this->table_libs       = 'javascript_library';
-        //$this->table_paths      = $this->db->prefix() . 'javascript_library_paths';
-        $this->table_paths      = 'javascript_library_paths';
-
-        $sql = "SELECT script_id, name, related_by, current_version, default_profile, files FROM {$this->table_libs} ORDER BY pos DESC ";
+        $sql = "SELECT script_id, name, related_by, current_version, files
+            FROM javascript_library
+            ORDER BY pos DESC ";
         $result = $this->db->query($sql);
         while($row = $result->fetchObject()) {
             $this->scripts[$row->name] = [
                 'script_id' => $row->script_id,
                 'related_by' => $row->related_by,
                 'current_version' => $row->current_version,
-                'default_profile' => $row->default_profile,
                 'files' => $row->files,
                 // не обязательные свойства.
                 //'title' => $row->title,
@@ -75,14 +53,14 @@ class JavaScriptLibrary extends ContainerAware
     }
     
     /**
-     * Подключение библиотеки скриптов.
+     * Запросить библиотеку.
      *
      * @param string $name
      * @param string $version
      */
-    public function request($name, $version = false)
+    public function call($name, $version = false)
     {
-        $this->requested_libs[$name] = $version;
+        $this->called_libs[$name] = $version;
     }
 
     /**
@@ -94,7 +72,7 @@ class JavaScriptLibrary extends ContainerAware
     {
         $output = [];
         
-        // В связи с тем, что запрашивается в произвольном порядке - сначала надо сформировать массив с ключами в правильном порядке.
+        // Т.к. запрашивается в произвольном порядке - сначала надо сформировать массив с ключами в правильном порядке.
         foreach ($this->scripts as $key => $value) {
             $output[$key] = false;
         }
@@ -103,23 +81,22 @@ class JavaScriptLibrary extends ContainerAware
         $flag = 1;
         while ($flag == 1) {
             $flag = 0;
-            foreach ($this->requested_libs as $name => $value) {
+            foreach ($this->called_libs as $name => $value) {
                 // @todo пока можно обработать зависимость только от одной либы, далее надо сделать списки, например "prototype, scriptaculous".
-                if (!empty($this->scripts[$name]['related_by']) and !isset($this->requested_libs[$this->scripts[$name]['related_by']])) {
-                    $this->requested_libs[$this->scripts[$name]['related_by']] = false;
+                if (!empty($this->scripts[$name]['related_by']) and !isset($this->called_libs[$this->scripts[$name]['related_by']])) {
+                    $this->called_libs[$this->scripts[$name]['related_by']] = false;
                     $flag = 1;
                 }
             }
         }
 
         // @todo сделать возможность конфигурирования из файлов.
-        foreach ($this->requested_libs as $name => $version) {
+        foreach ($this->called_libs as $name => $version) {
             $sql_version = empty($version) ? " AND version = '{$this->scripts[$name]['current_version']}' " : " AND version = '$version' ";
             
             $sql = "SELECT path
-                FROM {$this->table_paths}
+                FROM javascript_library_paths
                 WHERE script_id = '" . $this->scripts[$name]['script_id'] . "'
-                AND profile = '{$this->profiles}'
                 $sql_version ";                
             $result = $this->db->query($sql);
             if ($result->rowCount() == 1) {
@@ -127,9 +104,8 @@ class JavaScriptLibrary extends ContainerAware
                 $path = strpos($row->path, 'http://') === 0 ? $row->path : $this->container->get('engine.context')->getGlobalAssets() . $row->path; // @todo https://  и просто //
             } else {
                 $sql = "SELECT path 
-                    FROM {$this->table_paths}
+                    FROM javascript_library_paths
                     WHERE script_id = '" . $this->scripts[$name]['script_id'] . "'
-                    AND profile = '{$this->default_profile}'
                     $sql_version ";
                 $path = $this->container->get('engine.context')->getGlobalAssets() . $this->db->fetchAssoc($sql)['path'];
             }

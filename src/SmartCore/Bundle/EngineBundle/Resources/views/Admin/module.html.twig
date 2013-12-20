@@ -1,4 +1,4 @@
-{% extends app.request.xmlHttpRequest ? '@SmartCoreEngine/ajax.html.twig' : '@SmartCoreEngine/Admin/_layout.html.twig' %}
+{% extends '@SmartCoreEngine/Admin/_layout.html.twig' %}
 
 {% block html_head_title %}{{ 'Modules'|trans }} / {{ parent() }}{% endblock html_head_title %}
 
@@ -18,7 +18,6 @@
         {% for module in modules %}
             <tr>
                 <td>{{ modules_count }}{% set modules_count = modules_count + 1 %}</td>
-                {#<td><a href="{{ path('cmf_admin_structure_block_edit', {'id': block.id}) }}">{{ block.name }}</a></td>#}
                 <td>
                     {% if module.hasAdmin %}
                         <a href="{{ path('cmf_admin_module_manage', {'module': module.shortName }) }}">{{ module.shortName }}</a>

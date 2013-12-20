@@ -23,7 +23,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('storage')->defaultValue('database')->end() // cannotBeEmpty()->
-                ->scalarNode('dir_sites')->defaultValue('')->end()
                 ->scalarNode('serialiser')->defaultValue('php')->info('Valid values: php, igbinary')->end() // @todo 
             ->end()
         ;

@@ -21,7 +21,6 @@ class FolderFormType extends AbstractType
             ->add('is_file')
             ->add('has_inherit_nodes')
             ->add('template')
-            //->add('create_datetime', 'text', ['disabled' => true])
             //->add('permissions', 'text')
             //->add('lockout_nodes', 'text')
             //->addEventSubscriber(new FolderSubscriber())

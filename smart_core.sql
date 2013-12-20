@@ -3,11 +3,17 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Дек 12 2013 г., 03:58
+-- Время создания: Дек 20 2013 г., 23:18
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.4.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- База данных: `smart_core`
@@ -620,7 +626,6 @@ CREATE TABLE IF NOT EXISTS `javascript_library` (
   `related_by` varchar(255) DEFAULT NULL COMMENT 'Зависит от',
   `title` varchar(200) NOT NULL,
   `current_version` varchar(20) NOT NULL,
-  `default_profile` varchar(50) NOT NULL COMMENT 'Будет применент, в случае если отсутствует запрошенный профиль',
   `homepage` varchar(200) NOT NULL,
   `files` text COMMENT 'Файлы',
   `descr` text,
@@ -632,22 +637,22 @@ CREATE TABLE IF NOT EXISTS `javascript_library` (
 -- Дамп данных таблицы `javascript_library`
 --
 
-INSERT INTO `javascript_library` (`script_id`, `name`, `pos`, `related_by`, `title`, `current_version`, `default_profile`, `homepage`, `files`, `descr`) VALUES
-(1, 'jquery', 1000, '', 'jQuery is a new kind of JavaScript Library.', '1.9.1', 'local', 'http://jquery.com/', 'jquery.min.js', 'jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.'),
-(2, 'tinymce', 0, '', 'TinyMCE - Javascript WYSIWYG Editor', '3.4.5', 'local', 'http://tinymce.moxiecode.com/', 'tiny_mce.js', 'TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor control released as Open Source under LGPL by Moxiecode Systems AB. It has the ability to convert HTML TEXTAREA fields or other HTML elements to editor instances. TinyMCE is very easy to integrate into other Content Management Systems. '),
-(3, 'extjs', 0, '', 'Ext JS is a cross-browser JavaScript library for building rich internet applications.', '3.2.1', 'local', 'http://www.sencha.com/products/js/', '', NULL),
-(4, 'highslide', 0, '', 'Highslide JS - JavaScript thumbnail viewer', '4.1.4', 'local', 'http://highslide.com/', '', 'Highslide JS is an image, media and gallery viewer written in JavaScript.'),
-(5, 'ckeditor', 0, '', 'CKEditor - WYSIWYG Text and HTML Editor for the Web', '3.4.1', 'local', 'http://ckeditor.com/', '', 'CKEditor is a text editor to be used inside web pages. It''s a WYSIWYG  editor, which means that the text being edited on it looks as similar as possible to the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.'),
-(6, 'jquery-ui', 0, '', 'jQuery user interface', '1.8.5', 'local', 'http://jqueryui.com/', '', 'jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.'),
-(7, 'mediabox', 0, '', 'Mediabox Advanced', '1.3.4', 'local', 'http://iaian7.com/webcode/mediaboxAdvanced', '', 'Based on Lightbox, Slimbox, and the Mootools javascript library, mediaboxAdvanced  is a modal overlay that can handle images, videos, animations, social video sites, twitter media links, inline elements, and external pages with ease.'),
-(8, 'mootools', 0, '', 'MooTools JS Framework', '1.2.5', 'local', 'http://mootools.net/', 'mootools.min.js', 'MooTools is a compact, modular, Object-Oriented JavaScript framework designed for the intermediate to advanced JavaScript developer. It allows you to write powerful, flexible, and cross-browser code with its elegant, well documented, and coherent API.'),
-(9, 'scriptaculous', 99, 'prototype', 'script.aculo.us - web 2.0 javascript', '1.9.0', 'local', 'http://script.aculo.us/', 'scriptaculous.js', 'script.aculo.us provides you with\r\neasy-to-use, cross-browser user\r\ninterface JavaScript libraries to make\r\nyour web sites and web applications fly.'),
-(10, 'prototype', 100, '', 'JavaScript Framework', '1.7.0', 'local', 'http://www.prototypejs.org/', 'prototype.min.js', 'Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.'),
-(11, 'lightview', 0, 'scriptaculous', 'Lightview', '2.7.4', 'local', 'http://www.nickstakenburg.com/projects/lightview/', 'css/lightview.css,js/lightview.js', NULL),
-(12, 'jquery-cookie', 0, 'jquery', 'Cookie', '1.3.1', 'local', 'http://plugins.jquery.com/project/cookie', 'jquery.cookie.js', 'A simple, lightweight utility plugin for reading, writing and deleting cookies.'),
-(13, 'less', 0, NULL, 'The dynamic stylesheet language.', '1.3.3', 'local', 'http://lesscss.org/', 'less.min.js', 'LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (IE 6+, Webkit, Firefox) and server-side, with Node.js.'),
-(14, 'backbone', 0, 'jquery', 'backbone.js', '0.9.2', 'local', 'http://documentcloud.github.com/backbone/', 'backbone-min.js', 'Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface. '),
-(15, 'bootstrap', 0, 'jquery', 'Twitter Bootstrap', '2.3.2', '', '', 'css/bootstrap.min.css,css/bootstrap-responsive.min.css,js/bootstrap.min.js', NULL);
+INSERT INTO `javascript_library` (`script_id`, `name`, `pos`, `related_by`, `title`, `current_version`, `homepage`, `files`, `descr`) VALUES
+(1, 'jquery', 1000, '', 'jQuery is a new kind of JavaScript Library.', '1.9.1', 'http://jquery.com/', 'jquery.min.js', 'jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.'),
+(2, 'tinymce', 0, '', 'TinyMCE - Javascript WYSIWYG Editor', '3.4.5', 'http://tinymce.moxiecode.com/', 'tiny_mce.js', 'TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor control released as Open Source under LGPL by Moxiecode Systems AB. It has the ability to convert HTML TEXTAREA fields or other HTML elements to editor instances. TinyMCE is very easy to integrate into other Content Management Systems. '),
+(3, 'extjs', 0, '', 'Ext JS is a cross-browser JavaScript library for building rich internet applications.', '3.2.1', 'http://www.sencha.com/products/js/', '', NULL),
+(4, 'highslide', 0, '', 'Highslide JS - JavaScript thumbnail viewer', '4.1.4', 'http://highslide.com/', '', 'Highslide JS is an image, media and gallery viewer written in JavaScript.'),
+(5, 'ckeditor', 0, '', 'CKEditor - WYSIWYG Text and HTML Editor for the Web', '3.4.1', 'http://ckeditor.com/', '', 'CKEditor is a text editor to be used inside web pages. It''s a WYSIWYG  editor, which means that the text being edited on it looks as similar as possible to the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.'),
+(6, 'jquery-ui', 0, '', 'jQuery user interface', '1.8.5', 'http://jqueryui.com/', '', 'jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.'),
+(7, 'mediabox', 0, '', 'Mediabox Advanced', '1.3.4', 'http://iaian7.com/webcode/mediaboxAdvanced', '', 'Based on Lightbox, Slimbox, and the Mootools javascript library, mediaboxAdvanced  is a modal overlay that can handle images, videos, animations, social video sites, twitter media links, inline elements, and external pages with ease.'),
+(8, 'mootools', 0, '', 'MooTools JS Framework', '1.2.5', 'http://mootools.net/', 'mootools.min.js', 'MooTools is a compact, modular, Object-Oriented JavaScript framework designed for the intermediate to advanced JavaScript developer. It allows you to write powerful, flexible, and cross-browser code with its elegant, well documented, and coherent API.'),
+(9, 'scriptaculous', 99, 'prototype', 'script.aculo.us - web 2.0 javascript', '1.9.0', 'http://script.aculo.us/', 'scriptaculous.js', 'script.aculo.us provides you with\r\neasy-to-use, cross-browser user\r\ninterface JavaScript libraries to make\r\nyour web sites and web applications fly.'),
+(10, 'prototype', 100, '', 'JavaScript Framework', '1.7.0', 'http://www.prototypejs.org/', 'prototype.min.js', 'Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.'),
+(11, 'lightview', 0, 'scriptaculous', 'Lightview', '2.7.4', 'http://www.nickstakenburg.com/projects/lightview/', 'css/lightview.css,js/lightview.js', NULL),
+(12, 'jquery-cookie', 0, 'jquery', 'Cookie', '1.3.1', 'http://plugins.jquery.com/project/cookie', 'jquery.cookie.js', 'A simple, lightweight utility plugin for reading, writing and deleting cookies.'),
+(13, 'less', 0, NULL, 'The dynamic stylesheet language.', '1.3.3', 'http://lesscss.org/', 'less.min.js', 'LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (IE 6+, Webkit, Firefox) and server-side, with Node.js.'),
+(14, 'backbone', 0, 'jquery', 'backbone.js', '0.9.2', 'http://documentcloud.github.com/backbone/', 'backbone-min.js', 'Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface. '),
+(15, 'bootstrap', 0, 'jquery', 'Twitter Bootstrap', '2.3.2', '', 'css/bootstrap.min.css,css/bootstrap-responsive.min.css,js/bootstrap.min.js', NULL);
 
 -- --------------------------------------------------------
 
@@ -658,35 +663,29 @@ INSERT INTO `javascript_library` (`script_id`, `name`, `pos`, `related_by`, `tit
 DROP TABLE IF EXISTS `javascript_library_paths`;
 CREATE TABLE IF NOT EXISTS `javascript_library_paths` (
   `script_id` mediumint(8) unsigned NOT NULL,
-  `profile` varchar(50) NOT NULL,
   `version` varchar(10) NOT NULL,
   `path` varchar(255) NOT NULL,
-  PRIMARY KEY (`script_id`,`profile`,`version`)
+  PRIMARY KEY (`script_id`,`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Пути к скриптам';
 
 --
 -- Дамп данных таблицы `javascript_library_paths`
 --
 
-INSERT INTO `javascript_library_paths` (`script_id`, `profile`, `version`, `path`) VALUES
-(1, 'google', '1.6.4', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/'),
-(1, 'local', '1.4.2', 'jquery/1.4.2/'),
-(1, 'local', '1.6.4', 'jquery/1.6.4/'),
-(1, 'local', '1.9.1', 'jquery/1.9.1/'),
-(1, 'yandex', '1.4.2', 'http://yandex.st/jquery/1.4.2/'),
-(1, 'yandex', '1.6.4', 'http://yandex.st/jquery/1.6.4/'),
-(2, 'local', '3.3.9.4', 'tinymce/3.3.9.4/'),
-(2, 'local', '3.4.5', 'tinymce/3.4.5/'),
-(9, 'local', '1.9.0', 'scriptaculous/1.9.0/src/'),
-(9, 'yandex', '1.9.0', 'http://yandex.st/scriptaculous/1.9.0/min/'),
-(10, 'local', '1.7.0', 'prototype/1.7.0/'),
-(10, 'yandex', '1.7.0', 'http://yandex.st/prototype/1.7.0.0/'),
-(11, 'local', '2.7.4', 'lightview/2.7.4/'),
-(12, 'local', '1.3.1', 'jquery-cookie/1.3.1/'),
-(13, 'local', '1.3.0', 'less/1.3.0/'),
-(13, 'local', '1.3.3', 'less/1.3.3/'),
-(14, 'local', '0.9.2', 'backbone/0.9.2/'),
-(15, 'local', '2.3.2', 'bootstrap/2.3.2/');
+INSERT INTO `javascript_library_paths` (`script_id`, `version`, `path`) VALUES
+(1, '1.4.2', 'jquery/1.4.2/'),
+(1, '1.6.4', 'jquery/1.6.4/'),
+(1, '1.9.1', 'jquery/1.9.1/'),
+(2, '3.3.9.4', 'tinymce/3.3.9.4/'),
+(2, '3.4.5', 'tinymce/3.4.5/'),
+(9, '1.9.0', 'scriptaculous/1.9.0/src/'),
+(10, '1.7.0', 'prototype/1.7.0/'),
+(11, '2.7.4', 'lightview/2.7.4/'),
+(12, '1.3.1', 'jquery-cookie/1.3.1/'),
+(13, '1.3.0', 'less/1.3.0/'),
+(13, '1.3.3', 'less/1.3.3/'),
+(14, '0.9.2', 'backbone/0.9.2/'),
+(15, '2.3.2', 'bootstrap/2.3.2/');
 
 -- --------------------------------------------------------
 

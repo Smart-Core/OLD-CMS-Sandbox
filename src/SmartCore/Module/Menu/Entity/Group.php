@@ -27,7 +27,7 @@ class Group
 
     /**
      * @ORM\Column(type="smallint", nullable=TRUE)
-     * @Assert\Range(min = "-255", minMessage = "Минимальное значение -255.", max = "255", maxMessage = "Максимальное значение 255.")
+     * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
      */
     protected $position;
 
@@ -61,6 +61,9 @@ class Group
      */
     protected $updated;
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->create_by_user_id = 0;
@@ -71,36 +74,64 @@ class Group
         $this->items = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getName();
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->group_id;
     }
 
+    /**
+     * @param string $descr
+     * @return $this
+     */
     public function setDescr($descr)
     {
         $this->descr = $descr;
+
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDescr()
     {
         return $this->descr;
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @param int $position
+     * @return $this
+     */
     public function setPosition($position)
     {
         if (empty($position)) {
@@ -108,33 +139,59 @@ class Group
         }
 
         $this->position = $position;
+
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getPosition()
     {
         return $this->position;
     }
 
+    /**
+     * @param int $create_by_user_id
+     * @return $this
+     */
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
+
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getCreateByUserId()
     {
         return $this->create_by_user_id;
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getCreated()
     {
         return $this->created;
     }
 
+    /**
+     * @param Item[] $items
+     * @return $this
+     */
     public function setItems($items)
     {
         $this->items = $items;
+
+        return $this;
     }
 
+    /**
+     * @return Item[]
+     */
     public function getItems()
     {
         return $this->items;

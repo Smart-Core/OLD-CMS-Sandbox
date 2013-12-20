@@ -26,7 +26,8 @@ class EngineBlock
     protected $repository;
 
     /**
-     * Constructor.
+     * @param EntityManager $em
+     * @param FormFactoryInterface $form_factory
      */
     public function __construct(EntityManager $em, FormFactoryInterface $form_factory)
     {

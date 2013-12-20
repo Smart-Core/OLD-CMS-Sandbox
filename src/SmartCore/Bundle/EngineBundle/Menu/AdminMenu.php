@@ -9,6 +9,11 @@ use SmartCore\Bundle\EngineBundle\Entity\Folder;
 
 class AdminMenu extends ContainerAware
 {
+    /**
+     * @param FactoryInterface $factory
+     * @param array $options
+     * @return ItemInterface
+     */
     public function main(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('admin_main');
@@ -83,11 +88,9 @@ class AdminMenu extends ContainerAware
      */
     protected function addChild(ItemInterface $menu, Folder $parent_folder = null)
     {
-        if (null == $parent_folder) {
-            $folders = $this->container->get('engine.folder')->findByParent(null);
-        } else {
-            $folders = $parent_folder->getChildren();
-        }
+        $folders = (null == $parent_folder)
+            ? $this->container->get('engine.folder')->findByParent(null)
+            : $parent_folder->getChildren();
 
         /** @var $folder Folder */
         foreach ($folders as $folder) {
@@ -108,7 +111,7 @@ class AdminMenu extends ContainerAware
                 $uri = $this->container->get('router')->generate('cmf_admin_structure_node_properties', ['id' => $node->getId()]);
                 $sub_menu->addChild($node->getDescr() . ' (' . $node->getModule() . ':' . $node->getId() . ')', ['uri' => $uri])->setAttributes([
                     'title' => $node->getDescr(),
-                    'id' => 'node_id_' . $node->getId(),
+                    'id'    => 'node_id_' . $node->getId(),
                 ]);
             }
         }

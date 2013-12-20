@@ -10,16 +10,17 @@ class EngineContext
     protected $current_folder_id = 1;
     protected $current_folder_path;
     protected $current_node_id = null;
-    //protected $cache_enable;
 
     /**
      * Путь к глобальным ресурсам. Может быть на другом домене, например 'http://site.com/assets/'
+     *
      * @var string
      */
     protected $global_assets;
 
     /**
      * Относительный путь к теме оформления.
+     *
      * @var string
      */
     protected $theme_path;
@@ -41,6 +42,8 @@ class EngineContext
     public function setCurrentFolderId($current_folder_id)
     {
         $this->current_folder_id = $current_folder_id;
+
+        return $this;
     }
 
     public function getCurrentFolderId()
@@ -51,6 +54,8 @@ class EngineContext
     public function setCurrentFolderPath($current_folder_path)
     {
         $this->current_folder_path = $current_folder_path;
+
+        return $this;
     }
 
     public function getCurrentFolderPath()
@@ -71,6 +76,8 @@ class EngineContext
     public function setGlobalAssets($global_assets)
     {
         $this->global_assets = $global_assets;
+
+        return $this;
     }
 
     public function getGlobalAssets()
@@ -81,6 +88,8 @@ class EngineContext
     public function setThemePath($theme_path)
     {
         $this->theme_path = $theme_path;
+
+        return $this;
     }
 
     public function getThemePath()

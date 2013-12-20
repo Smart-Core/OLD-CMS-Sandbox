@@ -3,10 +3,8 @@
 {% block html_head_title %}{{ 'Create node'|trans }} / {{ parent() }}{% endblock html_head_title %}
 
 {% block content %}
-    {% if not app.request.xmlHttpRequest %}
-        <div class="span9">
-        {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
-    {% endif %}
+    <div class="span9">
+    {{ knp_menu_render('SmartCoreEngineBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 
     <div class="well well-small">
         {% form_theme form '@SmartCoreEngine/Form/bootstrap.html.twig' %}
@@ -41,17 +39,13 @@
         </form>
     </div>
 
-    {% if not app.request.xmlHttpRequest %}
-        </div>
-    {% endif %}
+    </div>
 {% endblock content %}
 
 {% block nav %}
-    {% if not app.request.xmlHttpRequest %}
-        <div class="span3">
-            {{ include('@SmartCoreEngine/Admin/_tree.html.twig') }}
-        </div>
-    {% endif %}
+    <div class="span3">
+        {{ include('@SmartCoreEngine/Admin/_tree.html.twig') }}
+    </div>
 {% endblock nav %}
 
 {% block body_js %}

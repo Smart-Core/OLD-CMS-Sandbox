@@ -4,7 +4,6 @@ namespace SmartCore\Module\Menu\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use SmartCore\Bundle\EngineBundle\Response;
 use SmartCore\Module\Menu\Entity\Group;
 use SmartCore\Module\Menu\Entity\Item;
@@ -44,30 +43,27 @@ class AdminController extends Controller
                     $em->persist($group);
                     $em->flush();
 
-                    if ($request->isXmlHttpRequest()) {
-                        return new JsonResponse([
-                            'status' => 'OK',
-                            'message' => 'Group created successful.',
-                        ]);
-                    } else {
-                        $this->get('session')->getFlashBag()->add('notice', 'Группа меню создана.'); // @todo translate
-                        return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
-                            'module' => 'Menu',
-                            'slug' => $group->getId(),
-                        ]));
-                    }
+                    $this->get('session')->getFlashBag()->add('notice', 'Группа меню создана.'); // @todo translate
+                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                        'module' => 'Menu',
+                        'slug' => $group->getId(),
+                    ]));
                 }
             }
         }
 
         return $this->render('MenuModule:Admin:index.html.twig', [
             'groups' => $em->getRepository('MenuModule:Group')->findAll(),
-            'form_create' => $form->createView(),
+            'form'   => $form->createView(),
         ]);
     }
 
     /**
      * Редактирование пункта меню
+     *
+     * @param Request $request
+     * @param int $item_id
+     * @return RedirectResponse|Response
      */
     public function itemAction(Request $request, $item_id)
     {
@@ -85,22 +81,11 @@ class AdminController extends Controller
                     $em->persist($form->getData());
                     $em->flush();
 
-                    if ($request->isXmlHttpRequest()) {
-                        return new JsonResponse([
-                            'status' => 'OK',
-                            'message' => 'Menu item updated successful.',
-                            'overlay_redirect' => $this->generateUrl('cmf_admin_module_manage', [
-                                'module' => 'Menu',
-                                'slug' => $item->getGroup()->getId(),
-                            ]),
-                        ]);
-                    } else {
-                        $this->get('session')->getFlashBag()->add('notice', 'Пункт меню обновлён.'); // @todo translate
-                        return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
-                            'module' => 'Menu',
-                            'slug' => $item->getGroup()->getId(),
-                        ]));
-                    }
+                    $this->get('session')->getFlashBag()->add('notice', 'Пункт меню обновлён.'); // @todo translate
+                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                        'module' => 'Menu',
+                        'slug' => $item->getGroup()->getId(),
+                    ]));
                 }
             } else if ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение оз нод и удаление всех связаных пунктов меню.
@@ -117,12 +102,16 @@ class AdminController extends Controller
 
         return $this->render('MenuModule:Admin:item.html.twig', [
             'item' => $item,
-            'form_edit' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * Редактирование свойств группы меню.
+     *
+     * @param Request $request
+     * @param int $group_id
+     * @return RedirectResponse|Response
      */
     public function groupEditAction(Request $request, $group_id)
     {
@@ -143,22 +132,11 @@ class AdminController extends Controller
                     $em->persist($form->getData());
                     $em->flush();
 
-                    if ($request->isXmlHttpRequest()) {
-                        return new JsonResponse([
-                            'status' => 'OK',
-                            'message' => 'Group updated successful.',
-                            'overlay_redirect' => $this->generateUrl('cmf_admin_module_manage', [
-                                'module' => 'Menu',
-                                'slug' => $group_id,
-                            ]),
-                        ]);
-                    } else {
-                        $this->get('session')->getFlashBag()->add('notice', 'Группа меню обновлена.'); // @todo translate
-                        return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
-                            'module' => 'Menu',
-                            'slug' => $group_id,
-                        ]));
-                    }
+                    $this->get('session')->getFlashBag()->add('notice', 'Группа меню обновлена.'); // @todo translate
+                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                        'module' => 'Menu',
+                        'slug' => $group_id,
+                    ]));
                 }
             } else if ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
@@ -172,12 +150,16 @@ class AdminController extends Controller
 
         return $this->render('MenuModule:Admin:group_edit.html.twig', [
             'group' => $group,
-            'form_edit' => $form->createView(),
+            'form'  => $form->createView(),
         ]);
     }
-    
+
     /**
-     * Редактирование группы меню
+     * Редактирование группы меню.
+     *
+     * @param Request $request
+     * @param int $group_id
+     * @return RedirectResponse|Response
      */
     public function groupAction(Request $request, $group_id)
     {
@@ -203,19 +185,12 @@ class AdminController extends Controller
                     $em->persist($item);
                     $em->flush();
 
-                    if ($request->isXmlHttpRequest()) {
-                        return new JsonResponse([
-                            'status'  => 'OK',
-                            'message' => 'Menu item created successful.',
-                        ]);
-                    } else {
-                        $this->get('session')->getFlashBag()->add('notice', 'Пункт меню создан.'); // @todo translate
+                    $this->get('session')->getFlashBag()->add('notice', 'Пункт меню создан.'); // @todo translate
 
-                        return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
-                            'module' => 'Menu',
-                            'slug'   => $group_id,
-                        ]));
-                    }
+                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                        'module' => 'Menu',
+                        'slug'   => $group_id,
+                    ]));
                 }
             }
         }

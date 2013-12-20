@@ -22,6 +22,10 @@ class ModuleControllerModifierListener
      */
     protected $engineNodeManager;
 
+    /**
+     * @param \SmartCore\Bundle\EngineBundle\Engine\EngineContext $engineContext
+     * @param \SmartCore\Bundle\EngineBundle\Engine\EngineNode $engineNodeManager
+     */
     public function __construct($engineContext, $engineNodeManager)
     {
         $this->engineContext = $engineContext;

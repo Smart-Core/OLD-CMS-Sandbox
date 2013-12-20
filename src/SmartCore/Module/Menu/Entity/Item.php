@@ -91,6 +91,9 @@ class Item
      */
     protected $updated;
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -104,6 +107,9 @@ class Item
         $this->updated = null;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         $title = $this->getTitle();
@@ -118,39 +124,60 @@ class Item
         return (string) $title;
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->item_id;
     }
 
+    /**
+     * @param bool $is_active
+     * @return $this
+     */
     public function setIsActive($is_active)
     {
         $this->is_active = $is_active;
+
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getIsActive()
     {
         return $this->is_active;
     }
 
-    public function setFolder($folder)
+    /**
+     * @param $folder
+     * @return $this
+     */
+    public function setFolder($folder = null)
     {
         $this->folder = $folder;
+
         return $this;
     }
 
     /**
-     * @return \SmartCore\Bundle\EngineBundle\Entity\Folder
+     * @return \SmartCore\Bundle\EngineBundle\Entity\Folder|null
      */
     public function getFolder()
     {
         return $this->folder;
     }
 
+    /**
+     * @param Group $group
+     * @return $this
+     */
     public function setGroup($group)
     {
         $this->group = $group;
+
         return $this;
     }
 
@@ -162,60 +189,102 @@ class Item
         return $this->group;
     }
 
+    /**
+     * @return Item[]
+     */
     public function getChildren()
     {
         return $this->children;
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getCreated()
     {
         return $this->created;
     }
 
+    /**
+     * @param string $descr
+     * @return $this
+     */
     public function setDescr($descr)
     {
         $this->descr = $descr;
+
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDescr()
     {
         return $this->descr;
     }
 
-    public function setUrl($url)
+    /**
+     * @param string|null $url
+     * @return $this
+     */
+    public function setUrl($url = null)
     {
         $this->url = $url;
+
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getUrl()
     {
         return $this->url;
     }
 
+    /**
+     * @param \Datetime $updated
+     * @return $this
+     */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
         return $this;
     }
 
+    /**
+     * @return \Datetime|null
+     */
     public function getUpdated()
     {
         return $this->updated;
     }
 
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @param int $position
+     * @return $this
+     */
     public function setPosition($position)
     {
         if (empty($position)) {
@@ -223,14 +292,22 @@ class Item
         }
 
         $this->position = $position;
+
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getPosition()
     {
         return $this->position;
     }
 
+    /**
+     * @param Item|null $parent_item
+     * @return $this
+     */
     public function setParentItem($parent_item)
     {
         if (empty($parent_item) or $parent_item->getId() == $this->getId()) {
@@ -242,17 +319,28 @@ class Item
         return $this;
     }
 
+    /**
+     * @return Item|null
+     */
     public function getParentItem()
     {
         return $this->parent_item;
     }
 
+    /**
+     * @param int $create_by_user_id
+     * @return $this
+     */
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
+
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getCreateByUserId()
     {
         return $this->create_by_user_id;

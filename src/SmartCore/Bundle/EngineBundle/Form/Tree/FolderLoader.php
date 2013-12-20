@@ -15,10 +15,21 @@ class FolderLoader implements EntityLoaderInterface
      */
     private $repo;
 
+    /**
+     * @var array
+     */
     protected $result;
 
+    /**
+     * @var int
+     */
     protected $level;
 
+    /**
+     * @param ObjectManager $em
+     * @param null $manager
+     * @param null $class
+     */
     public function __construct(ObjectManager $em, $manager = null, $class = null)
     {
         $this->repo = $em->getRepository($class);

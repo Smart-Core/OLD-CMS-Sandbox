@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\EngineBundle\Module;
 
-interface ModuleInterface
+interface ModuleInterface // @todo
 {
 
 }

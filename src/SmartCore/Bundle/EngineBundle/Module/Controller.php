@@ -19,18 +19,21 @@ abstract class Controller extends BaseController
 
     /**
      * Действие по умолчанию.
+     *
      * @var string|false
      */
     protected $default_action = false;
     
     /**
      * Фронтальные элементы управления для всего модуля.
+     *
      * @var array|false
      */
     protected $frontend_controls = false;
     
     /**
      * Фронтальные элементы управления для внутренних элементов модуля.
+     *
      * @var array|false
      */
     protected $frontend_inner_controls = false;
@@ -78,6 +81,8 @@ abstract class Controller extends BaseController
      * Проверка, включен ли тулбар.
      *
      * @return bool
+     *
+     * @todo сделать.
      */
     public function isToolbar()
     {
