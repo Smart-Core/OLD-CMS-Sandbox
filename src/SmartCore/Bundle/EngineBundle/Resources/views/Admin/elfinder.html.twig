@@ -2,6 +2,10 @@
 
 {% block html_head_title %}{{ 'Files'|trans }} / {{ parent() }}{% endblock html_head_title %}
 
+{% block html_head_scripts %}
+    <script src="{{ asset('assets/bootstrap/2.3.2/js/bootstrap.min.js') }}" type="text/javascript"></script>
+{% endblock html_head_scripts %}
+
 {% block content %}
     {% if includeAssets %}
         {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" %}

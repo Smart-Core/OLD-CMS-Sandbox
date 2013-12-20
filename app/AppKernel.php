@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new \Liip\ThemeBundle\LiipThemeBundle(),
             new \FM\ElfinderBundle\FMElfinderBundle(),
             new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+            new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             //new \Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             

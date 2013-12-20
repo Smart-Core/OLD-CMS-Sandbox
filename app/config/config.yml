@@ -24,7 +24,8 @@ framework:
 
 fm_elfinder:
     locale: %locale% # defaults to current request locale
-    editor: ckeditor # other choices are tinymce or simple
+    editor: tinymce # other choices are ckeditor, tinymce or simple
+    tinymce_popup_path: "asset[bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce_popup.js]"
     showhidden: false # defaults to false
     fullscreen: true # defaults true, applies to simple and ckeditor editors
     include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
