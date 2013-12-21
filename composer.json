@@ -30,6 +30,7 @@
         "helios-ag/fm-elfinder-bundle": "1.x",
         "liip/doctrine-cache-bundle": "dev-master",
         "liip/functional-test-bundle": "dev-master",
+        "smart-core/session-bundle": "dev-master",
         "stfalcon/tinymce-bundle": "v0.2.1",
         "raulfraile/ladybug-bundle": "v0.7"
     },
