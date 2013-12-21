@@ -35,51 +35,89 @@ class Session
      * @ORM\Column(type="datetime")
      */
     protected $time;
-        
+
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->user_id = 0;
         $this->time = new \DateTime();
     }
-    
+
+    /**
+     * @return string
+     */
     public function getId()
     {
-        return true;
+        return $this->id;
     }
-    
+
+    /**
+     * @param string $id
+     * @return $this
+     */
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
-    
+
+    /**
+     * @return string
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * @param string $data
+     * @return $this
+     */
     public function setData($data)
     {
         $this->data = $data;
+
+        return $this;
     }
-    
+
+    /**
+     * @return \DateTime
+     */
     public function getTime()
     {
         return $this->time;
     }
-    
-    public function setTime($time)
+
+    /**
+     * @param \DateTime $time
+     * @return $this
+     */
+    public function setTime(\DateTime $time)
     {
         $this->time = $time;
+
+        return $this;
     }
-    
+
+    /**
+     * @return int
+     */
     public function getUserId()
     {
         return $this->user_id;
     }
-    
+
+    /**
+     * @param int $user_id
+     * @return $this
+     */
     public function setUserId($user_id)
     {
         $this->user_id = $user_id;
+
+        return $this;
     }
-    
 }

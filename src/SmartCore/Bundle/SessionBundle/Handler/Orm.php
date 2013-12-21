@@ -1,6 +1,7 @@
 <?php
 namespace SmartCore\Bundle\SessionBundle\Handler;
 
+use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\SessionBundle\Entity\Session;
 
 class Orm implements \SessionHandlerInterface
@@ -9,15 +10,18 @@ class Orm implements \SessionHandlerInterface
      * @var \PDO PDO instance.
      */
     protected $em;
-    
-    protected $container;
-    
+
+    /**
+     * @var int
+     */
     protected $user_id;
-    
-    public function __construct($em, $container)
+
+    /**
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->container = $container;
         $this->user_id = 0;
     }
 
@@ -58,7 +62,10 @@ class Orm implements \SessionHandlerInterface
     public function gc($lifetime)
     {
         $now = new \DateTime();
-        $this->em->createQuery('DELETE SmartCoreSessionBundle:Session s WHERE s.time < :time')->setParameter('time', $now->modify("-$lifetime seconds"))->execute();
+        $this->em
+            ->createQuery('DELETE SmartCoreSessionBundle:Session s WHERE s.time < :time')
+            ->setParameter('time', $now->modify("-$lifetime seconds"))
+            ->execute();
 
         return true;
     }
@@ -68,6 +75,7 @@ class Orm implements \SessionHandlerInterface
      */
     public function read($id)
     {
+        /** @var Session $session */
         $session = $this->em->find('SmartCoreSessionBundle:Session', $id);
         
         if (is_object($session)) {
@@ -83,6 +91,7 @@ class Orm implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
+        /** @var Session $session */
         $session = $this->em->find('SmartCoreSessionBundle:Session', $id);
         
         if (is_object($session)) {
@@ -118,9 +127,15 @@ class Orm implements \SessionHandlerInterface
         
         return true;
     }
-    
+
+    /**
+     * @param int $id
+     * @return $this
+     */
     public function setUserId($id)
     {
         $this->user_id = $id;
+
+        return $this;
     }
 }
