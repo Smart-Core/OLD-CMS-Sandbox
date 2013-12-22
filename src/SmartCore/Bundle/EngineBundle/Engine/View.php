@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\EngineBundle\Engine;
 
 use SmartCore\Bundle\EngineBundle\Container;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class View
 {
@@ -20,7 +21,7 @@ class View
     {
         $this->__options = [
             'comment'       => null,        // Служебный комментарий
-            'engine'        => 'echo',      // Движок отрисовки. ('twig', 'php', 'echo' - простое отображение всех свойств.)
+            'engine'        => 'echo',      // Движок отрисовки. ('twig', 'php', 'echo' - простое отображение всех свойств по порядку, 'forward' - выполнить контроллер.)
             'template'      => null,        // Имя файла шаблона.
             'bundle'        => '::',        // Имя бандла или модуля.
             'decorators'    => null,        // Декораторы - отображаются до и после рендеринга.
@@ -37,6 +38,24 @@ class View
     public function setOptions(array $options = [])
     {
         $this->__options = $options + $this->__options;
+
+        return $this;
+    }
+
+    /**
+     * Утановить опцию.
+     *
+     * @param string $name
+     * @param string $value
+     * @return $this
+     */
+    public function setOption($name, $value)
+    {
+        if (isset($this->__options[$name])) {
+            $this->__options[$name] = $value;
+        } else {
+            throw new \Exception('Опция не доступна'); // @todo перевод и отдельный класс.
+        }
 
         return $this;
     }
@@ -176,6 +195,22 @@ class View
     }
 
     /**
+     * Выполнить контроллер из шаблона
+     * http://symfony.com/doc/current/book/templating.html#embedding-controllers
+     *
+     * @param string $controller
+     * @param array $args
+     */
+    public function forward($controller, $args = [])
+    {
+        $this
+            ->setOption('engine', 'forward')
+            ->set('controller', $controller)
+            ->set('args', $args)
+        ;
+    }
+
+    /**
      * Отображение данных вида.
      *
      * @return void
@@ -192,6 +227,13 @@ class View
                 break;
             case 'php':
                 echo Container::get('templating')->render($this->__options['bundle'] . $this->__options['template'] . '.html.php' , $this->all());
+                break;
+            case 'forward':
+                $query = [];
+                $path = $this->get('args');
+                $path['_controller'] = $this->get('controller');
+                $subRequest = Container::get('request')->duplicate($query, null, $path);
+                echo Container::get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST)->getContent();
                 break;
             case 'echo':
                 foreach ($this as $property => $__dummy) {

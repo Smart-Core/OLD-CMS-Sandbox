@@ -7,19 +7,12 @@ use SmartCore\Bundle\EngineBundle\Response;
 
 class UserAccountController extends Controller
 {
-    protected function init()
-    {
-        $this->View->setOptions([
-            'engine' => 'echo',
-        ]);
-    }
-    
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $this->View->show = $this->forward('FOSUserBundle:Profile:show')->getContent();
+            $this->View->forward('FOSUserBundle:Profile:show');
         } else {
-            $this->View->login = $this->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()])->getContent();
+            $this->View->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
         }
 
         return new Response($this->View);
@@ -31,47 +24,45 @@ class UserAccountController extends Controller
     public function editAction()
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $this->View->edit = $this->forward('FOSUserBundle:Profile:edit')->getContent();
+            $this->View->forward('FOSUserBundle:Profile:edit');
         } else {
-            $this->View->login = $this->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()])->getContent();
+            $this->View->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
         }
-
-        ld($this->View);
 
         return new Response($this->View);
     }
     
     public function changePasswordAction()
     {
-        $this->View->login = $this->forward('FOSUserBundle:ChangePassword:changePassword')->getContent();
+        $this->View->forward('FOSUserBundle:ChangePassword:changePassword');
         
         return new Response($this->View);
     }
     
     public function resettingRequestAction()
     {
-        $this->View->login = $this->forward('FOSUserBundle:Resetting:request')->getContent();
+        $this->View->forward('FOSUserBundle:Resetting:request');
         
         return new Response($this->View);
     }
     
     public function resettingSendEmailAction()
     {
-        $this->View->login = $this->forward('FOSUserBundle:Resetting:sendEmail')->getContent();
+        $this->View->forward('FOSUserBundle:Resetting:sendEmail');
         
         return new Response($this->View);
     }
     
     public function resettingCheckEmailAction()
     {
-        $this->View->login = $this->forward('FOSUserBundle:Resetting:checkEmail')->getContent();
+        $this->View->forward('FOSUserBundle:Resetting:checkEmail');
         
         return new Response($this->View);
     }
         
     public function resettingResetAction($params)
     {
-        $this->View->login = $this->forward('FOSUserBundle:Resetting:reset', ['token' => $params['token']])->getContent();
+        $this->View->forward('FOSUserBundle:Resetting:reset', ['token' => $params['token']]);
         
         return new Response($this->View);
     }
