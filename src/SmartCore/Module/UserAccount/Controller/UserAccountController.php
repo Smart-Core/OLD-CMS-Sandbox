@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\UserAccount\Controller;
 
-use SmartCore\Bundle\EngineBundle\Module\Controller;
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Response;
 
 class UserAccountController extends Controller
 {

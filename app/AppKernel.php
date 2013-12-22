@@ -36,7 +36,7 @@ class AppKernel extends Kernel
             //new \Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             
             new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
-            new \SmartCore\Bundle\EngineBundle\SmartCoreEngineBundle(),
+            new \SmartCore\Bundle\CMSBundle\CMSBundle(),
             new \SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new \SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
             //new \SmartCore\Bundle\UserBundle\SmartCoreUserBundle(),

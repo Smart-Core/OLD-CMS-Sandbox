@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\UserAccount;
 
-use SmartCore\Bundle\EngineBundle\Module\Bundle;
-use SmartCore\Bundle\EngineBundle\Module\RouterResponse;
+use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\RouterResponse;
 
 class UserAccountModule extends Bundle
 {

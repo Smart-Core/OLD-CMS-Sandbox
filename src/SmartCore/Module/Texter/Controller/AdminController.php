@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
@@ -53,7 +53,7 @@ class AdminController extends Controller
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('notice', 'Текст обновлён');
 
-                return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                     'module' => 'Texter',
                 ]));
             } catch (\Exception $e) {
@@ -61,7 +61,7 @@ class AdminController extends Controller
 
                 $this->get('session')->getFlashBag()->add('errors', $errors);
 
-                return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                     'module' => 'Texter',
                     'slug'   => $item_id,
                 ]));

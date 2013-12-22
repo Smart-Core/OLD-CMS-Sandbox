@@ -3,9 +3,9 @@
 namespace SmartCore\Module\UserRegistration\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use SmartCore\Bundle\EngineBundle\Module\Controller;
-use SmartCore\Bundle\EngineBundle\Module\RouterResponse;
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Module\RouterResponse;
+use SmartCore\Bundle\CMSBundle\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserRegistrationController extends Controller

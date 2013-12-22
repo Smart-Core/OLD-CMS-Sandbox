@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\UserRegistration;
 
-use SmartCore\Bundle\EngineBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\Bundle;
 
 class UserRegistrationModule extends Bundle
 {

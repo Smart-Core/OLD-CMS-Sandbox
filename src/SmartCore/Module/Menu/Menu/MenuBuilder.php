@@ -101,13 +101,13 @@ class MenuBuilder extends ContainerAware
         /** @var Item $item */
         foreach ($items as $item) {
             if ($this->is_admin) {
-                $uri = $this->container->get('router')->generate('cmf_admin_module_manage', [
+                $uri = $this->container->get('router')->generate('cms_admin_module_manage', [
                     'module' => 'Menu',
                     'slug' => 'item/' . $item->getId(),
                 ]);
             } else {
                 if ($folder = $item->getFolder()) {
-                    $uri = $this->container->get('engine.folder')->getUri($item->getFolder()->getId());
+                    $uri = $this->container->get('cms.folder')->getUri($item->getFolder()->getId());
                 } else {
                     $uri = $item->getUrl();
                 }

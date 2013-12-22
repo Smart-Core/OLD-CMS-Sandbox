@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Menu\Controller;
 
-use SmartCore\Bundle\EngineBundle\Module\Controller as BaseController;
+use SmartCore\Bundle\CMSBundle\Module\Controller as BaseController;
 
 abstract class Controller extends BaseController
 {

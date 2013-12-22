@@ -5,7 +5,7 @@ namespace SmartCore\Module\Menu\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use SmartCore\Bundle\EngineBundle\Container;
+use SmartCore\Bundle\CMSBundle\Container;
 
 class NodePropertiesFormType extends AbstractType
 {

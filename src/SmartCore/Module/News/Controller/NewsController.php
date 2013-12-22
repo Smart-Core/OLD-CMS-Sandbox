@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\News\Controller;
 
-use SmartCore\Bundle\EngineBundle\Response;
-use SmartCore\Bundle\EngineBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Response;
+use SmartCore\Bundle\CMSBundle\Module\Controller;
 
 class NewsController extends Controller
 {

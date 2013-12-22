@@ -2,14 +2,14 @@
 
 namespace SmartCore\Module\Texter;
 
-use SmartCore\Bundle\EngineBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\Bundle;
 use SmartCore\Module\Texter\Entity\Item;
 
 class TexterModule extends Bundle
 {
     /**
      * Действие при создании ноды.
-     * @param \SmartCore\Bundle\EngineBundle\Entity\Node $node
+     * @param \SmartCore\Bundle\CMSBundle\Entity\Node $node
      */
     public function createNode($node)
     {

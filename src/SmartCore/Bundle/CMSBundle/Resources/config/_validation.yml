@@ -1,0 +1,7 @@
+SmartCore\Bundle\CMSBundle\Entity\Block:
+    properties:
+        pos:
+            - NotBlank: ~
+            - Type:
+                  type: integer
+                  message: число не является целым

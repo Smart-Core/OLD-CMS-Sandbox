@@ -4,7 +4,7 @@ namespace SmartCore\Module\Menu\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Response;
 use SmartCore\Module\Menu\Entity\Group;
 use SmartCore\Module\Menu\Entity\Item;
 use SmartCore\Module\Menu\Form\Type\GroupFormType;
@@ -44,7 +44,7 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('notice', 'Группа меню создана.'); // @todo translate
-                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                    return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                         'module' => 'Menu',
                         'slug' => $group->getId(),
                     ]));
@@ -82,7 +82,7 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('notice', 'Пункт меню обновлён.'); // @todo translate
-                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                    return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                         'module' => 'Menu',
                         'slug' => $item->getGroup()->getId(),
                     ]));
@@ -93,7 +93,7 @@ class AdminController extends Controller
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('notice', 'Пункт меню удалён.');
-                return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                     'module' => 'Menu',
                     'slug' => $item->getGroup()->getId(),
                 ]));
@@ -120,7 +120,7 @@ class AdminController extends Controller
         $group = $em->find('MenuModule:Group', $group_id);
 
         if (empty($group)) {
-            return $this->redirect($this->generateUrl('cmf_admin_module_manage', ['module' => 'Menu']));
+            return $this->redirect($this->generateUrl('cms_admin_module_manage', ['module' => 'Menu']));
         }
 
         $form = $this->createForm(new GroupFormType(), $group);
@@ -133,7 +133,7 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('notice', 'Группа меню обновлена.'); // @todo translate
-                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                    return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                         'module' => 'Menu',
                         'slug' => $group_id,
                     ]));
@@ -144,7 +144,7 @@ class AdminController extends Controller
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('notice', 'Группа меню удалеа.');
-                return $this->redirect($this->generateUrl('cmf_admin_module_manage', ['module' => 'Menu']));
+                return $this->redirect($this->generateUrl('cms_admin_module_manage', ['module' => 'Menu']));
             }
         }
 
@@ -168,7 +168,7 @@ class AdminController extends Controller
         $group = $em->find('MenuModule:Group', $group_id);
 
         if (empty($group)) {
-            return $this->redirect($this->generateUrl('cmf_admin_module_manage', ['module' => 'Menu']));
+            return $this->redirect($this->generateUrl('cms_admin_module_manage', ['module' => 'Menu']));
         }
 
         $form = $this->createForm(new ItemFormType(), new Item());
@@ -187,7 +187,7 @@ class AdminController extends Controller
 
                     $this->get('session')->getFlashBag()->add('notice', 'Пункт меню создан.'); // @todo translate
 
-                    return $this->redirect($this->generateUrl('cmf_admin_module_manage', [
+                    return $this->redirect($this->generateUrl('cms_admin_module_manage', [
                         'module' => 'Menu',
                         'slug'   => $group_id,
                     ]));

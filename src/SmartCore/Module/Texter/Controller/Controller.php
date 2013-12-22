@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use SmartCore\Bundle\EngineBundle\Module\Controller as BaseController;
+use SmartCore\Bundle\CMSBundle\Module\Controller as BaseController;
 
 class Controller extends BaseController
 {

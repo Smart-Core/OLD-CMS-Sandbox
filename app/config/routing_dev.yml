@@ -10,17 +10,5 @@ _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix:   /_profiler
 
-_configurator:
-    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
-    prefix:   /_configurator
-
 _main:
     resource: routing.yml
-
-#_sf2gencdt:
-#    resource: "@Sf2genConsoleBundle/Resources/config/routing.yml"
-#    prefix:   /_sf2gencdt
-
-#SmartCoreEngineBundle:
-#    resource: "@SmartCoreEngineBundle/Resources/config/routing.yml"
-#    prefix:   /

@@ -50,7 +50,7 @@ class Item
     protected $group;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\EngineBundle\Entity\Folder")
+     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\CMSBundle\Entity\Folder")
      * @ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")
      */
     protected $folder;
@@ -163,7 +163,7 @@ class Item
     }
 
     /**
-     * @return \SmartCore\Bundle\EngineBundle\Entity\Folder|null
+     * @return \SmartCore\Bundle\CMSBundle\Entity\Folder|null
      */
     public function getFolder()
     {

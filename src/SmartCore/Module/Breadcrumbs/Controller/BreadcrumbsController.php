@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\Breadcrumbs\Controller;
 
-use SmartCore\Bundle\EngineBundle\Module\Controller;
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Response;
 use SmartCore\Module\Breadcrumbs\Breadcrumbs;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,12 +34,12 @@ class BreadcrumbsController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $router_data = $this->get('engine.folder')->getRouterData($request->getBaseUrl());
+        $router_data = $this->get('cms.folder')->getRouterData($request->getBaseUrl());
 
         $breadcrumbs = new Breadcrumbs();
 
         // Формирование "Хлебных крошек".
-        /** @var $folder \SmartCore\Bundle\EngineBundle\Entity\Folder */
+        /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */
         foreach ($router_data['folders'] as $folder) {
             $breadcrumbs->add($folder->getUri(), $folder->getTitle(), $folder->getDescr());
         }

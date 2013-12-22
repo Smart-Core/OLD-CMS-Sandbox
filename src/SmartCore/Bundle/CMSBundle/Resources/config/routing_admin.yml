@@ -1,0 +1,165 @@
+
+cms_admin_index:
+    path: /
+    defaults:
+        _controller: CMSBundle:Admin:index
+
+# Admin Structure
+cms_admin_structure:
+    path: /structure/
+    defaults:
+        _controller: CMSBundle:Admin:structure
+
+# Admin Block
+cms_admin_structure_block:
+    path: /structure/block/
+    defaults:
+        _controller: CMSBundle:Admin:blockIndex
+
+cms_admin_structure_block_edit:
+    path: /structure/block/{id}/
+    defaults:
+        _controller: CMSBundle:Admin:blockEdit
+    requirements:
+        id: \d+
+
+# Admin Folder
+cms_admin_structure_folder_create:
+    path: /structure/folder/create/
+    defaults:
+        _controller: CMSBundle:Admin:folderCreate
+
+cms_admin_structure_folder_create_in_folder:
+    path: /structure/folder/create/{folder_pid}/
+    defaults:
+        _controller: CMSBundle:Admin:folderCreate
+
+cms_admin_structure_folder:
+    path: /structure/folder/{id}/
+    defaults:
+        _controller: CMSBundle:Admin:folderEdit
+    requirements:
+        id: \d+
+
+# Admin Node
+cms_admin_structure_node_create:
+    path: /structure/node/create/
+    defaults:
+        _controller: CMSBundle:Admin:nodeCreate
+cms_admin_structure_node_create_in_folder:
+    path: /structure/node/create/{folder_pid}/
+    defaults:
+        _controller: CMSBundle:Admin:nodeCreate
+
+#cms_admin_structure_node_all:
+#    path: /structure/node/
+#    defaults:
+#        _controller: CMSBundle:Admin:node
+
+cms_admin_structure_node_properties:
+    path: /structure/node/{id}/
+    defaults:
+        _controller: CMSBundle:Admin:nodeEdit
+    requirements:
+        id: \d+
+
+cms_admin_node:
+    path: /node/{id}/
+    defaults:
+        _controller: CMSBundle:Admin:node
+    requirements:
+        id: \d+
+
+cms_admin_node_w_slug:
+    path: /node/{id}/{slug}
+    defaults:
+        _controller: CMSBundle:Admin:node
+    requirements:
+        id: \d+
+        slug: ".+"
+
+# Admin Appearance
+cms_admin_appearance:
+    path: /appearance/
+    defaults:
+        _controller: CMSBundle:Admin:notFound
+
+cms_admin_files:
+    path: /files/
+    defaults:
+        _controller: CMSBundle:Admin:elfinder
+
+cms_admin_users:
+    path: /users/
+    defaults:
+        _controller: CMSBundle:Admin:notFound
+
+cms_admin_module:
+    path: /module/
+    defaults:
+        _controller: CMSBundle:Admin:module
+
+cms_admin_module_manage:
+    path: /module/{module}/{slug}
+    defaults:
+        _controller: CMSBundle:Admin:moduleManage
+        slug: ""
+    requirements:
+        slug: ".+"
+
+cms_admin_module_manage_w_slash:
+    path: /module/{module}/
+    defaults:
+        _controller: CMSBundle:Admin:moduleManage
+        slug: ""
+
+cms_admin_config:
+    path: /config/
+    defaults:
+        _controller: CMSBundle:Admin:notFound
+
+cms_admin_reports:
+    path: /reports/
+    defaults:
+        _controller: CMSBundle:Admin:notFound
+
+cms_admin_help:
+    path: /help/
+    defaults:
+        _controller: CMSBundle:Admin:notFound
+
+cms_admin:
+    path: /{slug}
+    defaults:
+        _controller: CMSBundle:Admin:notFound
+        slug: ""
+    requirements:
+        slug: ".+"
+
+# ACTION
+#sc_engine_action_index:
+#    path: /action/{node_id}/
+#    defaults:
+#        _controller: CMSBundle:Action:run
+#    requirements:
+#        node_id: \d+
+#sc_engine_action:
+#    path: /action/{node_id}/{slug}
+#    defaults:
+#        _controller: CMSBundle:Action:run
+#    defaults:
+#        slug: ""
+#    requirements:
+#        slug: ".+"
+#        node_id: \d+
+#sc_engine_action_invalid_index:
+#    path: /action/
+#    defaults:
+#        _controller: CMSBundle:Action:invalid
+#sc_engine_action_invalid:
+#    path: /action/{slug}
+#    defaults:
+#        _controller: CMSBundle:Action:invalid
+#        slug: ""
+#    requirements:
+#        slug: ".+"

@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class TexterController extends Controller
@@ -33,7 +33,7 @@ class TexterController extends Controller
                 'edit' => [
                     'title'   => 'Редактировать',
                     'descr'   => 'Текстовый блок',
-                    'uri'     => $this->generateUrl('cmf_admin_node', ['id' => $this->node->getId()]),
+                    'uri'     => $this->generateUrl('cms_admin_node', ['id' => $this->node->getId()]),
                     'default' => true,
                 ],
             ]);

@@ -1,0 +1,45 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block html_head_title %}{{ 'Files'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block html_head_scripts %}
+    <script src="{{ asset('assets/bootstrap/2.3.2/js/bootstrap.min.js') }}" type="text/javascript"></script>
+{% endblock html_head_scripts %}
+
+{% block html_head_styles %}
+    {{ parent() }}
+    <style media="all" type="text/css">
+        body {
+            margin-bottom: 0px;
+        }
+    </style>
+{% endblock html_head_styles %}
+
+{% block content %}
+    {% if includeAssets %}
+        {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" %}
+    {% endif %}
+
+    {% if includeAssets %}
+        {% include "FMElfinderBundle:Elfinder:helper/assets_js.html.twig" %}
+    {% endif %}
+    <script type="text/javascript" charset="utf-8">
+        $().ready(function() {
+            var $f = $('#elfinder').elfinder({
+                url : '{{path('ef_connect')}}',
+                lang : '{{locale}}'
+            });
+
+            {% if fullscreen %}
+            var $window = $(window);
+            $window.resize(function(){
+                var $win_height = $window.height() - 60;
+                if( $f.height() != $win_height ){
+                    $f.height($win_height).resize();
+                }
+            });
+            {% endif %}
+        });
+    </script>
+    <div id="elfinder"></div>
+{% endblock content %}

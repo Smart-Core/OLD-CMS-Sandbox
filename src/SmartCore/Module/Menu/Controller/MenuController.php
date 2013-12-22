@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Menu\Controller;
 
-use SmartCore\Bundle\EngineBundle\Response;
+use SmartCore\Bundle\CMSBundle\Response;
 
 class MenuController extends Controller
 {
@@ -36,7 +36,7 @@ class MenuController extends Controller
                 'edit' => [
                     'title' => 'Редактировать',
                     'descr' => 'Пункты меню',
-                    'uri' => $this->generateUrl('cmf_admin_node_w_slug', [
+                    'uri' => $this->generateUrl('cms_admin_node_w_slug', [
                         'id' => $this->node->getId(),
                         'slug' => $this->group_id,
                     ]),

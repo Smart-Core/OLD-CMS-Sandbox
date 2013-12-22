@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\News;
 
-use SmartCore\Bundle\EngineBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\Bundle;
 
 class NewsModule extends Bundle
 {

@@ -1,14 +1,9 @@
     
-# Internal routing configuration to handle ESI
-#_internal:
-#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#   prefix:   /_internal
-
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
-SmartCoreEngineBundle:
-    resource: "@SmartCoreEngineBundle/Resources/config/routing.yml"
+CMSBundle:
+    resource: "@CMSBundle/Resources/config/routing.yml"
     prefix: /
 
 fos_user_security:

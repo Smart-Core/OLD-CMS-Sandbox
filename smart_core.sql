@@ -1144,7 +1144,7 @@ CREATE TABLE IF NOT EXISTS `_engine_folders` (
 --
 
 INSERT INTO `_engine_folders` (`folder_id`, `pid`, `pos`, `uri_part`, `is_active`, `is_deleted`, `is_file`, `title`, `descr`, `meta`, `redirect_to`, `router_node_id`, `is_inherit_nodes`, `owner_id`, `permissions`, `lockout_nodes`, `layout`, `create_datetime`) VALUES
-(1, 0, 0, '', 1, 0, 0, 'Главная', 'Smart Core CMF', 'a:5:{s:8:"keywords";s:14:"123 ффыв 3";s:11:"description";s:0:"";s:6:"robots";s:3:"all";s:8:"language";s:5:"ru-RU";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, 1, NULL, NULL, 'main', '0000-00-00 00:00:00'),
+(1, 0, 0, '', 1, 0, 0, 'Главная', 'Smart Core CMS', 'a:5:{s:8:"keywords";s:14:"123 ффыв 3";s:11:"description";s:0:"";s:6:"robots";s:3:"all";s:8:"language";s:5:"ru-RU";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, 1, NULL, NULL, 'main', '0000-00-00 00:00:00'),
 (2, 1, 0, 'about', 1, 0, 0, 'О компании', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 'inner', '0000-00-00 00:00:00'),
 (3, 1, 0, 'user', 1, 0, 0, 'Аккаунт пользователя', NULL, NULL, NULL, 7, 0, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (4, 3, 0, 'register', 1, 0, 0, 'Регистрация', NULL, NULL, NULL, 8, 0, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00');

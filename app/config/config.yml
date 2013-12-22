@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: "@SmartCoreEngineBundle/Resources/config/config.yml" }
+    - { resource: "@CMSBundle/Resources/config/config.yml" }
 
 framework:
     annotations:
@@ -96,7 +96,7 @@ swiftmailer:
         type:  file
         path:  %kernel.root_dir%/../var/mailspool
 
-smart_core_engine:
+cms:
     storage: database
 
 fos_user:

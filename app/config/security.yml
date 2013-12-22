@@ -18,9 +18,6 @@ security:
 #        login:
 #            pattern:  ^/user/login$
 #            security: false
-         #sf2gen:
-            #pattern:    /_sf2gencdt/.*
-            #security:  false
 #         admin_login:
 #            pattern: ^/admin
 #            anonymous:  ~

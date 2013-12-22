@@ -1,0 +1,106 @@
+services:
+    db.logger:
+        class: Doctrine\DBAL\Logging\DebugStack
+
+# Listeners
+    cms.controller.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.node ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onController }
+    cms.request.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.node ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onRequest }
+    cms.response.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.node ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onResponse }
+    cms.view.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.node ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.view, method: onView }
+    cms.db.table_prefix_subscriber:
+        class: SmartCore\Bundle\CMSBundle\Listener\TablePrefixSubscriber
+        arguments: [%database_table_prefix%]
+        tags:
+            - { name: doctrine.event_subscriber }
+# Core
+    cms.block:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineBlock
+        arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
+    cms.context:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineContext
+        arguments: [ @service_container ]
+    cms.folder:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineFolder
+        arguments: [ @service_container ]
+    cms.module:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineModule
+        calls:
+            - [ setContainer, [ @service_container ] ]
+            - [ initialize ]
+    cms.cache:
+        class: SmartCore\Bundle\CMSBundle\Engine\Cache
+        arguments: [ @kernel ]
+    cms.node:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineNode
+        arguments: [ @service_container, @doctrine.orm.default_entity_manager, @form.factory, @kernel, @cms.context ]
+    cms.permissions:
+        class: SmartCore\Bundle\CMSBundle\Engine\Permissions
+        arguments: [ @service_container ]
+    cms.theme:
+        class: SmartCore\Bundle\CMSBundle\Engine\Theme
+        calls:
+            - [ setContainer, [ @service_container ] ]
+    cms.jslib:
+        class: SmartCore\Bundle\CMSBundle\Engine\JavaScriptLibrary
+        arguments: [ @database_connection ]
+        calls:
+            - [ setContainer, [ @service_container ] ]
+    cms.user:
+        class: SmartCore\Bundle\CMSBundle\Engine\User
+        arguments: [ @service_container ]
+    cms.toolbar:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineToolbar
+        calls:
+            - [ setContainer, [ @service_container ] ]
+# Forms
+    cms.form.type.extension.node_id:
+        class: SmartCore\Bundle\CMSBundle\Form\Extension\FormTypeNodeIdExtension
+        arguments: [ @cms.context ]
+        tags:
+            - { name: form.type_extension, alias: form }
+    cms.form.type.folder_tree:
+        class: SmartCore\Bundle\CMSBundle\Form\Tree\FolderTreeType
+        arguments: [ @doctrine ]
+        tags:
+            - { name: form.type, alias: folder_tree }
+# Twig
+    cms.twig.block_extension:
+        class: SmartCore\Bundle\CMSBundle\Twig\BlockExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }
+
+    cms.twig.engine_path_extension:
+        class: SmartCore\Bundle\CMSBundle\Twig\CmsModulePathExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+# Menu selected items
+    cms_admin.menu.voter.request:
+        class: SmartCore\Bundle\CMSBundle\Menu\RequestVoter
+        arguments:
+            - @service_container
+        tags:
+            - { name: knp_menu.voter }

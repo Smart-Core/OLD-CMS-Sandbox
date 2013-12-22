@@ -1,8 +1,8 @@
 $(document).ready(function() {
     // Отрисовка тулбара
-    if (typeof cmf_front_controls === 'object') {
+    if (typeof cms_front_controls === 'object') {
         // Отрисовать тулбар.
-        if (!$.isEmptyObject(cmf_front_controls.toolbar)) {
+        if (!$.isEmptyObject(cms_front_controls.toolbar)) {
             renderToolbar();
         }
     }
@@ -13,7 +13,7 @@ $(document).ready(function() {
             if ($(this).attr('data-toggle') == 'button') {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass($(this).attr('class-toggle'));
-                    $(this).text(cmf_front_controls.toolbar.right.eip_toggle[0]);
+                    $(this).text(cms_front_controls.toolbar.right.eip_toggle[0]);
                     $('.cmf-frontadmin-node').removeClass('cmf-frontadmin-node-mode-edit');
                     $('.cmf-frontadmin-node').unbind('mouseenter mouseleave dblclick');
 
@@ -21,7 +21,7 @@ $(document).ready(function() {
                     $.removeCookie('cmf-frontadmin-mode', { path: '/' });
                 } else {
                     $(this).addClass($(this).attr('class-toggle'));
-                    $(this).text(cmf_front_controls.toolbar.right.eip_toggle[1]);
+                    $(this).text(cms_front_controls.toolbar.right.eip_toggle[1]);
                     $('.cmf-frontadmin-node').addClass('cmf-frontadmin-node-mode-edit');
 
                     // Включить отрисовку панелей управления нодами.
@@ -29,8 +29,8 @@ $(document).ready(function() {
                         function(){
                             var elem = this;
 
-                            if (typeof cmf_front_controls.node[$(elem).attr('id')] === 'object') {
-                                var node = cmf_front_controls.node[$(elem).attr('id')];
+                            if (typeof cms_front_controls.node[$(elem).attr('id')] === 'object') {
+                                var node = cms_front_controls.node[$(elem).attr('id')];
 
                                 var node_buttons = '<div class="overlay btn-group">';
 
@@ -298,7 +298,7 @@ function renderToolbar() {
         '<div class="navbar-inner">' +
         '<div class="container">' +
         '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
-        '<a class="brand" href="' + basePath +'" title="На главную">Smart Core CMF</a>' + // <i class="icon-home icon-white"></i>
+        '<a class="brand" href="' + basePath +'" title="На главную">Smart Core CMS</a>' + // <i class="icon-home icon-white"></i>
         '<div class="nav-collapse collapse">' +
         '<ul class="nav"></ul>' +
         '<div class="pull-right">' +
@@ -308,8 +308,8 @@ function renderToolbar() {
 
     var overalay = '';
     // Элементы справа
-    if (typeof cmf_front_controls.toolbar.right === 'object') {
-        $.each(cmf_front_controls.toolbar.right, function(index, value) {
+    if (typeof cms_front_controls.toolbar.right === 'object') {
+        $.each(cms_front_controls.toolbar.right, function(index, value) {
             if (index === 'eip_toggle') {
                 $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right')
                     .prepend('<button type="button" class="btn btn-primary span2" data-toggle="button" class-toggle="btn-danger">Просмотр</button>');
@@ -340,9 +340,9 @@ function renderToolbar() {
     }
 
     // Элементы слева
-    // отличается только cmf_front_controls.toolbar.left и отсутствием > div.pull-right
-    if (typeof cmf_front_controls.toolbar.left === 'object') {
-        $.each(cmf_front_controls.toolbar.left, function(index, value) {
+    // отличается только cms_front_controls.toolbar.left и отсутствием > div.pull-right
+    if (typeof cms_front_controls.toolbar.left === 'object') {
+        $.each(cms_front_controls.toolbar.left, function(index, value) {
             if (index === 'eip_toggle') {
                 $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse')
                     .append('<button type="button" class="btn btn-primary span2" data-toggle="button" class-toggle="btn-danger">Просмотр</button>');

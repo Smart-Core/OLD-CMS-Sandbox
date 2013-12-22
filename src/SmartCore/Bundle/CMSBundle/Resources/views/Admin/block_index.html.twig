@@ -1,0 +1,48 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block html_head_title %}{{ 'Blocks'|trans }} / {{ 'Structure'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block subnav %}
+    {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
+{% endblock subnav %}
+
+{% block content %}
+    {{ parent() }}
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th>#</th>
+            <th>{{ 'Name'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th>{{ 'Position'|trans }}</th>
+            <th>{{ 'Inherit in folders'|trans }}</th>
+            <th>{{ 'Nodes count'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for block in all_blocks %}
+        <tr>
+            <td>{{ block.id }}</td>
+            <td><a href="{{ path('cms_admin_structure_block_edit', {'id': block.id}) }}">{{ block.name }}</a></td>
+            <td><a href="{{ path('cms_admin_structure_block_edit', {'id': block.id}) }}">{{ block.descr }}</a></td>
+            <td>{{ block.position }}</td>
+            <td>@todo</td>
+            <td>{{ block.nodesCount }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="well well-small">
+        {% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
+
+        <form action="" {{ form_enctype(form) }} method="post" class="form-horizontal">
+            {{ form_widget(form) }}
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" name="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
