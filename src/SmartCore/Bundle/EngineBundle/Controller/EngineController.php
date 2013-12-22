@@ -137,8 +137,6 @@ class EngineController extends Controller
      */
     protected function buildModulesData(array $nodes_list)
     {
-        define('_IS_CACHE_NODES', false); // @todo remove
-
         /** @var $node \SmartCore\Bundle\EngineBundle\Entity\Node */
         foreach ($nodes_list as $node_id => $node) {
             $block_name = $node->getBlock()->getName();

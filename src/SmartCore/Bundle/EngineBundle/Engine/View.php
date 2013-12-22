@@ -91,12 +91,12 @@ class View
     }
 
     /**
-     * @param string $method
+     * @param string $engine
      * @return $this
      */
-    public function setEngine($method)
+    public function setEngine($engine)
     {
-        $this->__options['engine'] = $method;
+        $this->__options['engine'] = $engine;
 
         return $this;
     }
