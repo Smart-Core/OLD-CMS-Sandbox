@@ -2,11 +2,11 @@
 
 namespace SmartCore\Module\UserRegistration\Controller;
 
-//use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use SmartCore\Bundle\EngineBundle\Module\Controller;
 use SmartCore\Bundle\EngineBundle\Module\RouterResponse;
 use SmartCore\Bundle\EngineBundle\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserRegistrationController extends Controller
 {
@@ -17,12 +17,12 @@ class UserRegistrationController extends Controller
         ]);
     }
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return new RedirectResponse($this->getRequest()->getBaseUrl() . '/user/');
+            return new RedirectResponse($request->getBaseUrl() . '/user/');
         } else {
-            $this->View->register = $this->forward('SmartCoreFOSUserBundle:Registration:register')->getContent();
+            $this->View->forward('SmartCoreFOSUserBundle:Registration:register');
         }
         
         return new Response($this->View);
@@ -51,17 +51,17 @@ class UserRegistrationController extends Controller
 
     public function confirmedAction()
     {
-        $this->View->register = $this->forward('FOSUserBundle:Registration:confirmed')->getContent();
+        $this->View->forward('FOSUserBundle:Registration:confirmed');
 
         return new Response($this->View);
     }
 
-    public function checkEmailAction()
+    public function checkEmailAction(Request $request)
     {
         if ($this->container->get('session')->has('fos_user_send_confirmation_email/email')) {
-            $this->View->register = $this->forward('FOSUserBundle:Registration:checkEmail')->getContent();
+            $this->View->forward('FOSUserBundle:Registration:checkEmail');
         } else {
-            return new RedirectResponse($this->getRequest()->getBaseUrl() . '/user/');
+            return new RedirectResponse($request->getBaseUrl() . '/user/');
         }
 
         return new Response($this->View);
@@ -69,7 +69,7 @@ class UserRegistrationController extends Controller
 
     public function confirmAction($token)
     {
-        $this->View->register = $this->forward('SmartCoreFOSUserBundle:Registration:confirm', ['token' => $token])->getContent();
+        $this->View->forward('SmartCoreFOSUserBundle:Registration:confirm', ['token' => $token]);
         
         return new Response($this->View);
     }
