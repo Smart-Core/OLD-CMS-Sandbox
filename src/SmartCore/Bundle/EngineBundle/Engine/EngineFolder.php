@@ -116,10 +116,10 @@ class EngineFolder
      * @param string $slug
      * @return array
      */
-    public function getRouterData($slug = null)
+    public function getRouterData($baseUrl, $slug = null)
     {
         if (null == $this->router_data) {
-            $this->router($slug);
+            $this->router($baseUrl, $slug);
         }
 
         return $this->router_data;
@@ -128,15 +128,11 @@ class EngineFolder
     /**
      * Роутинг.
      *
-     * В процессе обработки, выставляются значения:
-     *   engine.context -> setCurrentFolderId();
-     *   engine.context -> setCurrentFolderPath();
-     *
      * @param string $slug
      * @param integer $type
      * @return array
      */
-    public function router($slug, $type = HttpKernelInterface::MASTER_REQUEST)
+    public function router($baseUrl, $slug, $type = HttpKernelInterface::MASTER_REQUEST)
     {
         if (HttpKernelInterface::MASTER_REQUEST) {
             if (!empty($this->router_data)) {
@@ -151,12 +147,14 @@ class EngineFolder
             'status'     => 200,
             'template'   => 'index',
             'node_route' => null, // @todo
+            'current_folder_id'   => 1,
+            'current_folder_path' => $baseUrl . '/',
         ];
-        
-        $current_folder_path = $this->container->get('request')->getBaseUrl() . '/';
+
         $parent_folder       = null;
         $router_node_id      = null;
-        $slug                = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду, как $this->container->get('request')->getPathInfo()
+        $slug                = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду,
+                                            //       как $this->container->get('request')->getPathInfo()
         $path_parts          = explode('/', $slug);
 
         foreach ($path_parts as $key => $segment) {
@@ -183,7 +181,7 @@ class EngineFolder
 
                 /** @var $ModuleRouter \SmartCore\Bundle\EngineBundle\Module\RouterResponse */
                 $ModuleRouter = $this->container->get('kernel')->getBundle($node->getModule() . 'Module')
-                    ->router($node, str_replace($current_folder_path, '', substr($this->container->get('request')->getBaseUrl() . '/', 0, -1) . $slug));
+                    ->router($node, str_replace($data['current_folder_path'], '', substr($baseUrl . '/', 0, -1) . $slug));
 
                 // Роутер модуля вернул положительный ответ. Статус 200.
                 if ($ModuleRouter->isOk()) {
@@ -215,7 +213,7 @@ class EngineFolder
                     }
 
                     if ($folder->getUriPart()) {
-                        $current_folder_path .= $folder->getUriPart() . '/';
+                        $data['current_folder_path'] .= $folder->getUriPart() . '/';
                     }
 
                     if ($folder->getTemplate()) {
@@ -224,11 +222,9 @@ class EngineFolder
                     
                     $parent_folder = $folder;
                     $router_node_id = $folder->getRouterNodeId();
-                    $folder->setUri($current_folder_path);
+                    $folder->setUri($data['current_folder_path']);
                     $data['folders'][$folder->getId()] = $folder;
-
-                    $this->container->get('engine.context')->setCurrentFolderId($folder->getId());
-                    $this->container->get('engine.context')->setCurrentFolderPath($current_folder_path);
+                    $data['current_folder_id'] = $folder->getId();
                 } else {
                     $data['status'] = 403;
                 }

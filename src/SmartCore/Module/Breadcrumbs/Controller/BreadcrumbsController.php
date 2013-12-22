@@ -5,7 +5,8 @@ namespace SmartCore\Module\Breadcrumbs\Controller;
 use SmartCore\Bundle\EngineBundle\Module\Controller;
 use SmartCore\Bundle\EngineBundle\Response;
 use SmartCore\Module\Breadcrumbs\Breadcrumbs;
- 
+use Symfony\Component\HttpFoundation\Request;
+
 class BreadcrumbsController extends Controller
 {
     /**
@@ -31,9 +32,9 @@ class BreadcrumbsController extends Controller
     /**
      * Запуск модуля.
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $router_data = $this->get('engine.folder')->getRouterData();
+        $router_data = $this->get('engine.folder')->getRouterData($request->getBaseUrl());
 
         $breadcrumbs = new Breadcrumbs();
 

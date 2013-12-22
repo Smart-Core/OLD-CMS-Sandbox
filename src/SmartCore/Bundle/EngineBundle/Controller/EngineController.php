@@ -23,7 +23,10 @@ class EngineController extends Controller
      */
     public function runAction(Request $request, $slug)
     {
-        $router_data = $this->get('engine.folder')->getRouterData($slug);
+        $router_data = $this->get('engine.folder')->getRouterData($request->getBaseUrl(), $slug);
+
+        $this->container->get('engine.context')->setCurrentFolderId($router_data['current_folder_id']);
+        $this->container->get('engine.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
         $nodes_list = $this->get('engine.node')->buildList($router_data);
 
