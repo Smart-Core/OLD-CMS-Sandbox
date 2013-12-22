@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\EngineBundle\Engine;
 
 use SmartCore\Bundle\EngineBundle\Container;
+use SmartCore\Bundle\EngineBundle\Entity\Node;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class View
@@ -24,6 +25,7 @@ class View
             'engine'        => 'echo',      // Движок отрисовки. ('twig', 'php', 'echo' - простое отображение всех свойств по порядку, 'forward' - выполнить контроллер.)
             'template'      => null,        // Имя файла шаблона.
             'bundle'        => '::',        // Имя бандла или модуля.
+            'node'          => null,        // Нода.
             'decorators'    => null,        // Декораторы - отображаются до и после рендеринга.
         ];
         $this->__options = $options + $this->__options;
@@ -193,7 +195,26 @@ class View
 
         return $this;
     }
-    
+
+    /**
+     * @param Node $node
+     * @return $this
+     */
+    public function setNode(Node $node)
+    {
+        $this->__options['node'] = $node;
+
+        return $this;
+    }
+
+    /**
+     * @return Node|null
+     */
+    public function getNode()
+    {
+        return $this->__options['node'];
+    }
+
     /**
      * Установка свойства.
      * 
@@ -257,6 +278,10 @@ class View
             echo $this->__options['decorators'][0];
         }
 
+        if (!empty($this->__options['node'])) {
+            $this->node = $this->__options['node'];
+        }
+
         switch (strtolower($this->__options['engine'])) {
             case 'twig':
                 echo Container::get('templating')->render($this->__options['bundle'] . $this->__options['template'] . '.html.twig' , $this->all());
@@ -273,7 +298,7 @@ class View
                 break;
             case 'echo':
                 foreach ($this as $property => $__dummy) {
-                    if ($property == '__options') {
+                    if ($property == '__options' or $property == 'node') {
                         continue;
                     }
 

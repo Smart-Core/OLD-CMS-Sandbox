@@ -5,7 +5,6 @@ namespace SmartCore\Bundle\EngineBundle\Module;
 use SmartCore\Bundle\EngineBundle\Controller\Controller as BaseController;
 use SmartCore\Bundle\EngineBundle\Container;
 use SmartCore\Bundle\EngineBundle\Response;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use SmartCore\Bundle\EngineBundle\Entity\Node;
 
@@ -99,10 +98,10 @@ abstract class Controller extends BaseController
             $this->$key = $value;
         }
 
-        //$reflector = new \ReflectionClass($this->node['module_class']);
-        //$this->View->setOptions(['bundle' => $reflector->getShortName() . '::']);
-
-        $this->View->setOptions(['bundle' => $node->getModule() . 'Module' . '::']);
+        $this->View->setOptions([
+            'bundle' => $node->getModule() . 'Module' . '::',
+            'node'   => $node,
+        ]);
     }
 
     /**

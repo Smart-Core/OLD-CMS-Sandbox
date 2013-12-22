@@ -52,7 +52,7 @@ class EngineController extends Controller
                 foreach ($block as $nodeView) {
                     if ($nodeView->getEngine() != 'echo') {
                         $data = $nodeView->render();
-                        $nodeView->removeProperties()->setEngine('echo')->set('data', $data);
+                        $nodeView->removeProperties()->setDecorators(null, null)->setEngine('echo')->set('data', $data);
                     }
                 }
             }

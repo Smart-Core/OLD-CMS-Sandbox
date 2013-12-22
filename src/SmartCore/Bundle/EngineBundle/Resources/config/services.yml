@@ -87,8 +87,13 @@ services:
             - { name: twig.extension }
 
     engine.twig.engine_path_extension:
-        class: SmartCore\Bundle\EngineBundle\Twig\EnginePathExtension
+        class: SmartCore\Bundle\EngineBundle\Twig\CmsModulePathExtension
         arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
 
