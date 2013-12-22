@@ -35,7 +35,9 @@ class UserAccountController extends Controller
         } else {
             $this->View->login = $this->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()])->getContent();
         }
-        
+
+        ld($this->View);
+
         return new Response($this->View);
     }
     

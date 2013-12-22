@@ -44,7 +44,7 @@ $(document).ready(function() {
                                                 value.title + '</button>';
                                         } else {
                                             node_buttons += '<button OnClick="window.location=\'' + value.uri
-                                                + '?return=' + window.location.pathname + window.location.search
+                                                + '?redirect_to=' + window.location.pathname + window.location.search
                                                 + '\'" title="' + value.descr
                                                 + '" class="btn btn-small popup-trigger cmf-no-overlay">' + value.title + '</button>';
                                         }
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
                                     } else {
                                         node_buttons += '<li><a class="popup-trigger cmf-no-overlay" title="' + value.descr
-                                            + '" href="' + value.uri + '?return=' + window.location.pathname + window.location.search + '">' ;
+                                            + '" href="' + value.uri + '?redirect_to=' + window.location.pathname + window.location.search + '">' ;
                                     }
 
                                     if (value.default == true) {

@@ -144,7 +144,7 @@ class AdminController extends Controller
 
                     $this->get('session')->getFlashBag()->add('notice', 'Папка создана.');
 
-                    if (isset($_GET['redirect_to']) or isset($_GET['return'])) {
+                    if (isset($_GET['redirect_to'])) {
                         return $this->redirect($engineFolder->getUri($folder->getId()));
                     }
 
@@ -198,7 +198,7 @@ class AdminController extends Controller
 
                     $this->get('session')->getFlashBag()->add('notice', 'Папка обновлена.');
 
-                    if (isset($_GET['redirect_to']) or isset($_GET['return'])) {
+                    if (isset($_GET['redirect_to'])) {
                         return $this->redirect($engineFolder->getUri($folder->getId()));
                     }
 
@@ -226,10 +226,8 @@ class AdminController extends Controller
     {
         $response = $this->forward("$id:Admin:index", ['slug' => $slug]);
 
-        if ($response->isRedirection()) {
-            if (isset($_GET['return'])) {
-                return $this->redirect($_GET['return']);
-            }
+        if ($response->isRedirection() and isset($_GET['redirect_to'])) {
+            return $this->redirect($_GET['redirect_to']);
         }
 
         return $response;
@@ -309,7 +307,7 @@ class AdminController extends Controller
 
                     $this->get('session')->getFlashBag()->add('notice', 'Нода обновлена.');
 
-                    if (isset($_GET['redirect_to']) or isset($_GET['return'])) {
+                    if (isset($_GET['redirect_to'])) {
                         return $this->redirect($this->get('engine.folder')->getUri($updated_node->getFolderId()));
                     }
 
