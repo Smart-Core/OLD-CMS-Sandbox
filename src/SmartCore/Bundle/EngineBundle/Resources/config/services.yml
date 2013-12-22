@@ -86,6 +86,12 @@ services:
         tags:
             - { name: twig.extension }
 
+    engine.twig.engine_path_extension:
+        class: SmartCore\Bundle\EngineBundle\Twig\EnginePathExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }
+
 # Menu selected items
     cmf_admin.menu.voter.request:
         class: SmartCore\Bundle\EngineBundle\Menu\RequestVoter

@@ -1,0 +1,10 @@
+# @todo
+smart_module_news.page:
+    path: /page/{num}/
+    defaults:
+        _controller: NewsModule:News:index
+
+smart_module_news.item:
+    path: /{slug}.html
+    defaults:
+        _controller: NewsModule:News:item

@@ -1,0 +1,8 @@
+
+{% for item in news %}
+    <h1><a href="{{ node_uri ~ item.slug }}">{{ item.title }}</a></h1>
+    {#{{ engine_path(node, 'smart_module_news.item', {'slug': item.slug}) }}#}
+    {{ engine_path('smart_module_news.item') }}
+    <p>{{ item.annotation }}</p>
+    <hr />
+{% endfor %}
