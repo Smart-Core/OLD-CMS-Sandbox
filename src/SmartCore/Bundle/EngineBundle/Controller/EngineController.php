@@ -45,6 +45,19 @@ class EngineController extends Controller
         $this->buildBaseHtml($request);
         //\Profiler::end('EngineController::runAction body');
 
+        // Обход всех вьюшек нод и рендеринг шаблонов модулей. Это для того, чтобы симфони мог обрабатывать ошибки в шаблонах.
+        if ($this->get('kernel')->isDebug()) {
+            foreach ($this->View->blocks as $block) {
+                /** @var View $nodeView */
+                foreach ($block as $nodeView) {
+                    if ($nodeView->getEngine() != 'echo') {
+                        $data = $nodeView->render();
+                        $nodeView->removeProperties()->setEngine('echo')->set('data', $data);
+                    }
+                }
+            }
+        }
+
         \Profiler::start('Response');
         return new Response($this->container->get('templating')->render("::{$this->View->getTemplateName()}.html.twig", [
             'block' => $this->View->blocks,

@@ -28,7 +28,69 @@ class View
         ];
         $this->__options = $options + $this->__options;
     }
-    
+
+    /**
+     * Магическое чтение свойства.
+     *
+     * @param string $name
+     * @return string|null
+     */
+    public function __get($name)
+    {
+        return $this->get($name);
+    }
+
+    /**
+     * Магическая установка свойства.
+     *
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set($name, $value)
+    {
+        $this->set($name, $value);
+    }
+
+    /**
+     * Отрисовка вида.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->render();
+    }
+
+    /**
+     * Отрисовка вида.
+     *
+     * @return string
+     */
+    public function render()
+    {
+        ob_start();
+        $this->display();
+        return ob_get_clean();
+    }
+
+    /**
+     * Очистка всех свойств.
+     *
+     * @return $this
+     */
+    public function removeProperties()
+    {
+        foreach ($this as $property => $__dummy) {
+            if ($property == '__options') {
+                continue;
+            }
+
+            unset($this->$property);
+        }
+
+        return $this;
+    }
+
     /**
      * Утановить опции.
      *
@@ -114,6 +176,14 @@ class View
     }
 
     /**
+     * @return string
+     */
+    public function getEngine()
+    {
+        return $this->__options['engine'];
+    }
+
+    /**
      * @param string $name
      * @return $this
      */
@@ -139,17 +209,6 @@ class View
     }
     
     /**
-     * Магическая установка свойства.
-     * 
-     * @param string $name
-     * @param mixed $value
-     */
-    public function __set($name, $value)
-    {
-        $this->set($name, $value);
-    }
-    
-    /**
      * Получить свойство.
      * 
      * @param string $name
@@ -161,17 +220,6 @@ class View
     }
     
     /**
-     * Магическое чтение свойства.
-     *
-     * @param string $name
-     * @return string|null
-     */
-    public function __get($name)
-    {
-        return $this->get($name);
-    }
-    
-    /**
      * Проверить существует ли свойство.
      *
      * @param string $name
@@ -180,18 +228,6 @@ class View
     public function has($name)
     {
         return isset($this->$name) ? true : false;
-    }
-    
-    /**
-     * Отрисовка вида.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        ob_start();
-        $this->display();
-        return ob_get_clean();
     }
 
     /**
