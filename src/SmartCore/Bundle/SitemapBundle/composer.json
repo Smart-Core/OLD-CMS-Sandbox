@@ -1,0 +1,22 @@
+{
+    "name": "smart-core/sitemap-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "description": "Symfony Sitemap Crawler Generator Bundle.",
+    "keywords": ["sitemap", "crawler"],
+    "authors": [
+        {
+            "name": "Artem Ryzhkov",
+            "email": "artem@smart-core.org",
+            "homepage": "http://smart-core.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.1",
+        "fabpot/goutte": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "SmartCore\\Bundle\\SitemapBundle": "" }
+    },
+    "target-dir": "SmartCore/Bundle/SitemapBundle"
+}

@@ -21,6 +21,7 @@
         "avalanche123/imagine-bundle": "*",
         "egulias/listeners-debug-command-bundle": "*",
         "elao/web-profiler-extra-bundle": "dev-master",
+        "fabpot/goutte": "dev-master",
         "facebook/php-sdk": "*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "helios-ag/fm-elfinder-bundle": "1.x",
@@ -45,7 +46,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "php app/console doctrine:schema:update"
         ],
         "post-update-cmd": [
             "sh bin/init_var",
@@ -53,7 +55,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "php app/console doctrine:schema:update"
         ]
     },
     "config": {

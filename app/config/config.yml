@@ -134,6 +134,13 @@ liip_doctrine_cache:
             type: file_system
             directory: "%kernel.cache_dir%/smart_core_cms"
 
+smart_sitemap:
+    base_url: %base_url%
+    ignores:
+        - 'http:'
+        - 'https:'
+        - /user/
+
 cms:
     storage: database
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for url in urls %}
+<url>
+<loc>{{ baseUrl ~ url.loc }}</loc>
+{% if url.priority %}<priority>{{ url.priority }}</priority>{% endif %}
+{% if url.lastmod %}<priority>{{ url.lastmod }}</priority>{% endif %}
+{% if url.changefreq %}<priority>{{ url.changefreq }}</priority>{% endif %}
+</url>
+{% endfor %}
+</urlset>

@@ -4,6 +4,7 @@
 /vendor/
 /web/bundles/
 /web/uploads/
+/web/sitemap.xml
 /app/bootstrap.php.cache
 /app/SymfonyRequirements.php
 */config/parameters.yml
