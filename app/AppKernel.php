@@ -35,21 +35,23 @@ class AppKernel extends Kernel
             //new \JMS\DiExtraBundle\JMSDiExtraBundle($this), // "jms/di-extra-bundle": "1.3.*",
             //new \JMS\SecurityExtraBundle\JMSSecurityExtraBundle(), // "jms/security-extra-bundle": "1.4.*",
 
-            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new \FOS\UserBundle\FOSUserBundle(),
-            //new \FOS\FacebookBundle\FOSFacebookBundle(),
-            new \Liip\ThemeBundle\LiipThemeBundle(),
-            new \FM\ElfinderBundle\FMElfinderBundle(),
-            new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
-            // new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",
-            new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new \Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            
+            new \FM\ElfinderBundle\FMElfinderBundle(),
+            //new \FOS\FacebookBundle\FOSFacebookBundle(),
+            new \FOS\UserBundle\FOSUserBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
+            new \Liip\ThemeBundle\LiipThemeBundle(),
+            new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
             new \SmartCore\Bundle\CMSBundle\CMSBundle(),
             new \SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new \SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
             new \SmartCore\Bundle\SiteBundle\SiteBundle(),
+            new \Sonata\IntlBundle\SonataIntlBundle(),
+            new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",
+            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
