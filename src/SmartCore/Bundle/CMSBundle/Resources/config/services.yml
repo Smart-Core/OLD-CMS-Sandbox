@@ -98,7 +98,7 @@ services:
             - { name: twig.extension }
 
 # Menu selected items
-    cms_admin.menu.voter.request:
+    cms.menu.voter.request:
         class: SmartCore\Bundle\CMSBundle\Menu\RequestVoter
         arguments:
             - @service_container

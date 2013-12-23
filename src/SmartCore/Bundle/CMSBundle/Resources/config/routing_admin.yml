@@ -94,10 +94,23 @@ cms_admin_users:
     defaults:
         _controller: CMSBundle:Admin:notFound
 
+# Modules
 cms_admin_module:
     path: /module/
     defaults:
         _controller: CMSBundle:Admin:module
+
+cms_admin_module_install_updatedb:
+    path: /module/install/updatedb
+    methods: 'POST'
+    defaults:
+        _controller: CMSBundle:Admin:moduleInstallUpdateDb
+
+cms_admin_module_install:
+    path: /module/install/{filename}
+    defaults:
+        _controller: CMSBundle:Admin:moduleInstall
+        filename: ""
 
 cms_admin_module_manage:
     path: /module/{module}/{slug}

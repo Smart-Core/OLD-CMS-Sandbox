@@ -3,6 +3,10 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -365,5 +369,53 @@ class AdminController extends Controller
         }
 
         return $this->forward("{$module}Module:Admin:index", ['slug' => $slug]);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function moduleInstallAction(Request $request, $filename = null)
+    {
+        $rootDir = $this->get('kernel')->getRootDir();
+        $distDir = $rootDir . '/../dist';
+
+        $finder = new Finder();
+        $finder
+            ->ignoreDotFiles(false)
+            ->ignoreVCS(true)
+            ->name('*.zip')
+            ->in($distDir);
+
+        // @todo убрать в сервис.
+        if ( ! empty($filename)) {
+            $this->get('cms.module')->install($filename);
+        }
+
+        return $this->render('CMSBundle:Admin:module_install.html.twig', [
+            'modules'  => $finder,
+            'filename' => $filename,
+        ]);
+    }
+
+    /**
+     * AJAX обновление БД.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function moduleInstallUpdateDbAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $application = new Application($this->get('kernel'));
+            $application->setAutoExit(false);
+            $input = new ArrayInput(['command' => 'doctrine:schema:update', "--force" => true]);
+            $output = new BufferedOutput();
+
+            $retval = $application->run($input, $output);
+
+            return new Response('БД успешно обновлена.<p>' . $output->fetch() . '</p>' );
+        } else {
+            return new Response('Обновление БД возможно только через AJAX.');
+        }
     }
 }

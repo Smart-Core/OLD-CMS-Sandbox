@@ -5,6 +5,11 @@
 {% block content %}
     {{ parent() }}
 
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a>Все установленные модули</a></li>
+        <li><a href="{{ path('cms_admin_module_install') }}">Установить модуль</a></li>
+    </ul>
+
     <table class="table table-bordered table-hover">
         <thead><tr>
             <th>#</th>

@@ -5,7 +5,7 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * -ORM\Entity()
  * @ORM\Table(name="test1")
  */
 class Test1

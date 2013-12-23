@@ -2,7 +2,13 @@
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Filesystem\Exception\IOException;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 
 class EngineModule extends ContainerAware
 {
@@ -53,9 +59,53 @@ class EngineModule extends ContainerAware
 
     /**
      * Установка модуля.
+     *
+     * @param string $filename
      */
-    public function install()
+    public function install($filename)
     {
-        die('@todo');
+        $rootDir = $this->container->get('kernel')->getRootDir();
+        $distDir = $rootDir . '/../dist';
+
+        // 1) Распаковка архива.
+        $zip = new \ZipArchive();
+        $zip->open($distDir . '/' . $filename);
+        $zip->extractTo($rootDir . '/../src');
+
+        // 2) Подключение модуля.
+        $modulesList = $this->container->get('kernel')->getModules();
+        $modulesList['Example'] = '\SmartCore\Module\Example\ExampleModule';
+        ksort($modulesList);
+
+        $modulesIni = '';
+        foreach ($modulesList as $key => $value) {
+            $modulesIni .= "$key = $value\n";
+        }
+
+        file_put_contents($rootDir.'/usr/modules.ini', $modulesIni);
+
+        // 3) Очистка кэша.
+        $finderCache = new Finder();
+        $finderCache->ignoreDotFiles(false)
+            ->ignoreVCS(true)
+            ->depth('== 0')
+            ->in($this->container->get('kernel')->getCacheDir() . '/../');
+
+        $fs = new Filesystem();
+        /** @var \Symfony\Component\Finder\SplFileInfo $file*/
+        foreach ($finderCache as $file) {
+            try {
+                $fs->remove($file->getPath());
+            } catch (IOException $e) {
+                // do nothing
+            }
+        }
+
+        // 4) Установка ресурсов (Resources/public).
+        $application = new Application($this->container->get('kernel'));
+        $application->setAutoExit(false);
+        $input = new ArrayInput(['command' => 'assets:install', 'target' => $rootDir . '/../web']);
+        $output = new BufferedOutput();
+        $retval = $application->run($input, $output);
     }
 }
