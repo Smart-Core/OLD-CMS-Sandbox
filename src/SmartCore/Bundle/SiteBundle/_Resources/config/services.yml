@@ -1,0 +1,7 @@
+parameters:
+#    site.example.class: SmartCore\Bundle\SiteBundle\Example
+
+services:
+#    site.example:
+#        class: %site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

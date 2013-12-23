@@ -33,13 +33,13 @@ class AppKernel extends Kernel
             new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            //new \Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new \Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             
             new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
             new \SmartCore\Bundle\CMSBundle\CMSBundle(),
             new \SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new \SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
-            //new \SmartCore\Bundle\UserBundle\SmartCoreUserBundle(),
+            new \SmartCore\Bundle\SiteBundle\SiteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
