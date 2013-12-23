@@ -61,7 +61,6 @@ class EngineController extends Controller
             }
         }
 
-        \Profiler::start('Response');
         return new Response($this->container->get('templating')->render("::{$this->View->getTemplateName()}.html.twig", [
             'block' => $this->View->blocks,
         ]), $router_data['status'] );

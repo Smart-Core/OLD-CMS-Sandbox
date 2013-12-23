@@ -3,6 +3,7 @@
 /_temp/
 /vendor/
 /web/bundles/
+/web/uploads/
 /app/bootstrap.php.cache
 /app/SymfonyRequirements.php
 */config/parameters.yml

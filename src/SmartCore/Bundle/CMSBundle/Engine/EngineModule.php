@@ -61,6 +61,8 @@ class EngineModule extends ContainerAware
      * Установка модуля.
      *
      * @param string $filename
+     *
+     * @todo доделать.
      */
     public function install($filename)
     {

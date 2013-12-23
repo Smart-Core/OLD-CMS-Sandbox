@@ -8,7 +8,7 @@ require_once __DIR__.'/../app/AppKernel.php';
 
 define('APPKERNEL_DEBUG', true);
 //define('APPKERNEL_DEBUG', false);
-//\Profiler::enable();
+\Profiler::enable();
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,10 +18,9 @@ $kernel->loadClassCache();
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
-\Profiler::end('Response');
 $kernel->terminate($request, $response);
 
 if ($response->headers->contains('content-type', 'text/html; charset=UTF-8') and !$response->isRedirection()) {
-    \Profiler::render();
-    //\Profiler::dump(get_included_files(), dirname(__DIR__), '\var\cache\\');
+//    \Profiler::render(true);
+//    \Profiler::dump(get_included_files(), dirname(__DIR__), '\var\cache\\');
 }

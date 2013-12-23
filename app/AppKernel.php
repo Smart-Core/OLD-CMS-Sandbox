@@ -2,7 +2,7 @@
 namespace SmartCore;
 
 // @todo убрать отсюда.
-require_once __DIR__.'/../src/SmartCore/Profiler.php';
+require_once __DIR__.'/../src/SmartCore/Bundle/SimpleProfilerBundle/Profiler.php';
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -44,10 +44,11 @@ class AppKernel extends Kernel
             new \Liip\ThemeBundle\LiipThemeBundle(),
             new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
-            new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
             new \SmartCore\Bundle\CMSBundle\CMSBundle(),
-            new \SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new \SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
+            new \SmartCore\Bundle\HtmlBundle\HtmlBundle(),
+            new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
+            new \SmartCore\Bundle\SimpleProfilerBundle\SmartSimpleProfilerBundle(),
             new \SmartCore\Bundle\SiteBundle\SiteBundle(),
             new \Sonata\IntlBundle\SonataIntlBundle(),
             new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",

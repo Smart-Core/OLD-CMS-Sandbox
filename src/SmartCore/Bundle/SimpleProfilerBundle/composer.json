@@ -1,0 +1,22 @@
+{
+    "name": "smart-core/simple-profiler-bundle",
+    "type": "symfony-bundle",
+    "keywords": ["profiler"],
+    "homepage": "http://smart-core.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artem Ryzhkov",
+            "email": "artem@smart-core.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.1"
+    },
+    "autoload": {
+        "files": ["Profiler.php"],
+        "psr-0": {
+            "SmartCore\\Bundle\\SimpleProfilerBundle": ""
+        }
+    }
+}
