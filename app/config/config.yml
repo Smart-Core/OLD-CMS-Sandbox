@@ -121,7 +121,7 @@ stfalcon_tinymce:
             relative_urls: false
             width: "100%"
             height: 380
-            #content_css: "asset[assets/tinymce/css/content.css]", # @todo
+            content_css: "/assets/tinymce/css/content.css" # @todo настройка в формате "asset[path/to/style.css]"
 
 liip_doctrine_cache:
     namespaces:
