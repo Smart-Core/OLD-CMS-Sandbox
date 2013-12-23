@@ -250,14 +250,16 @@ class Profiler
         if (!empty(self::$p) and $isDetailed) {
             $summary_time = 0;
             $summary_memory = 0;
+            $summary_db = 0;
             foreach (self::$p['all'] as $tag => $points) {
                 $summary_time += (int) $points['time'];
                 $summary_memory += (int) $points['memory'];
+                $summary_db += (int) $points['db_query_count'];
             }
 
             echo "<br />Checkpoints summary time: <b>$summary_time</b>, memory: <b>"
                 . round((memory_get_usage() - $summary_memory) / 1024 / 1024, 2)
-                . " MB. </b> \n";
+                . " MB.</b>, DB: <b>$summary_db</b>. \n";
 
             self::dump(self::$p);
         }
