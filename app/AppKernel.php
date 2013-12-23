@@ -60,14 +60,14 @@ class AppKernel extends Kernel
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new \Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new \Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            //$bundles[] = new \JMS\DebuggingBundle\JMSDebuggingBundle($this); // "jms/debugging-bundle": "dev-master",
+            $bundles[] = new \JMS\DebuggingBundle\JMSDebuggingBundle($this); // "jms/debugging-bundle": "dev-master",
             $bundles[] = new \Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
-//            $bundles[] = new \Leek\GitDebugBundle\LeekGitDebugBundle();
+            // $bundles[] = new \Leek\GitDebugBundle\LeekGitDebugBundle();
             $bundles[] = new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new \Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle();
             $bundles[] = new \SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle();
-//            $bundles[] = new \Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
+            // $bundles[] = new \Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }
 
         // Чтение списка модулей. Т.е. модули подключаются почти динамически ;)
@@ -106,7 +106,6 @@ class AppKernel extends Kernel
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 
-    /*
     protected function getContainerBaseClass()
     {
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -115,11 +114,8 @@ class AppKernel extends Kernel
 
         return parent::getContainerBaseClass();
     }
-    */
-    
+
     /**
-     * Переопределённая директория для файлов кеша.
-     * 
      * @return string
      */
     public function getCacheDir()
@@ -128,8 +124,6 @@ class AppKernel extends Kernel
     }
 
     /**
-     * Переопределённая директория для лог файлов.
-     * 
      * @return string
      */
     public function getLogDir()
