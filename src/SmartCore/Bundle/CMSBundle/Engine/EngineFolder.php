@@ -151,11 +151,11 @@ class EngineFolder
             'current_folder_path' => $baseUrl . '/',
         ];
 
-        $parent_folder       = null;
-        $router_node_id      = null;
-        $slug                = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду,
-                                            //       как $this->container->get('request')->getPathInfo()
-        $path_parts          = explode('/', $slug);
+        $parent_folder   = null;
+        $router_node_id  = null;
+        $slug            = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду,
+                                        //       как $this->container->get('request')->getPathInfo()
+        $path_parts      = explode('/', $slug);
 
         foreach ($path_parts as $key => $segment) {
             // Проверка строки запроса на допустимые символы.
