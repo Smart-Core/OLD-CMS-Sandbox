@@ -9,23 +9,35 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class EngineModule extends ContainerAware
 {
-    protected $configFile;
+    /**
+     * @var \SmartCore\AppKernel
+     */
+    protected $kernel;
     protected $modules = [];
     protected $initialized = false;
 
+    /**
+     * Constructor.
+     */
+    public function __construct(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }    
+    
     /**
      * Initializes the collection of modules.
      */
     public function initialize()
     {
         if (!$this->initialized) {
-            $this->configFile = $this->container->get('kernel')->getRootDir() . '/usr/modules.ini';
+            $configFile = $this->kernel->getRootDir() . '/usr/modules.ini';
 
-            foreach (parse_ini_file($this->configFile) as $module_name => $_dummy) {
-                $this->modules[$module_name] = $this->container->get('kernel')->getBundle($module_name . 'Module');
+            foreach (parse_ini_file($configFile) as $module_name => $_dummy) {
+                $this->modules[$module_name] = $this->kernel->getBundle($module_name . 'Module');
             }
 
             $this->initialized = true;
@@ -35,7 +47,7 @@ class EngineModule extends ContainerAware
     /**
      * Получить список всех модулей.
      * 
-     * @return array
+     * @return \SmartCore\Bundle\CMSBundle\Module\Bundle[]
      */
     public function all()
     {
@@ -46,7 +58,7 @@ class EngineModule extends ContainerAware
      * Получить информацию о модуле.
      *
      * @param string $name
-     * @return string|null
+     * @return \SmartCore\Bundle\CMSBundle\Module\Bundle|null
      */
     public function get($name)
     {
@@ -66,7 +78,7 @@ class EngineModule extends ContainerAware
      */
     public function install($filename)
     {
-        $rootDir = $this->container->get('kernel')->getRootDir();
+        $rootDir = $this->kernel->getRootDir();
         $distDir = $rootDir . '/../dist';
 
         // 1) Распаковка архива.
@@ -75,7 +87,7 @@ class EngineModule extends ContainerAware
         $zip->extractTo($rootDir . '/../src');
 
         // 2) Подключение модуля.
-        $modulesList = $this->container->get('kernel')->getModules();
+        $modulesList = $this->kernel->getModules();
         $modulesList['Example'] = '\SmartCore\Module\Example\ExampleModule';
         ksort($modulesList);
 
@@ -91,7 +103,7 @@ class EngineModule extends ContainerAware
         $finderCache->ignoreDotFiles(false)
             ->ignoreVCS(true)
             ->depth('== 0')
-            ->in($this->container->get('kernel')->getCacheDir() . '/../');
+            ->in($this->kernel->getCacheDir() . '/../');
 
         $fs = new Filesystem();
         /** @var \Symfony\Component\Finder\SplFileInfo $file*/
@@ -104,7 +116,7 @@ class EngineModule extends ContainerAware
         }
 
         // 4) Установка ресурсов (Resources/public).
-        $application = new Application($this->container->get('kernel'));
+        $application = new Application($this->kernel);
         $application->setAutoExit(false);
         $input = new ArrayInput(['command' => 'assets:install', 'target' => $rootDir . '/../web']);
         $output = new BufferedOutput();

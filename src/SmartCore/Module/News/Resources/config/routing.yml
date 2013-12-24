@@ -1,8 +1,16 @@
-# @todo
-smart_module_news.page:
-    path: /page/{num}/
+
+smart_module_news.index:
+    path: /
     defaults:
         _controller: NewsModule:News:index
+        page_num: 1
+
+smart_module_news.page:
+    path: /page/{page_num}/
+    defaults:
+        _controller: NewsModule:News:index
+    requirements:
+        page_num: \d+
 
 smart_module_news.item:
     path: /{slug}.html

@@ -1,11 +1,12 @@
 <?php
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
-use Symfony\Component\HttpKernel\KernelInterface;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 
 /**
  * Простенькое кеширование на файлах.
+ *
+ * @todo переделать на liip cache.
  */
 class Cache
 {
@@ -15,11 +16,11 @@ class Cache
     protected $cache_path;
 
     /**
-     * @param KernelInterface $kernel
+     * @param string $cacheDir
      */
-    public function __construct(KernelInterface $kernel)
+    public function __construct($cacheDir)
     {
-        $this->cache_path = realpath($kernel->getCacheDir()) . '/smart_core_cms/';
+        $this->cache_path = realpath($cacheDir) . '/smart_core_cms/';
 
         if (!is_dir($this->cache_path)) {
             mkdir($this->cache_path, 0777, true);

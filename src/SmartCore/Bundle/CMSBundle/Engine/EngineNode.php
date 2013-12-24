@@ -3,12 +3,11 @@
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Doctrine\ORM\EntityManager;
-use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Form\FormTypeInterface;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeDefaultPropertiesFormType;
+use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 class EngineNode
@@ -36,7 +35,6 @@ class EngineNode
     protected $repository;
 
     /**
-     * @todo запаковать database_table_prefix в конфиг движка.
      * @var string
      */
     protected $db_prefix;
@@ -70,27 +68,26 @@ class EngineNode
     protected $is_just_created = false;
 
     /**
-     * @param ContainerInterface $container
      * @param EntityManager $em
      * @param FormFactoryInterface $form_factory
      * @param KernelInterface $kernel
-     * @param $engine_context
+     * @param EngineContext $engineContext
+     * @param string $database_table_prefix
      */
     public function __construct(
-        ContainerInterface $container,
         EntityManager $em,
         FormFactoryInterface $form_factory,
         KernelInterface $kernel,
-        EngineContext $engine_context
+        EngineContext $engineContext,
+        $database_table_prefix = ''
     ) {
-        $this->context      = $engine_context;
+        $this->context      = $engineContext;
         $this->em           = $em;
         $this->form_factory = $form_factory;
         $this->kernel       = $kernel;
         $this->repository   = $em->getRepository('CMSBundle:Node');
-
-        $this->db        = $container->get('database_connection');
-        $this->db_prefix = $container->getParameter('database_table_prefix');
+        $this->db           = $em->getConnection();
+        $this->db_prefix    = $database_table_prefix;
     }
 
     /**
@@ -99,6 +96,7 @@ class EngineNode
     public function create()
     {
         $this->is_just_created = true;
+
         return new Node();
     }
 

@@ -2,6 +2,8 @@
 
 namespace SmartCore\Bundle\CMSBundle;
 
+use SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler\ModulesRoutingResolverPass;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler\TemplateResourcesPass;
@@ -20,11 +22,11 @@ class CMSBundle extends Bundle
         }
     }
 
-    /*
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        $container->addCompilerPass(new TemplateResourcesPass());
+
+        //$container->addCompilerPass(new TemplateResourcesPass());
+        $container->addCompilerPass(new ModulesRoutingResolverPass()); //, PassConfig::TYPE_AFTER_REMOVING);
     }
-    */
 }

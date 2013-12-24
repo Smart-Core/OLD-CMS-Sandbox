@@ -2,12 +2,10 @@
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
-
 /**
  * @todo переделать! выделить в отдельный бандл.
  */
-class JavaScriptLibrary extends ContainerAware
+class JavaScriptLibrary
 {
     /**
      * Список всех прописаных скриптов.
@@ -20,7 +18,14 @@ class JavaScriptLibrary extends ContainerAware
      * Список запрошенных библиотек.
      */
     protected $called_libs = [];
-    
+
+    /**
+     * Путь до ресурсов.
+     *
+     * @var string
+     */
+    protected $globalAssets;
+
     /**
      * @var \Doctrine\DBAL\Connection
      */
@@ -29,8 +34,9 @@ class JavaScriptLibrary extends ContainerAware
     /**
      * Constructor.
      */
-    public function __construct(\Doctrine\DBAL\Connection $db)
+    public function __construct(\Doctrine\DBAL\Connection $db, EngineContext $cmsContext)
     {
+        $this->globalAssets = $cmsContext->getGlobalAssets();
         $this->db      = $db;
         $this->scripts = [];
 
@@ -101,13 +107,13 @@ class JavaScriptLibrary extends ContainerAware
             $result = $this->db->query($sql);
             if ($result->rowCount() == 1) {
                 $row = $result->fetchObject();
-                $path = strpos($row->path, 'http://') === 0 ? $row->path : $this->container->get('cms.context')->getGlobalAssets() . $row->path; // @todo https://  и просто //
+                $path = strpos($row->path, 'http://') === 0 ? $row->path : $this->globalAssets . $row->path; // @todo https://  и просто //
             } else {
                 $sql = "SELECT path 
                     FROM javascript_library_paths
                     WHERE script_id = '" . $this->scripts[$name]['script_id'] . "'
                     $sql_version ";
-                $path = $this->container->get('cms.context')->getGlobalAssets() . $this->db->fetchAssoc($sql)['path'];
+                $path = $this->globalAssets . $this->db->fetchAssoc($sql)['path'];
             }
             
             foreach (explode(',', $this->scripts[$name]['files']) as $file) {

@@ -22,4 +22,15 @@ class NewsController extends Controller
         // @todo EIP.
         return $response;
     }
+
+    /**
+     * @param string $slug
+     * @return Response
+     */
+    public function itemAction($slug)
+    {
+        $response = new Response($this->View);
+        // @todo EIP.
+        return $response;
+    }
 }

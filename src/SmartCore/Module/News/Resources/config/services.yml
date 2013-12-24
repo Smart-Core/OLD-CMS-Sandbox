@@ -1,0 +1,3 @@
+services:
+    smart_module_news:
+        class: StdClass
