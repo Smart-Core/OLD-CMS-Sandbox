@@ -4,8 +4,38 @@ namespace SmartCore\Bundle\CMSBundle\Module;
 
 use SmartCore\Bundle\CMSBundle\Response;
 
+/**
+ * @todo переделать... убрать наследования от Response.
+ */
 class RouterResponse extends Response
 {
+    // Ответ роутинга от модуля, должен быть в следующем формате:
+    protected $_use_case = [
+        '_controller' => 'SmartCore\Module\News\Controller\NewsController::showAction',
+        'slug' => 'first',
+        'category' => '/about/company/',
+        '_route' => "smart_module_news.item",
+        '_breadcrumbs' => [
+            [
+                'uri'   => '/about/',
+                'title' => 'Мы',
+                'descr' => null,
+            ],
+            [
+                'uri'   => '/about/company/',
+                'title' => 'Компания',
+                'descr' => null,
+            ],
+            [
+                'uri'   => 'about/company/first.html',
+                'title' => 'Первая новость',
+                'descr' => null,
+            ],
+        ],
+        '_status' => 'success', // 'not_found', 'denied'
+        '_node_id' => 7,
+    ];
+
     protected $controller = null;
     protected $action = null;
     protected $arguments = [];
