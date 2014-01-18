@@ -13,10 +13,8 @@ class FolderTreeType extends DoctrineType
     {
         parent::setDefaultOptions($resolver);
 
-        $type = $this;
-
-        $loader = function (Options $options) use ($type) {
-            return $type->getLoader($options['em'], $options['query_builder'], $options['class']);
+        $loader = function (Options $options) {
+            return $this->getLoader($options['em'], $options['query_builder'], $options['class']);
         };
 
         $resolver->setDefaults([
