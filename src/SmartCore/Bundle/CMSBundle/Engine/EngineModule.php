@@ -26,6 +26,7 @@ class EngineModule extends ContainerAware
     public function __construct(KernelInterface $kernel)
     {
         $this->kernel = $kernel;
+        $this->initialize();
     }    
     
     /**
