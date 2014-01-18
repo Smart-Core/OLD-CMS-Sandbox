@@ -59,6 +59,10 @@ services:
     cms.jslib:
         class: SmartCore\Bundle\CMSBundle\Engine\JavaScriptLibrary
         arguments: [ @database_connection, @cms.context ]
+    cms.router:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineRouter
+        calls:
+            - [ setContainer, [ @service_container ] ]
     cms.toolbar:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineToolbar
         calls:

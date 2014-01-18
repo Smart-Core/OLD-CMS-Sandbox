@@ -10,6 +10,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class AdminController extends Controller
 {
@@ -228,7 +229,14 @@ class AdminController extends Controller
      */
     public function nodeAction($id, $slug = null)
     {
-        $response = $this->forward("$id:Admin:index", ['slug' => $slug]);
+        $node = $this->get('cms.node')->get($id);
+
+        $controller = $this->get('cms.router')->matchModuleAdmin($node->getModule(), '/' . $slug);
+        $controller['_node'] = $node;
+
+        $subRequest = $this->container->get('request')->duplicate([], null, $controller);
+
+        $response = $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
 
         if ($response->isRedirection() and isset($_GET['redirect_to'])) {
             return $this->redirect($_GET['redirect_to']);
@@ -347,8 +355,12 @@ class AdminController extends Controller
      * @param string $module
      * @param string $slug
      */
-    public function moduleManageAction(Request $request, $module, $slug = null)
+    public function moduleManageAction(Request $request, $module = null, $slug = null)
     {
+        if (empty($module)) {
+            return $this->moduleAction();
+        }
+
         // Удаление _node_id из форм.
         if ($request->isMethod('POST')) {
             $data = $request->request->all();
@@ -368,7 +380,11 @@ class AdminController extends Controller
             }
         }
 
-        return $this->forward("{$module}Module:Admin:index", ['slug' => $slug]);
+        // Здесь не подходит метод $this->forward() т.к.
+        $controller = $this->get('cms.router')->matchModuleAdmin($module, '/' . $slug);
+        $subRequest = $this->container->get('request')->duplicate([], null, $controller);
+
+        return $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
     }
 
     /**

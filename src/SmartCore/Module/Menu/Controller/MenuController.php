@@ -32,20 +32,25 @@ class MenuController extends Controller
         $response = new Response($this->View);
 
         if ($this->isEip()) {
-            $response->setFrontControls([
-                'edit' => [
-                    'title' => 'Редактировать',
-                    'descr' => 'Пункты меню',
-                    'uri' => $this->generateUrl('cms_admin_node_w_slug', [
-                        'id' => $this->node->getId(),
-                        'slug' => $this->group_id,
-                    ]),
-                    'overlay' => false,
-                    'default' => false,
-                ],
-            ]);
+            $this->setFrontControls($response);
         }
 
         return $response;
+    }
+
+    protected function setFrontControls(Response $response)
+    {
+        $response->setFrontControls([
+            'edit' => [
+                'title' => 'Редактировать',
+                'descr' => 'Пункты меню',
+                'uri'   => $this->generateUrl('cms_admin_node_w_slug', [
+                        'id'   => $this->node->getId(),
+                        'slug' => $this->group_id,
+                    ]),
+                'overlay' => false,
+                'default' => false,
+            ],
+        ]);
     }
 }

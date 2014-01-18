@@ -9,39 +9,28 @@ class AdminController extends Controller
 {
     /**
      * @param Request $request
-     * @param string $slug
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function indexAction(Request $request, $slug = null)
+    public function indexAction(Request $request)
     {
-        // @todo сделать роутинг
-        if (!empty($slug)) {
-            //$parts = explode('/', $slug);
-
-            return $this->itemAction($request, $slug);
-        }
-        // ----------------------------------------------------
-
         if (!empty($this->node)) {
             return $this->itemAction($request, $this->text_item_id);
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
-
         return $this->render('TexterModule:Admin:index.html.twig', [
-            'items' => $em->getRepository('TexterModule:Item')->findAll(),
+            'items' => $this->getDoctrine()->getRepository('TexterModule:Item')->findAll(),
         ]);
     }
 
     /**
      * @param Request $request
-     * @param int $item_id
+     * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function itemAction(Request $request, $item_id)
+    public function itemAction(Request $request, $id)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
-        $item = $em->find('TexterModule:Item', $item_id);
+        $em = $this->getDoctrine()->getManager();
+        $item = $em->find('TexterModule:Item', $id);
 
         if ($request->isMethod('POST')) {
             $data = $request->request->get('texter');
@@ -51,20 +40,13 @@ class AdminController extends Controller
             try {
                 $em->persist($item);
                 $em->flush();
-                $this->get('session')->getFlashBag()->add('notice', 'Текст обновлён');
+                $this->get('session')->getFlashBag()->add('notice', 'Текст обновлён'); // @todo перевод.
 
-                return $this->redirect($this->generateUrl('cms_admin_module_manage', [
-                    'module' => 'Texter',
-                ]));
+                return $this->redirect($this->generateModuleAdminUrl('smart_texter_admin'));
             } catch (\Exception $e) {
-                $errors = ['sql_debug' => $e->getMessage()];
+                $this->get('session')->getFlashBag()->add('errors', ['sql_debug' => $e->getMessage()]);
 
-                $this->get('session')->getFlashBag()->add('errors', $errors);
-
-                return $this->redirect($this->generateUrl('cms_admin_module_manage', [
-                    'module' => 'Texter',
-                    'slug'   => $item_id,
-                ]));
+                return $this->redirect($this->generateModuleAdminUrl('smart_texter_admin_edit', ['id' => $id]));
             }
         }
 

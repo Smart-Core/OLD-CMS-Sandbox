@@ -1,0 +1,10 @@
+
+smart_news_admin:
+    path: /
+    defaults:
+        _controller: NewsModule:Admin:index
+
+smart_news_admin_create:
+    path: /create/
+    defaults:
+        _controller: NewsModule:Admin:create

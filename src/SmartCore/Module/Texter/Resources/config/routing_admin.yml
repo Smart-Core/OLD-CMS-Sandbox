@@ -1,0 +1,12 @@
+
+smart_texter_admin:
+    path: /
+    defaults:
+        _controller: TexterModule:Admin:index
+
+smart_texter_admin_edit:
+    path: /{id}
+    defaults:
+        _controller: TexterModule:Admin:item
+    requirements:
+        id: \d+

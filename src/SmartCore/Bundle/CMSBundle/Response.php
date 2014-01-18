@@ -11,6 +11,9 @@ namespace SmartCore\Bundle\CMSBundle;
 
 use Symfony\Component\HttpFoundation\Response as BaseResponse;
 
+/**
+ * @todo может быть переименовать в ModuleResponse
+ */
 class Response extends BaseResponse
 {
     protected $cms_front_controls = [];

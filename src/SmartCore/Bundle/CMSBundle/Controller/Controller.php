@@ -4,11 +4,11 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use SmartCore\Bundle\CMSBundle\Engine\View;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 abstract class Controller extends BaseController
 {
     /**
-     * View object
      * @var View
      */
     protected $View;
@@ -16,7 +16,7 @@ abstract class Controller extends BaseController
     /**
      * Constructor.
      * 
-     * @todo пересмотреть логику... ненравится мне эта инициализация вида...
+     * @todo пересмотреть логику... не нравится мне эта инициализация вида...
      */
     public function __construct()
     {
@@ -31,7 +31,12 @@ abstract class Controller extends BaseController
 
         $this->View = new View([
             'template' => strtolower($template),
-            'engine' => 'twig',
+            'engine'   => 'twig',
         ]);
+    }
+
+    public function generateModuleAdminUrl($route, $parameters = array(), $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
+    {
+        return $this->container->get('cms.router')->generateModuleAdminUrl($route, $parameters, $referenceType);
     }
 }

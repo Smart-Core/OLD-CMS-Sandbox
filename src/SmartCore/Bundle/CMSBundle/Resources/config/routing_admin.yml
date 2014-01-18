@@ -116,7 +116,8 @@ cms_admin_module_manage:
     path: /module/{module}/{slug}
     defaults:
         _controller: CMSBundle:Admin:moduleManage
-        slug: ""
+        slug: ''
+        module: ''
     requirements:
         slug: ".+"
 
@@ -124,7 +125,7 @@ cms_admin_module_manage_w_slash:
     path: /module/{module}/
     defaults:
         _controller: CMSBundle:Admin:moduleManage
-        slug: ""
+        slug: ''
 
 cms_admin_config:
     path: /config/
