@@ -79,30 +79,6 @@ class EngineController extends Controller
         $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
 
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            /*
-            // Пример формата массива $cms_front_controls
-            $cms_front_controls = array(
-                'node' => array(
-                    '__node_5' => array(
-                        'edit' => array(
-                            'title' => 'Редактировать',
-                            'descr' => 'Меню',
-                            'uri' => $request->getBasePath() . '/',
-                            'default' => true,
-                        ),
-                        'add' => array(
-                            'title' => 'Добавить пункт меню',
-                            'uri' => $request->getBasePath() . '/',
-                        ),
-                        'cms_node_properties' => array(
-                            'title' => 'Свойства ноды',
-                            'uri' => $request->getBaseUrl() . '/',
-                        ),
-                    ),
-                ),
-            );
-            */
-
             $cms_front_controls = [
                 'toolbar' => $this->get('cms.toolbar')->getArray(),
                 'node' => $this->cms_front_controls['node'],
