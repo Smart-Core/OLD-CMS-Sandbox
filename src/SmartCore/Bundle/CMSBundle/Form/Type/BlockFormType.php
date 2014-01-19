@@ -14,6 +14,12 @@ class BlockFormType extends AbstractType
             ->add('name', null, ['attr' => ['class' => 'focused']])
             ->add('descr')
             ->add('position')
+            ->add('folders', null, [
+                //'attr' => ['style' => 'height: 300px;'],
+                'expanded' => true,
+                'label' => 'Inherit in folders',
+                'required' => false,
+            ])
         ;
     }
 

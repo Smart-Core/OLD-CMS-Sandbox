@@ -65,7 +65,10 @@ class Block
      * @var ArrayCollection
      */
     protected $folders;
-    
+
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->create_by_user_id = 0;
@@ -125,6 +128,17 @@ class Block
     public function setFolder(Folder $folder)
     {
         $this->folders->add($folder);
+
+        return $this;
+    }
+
+    /**
+     * @param Folder $folder
+     * @return $this
+     */
+    public function setFolders($folders)
+    {
+        $this->folders = $folders;
 
         return $this;
     }
