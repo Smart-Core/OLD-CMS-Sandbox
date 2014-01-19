@@ -65,24 +65,16 @@ class ModuleControllerModifierListener
     {
         if (HttpKernelInterface::SUB_REQUEST === $event->getRequestType()) {
             $controller = explode(':', $event->getRequest()->attributes->get('_controller'));
-            
+
             if (is_numeric($controller[0])) {
                 /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
                 $node = $this->engineNodeManager->get($controller[0]);
 
-                if (empty($controller[1])) {
-                    $controller[1] = $node->getController();
+                foreach ($node->getController() as $key => $value) {
+                    $event->getRequest()->attributes->set($key, $value);
                 }
 
-                if (empty($controller[2])) {
-                    $controller[2] = $node->getAction();
-                }
-
-                $event->getRequest()->attributes->set('_controller', $node->getModule() . 'Module:' . $controller[1] . ':' . $controller[2]);
                 $event->getRequest()->attributes->set('_node', $node);
-                foreach ($node->getArguments() as $name => $value) {
-                    $event->getRequest()->attributes->set($name, $value);
-                }
             }
         }
     }

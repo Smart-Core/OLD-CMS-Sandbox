@@ -1,0 +1,15 @@
+
+smart_module_UserRegistration.check-email:
+    path: /check-email
+    defaults:
+        _controller: UserRegistrationModule:UserRegistration:checkEmail
+
+smart_module_UserRegistration.confirm:
+    path: /confirm/{token}
+    defaults:
+        _controller: UserRegistrationModule:UserRegistration:confirm
+
+smart_module_UserRegistration.confirmed:
+    path: /confirmed
+    defaults:
+        _controller: UserRegistrationModule:UserRegistration:confirmed

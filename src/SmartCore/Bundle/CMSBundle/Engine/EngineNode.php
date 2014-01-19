@@ -178,7 +178,7 @@ class EngineNode
      * Создание списка всех запрошеных нод, в каких блоках они находятся и с какими 
      * параметрами запускаются модули.
      * 
-     * @param array  $parsed_uri
+     * @param array  $router_data
      * @return array $nodes_list
      */
     public function buildList(array $router_data)
@@ -306,8 +306,8 @@ class EngineNode
         // Заполнение массива с нодами сущностями нод.
         /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
         foreach ($this->repository->findIn($this->nodes_list) as $node) {
-            if (isset($router_data['node_route']['response']) and $router_data['node_route']['id'] == $node->getId()) {
-                $node->setRouterResponse($router_data['node_route']['response']);
+            if (isset($router_data['node_routing']['controller']) and $router_data['node_routing']['node_id'] == $node->getId()) {
+                $node->setController($router_data['node_routing']['controller']);
             }
 
             $this->nodes_list[$node->getId()] = $node;
@@ -356,6 +356,19 @@ class EngineNode
             }
         }
         */
+
+        // Перемещение ноды, с роутингом на самый верх.
+        if (isset($router_data['node_routing']['node_id']) and isset($this->nodes_list[$router_data['node_routing']['node_id']])) {
+            $routed_node_id = $router_data['node_routing']['node_id'];
+
+            $reorded_nodes_list = [
+                $routed_node_id => $this->nodes_list[$routed_node_id],
+            ];
+
+            unset($this->nodes_list[$routed_node_id]);
+            $this->nodes_list = $reorded_nodes_list += $this->nodes_list;
+            unset($reorded_nodes_list);
+        }
 
         \Profiler::end('buildNodesList');
 

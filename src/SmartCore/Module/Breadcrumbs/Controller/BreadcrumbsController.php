@@ -34,7 +34,7 @@ class BreadcrumbsController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $router_data = $this->get('cms.folder')->getRouterData($request->getBaseUrl());
+        $router_data = $this->get('cms.router')->match($request->getBaseUrl());
 
         $breadcrumbs = new Breadcrumbs();
 
@@ -43,11 +43,14 @@ class BreadcrumbsController extends Controller
         foreach ($router_data['folders'] as $folder) {
             $breadcrumbs->add($folder->getUri(), $folder->getTitle(), $folder->getDescr());
         }
+
+        /* @todo переделать!
         if ($router_data['node_route']['response']) {
             foreach ($router_data['node_route']['response']->getBreadcrumbs() as $bc) {
                 $breadcrumbs->add($bc['uri'], $bc['title'], $bc['descr']);
             }
         }
+        */
 
         $this->View->delimiter = $this->delimiter;
         $this->View->items = $breadcrumbs;

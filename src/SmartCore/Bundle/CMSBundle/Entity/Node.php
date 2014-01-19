@@ -4,7 +4,6 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use SmartCore\Bundle\CMSBundle\Module\RouterResponse;
 
 /**
  * @ORM\Entity(repositoryClass="NodeRepository")
@@ -102,27 +101,12 @@ class Node implements \Serializable
     /**
      * @ORM\Column(type="text", nullable=TRUE)
      */
-    //protected $cache_params_yaml;
-
-    /**
-     * @ORM\Column(type="text", nullable=TRUE)
-     */
     //protected $plugins;
 
     /**
      * @ORM\Column(type="text", nullable=TRUE)
      */
     //protected $permissions;
-
-    /**
-     * @ORM\Column(type="smallint")
-     */
-    //protected $database_id = 0;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    //protected $node_action_mode = 'popup';
 
     /**
      * @ORM\Column(type="string", nullable=TRUE)
@@ -141,15 +125,9 @@ class Node implements \Serializable
     protected $create_datetime;
 
     /**
-     * Ответ роутинга ноды, если таковой есть.
-     *
-     * @var RouterResponse|null
+     * @var array
      */
-    protected $router_response = null;
-
     protected $controller = null;
-    protected $action = 'index';
-    protected $arguments = [];
 
     /**
      * Constructor
@@ -402,6 +380,24 @@ class Node implements \Serializable
     }
 
     /**
+     * @param int $priority
+     * @return $this
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
      * @return int
      */
     public function getFolderId()
@@ -411,67 +407,6 @@ class Node implements \Serializable
         }
 
         return $this->folder_id;
-    }
-
-    /**
-     * @param RouterResponse $router_response
-     * @return $this
-     */
-    public function setRouterResponse(RouterResponse $router_response)
-    {
-        $this->setController($router_response->getController());
-        $this->setAction($router_response->getAction());
-        $this->setArguments($router_response->getAllArguments());
-
-        $this->router_response = $router_response;
-
-        return $this;
-    }
-
-    /**
-     * @return null|RouterResponse
-     */
-    public function getRouterResponse()
-    {
-        return $this->router_response;
-    }
-
-    /**
-     * @param string $action
-     * @return $this
-     */
-    public function setAction($action)
-    {
-        $this->action = $action;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAction()
-    {
-        return $this->action;
-    }
-
-    /**
-     * @param array $arguments
-     * @return $this
-     */
-    public function setArguments(array $arguments)
-    {
-        $this->arguments = $arguments;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getArguments()
-    {
-        return $this->arguments;
     }
 
     /**
@@ -486,14 +421,14 @@ class Node implements \Serializable
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getController()
     {
-        if (!empty($this->controller)) {
-            return $this->controller;
-        } else {
-            return $this->module;
+        if (empty($this->controller)) {
+            $this->controller['_controller'] = $this->module . 'Module:' . $this->module . ':index';
         }
+
+        return $this->controller;
     }
 }

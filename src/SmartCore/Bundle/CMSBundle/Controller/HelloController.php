@@ -5,6 +5,7 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query\ResultSetMapping;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class HelloController extends Controller
@@ -20,6 +21,10 @@ class HelloController extends Controller
             ->title('hi :)')
         ;
 
+//        $router = $this->get('router');
+//        ld($router);
+
+        /** @var Router $moduleRouter */
         $moduleRouter = $this->get('cms.router_module.news');
 
         ld($moduleRouter->match('/123.html'));

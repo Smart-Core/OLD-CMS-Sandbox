@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use SmartCore\Bundle\CMSBundle\Engine\View;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EngineController extends Controller
 {
@@ -23,7 +25,13 @@ class EngineController extends Controller
      */
     public function runAction(Request $request, $slug)
     {
-        $router_data = $this->get('cms.folder')->getRouterData($request->getBaseUrl(), $slug);
+        $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
+
+        if ($router_data['status'] == 404) {
+            throw new NotFoundHttpException('Page not found.');
+        } elseif ($router_data['status'] == 403) {
+            throw new AccessDeniedHttpException('Access Denied.');
+        }
 
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
@@ -53,7 +61,7 @@ class EngineController extends Controller
             foreach ($this->View->blocks as $block) {
                 /** @var View $nodeView */
                 foreach ($block as $nodeView) {
-                    if ($nodeView->getEngine() != 'echo') {
+                    if ($nodeView instanceof View and $nodeView->getEngine() != 'echo') {
                         $data = $nodeView->render();
                         $nodeView->removeProperties()->setDecorators(null, null)->setEngine('echo')->set('data', $data);
                     }

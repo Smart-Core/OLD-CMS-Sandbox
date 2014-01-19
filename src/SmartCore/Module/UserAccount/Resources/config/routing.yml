@@ -1,0 +1,35 @@
+
+#smart_module_useraccount.index:
+#    path: /
+#    defaults:
+#        _controller: UserAccountModule:UserAccount:index
+
+smart_module_useraccount.edit:
+    path: /edit
+    defaults:
+        _controller: UserAccountModule:UserAccount:edit
+
+smart_module_useraccount.change-password:
+    path: /change-password
+    defaults:
+        _controller: UserAccountModule:UserAccount:changePassword
+
+smart_module_useraccount.resetting:
+    path: /resetting
+    defaults:
+        _controller: UserAccountModule:UserAccount:resettingRequest
+
+smart_module_useraccount.resetting.send-email:
+    path: /resetting/send-email
+    defaults:
+        _controller: UserAccountModule:UserAccount:resettingSendEmail
+
+smart_module_useraccount.resetting.check-email:
+    path: /resetting/check-email
+    defaults:
+        _controller: UserAccountModule:UserAccount:resettingCheckEmail
+
+smart_module_useraccount.resetting.reset:
+    path: /resetting/reset/{token}
+    defaults:
+        _controller: UserAccountModule:UserAccount:resettingReset

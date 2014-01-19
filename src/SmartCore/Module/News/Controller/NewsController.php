@@ -29,6 +29,16 @@ class NewsController extends Controller
      */
     public function itemAction($slug)
     {
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        // @todo breadcrumps
+        $this->View->setTemplateName('item');
+        $this->View->item = $em->getRepository('NewsModule:News')->findOneBy(['slug' => $slug]);
+
+        if (empty($this->View->item)) {
+            throw $this->createNotFoundException();
+        }
+
         $response = new Response($this->View);
         // @todo EIP.
         return $response;
