@@ -142,118 +142,179 @@ class Folder
      */
     protected $uri;
 
-    public function setUri($uri)
-    {
-        $this->uri = $uri;
-    }
-
-    public function getUri()
-    {
-        return $this->uri;
-    }
-
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
-        $this->children = new ArrayCollection();
+        $this->children         = new ArrayCollection();
         $this->create_by_user_id = 0;
-        $this->create_datetime = new \DateTime();
-        $this->form_title = '';
-        $this->meta = null;
-        $this->is_active = true;
-        $this->is_deleted = false;
-        $this->is_file = false;
+        $this->create_datetime  = new \DateTime();
+        $this->form_title       = '';
+        $this->meta             = null;
+        $this->is_active        = true;
+        $this->is_deleted       = false;
+        $this->is_file          = false;
         $this->has_inherit_nodes = false;
-        $this->lockout_nodes = null;
-        $this->nodes = new ArrayCollection();
-        $this->parent_folder = null;
-        $this->permissions = null;
-        $this->position = 0;
-        $this->redirect_to = null;
-        $this->router_node_id = null;
-        $this->template = null;
-        $this->uri_part = '';
+        $this->lockout_nodes    = null;
+        $this->nodes =          new ArrayCollection();
+        $this->parent_folder    = null;
+        $this->permissions      = null;
+        $this->position         = 0;
+        $this->redirect_to      = null;
+        $this->router_node_id   = null;
+        $this->template         = null;
+        $this->uri_part         = '';
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getTitle();
     }
 
+    /**
+     * @return Folder[]
+     */
     public function getChildren()
     {
         return $this->children;
     }
 
+    /**
+     * @return Node[]
+     */
     public function getNodes()
     {
         return $this->nodes;
     }
 
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @param bool $is_file
+     * @return $this
+     */
     public function setIsFile($is_file)
     {
         $this->is_file = $is_file;
+        return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getIsFile()
     {
         return $this->is_file;
     }
 
+    /**
+     * @param bool $is_active
+     * @return $this
+     */
     public function setIsActive($is_active)
     {
         $this->is_active = $is_active;
+        return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getIsActive()
     {
         return $this->is_active;
     }
 
+    /**
+     * @param bool $has_inherit_nodes
+     * @return $this
+     */
     public function setHasInheritNodes($has_inherit_nodes)
     {
         $this->has_inherit_nodes = $has_inherit_nodes;
+        return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getHasInheritNodes()
     {
         return $this->has_inherit_nodes;
     }
 
+    /**
+     * @param string $descr
+     * @return $this
+     */
     public function setDescr($descr)
     {
         $this->descr = $descr;
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDescr()
     {
         return $this->descr;
     }
 
+    /**
+     * @param string $uri_part
+     * @return $this
+     */
     public function setUriPart($uri_part)
     {
-        $this->uri_part = $uri_part;
+        if ($this->getId() > 1) {
+            $this->uri_part = $uri_part;
+        }
+
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getUriPart()
     {
         return $this->uri_part;
     }
 
+    /**
+     * @param array $meta
+     * @return $this
+     */
     public function setMeta($meta)
     {
         $this->meta = $meta;
+        return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getMeta()
     {
         if (empty($this->meta)) {
@@ -263,35 +324,54 @@ class Folder
         }
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->folder_id;
     }
 
+    /**
+     * @param int $create_by_user_id
+     * @return $this
+     */
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getCreateByUserId()
     {
         return $this->create_by_user_id;
     }
 
-    public function setParentFolder($parent_folder)
+    /**
+     * @param Folder $parent_folder
+     * @return $this
+     */
+    public function setParentFolder(Folder $parent_folder)
     {
-        if ($this->getId() == 1) {
-            $this->parent_folder = null;
-        } else {
-            $this->parent_folder = $parent_folder;
-        }
+        $this->parent_folder = ($this->getId() == 1) ? null : $parent_folder;
+        return $this;
     }
 
+    /**
+     * @return Folder|null
+     */
     public function getParentFolder()
     {
         return $this->parent_folder;
     }
 
+    /**
+     * @param int $position
+     * @return $this
+     */
     public function setPosition($position)
     {
         if (empty($position)) {
@@ -299,41 +379,87 @@ class Folder
         }
 
         $this->position = $position;
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getPosition()
     {
         return $this->position;
     }
 
+    /**
+     * @param string $form_title
+     * @return $this
+     */
     public function setFormTitle($form_title)
     {
         $this->form_title = $form_title;
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getFormTitle()
     {
         return $this->form_title;
     }
 
+    /**
+     * @param int|null $router_node_id
+     * @return $this
+     */
     public function setRouterNodeId($router_node_id)
     {
-        $this->router_node_id = $router_node_id;
+        $this->router_node_id = empty($router_node_id) ? null : $router_node_id;
+        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getRouterNodeId()
     {
         return $this->router_node_id;
     }
 
+    /**
+     * @param string $template
+     * @return $this
+     */
     public function setTemplate($template)
     {
         $this->template = $template;
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTemplate()
     {
         return $this->template;
+    }
+
+    /**
+     * @param string $uri
+     * @return $this
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUri()
+    {
+        return $this->uri;
     }
 
     /**

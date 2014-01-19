@@ -17,7 +17,18 @@ class NewsController extends Controller
         $this->View->news = $this->getDoctrine()->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC']);
 
         $response = new Response($this->View);
-        // @todo EIP.
+
+        if ($this->isEip()) {
+            $response->setFrontControls([
+                'create' => [
+                    'title'   => 'Добавить',
+                    'descr'   => 'Добавить новость',
+                    'uri'     => $this->generateUrl('smart_news_admin_create'),
+                    'default' => true,
+                ],
+            ]);
+        }
+
         return $response;
     }
 
@@ -39,7 +50,23 @@ class NewsController extends Controller
         $this->View->set('item', $item);
 
         $response = new Response($this->View);
-        // @todo EIP.
+
+        if ($this->isEip()) {
+            $response->setFrontControls([
+                'edit' => [
+                    'title'   => 'Редактировать',
+                    'descr'   => 'Редактировать новость',
+                    'uri'     => $this->generateUrl('smart_news_admin_edit', ['id' => $item->getId()]),
+                    'default' => true,
+                ],
+                'create' => [
+                    'title'   => 'Добавить',
+                    'descr'   => 'Добавить новость',
+                    'uri'     => $this->generateUrl('smart_news_admin_create'),
+                ],
+            ]);
+        }
+
         return $response;
     }
 }
