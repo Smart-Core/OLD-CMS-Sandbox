@@ -25,7 +25,7 @@
                 <td>{{ modules_count }}{% set modules_count = modules_count + 1 %}</td>
                 <td>
                     {% if module.hasAdmin %}
-                        <a href="{{ path('cms_admin_module') }}/{{ module.shortName }}/">{{ module.shortName }}</a>
+                        <a href="{{ path('cms_admin_module') ~ module.shortName }}/">{{ module.shortName }}</a>
                     {% else %}
                         {{ module.shortName }}
                     {% endif %}
