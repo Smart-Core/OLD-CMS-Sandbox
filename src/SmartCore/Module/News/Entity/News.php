@@ -3,11 +3,13 @@
 namespace SmartCore\Module\News\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="news_items")
+ * @UniqueEntity(fields={"slug"}, message="URL должно быть уникальным, оно используется в строке запроса.")
  */
 class News
 {
@@ -35,8 +37,8 @@ class News
     protected $annotation;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text", nullable=true)
+     * -Assert\NotBlank()
      */
     protected $text;
 

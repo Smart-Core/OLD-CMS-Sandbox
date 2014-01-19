@@ -2,6 +2,7 @@
 Action: Действие
 Actions: Действия
 Add: Добавить
+Annotation: Аннотация
 Administration: Управление
 Appearance: Оформление
 Block: Блок
@@ -13,6 +14,7 @@ Connect module: Подключить модуль
 Create datetime: Дата создания
 Create folder: Добавить раздел
 Create node: Подключить модуль
+Created: Создано
 Descr: Описание
 Description: Описание
 Delete: Удалить
@@ -41,8 +43,11 @@ Pos: Позиция
 Position: Позиция
 Reports: Отчеты
 Save: Сохранить
+Slug: Часть URI
 Structure: Структура
 Template: Шаблон
+Text: Текст
 Title: Заголовок
 Uri part: Часть URI
+Updated: Обновлено
 Users: Пользователи

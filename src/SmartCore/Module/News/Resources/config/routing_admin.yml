@@ -2,9 +2,16 @@
 smart_news_admin:
     path: /
     defaults:
-        _controller: NewsModule:Admin:index
+        _controller: NewsModule:NewsAdmin:index
 
 smart_news_admin_create:
     path: /create/
     defaults:
-        _controller: NewsModule:Admin:create
+        _controller: NewsModule:NewsAdmin:create
+
+smart_news_admin_edit:
+    path: /{id}/edit
+    defaults:
+        _controller: NewsModule:NewsAdmin:edit
+    requirements:
+        group_id: \d+

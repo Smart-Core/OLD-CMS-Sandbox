@@ -183,13 +183,11 @@ class EngineNode
      */
     public function buildList(array $router_data)
     {
-        \Profiler::start('buildNodesList');
-
-        $folders = $router_data['folders'];
-
         if (!empty($this->nodes_list)) {
             return $this->nodes_list;
         }
+
+        \Profiler::start('buildNodesList');
 
         $used_nodes = [];
         $lockout_nodes = [
@@ -199,7 +197,7 @@ class EngineNode
         ];
 
         /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */
-        foreach ($folders as $folder) {
+        foreach ($router_data['folders'] as $folder) {
             // single каждый раз сбрасывается и устанавливается заново для каждоый папки.
             // @todo блокировку нод.
             /*

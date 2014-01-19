@@ -14,7 +14,7 @@ class NewsController extends Controller
 
     public function indexAction($page_num = 1)
     {
-        $this->View->news = $this->getDoctrine()->getRepository('NewsModule:News')->findAll();
+        $this->View->news = $this->getDoctrine()->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC']);
 
         $response = new Response($this->View);
         // @todo EIP.

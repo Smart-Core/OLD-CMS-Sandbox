@@ -1,0 +1,21 @@
+{% extends '@NewsModule/Admin/index.html.twig' %}
+
+{% block html_head_title %}Редактирование / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="myTab">
+        <li><a href="{{ path('smart_news_admin') }}">Список всех новостей</a></li>
+        <li><a href="{{ path('smart_news_admin_create') }}">Написать новость</a></li>
+        <li class="active"><a>Редактирование новости</a></li>
+    </ul>
+
+    <div class="well well-small">
+        {% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
+
+        {{ form(form) }}
+    </div>
+
+    {{ tinymce_init() }}
+    {{ elfinder_tinymce_init() }}
+
+{% endblock content %}

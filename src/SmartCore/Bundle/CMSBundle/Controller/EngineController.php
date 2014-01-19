@@ -33,7 +33,9 @@ class EngineController extends Controller
             throw new AccessDeniedHttpException('Access Denied.');
         }
 
-        $this->buildBreadcrumbs($router_data);
+        foreach ($router_data['folders'] as $folder) {
+            $this->get('cms.breadcrumbs')->add($folder->getUri(), $folder->getTitle(), $folder->getDescr());
+        }
 
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
@@ -77,33 +79,19 @@ class EngineController extends Controller
     }
 
     /**
-     * @param $router_data
-     */
-    protected function buildBreadcrumbs($router_data)
-    {
-        $bc = $this->get('cms.breadcrumbs');
-
-        foreach ($router_data['folders'] as $folder) {
-            $bc->add($folder->getUri(), $folder->getTitle(), $folder->getDescr());
-        }
-    }
-
-    /**
      * Временный метод...
      *
      * @todo отрефакторить!!!
      */
     protected function buildBaseHtml(Request $request)
     {
-        $this->get('html')->title('Smart Core CMS (based on Symfony2 Framework)'); // @todo remove
-
         // @todo убрать в ini-шник шаблона.
         $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
 
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
                 'toolbar' => $this->get('cms.toolbar')->getArray(),
-                'node' => $this->cms_front_controls['node'],
+                'node'    => $this->cms_front_controls['node'],
             ];
 
             $this->get('cms.jslib')->call('bootstrap');
