@@ -25,7 +25,15 @@ class EngineController extends Controller
      */
     public function runAction(Request $request, $slug)
     {
-        $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
+        /** @var \RickySu\Tagcache\Adapter\TagcacheAdapter $tagcache */
+        $tagcache = $this->get('tagcache');
+
+        // Кеширование роутера.
+        $cache_key = md5('cms_router' . $request->getBaseUrl() . $slug);
+        if (false == $router_data = $tagcache->get($cache_key)) {
+            $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
+            $tagcache->set($cache_key, $router_data, ['folder', 'node']);
+        }
 
         if ($router_data['status'] == 404) {
             throw new NotFoundHttpException('Page not found.');
@@ -40,7 +48,12 @@ class EngineController extends Controller
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
-        $nodes_list = $this->get('cms.node')->buildList($router_data);
+        // Кеширование построения списка нод.
+        $cache_key = md5('cms_node_list' . serialize($router_data));
+        if (false == $nodes_list = $tagcache->get($cache_key)) {
+            $nodes_list = $this->get('cms.node')->buildList($router_data);
+            $tagcache->set($cache_key, $nodes_list, ['folder', 'node']);
+        }
 
         $this->View
             ->setOptions([
