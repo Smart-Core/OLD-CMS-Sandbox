@@ -29,6 +29,8 @@ services:
         tags:
             - { name: doctrine.event_subscriber }
 # Core
+    cms.breadcrumbs:
+        class: SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs
     cms.block:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineBlock
         arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
@@ -92,13 +94,16 @@ services:
         arguments: [ @service_container ]
         tags:
             - { name: twig.extension }
-
+    cms.twig.html_title_extension:
+        class: SmartCore\Bundle\CMSBundle\Twig\HtmlTitleExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }
     cms.twig.engine_path_extension:
         class: SmartCore\Bundle\CMSBundle\Twig\CmsModulePathExtension
         arguments: [ @service_container ]
         tags:
             - { name: twig.extension }
-
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:

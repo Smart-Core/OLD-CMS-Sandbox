@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace SmartCore\Module\Breadcrumbs;
+namespace SmartCore\Bundle\CMSBundle\Tools;
 
 class Breadcrumbs implements \Iterator, \Countable
 {
@@ -19,27 +19,27 @@ class Breadcrumbs implements \Iterator, \Countable
         //parent::__construct(['action' => 'defaultRender']);
     }
 
-    public function rewind() 
+    public function rewind()
     {
         $this->_position = 0;
     }
 
-    public function current() 
+    public function current()
     {
         return $this->_breadcrumbs[$this->_position];
     }
 
-    public function key() 
+    public function key()
     {
         return $this->_position;
     }
 
-    public function next() 
+    public function next()
     {
         ++$this->_position;
     }
 
-    public function valid() 
+    public function valid()
     {
         return isset($this->_breadcrumbs[$this->_position]);
     }
@@ -59,7 +59,7 @@ class Breadcrumbs implements \Iterator, \Countable
 
     /**
      * Добавление хлебной крошки.
-     * 
+     *
      * @param string $uri
      * @param string $title
      * @param string $descr
@@ -75,13 +75,13 @@ class Breadcrumbs implements \Iterator, \Countable
 
     /**
      * Получиить хлебные крошки.
-     * 
+     *
      * @return array
      */
     public function get($num = false)
     {
-        // @todo если $num отрицательный, то вернуть указанный номер с конца, напроимер -1 это последний, а -2 предпослений и т.д...
-        
+        // @todo если $num отрицательный, то вернуть указанный номер с конца, например -1 это последний, а -2 предпослений и т.д...
+
         $data = [];
         $current_uri = '';
         foreach ($this->_breadcrumbs as $key => $value) {

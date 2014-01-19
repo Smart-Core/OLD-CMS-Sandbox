@@ -1,5 +1,7 @@
 {% extends '@Html/base.html.twig' %}
 
+{% block html_head_title %}{{ cms_html_title({'delimiter': '&ndash;', 'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)', 'site_short_name': 'Smart Core CMS',}) }}{% endblock html_head_title %}
+
 {% block html_head_styles %}
     {{ parent() }}
     {#<style media="all" type="text/css"> @import url({{ asset('theme/css/screen.css')}}); </style>#}

@@ -14,9 +14,7 @@ class NewsController extends Controller
 
     public function indexAction($page_num = 1)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
-
-        $this->View->news = $em->getRepository('NewsModule:News')->findAll();
+        $this->View->news = $this->getDoctrine()->getRepository('NewsModule:News')->findAll();
 
         $response = new Response($this->View);
         // @todo EIP.
@@ -29,15 +27,16 @@ class NewsController extends Controller
      */
     public function itemAction($slug)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $item = $this->getDoctrine()->getRepository('NewsModule:News')->findOneBy(['slug' => $slug]);
 
-        // @todo breadcrumps
-        $this->View->setTemplateName('item');
-        $this->View->item = $em->getRepository('NewsModule:News')->findOneBy(['slug' => $slug]);
-
-        if (empty($this->View->item)) {
+        if (empty($item)) {
             throw $this->createNotFoundException();
         }
+
+        $this->get('cms.breadcrumbs')->add($item->getSlug(), $item->getTitle());
+
+        $this->View->setTemplateName('item');
+        $this->View->set('item', $item);
 
         $response = new Response($this->View);
         // @todo EIP.

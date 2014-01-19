@@ -38,6 +38,6 @@ class BlockExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'smart_core_twig_extension';
+        return 'smart_core_block_twig_extension';
     }
 }
