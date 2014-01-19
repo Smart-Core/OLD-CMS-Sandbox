@@ -4,6 +4,10 @@ cms_hello:
     defaults:
         _controller: CMSBundle:Hello:index
 
+cms_admin_module_routes:
+    resource: .
+    type: module_admin
+
 cms_admin:
     resource: "routing_admin.yml"
     prefix: /admin/

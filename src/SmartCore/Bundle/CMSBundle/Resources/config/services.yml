@@ -63,6 +63,14 @@ services:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineRouter
         calls:
             - [ setContainer, [ @service_container ] ]
+    cms.routes.module_admin.loader:
+        class: SmartCore\Bundle\CMSBundle\Router\ModuleAdminRoutesLoader
+        arguments: [ @database_connection, @cms.context ]
+        calls:
+            - [ setContainer, [ @service_container ] ]
+            - [ setResolver,  [ @routing.resolver ] ]
+        tags:
+            - { name: routing.loader }
     cms.toolbar:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineToolbar
         calls:

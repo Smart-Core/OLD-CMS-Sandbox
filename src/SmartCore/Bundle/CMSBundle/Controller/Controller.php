@@ -34,9 +34,4 @@ abstract class Controller extends BaseController
             'engine'   => 'twig',
         ]);
     }
-
-    public function generateModuleAdminUrl($route, $parameters = array(), $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
-    {
-        return $this->container->get('cms.router')->generateModuleAdminUrl($route, $parameters, $referenceType);
-    }
 }

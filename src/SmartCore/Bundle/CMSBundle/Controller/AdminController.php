@@ -221,10 +221,8 @@ class AdminController extends Controller
     }
 
     /**
-     * @todo !!!
-     *
      * @param int $id
-     * @param string $slug
+     * @param string|null $slug
      * @return Response
      */
     public function nodeAction($id, $slug = null)
@@ -346,45 +344,6 @@ class AdminController extends Controller
         return $this->render('CMSBundle:Admin:module.html.twig', [
             'modules' => $this->get('cms.module')->all(),
         ]);
-    }
-
-    /**
-     * Управление модулем.
-     *
-     * @param Request $request
-     * @param string $module
-     * @param string $slug
-     */
-    public function moduleManageAction(Request $request, $module = null, $slug = null)
-    {
-        if (empty($module)) {
-            return $this->moduleAction();
-        }
-
-        // Удаление _node_id из форм.
-        if ($request->isMethod('POST')) {
-            $data = $request->request->all();
-            foreach ($data as $key => $value) {
-                if ($key == '_node_id') {
-                    unset($data['_node_id']);
-                    break;
-                }
-
-                if (is_array($value) and array_key_exists('_node_id', $value)) {
-                    unset($data[$key]['_node_id']);
-                    break;
-                }
-            }
-            foreach ($data as $key => $value) {
-                $request->request->set($key, $value);
-            }
-        }
-
-        // Здесь не подходит метод $this->forward() т.к.
-        $controller = $this->get('cms.router')->matchModuleAdmin($module, '/' . $slug);
-        $subRequest = $this->container->get('request')->duplicate([], null, $controller);
-
-        return $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
     }
 
     /**

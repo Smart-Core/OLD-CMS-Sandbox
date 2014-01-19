@@ -2,7 +2,6 @@
 
 {% block html_head_title %}Текстер / {{ parent() }}{% endblock html_head_title %}
 
-
 {% block content %}
     <div class="tab-content">
         <div class="tab-pane active" id="all">
@@ -14,8 +13,8 @@
                 <tbody>
                 {% for item in items %}
                     <tr>
-                        <td><a href="{{ path_admin('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.id }}</a></td>
-                        <td><a href="{{ path_admin('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.announce }}</a></td>
+                        <td><a href="{{ path('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.id }}</a></td>
+                        <td><a href="{{ path('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.announce }}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -28,7 +27,7 @@
 <div class="well well-small">
     {% form_theme form_create 'MopaBootstrapBundle:Form:fields.html.twig' %}
 
-    <form action="{{ path_admin('smart_texter_admin') }}" {{ form_enctype(form_create) }} method="post" class="form-horizontal">
+    <form action="{{ path('smart_texter_admin') }}" {{ form_enctype(form_create) }} method="post" class="form-horizontal">
         {{ form_widget(form_create) }}
         <div class="control-group">
             <div class="controls">

@@ -20,8 +20,6 @@ class CmsModulePathExtension extends \Twig_Extension
     {
         return [
             'cms_module_path' => new \Twig_Function_Method($this, 'render'),
-            'cms_module_admin_path' => new \Twig_Function_Method($this, 'generateModuleAdminUrl'),
-            'path_admin' => new \Twig_Function_Method($this, 'generateModuleAdminUrl'),
         ];
     }
 
@@ -46,11 +44,6 @@ class CmsModulePathExtension extends \Twig_Extension
         return "<h6>@todo $route</h6>";
     }
 
-    public function generateModuleAdminUrl($route, $parameters = [])
-    {
-        return $this->container->get('cms.router')->generateModuleAdminUrl($route, $parameters);
-    }
-    
     public function getName()
     {
         return 'smart_core_twig_extension';

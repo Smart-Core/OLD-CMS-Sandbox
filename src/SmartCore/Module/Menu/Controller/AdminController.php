@@ -28,7 +28,7 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('notice', 'Группа меню создана.'); // @todo translate
-                    return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin_group', ['group_id' => $group->getId()]));
+                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group->getId()]));
                 }
             }
         }
@@ -63,7 +63,7 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('notice', 'Пункт меню обновлён.'); // @todo translate
-                    return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
+                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
                 }
             } else if ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
@@ -71,7 +71,7 @@ class AdminController extends Controller
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('notice', 'Пункт меню удалён.');
-                return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
+                return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
             }
         }
 
@@ -95,7 +95,7 @@ class AdminController extends Controller
         $group = $em->find('MenuModule:Group', $group_id);
 
         if (empty($group)) {
-            return $this->redirect($this->generateUrl('cms_admin_module_manage', ['module' => 'Menu']));
+            return $this->redirect($this->generateUrl('smart_menu_admin'));
         }
 
         $form = $this->createForm(new GroupFormType(), $group);
@@ -108,7 +108,7 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('notice', 'Группа меню обновлена.'); // @todo translate
-                    return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin_group', ['group_id' => $group_id]));
+                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group_id]));
                 }
             } else if ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
@@ -116,8 +116,7 @@ class AdminController extends Controller
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('notice', 'Группа меню удалеа.');
-
-                return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin'));
+                return $this->redirect($this->generateUrl('smart_menu_admin'));
             }
         }
 
@@ -141,7 +140,7 @@ class AdminController extends Controller
         $group = $em->find('MenuModule:Group', $group_id);
 
         if (empty($group)) {
-            return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin'));
+            return $this->redirect($this->generateUrl('smart_menu_admin'));
         }
 
         $form = $this->createForm(new ItemFormType(), new Item());
@@ -160,7 +159,7 @@ class AdminController extends Controller
 
                     $this->get('session')->getFlashBag()->add('notice', 'Пункт меню создан.'); // @todo translate
 
-                    return $this->redirect($this->generateModuleAdminUrl('smart_menu_admin_group', ['group_id' => $group_id]));
+                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group_id]));
                 }
             }
         }
