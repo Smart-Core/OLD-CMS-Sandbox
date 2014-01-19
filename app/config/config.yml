@@ -151,3 +151,12 @@ fos_user:
             from_email:
                 address: %registration_email_confirmation%
                 sender_name: Email confirmation
+
+tagcache:
+    driver:                     File
+    debug:                      %kernel.debug%
+    namespace:                  'smart_core'
+    options:
+        hashkey:                true
+        enable_largeobject:     true
+        cache_dir:              "%kernel.cache_dir%/smart_core_tagged"

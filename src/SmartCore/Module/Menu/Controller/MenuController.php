@@ -10,10 +10,12 @@ class MenuController extends Controller
     {
         $current_folder_path = $this->get('cms.context')->getCurrentFolderPath();
 
-        $cache_key = md5($current_folder_path . md5(serialize($this->node->getId())));
+        $cache_key = md5('smart_module_menu' . $current_folder_path . $this->node->getId());
 
-        if (null == $this->View->menu = $this->getCache($cache_key)) { // @todo инвалидацию кеша.
-        //if (true) {
+        /** @var \RickySu\Tagcache\Adapter\TagcacheAdapter $tagcache */
+        $tagcache = $this->get('tagcache');
+
+        if (false == $this->View->menu = $tagcache->get($cache_key)) {
             // Хак для Menu\RequestVoter
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
             $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
@@ -25,7 +27,7 @@ class MenuController extends Controller
                 'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
             ]);
 
-            $this->setCache($cache_key, $this->View->menu);
+            $tagcache->set($cache_key, $this->View->menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
 
             $this->get('request')->attributes->remove('__selected_inheritance');
             $this->get('request')->attributes->remove('__current_folder_path');

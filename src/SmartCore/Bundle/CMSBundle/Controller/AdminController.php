@@ -201,6 +201,7 @@ class AdminController extends Controller
                 if ($form->isValid()) {
                     $engineFolder->update($form->getData());
 
+                    $this->get('tagcache')->deleteTag('folder');
                     $this->get('session')->getFlashBag()->add('notice', 'Папка обновлена.');
 
                     if (isset($_GET['redirect_to'])) {

@@ -44,6 +44,7 @@ class AppKernel extends Kernel
             new \Liip\ThemeBundle\LiipThemeBundle(),
             new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+            new \RickySu\TagcacheBundle\TagcacheBundle(),
             new \SmartCore\Bundle\CMSBundle\CMSBundle(),
             new \SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
             new \SmartCore\Bundle\HtmlBundle\HtmlBundle(),

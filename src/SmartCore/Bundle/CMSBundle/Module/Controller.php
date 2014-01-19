@@ -108,6 +108,8 @@ abstract class Controller extends BaseController
      * Получение данных из кеша.
      *
      * @return string
+     *
+     * @todo переделать на tagcache
      */
     protected function getCache($key, $default = null)
     {
@@ -127,6 +129,8 @@ abstract class Controller extends BaseController
      * Поместить данные в кеш.
      *
      * @return string
+     *
+     * @todo переделать на tagcache
      */
     protected function setCache($key, $value)
     {

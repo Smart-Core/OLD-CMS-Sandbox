@@ -18,18 +18,16 @@ class AdminController extends Controller
 
         $form = $this->createForm(new GroupFormType());
 
-        if ($request->isMethod('POST')) {
-            if ($request->request->has('create')) {
-                $form->submit($request);
-                if ($form->isValid()) {
-                    $group = $form->getData();
-                    $group->setCreateByUserId($this->getUser()->getId());
-                    $em->persist($group);
-                    $em->flush();
+        if ($request->isMethod('POST') and $request->request->has('create')) {
+            $form->submit($request);
+            if ($form->isValid()) {
+                $group = $form->getData();
+                $group->setCreateByUserId($this->getUser()->getId());
+                $em->persist($group);
+                $em->flush();
 
-                    $this->get('session')->getFlashBag()->add('notice', 'Группа меню создана.'); // @todo translate
-                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group->getId()]));
-                }
+                $this->get('session')->getFlashBag()->add('notice', 'Группа меню создана.'); // @todo translate
+                return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group->getId()]));
             }
         }
 
@@ -62,6 +60,7 @@ class AdminController extends Controller
                     $em->persist($form->getData());
                     $em->flush();
 
+                    $this->get('tagcache')->deleteTag('module_menu');
                     $this->get('session')->getFlashBag()->add('notice', 'Пункт меню обновлён.'); // @todo translate
                     return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
                 }
@@ -70,6 +69,7 @@ class AdminController extends Controller
                 $em->remove($form->getData());
                 $em->flush();
 
+                $this->get('tagcache')->deleteTag('smart_module_menu');
                 $this->get('session')->getFlashBag()->add('notice', 'Пункт меню удалён.');
                 return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
             }

@@ -14,9 +14,16 @@ class TexterController extends Controller
      */
     public function indexAction($item_id = null)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $cache_key = md5('smart_module_texter' . $this->text_item_id);
 
-        $item = $em->find('TexterModule:Item', $item_id ? $item_id : $this->text_item_id);
+        /** @var \RickySu\Tagcache\Adapter\TagcacheAdapter $tagcache */
+        $tagcache = $this->get('tagcache');
+
+        if (false == $item = $tagcache->get($cache_key)) {
+            $item = $this->getDoctrine()->getManager()->find('TexterModule:Item', $item_id ? $item_id : $this->text_item_id);
+
+            $tagcache->set($cache_key, $item, ['smart_module_texter', 'node_'.$this->node->getId()]);
+        }
 
         $this->View
             ->setEngine('echo')

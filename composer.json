@@ -33,6 +33,7 @@
         "liip/theme-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "2.3.x-dev",
         "raulfraile/ladybug-bundle": "v0.7",
+        "rickysu/tagcache-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
         "smart-core/session-bundle": "dev-master",
         "stfalcon/tinymce-bundle": "v0.2.1",
