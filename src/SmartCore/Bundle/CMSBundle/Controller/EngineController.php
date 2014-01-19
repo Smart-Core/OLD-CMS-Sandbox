@@ -199,7 +199,7 @@ class EngineController extends Controller
                 break;
             }
 
-            if (array_key_exists('_node_id', $value)) {
+            if (is_array($value) and array_key_exists('_node_id', $value)) {
                 $node_id = $data[$key]['_node_id'];
                 unset($data[$key]['_node_id']);
                 break;
