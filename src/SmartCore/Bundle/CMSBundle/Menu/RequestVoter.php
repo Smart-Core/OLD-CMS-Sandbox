@@ -27,7 +27,9 @@ class RequestVoter implements VoterInterface
      */
     public function matchItem(ItemInterface $item)
     {
-        if ($item->getUri() === $this->request->getRequestUri()) {
+        if ($item->getUri() === $this->request->getRequestUri() or
+            $item->getUri() === $this->request->attributes->get('__current_folder_path', false)
+        ) {
             // URL's completely match
             return true;
         } else if(

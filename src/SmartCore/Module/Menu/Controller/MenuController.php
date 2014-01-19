@@ -8,25 +8,27 @@ class MenuController extends Controller
 {
     public function indexAction()
     {
-        $cache_key = md5($this->get('request')->getRequestUri() . md5(serialize($this->node)));
+        $current_folder_path = $this->get('cms.context')->getCurrentFolderPath();
 
-        //if (null == $this->View->menu = $this->getCache($cache_key)) { // @todo инвалидацию кеша.
-        if (true) {
-            $em = $this->get('doctrine.orm.default_entity_manager');
+        $cache_key = md5($current_folder_path . md5(serialize($this->node->getId())));
 
+        if (null == $this->View->menu = $this->getCache($cache_key)) { // @todo инвалидацию кеша.
+        //if (true) {
             // Хак для Menu\RequestVoter
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
+            $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
 
             $this->View->menu = $this->renderView('MenuModule::menu.html.twig', [
-                'group' => $em->find('MenuModule:Group', $this->group_id),
-                'css_class' => $this->css_class,
+                'css_class'     => $this->css_class,
                 'current_class' => '',
-                'depth' => $this->depth,
+                'depth'         => $this->depth,
+                'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
             ]);
 
             $this->setCache($cache_key, $this->View->menu);
 
-            $this->get('request')->attributes->set('__selected_inheritance', false);
+            $this->get('request')->attributes->remove('__selected_inheritance');
+            $this->get('request')->attributes->remove('__current_folder_path');
         }
 
         $response = new Response($this->View);
