@@ -15,7 +15,7 @@ smart_module_useraccount.change-password:
         _controller: UserAccountModule:UserAccount:changePassword
 
 smart_module_useraccount.resetting:
-    path: /resetting
+    path: /resetting/
     defaults:
         _controller: UserAccountModule:UserAccount:resettingRequest
 
