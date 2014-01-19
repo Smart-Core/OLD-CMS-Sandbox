@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Дек 24 2013 г., 04:20
+-- Время создания: Янв 19 2014 г., 22:26
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.4.14
 
@@ -115,11 +115,11 @@ INSERT INTO `aaa_engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`,
 (1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:5:{s:8:"keywords";s:14:"123 ффыв 3";s:11:"description";s:0:"";s:6:"robots";s:3:"all";s:8:"language";s:5:"ru-RU";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38'),
 (2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'N;', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33'),
 (3, 1, 'Аккаунт пользователя', 0, 0, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06'),
-(4, 3, 'Регистрация', 0, 0, 'register', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27'),
+(4, 3, 'Регистрация', 0, 0, 'register', 1, 0, NULL, 'N;', NULL, 8, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27'),
 (5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50'),
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22'),
 (7, 1, '22222222222222', 0, 0, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06'),
-(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42');
+(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42');
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";s:1:"1";}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0),
 (4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";s:1:"1";}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', NULL),
 (5, 1, 3, 1, 'Menu', 'a:4:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1),
-(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:7:"&raquo;";s:17:"hide_if_only_home";b:1;}', 0, 0, NULL, 1, '2013-03-11 16:42:33', 0),
+(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, 0, NULL, 1, '2013-03-11 16:42:33', 0),
 (7, 3, 1, 1, 'UserAccount', 'a:0:{}', 0, 0, NULL, 1, '2013-03-11 16:42:33', 0),
 (8, 4, 1, 1, 'UserRegistration', 'a:0:{}', 0, 0, NULL, 1, '2013-03-11 16:42:33', NULL),
 (9, 3, 3, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:6;}', 0, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', NULL),
@@ -198,16 +198,16 @@ CREATE TABLE IF NOT EXISTS `aaa_fos_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `aaa_fos_user`
 --
 
 INSERT INTO `aaa_fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebookId`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2013-12-24 01:42:30', 0, 0, NULL, '34wbhmcffz28w08g4sg44gww4kow4gg8ggwogo4c88sgokwkck', '2012-06-27 21:34:48', 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
-(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2012-11-27 22:27:01', 0, 0, NULL, '2d8juw95z1gkgwc4wgw4ccsosk8k0cogsocog0g4o4wkggc8ks', NULL, 'a:0:{}', 0, NULL, '', '', ''),
-(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 0, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', NULL, 0, 0, NULL, '5vavjduimask4s0w4sw088c4cwwgkc84skg8k4884g8s4kco4g', NULL, 'a:0:{}', 0, NULL, '', '', '');
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-19 21:19:57', 0, 0, NULL, '34wbhmcffz28w08g4sg44gww4kow4gg8ggwogo4c88sgokwkck', '2012-06-27 21:34:48', 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
+(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', ''),
+(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `aaa_menu_groups` (
 --
 
 INSERT INTO `aaa_menu_groups` (`group_id`, `position`, `name`, `descr`, `create_by_user_id`, `created`, `updated`) VALUES
-(1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', '2013-05-06 14:20:15');
+(1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', '2014-01-19 15:29:08');
 
 -- --------------------------------------------------------
 
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `aaa_menu_items` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `aaa_menu_items`
@@ -272,7 +272,7 @@ INSERT INTO `aaa_menu_items` (`item_id`, `group_id`, `folder_id`, `is_active`, `
 (4, 1, 4, 0, 0, NULL, 'Новых пользователей', NULL, 1, '2013-05-06 07:49:59', '2013-05-06 11:14:07', 5),
 (5, 1, 6, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 08:45:04', NULL, 2),
 (6, 1, 5, 1, 5, NULL, NULL, NULL, 1, '2013-05-06 09:38:51', '2013-12-22 08:49:00', NULL),
-(7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2013-12-18 15:50:54', NULL),
+(7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2014-01-19 15:29:17', NULL),
 (8, 1, 8, 1, 22, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2013-12-22 21:46:15', NULL);
 
 -- --------------------------------------------------------
@@ -377,11 +377,11 @@ INSERT INTO `aaa_text_items` (`item_id`, `language`, `text`, `meta`, `datetime`,
 (1, 'ru', 'Футер 2', 'a:0:{}', '2012-08-27 03:16:57', 1),
 (2, 'ru', '<h1>Главная страница!</h1>\r\n<p>С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма, концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.</p>\r\n<img src="/uploads/Advanced%20C%20Asana.jpg" alt="" width="891" height="666" />', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1),
 (3, 'ru', '<h2>Пример страницы с 2-мя колонками</h2>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>', 'a:1:{s:8:"keywords";s:3:"sdf";}', '2012-08-27 03:51:05', 1),
-(4, 'ru', '<p><img src="/uploads/images/bscap0001.jpg" alt="" width="300" height="124" /><br />Сервисная стратегия деятельно искажает продвигаемый медиаплан, опираясь на опыт западных коллег. Внутрифирменная реклама, согласно Ф.Котлеру, откровенно цинична. Торговая марка исключительно уравновешивает презентационный материал, полагаясь на инсайдерскую информацию. Наряду с этим, узнавание бренда вполне выполнимо. Организация слубы маркетинга, согласно Ф.Котлеру, усиливает фактор коммуникации, осознавая социальную ответственность бизнеса. Экспертиза выполненного проекта восстанавливает потребительский презентационный материал, полагаясь на инсайдерскую информацию. 234234</p>', 'a:0:{}', '2012-08-27 03:51:27', 1),
+(4, 'ru', '<p><img src="/uploads/images/bscap0001.jpg" alt="" width="300" height="124" /><br />Сервисная стратегия деятельно искажает продвигаемый медиаплан, опираясь на опыт западных коллег. Внутрифирменная реклама, согласно Ф.Котлеру, откровенно цинична. Торговая марка исключительно уравновешивает презентационный материал, полагаясь на инсайдерскую информацию. Наряду с этим, узнавание бренда вполне выполнимо. Организация слубы маркетинга, согласно Ф.Котлеру, усиливает фактор коммуникации, осознавая социальную ответственность бизнеса. Экспертиза выполненного проекта восстанавливает потребительский презентационный материал, полагаясь на инсайдерскую информацию.</p>', 'a:0:{}', '2012-08-27 03:51:27', 1),
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1),
 (6, 'ru', 'Under menu 2.', 'a:0:{}', '2013-03-25 21:53:12', 1),
 (7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g', 'a:0:{}', '2013-08-10 11:14:55', 1),
-(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;) <br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1);
+(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;)&nbsp; 1<br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1);
 
 -- --------------------------------------------------------
 
