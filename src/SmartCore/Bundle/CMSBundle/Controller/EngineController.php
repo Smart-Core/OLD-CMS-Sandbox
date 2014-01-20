@@ -48,12 +48,7 @@ class EngineController extends Controller
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
-        // Кеширование построения списка нод.
-        $cache_key = md5('cms_node_list' . serialize($router_data));
-        if (false == $nodes_list = $tagcache->get($cache_key)) {
-            $nodes_list = $this->get('cms.node')->buildList($router_data);
-            $tagcache->set($cache_key, $nodes_list, ['folder', 'node']);
-        }
+        $nodes_list = $this->get('cms.node')->buildList($router_data);
 
         $this->View
             ->setOptions([

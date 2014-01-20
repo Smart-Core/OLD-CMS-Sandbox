@@ -54,13 +54,14 @@ services:
             - @kernel
             - @cms.context
             - "%database_table_prefix%"
+            - @tagcache
     cms.theme:
         class: SmartCore\Bundle\CMSBundle\Engine\Theme
         calls:
             - [ setContainer, [ @service_container ] ]
     cms.jslib:
         class: SmartCore\Bundle\CMSBundle\Engine\JavaScriptLibrary
-        arguments: [ @database_connection, @cms.context ]
+        arguments: [ @database_connection, @cms.context, @tagcache ]
     cms.router:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineRouter
         calls:

@@ -68,6 +68,11 @@ class EngineNode
     protected $is_just_created = false;
 
     /**
+     * @var \RickySu\Tagcache\Adapter\TagcacheAdapter
+     */
+    protected $tagcache;
+
+    /**
      * @param EntityManager $em
      * @param FormFactoryInterface $form_factory
      * @param KernelInterface $kernel
@@ -79,7 +84,8 @@ class EngineNode
         FormFactoryInterface $form_factory,
         KernelInterface $kernel,
         EngineContext $engineContext,
-        $database_table_prefix = ''
+        $database_table_prefix = '',
+        $tagcache
     ) {
         $this->context      = $engineContext;
         $this->em           = $em;
@@ -88,6 +94,7 @@ class EngineNode
         $this->repository   = $em->getRepository('CMSBundle:Node');
         $this->db           = $em->getConnection();
         $this->db_prefix    = $database_table_prefix;
+        $this->tagcache     = $tagcache;
     }
 
     /**
@@ -184,6 +191,14 @@ class EngineNode
     public function buildList(array $router_data)
     {
         if (!empty($this->nodes_list)) {
+            return $this->nodes_list;
+        }
+
+        // Кеширование построения списка нод.
+        $cache_key = md5('cms_node_list' . serialize($router_data));
+        if (false == $this->nodes_list = $this->tagcache->get($cache_key)) {
+            $this->nodes_list = [];
+        } else {
             return $this->nodes_list;
         }
 
@@ -369,6 +384,8 @@ class EngineNode
         }
 
         \Profiler::end('buildNodesList');
+
+        $this->tagcache->set($cache_key, $this->nodes_list, ['folder', 'node']);
 
         return $this->nodes_list;
     }

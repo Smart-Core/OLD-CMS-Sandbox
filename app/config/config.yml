@@ -18,7 +18,7 @@ framework:
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     secret:          %secret%
     session:
-        handler_id: smart_core_session.handler
+        #handler_id: smart_core_session.handler
     templating:      { engines: ['twig', 'php'] } #assets_version: SomeVersionScheme
     translator:      { fallback: en }
 

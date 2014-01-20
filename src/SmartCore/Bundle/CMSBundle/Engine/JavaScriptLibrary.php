@@ -8,6 +8,11 @@ namespace SmartCore\Bundle\CMSBundle\Engine;
 class JavaScriptLibrary
 {
     /**
+     * @var EngineContext
+     */
+    protected $cmsContext;
+
+    /**
      * Список всех прописаных скриптов.
      *
      * @var array
@@ -30,31 +35,43 @@ class JavaScriptLibrary
      * @var \Doctrine\DBAL\Connection
      */
     protected $db;
+
+    /**
+     * @var \RickySu\Tagcache\Adapter\TagcacheAdapter
+     */
+    protected $tagcache;
     
     /**
      * Constructor.
      */
-    public function __construct(\Doctrine\DBAL\Connection $db, EngineContext $cmsContext)
+    public function __construct(\Doctrine\DBAL\Connection $db, EngineContext $cmsContext, $tagcache)
     {
+        $this->cmsContext   = $cmsContext;
         $this->globalAssets = $cmsContext->getGlobalAssets();
-        $this->db      = $db;
-        $this->scripts = [];
+        $this->db           = $db;
+        $this->tagcache     = $tagcache;
 
-        $sql = "SELECT script_id, name, related_by, current_version, files
+        $cache_key = md5('cms_jslib_all_scripts');
+        if (false == $this->scripts = $tagcache->get($cache_key)) {
+            $this->scripts = [];
+            $sql = "SELECT script_id, name, related_by, current_version, files
             FROM javascript_library
             ORDER BY pos DESC ";
-        $result = $this->db->query($sql);
-        while($row = $result->fetchObject()) {
-            $this->scripts[$row->name] = [
-                'script_id' => $row->script_id,
-                'related_by' => $row->related_by,
-                'current_version' => $row->current_version,
-                'files' => $row->files,
-                // не обязательные свойства.
-                //'title' => $row->title,
-                //'homepage' => $row->homepage,
-                //'descr' => $row->descr,
-            ];
+            $result = $this->db->query($sql);
+            while($row = $result->fetchObject()) {
+                $this->scripts[$row->name] = [
+                    'script_id' => $row->script_id,
+                    'related_by' => $row->related_by,
+                    'current_version' => $row->current_version,
+                    'files' => $row->files,
+                    // не обязательные свойства.
+                    //'title' => $row->title,
+                    //'homepage' => $row->homepage,
+                    //'descr' => $row->descr,
+                ];
+            }
+
+            $tagcache->set($cache_key, $this->scripts, ['cms_jslib']);
         }
     }
     
@@ -76,8 +93,13 @@ class JavaScriptLibrary
      */
     public function all()
     {
-        $output = [];
-        
+        $cache_key = md5('cms_jslib_called_libs' . serialize($this->called_libs) . $this->cmsContext->getBasePath());
+        if (false == $output = $this->tagcache->get($cache_key)) {
+            $output = [];
+        } else {
+            return $output;
+        }
+
         // Т.к. запрашивается в произвольном порядке - сначала надо сформировать массив с ключами в правильном порядке.
         foreach ($this->scripts as $key => $value) {
             $output[$key] = false;
@@ -133,7 +155,8 @@ class JavaScriptLibrary
                 unset($output[$key]);
             }
         }
-        
+
+        $this->tagcache->set($cache_key, $output, ['cms_jslib']);
         return $output;
     }
     
