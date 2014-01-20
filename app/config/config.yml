@@ -158,7 +158,7 @@ tagcache:
     namespace:                  'smart_core'
     options:
         hashkey:                true
-        enable_largeobject:     true
-        #cache_dir:              "%kernel.cache_dir%/smart_core_tagged"
+        enable_largeobject:     false
+        cache_dir:              "%kernel.cache_dir%/smart_core_tagged"
         servers:
             -    'localhost:11211:10'
