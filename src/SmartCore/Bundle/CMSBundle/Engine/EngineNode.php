@@ -194,13 +194,17 @@ class EngineNode
             return $this->nodes_list;
         }
 
-        // Кеширование построения списка нод.
+        $this->nodes_list = [];
+
+        // @todo Кеширование построения списка нод.
+        /*
         $cache_key = md5('cms_node_list' . serialize($router_data));
         if (false == $this->nodes_list = $this->tagcache->get($cache_key)) {
             $this->nodes_list = [];
         } else {
             return $this->nodes_list;
         }
+        */
 
         \Profiler::start('buildNodesList');
 
@@ -385,7 +389,7 @@ class EngineNode
 
         \Profiler::end('buildNodesList');
 
-        $this->tagcache->set($cache_key, $this->nodes_list, ['folder', 'node']);
+        //$this->tagcache->set($cache_key, $this->nodes_list, ['folder', 'node']);
 
         return $this->nodes_list;
     }
