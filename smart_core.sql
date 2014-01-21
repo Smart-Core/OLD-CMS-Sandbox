@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Янв 19 2014 г., 22:26
+-- Время создания: Янв 21 2014 г., 23:47
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.4.14
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_blocks` (
   PRIMARY KEY (`block_id`),
   UNIQUE KEY `name` (`name`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_blocks`
@@ -47,7 +47,8 @@ INSERT INTO `aaa_engine_blocks` (`block_id`, `position`, `name`, `descr`, `creat
 (2, 2, 'breadcrumbs', 'Хлебные крошки', 1, '2013-03-11 01:09:33'),
 (3, 1, 'main_menu', 'Навигационное меню', 1, '2013-03-11 04:00:50'),
 (4, 3, 'footer', 'Футер', 1, '2013-03-11 04:01:30'),
-(5, 5, 'right_column', 'Правая колонка', 1, '2013-03-23 23:46:01');
+(5, 5, 'right_column', 'Правая колонка', 1, '2013-03-23 23:46:01'),
+(6, 3, 'footer_right', 'Футер справа', 1, '2014-01-20 04:04:24');
 
 -- --------------------------------------------------------
 
@@ -71,7 +72,8 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_blocks_inherit` (
 INSERT INTO `aaa_engine_blocks_inherit` (`block_id`, `folder_id`) VALUES
 (2, 1),
 (3, 1),
-(4, 1);
+(4, 1),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_folders` (
   KEY `is_active` (`is_active`),
   KEY `is_deleted` (`is_deleted`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_folders`
@@ -114,12 +116,13 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_folders` (
 INSERT INTO `aaa_engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `descr`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template`, `create_by_user_id`, `create_datetime`) VALUES
 (1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:5:{s:8:"keywords";s:14:"123 ффыв 3";s:11:"description";s:0:"";s:6:"robots";s:3:"all";s:8:"language";s:5:"ru-RU";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38'),
 (2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'N;', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33'),
-(3, 1, 'Аккаунт пользователя', 0, 0, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06'),
+(3, 1, 'Аккаунт пользователя', 0, 999, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06'),
 (4, 3, 'Регистрация', 0, 0, 'register', 1, 0, NULL, 'N;', NULL, 8, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27'),
 (5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50'),
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22'),
-(7, 1, '22222222222222', 0, 0, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06'),
-(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42');
+(7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06'),
+(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42'),
+(9, 1, 'Обратная связь', 0, 0, 'feedback', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-21 13:35:11');
 
 -- --------------------------------------------------------
 
@@ -147,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_nodes`
@@ -165,7 +168,30 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (9, 3, 3, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:6;}', 0, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', NULL),
 (10, 7, 1, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:7;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0),
 (11, 5, 1, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:8;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0),
-(12, 8, 1, 1, 'News', 'a:0:{}', 0, 0, NULL, 1, '2013-12-22 21:58:57', 0);
+(12, 8, 1, 1, 'News', 'a:0:{}', 0, 0, NULL, 1, '2013-12-22 21:58:57', 0),
+(13, 1, 6, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:9;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0),
+(14, 9, 1, 1, 'Feedback', 'a:0:{}', 0, 0, NULL, 1, '2014-01-21 19:32:26', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_feedbacks`
+--
+
+DROP TABLE IF EXISTS `aaa_feedbacks`;
+CREATE TABLE IF NOT EXISTS `aaa_feedbacks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_feedbacks`
+--
+
 
 -- --------------------------------------------------------
 
@@ -198,14 +224,14 @@ CREATE TABLE IF NOT EXISTS `aaa_fos_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `aaa_fos_user`
 --
 
 INSERT INTO `aaa_fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebookId`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-19 21:19:57', 0, 0, NULL, '34wbhmcffz28w08g4sg44gww4kow4gg8ggwogo4c88sgokwkck', '2012-06-27 21:34:48', 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
+(1, 'root', 'root', 'artem2@mail.ru', 'artem2@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-21 22:35:22', 0, 0, NULL, '34wbhmcffz28w08g4sg44gww4kow4gg8ggwogo4c88sgokwkck', '2014-01-21 18:30:59', 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', ''),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '');
 
@@ -259,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `aaa_menu_items` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `aaa_menu_items`
@@ -267,13 +293,13 @@ CREATE TABLE IF NOT EXISTS `aaa_menu_items` (
 
 INSERT INTO `aaa_menu_items` (`item_id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `descr`, `url`, `create_by_user_id`, `created`, `updated`, `pid`) VALUES
 (1, 1, 1, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 05:25:48', '2013-05-06 11:13:53', NULL),
-(2, 1, 2, 1, 10, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2013-12-22 08:48:50', NULL),
+(2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL),
 (3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL),
-(4, 1, 4, 0, 0, NULL, 'Новых пользователей', NULL, 1, '2013-05-06 07:49:59', '2013-05-06 11:14:07', 5),
 (5, 1, 6, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 08:45:04', NULL, 2),
-(6, 1, 5, 1, 5, NULL, NULL, NULL, 1, '2013-05-06 09:38:51', '2013-12-22 08:49:00', NULL),
-(7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2014-01-19 15:29:17', NULL),
-(8, 1, 8, 1, 22, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2013-12-22 21:46:15', NULL);
+(6, 1, 5, 1, 2, NULL, NULL, NULL, 1, '2013-05-06 09:38:51', '2014-01-21 15:52:24', NULL),
+(7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2014-01-20 06:36:00', NULL),
+(8, 1, 8, 1, 1, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2014-01-21 15:52:18', NULL),
+(9, 1, 9, 1, 4, NULL, NULL, NULL, 1, '2014-01-21 15:51:46', '2014-01-21 15:53:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -287,20 +313,21 @@ CREATE TABLE IF NOT EXISTS `aaa_news_items` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `annotation` longtext COLLATE utf8_unicode_ci,
-  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `text` longtext COLLATE utf8_unicode_ci,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_33961BA3989D9B62` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `aaa_news_items`
 --
 
 INSERT INTO `aaa_news_items` (`id`, `title`, `slug`, `annotation`, `text`, `created`, `updated`) VALUES
-(1, 'Первая', 'first', 'Анонс первой новости.', 'Тема: «Сублимированный рейтинг в XXI веке»\r\nВзаимодействие корпорации и клиента амбивалентно. Агентская комиссия специфицирует мониторинг активности, используя опыт предыдущих кампаний. Ассортиментная политика предприятия развивает стратегический маркетинг, используя опыт предыдущих кампаний. Более того, взаимодействие корпорации и клиента искажает бренд, расширяя долю рынка.', '2013-12-22 22:17:46', NULL),
-(2, 'Вторая', 'second', 'Анонс второй новости.', 'Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.', '2013-12-16 22:18:21', NULL);
+(1, 'Первая', 'first', 'Анонс первой новости.', 'Тема: &laquo;Сублимированный рейтинг в XXI веке&raquo; Взаимодействие корпорации и клиента амбивалентно. Агентская комиссия специфицирует мониторинг активности, используя опыт предыдущих кампаний. Ассортиментная политика предприятия развивает стратегический маркетинг, используя опыт предыдущих кампаний. Более того, взаимодействие корпорации и клиента искажает бренд, расширяя долю рынка.', '2013-12-22 22:17:46', NULL),
+(2, 'Вторая', 'second', 'Анонс второй новости.', 'Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.', '2013-12-16 22:18:21', NULL),
+(3, 'PHP: Hypertext Preprocessor', 'php', 'Server-side HTML embedded scripting language. It provides web developers with a full suite of tools for building dynamic websites: native APIs to Apache and ...', '<div class="blurb">\r\n<p>PHP is a popular general-purpose scripting language that is especially suited to web development.</p>\r\n<p>Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.<br /><br /><acronym title="PHP: Hypertext Preprocessor">PHP</acronym> (рекурсивный акроним словосочетания <em>PHP: Hypertext Preprocessor</em>) - это распространенный язык программирования общего назначения с открытым исходным кодом. PHP сконструирован специально для ведения Web-разработок и его код может внедряться непосредственно в HTML.</p>\r\n</div>', '2014-01-20 02:33:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -367,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `aaa_text_items` (
   `datetime` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `aaa_text_items`
@@ -381,7 +408,8 @@ INSERT INTO `aaa_text_items` (`item_id`, `language`, `text`, `meta`, `datetime`,
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1),
 (6, 'ru', 'Under menu 2.', 'a:0:{}', '2013-03-25 21:53:12', 1),
 (7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g', 'a:0:{}', '2013-08-10 11:14:55', 1),
-(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;)&nbsp; 1<br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1);
+(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;)&nbsp; 1<br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1),
+(9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>', 'a:0:{}', '2014-01-20 03:47:18', 1);
 
 -- --------------------------------------------------------
 
