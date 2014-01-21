@@ -153,12 +153,12 @@ fos_user:
                 sender_name: Email confirmation
 
 tagcache:
-    driver:                     Memcache # File
+    driver:                     %tagcache_driver% # Memcache, Memcached, File, Sqlite, Apc, Nullcache
     debug:                      %kernel.debug%
     namespace:                  'smart_core'
     options:
         hashkey:                true
         enable_largeobject:     false
-        cache_dir:              "%kernel.cache_dir%/smart_core_tagged"
+        cache_dir:              "%kernel.cache_dir%/smart_core_tagcache"
         servers:
             -    'localhost:11211:10'

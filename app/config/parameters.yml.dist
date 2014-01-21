@@ -24,6 +24,8 @@ parameters:
 
     locale: ru
 
+    tagcache_driver: File # Memcache, Memcached, File, Sqlite, Apc, Nullcache
+
     registration_email_confirmation: registration-email-confirmation@localhost.org
 
     secret: SmartCoreThisTokenIsNotSoSecretChangeIt
