@@ -24,11 +24,7 @@
             {% block breadcrumbs block.breadcrumbs %}
         </div>
 
-        {% for flashMessage in app.session.flashbag.all() %}
-            <div class="row-fluid">
-                <div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ flashMessage[0] }}</div>
-            </div>
-        {% endfor %}
+        {% include '@CMS/flash_messages.thml.twig' %}
 
         <div id="content">
             {% block content block.content %}
@@ -42,7 +38,6 @@
     </div>
     <div class="span3" style="text-align: right">
         {% block footer_right block.footer_right %}
-        {#Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>#}
     </div>
 
     <div class="span11 text-center">

@@ -14,6 +14,6 @@ abstract class Controller extends BaseController
 
     protected function init()
     {
-        $this->View->setEngine('echo');
+        $this->view->setEngine('echo');
     }
 }

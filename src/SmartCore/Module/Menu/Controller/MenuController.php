@@ -12,28 +12,27 @@ class MenuController extends Controller
 
         $cache_key = md5('smart_module_menu' . $current_folder_path . $this->node->getId());
 
-        /** @var \RickySu\Tagcache\Adapter\TagcacheAdapter $tagcache */
-        $tagcache = $this->get('tagcache');
+        $cache = $this->getCacheService();
 
-        if (false == $this->View->menu = $tagcache->get($cache_key)) {
+        if (false == $this->view->menu = $cache->get($cache_key)) {
             // Хак для Menu\RequestVoter
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
             $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
 
-            $this->View->menu = $this->renderView('MenuModule::menu.html.twig', [
+            $this->view->menu = $this->renderView('MenuModule::menu.html.twig', [
                 'css_class'     => $this->css_class,
                 'current_class' => '',
                 'depth'         => $this->depth,
                 'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
             ]);
 
-            $tagcache->set($cache_key, $this->View->menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
+            $cache->set($cache_key, $this->view->menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
 
             $this->get('request')->attributes->remove('__selected_inheritance');
             $this->get('request')->attributes->remove('__current_folder_path');
         }
 
-        $response = new Response($this->View);
+        $response = new Response($this->view);
 
         if ($this->isEip()) {
             $this->setFrontControls($response);

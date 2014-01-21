@@ -10,12 +10,12 @@ class UserAccountController extends Controller
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $this->View->forward('FOSUserBundle:Profile:show');
+            $this->view->forward('FOSUserBundle:Profile:show');
         } else {
-            $this->View->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
+            $this->view->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
         }
 
-        return new Response($this->View);
+        return new Response($this->view);
     }
     
     public function editAction()
@@ -23,50 +23,50 @@ class UserAccountController extends Controller
         $this->get('cms.breadcrumbs')->add('edit', 'Редактирование');
 
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $this->View->forward('FOSUserBundle:Profile:edit');
+            $this->view->forward('FOSUserBundle:Profile:edit');
         } else {
-            $this->View->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
+            $this->view->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
         }
 
-        return new Response($this->View);
+        return new Response($this->view);
     }
     
     public function changePasswordAction()
     {
         $this->get('cms.breadcrumbs')->add('change-password', 'Смена пароля');
 
-        $this->View->forward('FOSUserBundle:ChangePassword:changePassword');
+        $this->view->forward('FOSUserBundle:ChangePassword:changePassword');
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
     
     public function resettingRequestAction()
     {
         $this->get('cms.breadcrumbs')->add('resetting', 'Восстановление пароля');
 
-        $this->View->forward('FOSUserBundle:Resetting:request');
+        $this->view->forward('FOSUserBundle:Resetting:request');
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
     
     public function resettingSendEmailAction()
     {
-        $this->View->forward('FOSUserBundle:Resetting:sendEmail');
+        $this->view->forward('FOSUserBundle:Resetting:sendEmail');
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
     
     public function resettingCheckEmailAction()
     {
-        $this->View->forward('FOSUserBundle:Resetting:checkEmail');
+        $this->view->forward('FOSUserBundle:Resetting:checkEmail');
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
         
     public function resettingResetAction($params)
     {
-        $this->View->forward('FOSUserBundle:Resetting:reset', ['token' => $params['token']]);
+        $this->view->forward('FOSUserBundle:Resetting:reset', ['token' => $params['token']]);
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
 }

@@ -73,7 +73,7 @@ class AdminController extends Controller
             $form->submit($request);
             if ($form->isValid()) {
                 $engineBlock->update($form->getData());
-                $this->get('session')->getFlashBag()->add('notice', 'Блок создан.'); // @todo перевод
+                $this->get('session')->getFlashBag()->add('success', 'Блок создан.'); // @todo перевод
                 return $this->redirect($this->generateUrl('cms_admin_structure_block'));
             }
         }
@@ -108,12 +108,12 @@ class AdminController extends Controller
                 $form->submit($request);
                 if ($form->isValid()) {
                     $engineBlock->update($form->getData());
-                    $sessionFlashBag->add('notice', 'Блок обновлён.'); // @todo перевод
+                    $sessionFlashBag->add('success', 'Блок обновлён.'); // @todo перевод
                     return $this->redirect($this->generateUrl('cms_admin_structure_block'));
                 }
             } else if ($request->request->has('delete')) {
                 $engineBlock->remove($form->getData());
-                $sessionFlashBag->add('notice', 'Блок удалён.'); // @todo перевод
+                $sessionFlashBag->add('success', 'Блок удалён.'); // @todo перевод
                 return $this->redirect($this->generateUrl('cms_admin_structure_block'));
             }
         }
@@ -147,7 +147,7 @@ class AdminController extends Controller
                 if ($form->isValid()) {
                     $engineFolder->update($form->getData());
 
-                    $this->get('session')->getFlashBag()->add('notice', 'Папка создана.');
+                    $this->get('session')->getFlashBag()->add('success', 'Папка создана.');
 
                     if (isset($_GET['redirect_to'])) {
                         return $this->redirect($engineFolder->getUri($folder->getId()));
@@ -202,7 +202,7 @@ class AdminController extends Controller
                     $engineFolder->update($form->getData());
 
                     $this->get('tagcache')->deleteTag('folder');
-                    $this->get('session')->getFlashBag()->add('notice', 'Папка обновлена.');
+                    $this->get('session')->getFlashBag()->add('success', 'Папка обновлена.');
 
                     if (isset($_GET['redirect_to'])) {
                         return $this->redirect($engineFolder->getUri($folder->getId()));
@@ -272,7 +272,7 @@ class AdminController extends Controller
                         return $this->redirect($this->get('cms.folder')->getUri($created_node->getFolderId()));
                     }
 
-                    $this->get('session')->getFlashBag()->add('notice', 'Нода создана.');
+                    $this->get('session')->getFlashBag()->add('success', 'Нода создана.');
                     return $this->redirect($this->generateUrl('cms_admin_structure_node_properties', ['id' => $created_node->getId()]));
                 }
             } else if ($request->request->has('delete')) {
@@ -316,7 +316,7 @@ class AdminController extends Controller
                     $updated_node->setParams($form_properties->getData());
                     $engineNode->update($updated_node);
 
-                    $this->get('session')->getFlashBag()->add('notice', 'Нода обновлена.');
+                    $this->get('session')->getFlashBag()->add('success', 'Нода обновлена.');
 
                     if (isset($_GET['redirect_to'])) {
                         return $this->redirect($this->get('cms.folder')->getUri($updated_node->getFolderId()));

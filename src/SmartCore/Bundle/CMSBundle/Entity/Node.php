@@ -193,6 +193,22 @@ class Node implements \Serializable
     }
 
     /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->is_active;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDisabled()
+    {
+        return $this->is_active ? false : true;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -421,13 +437,18 @@ class Node implements \Serializable
     }
 
     /**
+     * @todo Продумать где подменять action у нод.
+     *
      * @return array
      */
-    public function getController()
+    public function getController($controllerName = null, $actionName = 'index')
     {
         if (empty($this->controller)) {
-            $this->controller['_controller'] = $this->module . 'Module:' . $this->module . ':index';
+            $className = (null === $controllerName) ? $this->module : $controllerName;
+            $this->controller['_controller'] = $this->module . 'Module:' . $className . ':' . $actionName;
         }
+
+        //ld($this->controller);
 
         return $this->controller;
     }

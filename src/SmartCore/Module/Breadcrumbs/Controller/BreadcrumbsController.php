@@ -24,7 +24,7 @@ class BreadcrumbsController extends Controller
      */
     protected function init()
     {
-        $this->View->setEngine('php');
+        $this->view->setEngine('php');
     }
 
     /**
@@ -32,10 +32,10 @@ class BreadcrumbsController extends Controller
      */
     public function indexAction()
     {
-        $this->View->delimiter = $this->delimiter;
-        $this->View->items = $this->get('cms.breadcrumbs');
-        $this->View->hide_if_only_home = $this->hide_if_only_home;
+        $this->view->delimiter = $this->delimiter;
+        $this->view->items = $this->get('cms.breadcrumbs');
+        $this->view->hide_if_only_home = $this->hide_if_only_home;
 
-        return new Response($this->View);
+        return new Response($this->view);
     }
 }

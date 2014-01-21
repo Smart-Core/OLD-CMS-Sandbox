@@ -11,9 +11,7 @@ class UserRegistrationController extends Controller
 {
     protected function init()
     {
-        $this->View->setOptions([
-            'engine' => 'echo',
-        ]);
+        $this->view->setEngine('echo');
     }
 
     public function indexAction(Request $request)
@@ -21,34 +19,34 @@ class UserRegistrationController extends Controller
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return new RedirectResponse($request->getBaseUrl() . '/user/');
         } else {
-            $this->View->forward('FOSUserBundle:Registration:register');
+            $this->view->forward('FOSUserBundle:Registration:register');
         }
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
 
     public function confirmedAction()
     {
-        $this->View->forward('FOSUserBundle:Registration:confirmed');
+        $this->view->forward('FOSUserBundle:Registration:confirmed');
 
-        return new Response($this->View);
+        return new Response($this->view);
     }
 
     public function checkEmailAction(Request $request)
     {
         if ($this->container->get('session')->has('fos_user_send_confirmation_email/email')) {
-            $this->View->forward('FOSUserBundle:Registration:checkEmail');
+            $this->view->forward('FOSUserBundle:Registration:checkEmail');
         } else {
             return new RedirectResponse($request->getBaseUrl() . '/user/');
         }
 
-        return new Response($this->View);
+        return new Response($this->view);
     }
 
     public function confirmAction($token)
     {
-        $this->View->forward('FOSUserBundle:Registration:confirm', ['token' => $token]);
+        $this->view->forward('FOSUserBundle:Registration:confirm', ['token' => $token]);
         
-        return new Response($this->View);
+        return new Response($this->view);
     }
 }

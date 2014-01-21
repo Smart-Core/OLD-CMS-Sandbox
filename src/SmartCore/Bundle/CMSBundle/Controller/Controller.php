@@ -4,14 +4,13 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use SmartCore\Bundle\CMSBundle\Engine\View;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 abstract class Controller extends BaseController
 {
     /**
      * @var View
      */
-    protected $View;
+    protected $view;
 
     /**
      * Constructor.
@@ -29,7 +28,7 @@ abstract class Controller extends BaseController
             $template = $reflector->getShortName();
         }
 
-        $this->View = new View([
+        $this->view = new View([
             'template' => strtolower($template),
             'engine'   => 'twig',
         ]);

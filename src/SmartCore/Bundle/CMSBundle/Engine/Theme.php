@@ -60,7 +60,7 @@ class Theme extends ContainerAware
         }
     }
 
-    public function processConfig(View $View)
+    public function processConfig(View $view)
     {
         // @todo продумать подключение ini-шников!!!
         $this->paths        = [
@@ -68,12 +68,12 @@ class Theme extends ContainerAware
             $this->container->get('kernel')->getRootDir() . '/Resources/views',
             $this->container->get('kernel')->getBundle('CMSBundle')->getPath() . '/Resources/views',
         ];
-        $this->template     = $View->getTemplateName();
-        $this->vendor_path  = $View->assets['vendor'];
-        $this->theme_path   = $View->assets['theme_path'];
-        $this->img_path     = $View->assets['theme_img_path'];
-        $this->css_path     = $View->assets['theme_css_path'];
-        $this->js_path      = $View->assets['theme_js_path'];
+        $this->template     = $view->getTemplateName();
+        $this->vendor_path  = $view->assets['vendor'];
+        $this->theme_path   = $view->assets['theme_path'];
+        $this->img_path     = $view->assets['theme_img_path'];
+        $this->css_path     = $view->assets['theme_css_path'];
+        $this->js_path      = $view->assets['theme_js_path'];
 
         krsort($this->paths);
 

@@ -50,7 +50,7 @@ class EngineController extends Controller
 
         $nodes_list = $this->get('cms.node')->buildList($router_data);
 
-        $this->View
+        $this->view
             ->setOptions([
                 'comment'   => 'Базовый шаблон',
                 'template'  => $router_data['template'],
@@ -70,7 +70,7 @@ class EngineController extends Controller
 
         // Обход всех вьюшек нод и рендеринг шаблонов модулей. Это для того, чтобы симфони мог обрабатывать ошибки в шаблонах.
         if ($this->get('kernel')->isDebug()) {
-            foreach ($this->View->blocks as $block) {
+            foreach ($this->view->blocks as $block) {
                 /** @var View $nodeView */
                 foreach ($block as $nodeView) {
                     if ($nodeView instanceof View and $nodeView->getEngine() != 'echo') {
@@ -81,8 +81,8 @@ class EngineController extends Controller
             }
         }
 
-        return new Response($this->container->get('templating')->render("::{$this->View->getTemplateName()}.html.twig", [
-            'block' => $this->View->blocks,
+        return new Response($this->container->get('templating')->render("::{$this->view->getTemplateName()}.html.twig", [
+            'block' => $this->view->blocks,
         ]), $router_data['status'] );
     }
 
@@ -114,7 +114,7 @@ class EngineController extends Controller
 
         // @todo подумать как задавать темы оформления и убрать отсюда.
         $theme_path = $this->get('cms.context')->getThemePath();
-        $this->View->assets = [
+        $this->view->assets = [
             'theme_path'     => $theme_path,
             'theme_css_path' => $theme_path . 'css/',
             'theme_js_path'  => $theme_path . 'js/',
@@ -122,7 +122,7 @@ class EngineController extends Controller
             'vendor'         => $this->get('cms.context')->getGlobalAssets(),
         ];
 
-        $this->get('cms.theme')->processConfig($this->View);
+        $this->get('cms.theme')->processConfig($this->view);
 
         foreach ($this->get('cms.jslib')->all() as $res) {
             if (isset($res['js']) and is_array($res['js'])) {
@@ -150,8 +150,8 @@ class EngineController extends Controller
         foreach ($nodes_list as $node_id => $node) {
             $block_name = $node->getBlock()->getName();
 
-            if (!$this->View->blocks->has($block_name)) {
-                $this->View->blocks->set($block_name, new View());
+            if (!$this->view->blocks->has($block_name)) {
+                $this->view->blocks->set($block_name, new View());
             }
 
             // Выполняется модуль, все параметры ноды берутся в SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
@@ -170,13 +170,13 @@ class EngineController extends Controller
                 ];
             }
 
-            $this->View->blocks->$block_name->$node_id = method_exists($Module, 'getContentRaw')
+            $this->view->blocks->$block_name->$node_id = method_exists($Module, 'getContentRaw')
                 ? $Module->getContentRaw()
                 : $Module->getContent();
 
             // @todo пока так выставляются декораторы обрамления ноды.
-            if ($this->get('security.context')->isGranted('ROLE_ADMIN') and $this->View->blocks->$block_name->$node_id instanceof View) {
-                $this->View->blocks->$block_name->$node_id->setDecorators("<div class=\"cmf-frontadmin-node\" id=\"__node_{$node_id}\">", "</div>");
+            if ($this->get('security.context')->isGranted('ROLE_ADMIN') and $this->view->blocks->$block_name->$node_id instanceof View) {
+                $this->view->blocks->$block_name->$node_id->setDecorators("<div class=\"cmf-frontadmin-node\" id=\"__node_{$node_id}\">", "</div>");
             }
 
             unset($Module);
@@ -215,6 +215,7 @@ class EngineController extends Controller
                 break;
             }
         }
+
         foreach ($data as $key => $value) {
             $request->request->set($key, $value);
         }
@@ -230,8 +231,18 @@ class EngineController extends Controller
             return $this->runAction($request, $slug);
         }
 
-        $module_name = $this->get('cms.node')->get($node_id)->getModule();
+        // --------------------------------------------------------------------------
+        $node = $this->get('cms.node')->get($node_id);
 
-        return $this->forward("{$node_id}:{$module_name}:post");
+        if ($node->isDisabled()) {
+            throw new AccessDeniedHttpException('Node is disabled.');
+        }
+
+        // @todo сделать роутинги для POST запросов к нодам.
+        $response = $this->forward("{$node->getId()}:{$node->getModule()}:post");
+
+//        ldd('done', $response);
+
+        return $response;
     }
 }

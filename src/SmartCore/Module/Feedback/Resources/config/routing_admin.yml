@@ -1,0 +1,5 @@
+
+smart_module_feedback_admin:
+    path: /
+    defaults:
+        _controller: FeedbackModule:FeedbackAdmin:index

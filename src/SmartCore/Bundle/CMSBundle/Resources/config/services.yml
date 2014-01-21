@@ -43,9 +43,6 @@ services:
     cms.module:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineModule
         arguments: [ @kernel ]
-    cms.cache:
-        class: SmartCore\Bundle\CMSBundle\Engine\Cache
-        arguments: [ '%kernel.cache_dir%' ]
     cms.node:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineNode
         arguments:

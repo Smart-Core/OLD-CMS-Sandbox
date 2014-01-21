@@ -9,14 +9,14 @@ class NewsController extends Controller
 {
     protected function init()
     {
-        $this->View->setEngine('twig');
+        $this->view->setEngine('twig');
     }
 
     public function indexAction($page_num = 1)
     {
-        $this->View->news = $this->getDoctrine()->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC']);
+        $this->view->news = $this->getDoctrine()->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC']);
 
-        $response = new Response($this->View);
+        $response = new Response($this->view);
 
         if ($this->isEip()) {
             $response->setFrontControls([
@@ -46,10 +46,10 @@ class NewsController extends Controller
 
         $this->get('cms.breadcrumbs')->add($item->getSlug(), $item->getTitle());
 
-        $this->View->setTemplateName('item');
-        $this->View->set('item', $item);
+        $this->view->setTemplateName('item');
+        $this->view->set('item', $item);
 
-        $response = new Response($this->View);
+        $response = new Response($this->view);
 
         if ($this->isEip()) {
             $response->setFrontControls([

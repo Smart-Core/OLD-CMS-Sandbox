@@ -2,7 +2,6 @@
 
 namespace SmartCore\Bundle\CMSBundle\Listener;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -67,10 +66,12 @@ class ModuleControllerModifierListener
             $controller = explode(':', $event->getRequest()->attributes->get('_controller'));
 
             if (is_numeric($controller[0])) {
-                /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
                 $node = $this->engineNodeManager->get($controller[0]);
 
-                foreach ($node->getController() as $key => $value) {
+                $controllerName = isset($controller[1]) ? $controller[1] : null;
+                $actionName = isset($controller[2]) ? $controller[2] : 'index';
+
+                foreach ($node->getController($controllerName, $actionName) as $key => $value) {
                     $event->getRequest()->attributes->set($key, $value);
                 }
 

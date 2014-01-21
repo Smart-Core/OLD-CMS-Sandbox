@@ -1,0 +1,51 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_title %}Меню / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a>Список всех групп меню</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="all">
+            <table class="table table-bordered table-hover">
+                <thead><tr>
+                    <th>id</th>
+                    <th>{{ 'Name'|trans }}</th>
+                    <th>{{ 'Description'|trans }}</th>
+                    <th>{{ 'Position'|trans }}</th>
+                    <th>{{ 'Items count'|trans }}</th>
+                    <th>{{ 'Actions'|trans }}</th>
+                </tr></thead>
+                <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>{{ group.id }}</td>
+                        <td><a href="{{ path('smart_menu_admin_group', {'group_id': group.id}) }}">{{ group.name }}</a></td>
+                        <td>{{ group.descr }}</td>
+                        <td>{{ group.position}}</td>
+                        <td>{{ group.items.count }}</td>
+                        <td><a href="{{ path('smart_menu_admin_group_edit', {'group_id': group.id}) }}">Свойства группы</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="well well-small">
+        {% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
+
+        <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-horizontal">
+            {{ form_widget(form) }}
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" name="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

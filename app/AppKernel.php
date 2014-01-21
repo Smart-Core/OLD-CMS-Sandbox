@@ -1,7 +1,6 @@
 <?php
 namespace SmartCore;
 
-// @todo убрать отсюда.
 require_once __DIR__.'/../src/SmartCore/Bundle/SimpleProfilerBundle/Profiler.php';
 
 use Symfony\Component\HttpKernel\Kernel;
