@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new \FM\ElfinderBundle\FMElfinderBundle(),
             //new \FOS\FacebookBundle\FOSFacebookBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new \Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new \Liip\ThemeBundle\LiipThemeBundle(),

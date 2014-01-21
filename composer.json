@@ -24,6 +24,7 @@
         "fabpot/goutte": "dev-master",
         "facebook/php-sdk": "*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+        "genemu/form-bundle": "2.2.*",
         "helios-ag/fm-elfinder-bundle": "1.x",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/debugging-bundle": "dev-master",

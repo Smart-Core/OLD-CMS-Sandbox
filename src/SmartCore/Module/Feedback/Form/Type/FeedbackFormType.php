@@ -14,6 +14,7 @@ class FeedbackFormType extends AbstractType
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('email')
             ->add('text')
+            ->add('captcha', 'genemu_captcha', ['mapped' => false])
             ->add('send', 'submit', ['label' => 'Send'])
         ;
     }
