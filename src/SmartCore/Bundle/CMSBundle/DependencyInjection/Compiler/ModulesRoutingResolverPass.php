@@ -60,11 +60,9 @@ class ModulesRoutingResolverPass implements CompilerPassInterface
                     $definition->addTag('cms_router_module_admin');
 
                     // Сохранение списка сервисов маршрутов, чтобы можно было быстро перебрать их на название роутов.
-                    if ($container->hasParameter('cms_router_module_admin')) {
-                        $cms_router_module_admin = $container->getParameter('cms_router_module_admin');
-                    } else {
-                        $cms_router_module_admin = [];
-                    }
+                    $cms_router_module_admin = $container->hasParameter('cms_router_module_admin')
+                        ? $container->getParameter('cms_router_module_admin')
+                        : [];
 
                     $serviceName = 'cms.router_module.' . strtolower($moduleName) . '.admin';
 

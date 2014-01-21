@@ -27,6 +27,6 @@ class CMSBundle extends Bundle
         parent::build($container);
 
         //$container->addCompilerPass(new TemplateResourcesPass());
-        $container->addCompilerPass(new ModulesRoutingResolverPass(), PassConfig::TYPE_AFTER_REMOVING);
+        $container->addCompilerPass(new ModulesRoutingResolverPass()); //, PassConfig::TYPE_AFTER_REMOVING);
     }
 }

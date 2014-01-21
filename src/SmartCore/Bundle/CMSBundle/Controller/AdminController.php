@@ -348,19 +348,16 @@ class AdminController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param string $filename
      */
-    public function moduleInstallAction(Request $request, $filename = null)
+    public function moduleInstallAction($filename = null)
     {
-        $rootDir = $this->get('kernel')->getRootDir();
-        $distDir = $rootDir . '/../dist';
-
         $finder = new Finder();
         $finder
             ->ignoreDotFiles(false)
             ->ignoreVCS(true)
             ->name('*.zip')
-            ->in($distDir);
+            ->in($this->get('kernel')->getRootDir() . '/../dist');
 
         // @todo убрать в сервис.
         if ( ! empty($filename)) {

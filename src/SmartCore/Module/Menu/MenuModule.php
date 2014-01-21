@@ -6,8 +6,4 @@ use SmartCore\Bundle\CMSBundle\Module\Bundle;
 
 class MenuModule extends Bundle
 {
-    public function hasAdmin()
-    {
-        return true;
-    }
 }

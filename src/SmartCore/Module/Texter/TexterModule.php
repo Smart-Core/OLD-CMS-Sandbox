@@ -19,15 +19,10 @@ class TexterModule extends Bundle
         $item->setUserId($this->container->get('security.context')->getToken()->getUser()->getId());
 
         $em->persist($item);
-        $em->flush();
+        $em->flush($item);
 
         $node->setParams([
             'text_item_id' => $item->getId()
         ]);
-    }
-
-    public function hasAdmin()
-    {
-        return true;
     }
 }
