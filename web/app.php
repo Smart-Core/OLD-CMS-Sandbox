@@ -12,7 +12,7 @@ define('APPKERNEL_DEBUG', true);
 
 use Symfony\Component\HttpFoundation\Request;
 
-$kernel = new SmartCore\AppKernel('prod', APPKERNEL_DEBUG);
+$kernel = new AppKernel('prod', APPKERNEL_DEBUG);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 $request = Request::createFromGlobals();
