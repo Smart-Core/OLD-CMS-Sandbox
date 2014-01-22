@@ -134,6 +134,12 @@ liip_doctrine_cache:
             type: file_system
             directory: "%kernel.cache_dir%/smart_core_cms"
 
+liip_theme:
+    themes: ['web', 'tablet', 'phone']
+    active_theme: ~
+    autodetect_theme: false
+    load_controllers: false
+
 smart_sitemap:
     base_url: %base_url%
     ignores:
@@ -153,12 +159,11 @@ fos_user:
                 sender_name: Email confirmation
 
 tagcache:
-    driver:                     %tagcache_driver% # Memcache, Memcached, File, Sqlite, Apc, Nullcache
-    debug:                      %kernel.debug%
-    namespace:                  'smart_core'
+    driver:        %tagcache_driver% # Memcache, Memcached, File, Sqlite, Apc, Nullcache
+    #debug:         %kernel.debug%
+    namespace:     'smart_core'
     options:
-        hashkey:                true
-        enable_largeobject:     false
-        cache_dir:              "%kernel.cache_dir%/smart_core_tagcache"
+        cache_dir: "%kernel.cache_dir%/smart_core_tagcache"
+        hashkey:   true
         servers:
-            -    'localhost:11211:10'
+            - 'localhost:11211:10'

@@ -2,10 +2,10 @@
 
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
+use SmartCore\Bundle\CMSBundle\Engine\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use SmartCore\Bundle\CMSBundle\Engine\View;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -54,6 +54,7 @@ class EngineController extends Controller
             ->setOptions([
                 'comment'   => 'Базовый шаблон',
                 'template'  => $router_data['template'],
+                'bundle'    => "::", // DemoSiteBundle @todo Настройка имени бандла сайта.
             ])
             ->set('blocks', new View([
                 'comment'   => 'Блоки',
@@ -64,9 +65,7 @@ class EngineController extends Controller
         $this->buildModulesData($nodes_list);
         \Profiler::end('buildModulesData');
 
-        //\Profiler::start('EngineController::runAction body');
-        $this->buildBaseHtml($request);
-        //\Profiler::end('EngineController::runAction body');
+        $this->buildBaseHtml();
 
         // Обход всех вьюшек нод и рендеринг шаблонов модулей. Это для того, чтобы симфони мог обрабатывать ошибки в шаблонах.
         if ($this->get('kernel')->isDebug()) {
@@ -81,9 +80,7 @@ class EngineController extends Controller
             }
         }
 
-        return new Response($this->container->get('templating')->render("::{$this->view->getTemplateName()}.html.twig", [
-            'block' => $this->view->blocks,
-        ]), $router_data['status'] );
+        return new Response($this->view, $router_data['status']);
     }
 
     /**
@@ -91,7 +88,7 @@ class EngineController extends Controller
      *
      * @todo отрефакторить!!!
      */
-    protected function buildBaseHtml(Request $request)
+    protected function buildBaseHtml()
     {
         // @todo убрать в ini-шник шаблона.
         $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
@@ -194,11 +191,6 @@ class EngineController extends Controller
      */
     public function postAction(Request $request, $slug)
     {
-        // @todo убрать - это был хак для оверлеев.
-        if ($request->request->get('submit') === 'cancel') {
-            return new RedirectResponse($request->server->get('HTTP_REFERER') . '#');
-        }
-
         // Получение $node_id
         $data = $request->request->all();
         $node_id = null;
@@ -239,10 +231,6 @@ class EngineController extends Controller
         }
 
         // @todo сделать роутинги для POST запросов к нодам.
-        $response = $this->forward("{$node->getId()}:{$node->getModule()}:post");
-
-//        ldd('done', $response);
-
-        return $response;
+        return $this->forward("{$node->getId()}:{$node->getModule()}:post");
     }
 }

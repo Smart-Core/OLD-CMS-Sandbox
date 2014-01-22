@@ -52,7 +52,7 @@ class UserAccountController extends Controller
     public function resettingSendEmailAction()
     {
         $this->view->forward('FOSUserBundle:Resetting:sendEmail');
-        
+
         return new Response($this->view);
     }
     

@@ -16,28 +16,28 @@
 <div class="container">
 <div class="row-fluid">
     <div class="span3">
-        {% block main_menu block.main_menu %}
+        {% block main_menu blocks.main_menu %}
     </div>
 
     <div class="span9">
         <div id="breadcrumbs">
-            {% block breadcrumbs block.breadcrumbs %}
+            {% block breadcrumbs blocks.breadcrumbs %}
         </div>
 
         {% include '@CMS/flash_messages.thml.twig' %}
 
         <div id="content">
-            {% block content block.content %}
+            {% block content blocks.content %}
         </div>
     </div>
 </div>
 
 <div class="row-fluid" id="footer">
     <div class="span9">
-        {% block footer block.footer %}
+        {% block footer blocks.footer %}
     </div>
     <div class="span3" style="text-align: right">
-        {% block footer_right block.footer_right %}
+        {% block footer_right blocks.footer_right %}
     </div>
 
     <div class="span11 text-center">

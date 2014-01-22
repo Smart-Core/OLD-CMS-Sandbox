@@ -1,7 +1,11 @@
-elfinder:
-     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+demo_site:
+    resource: "@DemoSiteBundle/Resources/config/routing.yml"
+    prefix:   /
 
-CMSBundle:
+elfinder:
+    resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+smart_core_cms:
     resource: "@CMSBundle/Resources/config/routing.yml"
     prefix: /
 

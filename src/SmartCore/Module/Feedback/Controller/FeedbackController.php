@@ -49,7 +49,7 @@ class FeedbackController extends Controller
             $session->add('feedback_data', $request->request->all());
         }
 
-        // @todo
+        // @todo FS#380 - Генерация пути к ноде
         return $this->redirect($this->get('cms.folder')->getUri($this->node->getFolderId()));
     }
 }
