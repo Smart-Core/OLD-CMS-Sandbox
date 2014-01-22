@@ -49,7 +49,7 @@ class EngineController extends Controller
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
-        $router_data['http_method'] = $request->getMethod(); // @fixme это экмперименты с кешированием списка нод.
+        $router_data['http_method'] = $request->getMethod(); // @fixme это эксперименты с кешированием списка нод.
 
         $nodes = $this->get('cms.node')->buildList($router_data);
 

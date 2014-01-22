@@ -26,7 +26,7 @@ if (function_exists('apc_store') and ini_get('apc.enabled')) {
 
 // intl
 if (!function_exists('intl_get_error_code')) {
-    require_once __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
+    require_once __DIR__.'/../vendor/symfony/intl/Symfony/Component/Intl/Resources/stubs/functions.php';
 }
 
 \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader([$loader, 'loadClass']);
