@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Янв 21 2014 г., 23:47
+-- Время создания: Янв 22 2014 г., 21:40
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.4.14
+-- Версия PHP: 5.5.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_nodes`
@@ -162,15 +162,16 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";s:1:"1";}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0),
 (4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";s:1:"1";}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', NULL),
 (5, 1, 3, 1, 'Menu', 'a:4:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1),
-(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, 0, NULL, 1, '2013-03-11 16:42:33', 0),
-(7, 3, 1, 1, 'UserAccount', 'a:0:{}', 0, 0, NULL, 1, '2013-03-11 16:42:33', 0),
-(8, 4, 1, 1, 'UserRegistration', 'a:0:{}', 0, 0, NULL, 1, '2013-03-11 16:42:33', NULL),
+(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0),
+(7, 3, 1, 1, 'UserAccount', 'a:0:{}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0),
+(8, 4, 1, 1, 'UserRegistration', 'a:0:{}', 0, 100, NULL, 1, '2013-03-11 16:42:33', 0),
 (9, 3, 3, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:6;}', 0, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', NULL),
 (10, 7, 1, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:7;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0),
 (11, 5, 1, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:8;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0),
-(12, 8, 1, 1, 'News', 'a:0:{}', 0, 0, NULL, 1, '2013-12-22 21:58:57', 0),
+(12, 8, 1, 1, 'News', 'a:0:{}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0),
 (13, 1, 6, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:9;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0),
-(14, 9, 1, 1, 'Feedback', 'a:0:{}', 0, 0, NULL, 1, '2014-01-21 19:32:26', 0);
+(14, 9, 1, 1, 'Feedback', 'a:0:{}', 0, 0, NULL, 1, '2014-01-21 19:32:26', 0),
+(15, 8, 1, 1, 'Texter', 'a:1:{s:12:"text_item_id";i:10;}', 0, 0, NULL, 1, '2014-01-22 19:02:27', 0);
 
 -- --------------------------------------------------------
 
@@ -186,12 +187,14 @@ CREATE TABLE IF NOT EXISTS `aaa_feedbacks` (
   `text` longtext COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `aaa_feedbacks`
 --
 
+INSERT INTO `aaa_feedbacks` (`id`, `title`, `email`, `text`, `created`) VALUES
+(1, 'sadffg', 'sdfg@sdf.ru', '123123', '2014-01-22 21:19:06');
 
 -- --------------------------------------------------------
 
@@ -231,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `aaa_fos_user` (
 --
 
 INSERT INTO `aaa_fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebookId`) VALUES
-(1, 'root', 'root', 'artem2@mail.ru', 'artem2@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-21 22:35:22', 0, 0, NULL, '34wbhmcffz28w08g4sg44gww4kow4gg8ggwogo4c88sgokwkck', '2014-01-21 18:30:59', 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-22 21:34:01', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', ''),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '');
 
@@ -394,22 +397,23 @@ CREATE TABLE IF NOT EXISTS `aaa_text_items` (
   `datetime` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `aaa_text_items`
 --
 
 INSERT INTO `aaa_text_items` (`item_id`, `language`, `text`, `meta`, `datetime`, `user_id`) VALUES
-(1, 'ru', 'Футер 2', 'a:0:{}', '2012-08-27 03:16:57', 1),
+(1, 'ru', 'Футер 1', 'a:0:{}', '2012-08-27 03:16:57', 1),
 (2, 'ru', '<h1>Главная страница!</h1>\r\n<p>С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма, концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.</p>\r\n<img src="/uploads/Advanced%20C%20Asana.jpg" alt="" width="891" height="666" />', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1),
 (3, 'ru', '<h2>Пример страницы с 2-мя колонками</h2>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>', 'a:1:{s:8:"keywords";s:3:"sdf";}', '2012-08-27 03:51:05', 1),
 (4, 'ru', '<p><img src="/uploads/images/bscap0001.jpg" alt="" width="300" height="124" /><br />Сервисная стратегия деятельно искажает продвигаемый медиаплан, опираясь на опыт западных коллег. Внутрифирменная реклама, согласно Ф.Котлеру, откровенно цинична. Торговая марка исключительно уравновешивает презентационный материал, полагаясь на инсайдерскую информацию. Наряду с этим, узнавание бренда вполне выполнимо. Организация слубы маркетинга, согласно Ф.Котлеру, усиливает фактор коммуникации, осознавая социальную ответственность бизнеса. Экспертиза выполненного проекта восстанавливает потребительский презентационный материал, полагаясь на инсайдерскую информацию.</p>', 'a:0:{}', '2012-08-27 03:51:27', 1),
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1),
 (6, 'ru', 'Under menu 2.', 'a:0:{}', '2013-03-25 21:53:12', 1),
 (7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g', 'a:0:{}', '2013-08-10 11:14:55', 1),
-(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;)&nbsp; 1<br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1),
-(9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>', 'a:0:{}', '2014-01-20 03:47:18', 1);
+(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;)<br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1),
+(9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>', 'a:0:{}', '2014-01-20 03:47:18', 1),
+(10, 'ru', 'Очень интересные новости ;)', 'a:0:{}', '2014-01-22 19:02:28', 1);
 
 -- --------------------------------------------------------
 
@@ -436,32 +440,6 @@ CREATE TABLE IF NOT EXISTS `aaa_text_items_history` (
 -- Дамп данных таблицы `aaa_text_items_history`
 --
 
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `engine_modules`
---
-
-DROP TABLE IF EXISTS `engine_modules`;
-CREATE TABLE IF NOT EXISTS `engine_modules` (
-  `module_id` varchar(50) NOT NULL,
-  `class` text NOT NULL,
-  `install_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `user_id` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`module_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='Общий список модулей со сводной информацией';
-
---
--- Дамп данных таблицы `engine_modules`
---
-
-INSERT INTO `engine_modules` (`module_id`, `class`, `install_datetime`, `user_id`) VALUES
-('SmartCoreBreadcrumbs', '\\SmartCore\\Module\\Breadcrumbs\\SmartCoreBreadcrumbsModule', '0000-00-00 00:00:00', 0),
-('SmartCoreMenu', '\\SmartCore\\Module\\Menu\\SmartCoreMenuModule', '0000-00-00 00:00:00', 1),
-('SmartCoreTexter', '\\SmartCore\\Module\\Texter\\SmartCoreTexterModule', '0000-00-00 00:00:00', 1),
-('SmartCoreUserAccount', '\\SmartCore\\Module\\UserAccount\\SmartCoreUserAccountModule', '0000-00-00 00:00:00', 0),
-('SmartCoreUserRegistration', '\\SmartCore\\Module\\UserRegistration\\SmartCoreUserRegistrationModule', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
