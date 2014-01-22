@@ -2,14 +2,13 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use SmartCore\Bundle\CMSBundle\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
     {
@@ -25,7 +24,7 @@ class AdminController extends Controller
     /**
      * @param Request $request
      * @param int $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function itemAction(Request $request, $id)
     {

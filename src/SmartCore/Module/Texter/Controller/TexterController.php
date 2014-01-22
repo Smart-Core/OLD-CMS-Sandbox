@@ -2,14 +2,13 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use SmartCore\Bundle\CMSBundle\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class TexterController extends Controller
 {
     /**
-     * Экшен по умолчанию.
-     *
      * @param integer $item_id
+     * @return Response
      */
     public function indexAction($item_id = null)
     {

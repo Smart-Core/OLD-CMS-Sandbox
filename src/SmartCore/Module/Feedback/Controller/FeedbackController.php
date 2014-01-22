@@ -3,7 +3,6 @@
 namespace SmartCore\Module\Feedback\Controller;
 
 use SmartCore\Bundle\CMSBundle\Module\Controller;
-use SmartCore\Bundle\CMSBundle\Response;
 use SmartCore\Module\Feedback\Form\Type\FeedbackFormType;
 use Symfony\Component\HttpFoundation\Request;
 

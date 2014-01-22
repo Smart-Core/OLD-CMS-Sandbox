@@ -138,8 +138,7 @@ class EngineController extends Controller
 
             // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
             \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
-            /** @var \SmartCore\Bundle\CMSBundle\Response $Module */
-            $moduleResponses = $this->forward($node_id);
+            $moduleResponse = $this->forward($node_id);
             \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
 
             if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
@@ -151,12 +150,12 @@ class EngineController extends Controller
             }
 
             if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                $moduleResponses->setContent(
-                    "<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">" . $moduleResponses->getContent() . "</div>"
+                $moduleResponse->setContent(
+                    "<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">" . $moduleResponse->getContent() . "</div>"
                 );
             }
 
-            $nodesResponses[$node->getBlockName()]->$node_id = $moduleResponses;
+            $nodesResponses[$node->getBlockName()]->$node_id = $moduleResponse;
         }
 
         return $nodesResponses;

@@ -2,7 +2,6 @@
 
 namespace SmartCore\Module\News\Controller;
 
-use SmartCore\Bundle\CMSBundle\Response;
 use SmartCore\Bundle\CMSBundle\Module\Controller;
 
 class NewsController extends Controller
@@ -24,7 +23,7 @@ class NewsController extends Controller
 
     /**
      * @param string $slug
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function itemAction($slug)
     {

@@ -2,10 +2,10 @@
 
 namespace SmartCore\Bundle\CMSBundle\Module;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
-use SmartCore\Bundle\CMSBundle\Response;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class Controller extends BaseController
 {

@@ -3,7 +3,6 @@
 namespace SmartCore\Module\Breadcrumbs\Controller;
 
 use SmartCore\Bundle\CMSBundle\Module\Controller;
-use SmartCore\Bundle\CMSBundle\Response;
 
 class BreadcrumbsController extends Controller
 {

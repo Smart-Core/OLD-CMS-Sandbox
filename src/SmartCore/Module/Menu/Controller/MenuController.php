@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Menu\Controller;
 
-use SmartCore\Bundle\CMSBundle\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class MenuController extends Controller
 {

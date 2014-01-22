@@ -4,7 +4,7 @@ namespace SmartCore\Module\Menu\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use SmartCore\Bundle\CMSBundle\Response;
+use Symfony\Component\HttpFoundation\Response;
 use SmartCore\Module\Menu\Entity\Group;
 use SmartCore\Module\Menu\Entity\Item;
 use SmartCore\Module\Menu\Form\Type\GroupFormType;
