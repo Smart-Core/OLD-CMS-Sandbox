@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
-use SmartCore\Bundle\CMSBundle\Engine\View;
+use SmartCore\Bundle\CMSBundle\Twig\BlockRenderHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -50,37 +50,14 @@ class EngineController extends Controller
 
         $nodes_list = $this->get('cms.node')->buildList($router_data);
 
-        $this->view
-            ->setOptions([
-                'comment'   => 'Базовый шаблон',
-                'template'  => $router_data['template'],
-                'bundle'    => "::", // DemoSiteBundle @todo Настройка имени бандла сайта.
-            ])
-            ->set('blocks', new View([
-                'comment'   => 'Блоки',
-                'engine'    => 'echo',
-            ]));
-
         \Profiler::start('buildModulesData');
-        $this->buildModulesData($nodes_list);
+        $nodesResponses = $this->buildModulesData($nodes_list);
         \Profiler::end('buildModulesData');
 
-        $this->buildBaseHtml();
+        $this->buildBaseHtml($router_data['template']);
 
-        // Обход всех вьюшек нод и рендеринг шаблонов модулей. Это для того, чтобы симфони мог обрабатывать ошибки в шаблонах.
-        if ($this->get('kernel')->isDebug()) {
-            foreach ($this->view->blocks as $block) {
-                /** @var View $nodeView */
-                foreach ($block as $nodeView) {
-                    if ($nodeView instanceof View and $nodeView->getEngine() != 'echo') {
-                        $data = $nodeView->render();
-                        $nodeView->removeProperties()->setDecorators(null, null)->setEngine('echo')->set('data', $data);
-                    }
-                }
-            }
-        }
-
-        return new Response($this->view, $router_data['status']);
+        // @todo Настройка имени бандла сайта (Например DemoSiteBundle).
+        return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
     }
 
     /**
@@ -88,7 +65,7 @@ class EngineController extends Controller
      *
      * @todo отрефакторить!!!
      */
-    protected function buildBaseHtml()
+    protected function buildBaseHtml($template)
     {
         // @todo убрать в ini-шник шаблона.
         $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
@@ -111,7 +88,7 @@ class EngineController extends Controller
 
         // @todo подумать как задавать темы оформления и убрать отсюда.
         $theme_path = $this->get('cms.context')->getThemePath();
-        $this->view->assets = [
+        $assets = [
             'theme_path'     => $theme_path,
             'theme_css_path' => $theme_path . 'css/',
             'theme_js_path'  => $theme_path . 'js/',
@@ -119,7 +96,7 @@ class EngineController extends Controller
             'vendor'         => $this->get('cms.context')->getGlobalAssets(),
         ];
 
-        $this->get('cms.theme')->processConfig($this->view);
+        $this->get('cms.theme')->processConfig($assets, $template);
 
         foreach ($this->get('cms.jslib')->all() as $res) {
             if (isset($res['js']) and is_array($res['js'])) {
@@ -140,44 +117,48 @@ class EngineController extends Controller
      * По мере прохождения, подключаются и запускаются нужные модули с нужными параметрами.
      *
      * @param array $nodes_list
+     * @return array
      */
     protected function buildModulesData(array $nodes_list)
     {
+        $nodesResponses = [];
+
         /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
         foreach ($nodes_list as $node_id => $node) {
-            $block_name = $node->getBlock()->getName();
+            $block = $node->getBlockName();
 
-            if (!$this->view->blocks->has($block_name)) {
-                $this->view->blocks->set($block_name, new View());
+            if (!isset($nodesResponses[$block])) {
+                $nodesResponses[$block] = new BlockRenderHelper();
             }
 
-            // Выполняется модуль, все параметры ноды берутся в SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-            \Profiler::start($node_id . ' ' . $node->getModule(), 'node');
-            $Module = $this->forward($node_id, [ '_eip' => true ]);
-            \Profiler::end($node_id . ' ' . $node->getModule(), 'node');
+            if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                $node->setEip(true);
+            }
+
+            // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+            \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
+            /** @var \SmartCore\Bundle\CMSBundle\Response $Module */
+            $moduleResponses = $this->forward($node_id);
+            \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
 
             if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                if (method_exists($Module, 'getFrontControls')) {
-                    $this->cms_front_controls['node']['__node_' . $node_id] = $Module->getFrontControls();
-                }
-
-                $this->cms_front_controls['node']['__node_' . $node_id]['cms_node_properties'] = [
+                $this->cms_front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
+                $this->cms_front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
                     'title' => 'Свойства ноды', // @todo translate
-                    'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node_id])
+                    'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
                 ];
             }
 
-            $this->view->blocks->$block_name->$node_id = method_exists($Module, 'getContentRaw')
-                ? $Module->getContentRaw()
-                : $Module->getContent();
-
-            // @todo пока так выставляются декораторы обрамления ноды.
-            if ($this->get('security.context')->isGranted('ROLE_ADMIN') and $this->view->blocks->$block_name->$node_id instanceof View) {
-                $this->view->blocks->$block_name->$node_id->setDecorators("<div class=\"cmf-frontadmin-node\" id=\"__node_{$node_id}\">", "</div>");
+            if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                $moduleResponses->setContent(
+                    "<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">" . $moduleResponses->getContent() . "</div>"
+                );
             }
 
-            unset($Module);
+            $nodesResponses[$node->getBlockName()]->$node_id = $moduleResponses;
         }
+
+        return $nodesResponses;
     }
 
     /**

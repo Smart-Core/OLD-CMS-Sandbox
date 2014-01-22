@@ -9,11 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FeedbackController extends Controller
 {
-    protected function init()
-    {
-        $this->view->setEngine('twig');
-    }
-
     public function indexAction()
     {
         $form = $this->createForm(new FeedbackFormType());
@@ -25,9 +20,9 @@ class FeedbackController extends Controller
             $form->isValid();
         }
 
-        $this->view->form = $form->createView();
-
-        return new Response($this->view);
+        return $this->render('FeedbackModule::feedback.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     public function postAction(Request $request)

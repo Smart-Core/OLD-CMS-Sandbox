@@ -16,13 +16,22 @@ use Symfony\Component\HttpFoundation\Response as BaseResponse;
  */
 class Response extends BaseResponse
 {
+    /**
+     * @deprecated
+     */
     protected $cms_front_controls = [];
 
+    /**
+     * @deprecated
+     */
     public function setFrontControls($data)
     {
         $this->cms_front_controls = $data;
     }
 
+    /**
+     * @deprecated
+     */
     public function getFrontControls()
     {
         return $this->cms_front_controls;
@@ -58,6 +67,8 @@ class Response extends BaseResponse
      * Получить контент в нативном виде т.е. если это будет объект, то он будет получен без преобразования в строку.
      * 
      * @return object|string
+     *
+     * @deprecated
      */
     public function getContentRaw()
     {

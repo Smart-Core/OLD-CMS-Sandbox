@@ -29,3 +29,5 @@ parameters:
     registration_email_confirmation: registration-email-confirmation@localhost.org
 
     secret: SmartCoreThisTokenIsNotSoSecretChangeIt
+
+    session_handler: smart_core_session.handler

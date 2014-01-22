@@ -23,27 +23,17 @@ class TexterController extends Controller
             $cache->set($cache_key, $item, ['smart_module_texter', 'node_'.$this->node->getId()]);
         }
 
-        $this->view
-            ->setEngine('echo')
-            ->set('text', $item->getText());
-
         foreach ($item->getMeta() as $key => $value) {
             $this->get('html')->meta($key, $value);
         }
 
-        $response = new Response($this->view);
+        $this->node->addFrontControl('edit', [
+            'title'   => 'Редактировать',
+            'descr'   => 'Текстовый блок',
+            'uri'     => $this->generateUrl('cms_admin_node', ['id' => $this->node->getId()]),
+            'default' => true,
+        ]);
 
-        if ($this->isEip()) {
-            $response->setFrontControls([
-                'edit' => [
-                    'title'   => 'Редактировать',
-                    'descr'   => 'Текстовый блок',
-                    'uri'     => $this->generateUrl('cms_admin_node', ['id' => $this->node->getId()]),
-                    'default' => true,
-                ],
-            ]);
-        }
-
-        return $response;
+        return new Response($item->getText());
     }
 }

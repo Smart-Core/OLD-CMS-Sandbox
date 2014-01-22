@@ -11,9 +11,4 @@ abstract class Controller extends BaseController
     protected $group_id = null;
     protected $selected_inheritance = false;
     protected $tpl = null; // @todo
-
-    protected function init()
-    {
-        $this->view->setEngine('echo');
-    }
 }

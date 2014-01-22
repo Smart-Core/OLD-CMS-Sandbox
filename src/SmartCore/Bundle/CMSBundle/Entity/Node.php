@@ -130,6 +130,22 @@ class Node implements \Serializable
     protected $controller = null;
 
     /**
+     * Edit-In-Place
+     * @var bool
+     */
+    protected $eip = false;
+
+    /**
+     * @var array
+     */
+    protected $front_controls = [];
+
+    /**
+     * @var string
+     */
+    protected $block_name = null;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -160,6 +176,7 @@ class Node implements \Serializable
             $this->folder,
             $this->folder_id,
             $this->block,
+            $this->block_name,
             $this->position,
             $this->priority,
             $this->descr,
@@ -183,6 +200,7 @@ class Node implements \Serializable
             $this->folder,
             $this->folder_id,
             $this->block,
+            $this->block_name,
             $this->position,
             $this->priority,
             $this->descr,
@@ -335,6 +353,18 @@ class Node implements \Serializable
     }
 
     /**
+     * @return string
+     */
+    public function getBlockName()
+    {
+        if (null === $this->block_name) {
+            $this->block_name = $this->getBlock()->getName();
+        }
+
+        return $this->block_name;
+    }
+
+    /**
      * @param Folder $folder
      * @return $this
      */
@@ -426,6 +456,66 @@ class Node implements \Serializable
     }
 
     /**
+     * @param boolean $eip
+     * @return $this
+     */
+    public function setEip($eip)
+    {
+        $this->eip = $eip;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEip()
+    {
+        return $this->eip;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEip()
+    {
+        return $this->eip;
+    }
+
+    /**
+     * @param array $front_controls
+     * @return $this
+     */
+    public function addFrontControl($name, $controls)
+    {
+        if ($this->isEip()) {
+            $this->front_controls[$name] = $controls;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param array $front_controls
+     * @return $this
+     */
+    public function setFrontControls($front_controls)
+    {
+        if ($this->isEip()) {
+            $this->front_controls = $front_controls;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFrontControls()
+    {
+        return $this->front_controls;
+    }
+
+    /**
      * @param string $controller
      * @return $this
      */
@@ -447,8 +537,6 @@ class Node implements \Serializable
             $className = (null === $controllerName) ? $this->module : $controllerName;
             $this->controller['_controller'] = $this->module . 'Module:' . $className . ':' . $actionName;
         }
-
-        //ld($this->controller);
 
         return $this->controller;
     }

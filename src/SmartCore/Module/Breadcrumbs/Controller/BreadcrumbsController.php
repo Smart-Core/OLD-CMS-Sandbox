@@ -20,22 +20,14 @@ class BreadcrumbsController extends Controller
     protected $hide_if_only_home = false;
 
     /**
-     * Конструктор.
-     */
-    protected function init()
-    {
-        $this->view->setEngine('php');
-    }
-
-    /**
      * Запуск модуля.
      */
     public function indexAction()
     {
-        $this->view->delimiter = $this->delimiter;
-        $this->view->items = $this->get('cms.breadcrumbs');
-        $this->view->hide_if_only_home = $this->hide_if_only_home;
-
-        return new Response($this->view);
+        return $this->render('BreadcrumbsModule::breadcrumbs.html.php', [
+            'delimiter' => $this->delimiter,
+            'items'     => $this->get('cms.breadcrumbs'),
+            'hide_if_only_home' => $this->hide_if_only_home,
+        ]);
     }
 }

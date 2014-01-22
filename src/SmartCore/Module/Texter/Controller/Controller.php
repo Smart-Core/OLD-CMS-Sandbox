@@ -18,5 +18,4 @@ class Controller extends BaseController
      * @var string
      */
     protected $editor = 0;
-
 }

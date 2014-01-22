@@ -14,46 +14,39 @@ class MenuController extends Controller
 
         $cache = $this->getCacheService();
 
-        if (false == $this->view->menu = $cache->get($cache_key)) {
+        if (false == $menu = $cache->get($cache_key)) {
             // Хак для Menu\RequestVoter
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
             $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
 
-            $this->view->menu = $this->renderView('MenuModule::menu.html.twig', [
+            $menu = $this->renderView('MenuModule::menu.html.twig', [
                 'css_class'     => $this->css_class,
                 'current_class' => '',
                 'depth'         => $this->depth,
                 'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
             ]);
 
-            $cache->set($cache_key, $this->view->menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
+            $cache->set($cache_key, $menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
 
             $this->get('request')->attributes->remove('__selected_inheritance');
             $this->get('request')->attributes->remove('__current_folder_path');
         }
 
-        $response = new Response($this->view);
+        $this->setFrontControls();
 
-        if ($this->isEip()) {
-            $this->setFrontControls($response);
-        }
-
-        return $response;
+        return new Response($menu);
     }
 
-    protected function setFrontControls(Response $response)
+    protected function setFrontControls()
     {
-        $response->setFrontControls([
-            'edit' => [
-                'title' => 'Редактировать',
-                'descr' => 'Пункты меню',
-                'uri'   => $this->generateUrl('cms_admin_node_w_slug', [
-                        'id'   => $this->node->getId(),
-                        'slug' => $this->group_id,
-                    ]),
-                'overlay' => false,
-                'default' => false,
-            ],
+        $this->node->addFrontControl('edit', [
+            'title' => 'Редактировать',
+            'descr' => 'Пункты меню',
+            'uri'   => $this->generateUrl('cms_admin_node_w_slug', [
+                'id'   => $this->node->getId(),
+                'slug' => $this->group_id,
+            ]),
+            'default' => false,
         ]);
     }
 }

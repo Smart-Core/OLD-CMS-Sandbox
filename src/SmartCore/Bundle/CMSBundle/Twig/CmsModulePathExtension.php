@@ -1,6 +1,7 @@
 <?php
 namespace SmartCore\Bundle\CMSBundle\Twig;
 
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\Router;
 
@@ -31,7 +32,7 @@ class CmsModulePathExtension extends \Twig_Extension
      * @param array $args
      * @return string
      */
-    public function render($node, $route, $args = [])
+    public function render(Node $node, $route, $args = [])
     {
         switch ($route) {
             case 'smart_module_news.item': // @todo сделать роутинг модулей.
