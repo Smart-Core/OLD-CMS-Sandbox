@@ -12,9 +12,7 @@ class MenuController extends Controller
 
         $cache_key = md5('smart_module_menu' . $current_folder_path . $this->node->getId());
 
-        $cache = $this->getCacheService();
-
-        if (false == $menu = $cache->get($cache_key)) {
+        if (false == $menu = $this->getCacheService()->get($cache_key)) {
             // Хак для Menu\RequestVoter
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
             $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
@@ -26,7 +24,7 @@ class MenuController extends Controller
                 'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
             ]);
 
-            $cache->set($cache_key, $menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
+            $this->getCacheService()->set($cache_key, $menu, ['smart_module_menu', 'folder', 'node_'.$this->node->getId()]);
 
             $this->get('request')->attributes->remove('__selected_inheritance');
             $this->get('request')->attributes->remove('__current_folder_path');

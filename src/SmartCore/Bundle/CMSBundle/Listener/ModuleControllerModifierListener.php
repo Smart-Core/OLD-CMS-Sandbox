@@ -45,18 +45,12 @@ class ModuleControllerModifierListener
             return;
         }
 
-        /*
-        if ($event->getRequest()->attributes->has('_eip')) {
-            $controller[0]->setEip($event->getRequest()->attributes->get('_eip'));
-
-            $event->getRequest()->attributes->remove('_eip');
-        }
-        */
-
         if ($event->getRequest()->attributes->has('_node')) {
             /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
             $node = $event->getRequest()->attributes->get('_node');
-            $controller[0]->setNode($node);
+            if (method_exists($controller[0], 'setNode')) {
+                $controller[0]->setNode($node);
+            }
             $this->engineContext->setCurrentNodeId($node->getId());
             $event->getRequest()->attributes->remove('_node');
         }

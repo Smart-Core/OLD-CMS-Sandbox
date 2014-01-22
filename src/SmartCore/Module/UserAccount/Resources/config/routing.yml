@@ -22,14 +22,14 @@ smart_module_useraccount.resetting:
 smart_module_useraccount.resetting.send-email:
     path: /resetting/send-email
     defaults:
-        _controller: UserAccountModule:UserAccount:resettingSendEmail
+        _controller: FOSUserBundle:Resetting:sendEmail
 
 smart_module_useraccount.resetting.check-email:
     path: /resetting/check-email
     defaults:
-        _controller: UserAccountModule:UserAccount:resettingCheckEmail
+        _controller: FOSUserBundle:Resetting:checkEmail
 
 smart_module_useraccount.resetting.reset:
     path: /resetting/reset/{token}
     defaults:
-        _controller: UserAccountModule:UserAccount:resettingReset
+        _controller: FOSUserBundle:Resetting:reset

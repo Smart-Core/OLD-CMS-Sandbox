@@ -2,12 +2,15 @@
 
 namespace SmartCore\Module\Feedback\Controller;
 
-use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Feedback\Form\Type\FeedbackFormType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class FeedbackController extends Controller
 {
+    use NodeTrait;
+
     public function indexAction()
     {
         $form = $this->createForm(new FeedbackFormType());

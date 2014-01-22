@@ -2,10 +2,13 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
+use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
+    use CacheTrait;
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -36,13 +39,13 @@ class AdminController extends Controller
             $item->setText($data['text']);
             $item->setMeta($data['meta']);
 
-            $this->get('tagcache')->deleteTag('smart_module_texter');
+            $this->getCacheService()->deleteTag('smart_module_texter');
 
             try {
                 $em->persist($item);
                 $em->flush($item);
 
-                $this->get('session')->getFlashBag()->add('notice', 'Текст обновлён'); // @todo перевод.
+                $this->get('session')->getFlashBag()->add('success', 'Текст обновлён'); // @todo перевод.
                 return $this->redirect($this->generateUrl('smart_texter_admin'));
             } catch (\Exception $e) {
                 $this->get('session')->getFlashBag()->add('errors', ['sql_debug' => $e->getMessage()]);

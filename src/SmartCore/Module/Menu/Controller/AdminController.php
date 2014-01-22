@@ -60,7 +60,7 @@ class AdminController extends Controller
                     $em->persist($form->getData());
                     $em->flush();
 
-                    $this->get('tagcache')->deleteTag('module_menu');
+                    $this->getCacheService()->deleteTag('module_menu');
                     $this->get('session')->getFlashBag()->add('notice', 'Пункт меню обновлён.'); // @todo translate
                     return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
                 }
@@ -69,7 +69,7 @@ class AdminController extends Controller
                 $em->remove($form->getData());
                 $em->flush();
 
-                $this->get('tagcache')->deleteTag('smart_module_menu');
+                $this->getCacheService()->deleteTag('smart_module_menu');
                 $this->get('session')->getFlashBag()->add('notice', 'Пункт меню удалён.');
                 return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
             }

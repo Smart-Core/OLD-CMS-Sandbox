@@ -2,10 +2,13 @@
 
 namespace SmartCore\Module\Breadcrumbs\Controller;
 
-use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BreadcrumbsController extends Controller
 {
+    use NodeTrait;
+
     /**
      * Разделитель.
      * @var string

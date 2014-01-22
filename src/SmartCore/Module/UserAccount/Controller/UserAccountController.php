@@ -2,10 +2,13 @@
 
 namespace SmartCore\Module\UserAccount\Controller;
 
-use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserAccountController extends Controller
 {
+    use NodeTrait;
+
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
@@ -14,7 +17,12 @@ class UserAccountController extends Controller
 
         return $this->forward('FOSUserBundle:Security:login', ['node_id' => $this->node->getId()]);
     }
-    
+
+    public function postAction($slug)
+    {
+        return $this->forward('CMSBundle:Engine:run', ['slug' => $slug]);
+    }
+
     public function editAction()
     {
         $this->get('cms.breadcrumbs')->add('edit', 'Редактирование');
@@ -38,20 +46,5 @@ class UserAccountController extends Controller
         $this->get('cms.breadcrumbs')->add('resetting', 'Восстановление пароля');
 
         return $this->forward('FOSUserBundle:Resetting:request');
-    }
-    
-    public function resettingSendEmailAction()
-    {
-        return $this->forward('FOSUserBundle:Resetting:sendEmail');
-    }
-    
-    public function resettingCheckEmailAction()
-    {
-        return $this->forward('FOSUserBundle:Resetting:checkEmail');
-    }
-        
-    public function resettingResetAction($params)
-    {
-        return $this->forward('FOSUserBundle:Resetting:reset', ['token' => $params['token']]);
     }
 }

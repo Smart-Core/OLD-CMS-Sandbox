@@ -2,10 +2,21 @@
 
 namespace SmartCore\Module\News\Controller;
 
-use SmartCore\Bundle\CMSBundle\Module\Controller;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class NewsController extends Controller
 {
+    use NodeTrait;
+
+    /**
+     * Список новостей постранично.
+     *
+     * @param string $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @todo постраничность.
+     */
     public function indexAction($page_num = 1)
     {
         $this->node->addFrontControl('create', [
@@ -22,6 +33,8 @@ class NewsController extends Controller
     }
 
     /**
+     * Отображение заданной новости.
+     *
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */

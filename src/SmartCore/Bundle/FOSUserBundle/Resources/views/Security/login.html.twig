@@ -7,7 +7,9 @@
 <br /><br />
 
 {% if error %}
-    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    <div class="row-fluid">
+        <div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    </div>
 {% endif %}
 
 {# fos_user_security_check , fos_user_profile_show   <input type="hidden" name="_node_id" value="{{ node_id }}" />   #}

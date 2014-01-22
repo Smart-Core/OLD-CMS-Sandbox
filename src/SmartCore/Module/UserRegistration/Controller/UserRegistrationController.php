@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\UserRegistration\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use SmartCore\Bundle\CMSBundle\Module\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserRegistrationController extends Controller
@@ -17,11 +17,6 @@ class UserRegistrationController extends Controller
         return $this->forward('FOSUserBundle:Registration:register');
     }
 
-    public function confirmedAction()
-    {
-        return $this->forward('FOSUserBundle:Registration:confirmed');
-    }
-
     public function checkEmailAction(Request $request)
     {
         if ($this->container->get('session')->has('fos_user_send_confirmation_email/email')) {
@@ -29,10 +24,5 @@ class UserRegistrationController extends Controller
         }
 
         return new RedirectResponse($request->getBaseUrl() . '/user/');
-    }
-
-    public function confirmAction($token)
-    {
-        return $this->forward('FOSUserBundle:Registration:confirm', ['token' => $token]);
     }
 }

@@ -11,11 +11,5 @@
 {% endif %}
 </div>
 
-{% for key, message in app.session.flashbag %}
-<div class="{{ key }}">
-    {{ message|trans({}, 'FOSUserBundle') }}
-</div>
-{% endfor %}
-
 {% block fos_user_content %}
 {% endblock fos_user_content %}

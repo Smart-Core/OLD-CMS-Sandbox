@@ -55,6 +55,10 @@ class EngineController extends Controller
         $nodesResponses = $this->buildModulesData($nodes_list);
         \Profiler::end('buildModulesData');
 
+        if ($nodesResponses instanceof RedirectResponse) {
+            return $nodesResponses;
+        }
+
         $this->buildBaseHtml($router_data['template']);
 
         // @todo Настройка имени бандла сайта (Например DemoSiteBundle).
@@ -118,7 +122,7 @@ class EngineController extends Controller
      * По мере прохождения, подключаются и запускаются нужные модули с нужными параметрами.
      *
      * @param array $nodes_list
-     * @return array
+     * @return array|RedirectResponse
      */
     protected function buildModulesData(array $nodes_list)
     {
@@ -140,6 +144,10 @@ class EngineController extends Controller
             \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
             $moduleResponse = $this->forward($node_id);
             \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
+
+            if ($moduleResponse instanceof RedirectResponse) {
+                return $moduleResponse;
+            }
 
             if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                 $this->cms_front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
@@ -193,18 +201,6 @@ class EngineController extends Controller
             $request->request->set($key, $value);
         }
 
-        // @todo УБРАТЬ, это сейчас тут тесты с регистрацией...
-        if (isset($_POST['fos_user_registration_form']) or
-            isset($_POST['fos_user_profile_form']) or
-            isset($_POST['fos_user_resetting_form']) or
-            isset($_POST['fos_user_change_password_form']) or
-            $request->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_send_email') or
-            $request->getBaseUrl() . '/' . $slug === $this->container->get('router')->generate('fos_user_resetting_check_email')
-        ) {
-            return $this->runAction($request, $slug);
-        }
-
-        // --------------------------------------------------------------------------
         $node = $this->get('cms.node')->get($node_id);
 
         if ($node->isDisabled()) {
@@ -212,6 +208,6 @@ class EngineController extends Controller
         }
 
         // @todo сделать роутинги для POST запросов к нодам.
-        return $this->forward("{$node->getId()}:{$node->getModule()}:post");
+        return $this->forward("{$node->getId()}:{$node->getModule()}:post", ['slug' => $slug]);
     }
 }

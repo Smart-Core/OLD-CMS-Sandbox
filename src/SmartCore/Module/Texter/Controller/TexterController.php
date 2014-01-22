@@ -2,10 +2,13 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
+use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class TexterController extends Controller
 {
+    use CacheTrait;
+
     /**
      * @param integer $item_id
      * @return Response

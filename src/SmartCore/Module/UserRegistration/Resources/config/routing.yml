@@ -7,9 +7,9 @@ smart_module_UserRegistration.check-email:
 smart_module_UserRegistration.confirm:
     path: /confirm/{token}
     defaults:
-        _controller: UserRegistrationModule:UserRegistration:confirm
+        _controller: FOSUserBundle:Registration:confirm
 
 smart_module_UserRegistration.confirmed:
     path: /confirmed
     defaults:
-        _controller: UserRegistrationModule:UserRegistration:confirmed
+        _controller: FOSUserBundle:Registration:confirmed
