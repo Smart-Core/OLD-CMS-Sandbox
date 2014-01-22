@@ -8,12 +8,12 @@ parameters:
     database_user:      smart_core
     database_password:  123
 
-    database_driver_db1:   pdo_mysql
-    database_host_db1:     localhost
-    database_port_db1:     ~
-    database_name_db1:     smart_core_db1
-    database_user_db1:     smart_core
-    database_password_db1: 123
+    #database_driver_db1:   pdo_mysql
+    #database_host_db1:     localhost
+    #database_port_db1:     ~
+    #database_name_db1:     smart_core_db1
+    #database_user_db1:     smart_core
+    #database_password_db1: 123
 
     database_table_prefix: aaa_
 

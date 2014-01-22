@@ -76,12 +76,12 @@ doctrine:
                 unix_socket: /var/run/mysqld/mysqld.sock
                 mapping_types:
                     enum: string                
-            db1:
-                driver:   %database_driver_db1%
-                port:     %database_port_db1%
-                dbname:   %database_name_db1%
-                user:     %database_user_db1%
-                password: %database_password_db1%
+            #db1:
+                #driver:   %database_driver_db1%
+                #port:     %database_port_db1%
+                #dbname:   %database_name_db1%
+                #user:     %database_user_db1%
+                #password: %database_password_db1%
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
