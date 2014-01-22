@@ -1,5 +1,5 @@
-demo_site:
-    resource: "@DemoSiteBundle/Resources/config/routing.yml"
+site:
+    resource: "@SiteBundle/Resources/config/routing.yml"
     prefix:   /
 
 elfinder:

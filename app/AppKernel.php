@@ -49,7 +49,6 @@ class AppKernel extends Kernel
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
             new SmartCore\Bundle\SimpleProfilerBundle\SmartSimpleProfilerBundle(),
-            new SmartCore\Bundle\SiteBundle\SiteBundle(),
             new SmartCore\Bundle\SitemapBundle\SmartSitemapBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",
@@ -73,7 +72,10 @@ class AppKernel extends Kernel
 
         if (file_exists($this->rootDir . '/usr/site.ini')) {
             $site = parse_ini_file($this->rootDir . '/usr/site.ini');
-            $bundles[] = new $site['bundle'];
+            $className = '\\' . $site['name'] . '\SiteBundle\\SiteBundle';
+            if (class_exists($className)) {
+                $bundles[] = new $className();
+            }
         }
 
         // Чтение списка модулей. Т.е. модули подключаются почти динамически.

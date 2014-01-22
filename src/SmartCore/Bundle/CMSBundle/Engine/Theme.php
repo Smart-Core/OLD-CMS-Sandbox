@@ -65,7 +65,7 @@ class Theme extends ContainerAware
         // @todo продумать подключение ini-шников!!!
         $this->paths        = [
             $this->container->get('kernel')->getRootDir() . '/Resources/views',
-            $this->container->get('kernel')->getBundle('DemoSiteBundle')->getPath() . '/Resources/views', // @todo Настройка имени бандла сайта.
+            $this->container->get('kernel')->getBundle('SiteBundle')->getPath() . '/Resources/views',
             $this->container->get('kernel')->getBundle('CMSBundle')->getPath() . '/Resources/views',
         ];
         $this->template     = $template;

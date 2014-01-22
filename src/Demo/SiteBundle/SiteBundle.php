@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\SiteBundle;
+namespace Demo\SiteBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

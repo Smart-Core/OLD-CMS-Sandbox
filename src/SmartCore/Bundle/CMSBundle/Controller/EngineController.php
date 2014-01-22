@@ -63,7 +63,6 @@ class EngineController extends Controller
 
         $this->buildBaseHtml($router_data['template']);
 
-        // @todo Настройка имени бандла сайта (Например DemoSiteBundle).
         return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
     }
 
