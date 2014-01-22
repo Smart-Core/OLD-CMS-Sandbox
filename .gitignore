@@ -6,7 +6,6 @@
 /vendor/
 /web/bundles/
 /web/uploads/
-/web/config.php
 /web/sitemap.xml
 composer.lock
 composer.phar
