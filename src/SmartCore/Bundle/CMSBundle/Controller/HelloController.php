@@ -5,6 +5,7 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query\ResultSetMapping;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 

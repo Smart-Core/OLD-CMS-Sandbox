@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use SmartCore\Bundle\CMSBundle\Twig\BlockRenderHelper;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;

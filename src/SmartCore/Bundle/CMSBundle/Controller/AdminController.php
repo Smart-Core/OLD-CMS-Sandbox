@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Finder\Finder;

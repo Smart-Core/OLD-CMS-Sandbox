@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Module;
 
-use SmartCore\Bundle\CMSBundle\Controller\Controller as BaseController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use SmartCore\Bundle\CMSBundle\Response;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use Symfony\Component\HttpFoundation\Request;
