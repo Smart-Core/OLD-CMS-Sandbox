@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\News\Controller;
 
-use SmartCore\Bundle\CMSBundle\Module\Controller;
 use SmartCore\Module\News\Form\Type\NewsFormType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class NewsAdminController extends Controller
@@ -35,8 +35,8 @@ class NewsAdminController extends Controller
     {
         $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('NewsModule:News', $id));
         $form->add('update', 'submit', [
+            'attr'  => ['class' => 'btn btn-primary'],
             'label' => 'Сохранить',
-            'attr' => ['class' => 'btn btn-primary'],
         ]);
 
         if ($request->isMethod('POST')) {
