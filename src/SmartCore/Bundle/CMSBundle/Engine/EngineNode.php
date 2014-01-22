@@ -54,7 +54,7 @@ class EngineNode
      *
      * @var array
      */
-    protected $nodes_list = [];
+    protected $nodes = [];
 
     /**
      * Является ли нода только что созданной?
@@ -126,8 +126,8 @@ class EngineNode
      */
     public function get($id)
     {
-        if (isset($this->nodes_list[$id])) {
-            return $this->nodes_list[$id];
+        if (isset($this->nodes[$id])) {
+            return $this->nodes[$id];
         }
 
         return $this->repository->find($id);
@@ -159,7 +159,7 @@ class EngineNode
         }
 
         $this->em->persist($node);
-        $this->em->flush();
+        $this->em->flush($node);
     }
 
     /**
@@ -186,30 +186,32 @@ class EngineNode
      * параметрами запускаются модули.
      * 
      * @param array  $router_data
-     * @return array $nodes_list
+     * @return Node[] $nodes
      */
     public function buildList(array $router_data)
     {
-        if (!empty($this->nodes_list)) {
-            return $this->nodes_list;
+        if (!empty($this->nodes)) {
+            return $this->nodes;
         }
 
-        $this->nodes_list = [];
+        $this->nodes = [];
 
         // @todo Кеширование построения списка нод.
         /*
-        $cache_key = md5('cms_node_list' . serialize($router_data));
-        if (false == $this->nodes_list = $this->tagcache->get($cache_key)) {
-            $this->nodes_list = [];
-        } else {
-            return $this->nodes_list;
+        if ($router_data['http_method'] == 'GET') {
+            $cache_key = md5('cms_node_list' . serialize($router_data));
+            if (false == $this->nodes = $this->tagcache->get($cache_key)) {
+                $this->nodes = [];
+            } else {
+                return $this->nodes;
+            }
         }
         */
 
         \Profiler::start('buildNodesList');
 
         $used_nodes = [];
-        $lockout_nodes = [
+        $lockout_nodes = [ // @todo блокировку нод.
             'single'  => [], // Блокировка нод в папке, без наследования.
             'inherit' => [], // Блокировка нод в папке, с наследованием.
             'except'  => [], // Блокировка всех нод в папке, кроме заданных.
@@ -300,34 +302,35 @@ class EngineNode
                     $used_nodes[] = $row->node_id; 
                 }
 
-                $this->nodes_list[$row->node_id] = $row->node_id;
+                $this->nodes[$row->node_id] = $row->node_id;
             }
         }
 
         foreach ($lockout_nodes['single'] as $node_id) {
-            unset($this->nodes_list[$node_id]);
+            unset($this->nodes[$node_id]);
         }
 
         foreach ($lockout_nodes['inherit'] as $node_id) {
-            unset($this->nodes_list[$node_id]);
+            unset($this->nodes[$node_id]);
         }
 
         if (!empty($lockout_nodes['except'])) {
-            foreach ($this->nodes_list as $node_id) {
+            foreach ($this->nodes as $node_id) {
                 if (!array_key_exists($node_id, $lockout_nodes['except'])) {
-                    unset($this->nodes_list[$node_id]);
+                    unset($this->nodes[$node_id]);
                 }
             }
         }
 
         // Заполнение массива с нодами сущностями нод.
         /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
-        foreach ($this->repository->findIn($this->nodes_list) as $node) {
+        foreach ($this->repository->findIn($this->nodes) as $node) {
             if (isset($router_data['node_routing']['controller']) and $router_data['node_routing']['node_id'] == $node->getId()) {
                 $node->setController($router_data['node_routing']['controller']);
+                $node->setPriority(255);
             }
 
-            $this->nodes_list[$node->getId()] = $node;
+            $this->nodes[$node->getId()] = $node;
         }
 
         // @todo продумать в каком месте лучше кешировать ноды, также продумать инвалидацию.
@@ -336,7 +339,7 @@ class EngineNode
         $cache = $this->container->get('cms.cache');
         $nodes = [];
         $list = '';
-        foreach ($this->nodes_list as $node_id) {
+        foreach ($this->nodes as $node_id) {
             $list .= $node_id . ',';
 
             if ($cache->hasNode($node_id)) {
@@ -369,29 +372,20 @@ class EngineNode
                     $node->setRouterResponse($router_data['node_route']['response']);
                 }
 
-                $this->nodes_list[$node->getId()] = $node;
+                $this->nodes[$node->getId()] = $node;
             }
         }
         */
 
-        // Перемещение ноды, с роутингом на самый верх.
-        if (isset($router_data['node_routing']['node_id']) and isset($this->nodes_list[$router_data['node_routing']['node_id']])) {
-            $routed_node_id = $router_data['node_routing']['node_id'];
-
-            $reorded_nodes_list = [
-                $routed_node_id => $this->nodes_list[$routed_node_id],
-            ];
-
-            unset($this->nodes_list[$routed_node_id]);
-            $this->nodes_list = $reorded_nodes_list += $this->nodes_list;
-            unset($reorded_nodes_list);
-        }
-
         \Profiler::end('buildNodesList');
 
-        //$this->tagcache->set($cache_key, $this->nodes_list, ['folder', 'node']);
+        /*
+        if ($router_data['http_method'] == 'GET') {
+            $this->tagcache->set($cache_key, $this->nodes, ['folder', 'node']);
+        }
+        */
 
-        return $this->nodes_list;
+        return $this->nodes;
     }
 
     /**

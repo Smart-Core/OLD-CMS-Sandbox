@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -57,11 +58,11 @@ class EngineRouter // implements UrlMatcherInterface
         }
 
         $data = [
-            'folders'    => [],
-            'meta'       => [],
-            'status'     => 200,
-            'template'   => 'index',
-            'node_routing' => null,
+            'folders'       => [],
+            'meta'          => [],
+            'status'        => 200,
+            'template'      => 'index',
+            'node_routing'  => null,
             'current_folder_id'   => 1,
             'current_folder_path' => $baseUrl . '/',
         ];

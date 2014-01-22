@@ -34,6 +34,7 @@ class NodeFormType extends AbstractType
             ])
             ->add('descr')
             ->add('position')
+            ->add('priority')
             ->add('is_active')
             ->add('is_cached')
         ;

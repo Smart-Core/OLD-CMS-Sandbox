@@ -49,10 +49,12 @@ class EngineController extends Controller
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
-        $nodes_list = $this->get('cms.node')->buildList($router_data);
+        $router_data['http_method'] = $request->getMethod(); // @fixme это экмперименты с кешированием списка нод.
+
+        $nodes = $this->get('cms.node')->buildList($router_data);
 
         \Profiler::start('buildModulesData');
-        $nodesResponses = $this->buildModulesData($nodes_list);
+        $nodesResponses = $this->buildModulesData($nodes);
         \Profiler::end('buildModulesData');
 
         if ($nodesResponses instanceof RedirectResponse) {
@@ -121,49 +123,58 @@ class EngineController extends Controller
      * Сборка "блоков" из подготовленного списка нод.
      * По мере прохождения, подключаются и запускаются нужные модули с нужными параметрами.
      *
-     * @param array $nodes_list
+     * @param \SmartCore\Bundle\CMSBundle\Entity\Node[] $nodes_list
      * @return array|RedirectResponse
      */
-    protected function buildModulesData(array $nodes_list)
+    protected function buildModulesData(array $nodes)
     {
+        $prioritySorted = [];
         $nodesResponses = [];
 
-        /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
-        foreach ($nodes_list as $node_id => $node) {
-            $block = $node->getBlockName();
-
-            if (!isset($nodesResponses[$block])) {
-                $nodesResponses[$block] = new BlockRenderHelper();
+        /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
+        foreach ($nodes as $node) {
+            if (!isset($nodesResponses[$node->getBlockName()])) {
+                $nodesResponses[$node->getBlockName()] = new BlockRenderHelper();
             }
 
-            if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                $node->setEip(true);
+            $prioritySorted[$node->getPriority()][$node->getId()] = $node;
+            $nodesResponses[$node->getBlockName()]->{$node->getId()} = new Response();
+        }
+
+        krsort($prioritySorted);
+
+        foreach ($prioritySorted as $nodes) {
+            foreach ($nodes as $node) {
+                if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                    $node->setEip(true);
+                }
+
+                // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+                \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
+                $moduleResponse = $this->forward($node->getId());
+                \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
+
+                if ($moduleResponse instanceof RedirectResponse) {
+                    return $moduleResponse;
+                }
+
+                // @todo сделать отправку front_controls в ответе.
+                if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                    $this->cms_front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
+                    $this->cms_front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
+                        'title' => 'Свойства ноды', // @todo translate
+                        'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
+                    ];
+                }
+
+                if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                    $moduleResponse->setContent(
+                        "<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">" . $moduleResponse->getContent() . "</div>"
+                    );
+                }
+
+                $nodesResponses[$node->getBlockName()]->{$node->getId()} = $moduleResponse;
             }
-
-            // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-            \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
-            $moduleResponse = $this->forward($node_id);
-            \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
-
-            if ($moduleResponse instanceof RedirectResponse) {
-                return $moduleResponse;
-            }
-
-            if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                $this->cms_front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
-                $this->cms_front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
-                    'title' => 'Свойства ноды', // @todo translate
-                    'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
-                ];
-            }
-
-            if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                $moduleResponse->setContent(
-                    "<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">" . $moduleResponse->getContent() . "</div>"
-                );
-            }
-
-            $nodesResponses[$node->getBlockName()]->$node_id = $moduleResponse;
         }
 
         return $nodesResponses;
@@ -206,6 +217,8 @@ class EngineController extends Controller
         if ($node->isDisabled()) {
             throw new AccessDeniedHttpException('Node is disabled.');
         }
+
+        // @todo сделать здесь проверку на права доступа, а также доступность ноды в запрошенной папке.
 
         // @todo сделать роутинги для POST запросов к нодам.
         return $this->forward("{$node->getId()}:{$node->getModule()}:post", ['slug' => $slug]);
