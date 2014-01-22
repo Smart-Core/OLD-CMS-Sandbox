@@ -55,7 +55,6 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new Demo\SiteBundle\DemoSiteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -72,7 +71,12 @@ class AppKernel extends Kernel
             // $bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }
 
-        // Чтение списка модулей. Т.е. модули подключаются почти динамически ;)
+        if (file_exists($this->rootDir . '/usr/site.ini')) {
+            $site = parse_ini_file($this->rootDir . '/usr/site.ini');
+            $bundles[] = new $site['bundle'];
+        }
+
+        // Чтение списка модулей. Т.е. модули подключаются почти динамически.
         if (file_exists($this->rootDir . '/usr/modules.ini')) {
             foreach (parse_ini_file($this->rootDir . '/usr/modules.ini') as $module_name => $module_class) {
                 if (class_exists($module_class)) {
