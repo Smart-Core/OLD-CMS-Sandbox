@@ -73,9 +73,12 @@ class AppKernel extends Kernel
 
         if (file_exists($this->rootDir . '/usr/site.ini')) {
             $site = parse_ini_file($this->rootDir . '/usr/site.ini');
-            $className = '\\' . $site['name'] . '\SiteBundle\\SiteBundle';
-            if (class_exists($className)) {
-                $bundles[] = new $className();
+
+            if (isset($site['name'])) {
+                $className = '\\' . $site['name'] . '\SiteBundle\\SiteBundle';
+                if (class_exists($className)) {
+                    $bundles[] = new $className();
+                }
             }
         }
 
