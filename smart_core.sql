@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Янв 22 2014 г., 21:40
+-- Время создания: Янв 23 2014 г., 06:58
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.8
 
@@ -187,14 +187,12 @@ CREATE TABLE IF NOT EXISTS `aaa_feedbacks` (
   `text` longtext COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Дамп данных таблицы `aaa_feedbacks`
 --
 
-INSERT INTO `aaa_feedbacks` (`id`, `title`, `email`, `text`, `created`) VALUES
-(1, 'sadffg', 'sdfg@sdf.ru', '123123', '2014-01-22 21:19:06');
 
 -- --------------------------------------------------------
 
@@ -237,6 +235,58 @@ INSERT INTO `aaa_fos_user` (`id`, `username`, `username_canonical`, `email`, `em
 (1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-22 21:34:01', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', ''),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', ''),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_front_end_libraries`
+--
+
+DROP TABLE IF EXISTS `aaa_front_end_libraries`;
+CREATE TABLE IF NOT EXISTS `aaa_front_end_libraries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `related_by` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `proirity` smallint(6) NOT NULL,
+  `current_version` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `files` longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_23D980CD5E237E06` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Дамп данных таблицы `aaa_front_end_libraries`
+--
+
+INSERT INTO `aaa_front_end_libraries` (`id`, `name`, `related_by`, `proirity`, `current_version`, `files`) VALUES
+(4, 'jquery', NULL, 1000, '1.9.1', 'jquery.min.js'),
+(5, 'bootstrap', 'jquery', 0, '2.3.2', 'css/bootstrap.min.css,css/bootstrap-responsive.min.css,js/bootstrap.min.js'),
+(6, 'less', NULL, 0, '1.3.3', 'less.min.js');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_front_end_libraries_paths`
+--
+
+DROP TABLE IF EXISTS `aaa_front_end_libraries_paths`;
+CREATE TABLE IF NOT EXISTS `aaa_front_end_libraries_paths` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lib_id` int(11) NOT NULL,
+  `version` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `version_lib` (`version`,`lib_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `aaa_front_end_libraries_paths`
+--
+
+INSERT INTO `aaa_front_end_libraries_paths` (`id`, `lib_id`, `version`, `path`) VALUES
+(1, 4, '1.9.1', 'jquery/1.9.1/'),
+(2, 5, '2.3.2', 'bootstrap/2.3.2/'),
+(3, 6, '1.3.3', 'less/1.3.3/');
 
 -- --------------------------------------------------------
 
@@ -579,81 +629,6 @@ CREATE TABLE IF NOT EXISTS `engine_roles_users_relation` (
 
 INSERT INTO `engine_roles_users_relation` (`role_id`, `user_id`) VALUES
 ('ROLE_ROOT', 1);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `javascript_library`
---
-
-DROP TABLE IF EXISTS `javascript_library`;
-CREATE TABLE IF NOT EXISTS `javascript_library` (
-  `script_id` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `pos` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Приоритет, чем выше, тем раньше будет подключена либа',
-  `related_by` varchar(255) DEFAULT NULL COMMENT 'Зависит от',
-  `title` varchar(200) NOT NULL,
-  `current_version` varchar(20) NOT NULL,
-  `homepage` varchar(200) NOT NULL,
-  `files` text COMMENT 'Файлы',
-  `descr` text,
-  PRIMARY KEY (`script_id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Библиотека скриптов' AUTO_INCREMENT=16 ;
-
---
--- Дамп данных таблицы `javascript_library`
---
-
-INSERT INTO `javascript_library` (`script_id`, `name`, `pos`, `related_by`, `title`, `current_version`, `homepage`, `files`, `descr`) VALUES
-(1, 'jquery', 1000, '', 'jQuery is a new kind of JavaScript Library.', '1.9.1', 'http://jquery.com/', 'jquery.min.js', 'jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.'),
-(2, 'tinymce', 0, '', 'TinyMCE - Javascript WYSIWYG Editor', '3.4.5', 'http://tinymce.moxiecode.com/', 'tiny_mce.js', 'TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor control released as Open Source under LGPL by Moxiecode Systems AB. It has the ability to convert HTML TEXTAREA fields or other HTML elements to editor instances. TinyMCE is very easy to integrate into other Content Management Systems. '),
-(3, 'extjs', 0, '', 'Ext JS is a cross-browser JavaScript library for building rich internet applications.', '3.2.1', 'http://www.sencha.com/products/js/', '', NULL),
-(4, 'highslide', 0, '', 'Highslide JS - JavaScript thumbnail viewer', '4.1.4', 'http://highslide.com/', '', 'Highslide JS is an image, media and gallery viewer written in JavaScript.'),
-(5, 'ckeditor', 0, '', 'CKEditor - WYSIWYG Text and HTML Editor for the Web', '3.4.1', 'http://ckeditor.com/', '', 'CKEditor is a text editor to be used inside web pages. It''s a WYSIWYG  editor, which means that the text being edited on it looks as similar as possible to the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.'),
-(6, 'jquery-ui', 0, '', 'jQuery user interface', '1.8.5', 'http://jqueryui.com/', '', 'jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.'),
-(7, 'mediabox', 0, '', 'Mediabox Advanced', '1.3.4', 'http://iaian7.com/webcode/mediaboxAdvanced', '', 'Based on Lightbox, Slimbox, and the Mootools javascript library, mediaboxAdvanced  is a modal overlay that can handle images, videos, animations, social video sites, twitter media links, inline elements, and external pages with ease.'),
-(8, 'mootools', 0, '', 'MooTools JS Framework', '1.2.5', 'http://mootools.net/', 'mootools.min.js', 'MooTools is a compact, modular, Object-Oriented JavaScript framework designed for the intermediate to advanced JavaScript developer. It allows you to write powerful, flexible, and cross-browser code with its elegant, well documented, and coherent API.'),
-(9, 'scriptaculous', 99, 'prototype', 'script.aculo.us - web 2.0 javascript', '1.9.0', 'http://script.aculo.us/', 'scriptaculous.js', 'script.aculo.us provides you with\r\neasy-to-use, cross-browser user\r\ninterface JavaScript libraries to make\r\nyour web sites and web applications fly.'),
-(10, 'prototype', 100, '', 'JavaScript Framework', '1.7.0', 'http://www.prototypejs.org/', 'prototype.min.js', 'Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.'),
-(11, 'lightview', 0, 'scriptaculous', 'Lightview', '2.7.4', 'http://www.nickstakenburg.com/projects/lightview/', 'css/lightview.css,js/lightview.js', NULL),
-(12, 'jquery-cookie', 0, 'jquery', 'Cookie', '1.3.1', 'http://plugins.jquery.com/project/cookie', 'jquery.cookie.js', 'A simple, lightweight utility plugin for reading, writing and deleting cookies.'),
-(13, 'less', 0, NULL, 'The dynamic stylesheet language.', '1.3.3', 'http://lesscss.org/', 'less.min.js', 'LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (IE 6+, Webkit, Firefox) and server-side, with Node.js.'),
-(14, 'backbone', 0, 'jquery', 'backbone.js', '0.9.2', 'http://documentcloud.github.com/backbone/', 'backbone-min.js', 'Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface. '),
-(15, 'bootstrap', 0, 'jquery', 'Twitter Bootstrap', '2.3.2', '', 'css/bootstrap.min.css,css/bootstrap-responsive.min.css,js/bootstrap.min.js', NULL);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `javascript_library_paths`
---
-
-DROP TABLE IF EXISTS `javascript_library_paths`;
-CREATE TABLE IF NOT EXISTS `javascript_library_paths` (
-  `script_id` mediumint(8) unsigned NOT NULL,
-  `version` varchar(10) NOT NULL,
-  `path` varchar(255) NOT NULL,
-  PRIMARY KEY (`script_id`,`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Пути к скриптам';
-
---
--- Дамп данных таблицы `javascript_library_paths`
---
-
-INSERT INTO `javascript_library_paths` (`script_id`, `version`, `path`) VALUES
-(1, '1.4.2', 'jquery/1.4.2/'),
-(1, '1.6.4', 'jquery/1.6.4/'),
-(1, '1.9.1', 'jquery/1.9.1/'),
-(2, '3.3.9.4', 'tinymce/3.3.9.4/'),
-(2, '3.4.5', 'tinymce/3.4.5/'),
-(9, '1.9.0', 'scriptaculous/1.9.0/src/'),
-(10, '1.7.0', 'prototype/1.7.0/'),
-(11, '2.7.4', 'lightview/2.7.4/'),
-(12, '1.3.1', 'jquery-cookie/1.3.1/'),
-(13, '1.3.0', 'less/1.3.0/'),
-(13, '1.3.3', 'less/1.3.3/'),
-(14, '0.9.2', 'backbone/0.9.2/'),
-(15, '2.3.2', 'bootstrap/2.3.2/');
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

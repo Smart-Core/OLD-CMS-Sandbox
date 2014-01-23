@@ -83,7 +83,6 @@ class EngineController extends Controller
             ];
 
             $this->get('cms.jslib')->call('bootstrap');
-            $this->get('cms.jslib')->call('jquery-cookie');
             $this->get('html')
                 ->css($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.css')
                 ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.js')
