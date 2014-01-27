@@ -58,7 +58,7 @@ class EngineController extends Controller
         $nodesResponses = $this->buildModulesData($nodes);
         \Profiler::end('buildModulesData');
 
-        if ($nodesResponses instanceof RedirectResponse) {
+        if ($nodesResponses instanceof Response) {
             return $nodesResponses;
         }
 
@@ -153,7 +153,9 @@ class EngineController extends Controller
                 $moduleResponse = $this->forward($node->getId());
                 \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
 
-                if ($moduleResponse instanceof RedirectResponse) {
+                if ($moduleResponse instanceof RedirectResponse or
+                    ($moduleResponse instanceof Response and $moduleResponse->isNotFound())
+                ) {
                     return $moduleResponse;
                 }
 

@@ -3,4 +3,5 @@
     <h3><a href="{{ cms_module_path(node, 'smart_module_news.item', {'slug': item.slug}) }}">{{ item.title }}</a></h3>
     <p><b>{{ item.created|localizeddate('long') }}</b></p>
     <p>{{ item.annotation }}</p>
+    <hr />
 {% endfor %}
