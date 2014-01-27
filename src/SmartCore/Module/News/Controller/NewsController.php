@@ -18,10 +18,8 @@ class NewsController extends Controller
      *
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @todo постраничность.
      */
-    public function indexAction(Request $request, $page = 1)
+    public function indexAction(Request $request, $page = null)
     {
         $this->node->addFrontControl('create', [
             'title'   => 'Добавить',
@@ -30,15 +28,23 @@ class NewsController extends Controller
             'default' => true,
         ]);
 
+        if (null === $page) {
+            $page = $request->query->get('page', 1);
+        }
+
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter(
             $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllQuery())
         );
         $pagerfanta->setMaxPerPage($this->node->getParam('items_per_page', 10));
 
         try {
-            $pagerfanta->setCurrentPage($request->query->get('page', 1));
+            $pagerfanta->setCurrentPage($page);
         } catch (NotValidCurrentPageException $e) {
             throw $this->createNotFoundException();
+        }
+
+        if ($page > 1) {
+            $this->get('cms.breadcrumbs')->add(null, 'Страница: ' . $page);
         }
 
         return $this->render('NewsModule::news.html.twig', [

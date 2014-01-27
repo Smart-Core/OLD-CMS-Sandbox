@@ -11,14 +11,6 @@ class Breadcrumbs implements \Iterator, \Countable
      */
     protected $_breadcrumbs = [];
 
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        //parent::__construct(['action' => 'defaultRender']);
-    }
-
     public function rewind()
     {
         $this->_position = 0;
@@ -50,7 +42,39 @@ class Breadcrumbs implements \Iterator, \Countable
     }
 
     /**
+     * Получить последний пункт.
+     *
+     * @return arra|null
+     */
+    public function getLast()
+    {
+        return (isset($this->_breadcrumbs[$this->count() - 1]))
+            ? $this->_breadcrumbs[$this->count() - 1]
+            : null;
+    }
+
+    /**
+     * Обновление последнего пункта.
+     *
+     * @param $uri
+     * @param $title
+     * @param bool $descr
+     */
+    public function updateLast($uri, $title, $descr = false)
+    {
+        if (isset($this->_breadcrumbs[$this->count() - 1])) {
+            $this->_breadcrumbs[$this->count() - 1] = [
+                'uri'   => $uri,
+                'title' => $title,
+                'descr' => $descr,
+            ];
+        }
+    }
+
+    /**
      * Установить данные.
+     *
+     * @param $data
      */
     public function assign($data)
     {
@@ -95,11 +119,7 @@ class Breadcrumbs implements \Iterator, \Countable
             }
         }
 
-        if ($num === false) {
-            return $data;
-        } else {
-            return $data[$num];
-        }
+        return ($num === false) ? $data : $data[$num];
     }
 
     /**
