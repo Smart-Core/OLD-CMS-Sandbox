@@ -1,7 +1,14 @@
 
-{% for item in news %}
+{% for item in news.currentPageResults %}
     <h3><a href="{{ cms_module_path(node, 'smart_module_news.item', {'slug': item.slug}) }}">{{ item.title }}</a></h3>
     <p><b>{{ item.created|localizeddate('long') }}</b></p>
     <p>{{ item.annotation }}</p>
     <hr />
 {% endfor %}
+
+{% if news.haveToPaginate %}
+    {{ pagerfanta(news, 'twitter_bootstrap_translated', {
+            'css_container_class': 'pagination pagination-centered',
+        })
+    }}
+{% endif %}

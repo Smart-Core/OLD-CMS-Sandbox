@@ -2,8 +2,12 @@
 
 namespace SmartCore\Module\News\Controller;
 
+use Pagerfanta\Exception\NotValidCurrentPageException;
+use Pagerfanta\Pagerfanta;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
+use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class NewsController extends Controller
 {
@@ -17,7 +21,7 @@ class NewsController extends Controller
      *
      * @todo постраничность.
      */
-    public function indexAction($page_num = 1)
+    public function indexAction(Request $request, $page = 1)
     {
         $this->node->addFrontControl('create', [
             'title'   => 'Добавить',
@@ -26,9 +30,20 @@ class NewsController extends Controller
             'default' => true,
         ]);
 
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter(
+            $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllQuery())
+        );
+        $pagerfanta->setMaxPerPage($this->node->getParam('items_per_page', 10));
+
+        try {
+            $pagerfanta->setCurrentPage($request->query->get('page', 1));
+        } catch (NotValidCurrentPageException $e) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('NewsModule::news.html.twig', [
-            'node' => $this->node, // @todo подумать как шаблону передавать контекст ноды.
-            'news' => $this->getDoctrine()->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC'])
+            'node' => $this->node,
+            'news' => $pagerfanta,
         ]);
     }
 

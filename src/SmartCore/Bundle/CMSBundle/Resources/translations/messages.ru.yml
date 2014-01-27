@@ -24,6 +24,7 @@ Description: Описание
 Delete: Удалить
 Edit folder: Редактировать раздел
 Edit node: Редактировать ноду
+Editor: Редактор
 Exit: Выход
 Filemanager: Управление файлами
 Files: Файлы
@@ -36,6 +37,7 @@ Inherit in folders: Наследование в папках
 Is active: Включено
 Is file: Является файлом?
 Items count: Кол-во записей
+Items per page: Записей на страницу
 Last login: Последнее посещение
 Login: Вход
 Lockout nodes: Блокировка нод

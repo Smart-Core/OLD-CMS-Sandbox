@@ -424,20 +424,16 @@ class Node implements \Serializable
      */
     public function getParams()
     {
-        if (empty($this->params)) {
-            return [];
-        } else {
-            return $this->params;
-        }
+        return (empty($this->params)) ? [] : $this->params;
     }
 
     /**
      * @param string $key
      * @return mixed
      */
-    public function getParam($key)
+    public function getParam($key, $default = null)
     {
-        return (isset($this->params[$key])) ? $this->params[$key] : null;
+        return (isset($this->params[$key])) ? $this->params[$key] : $default;
     }
 
     /**
@@ -447,6 +443,7 @@ class Node implements \Serializable
     public function setPriority($priority)
     {
         $this->priority = $priority;
+
         return $this;
     }
 
@@ -465,6 +462,7 @@ class Node implements \Serializable
     public function setTemplate($template)
     {
         $this->template = $template;
+
         return $this;
     }
 
@@ -495,6 +493,7 @@ class Node implements \Serializable
     public function setEip($eip)
     {
         $this->eip = $eip;
+
         return $this;
     }
 

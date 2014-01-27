@@ -55,7 +55,7 @@ class EngineController extends Controller
         $nodes = $this->get('cms.node')->buildList($router_data);
 
         \Profiler::start('buildModulesData');
-        $nodesResponses = $this->buildModulesData($nodes);
+        $nodesResponses = $this->buildModulesData($request, $nodes);
         \Profiler::end('buildModulesData');
 
         if ($nodesResponses instanceof Response) {
@@ -125,7 +125,7 @@ class EngineController extends Controller
      * @param \SmartCore\Bundle\CMSBundle\Entity\Node[] $nodes_list
      * @return array|RedirectResponse
      */
-    protected function buildModulesData(array $nodes)
+    protected function buildModulesData(Request $request, array $nodes)
     {
         $prioritySorted = [];
         $nodesResponses = [];
@@ -150,7 +150,12 @@ class EngineController extends Controller
 
                 // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
                 \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
-                $moduleResponse = $this->forward($node->getId());
+
+                $moduleResponse = $this->forward($node->getId(), [
+                    '_route' => 'cms_node_mapper',
+                    '_route_params' => $request->attributes->get('_route_params'),
+                ], $request->query->all());
+
                 \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
 
                 if ($moduleResponse instanceof RedirectResponse or
@@ -159,7 +164,7 @@ class EngineController extends Controller
                     return $moduleResponse;
                 }
 
-                // @todo сделать отправку front_controls в ответе.
+                // @todo сделать отправку front_controls в ответе метода.
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $this->cms_front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
                     $this->cms_front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [

@@ -11,28 +11,9 @@ class NodePropertiesFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /*
-        $groups = [];
-        foreach (Container::get('doctrine.orm.default_entity_manager')->getRepository('MenuModule:Group')->findAll() as $group) {
-            $groups[$group->getId()] = $group;
-        }
-
         $builder
-            ->add('depth', 'integer', [
-                'attr' => ['class' => 'focused'],
-                'required' => false,
-            ])
-            ->add('css_class', 'text', [
-                'required' => false,
-            ])
-            ->add('selected_inheritance', 'checkbox', [
-                'required' => false,
-            ])
-            ->add('group_id', 'choice', [
-                'choices' => $groups,
-            ])
+            ->add('items_per_page', 'integer', ['attr' => ['class' => 'focused']])
         ;
-        */
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -44,6 +25,6 @@ class NodePropertiesFormType extends AbstractType
 
     public function getName()
     {
-        return 'news_node_properties';
+        return 'smart_module_news_node_properties';
     }
 }
