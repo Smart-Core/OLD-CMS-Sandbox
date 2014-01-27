@@ -13,19 +13,19 @@ class NewsAdminController extends Controller
         $em = $this->getDoctrine();
 
         return $this->render('NewsModule:Admin:index.html.twig', [
-            'news' => $em->getRepository('NewsModule:News')->findAll(),
+            'news' => $em->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC']),
         ]);
     }
 
     public function createAction(Request $request)
     {
         $form = $this->createForm(new NewsFormType());
-        $form->add('create', 'submit', ['label' => 'Создать', 'attr' => ['class' => 'btn btn-primary']]);
+        $form->add('create', 'submit', ['label' => 'Создать', 'attr' => ['class' => 'btn btn-success']]);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form->isValid()) {
-                return $this->saveItem($form->getData(), 'smart_news_admin', 'Новость создана.');
+                return $this->saveItem($request, $form->getData(), 'smart_news_admin', 'Новость создана.');
             }
         }
         return $this->render('NewsModule:Admin:create.html.twig', ['form' => $form->createView()]);
@@ -35,14 +35,14 @@ class NewsAdminController extends Controller
     {
         $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('NewsModule:News', $id));
         $form->add('update', 'submit', [
-            'attr'  => ['class' => 'btn btn-primary'],
+            'attr'  => ['class' => 'btn btn-success'],
             'label' => 'Сохранить',
         ]);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form->isValid()) {
-                return $this->saveItem($form->getData(), 'smart_news_admin', 'Новость сохранена.');
+                return $this->saveItem($request, $form->getData(), 'smart_news_admin', 'Новость сохранена.');
             }
         }
 
@@ -54,17 +54,21 @@ class NewsAdminController extends Controller
      *
      * @param int           $item
      * @param string        $redirect_to
-     * @param string|null   $flash_notice
+     * @param string|null   $notice
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    protected function saveItem($item, $redirect_to, $flash_notice = null)
+    protected function saveItem(Request $request, $item, $redirect_to, $notice = null)
     {
         $em = $this->getDoctrine()->getManager();
         $em->persist($item);
         $em->flush($item);
 
-        $this->get('session')->getFlashBag()->add('notice', $flash_notice);
+        $this->get('session')->getFlashBag()->add('success', $notice);
 
-        return $this->redirect($this->generateUrl($redirect_to));
+        $url = $request->query->has('redirect_to')
+            ? $request->query->get('redirect_to')
+            : $this->generateUrl($redirect_to);
+
+        return $this->redirect($url);
     }
 }

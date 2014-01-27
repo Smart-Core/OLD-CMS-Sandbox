@@ -62,12 +62,22 @@ class Theme extends ContainerAware
 
     public function processConfig($assets, $template)
     {
+        $kernel = $this->container->get('kernel');
+
         // @todo продумать подключение ini-шников!!!
-        $this->paths        = [
-            $this->container->get('kernel')->getRootDir() . '/Resources/views',
-            $this->container->get('kernel')->getBundle('SiteBundle')->getPath() . '/Resources/views',
-            $this->container->get('kernel')->getBundle('CMSBundle')->getPath() . '/Resources/views',
-        ];
+        if (array_key_exists('SiteBundle', $kernel->getBundles())) {
+            $this->paths = [
+                $kernel->getRootDir() . '/Resources/views',
+                $kernel->getBundle('SiteBundle')->getPath() . '/Resources/views',
+                $kernel->getBundle('CMSBundle')->getPath() . '/Resources/views',
+            ];
+        } else {
+            $this->paths = [
+                $kernel->getRootDir() . '/Resources/views',
+                $kernel->getBundle('CMSBundle')->getPath() . '/Resources/views',
+            ];
+        }
+
         $this->template     = $template;
         $this->vendor_path  = $assets['vendor'];
         $this->theme_path   = $assets['theme_path'];

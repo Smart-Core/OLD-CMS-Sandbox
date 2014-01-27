@@ -92,22 +92,18 @@ class MenuBuilder extends ContainerAware
      */
     protected function addChild(ItemInterface $menu, Item $parent_item = null)
     {
-        if (null == $parent_item) {
-            $items = $this->em->getRepository('MenuModule:Item')->findByParent($this->group, null);
-        } else {
-            $items = $parent_item->getChildren();
-        }
+        $items = (null == $parent_item)
+            ? $this->em->getRepository('MenuModule:Item')->findByParent($this->group, null)
+            : $parent_item->getChildren();
 
         /** @var Item $item */
         foreach ($items as $item) {
             if ($this->is_admin) {
                 $uri = $this->container->get('router')->generate('smart_menu_admin_item', ['item_id' => $item->getId()]);
             } else {
-                if ($folder = $item->getFolder()) {
-                    $uri = $this->container->get('cms.folder')->getUri($item->getFolder()->getId());
-                } else {
-                    $uri = $item->getUrl();
-                }
+                $uri = ($folder = $item->getFolder())
+                    ? $this->container->get('cms.folder')->getUri($item->getFolder()->getId())
+                    : $item->getUrl();
             }
 
             if ($this->is_admin or $item->getIsActive()) {
@@ -115,7 +111,7 @@ class MenuBuilder extends ContainerAware
                 $new_item->setAttributes([
                     //'class' => 'my_item', // @todo аттрибуты для пунктов меню.
                     'title' => $item->getDescr(),
-                ]);
+                ])->setExtras($item->getProperties());
 
                 if ($this->is_admin and !$item->getIsActive()) {
                     $new_item->setAttribute('style', 'text-decoration: line-through;');

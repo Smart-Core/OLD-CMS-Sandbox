@@ -67,6 +67,7 @@ class EngineRouter // implements UrlMatcherInterface
             'current_folder_path' => $baseUrl . '/',
         ];
 
+        $folder          = null;
         $parent_folder   = null;
         $router_node_id  = null;
         $slug            = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду,
@@ -125,8 +126,8 @@ class EngineRouter // implements UrlMatcherInterface
                         $data['current_folder_path'] .= $folder->getUriPart() . '/';
                     }
 
-                    if ($folder->getTemplate()) {
-                        $data['template'] = $folder->getTemplate();
+                    if ($folder->getTemplateInheritable()) {
+                        $data['template'] = $folder->getTemplateInheritable();
                     }
 
                     $parent_folder = $folder;
@@ -140,6 +141,10 @@ class EngineRouter // implements UrlMatcherInterface
             } else {
                 $data['status'] = 404;
             }
+        }
+
+        if ($folder and $folder->getTemplateSelf()) {
+            $data['template'] = $folder->getTemplateSelf();
         }
 
         if ($type === HttpKernelInterface::MASTER_REQUEST) {
@@ -172,5 +177,19 @@ class EngineRouter // implements UrlMatcherInterface
     public function matchModuleAdmin($module, $path)
     {
         return $this->container->get('cms.router_module.' . $module . '.admin')->match($path);
+    }
+
+    /**
+     * @param string $module
+     * @param string $path
+     * @return array
+     */
+    public function matchModuleApi($module, $path)
+    {
+        if ($this->container->has('cms.router_module_api.' . $module)) {
+            return $this->container->get('cms.router_module_api.' . $module)->match($path);
+        }
+
+        return null;
     }
 }

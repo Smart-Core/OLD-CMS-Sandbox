@@ -71,6 +71,26 @@ class ModulesRoutingResolverPass implements CompilerPassInterface
 
                     $container->setDefinition($serviceName, $definition);
                 }
+
+                // Обработка routing_api.yml
+                $reflector = new \ReflectionClass($moduleClass);
+                $routingConfig = dirname($reflector->getFileName()) . '/Resources/config/routing_api.yml';
+
+                if (file_exists($routingConfig)) {
+                    $definition = new Definition(
+                        'Symfony\\Component\\Routing\\Router', [
+                            new Reference('routing.loader'),
+                            $routingConfig, [
+                                'cache_dir' => $container->getParameter('kernel.cache_dir') . '/smart_core_cms',
+                                'debug'     => $container->getParameter('kernel.debug'),
+                                'matcher_cache_class'   => 'CMSModule' . $moduleName . 'ApiUrlMatcher',
+                                'generator_cache_class' => 'CMSModule' . $moduleName . 'ApiUrlGenerator',
+                            ]
+                        ]
+                    );
+                    $definition->addTag('cms_router_module_api');
+                    $container->setDefinition('cms.router_module_api.' . $moduleName, $definition);
+                }
             }
         }
     }

@@ -1,0 +1,33 @@
+{% extends '@CMS/AdminUser/index.html.twig' %}
+
+{% block html_head_title %}{{ 'Roles'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">#</th>
+            <th>{{ 'Name'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% set count = 1 %}
+        {% for role in roles %}
+            <tr>
+                <td>{{ count }}{% set count = count + 1 %}</td>
+                <td><a href="{{ path('cms_admin_user_role_edit', {'id': role.id}) }}">{{ role.name }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="" {{ form_enctype(form) }} method="POST">
+        {{ form_widget(form) }}
+
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock content %}

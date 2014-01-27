@@ -12,7 +12,7 @@ class SitemapPingCommand extends ContainerAwareCommand
     {
         $this
             ->setName('smart:sitemap:ping')
-            ->setDescription('Sitemap ping.')
+            ->setDescription('@todo Sitemap ping.')
         ;
     }
 

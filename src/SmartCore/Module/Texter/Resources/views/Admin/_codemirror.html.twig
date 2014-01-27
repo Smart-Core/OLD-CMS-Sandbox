@@ -1,0 +1,64 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/addon/hint/show-hint.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/addon/display/fullscreen.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/theme/cobalt.css') }}">
+    <style media="all" type="text/css">
+        .CodeMirror {
+            height: 530px;
+        }
+        .CodeMirror * {
+            font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+            font-size: 16px;
+        }
+        .CodeMirror-fullscreen {
+            z-index: 9999;
+        }
+    </style>
+{% endblock html_head_styles %}
+
+{% block html_head_scripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/codemirror/3.21/lib/codemirror.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/display/fullscreen.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/edit/closetag.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/fold/xml-fold.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/hint/show-hint.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/hint/xml-hint.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/hint/html-hint.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/addon/selection/active-line.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/mode/xml/xml.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/mode/css/css.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset('assets/codemirror/3.21/mode/htmlembedded/htmlembedded.js') }}"></script>
+{% endblock html_head_scripts %}
+
+{% block body_js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        window.onload = function() {
+            editor = CodeMirror.fromTextArea(document.getElementById("textarea_ru"), {
+                autoCloseTags: true,
+                lineNumbers: true,
+                styleActiveLine: true,
+                matchBrackets: true,
+                mode: "text/html",
+                theme: "cobalt",
+                /*extraKeys: {"Ctrl-Space": "autocomplete"} */
+                extraKeys: {
+                    "F11": function(cm) {
+                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                    },
+                    "Esc": function(cm) {
+                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                    }
+                }
+
+            });
+        };
+    </script>
+{% endblock body_js %}

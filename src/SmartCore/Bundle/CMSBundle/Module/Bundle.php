@@ -2,23 +2,32 @@
 
 namespace SmartCore\Bundle\CMSBundle\Module;
 
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 
 class Bundle extends BaseBundle
 {
     /**
-     * @return string
+     * Действие при создании ноды.
+     * @param Node $node
      */
-    /*public function __toString()
+    public function createNode(Node $node)
     {
-        return get_class($this);
     }
-    */
 
     /**
-     * Действие при создании ноды.
+     * Действие при удалении ноды.
+     * @param Node $node
      */
-    public function createNode($node)
+    public function deleteNode(Node $node)
+    {
+    }
+
+    /**
+     * Действие при обновлении ноды.
+     * @param Node $node
+     */
+    public function updateNode(Node $node)
     {
     }
 

@@ -2,9 +2,14 @@
 
 {% block fos_user_content %}
 
-<a href="{{ path("fos_user_registration_register") }}" xmlns="http://www.w3.org/1999/html">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</a> |
-<a href="{{ path("fos_user_resetting_request") }}">Восстановление пароля</a>
-<br /><br />
+{% if allow_registration %}
+    <a href="{{ path("fos_user_registration_register") }}" xmlns="http://www.w3.org/1999/html">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</a>
+{% endif %}
+{% if allow_registration and allow_password_resetting%} | {% endif %}
+{% if allow_password_resetting %}
+    <a href="{{ path("fos_user_resetting_request") }}">Восстановление пароля</a>
+{% endif %}
+{% if allow_registration or allow_password_resetting%} <br /><br /> {% endif %}
 
 {% if error %}
     <div class="row-fluid">
@@ -12,13 +17,13 @@
     </div>
 {% endif %}
 
-{# fos_user_security_check , fos_user_profile_show   <input type="hidden" name="_node_id" value="{{ node_id }}" />   #}
-<form action="{{ path("fos_user_security_check") }}" method="post">
+{#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+<form action="login_check" method="post" class="form-signin">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
     <div>
         <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <input type="text" id="username" name="_username" value="{{ last_username }}" class="focused"/>
     </div>
     <div>
         <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>

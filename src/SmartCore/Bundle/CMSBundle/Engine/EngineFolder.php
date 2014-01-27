@@ -136,7 +136,8 @@ class EngineFolder
 
         $uriPart = $folder->getUriPart();
 
-        if (empty($uriPart)) {
+        // Если не указан сегмент URI, тогда он устанавливается в ID папки.
+        if (empty($uriPart) and $folder->getId() > 1) {
             $folder->setUriPart($folder->getId());
             $this->em->persist($folder);
             $this->em->flush($folder);

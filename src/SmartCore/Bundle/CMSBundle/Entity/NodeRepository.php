@@ -19,6 +19,10 @@ class NodeRepository extends EntityRepository
 
         $list_string = substr($list_string, 0, strlen($list_string)-1);
 
+        if (false == $list_string) {
+            return [];
+        }
+
         return $this->_em->createQuery("
             SELECT n
             FROM {$this->_entityName} n

@@ -298,7 +298,7 @@ function renderToolbar() {
         '<div class="navbar-inner">' +
         '<div class="container">' +
         '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
-        '<a class="brand" href="' + basePath +'" title="На главную">Smart Core CMS</a>' + // <i class="icon-home icon-white"></i>
+        '<a class="brand" href="' + basePath +'" title="На главную"> <i class="icon-home icon-white"></i></a>' + // Smart Core CMS
         '<div class="nav-collapse collapse">' +
         '<ul class="nav"></ul>' +
         '<div class="pull-right">' +

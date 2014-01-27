@@ -119,8 +119,15 @@ class Folder
 
     /**
      * @ORM\Column(type="string", length=30, nullable=TRUE)
+     * @var string
      */
-    protected $template;
+    protected $template_inheritable;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=TRUE)
+     * @var string
+     */
+    protected $template_self;
 
     /**
      * @ORM\Column(type="integer")
@@ -147,24 +154,28 @@ class Folder
      */
     public function __construct()
     {
-        $this->children         = new ArrayCollection();
-        $this->create_by_user_id = 0;
-        $this->create_datetime  = new \DateTime();
-        $this->form_title       = '';
-        $this->meta             = null;
-        $this->is_active        = true;
-        $this->is_deleted       = false;
-        $this->is_file          = false;
-        $this->has_inherit_nodes = false;
-        $this->lockout_nodes    = null;
-        $this->nodes =          new ArrayCollection();
-        $this->parent_folder    = null;
-        $this->permissions      = null;
-        $this->position         = 0;
-        $this->redirect_to      = null;
-        $this->router_node_id   = null;
-        $this->template         = null;
-        $this->uri_part         = '';
+        $this->children             = new ArrayCollection();
+        $this->create_by_user_id    = 0;
+        $this->create_datetime      = new \DateTime();
+        $this->is_active            = true;
+        $this->is_deleted           = false;
+        $this->is_file              = false;
+        $this->has_inherit_nodes    = false;
+        $this->lockout_nodes        = null;
+        $this->meta                 = null;
+        $this->nodes                = new ArrayCollection();
+        $this->parent_folder        = null;
+        $this->permissions          = null;
+        $this->position             = 0;
+        $this->redirect_to          = null;
+        $this->router_node_id       = null;
+        $this->template_inheritable = null;
+        $this->template_self        = null;
+        $this->uri_part             = null;
+
+        // Unmapped
+        $this->form_title   = '';
+        $this->uri          = null;
     }
 
     /**
@@ -287,10 +298,7 @@ class Folder
      */
     public function setUriPart($uri_part)
     {
-        if ($this->getId() > 1) {
-            $this->uri_part = $uri_part;
-        }
-
+        $this->uri_part = $uri_part;
         return $this;
     }
 
@@ -317,11 +325,7 @@ class Folder
      */
     public function getMeta()
     {
-        if (empty($this->meta)) {
-            return [];
-        } else {
-            return $this->meta;
-        }
+        return empty($this->meta) ? [] : $this->meta;
     }
 
     /**
@@ -427,21 +431,39 @@ class Folder
     }
 
     /**
-     * @param string $template
+     * @param mixed $template_inheritable
      * @return $this
      */
-    public function setTemplate($template)
+    public function setTemplateInheritable($template_inheritable)
     {
-        $this->template = $template;
+        $this->template_inheritable = $template_inheritable;
         return $this;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTemplate()
+    public function getTemplateInheritable()
     {
-        return $this->template;
+        return $this->template_inheritable;
+    }
+
+    /**
+     * @param mixed $template_self
+     * @return $this
+     */
+    public function setTemplateSelf($template_self)
+    {
+        $this->template_self = $template_self;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTemplateSelf()
+    {
+        return $this->template_self;
     }
 
     /**

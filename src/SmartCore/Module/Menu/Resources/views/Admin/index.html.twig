@@ -3,7 +3,7 @@
 {% block html_head_title %}Меню / {{ parent() }}{% endblock html_head_title %}
 
 {% block content %}
-    <ul class="nav nav-tabs" id="myTab">
+    <ul class="nav nav-pills" id="myTab">
         <li class="active"><a>Список всех групп меню</a></li>
     </ul>
 
@@ -36,13 +36,11 @@
     </div>
 
     <div class="well well-small">
-        {% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
-
         <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-horizontal">
             {{ form_widget(form) }}
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" name="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
                 </div>
             </div>
         </form>

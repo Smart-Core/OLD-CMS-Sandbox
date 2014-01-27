@@ -14,6 +14,7 @@ class GroupFormType extends AbstractType
             ->add('name', null, ['attr' => ['class' => 'focused']])
             ->add('descr')
             ->add('position')
+            ->add('properties')
         ;
     }
 
@@ -26,6 +27,6 @@ class GroupFormType extends AbstractType
 
     public function getName()
     {
-        return 'sc_menu_group';
+        return 'smart_module_menu_group';
     }
 }

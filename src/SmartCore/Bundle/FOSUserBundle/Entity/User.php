@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="users")
  */
 class User extends BaseUser
 {
@@ -17,43 +17,64 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
+     * @ORM\Column(type="string", length=255)
      * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255)
      */
     protected $firstname = '';
 
     /**
+     * @ORM\Column(type="string", length=255)
      * @var string
-     *
-     * @ORM\Column(name="lastname", type="string", length=255)
      */
     protected $lastname = '';
 
     /**
+     * @ORM\Column(name="facebook_id", type="string", length=255)
      * @var string
-     *
-     * @ORM\Column(name="facebookId", type="string", length=255)
      */
     protected $facebookId = '';
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    protected $created;
+
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+
+        $this->created = new \DateTime();
     }
     
     public function serialize()
     {
-        return serialize([$this->facebookId, parent::serialize()]);
+        return serialize([
+            $this->facebookId,
+            parent::serialize()
+        ]);
     }
 
     public function unserialize($data)
     {
-        list($this->facebookId, $parentData) = unserialize($data);
+        list(
+            $this->facebookId,
+            $parentData
+        ) = unserialize($data);
         parent::unserialize($parentData);
+    }
+
+    /**
+     * @return \Datetime
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 
     /**

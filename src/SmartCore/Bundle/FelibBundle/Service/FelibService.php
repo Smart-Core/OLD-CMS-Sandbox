@@ -111,7 +111,8 @@ class FelibService
             $flag = 0;
             foreach ($this->calledLibs as $name => $value) {
                 // @todo пока можно обработать зависимость только от одной либы, далее надо сделать списки, например "prototype, scriptaculous".
-                $related_by = $this->scripts[$name]->getRelatedBy();
+                $related_by = isset($this->scripts[$name]) ? $this->scripts[$name]->getRelatedBy() : null;
+
                 if (!empty($related_by) and !isset($this->calledLibs[$related_by])) {
                     $this->calledLibs[$related_by] = false;
                     $flag = 1;
@@ -121,13 +122,16 @@ class FelibService
 
         // @todo сделать возможность конфигурирования из файлов.
         foreach ($this->calledLibs as $name => $version) {
+            if (!isset($this->scripts[$name])) {
+                continue;
+            }
+
             $pathEntity = $this->em->getRepository('SmartCoreFelibBundle:LibraryPath')->findOneBy([
                 'lib_id'  => $this->scripts[$name]->getId(),
                 'version' => empty($version) ? $this->scripts[$name]->getCurrentVersion() : $version,
             ])->getPath();
 
             $path = strpos($pathEntity, 'http://') === 0 ? $pathEntity : $this->globalAssets . $pathEntity;
-
 
             foreach (explode(',', $this->scripts[$name]->getFiles()) as $file) {
                 if (substr($file, strrpos($file, '.') + 1) === 'css') {

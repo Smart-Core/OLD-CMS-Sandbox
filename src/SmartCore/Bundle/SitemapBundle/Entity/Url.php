@@ -47,6 +47,13 @@ class Url
     protected $loc;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    protected $referer;
+
+    /**
      * @ORM\Column(type="string", length=32, nullable=true)
      *
      * @var string
@@ -109,6 +116,7 @@ class Url
         $this->is_visited   = false;
         $this->lastmod      = null;
         $this->priority     = null;
+        $this->referer      = null;
         $this->status       = 200;
         $this->title_dublicates = 0;
     }
@@ -161,6 +169,24 @@ class Url
         }
 
         return $this->priority;
+    }
+
+    /**
+     * @param string $referer
+     * @return $this
+     */
+    public function setReferer($referer)
+    {
+        $this->referer = $referer;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReferer()
+    {
+        return $this->referer;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Texter;
 
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Module\Bundle;
 use SmartCore\Module\Texter\Entity\Item;
 
@@ -9,9 +10,9 @@ class TexterModule extends Bundle
 {
     /**
      * Действие при создании ноды.
-     * @param \SmartCore\Bundle\CMSBundle\Entity\Node $node
+     * @param Node $node
      */
-    public function createNode($node)
+    public function createNode(Node $node)
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
 
@@ -22,7 +23,26 @@ class TexterModule extends Bundle
         $em->flush($item);
 
         $node->setParams([
-            'text_item_id' => $item->getId()
+            'text_item_id' => $item->getId(),
+            'editor' => true,
         ]);
+    }
+
+    /**
+     * Действие при обновлении ноды.
+     * @param Node $node
+     */
+    public function updateNode(Node $node)
+    {
+        $em = $this->container->get('doctrine.orm.entity_manager');
+
+        /** @var Item $item */
+        $item = $em->find('TexterModule:Item', $node->getParam('text_item_id'));
+
+        if ($item) {
+            $item->setEditor((int) $node->getParam('editor'));
+            $em->persist($item);
+            $em->flush($item);
+        }
     }
 }

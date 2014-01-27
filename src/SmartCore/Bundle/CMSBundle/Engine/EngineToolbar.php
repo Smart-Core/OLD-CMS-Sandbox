@@ -19,6 +19,11 @@ class EngineToolbar extends ContainerAware
                     'descr' => 'Настройки',
                     'icon' => 'wrench',
                     'items' => [
+                        'modules' => [
+                            'title' => 'Модули',
+                            'icon' => 'cog',
+                            'uri' => $router->generate('cms_admin_module'),
+                        ],
                         'files' => [
                             'title' => 'Файлы',
                             'icon' => 'cog',
@@ -29,11 +34,6 @@ class EngineToolbar extends ContainerAware
                             'icon' => 'th',
                             'uri' => $router->generate('cms_admin_structure_block'),
                         ],
-                        'modules' => [
-                            'title' => 'Модули',
-                            'icon' => 'cog',
-                            'uri' => $router->generate('cms_admin_module'),
-                        ],
                         'appearance' => [
                             'title' => 'Оформление',
                             'icon' => 'picture',
@@ -42,7 +42,7 @@ class EngineToolbar extends ContainerAware
                         'users' => [
                             'title' => 'Пользователи',
                             'icon' => 'user',
-                            'uri' => $router->generate('cms_admin_users'),
+                            'uri' => $router->generate('cms_admin_user'),
                         ],
                         'config' => [
                             'title' => 'Конфигруация',
@@ -102,21 +102,21 @@ class EngineToolbar extends ContainerAware
                     'icon' => 'user',
                     'items' => [
                         'admin' => [
-                            'title' => 'Admin',
-                            'uri' => $router->generate('cms_admin_structure'),
+                            'title' => 'Панель управления',
+                            'uri' => $router->generate('cms_admin'),
                             'icon' => 'cog',
                             'overalay' => false,
                         ],
                         'profile' => [
                             'title' => 'Мой профиль',
-                            'uri' => $router->generate('fos_user_profile_show'),
+                            'uri' => $router->generate('cms_admin_user_edit', ['id' => $this->container->get('security.context')->getToken()->getUser()->getId()]),
                             'icon' => 'user',
                             'overalay' => false,
                         ],
                         'diviver_1' => 'diviver',
                         'logout' => [
                             'title' => "Выход",
-                            'uri' => $router->generate('fos_user_security_logout'),
+                            'uri' => $router->generate('cms_admin_logout'),
                             'icon' => "off",
                             'overalay' => false,
                         ],

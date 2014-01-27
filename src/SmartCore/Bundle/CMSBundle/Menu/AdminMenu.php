@@ -18,20 +18,29 @@ class AdminMenu extends ContainerAware
     {
         $menu = $factory->createItem('admin_main');
 
-        if (isset($options['class'])) {
-            $menu->setChildrenAttribute('class', $options['class']);
-        } else {
-            $menu->setChildrenAttribute('class', 'nav');
-        }
-
+        $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'nav');
         $menu->addChild('Structure',     ['route' => 'cms_admin_structure']);
         $menu->addChild('Modules',       ['route' => 'cms_admin_module']);
         $menu->addChild('Files',         ['route' => 'cms_admin_files']);
+        $menu->addChild('Users',         ['route' => 'cms_admin_user']);
         $menu->addChild('Appearance',    ['route' => 'cms_admin_appearance']);
-        $menu->addChild('Users',         ['route' => 'cms_admin_users']);
         $menu->addChild('Configuration', ['route' => 'cms_admin_config']);
         $menu->addChild('Reports',       ['route' => 'cms_admin_reports']);
         $menu->addChild('Help',          ['route' => 'cms_admin_help']);
+
+        return $menu;
+    }
+
+    public function user(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('admin_user');
+
+        $menu->setExtra('select_intehitance', false);
+        $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'nav nav-pills');
+
+        $menu->addChild('All users',    ['route' => 'cms_admin_user']);
+        $menu->addChild('Create user',  ['route' => 'cms_admin_user_create']);
+        $menu->addChild('Roles',        ['route' => 'cms_admin_user_roles']);
 
         return $menu;
     }
@@ -47,15 +56,42 @@ class AdminMenu extends ContainerAware
     {
         $menu = $factory->createItem('admin_structure');
 
-        if (isset($options['class'])) {
-            $menu->setChildrenAttribute('class', $options['class']);
-        } else {
-            $menu->setChildrenAttribute('class', 'nav nav-pills');
-        }
-
+        $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'nav nav-pills');
         $menu->addChild('Create folder',  ['route' => 'cms_admin_structure_folder_create']);
         $menu->addChild('Connect module', ['route' => 'cms_admin_structure_node_create']);
         $menu->addChild('Blocks',         ['route' => 'cms_admin_structure_block']);
+
+        return $menu;
+    }
+
+    /**
+     * Меню на странице редактирования папки.
+     *
+     * @param FactoryInterface $factory
+     * @param array $options
+     */
+    public function structureOnFolderEdit(FactoryInterface $factory, array $options)
+    {
+        $menu = $this->structure($factory, $options);
+
+        $item = $menu->addChild('Folder edit', ['uri' => '#']);
+        $item->setCurrent(true);
+
+        return $menu;
+    }
+    
+    /**
+     * Меню на странице редактирования ноды.
+     *
+     * @param FactoryInterface $factory
+     * @param array $options
+     */
+    public function structureOnNodeEdit(FactoryInterface $factory, array $options)
+    {
+        $menu = $this->structure($factory, $options);
+
+        $item = $menu->addChild('Node edit', ['uri' => '#']);
+        $item->setCurrent(true);
 
         return $menu;
     }
@@ -73,7 +109,7 @@ class AdminMenu extends ContainerAware
         $menu = $factory->createItem('full_structure');
         $menu->setChildrenAttributes([
             'class' => 'filetree',
-            'id' => 'browser',
+            'id'    => 'browser',
         ]);
 
         $this->addChild($menu);
@@ -99,7 +135,7 @@ class AdminMenu extends ContainerAware
             $menu->addChild($folder->getTitle(), ['uri' => $uri])->setAttributes([
                 'class' => 'folder',
                 'title' => $folder->getDescr(),
-                'id' => 'folder_id_' . $folder->getId(),
+                'id'    => 'folder_id_' . $folder->getId(),
             ]);
 
             /** @var $sub_menu ItemInterface */

@@ -1,0 +1,21 @@
+
+{% extends '@CMS/AdminUser/index.html.twig' %}
+
+{% block html_head_title %}{{ 'Create user'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h4>{{ 'New user'|trans }}</h4>
+
+    <form action="" {{ form_enctype(form) }} method="POST"  class="form-horizontal">
+        {{ form_widget(form) }}
+
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="create" class="btn btn-success"><i class="icon-ok icon-white"></i> {{ 'Create'|trans }}</button>
+                <a class="btn cmf-cancel" href="{{ path('cms_admin_user') }}">{{ 'Cancel'|trans }}</a>
+            </div>
+        </div>
+    </form>
+
+{% endblock content %}

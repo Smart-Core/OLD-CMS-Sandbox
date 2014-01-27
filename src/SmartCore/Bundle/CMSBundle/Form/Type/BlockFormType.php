@@ -32,6 +32,6 @@ class BlockFormType extends AbstractType
 
     public function getName()
     {
-        return 'engine_block';
+        return 'smart_core_block';
     }
 }

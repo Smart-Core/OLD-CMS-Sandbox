@@ -15,5 +15,4 @@ abstract class Controller extends BaseController
     protected $depth = 0;
     protected $group_id = null;
     protected $selected_inheritance = false;
-    protected $tpl = null; // @todo
 }

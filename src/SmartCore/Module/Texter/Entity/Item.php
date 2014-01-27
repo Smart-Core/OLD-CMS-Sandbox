@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="text_items")
+ * @ORM\Table(name="texter")
  */
 class Item
 {
@@ -20,8 +20,13 @@ class Item
     /**
      * @ORM\Column(type="string", length=8, nullable=TRUE)
      */
-    protected $language;
-    
+    protected $locale;
+
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    protected $editor;
+
     /**
      * @ORM\Column(type="text", nullable=TRUE)
      */
@@ -37,7 +42,7 @@ class Item
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $datetime;
+    protected $created;
 
     /**
      * @ORM\Column(type="integer")
@@ -49,10 +54,11 @@ class Item
      */
     public function __construct()
     {
-        $this->datetime = new \DateTime();
-        $this->language = 'ru';
-        $this->meta = [];
-        $this->text = null;
+        $this->created  = new \DateTime();
+        $this->locale   = 'ru';
+        $this->meta     = [];
+        $this->text     = null;
+        $this->editor   = 1;
     }
 
     /**
@@ -80,13 +86,63 @@ class Item
     {
         $a = strip_tags($this->text);
 
-        if (mb_strlen($a, 'utf-8') > 120) {
-            $dotted = '...';
-        } else {
-            $dotted = '';
-        }
+        $dotted = (mb_strlen($a, 'utf-8') > 120) ? '...' : '';
 
         return mb_substr($a, 0, 120, 'utf-8') . $dotted;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     * @return $this
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * @param mixed $editor
+     * @return $this
+     */
+    public function setEditor($editor)
+    {
+        $this->editor = $editor;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEditor()
+    {
+        return $this->editor;
+    }
+
+    /**
+     * @param mixed $locale
+     * @return $this
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 
     /**

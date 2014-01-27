@@ -47,6 +47,6 @@ class CmsModulePathExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'smart_core_twig_extension';
+        return 'smart_core_cms_module_path_twig_extension';
     }
 }

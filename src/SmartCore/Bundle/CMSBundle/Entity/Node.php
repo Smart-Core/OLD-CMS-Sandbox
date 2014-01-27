@@ -47,6 +47,12 @@ class Node implements \Serializable
     protected $params;
 
     /**
+     * @ORM\Column(type="string", length=30, nullable=TRUE)
+     * @var string
+     */
+    protected $template;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Folder", inversedBy="nodes")
      * @ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")
      * @Assert\NotBlank()
@@ -426,6 +432,15 @@ class Node implements \Serializable
     }
 
     /**
+     * @param string $key
+     * @return mixed
+     */
+    public function getParam($key)
+    {
+        return (isset($this->params[$key])) ? $this->params[$key] : null;
+    }
+
+    /**
      * @param int $priority
      * @return $this
      */
@@ -441,6 +456,24 @@ class Node implements \Serializable
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * @param string $template
+     * @return $this
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplate($default = null)
+    {
+        return empty($this->template) ? $default : $this->template;
     }
 
     /**

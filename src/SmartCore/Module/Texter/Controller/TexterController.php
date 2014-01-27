@@ -2,32 +2,16 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class TexterController extends Controller
 {
-    use CacheTrait;
-
     /**
-     * @param integer $item_id
      * @return Response
      */
-    public function indexAction($item_id = null)
+    public function indexAction()
     {
-        $cache_key = md5('smart_module_texter' . $this->text_item_id);
-
-        $cache = $this->getCacheService();
-
-        if (false == $item = $cache->get($cache_key)) {
-            $item = $this->getDoctrine()->getManager()->find('TexterModule:Item', $item_id ? $item_id : $this->text_item_id);
-
-            $cache->set($cache_key, $item, ['smart_module_texter', 'node_'.$this->node->getId()]);
-        }
-
-        foreach ($item->getMeta() as $key => $value) {
-            $this->get('html')->meta($key, $value);
-        }
+        $item = $this->get('smart_module_texter')->get($this->text_item_id, $this->node->getId());
 
         $this->node->addFrontControl('edit', [
             'title'   => 'Редактировать',
@@ -36,6 +20,10 @@ class TexterController extends Controller
             'default' => true,
         ]);
 
-        return new Response($item->getText());
+        if ($item) {
+            return new Response($item->getText());
+        }
+
+        return new Response('Texter not found. Node: ' . $this->node->getId() . '<br />', 404);
     }
 }

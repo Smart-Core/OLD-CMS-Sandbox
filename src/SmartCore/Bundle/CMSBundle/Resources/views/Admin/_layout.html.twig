@@ -40,7 +40,7 @@
 
             {% block navbar_inner %}
             <!-- Be sure to leave the brand out there if you want it shown -->
-            <a class="brand" href="{{ app.request.basePath }}/" title="Перейти на сайт"><i class="icon-home icon-white"></i>{#Smart Core CMS#}</a>
+            <a class="brand" href="{{ app.request.basePath }}/" title="Перейти на сайт"><i class="icon-home icon-white"></i></a>
 
             <!-- Everything you want hidden at 940px or less, place within here -->
             <div class="nav-collapse collapse">
@@ -52,9 +52,9 @@
                 <ul class="nav pull-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {{ app.user.userName }} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class=""><a href="#"><i class="icon-cog"></i> {{ 'My profile'|trans }}</a></li>
+                            <li class=""><a href="{{ path('cms_admin_user_edit', {'id': app.user.id}) }}"><i class="icon-cog"></i> {{ 'My profile'|trans }}</a></li>
                             <li class="divider"></li>
-                            <li class=""><a href="{{ path('fos_user_security_logout') }}"><i class="icon-off"></i> {{ 'Exit'|trans }}</a></li>
+                            <li class=""><a href="{{ path('cms_admin_logout') }}"><i class="icon-off"></i> {{ 'Exit'|trans }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -67,16 +67,16 @@
 
 <div class="container">
 
-    {% include '@CMS/flash_messages.thml.twig' %}
-
     <div class="row-fluid">
+        {% block nav '' %}
+
+        {% include '@CMS/flash_messages.thml.twig' %}
+
         {% block content %}
-
             {% block subnav '' %}
-
         {% endblock content %}
 
-        {% block nav '' %}
+        {% block bottom_nav '' %}
     </div>
 </div>
 {% endblock body %}

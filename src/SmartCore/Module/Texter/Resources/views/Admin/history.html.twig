@@ -1,0 +1,32 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_title %}Текстер / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+    <div class="tab-content">
+        <div class="tab-pane active" id="all">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>{{ 'Date'|trans }}</th>
+                    <th>{{ 'Text'|trans }}</th>
+                    <th>{{ 'Action'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.created|localizeddate('medium') }}</td>
+                        <td>{{ item.announce }}</td>
+                        <td>
+                            <a href="{{ path('smart_texter_admin_rollback', {'id': item.id}) }}" title=""><i class="icon-forward"></i>Откатить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock content %}

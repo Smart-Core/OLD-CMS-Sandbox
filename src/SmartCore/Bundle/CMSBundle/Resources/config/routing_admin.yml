@@ -4,13 +4,25 @@ cms_admin_index:
     defaults:
         _controller: CMSBundle:Admin:index
 
-# Admin Structure
+# Security
+cms_admin_login:
+    path: /login
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'CMSBundle:User:login.html.twig'
+
+cms_admin_logout:
+    path: /logout
+    defaults:
+        _controller: FOSUserBundle:Security:logout
+
+# Structure
 cms_admin_structure:
     path: /structure/
     defaults:
         _controller: CMSBundle:Admin:structure
 
-# Admin Block
+# Block
 cms_admin_structure_block:
     path: /structure/block/
     defaults:
@@ -23,7 +35,7 @@ cms_admin_structure_block_edit:
     requirements:
         id: \d+
 
-# Admin Folder
+# Folder
 cms_admin_structure_folder_create:
     path: /structure/folder/create/
     defaults:
@@ -41,7 +53,7 @@ cms_admin_structure_folder:
     requirements:
         id: \d+
 
-# Admin Node
+# Node
 cms_admin_structure_node_create:
     path: /structure/node/create/
     defaults:
@@ -78,7 +90,7 @@ cms_admin_node_w_slug:
         id: \d+
         slug: ".+"
 
-# Admin Appearance
+# Appearance
 cms_admin_appearance:
     path: /appearance/
     defaults:
@@ -88,11 +100,6 @@ cms_admin_files:
     path: /files/
     defaults:
         _controller: CMSBundle:Admin:elfinder
-
-cms_admin_users:
-    path: /users/
-    defaults:
-        _controller: CMSBundle:Admin:notFound
 
 # Modules
 cms_admin_module:
@@ -112,6 +119,33 @@ cms_admin_module_install:
         _controller: CMSBundle:Admin:moduleInstall
         filename: ""
 
+# Users
+cms_admin_user:
+    path: /user/
+    defaults:
+        _controller: CMSBundle:AdminUser:index
+
+cms_admin_user_create:
+    path: /user/create/
+    defaults:
+        _controller: CMSBundle:AdminUser:create
+
+cms_admin_user_roles:
+    path: /user/roles/
+    defaults:
+        _controller: CMSBundle:AdminUser:roles
+
+cms_admin_user_role_edit:
+    path: /user/role/{id}/
+    defaults:
+        _controller: CMSBundle:AdminUser:roleEdit
+
+cms_admin_user_edit:
+    path: /user/{id}/
+    defaults:
+        _controller: CMSBundle:AdminUser:edit
+
+# @todo
 cms_admin_config:
     path: /config/
     defaults:
@@ -127,6 +161,8 @@ cms_admin_help:
     defaults:
         _controller: CMSBundle:Admin:notFound
 
+
+# ... other
 cms_admin:
     path: /{slug}
     defaults:

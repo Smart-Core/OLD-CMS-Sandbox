@@ -1,9 +1,0 @@
-{
-    "name": "smart-core/module-userregistration",
-    "autoload": {
-        "psr-0": {
-            "SmartCore\\Module\\UserRegistration": ""
-        }
-    },                
-    "target-dir": "SmartCore/Module/UserRegistration"
-}

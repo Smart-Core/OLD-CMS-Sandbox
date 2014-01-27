@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Twig\BlockRenderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,10 +84,10 @@ class EngineController extends Controller
             ];
 
             $this->get('cms.jslib')->call('bootstrap');
+            $this->get('cms.jslib')->call('jquery-cookie');
             $this->get('html')
                 ->css($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.css')
                 ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.js')
-                ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/jquery.ba-hashchange.min.js')
                 ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
             ;
         }
@@ -167,7 +168,7 @@ class EngineController extends Controller
 
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $moduleResponse->setContent(
-                        "<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">" . $moduleResponse->getContent() . "</div>"
+                        "\n<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">\n" . $moduleResponse->getContent() . "\n</div>\n"
                     );
                 }
 
@@ -212,7 +213,7 @@ class EngineController extends Controller
 
         $node = $this->get('cms.node')->get($node_id);
 
-        if ($node->isDisabled()) {
+        if (!$node instanceof Node or $node->isDisabled()) {
             throw new AccessDeniedHttpException('Node is disabled.');
         }
 

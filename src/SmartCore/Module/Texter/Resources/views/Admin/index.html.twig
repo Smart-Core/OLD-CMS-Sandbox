@@ -6,15 +6,21 @@
     <div class="tab-content">
         <div class="tab-pane active" id="all">
             <table class="table table-bordered table-hover">
-                <thead><tr>
+                <thead>
+                <tr>
                     <th>id</th>
                     <th>{{ 'Text'|trans }}</th>
-                </tr></thead>
+                    <th>{{ 'Action'|trans }}</th>
+                </tr>
+                </thead>
                 <tbody>
                 {% for item in items %}
                     <tr>
                         <td><a href="{{ path('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.id }}</a></td>
                         <td><a href="{{ path('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.announce }}</a></td>
+                        <td>
+                            <a href="{{ path('smart_texter_admin_history', {'id': item.id}) }}" title="История"><i class="icon-time"></i></a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -22,20 +28,5 @@
 
         </div>
     </div>
-
-{#
-<div class="well well-small">
-    {% form_theme form_create 'MopaBootstrapBundle:Form:fields.html.twig' %}
-
-    <form action="{{ path('smart_texter_admin') }}" {{ form_enctype(form_create) }} method="post" class="form-horizontal">
-        {{ form_widget(form_create) }}
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" name="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
-            </div>
-        </div>
-    </form>
-</div>
-#}
 
 {% endblock content %}

@@ -32,6 +32,7 @@ class NodeFormType extends AbstractType
                 'attr' => ['class' => 'input-block-level'],
                 'required' => true,
             ])
+            ->add('template')
             ->add('descr')
             ->add('position')
             ->add('priority')
@@ -49,6 +50,6 @@ class NodeFormType extends AbstractType
 
     public function getName()
     {
-        return 'engine_node';
+        return 'smart_core_node';
     }
 }

@@ -53,6 +53,23 @@ class LoadFelibData extends ContainerAware implements FixtureInterface, OrderedF
         $manager->persist($libPath);
         $manager->flush($libPath);
 
+        // jquery.cookie
+        $lib = new Library();
+        $lib->setName('jquery-cookie')
+            ->setRelatedBy('jquery')
+            ->setCurrentVersion('1.3.1')
+            ->setFiles('jquery.cookie.js');
+        $manager->persist($lib);
+        $manager->flush($lib);
+
+        $libPath = new LibraryPath();
+        $libPath
+            ->setLibId($lib->getId())
+            ->setVersion('1.3.1')
+            ->setPath('jquery-cookie/1.3.1/');
+        $manager->persist($libPath);
+        $manager->flush($libPath);
+
         // less
         $lib = new Library();
         $lib->setName('less')

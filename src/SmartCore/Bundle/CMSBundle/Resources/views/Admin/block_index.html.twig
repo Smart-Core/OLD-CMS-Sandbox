@@ -33,13 +33,11 @@
     </table>
 
     <div class="well well-small">
-        {% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
-
         <form action="" {{ form_enctype(form) }} method="post" class="form-horizontal">
             {{ form_widget(form) }}
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" name="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
                 </div>
             </div>
         </form>

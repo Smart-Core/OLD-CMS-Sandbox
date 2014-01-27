@@ -4,8 +4,22 @@ smart_texter_admin:
     defaults:
         _controller: TexterModule:Admin:index
 
+smart_texter_admin_history:
+    path: /{id}/history
+    defaults:
+        _controller: TexterModule:Admin:history
+    requirements:
+        id: \d+
+
+smart_texter_admin_rollback:
+    path: /rollback/{id}/
+    defaults:
+        _controller: TexterModule:Admin:rollback
+    requirements:
+        id: \d+
+
 smart_texter_admin_edit:
-    path: /{id}
+    path: /{id}/
     defaults:
         _controller: TexterModule:Admin:item
     requirements:

@@ -21,7 +21,8 @@ class FolderFormType extends AbstractType
             ->add('is_active')
             ->add('is_file')
             ->add('has_inherit_nodes')
-            ->add('template')
+            ->add('template_inheritable')
+            ->add('template_self')
             //->add('permissions', 'text')
             //->add('lockout_nodes', 'text')
             //->addEventSubscriber(new FolderSubscriber())
@@ -37,6 +38,6 @@ class FolderFormType extends AbstractType
 
     public function getName()
     {
-        return 'engine_folder';
+        return 'smart_core_folder';
     }
 }

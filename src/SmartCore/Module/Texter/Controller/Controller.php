@@ -17,8 +17,11 @@ class Controller extends BaseController
 
     /**
      * Какой редактор использовать.
-     * @todo пока используется как флаг, где 0 - не использовать визивиг, а 1 - использовать.
-     * @var string
+     * Пока используется как флаг, где:
+     *  0 - Codemirror
+     *  1 - TinyMCE
+     *
+     * @var int
      */
-    protected $editor = 0;
+    protected $editor = 1;
 }

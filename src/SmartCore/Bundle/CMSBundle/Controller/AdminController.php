@@ -53,6 +53,10 @@ class AdminController extends Controller
      */
     public function structureAction()
     {
+        if (null === $this->get('cms.folder')->get(1)) {
+            return $this->redirect($this->generateUrl('cms_admin_structure_folder_create'));
+        }
+
         return $this->render('CMSBundle:Admin:structure.html.twig');
     }
 
@@ -138,9 +142,28 @@ class AdminController extends Controller
         /** @var Folder $folder */
         $folder = $engineFolder->create();
         $folder->setCreateByUserId($this->getUser()->getId());
-        $folder->setParentFolder($engineFolder->get($folder_pid));
+
+        $parent = $engineFolder->get($folder_pid);
+
+        if (empty($parent)) {
+            $folder->setTitle($this->get('translator')->trans('Homepage'));
+            $folder->setHasInheritNodes(true);
+        } else {
+            $folder->setParentFolder($engineFolder->get($folder_pid));
+        }
 
         $form = $engineFolder->createForm($folder);
+
+        // Для корневой папки удаляются некоторые поля формы
+        if (empty($parent)) {
+            $form
+                ->remove('uri_part')
+                ->remove('parent_folder')
+                ->remove('router_node_id')
+                ->remove('is_active')
+                ->remove('is_file')
+                ->remove('pos');
+        }
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create')) {
@@ -227,19 +250,19 @@ class AdminController extends Controller
      * @param string|null $slug
      * @return Response
      */
-    public function nodeAction($id, $slug = null)
+    public function nodeAction(Request $request, $id, $slug = null)
     {
         $node = $this->get('cms.node')->get($id);
 
         $controller = $this->get('cms.router')->matchModuleAdmin($node->getModule(), '/' . $slug);
         $controller['_node'] = $node;
 
-        $subRequest = $this->container->get('request')->duplicate([], null, $controller);
+        $subRequest = $this->container->get('request')->duplicate($request->query->all(), null, $controller);
 
         $response = $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
 
-        if ($response->isRedirection() and isset($_GET['redirect_to'])) {
-            return $this->redirect($_GET['redirect_to']);
+        if ($response->isRedirection() and $request->query->has('redirect_to')) {
+            return $this->redirect($request->query->get('redirect_to'));
         }
 
         return $response;
@@ -254,10 +277,14 @@ class AdminController extends Controller
      */
     public function nodeCreateAction(Request $request, $folder_pid = 1)
     {
+        if (null === $folder = $this->get('cms.folder')->get($folder_pid)) {
+            return $this->redirect($this->generateUrl('cms_admin_structure_folder_create'));
+        }
+
         $engineNode = $this->get('cms.node');
         $node = $engineNode->create();
-        $node->setCreateByUserId($this->getUser()->getId());
-        $node->setFolder($this->get('cms.folder')->get($folder_pid));
+        $node->setCreateByUserId($this->getUser()->getId())
+            ->setFolder($folder);
 
         $form = $engineNode->createForm($node);
 
@@ -267,7 +294,15 @@ class AdminController extends Controller
                 if ($form->isValid()) {
                     /** @var $created_node \SmartCore\Bundle\CMSBundle\Entity\Node */
                     $created_node = $form->getData();
+
                     $engineNode->update($created_node);
+
+                    // Если у модуля есть роутинги, тогда нода подключается к папке как роутер.
+                    if ($this->container->has('cms.router_module.' . $created_node->getModule())) {
+                        $folder = $created_node->getFolder();
+                        $folder->setRouterNodeId($created_node->getId());
+                        $this->get('cms.folder')->update($folder);
+                    }
 
                     if (isset($_GET['redirect_to']) and $_GET['redirect_to'] == 'front') {
                         return $this->redirect($this->get('cms.folder')->getUri($created_node->getFolderId()));
@@ -354,11 +389,16 @@ class AdminController extends Controller
     public function moduleInstallAction($filename = null)
     {
         $finder = new Finder();
-        $finder
-            ->ignoreDotFiles(false)
-            ->ignoreVCS(true)
-            ->name('*.zip')
-            ->in($this->get('kernel')->getRootDir() . '/../dist');
+
+        if (is_dir($this->get('kernel')->getRootDir() . '/../dist')) {
+            $finder
+                ->ignoreDotFiles(false)
+                ->ignoreVCS(true)
+                ->name('*.zip')
+                ->in($this->get('kernel')->getRootDir() . '/../dist');
+        } else {
+            $finder = [];
+        }
 
         // @todo убрать в сервис.
         if ( ! empty($filename)) {

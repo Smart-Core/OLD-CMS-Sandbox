@@ -12,6 +12,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class EngineNode
 {
+    /**
+     * @var \Doctrine\DBAL\Connection
+     */
     protected $db;
 
     /**
@@ -126,20 +129,15 @@ class EngineNode
      */
     public function get($id)
     {
+        if (null === $id) {
+            return null;
+        }
+
         if (isset($this->nodes[$id])) {
             return $this->nodes[$id];
         }
 
         return $this->repository->find($id);
-
-        /*
-        // @todo потестить...
-        if ($node = $this->container->get('cms.cache')->getNode($node_id)) {
-            return $node;
-        } else {
-            return $this->em->find('CMSBundle:Node', $node_id);
-        }
-        */
     }
 
     /**
@@ -147,15 +145,16 @@ class EngineNode
      */
     public function update(Node $node)
     {
+        /** @var \SmartCore\Bundle\CMSBundle\Module\Bundle $module */
+        $module = $this->kernel->getBundle($node->getModule() . 'Module');
+
         // Свежесозданная нода выполняет свои действия, а также устанавливает параметры по умолчанию.
         if ($this->is_just_created) {
-            $module = $this->kernel->getBundle($node->getModule() . 'Module');
-
-            if (method_exists($module, 'createNode')) {
-                $module->createNode($node);
-            }
+            $module->createNode($node);
 
             $this->is_just_created = false;
+        } else {
+            $module->updateNode($node);
         }
 
         $this->em->persist($node);
@@ -394,6 +393,6 @@ class EngineNode
     public function remove(Node $entity)
     {
         $this->em->remove($entity);
-        $this->em->flush();
+        $this->em->flush($entity);
     }
 }

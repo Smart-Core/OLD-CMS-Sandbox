@@ -145,7 +145,11 @@ smart_sitemap:
     ignores:
         - 'http:'
         - 'https:'
+        - 'mailto:'
+        - 'skype:'
         - /user/
+        - /admin/
+        - /api/
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

@@ -1,3 +1,6 @@
 services:
     html:
         class: SmartCore\Bundle\HtmlBundle\Html
+
+    html.tidy:
+        class: SmartCore\Bundle\HtmlBundle\Service\TidyService

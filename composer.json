@@ -5,6 +5,8 @@
         "psr-0": { "": "src/" }
     },
     "require": {
+        "php": ">=5.4.1",
+        "ext-intl": "*",
         "symfony/symfony": "~2.4",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/monolog-bundle": "2.4.*",
@@ -25,7 +27,7 @@
         "facebook/php-sdk": "*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "genemu/form-bundle": "2.2.*",
-        "helios-ag/fm-elfinder-bundle": "1.x",
+        "helios-ag/fm-elfinder-bundle": "1.4.1",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/debugging-bundle": "dev-master",
         "knplabs/knp-menu-bundle":"*",

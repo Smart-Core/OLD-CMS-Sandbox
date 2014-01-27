@@ -1,6 +1,6 @@
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix: /old
 
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"

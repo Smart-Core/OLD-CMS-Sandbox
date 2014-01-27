@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="ItemRepository")
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="menu_items")
+ * @ORM\Table(name="menu")
  */
 class Item
 {
@@ -73,6 +73,11 @@ class Item
     protected $url;
 
     /**
+     * @ORM\Column(type="array", nullable=TRUE)
+     */
+    protected $properties;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $create_by_user_id;
@@ -96,15 +101,16 @@ class Item
      */
     public function __construct()
     {
-        $this->children = new ArrayCollection();
+        $this->children          = new ArrayCollection();
         $this->create_by_user_id = 0;
-        $this->created = new \DateTime();
-        $this->is_active = true;
-        $this->parent_item = null;
-        $this->position = 0;
-        $this->title = null;
-        $this->url = null;
-        $this->updated = null;
+        $this->created           = new \DateTime();
+        $this->is_active         = true;
+        $this->parent_item       = null;
+        $this->position          = 0;
+        $this->properties        = null;
+        $this->title             = null;
+        $this->url               = null;
+        $this->updated           = null;
     }
 
     /**
@@ -222,6 +228,24 @@ class Item
     public function getDescr()
     {
         return $this->descr;
+    }
+
+    /**
+     * @param array $properties
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return empty($this->properties) ? [] : $this->properties;
     }
 
     /**

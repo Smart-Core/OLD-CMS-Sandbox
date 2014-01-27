@@ -5,7 +5,7 @@
 {% block content %}
     {{ parent() }}
 
-    <ul class="nav nav-tabs" id="myTab">
+    <ul class="nav nav-pills" id="myTab">
         <li><a href="{{ path('cms_admin_module') }}">Все установленные модули</a></li>
         <li class="active"><a href="{{ path('cms_admin_module_install') }}">Установить модуль</a></li>
     </ul>
@@ -53,8 +53,6 @@
                 })
             });
         </script>
-
-
 
     {% endif %}
 

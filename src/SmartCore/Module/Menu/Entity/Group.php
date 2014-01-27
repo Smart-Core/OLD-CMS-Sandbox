@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="menu_groups")
  */
 class Group
@@ -43,6 +42,11 @@ class Group
     protected $descr;
 
     /**
+     * @ORM\Column(type="text", nullable=TRUE)
+     */
+    protected $properties;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $create_by_user_id;
@@ -55,23 +59,15 @@ class Group
     protected $created;
 
     /**
-     * Last updated datetime
-     *
-     * @ORM\Column(type="datetime", nullable=TRUE)
-     */
-    protected $updated;
-
-    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->create_by_user_id = 0;
-        $this->created = new \DateTime();
-        $this->updated = null;
+        $this->created  = new \DateTime();
         $this->position = 0;
-        $this->descr = null;
-        $this->items = new ArrayCollection();
+        $this->descr    = null;
+        $this->items    = new ArrayCollection();
     }
 
     /**
@@ -129,6 +125,24 @@ class Group
     }
 
     /**
+     * @param mixed $properties
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
      * @param int $position
      * @return $this
      */
@@ -179,6 +193,14 @@ class Group
     }
 
     /**
+     * @return mixed
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
      * @param Item[] $items
      * @return $this
      */
@@ -195,13 +217,5 @@ class Group
     public function getItems()
     {
         return $this->items;
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function onUpdated()
-    {
-        $this->updated = new \DateTime();
     }
 }

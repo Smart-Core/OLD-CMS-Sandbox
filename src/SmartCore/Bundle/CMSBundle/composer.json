@@ -1,7 +1,7 @@
 {
     "name": "smart-core/cms-bundle",
-    "description": "Core of Smart Core CMS.",
-    "keywords": ["cmf", "cms", "bundle"],
+    "description": "Base Bundle of Smart Core CMS.",
+    "keywords": ["cmf", "cms", "bundle", "symfony2"],
     "type": "symfony-bundle",
     "homepage": "http://smart-core.org",
     "require": {

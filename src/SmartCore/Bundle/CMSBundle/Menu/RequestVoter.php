@@ -27,15 +27,22 @@ class RequestVoter implements VoterInterface
      */
     public function matchItem(ItemInterface $item)
     {
+        $parent = $item->getParent();
+
+        while (null !== $parent->getParent()) {
+            $parent = $parent->getParent();
+        }
+
         if ($item->getUri() === $this->request->getRequestUri() or
             $item->getUri() === $this->request->attributes->get('__current_folder_path', false)
         ) {
             // URL's completely match
             return true;
-        } else if(
+        } elseif (
             $item->getUri() !== $this->request->getBaseUrl().'/' and
             $item->getUri() === substr($this->request->getRequestUri(), 0, strlen($item->getUri())) and
-            $this->request->attributes->get('__selected_inheritance', true)
+            $this->request->attributes->get('__selected_inheritance', true) and
+            $parent->getExtra('select_intehitance', true)
         ) {
             // URL isn't just "/" and the first part of the URL match
             return true;

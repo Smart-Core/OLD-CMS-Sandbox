@@ -36,8 +36,10 @@ class AppKernel extends Kernel
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             //new FOS\FacebookBundle\FOSFacebookBundle(),
+            //new FOS\RestBundle\FOSRestBundle(), // "friendsofsymfony/rest-bundle": "*",
             new FOS\UserBundle\FOSUserBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            //new JMS\SerializerBundle\JMSSerializerBundle(), // "jms/serializer-bundle": "*",
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ThemeBundle\LiipThemeBundle(),
@@ -45,6 +47,7 @@ class AppKernel extends Kernel
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new RickySu\TagcacheBundle\TagcacheBundle(),
             new SmartCore\Bundle\CMSBundle\CMSBundle(),
+            new SmartCore\Bundle\FelibBundle\SmartCoreFelibBundle(),
             new SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
@@ -54,7 +57,6 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new SmartCore\Bundle\FelibBundle\SmartCoreFelibBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

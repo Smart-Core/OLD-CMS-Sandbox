@@ -12,44 +12,10 @@ cms_admin:
     resource: "routing_admin.yml"
     prefix: /admin/
 
-# AJAX
-#sc_engine_ajax_invalid:
-#    path: /ajax
-#    defaults:
-#        _controller: CMSBundle:Ajax:invalid
-#sc_engine_ajax_invalid2:
-#    path: /ajax/
-#    defaults:
-#        _controller: CMSBundle:Ajax:invalid
-#sc_engine_ajax_node_index:
-#    path: /ajax/{node_id}/
-#    defaults:
-#        _controller: CMSBundle:Ajax:node
-#        slug: ""
-#    requirements:
-#        slug: ".+"
-#        node_id: \d+
-#sc_engine_ajax_node:
-#    path: /ajax/{node_id}/{slug}
-#    defaults:
-#        _controller: CMSBundle:Ajax:node
-#        slug: ""
-#    requirements:
-#        slug: ".+"
-#        node_id: \d+
-#sc_engine_ajax_index:
-#    path: /ajax/{object}/
-#    defaults:
-#        _controller: CMSBundle:Ajax:run
-#sc_engine_ajax:
-#    path: /ajax/{object}/{slug}
-#    defaults:
-#        _controller: CMSBundle:Ajax:run
-#        slug: ""
-#    requirements:
-#        slug: ".+"
+cms_api:
+    resource: "routing_api.yml"
+    prefix: /api/
 
-# NODE MAPPER
 cms_node_mapper:
     path: /{slug}
     methods: GET
@@ -58,6 +24,7 @@ cms_node_mapper:
         slug: ""
     requirements:
         slug: ".+"
+
 cms_node_postprocessor:
     path: /{slug}
     methods: POST

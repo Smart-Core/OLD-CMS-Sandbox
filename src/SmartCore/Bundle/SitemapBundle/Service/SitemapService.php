@@ -82,7 +82,7 @@ class SitemapService
      */
     public function start()
     {
-        $this->em->getConnection()->exec('DELETE FROM ' . $this->em->getClassMetadata('SmartSitemapBundle:Url')->getTableName());
+        $this->em->getConnection()->exec('TRUNCATE TABLE ' . $this->em->getClassMetadata('SmartSitemapBundle:Url')->getTableName());
 
         $url = new Url();
         $url->setLoc('/');
@@ -103,6 +103,8 @@ class SitemapService
         foreach ($urls as $url) {
             $crawler = $client->request('GET', $this->baseUrl . $url->getLoc());
 
+            echo $this->baseUrl . $url->getLoc() . PHP_EOL;
+
             if ($url->getStatus() != 200) {
                 continue;
             }
@@ -119,9 +121,9 @@ class SitemapService
                 $this->em->flush($url);
 
                 $links = $crawler->filter('a')->extract('href');
-                $this->parseLinks($links);
+                $this->parseLinks($links, $url);
             } catch (\InvalidArgumentException $e) {
-                echo "Bad location: " . $this->baseUrl . $url->getLoc() . "\n";
+                echo "Bad location: " . $this->baseUrl . $url->getLoc() . PHP_EOL;
 
                 $url->setStatus(500)
                     ->setIsVisited(true);
@@ -134,7 +136,7 @@ class SitemapService
     /**
      * @param array $links
      */
-    protected function parseLinks(array $links)
+    protected function parseLinks(array $links, Url $referer)
     {
         $links = array_unique($links);
 
@@ -157,6 +159,15 @@ class SitemapService
                 continue;
             }
 
+            // Линк не начинается со слеша.
+            if (false === strpos($link, '/') or 0 !== strpos($link, '/')) {
+                if (in_array($referer->getLoc() . $link, $links)) {
+                    continue;
+                }
+
+                $link = $referer->getLoc() . $link;
+            }
+
             $url = $this->urlRepo->findOneBy(['loc' => $link]);
 
             if ($url) {
@@ -164,7 +175,8 @@ class SitemapService
             }
 
             $url = new Url();
-            $url->setLoc($link);
+            $url->setLoc($link)
+                ->setReferer($referer->getLoc());
 
             $this->em->persist($url);
             $this->em->flush($url);

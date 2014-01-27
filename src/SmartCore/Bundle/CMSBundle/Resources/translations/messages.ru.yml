@@ -4,6 +4,7 @@ Actions: Действия
 Add: Добавить
 Annotation: Аннотация
 Administration: Управление
+All users: Все пользователи
 Appearance: Оформление
 Block: Блок
 Block edit: Редактирование блока
@@ -11,10 +12,13 @@ Blocks: Блоки
 Cancel: Отменить
 Configuration: Конфигруация
 Connect module: Подключить модуль
+Create: Создать
 Create datetime: Дата создания
-Create folder: Добавить раздел
+Create folder: Добавить папку
 Create node: Подключить модуль
+Create user: Создать пользователя
 Created: Создано
+Date: Дата
 Descr: Описание
 Description: Описание
 Delete: Удалить
@@ -24,17 +28,23 @@ Exit: Выход
 Filemanager: Управление файлами
 Files: Файлы
 Folder: Папка
+Folder edit: Редактирование папки
 Has inherit nodes: Наследование нод
 Help: Справка
+Homepage: Главная
 Inherit in folders: Наследование в папках
 Is active: Включено
 Is file: Является файлом?
 Items count: Кол-во записей
+Last login: Последнее посещение
+Login: Вход
 Lockout nodes: Блокировка нод
 My profile: Мой профиль
 Modules: Модули
 Module: Модуль
 Name: Имя
+New user: Новый пользователь
+Node edit: Редактирование ноды
 Nodes count: Кол-во нод
 Node properties: Кол-во нод
 Parent folder: Родительская папка
@@ -42,15 +52,25 @@ Parent item: Родительский пункт
 Permissions: Права доступа
 Pos: Позиция
 Position: Позиция
+Properties: Свойства
 Reports: Отчеты
 Priority: Приоритет
+Role: Роль
+Role name: Название роли
+Roles: Роли
+Role edit: Редактирование роли
 Save: Сохранить
 Send: Отправить
 Slug: Часть URI
+Status: Статус
 Structure: Структура
 Template: Шаблон
+Template inheritable: Наследуемый шаблон
+Template self: Собственный шаблон
 Text: Текст
 Title: Заголовок
 Uri part: Часть URI
+Update: Обновить
 Updated: Обновлено
+Username: Имя пользователя
 Users: Пользователи
