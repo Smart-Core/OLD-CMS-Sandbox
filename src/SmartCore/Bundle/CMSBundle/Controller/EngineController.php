@@ -31,11 +31,17 @@ class EngineController extends Controller
         $tagcache = $this->get('tagcache');
 
         // Кеширование роутера.
+        // @todo пока пришлось отключить т.к. ModuleControllerModifierListener получает путь к ноде через папку,
+        // а после десерализации папка не поднимается...
+        /*
         $cache_key = md5('cms_router' . $request->getBaseUrl() . $slug);
         if (false == $router_data = $tagcache->get($cache_key)) {
             $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
             $tagcache->set($cache_key, $router_data, ['folder', 'node']);
         }
+        */
+
+        $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
 
         if ($router_data['status'] == 404) {
             throw new NotFoundHttpException('Page not found.');
