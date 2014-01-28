@@ -31,17 +31,11 @@ class EngineController extends Controller
         $tagcache = $this->get('tagcache');
 
         // Кеширование роутера.
-        // @todo пока пришлось отключить т.к. ModuleControllerModifierListener получает путь к ноде через папку,
-        // а после десерализации папка не поднимается...
-        /*
         $cache_key = md5('cms_router' . $request->getBaseUrl() . $slug);
         if (false == $router_data = $tagcache->get($cache_key)) {
             $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
             $tagcache->set($cache_key, $router_data, ['folder', 'node']);
         }
-        */
-
-        $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
 
         if ($router_data['status'] == 404) {
             throw new NotFoundHttpException('Page not found.');
@@ -50,13 +44,14 @@ class EngineController extends Controller
         }
 
         foreach ($router_data['folders'] as $folder) {
-            $this->get('cms.breadcrumbs')->add($folder->getUri(), $folder->getTitle(), $folder->getDescr());
+            $this->get('cms.breadcrumbs')->add($this->get('cms.folder')->getUri($folder), $folder->getTitle(), $folder->getDescr());
         }
 
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
         $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
-        $router_data['http_method'] = $request->getMethod(); // @fixme это эксперименты с кешированием списка нод.
+        // Список нод кешируется только при GET запросах.
+        $router_data['http_method'] = $request->getMethod();
 
         $nodes = $this->get('cms.node')->buildList($router_data);
 

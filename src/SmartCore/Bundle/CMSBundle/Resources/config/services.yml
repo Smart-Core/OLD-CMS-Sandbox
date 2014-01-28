@@ -8,22 +8,22 @@ services:
 # Listeners
     cms.controller.listener:
         class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.node ]
+        arguments: [ @cms.context, @cms.folder, @cms.node ]
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onController }
     cms.request.listener:
         class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.node ]
+        arguments: [ @cms.context, @cms.folder, @cms.node ]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onRequest }
     cms.response.listener:
         class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.node ]
+        arguments: [ @cms.context, @cms.folder, @cms.node ]
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: onResponse }
     cms.view.listener:
         class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.node ]
+        arguments: [ @cms.context, @cms.folder, @cms.node ]
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: onView }
     cms.db.table_prefix_subscriber:

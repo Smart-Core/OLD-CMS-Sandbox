@@ -113,8 +113,8 @@ class EngineNode
     /**
      * Creates and returns a Form instance from the type of the form.
      *
-     * @param mixed $data    The initial data for the form
-     * @param array $options Options for the form
+     * @param  mixed $data     The initial data for the form
+     * @param  array $options  Options for the form
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -124,7 +124,7 @@ class EngineNode
     }
 
     /**
-     * @param int $id
+     * @param  int $id
      * @return Node|null
      */
     public function get($id)
@@ -164,7 +164,7 @@ class EngineNode
     /**
      * Получить форму редактирования параметров подключения модуля.
      *
-     * @param string $module_name
+     * @param  string $module_name
      * @return FormTypeInterface
      */
     public function getPropertiesFormType($module_name)
@@ -184,7 +184,7 @@ class EngineNode
      * Создание списка всех запрошеных нод, в каких блоках они находятся и с какими
      * параметрами запускаются модули.
      *
-     * @param array  $router_data
+     * @param  array  $router_data
      * @return Node[] $nodes
      */
     public function buildList(array $router_data)
@@ -195,8 +195,6 @@ class EngineNode
 
         $this->nodes = [];
 
-        // @todo Кеширование построения списка нод.
-        /*
         if ($router_data['http_method'] == 'GET') {
             $cache_key = md5('cms_node_list' . serialize($router_data));
             if (false == $this->nodes = $this->tagcache->get($cache_key)) {
@@ -205,7 +203,6 @@ class EngineNode
                 return $this->nodes;
             }
         }
-        */
 
         \Profiler::start('buildNodesList');
 
@@ -322,9 +319,10 @@ class EngineNode
         }
 
         // Заполнение массива с нодами сущностями нод.
-        /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
         foreach ($this->repository->findIn($this->nodes) as $node) {
-            if (isset($router_data['node_routing']['controller']) and $router_data['node_routing']['node_id'] == $node->getId()) {
+            if (isset($router_data['node_routing']['controller'])
+                and $router_data['node_routing']['node_id'] == $node->getId()
+            ) {
                 $node->setController($router_data['node_routing']['controller']);
                 $node->setPriority(255);
             }
@@ -378,11 +376,9 @@ class EngineNode
 
         \Profiler::end('buildNodesList');
 
-        /*
         if ($router_data['http_method'] == 'GET') {
             $this->tagcache->set($cache_key, $this->nodes, ['folder', 'node']);
         }
-        */
 
         return $this->nodes;
     }

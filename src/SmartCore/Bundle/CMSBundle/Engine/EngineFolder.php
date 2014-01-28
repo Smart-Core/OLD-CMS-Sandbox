@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Form\Type\FolderFormType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
@@ -24,12 +25,18 @@ class EngineFolder
     protected $repository;
 
     /**
+     * @var \RickySu\Tagcache\Adapter\TagcacheAdapter
+     */
+    protected $cache;
+
+    /**
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->container = $container;
-        $this->em = $container->get('doctrine.orm.entity_manager');
+        $this->container  = $container;
+        $this->cache      = $container->get('tagcache');
+        $this->em         = $container->get('doctrine.orm.entity_manager');
         $this->repository = $this->em->getRepository('CMSBundle:Folder');
     }
 
@@ -68,38 +75,52 @@ class EngineFolder
     /**
      * Получение полной ссылки на папку, указав её id. Если не указать ид папки, то вернётся текущий путь.
      *
-     * @param int $folder_id
+     * @param  mixed|null $data
      * @return string $uri
      */
-    public function getUri($folder_id = false)
+    public function getUri($data = null)
     {
-        if ($folder_id === false) {
+        if (null === $data) {
             $folder_id = $this->container->get('cms.context')->getCurrentFolderId();
+        } elseif ($data instanceof Node) {
+            $folder_id = $data->getFolderId();
+        } elseif ($data instanceof Folder) {
+            $folder_id = $data->getId();
+        } elseif (intval($data)) {
+            $folder_id = $data;
+        } else {
+            throw new \Exception('Unknown input type.');
         }
 
-        $uri = '/';
-        $uri_parts = [];
+        $cache_key = md5('cms_folder.full_path.' . $folder_id);
+        if (false == $uri = $this->cache->get($cache_key)) {
+            $uri = '/';
+            $uri_parts = [];
 
-        /** @var $folder Folder */
-        while ($folder_id != 1) {
-            $folder = $this->repository->findOneBy([
-                'is_active'  => true,
-                'is_deleted' => false,
-                'folder_id'  => $folder_id,
-            ]);
+            /** @var $folder Folder */
+            while ($folder_id != 1) {
+                $folder = $this->repository->findOneBy([
+                    'is_active'  => true,
+                    'is_deleted' => false,
+                    'folder_id'  => $folder_id,
+                ]);
 
-            if ($folder) {
-                $folder_id = $folder->getParentFolder()->getId();
-                $uri_parts[] = $folder->getUriPart();
-            } else {
-                break;
+                if ($folder) {
+                    $folder_id = $folder->getParentFolder()->getId();
+                    $uri_parts[] = $folder->getUriPart();
+                } else {
+                    break;
+                }
             }
+
+            $uri_parts = array_reverse($uri_parts);
+            foreach ($uri_parts as $value) {
+                $uri .= $value . '/';
+            }
+
+            $this->cache->set($cache_key, $uri, ['folder']);
         }
 
-        $uri_parts = array_reverse($uri_parts);
-        foreach ($uri_parts as $value) {
-            $uri .= $value . '/';
-        }
 
         return $this->container->get('request')->getBaseUrl() . $uri;
     }

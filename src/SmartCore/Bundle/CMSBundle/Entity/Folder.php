@@ -145,6 +145,7 @@ class Folder
 
     /**
      * Полный URI. Генерируется динамически.
+     * @deprecated
      */
     protected $uri;
 
@@ -482,6 +483,8 @@ class Folder
     /**
      * @param string $uri
      * @return $this
+     *
+     * @deprecated
      */
     public function setUri($uri)
     {
@@ -492,6 +495,8 @@ class Folder
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getUri()
     {

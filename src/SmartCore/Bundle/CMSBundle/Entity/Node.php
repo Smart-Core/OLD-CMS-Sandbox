@@ -189,6 +189,7 @@ class Node implements \Serializable
             $this->descr,
             $this->create_by_user_id,
             $this->create_datetime,
+            $this->controller,
         ]);
     }
 
@@ -213,6 +214,7 @@ class Node implements \Serializable
             $this->descr,
             $this->create_by_user_id,
             $this->create_datetime,
+            $this->controller,
             ) = unserialize($serialized);
         //) = igbinary_unserialize($serialized);
     }

@@ -2,6 +2,9 @@
 
 namespace SmartCore\Bundle\CMSBundle\Listener;
 
+use SmartCore\Bundle\CMSBundle\Engine\EngineContext;
+use SmartCore\Bundle\CMSBundle\Engine\EngineFolder;
+use SmartCore\Bundle\CMSBundle\Engine\EngineNode;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -12,22 +15,28 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 class ModuleControllerModifierListener
 {
     /**
-     * @var \SmartCore\Bundle\CMSBundle\Engine\EngineContext
+     * @var EngineContext
      */
     protected $engineContext;
 
     /**
-     * @var \SmartCore\Bundle\CMSBundle\Engine\EngineNode
+     * @var EngineFolder
+     */
+    protected $engineFolder;
+
+    /**
+     * @var EngineNode
      */
     protected $engineNodeManager;
 
     /**
-     * @param \SmartCore\Bundle\CMSBundle\Engine\EngineContext $engineContext
-     * @param \SmartCore\Bundle\CMSBundle\Engine\EngineNode $engineNodeManager
+     * @param EngineContext $engineContext
+     * @param EngineNode $engineNodeManager
      */
-    public function __construct($engineContext, $engineNodeManager)
+    public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineNode $engineNodeManager)
     {
-        $this->engineContext = $engineContext;
+        $this->engineContext     = $engineContext;
+        $this->engineFolder      = $engineFolder;
         $this->engineNodeManager = $engineNodeManager;
     }
 
@@ -51,7 +60,7 @@ class ModuleControllerModifierListener
             $node = $request->attributes->get('_node');
 
             // @todo сделать поддержку кириллических путей.
-            $basePath = substr(str_replace($request->getBaseUrl(), '', $node->getFolder()->getUri()), 1);
+            $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
 
             if (false !== strrpos($basePath, '/', strlen($basePath) - 1)) {
                 $basePath = substr($basePath, 0, strlen($basePath) - 1);
