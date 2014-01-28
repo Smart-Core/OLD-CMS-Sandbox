@@ -45,14 +45,33 @@ class ModuleControllerModifierListener
             return;
         }
 
-        if ($event->getRequest()->attributes->has('_node')) {
+        $request = $event->getRequest();
+        if ($request->attributes->has('_node')) {
             /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
-            $node = $event->getRequest()->attributes->get('_node');
+            $node = $request->attributes->get('_node');
+
+            // @todo сделать поддержку кириллических путей.
+            $basePath = substr(str_replace($request->getBaseUrl(), '', $node->getFolder()->getUri()), 1);
+
+            if (false !== strrpos($basePath, '/', strlen($basePath) - 1)) {
+                $basePath = substr($basePath, 0, strlen($basePath) - 1);
+            }
+
+            $routeParams = $request->attributes->get('_route_params', null);
+
+            if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
+                $routeParams = $node->getControllerParams();
+                $routeParams['_basePath'] = $basePath;
+
+                $request->attributes->set('_route_params', $routeParams);
+            }
+
             if (method_exists($controller[0], 'setNode')) {
                 $controller[0]->setNode($node);
             }
+
             $this->engineContext->setCurrentNodeId($node->getId());
-            $event->getRequest()->attributes->remove('_node');
+            $request->attributes->remove('_node');
         }
     }
 

@@ -24,7 +24,7 @@ class NewsController extends Controller
         $this->node->addFrontControl('create', [
             'title'   => 'Добавить',
             'descr'   => 'Добавить новость',
-            'uri'     => $this->generateUrl('smart_news_admin_create'),
+            'uri'     => $this->generateUrl('smart_module.news_admin.create'),
             'default' => true,
         ]);
 
@@ -32,9 +32,7 @@ class NewsController extends Controller
             $page = $request->query->get('page', 1);
         }
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter(
-            $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllQuery())
-        );
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter( $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllQuery() ));
         $pagerfanta->setMaxPerPage($this->node->getParam('items_per_page', 10));
 
         try {
@@ -44,13 +42,10 @@ class NewsController extends Controller
         }
 
         if ($page > 1) {
-            $this->get('cms.breadcrumbs')->add(null, 'Страница: ' . $page);
+            $this->get('cms.breadcrumbs')->add(null, $this->get('translator')->trans('Page') . ': ' . $page);
         }
 
-        return $this->render('NewsModule::news.html.twig', [
-            'node' => $this->node,
-            'news' => $pagerfanta,
-        ]);
+        return $this->render('NewsModule::news.html.twig', ['news' => $pagerfanta ]);
     }
 
     /**
@@ -61,7 +56,7 @@ class NewsController extends Controller
      */
     public function itemAction($slug)
     {
-        $item = $this->getDoctrine()->getRepository('NewsModule:News')->findOneBy(['slug' => $slug]);
+        $item = $this->getDoctrine()->getRepository('NewsModule:News')->findOneBy(['slug' => $slug ]);
 
         if (empty($item)) {
             throw $this->createNotFoundException();
@@ -73,13 +68,13 @@ class NewsController extends Controller
             'edit' => [
                 'title'   => 'Редактировать',
                 'descr'   => 'Редактировать новость',
-                'uri'     => $this->generateUrl('smart_news_admin_edit', ['id' => $item->getId()]),
+                'uri'     => $this->generateUrl('smart_module.news_admin.edit', ['id' => $item->getId() ]),
                 'default' => true,
             ],
             'create' => [
                 'title'   => 'Добавить',
                 'descr'   => 'Добавить новость',
-                'uri'     => $this->generateUrl('smart_news_admin_create'),
+                'uri'     => $this->generateUrl('smart_module.news_admin.create'),
             ],
         ]);
 

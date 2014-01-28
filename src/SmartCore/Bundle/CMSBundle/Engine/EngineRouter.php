@@ -68,8 +68,7 @@ class EngineRouter // implements UrlMatcherInterface
         $folder          = null;
         $parent_folder   = null;
         $router_node_id  = null;
-        $slug            = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привесли к виду,
-                                        // как $this->container->get('request')->getPathInfo()
+        $slug            = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привести к виду, как $this->container->get('request')->getPathInfo()
         $path_parts      = explode('/', $slug);
 
         foreach ($path_parts as $key => $segment) {
@@ -80,8 +79,8 @@ class EngineRouter // implements UrlMatcherInterface
                 break;
             }
 
-            // Закончить работу, если имя папки пустое и папка не является корневой т.е. обрабатывается последняя запись в строке УРИ
-            if ('' == $segment and 0 != $key) {
+            // Закончить работу, если имя папки пустое и папка не является корневой т.е. обрабатывается последняя запись в строке УРИ.
+            if (0 != $key and '' == $segment and null == $router_node_id) {
                 // @todo здесь надо делать обработчик "файла" т.е. папки с выставленным флагом "is_file".
                 break;
             }

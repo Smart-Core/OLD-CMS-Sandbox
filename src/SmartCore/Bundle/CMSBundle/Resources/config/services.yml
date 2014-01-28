@@ -1,3 +1,6 @@
+parameters:
+    router.class: SmartCore\Bundle\CMSBundle\Router\NodeRouter
+
 services:
     db.logger:
         class: Doctrine\DBAL\Logging\DebugStack
@@ -64,12 +67,22 @@ services:
             - [ setContainer, [ @service_container ] ]
     cms.routes.module_admin.loader:
         class: SmartCore\Bundle\CMSBundle\Router\ModuleAdminRoutesLoader
-        arguments: [ @database_connection, @cms.context ]
         calls:
             - [ setContainer, [ @service_container ] ]
             - [ setResolver,  [ @routing.resolver ] ]
         tags:
             - { name: routing.loader }
+    cms.routes.intalled_modules.loader:
+        class: SmartCore\Bundle\CMSBundle\Router\ModuleRoutesLoader
+        calls:
+            - [ setContainer, [ @service_container ] ]
+            - [ setResolver,  [ @routing.resolver ] ]
+        tags:
+            - { name: routing.loader }
+#    cms.routes.nodes.loader:
+#        class: SmartCore\Bundle\CMSBundle\Router\NodeMatcherLoader
+#        tags:
+#            - { name: routing.loader }
     cms.toolbar:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineToolbar
         calls:
@@ -88,11 +101,6 @@ services:
 # Twig
     cms.twig.html_title_extension:
         class: SmartCore\Bundle\CMSBundle\Twig\HtmlTitleExtension
-        arguments: [ @service_container ]
-        tags:
-            - { name: twig.extension }
-    cms.twig.engine_path_extension:
-        class: SmartCore\Bundle\CMSBundle\Twig\CmsModulePathExtension
         arguments: [ @service_container ]
         tags:
             - { name: twig.extension }

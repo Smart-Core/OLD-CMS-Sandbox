@@ -66,3 +66,7 @@ ul.dropdown-menu a:hover {
 .sf-reset a {
     color: gray !important;
 }
+
+.ladybug label {
+    color: black !important;
+}

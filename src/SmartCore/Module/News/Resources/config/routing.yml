@@ -1,22 +1,19 @@
 
-smart_module_news.index:
+smart_module.news.index:
     path: /
     defaults:
         _controller: NewsModule:News:index
-        page: 1
 
-# @todo FS#380 подумать как можно красиво сделать пагинацию с собственными маршрутами,
-# проблемма заключается в том, что класс PagerfantaExtension берёт глобальный роутер,
-# но в данном случае у каждого модуля свой роутер. Может быть научить глюбоальный роутер
-# очень хитро разгребать строки запроса с учетом папок и нод которые в него подключены...
-smart_module_news.page:
-    path: /page/{page}/
+smart_module.news.page:
+    path: /page_{page}/
     defaults:
         _controller: NewsModule:News:index
     requirements:
         page: \d+
 
-smart_module_news.item:
+smart_module.news.item:
     path: /{slug}.html
     defaults:
         _controller: NewsModule:News:item
+    requirements:
+        slug: ".+"

@@ -1,3 +1,0 @@
-services:
-    smart_module_news:
-        class: SmartCore\Module\News\Service\NewsService

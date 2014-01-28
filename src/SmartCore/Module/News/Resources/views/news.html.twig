@@ -1,6 +1,6 @@
 
 {% for item in news.currentPageResults %}
-    <h3><a href="{{ cms_module_path(node, 'smart_module_news.item', {'slug': item.slug}) }}">{{ item.title }}</a></h3>
+    <h3><a href="{{ path('smart_module.news.item', {'slug': item.slug}) }}">{{ item.title }}</a></h3>
     <p><b>{{ item.created|localizeddate('long') }}</b></p>
     <p>{{ item.annotation }}</p>
     <hr />
@@ -8,6 +8,8 @@
 
 {% if news.haveToPaginate %}
     {{ pagerfanta(news, 'twitter_bootstrap_translated', {
+            'routeName': 'smart_module.news.page',
+            'routeParams': {'_basePath': app.request.attributes.get('_route_params')['_basePath']},
             'css_container_class': 'pagination pagination-centered',
         })
     }}

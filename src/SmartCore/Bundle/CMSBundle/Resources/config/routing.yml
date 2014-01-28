@@ -33,3 +33,8 @@ cms_node_postprocessor:
         slug: ""
     requirements:
         slug: ".+"
+
+# Эти маршруты нужны для генерации ссылок к модулям с учетом пути, куда подключена нода.
+cms_modules:
+    resource: .
+    type: intalled_modules

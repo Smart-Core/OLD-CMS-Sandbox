@@ -20,7 +20,6 @@ class UserController extends Controller
             'data' => [
                 'allow_password_resetting' => $this->node->getParam('allow_password_resetting'),
                 'allow_registration'       => $this->node->getParam('allow_registration'),
-
             ],
             'node_id' => $this->node->getId(),
         ]);

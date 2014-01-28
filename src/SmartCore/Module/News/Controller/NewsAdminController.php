@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class NewsAdminController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine();
@@ -17,6 +20,10 @@ class NewsAdminController extends Controller
         ]);
     }
 
+    /**
+     * @param  Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request)
     {
         $form = $this->createForm(new NewsFormType());
@@ -25,13 +32,18 @@ class NewsAdminController extends Controller
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form->isValid()) {
-                return $this->saveItem($request, $form->getData(), 'smart_news_admin', 'Новость создана.');
+                return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость создана.');
             }
         }
 
         return $this->render('NewsModule:Admin:create.html.twig', ['form' => $form->createView()]);
     }
 
+    /**
+     * @param  Request $request
+     * @param  int $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Request $request, $id)
     {
         $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('NewsModule:News', $id));
@@ -43,7 +55,7 @@ class NewsAdminController extends Controller
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form->isValid()) {
-                return $this->saveItem($request, $form->getData(), 'smart_news_admin', 'Новость сохранена.');
+                return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость сохранена.');
             }
         }
 
@@ -58,7 +70,7 @@ class NewsAdminController extends Controller
      * @param string|null   $notice
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    protected function saveItem(Request $request, $item, $redirect_to, $notice = null)
+    protected function saveItemAndRedirect(Request $request, $item, $redirect_to, $notice = null)
     {
         $em = $this->getDoctrine()->getManager();
         $em->persist($item);

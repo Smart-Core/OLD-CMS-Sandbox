@@ -11,6 +11,9 @@ class FeedbackController extends Controller
 {
     use NodeTrait;
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $form = $this->createForm(new FeedbackFormType());
@@ -27,6 +30,10 @@ class FeedbackController extends Controller
         ]);
     }
 
+    /**
+     * @param  Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function postAction(Request $request)
     {
         $form = $this->createForm(new FeedbackFormType());
@@ -35,6 +42,7 @@ class FeedbackController extends Controller
         $item = $form->getData();
 
         $session = $this->get('session')->getFlashBag();
+
         if ($request->isMethod('POST') and $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($item);
@@ -46,7 +54,6 @@ class FeedbackController extends Controller
             $session->add('feedback_data', $request->request->all());
         }
 
-        // @todo FS#380 - Генерация пути к ноде
-        return $this->redirect($this->get('cms.folder')->getUri($this->node->getFolderId()));
+        return $this->redirect($request->getRequestUri());
     }
 }

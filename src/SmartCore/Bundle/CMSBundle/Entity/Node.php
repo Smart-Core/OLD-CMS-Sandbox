@@ -133,7 +133,7 @@ class Node implements \Serializable
     /**
      * @var array
      */
-    protected $controller = null;
+    protected $controller = [];
 
     /**
      * Edit-In-Place
@@ -557,6 +557,21 @@ class Node implements \Serializable
         $this->controller = $controller;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getControllerParams()
+    {
+        $params = [];
+        foreach ($this->controller as $key => $val) {
+            if ($key !== '_controller' and $key !== '_route') {
+                $params[$key] = $val;
+            }
+        }
+
+        return $params;
     }
 
     /**
