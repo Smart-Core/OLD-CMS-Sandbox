@@ -3,9 +3,12 @@
 namespace SmartCore\Bundle\CMSBundle\Module;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
-use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 
-class Bundle extends BaseBundle
+/**
+ * Использование Knp\RadBundle для автоматического конфигурирования сервисов,
+ * если у модуля существует файл config/services.yml
+ */
+class Bundle extends \Knp\RadBundle\AppBundle\Bundle
 {
     /**
      * Действие при создании ноды.

@@ -1,0 +1,5 @@
+
+_knp_rad_assistant_create_view:
+    path: /assistant/views
+    defaults:
+        _controller: KnpRadBundle:Assistant:createView

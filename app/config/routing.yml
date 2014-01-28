@@ -1,6 +1,11 @@
+# @todo убрать в dev.
+_knp_rad_assistant:
+    resource: "@KnpRadBundle/Resources/config/routing/assistant.xml"
+    prefix:   /_assistant
+
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
-    prefix: /old
+    prefix: /
 
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"

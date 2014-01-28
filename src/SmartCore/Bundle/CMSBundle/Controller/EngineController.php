@@ -158,8 +158,9 @@ class EngineController extends Controller
 
                 \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
 
-                if ($moduleResponse instanceof RedirectResponse or
-                    ($moduleResponse instanceof Response and $moduleResponse->isNotFound())
+                if ($moduleResponse instanceof RedirectResponse
+                    or ($moduleResponse instanceof Response and $moduleResponse->isNotFound())
+                    or 0 === strpos($moduleResponse->getContent(), '<!DOCTYPE ') // Пока так определяются ошибки от симфони.
                 ) {
                     return $moduleResponse;
                 }

@@ -27,6 +27,7 @@ class HelloController extends Controller
         /** @var Router $moduleRouter */
         $moduleRouter = $this->get('cms.router_module.news');
 
+        /*
         ld($moduleRouter->match('/123.html'));
 
         try {
@@ -36,6 +37,7 @@ class HelloController extends Controller
         }
 
         ld($moduleRouter->match('/'));
+        */
 
 //        ld($this->renderView("Menu::menu.html.twig");
 //        ld($this->forward('Texter:Test:hello', ['text' => 'yahoo :)'])->getContent());
@@ -69,6 +71,8 @@ class HelloController extends Controller
 
         /** @var $node Node */
         //ld($this->get('cms.folder')->getUri($node->getFolder()->getId()));
+        return [];
+
         return $this->render('HtmlBundle::test.html.twig', ['hello' => 'Hello World!']);
     }
 }

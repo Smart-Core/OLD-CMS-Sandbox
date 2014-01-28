@@ -58,3 +58,11 @@ ul.dropdown-menu a:hover {
 .pagination ul > .disabled > a:focus {
     color: #999999;
 }
+
+/* Symfony */
+.sf-reset {
+    color: black;
+}
+.sf-reset a {
+    color: gray !important;
+}

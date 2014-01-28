@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             //new JMS\SerializerBundle\JMSSerializerBundle(), // "jms/serializer-bundle": "*",
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\RadBundle\KnpRadBundle(),
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ThemeBundle\LiipThemeBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),

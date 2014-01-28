@@ -41,6 +41,7 @@ security:
                 domain: ~
 
     access_control:
+        - { path: ^/_assistant/, roles: ROLE_ADMIN }
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
