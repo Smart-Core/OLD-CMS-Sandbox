@@ -70,6 +70,7 @@ class Library
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -88,6 +89,7 @@ class Library
     public function setProirity($proirity)
     {
         $this->proirity = $proirity;
+
         return $this;
     }
 
@@ -106,6 +108,7 @@ class Library
     public function setRelatedBy($related_by)
     {
         $this->related_by = $related_by;
+
         return $this;
     }
 
@@ -124,6 +127,7 @@ class Library
     public function setCurrentVersion($current_version)
     {
         $this->current_version = $current_version;
+
         return $this;
     }
 
@@ -142,6 +146,7 @@ class Library
     public function setFiles($files)
     {
         $this->files = $files;
+
         return $this;
     }
 

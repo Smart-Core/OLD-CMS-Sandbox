@@ -131,6 +131,7 @@ class Group
     public function setProperties($properties)
     {
         $this->properties = $properties;
+
         return $this;
     }
 

@@ -21,11 +21,11 @@ class CMSExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         //$processor = new Processor();
-        $configuration = new Configuration();        
+        $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        
+
         $container->setParameter($this->getAlias() . '.storage', $config['storage']);
-        
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

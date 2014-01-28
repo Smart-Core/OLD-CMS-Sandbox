@@ -27,8 +27,8 @@ class EngineModule extends ContainerAware
     {
         $this->kernel = $kernel;
         $this->initialize();
-    }    
-    
+    }
+
     /**
      * Initializes the collection of modules.
      */
@@ -44,17 +44,17 @@ class EngineModule extends ContainerAware
             $this->initialized = true;
         }
     }
-        
+
     /**
      * Получить список всех модулей.
-     * 
+     *
      * @return \SmartCore\Bundle\CMSBundle\Module\Bundle[]
      */
     public function all()
     {
         return $this->modules;
     }
-    
+
     /**
      * Получить информацию о модуле.
      *

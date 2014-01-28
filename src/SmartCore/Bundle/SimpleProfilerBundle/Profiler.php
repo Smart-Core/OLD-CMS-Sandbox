@@ -169,7 +169,7 @@ class Profiler
      *
      * @param string $name name/identifier for your step. is used later in the output to identify this step
      */
-	public static function start($name, $tag = 'all')
+    public static function start($name, $tag = 'all')
     {
         if (!self::isEnabled()) {
             return;
@@ -218,7 +218,7 @@ class Profiler
      *
      * @param bool $isDetailed
      */
-	public static function render($isDetailed = false)
+    public static function render($isDetailed = false)
     {
         if (!self::isEnabled()) {
             return null;
@@ -290,7 +290,7 @@ class Profiler
 
         if ($input === false) {
             echo "установлен в <b>false</b>";
-        } else if ($input === null) {
+        } elseif ($input === null) {
             echo "установлен в <b>null</b>";
         } else {
             print_r($input);
@@ -300,11 +300,11 @@ class Profiler
         $output = ob_get_clean();
         $output = str_ireplace('    ', '  ', $output);
 
-        if(!empty($remove)) {
+        if (!empty($remove)) {
             $output = str_ireplace($remove, '', $output);
         }
 
-        if(!empty($highlight)) {
+        if (!empty($highlight)) {
             $output = str_ireplace($highlight, '<b>' . $highlight . '</b>', $output);
         }
 

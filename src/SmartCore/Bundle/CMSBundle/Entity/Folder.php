@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use SmartCore\Bundle\CMSBundle\Container;
-use SmartCore\Bundle\CMSBundle\Entity\Node;
 
 /**
  * @ORM\Entity(repositoryClass="FolderRepository")
@@ -32,7 +31,7 @@ class Folder
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $folder_id;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Folder", inversedBy="children")
      * @ORM\JoinColumn(name="folder_pid", referencedColumnName="folder_id")
@@ -66,27 +65,27 @@ class Folder
      * @ORM\Column(type="smallint", nullable=TRUE)
      */
     protected $position;
-    
+
     /**
      * @ORM\Column(type="string", nullable=TRUE)
      */
     protected $uri_part;
-    
+
     /**
      * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_active;
-    
+
     /**
      * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_deleted;
-    
+
     /**
      * @ORM\Column(type="string", nullable=TRUE)
      */
     protected $descr;
-    
+
     /**
      * @ORM\Column(type="array", nullable=TRUE)
      */
@@ -96,17 +95,17 @@ class Folder
      * @ORM\Column(type="string", nullable=TRUE)
      */
     protected $redirect_to;
-    
+
     /**
      * @ORM\Column(type="integer", nullable=TRUE)
      */
     protected $router_node_id;
-    
+
     /**
      * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $has_inherit_nodes;
-    
+
     /**
      * @ORM\Column(type="array", nullable=TRUE)
      */
@@ -209,6 +208,7 @@ class Folder
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -227,6 +227,7 @@ class Folder
     public function setIsFile($is_file)
     {
         $this->is_file = $is_file;
+
         return $this;
     }
 
@@ -245,6 +246,7 @@ class Folder
     public function setIsActive($is_active)
     {
         $this->is_active = $is_active;
+
         return $this;
     }
 
@@ -263,6 +265,7 @@ class Folder
     public function setHasInheritNodes($has_inherit_nodes)
     {
         $this->has_inherit_nodes = $has_inherit_nodes;
+
         return $this;
     }
 
@@ -281,6 +284,7 @@ class Folder
     public function setDescr($descr)
     {
         $this->descr = $descr;
+
         return $this;
     }
 
@@ -299,6 +303,7 @@ class Folder
     public function setUriPart($uri_part)
     {
         $this->uri_part = $uri_part;
+
         return $this;
     }
 
@@ -317,6 +322,7 @@ class Folder
     public function setMeta($meta)
     {
         $this->meta = $meta;
+
         return $this;
     }
 
@@ -343,6 +349,7 @@ class Folder
     public function setCreateByUserId($create_by_user_id)
     {
         $this->create_by_user_id = $create_by_user_id;
+
         return $this;
     }
 
@@ -361,6 +368,7 @@ class Folder
     public function setParentFolder(Folder $parent_folder)
     {
         $this->parent_folder = ($this->getId() == 1) ? null : $parent_folder;
+
         return $this;
     }
 
@@ -383,6 +391,7 @@ class Folder
         }
 
         $this->position = $position;
+
         return $this;
     }
 
@@ -401,6 +410,7 @@ class Folder
     public function setFormTitle($form_title)
     {
         $this->form_title = $form_title;
+
         return $this;
     }
 
@@ -419,6 +429,7 @@ class Folder
     public function setRouterNodeId($router_node_id)
     {
         $this->router_node_id = empty($router_node_id) ? null : $router_node_id;
+
         return $this;
     }
 
@@ -437,6 +448,7 @@ class Folder
     public function setTemplateInheritable($template_inheritable)
     {
         $this->template_inheritable = $template_inheritable;
+
         return $this;
     }
 
@@ -455,6 +467,7 @@ class Folder
     public function setTemplateSelf($template_self)
     {
         $this->template_self = $template_self;
+
         return $this;
     }
 
@@ -473,6 +486,7 @@ class Folder
     public function setUri($uri)
     {
         $this->uri = $uri;
+
         return $this;
     }
 
@@ -497,7 +511,7 @@ class Folder
         // Защита от цикличных зависимостей.
         $parent = $this->getParentFolder();
 
-        if(null == $parent) {
+        if (null == $parent) {
             return;
         }
 

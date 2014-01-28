@@ -79,7 +79,7 @@ class AdminMenu extends ContainerAware
 
         return $menu;
     }
-    
+
     /**
      * Меню на странице редактирования ноды.
      *

@@ -27,6 +27,7 @@ class AdminController extends Controller
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('success', 'Группа меню создана.'); // @todo translate
+
                 return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group->getId()]));
             }
         }
@@ -62,15 +63,17 @@ class AdminController extends Controller
 
                     $this->getCacheService()->deleteTag('module_menu');
                     $this->get('session')->getFlashBag()->add('success', 'Пункт меню обновлён.'); // @todo translate
+
                     return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
                 $em->remove($form->getData());
                 $em->flush();
 
                 $this->getCacheService()->deleteTag('smart_module_menu');
                 $this->get('session')->getFlashBag()->add('success', 'Пункт меню удалён.');
+
                 return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
             }
         }
@@ -108,14 +111,16 @@ class AdminController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('success', 'Группа меню обновлена.'); // @todo translate
+
                     return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group_id]));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
                 $em->remove($form->getData());
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('success', 'Группа меню удалеа.');
+
                 return $this->redirect($this->generateUrl('smart_menu_admin'));
             }
         }

@@ -28,6 +28,7 @@ class NewsAdminController extends Controller
                 return $this->saveItem($request, $form->getData(), 'smart_news_admin', 'Новость создана.');
             }
         }
+
         return $this->render('NewsModule:Admin:create.html.twig', ['form' => $form->createView()]);
     }
 

@@ -2,9 +2,6 @@
 
 namespace SmartCore\Bundle\SimpleProfilerBundle\Twig;
 
-use Doctrine\Common\Cache\Cache;
-use Doctrine\ORM\EntityManager;
-
 class ProfilerExtension extends \Twig_Extension
 {
     /**

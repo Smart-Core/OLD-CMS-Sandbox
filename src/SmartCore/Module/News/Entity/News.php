@@ -134,6 +134,7 @@ class News
     public function setAnnotation($annotation)
     {
         $this->annotation = $annotation;
+
         return $this;
     }
 
@@ -152,6 +153,7 @@ class News
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
         return $this;
     }
 
@@ -170,6 +172,7 @@ class News
     public function setText($text)
     {
         $this->text = $text;
+
         return $this;
     }
 

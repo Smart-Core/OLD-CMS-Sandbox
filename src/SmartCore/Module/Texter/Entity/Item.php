@@ -16,7 +16,7 @@ class Item
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $item_id;
-    
+
     /**
      * @ORM\Column(type="string", length=8, nullable=TRUE)
      */
@@ -106,6 +106,7 @@ class Item
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
@@ -116,6 +117,7 @@ class Item
     public function setEditor($editor)
     {
         $this->editor = $editor;
+
         return $this;
     }
 
@@ -134,6 +136,7 @@ class Item
     public function setLocale($locale)
     {
         $this->locale = $locale;
+
         return $this;
     }
 
@@ -183,7 +186,7 @@ class Item
     public function setMeta(array $meta)
     {
         if (is_array($meta)) {
-            foreach($meta as $key => $value) {
+            foreach ($meta as $key => $value) {
                 if (empty($value)) {
                     unset($meta[$key]);
                 }

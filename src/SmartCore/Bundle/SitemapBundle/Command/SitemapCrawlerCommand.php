@@ -2,7 +2,6 @@
 
 namespace SmartCore\Bundle\SitemapBundle\Command;
 
-use SmartCore\Bundle\SitemapBundle\Entity\Url;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -27,7 +26,7 @@ class SitemapCrawlerCommand extends ContainerAwareCommand
 
         $startTime = microtime(true);
         $urlsCount = 0;
-        while(count($urls) > 0) {
+        while (count($urls) > 0) {
             $urlsCount += count($urls);
             $sitemapService->runCrawler($urls);
             $urls = $sitemapService->getUnvisitedUrls();

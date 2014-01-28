@@ -4,7 +4,6 @@ namespace SmartCore\Module\Menu\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="ItemRepository")
@@ -237,6 +236,7 @@ class Item
     public function setProperties($properties)
     {
         $this->properties = $properties;
+
         return $this;
     }
 
@@ -380,7 +380,7 @@ class Item
     {
         $parent = $this->getParentItem();
 
-        if(null == $parent) {
+        if (null == $parent) {
             return;
         }
 

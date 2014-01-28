@@ -2,10 +2,8 @@
 namespace SmartCore\Bundle\CMSBundle\Form\Tree;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
-use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 
 class FolderLoader implements EntityLoaderInterface
@@ -46,6 +44,7 @@ class FolderLoader implements EntityLoaderInterface
         $this->level = 0;
 
         $this->addChild();
+
         return $this->result;
     }
 

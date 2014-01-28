@@ -56,9 +56,11 @@ class AdminController extends Controller
                 $em->flush($history);
 
                 $this->get('session')->getFlashBag()->add('success', 'Текст обновлён'); // @todo перевод.
+
                 return $this->redirect($this->generateUrl('smart_texter_admin'));
             } catch (\Exception $e) {
                 $this->get('session')->getFlashBag()->add('errors', ['sql_debug' => $e->getMessage()]);
+
                 return $this->redirect($this->generateUrl('smart_texter_admin_edit', ['id' => $id]));
             }
         }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
@@ -136,7 +136,7 @@ class Theme extends ContainerAware
                         }
                     }
                     break;
-                case 'js_lib': // @todo 
+                case 'js_lib': // @todo
                     $js_libs = explode(',', $value);
                     foreach ($js_libs as $js_lib) {
                         $this->container->get('cms.jslib')->call(trim($js_lib));

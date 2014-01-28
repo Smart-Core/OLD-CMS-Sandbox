@@ -6,8 +6,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\Routing\Exception\RouteNotFoundException;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 
 class EngineRouter // implements UrlMatcherInterface
@@ -83,7 +81,7 @@ class EngineRouter // implements UrlMatcherInterface
             }
 
             // Закончить работу, если имя папки пустое и папка не является корневой т.е. обрабатывается последняя запись в строке УРИ
-            if('' == $segment and 0 != $key) {
+            if ('' == $segment and 0 != $key) {
                 // @todo здесь надо делать обработчик "файла" т.е. папки с выставленным флагом "is_file".
                 break;
             }
@@ -117,7 +115,7 @@ class EngineRouter // implements UrlMatcherInterface
             ]);
 
             if ($folder) {
-                if ( true ) { // @todo if ($this->Permissions->isAllowed('folder', 'read', $folder->permissions)) {
+                if (true) { // @todo if ($this->Permissions->isAllowed('folder', 'read', $folder->permissions)) {
                     foreach ($folder->getMeta() as $meta_name => $meta_value) {
                         $data['meta'][$meta_name] = $meta_value;
                     }

@@ -9,13 +9,13 @@ class Container
     /**
      * @var ContainerInterface
      */
-    static private $container;
+    private static $container;
 
     /**
      * @param $name
      * @return ContainerInterface
      */
-    static public function get($name)
+    public static function get($name)
     {
         return self::$container->get($name);
     }
@@ -23,7 +23,7 @@ class Container
     /**
      * @param ContainerInterface $container
      */
-    static public function set(ContainerInterface $container)
+    public static function set(ContainerInterface $container)
     {
         self::$container = $container;
     }
@@ -31,7 +31,7 @@ class Container
     /**
      * @return ContainerInterface
      */
-    static public function getContainer()
+    public static function getContainer()
     {
         return self::$container;
     }

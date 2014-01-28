@@ -8,9 +8,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use SmartCore\Bundle\FelibBundle\Entity\Library;
 use SmartCore\Bundle\FelibBundle\Entity\LibraryPath;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Dmitxe\BlogBundle\Entity\Article;
-use Dmitxe\BlogBundle\Entity\Category;
-use Dmitxe\BlogBundle\Entity\Tag;
 
 class LoadFelibData extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
 {

@@ -5,7 +5,6 @@ namespace SmartCore\Module\News\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use SmartCore\Bundle\CMSBundle\Container;
 
 class NodePropertiesFormType extends AbstractType
 {

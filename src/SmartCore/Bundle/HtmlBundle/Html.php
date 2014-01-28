@@ -40,7 +40,7 @@ class Html
         $this->setDoctype('html5');
         //$this->setHtml('html5');
         $this->setMetaHttpEquiv('Content-Type', 'text/html; charset=utf-8');
-        $this->setMetaHttpEquiv('Content-Language', 'ru');        
+        $this->setMetaHttpEquiv('Content-Language', 'ru');
     }
 
     /**
@@ -119,7 +119,7 @@ class Html
 
     /**
      * Set document type.
-     * 
+     *
      * @param string $doctype
      */
     public function setDoctype($doctype = 'html5')
@@ -130,6 +130,7 @@ class Html
         } else {
             $this->end = ' /';
         }
+
         return $this;
     }
 
@@ -148,7 +149,7 @@ class Html
 
         return $this;
     }
-    
+
     /**
      * Установить Мета-тэг description.
      *
@@ -175,7 +176,7 @@ class Html
 
     /**
      * Добавить атрибут тэга <body>.
-     * 
+     *
      * @param string $attr
      * @param string $value
      */
@@ -185,7 +186,7 @@ class Html
 
         return $this;
     }
-    
+
     /**
      * Добавить мета тэг.
      *
@@ -199,7 +200,7 @@ class Html
 
         return $this;
     }
-    
+
     /**
      * Добавить мета тэг http-equiv.
      *
@@ -212,7 +213,7 @@ class Html
 
         return $this;
     }
-    
+
     /**
      * Добавить мета тэг property.
      *
@@ -225,30 +226,30 @@ class Html
 
         return $this;
     }
-    
+
     /**
      * Привязка внешних документов.
      */
     public function addLink($href, $params = null, $priority = 0)
     {
         $data = array('href' => $href);
-        
+
         if (is_array($params)) {
             $data = $params + $data;
         } elseif (is_numeric($params)) {
             $priority = $params;
         }
-        
+
         ksort($data);
         $this->sorted['links'][$priority][] = $data;
         $this->sort('links');
 
         return $this;
-    }    
+    }
 
     /**
      * Добавить данные для тега <script>.
-     * 
+     *
      * @param string $input - src или code.
      * @param array|string $params - параметры. (_code - вставить код между тегами <script> и </script>.)
      * @param int $priority - позиция (чем больше, чем раньше подключится)
@@ -256,27 +257,27 @@ class Html
     public function addScript($input, $params = null, $priority = 0)
     {
         $data = array('type' => 'text/javascript');
-        
+
         if (is_array($params)) {
             $data = $params + $data;
         } elseif (is_numeric($params)) {
             $priority = $params;
         }
-        
+
         $tmp = parse_url($input);
         if (substr($tmp['path'], -3) == '.js') {
             $data['src'] = $input;
         } else {
             $data['_code'] = $input;
         }
-        
+
         ksort($data);
         $this->sorted['scripts'][$priority][] = $data;
         $this->sort('scripts');
 
         return $this;
     }
-    
+
     /**
      * Добавить данные для тега <style>.
      *
@@ -287,13 +288,13 @@ class Html
     public function addStyle($input, $params = null, $priority = 0)
     {
         $data = array('type' => 'text/css', 'media' => 'all');
-        
+
         if (is_array($params)) {
             $data = $params + $data;
         } elseif (is_numeric($params)) {
             $priority = $params;
         }
-        
+
         $tmp = parse_url($input);
         if (substr($tmp['path'], -4) == '.css') {
             $data['href'] = $input;
@@ -303,18 +304,19 @@ class Html
                 'type' => 'text/css',
                 'media' => $data['media'],
             ));
+
             return true;
         } else {
             $data['_code'] = $input;
         }
-        
+
         ksort($data);
         $this->sorted['styles'][$priority][] = $data;
         $this->sort('styles');
 
         return $this;
     }
-    
+
     /**
      * Добавить JS код, который должен быть исполнен при событии document-ready.
      * Метод автоматически подключает либу jquery.
@@ -327,10 +329,10 @@ class Html
 
         return $this;
     }
-    
+
     /**
      * Установить значение тэга <title>
-     * 
+     *
      * @param string $title
      */
     public function setTitle($title)
@@ -366,7 +368,7 @@ class Html
 
     /**
      * Соритировка.
-     * 
+     *
      * @param string $name
      */
     protected function sort($name)
@@ -393,27 +395,27 @@ class Html
     // -----------------------------------------------------------------------
     // Ниже описаны алиасы на основные методы для сокрашенного синтаксиса.
     // -----------------------------------------------------------------------
-    
+
     public function js($input, $params = null, $priority = 0)
     {
         return $this->addScript($input, $params, $priority);
     }
-    
+
     public function css($input, $params = null, $priority = 0)
     {
         return $this->addStyle($input, $params, $priority);
     }
-    
+
     public function meta($name, $content, $type = 'name')
     {
         return $this->setMeta($name, $content, $type);
     }
-    
+
     public function title($title)
     {
         return $this->setTitle($title);
     }
-    
+
     public function description($descr)
     {
         return $this->setMetaDescription($descr);
@@ -422,17 +424,17 @@ class Html
     {
         return $this->addMetaKeyword($keyword);
     }
-    
+
     public function keywords($keyword)
     {
         return $this->setMeta('keywords', $keyword);
     }
-    
+
     public function link($href, $args = null, $priority = 0)
     {
         return $this->addLink($href, $args, $priority);
     }
-    
+
     public function bodyAttr($attr, $value)
     {
         return $this->setBodyAttribute($attr, $value);

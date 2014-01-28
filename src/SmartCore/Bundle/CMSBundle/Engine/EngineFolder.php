@@ -1,10 +1,9 @@
-<?php 
+<?php
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use SmartCore\Bundle\CMSBundle\Form\Type\FolderFormType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 
 class EngineFolder
@@ -68,7 +67,7 @@ class EngineFolder
 
     /**
      * Получение полной ссылки на папку, указав её id. Если не указать ид папки, то вернётся текущий путь.
-     * 
+     *
      * @param int $folder_id
      * @return string $uri
      */
@@ -101,7 +100,7 @@ class EngineFolder
         foreach ($uri_parts as $value) {
             $uri .= $value . '/';
         }
-    
+
         return $this->container->get('request')->getBaseUrl() . $uri;
     }
 

@@ -5,7 +5,6 @@ namespace SmartCore\Bundle\CMSBundle\Engine;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\CMSBundle\Entity\Block;
 use SmartCore\Bundle\CMSBundle\Form\Type\BlockFormType;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 
 class EngineBlock

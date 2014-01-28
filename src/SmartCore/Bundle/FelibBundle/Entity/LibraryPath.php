@@ -41,7 +41,6 @@ class LibraryPath
      */
     protected $path;
 
-
     /**
      * @return integer
      */
@@ -57,6 +56,7 @@ class LibraryPath
     public function setLibId($lib_id)
     {
         $this->lib_id = $lib_id;
+
         return $this;
     }
 
@@ -75,6 +75,7 @@ class LibraryPath
     public function setVersion($version)
     {
         $this->version = $version;
+
         return $this;
     }
 
@@ -93,6 +94,7 @@ class LibraryPath
     public function setPath($path)
     {
         $this->path = $path;
+
         return $this;
     }
 

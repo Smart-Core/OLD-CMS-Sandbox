@@ -181,9 +181,9 @@ class EngineNode
     }
 
     /**
-     * Создание списка всех запрошеных нод, в каких блоках они находятся и с какими 
+     * Создание списка всех запрошеных нод, в каких блоках они находятся и с какими
      * параметрами запускаются модули.
-     * 
+     *
      * @param array  $router_data
      * @return Node[] $nodes
      */
@@ -272,11 +272,11 @@ class EngineNode
                     $sql .= " AND node_id != '{$used_nodes_value}'";
                 }
                 $sql .= ' ORDER BY position';
-            } else if ($folder->getHasInheritNodes()) { // в этой папке есть ноды, которые наследуются...
+            } elseif ($folder->getHasInheritNodes()) { // в этой папке есть ноды, которые наследуются...
                 $sql = "SELECT n.*
                     FROM {$this->db_prefix}engine_nodes AS n,
                         {$this->db_prefix}engine_blocks_inherit AS bi
-                    WHERE n.block_id = bi.block_id 
+                    WHERE n.block_id = bi.block_id
                         AND n.is_active = 1
                         AND n.folder_id = '{$folder->getId()}'
                         AND bi.folder_id = '{$folder->getId()}'
@@ -298,7 +298,7 @@ class EngineNode
 
                 // Создаётся список нод, которые уже в включены.
                 if ($folder->getHasInheritNodes()) {
-                    $used_nodes[] = $row->node_id; 
+                    $used_nodes[] = $row->node_id;
                 }
 
                 $this->nodes[$row->node_id] = $row->node_id;

@@ -3,14 +3,13 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Query\ResultSetMapping;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class HelloController extends Controller
-{    
+{
     public function indexAction()
     {
         /** @var $em EntityManager */
@@ -70,7 +69,6 @@ class HelloController extends Controller
 
         /** @var $node Node */
         //ld($this->get('cms.folder')->getUri($node->getFolder()->getId()));
-
         return $this->render('HtmlBundle::test.html.twig', ['hello' => 'Hello World!']);
     }
 }

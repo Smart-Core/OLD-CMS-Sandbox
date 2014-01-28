@@ -63,6 +63,7 @@ class Role
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -81,6 +82,7 @@ class Role
     public function setPosition($position)
     {
         $this->position = $position;
+
         return $this;
     }
 

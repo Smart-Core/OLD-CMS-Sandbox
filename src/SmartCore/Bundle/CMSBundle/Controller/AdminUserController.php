@@ -131,6 +131,7 @@ class AdminUserController extends Controller
                 $em->flush($role);
 
                 $this->get('session')->getFlashBag()->add('success', "Роль <b>$role</b> создана."); // @todo перевод
+
                 return $this->redirect($this->generateUrl('cms_admin_user_roles'));
             }
         }
@@ -162,6 +163,7 @@ class AdminUserController extends Controller
                 $em->flush($role);
 
                 $this->get('session')->getFlashBag()->add('success', 'Роль обновлена.'); // @todo перевод
+
                 return $this->redirect($this->generateUrl('cms_admin_user_roles'));
             }
         }

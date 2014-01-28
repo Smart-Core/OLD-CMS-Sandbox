@@ -138,6 +138,7 @@ class Breadcrumbs implements \Iterator, \Countable
     public function getLastUri()
     {
         $item = $this->get(count($this->_breadcrumbs) - 1);
+
         return $item['uri'];
     }
 

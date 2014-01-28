@@ -13,11 +13,11 @@ class CMSBundle extends Bundle
 {
     protected $modules_cache = [];
     protected $modules = [];
-    
+
     public function boot()
     {
         Container::set($this->container);
-        
+
         if ($this->container->get('kernel')->getEnvironment() == 'prod' and $this->container->has('db.logger')) {
             $this->container->get('database_connection')->getConfiguration()->setSQLLogger($this->container->get('db.logger'));
         }

@@ -172,6 +172,7 @@ class Node implements \Serializable
     {
         $this->getFolderId();
         $this->getBlock()->getId();
+
         return serialize([
             //return igbinary_serialize([
             $this->node_id,

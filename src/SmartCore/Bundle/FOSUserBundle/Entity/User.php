@@ -51,7 +51,7 @@ class User extends BaseUser
 
         $this->created = new \DateTime();
     }
-    
+
     public function serialize()
     {
         return serialize([
@@ -146,15 +146,15 @@ class User extends BaseUser
             $this->setFacebookId($fbdata['id']);
             $this->addRole('ROLE_FACEBOOK');
         }
-        
+
         if (isset($fbdata['first_name'])) {
             $this->setFirstname($fbdata['first_name']);
         }
-        
+
         if (isset($fbdata['last_name'])) {
             $this->setLastname($fbdata['last_name']);
         }
-        
+
         if (isset($fbdata['email'])) {
             $this->setEmail($fbdata['email']);
         }

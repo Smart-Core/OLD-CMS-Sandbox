@@ -52,7 +52,7 @@ class SitemapService
     {
         return $this->urlRepo->findBy([], ['loc' => 'ASC']);
     }
-    
+
     /**
      * @return Url[]|array
      */
@@ -92,7 +92,7 @@ class SitemapService
 
         return [$url];
     }
-    
+
     /**
      * @param Url[]|array $urls
      */
@@ -155,7 +155,7 @@ class SitemapService
         $links = preg_grep("/{$ignoresPreg}/i", $links, PREG_GREP_INVERT);
 
         foreach ($links as $link) {
-            if(strlen($link) == 0) {
+            if (strlen($link) == 0) {
                 continue;
             }
 

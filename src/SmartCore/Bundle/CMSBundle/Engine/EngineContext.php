@@ -55,6 +55,7 @@ class EngineContext
     public function setCurrentFolderId($current_folder_id)
     {
         $this->current_folder_id = $current_folder_id;
+
         return $this;
     }
 
@@ -73,6 +74,7 @@ class EngineContext
     public function setCurrentFolderPath($current_folder_path)
     {
         $this->current_folder_path = $current_folder_path;
+
         return $this;
     }
 
@@ -91,6 +93,7 @@ class EngineContext
     public function setCurrentNodeId($current_node_id)
     {
         $this->current_node_id = $current_node_id;
+
         return $this;
     }
 
@@ -109,6 +112,7 @@ class EngineContext
     public function setGlobalAssets($global_assets)
     {
         $this->global_assets = $global_assets;
+
         return $this;
     }
 
@@ -127,6 +131,7 @@ class EngineContext
     public function setThemePath($theme_path)
     {
         $this->theme_path = $theme_path;
+
         return $this;
     }
 

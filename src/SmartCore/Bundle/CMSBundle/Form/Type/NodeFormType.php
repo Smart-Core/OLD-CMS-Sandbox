@@ -26,7 +26,7 @@ class NodeFormType extends AbstractType
             ->add('folder', 'folder_tree')
             ->add('block', 'entity', [
                 'class' => 'CMSBundle:Block',
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('b')->orderBy('b.position', 'ASC');
                 },
                 'attr' => ['class' => 'input-block-level'],

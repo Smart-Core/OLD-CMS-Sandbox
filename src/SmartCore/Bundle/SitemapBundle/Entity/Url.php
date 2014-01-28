@@ -178,6 +178,7 @@ class Url
     public function setReferer($referer)
     {
         $this->referer = $referer;
+
         return $this;
     }
 

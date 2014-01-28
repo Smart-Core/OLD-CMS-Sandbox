@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace SmartCore\Bundle\FelibBundle\Service;
 
@@ -74,7 +74,7 @@ class FelibService
             $tagcache->set($cache_key, $this->scripts, ['smart_felib']);
         }
     }
-    
+
     /**
      * Запрос библиотеки.
      *
@@ -143,7 +143,7 @@ class FelibService
                 }
             }
         }
-        
+
         // Удаляются пустые ключи
         foreach ($output as $key => $value) {
             if ($output[$key] === false) {
@@ -152,6 +152,7 @@ class FelibService
         }
 
         $this->tagcache->set($cache_key, $output, ['smart_felib']);
+
         return $output;
     }
 }

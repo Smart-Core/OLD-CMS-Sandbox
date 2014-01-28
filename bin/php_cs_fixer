@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php-cs-fixer.phar fix src/ --fixers=-phpdoc_params

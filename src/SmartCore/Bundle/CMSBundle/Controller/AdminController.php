@@ -79,6 +79,7 @@ class AdminController extends Controller
             if ($form->isValid()) {
                 $engineBlock->update($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Блок создан.'); // @todo перевод
+
                 return $this->redirect($this->generateUrl('cms_admin_structure_block'));
             }
         }
@@ -114,11 +115,13 @@ class AdminController extends Controller
                 if ($form->isValid()) {
                     $engineBlock->update($form->getData());
                     $sessionFlashBag->add('success', 'Блок обновлён.'); // @todo перевод
+
                     return $this->redirect($this->generateUrl('cms_admin_structure_block'));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 $engineBlock->remove($form->getData());
                 $sessionFlashBag->add('success', 'Блок удалён.'); // @todo перевод
+
                 return $this->redirect($this->generateUrl('cms_admin_structure_block'));
             }
         }
@@ -179,7 +182,7 @@ class AdminController extends Controller
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 die('@todo');
             }
         }
@@ -234,7 +237,7 @@ class AdminController extends Controller
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 die('@todo');
             }
         }
@@ -309,9 +312,10 @@ class AdminController extends Controller
                     }
 
                     $this->get('session')->getFlashBag()->add('success', 'Нода создана.');
+
                     return $this->redirect($this->generateUrl('cms_admin_structure_node_properties', ['id' => $created_node->getId()]));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 die('@todo');
             }
         }
@@ -360,7 +364,7 @@ class AdminController extends Controller
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
                 }
-            } else if ($request->request->has('delete')) {
+            } elseif ($request->request->has('delete')) {
                 die('@todo');
             }
         }

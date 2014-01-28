@@ -31,7 +31,7 @@ class ItemHistory
      * @ORM\Column(type="integer")
      */
     protected $item_id;
-    
+
     /**
      * @ORM\Column(type="string", length=8)
      */
@@ -116,6 +116,7 @@ class ItemHistory
     public function setEditor($editor)
     {
         $this->editor = $editor;
+
         return $this;
     }
 
@@ -134,6 +135,7 @@ class ItemHistory
     public function setIsDeleted($is_deleted)
     {
         $this->is_deleted = $is_deleted;
+
         return $this;
     }
 
@@ -152,6 +154,7 @@ class ItemHistory
     public function setItemId($item_id)
     {
         $this->item_id = $item_id;
+
         return $this;
     }
 
@@ -170,6 +173,7 @@ class ItemHistory
     public function setLocale($locale)
     {
         $this->locale = $locale;
+
         return $this;
     }
 
@@ -188,6 +192,7 @@ class ItemHistory
     public function setMeta($meta)
     {
         $this->meta = $meta;
+
         return $this;
     }
 
@@ -206,6 +211,7 @@ class ItemHistory
     public function setText($text)
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -224,6 +230,7 @@ class ItemHistory
     public function setUserId($user_id)
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 

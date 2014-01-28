@@ -38,7 +38,7 @@ class ModuleControllerModifierListener
 
         $event->setResponse($response);
     }
-    
+
     public function onController(FilterControllerEvent $event)
     {
         if (!is_array($controller = $event->getController())) {

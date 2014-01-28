@@ -44,7 +44,7 @@ class UserController extends Controller
 
         return $this->forward('FOSUserBundle:ChangePassword:changePassword');
     }
-    
+
     public function resettingRequestAction()
     {
         if (!$this->node->getParam('allow_password_resetting')) {

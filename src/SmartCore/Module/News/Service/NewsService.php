@@ -9,6 +9,6 @@ class NewsService
      */
     public function __construct()
     {
-        
+
     }
 }

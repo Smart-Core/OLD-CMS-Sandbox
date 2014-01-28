@@ -81,6 +81,7 @@ class Feedback
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -99,6 +100,7 @@ class Feedback
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -117,6 +119,7 @@ class Feedback
     public function setText($text)
     {
         $this->text = $text;
+
         return $this;
     }
 

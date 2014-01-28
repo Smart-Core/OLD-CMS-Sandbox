@@ -12,6 +12,7 @@ class SecurityController extends BaseSecurityController
     public function loginAction(Request $request, array $data = [])
     {
         $this->data = $data;
+
         return parent::loginAction($request);
     }
 
