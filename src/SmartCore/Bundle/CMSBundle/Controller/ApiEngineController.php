@@ -20,14 +20,6 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 class ApiEngineController extends Controller
 {
     /**
-     * @return JsonResponse
-     */
-    public function indexAction()
-    {
-        return $this->notFoundAction();
-    }
-
-    /**
      * @param Request $request
      * @param string $slug
      * @return Response
@@ -37,6 +29,10 @@ class ApiEngineController extends Controller
         // @todo сделать проверку, доступна ли нода в папке т.к. папка может быть выключенной или пользователь не имеет к ней прав.
 
         $node = $this->get('cms.node')->get($node_id);
+
+        if (null === $node) {
+            return $this->notFoundAction();
+        }
 
         $controller = $this->get('cms.router')->matchModuleApi($node->getModule(), '/' . $slug);
 

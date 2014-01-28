@@ -41,7 +41,7 @@ smart_module.user.resetting.reset:
         _controller: FOSUserBundle:Resetting:reset
 
 # Registration
-smart_module.user.registration.index:
+smart_module.user.registration:
     path: /register/
     defaults:
         _controller: UserModule:User:register

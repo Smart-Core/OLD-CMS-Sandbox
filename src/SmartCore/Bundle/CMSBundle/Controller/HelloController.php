@@ -71,7 +71,6 @@ class HelloController extends Controller
 
         /** @var $node Node */
         //ld($this->get('cms.folder')->getUri($node->getFolder()->getId()));
-
         return $this->render('HtmlBundle::test.html.twig', ['hello' => 'Hello World!']);
     }
 }

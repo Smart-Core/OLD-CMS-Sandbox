@@ -1,36 +1,30 @@
 
-cms_api_index:
+cms_api:
     path: /
     defaults:
-        _controller: CMSBundle:ApiEngine:index
+        _controller: CMSBundle:ApiEngine:notFound
 
 cms_api_node_index:
     path: /{node_id}/
     defaults:
         _controller: CMSBundle:ApiEngine:node
-        slug: ""
+        slug: ''
     requirements:
-        slug: ".+"
         node_id: \d+
 
 cms_api_node:
     path: /{node_id}/{slug}
     defaults:
         _controller: CMSBundle:ApiEngine:node
-        slug: ""
+        slug: ''
     requirements:
-        slug: ".+"
+        slug: '.+'
         node_id: \d+
 
-#cms_api_index:
-#    path: /{object}/
-#    defaults:
-#        _controller: CMSBundle:ApiEngine:run
-
-#cms_api:
-#    path: /{object}/{slug}
-#    defaults:
-#        _controller: CMSBundle:ApiEngine:run
-#        slug: ""
-#    requirements:
-#        slug: ".+"
+cms_api_not_found:
+    path: /{slug}
+    defaults:
+        _controller: CMSBundle:ApiEngine:notFound
+        slug: ''
+    requirements:
+        slug: '.+'

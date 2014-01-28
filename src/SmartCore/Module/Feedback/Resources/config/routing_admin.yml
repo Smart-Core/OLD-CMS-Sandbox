@@ -1,5 +1,5 @@
 
-smart_module_feedback_admin:
+smart_module.feedback.admin:
     path: /
     defaults:
-        _controller: FeedbackModule:FeedbackAdmin:index
+        _controller: FeedbackModule:Admin:index

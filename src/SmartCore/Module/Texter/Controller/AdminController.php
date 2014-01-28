@@ -12,7 +12,7 @@ class AdminController extends Controller
     use CacheTrait;
 
     /**
-     * @param Request $request
+     * @param  Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -27,8 +27,8 @@ class AdminController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param int $id
+     * @param  Request $request
+     * @param  int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function itemAction(Request $request, $id)
@@ -37,12 +37,15 @@ class AdminController extends Controller
         $item = $em->find('TexterModule:Item', $id);
 
         if ($request->isMethod('POST')) {
+            $oldItem = clone $item;
+
             $data = $request->request->get('texter');
             $item->setText($data['text']);
             $item->setMeta($data['meta']);
 
-            $this->getCacheService()->deleteTag('smart_module_texter');
+            $this->getCacheService()->deleteTag('smart_module.texter');
 
+            // @todo сделать глобальную настройку, включающую выравниватель кода.
             if ($item->getEditor()) {
                 $item->setText($this->get('html.tidy')->prettifyFragment($item->getText()));
             }
@@ -51,17 +54,17 @@ class AdminController extends Controller
                 $em->persist($item);
                 $em->flush($item);
 
-                $history = new ItemHistory($item);
+                $history = new ItemHistory($oldItem);
                 $em->persist($history);
                 $em->flush($history);
 
                 $this->get('session')->getFlashBag()->add('success', 'Текст обновлён'); // @todo перевод.
 
-                return $this->redirect($this->generateUrl('smart_texter_admin'));
+                return $this->redirect($this->generateUrl('smart_module.texter.admin'));
             } catch (\Exception $e) {
                 $this->get('session')->getFlashBag()->add('errors', ['sql_debug' => $e->getMessage()]);
 
-                return $this->redirect($this->generateUrl('smart_texter_admin_edit', ['id' => $id]));
+                return $this->redirect($this->generateUrl('smart_module.texter.admin.edit', ['id' => $id]));
             }
         }
 
@@ -72,7 +75,10 @@ class AdminController extends Controller
     }
 
     /**
-     * @param $id
+     * @param  int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @todo пагинацию.
      */
     public function historyAction($id)
     {
@@ -89,6 +95,10 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @param  int $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function rollbackAction($id)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
@@ -115,6 +125,6 @@ class AdminController extends Controller
             $this->get('session')->getFlashBag()->add('error', 'Непредвиженная ошибка при выполнении отката'); // @todo перевод.
         }
 
-        return $this->redirect($this->generateUrl('smart_texter_admin'));
+        return $this->redirect($this->generateUrl('smart_module.texter.admin'));
     }
 }

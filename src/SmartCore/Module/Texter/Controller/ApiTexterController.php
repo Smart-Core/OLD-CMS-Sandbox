@@ -13,7 +13,7 @@ class ApiTexterController extends Controller
      */
     public function jsonAction($item_id = null)
     {
-        $item = $this->get('smart_module_texter')->get($item_id ? $item_id : $this->text_item_id, $this->node->getId());
+        $item = $this->get('smart_module.texter')->get($item_id ? $item_id : $this->text_item_id, $this->node->getId());
 
         if ($item) {
             return new JsonResponse([
@@ -36,7 +36,7 @@ class ApiTexterController extends Controller
      */
     public function htmlAction($item_id = null)
     {
-        $item = $this->get('smart_module_texter')->get($item_id ? $item_id : $this->text_item_id, $this->node->getId());
+        $item = $this->get('smart_module.texter')->get($item_id ? $item_id : $this->text_item_id, $this->node->getId());
 
         if ($item) {
             return new Response($item->getText());

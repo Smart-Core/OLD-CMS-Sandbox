@@ -1,5 +1,5 @@
 
-smart_module.news.index:
+smart_module.news:
     path: /
     defaults:
         _controller: NewsModule:News:index
@@ -16,4 +16,4 @@ smart_module.news.item:
     defaults:
         _controller: NewsModule:News:item
     requirements:
-        slug: ".+"
+        slug: '.+'

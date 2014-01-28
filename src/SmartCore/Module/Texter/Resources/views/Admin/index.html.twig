@@ -16,17 +16,13 @@
                 <tbody>
                 {% for item in items %}
                     <tr>
-                        <td><a href="{{ path('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.id }}</a></td>
-                        <td><a href="{{ path('smart_texter_admin_edit', {'id': item.id}) }}">{{ item.announce }}</a></td>
-                        <td>
-                            <a href="{{ path('smart_texter_admin_history', {'id': item.id}) }}" title="История"><i class="icon-time"></i></a>
-                        </td>
+                        <td><a href="{{ path('smart_module.texter.admin.edit',    {'id': item.id}) }}">{{ item.id }}</a></td>
+                        <td><a href="{{ path('smart_module.texter.admin.edit',    {'id': item.id}) }}">{{ item.announce }}</a></td>
+                        <td><a href="{{ path('smart_module.texter.admin.history', {'id': item.id}) }}" title="История"><i class="icon-time"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-
         </div>
     </div>
-
 {% endblock content %}

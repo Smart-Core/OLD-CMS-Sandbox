@@ -18,7 +18,8 @@ class TexterService
     protected $em;
 
     /**
-     * Constructor.
+     * @param TagcacheAdapter $cache
+     * @param EntityManager $em
      */
     public function __construct(TagcacheAdapter $cache, EntityManager $em)
     {
@@ -33,13 +34,13 @@ class TexterService
      */
     public function get($item_id, $node_id = null)
     {
-        $cache_key = md5('smart_module_texter' . $item_id);
+        $cache_key = md5('smart_module.texter' . $item_id);
 
         if (false == $item = $this->cache->get($cache_key)) {
             $item = $this->em->find('TexterModule:Item', $item_id);
 
             if ($node_id) {
-                $this->cache->set($cache_key, $item, ['smart_module_texter', 'node_' . $node_id]);
+                $this->cache->set($cache_key, $item, ['smart_module.texter', 'node_' . $node_id]);
             }
         }
 

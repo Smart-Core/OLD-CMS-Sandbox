@@ -50,7 +50,7 @@
         {% if app.request.query.has('redirect_to') %}
             <a class="btn cmf-cancel" href="{{ app.request.query.get('redirect_to') }}">Отменить</a>
         {% else %}
-            <a class="btn cmf-cancel" href="{{ path('smart_texter_admin') }}">Отменить</a>
+            <a class="btn cmf-cancel" href="{{ path('smart_module.texter.admin') }}">Отменить</a>
         {% endif %}
     </p>
 

@@ -19,7 +19,7 @@
                         <td>{{ item.created|localizeddate('medium') }}</td>
                         <td>{{ item.announce }}</td>
                         <td>
-                            <a href="{{ path('smart_texter_admin_rollback', {'id': item.id}) }}" title=""><i class="icon-forward"></i>Откатить</a>
+                            <a href="{{ path('smart_module.texter.admin.rollback', {'id': item.id}) }}" title=""><i class="icon-forward"></i>Откатить</a>
                         </td>
                     </tr>
                 {% endfor %}

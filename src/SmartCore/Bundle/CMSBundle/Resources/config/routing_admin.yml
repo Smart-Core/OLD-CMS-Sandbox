@@ -170,31 +170,3 @@ cms_admin:
         slug: ""
     requirements:
         slug: ".+"
-
-# ACTION
-#sc_engine_action_index:
-#    path: /action/{node_id}/
-#    defaults:
-#        _controller: CMSBundle:Action:run
-#    requirements:
-#        node_id: \d+
-#sc_engine_action:
-#    path: /action/{node_id}/{slug}
-#    defaults:
-#        _controller: CMSBundle:Action:run
-#    defaults:
-#        slug: ""
-#    requirements:
-#        slug: ".+"
-#        node_id: \d+
-#sc_engine_action_invalid_index:
-#    path: /action/
-#    defaults:
-#        _controller: CMSBundle:Action:invalid
-#sc_engine_action_invalid:
-#    path: /action/{slug}
-#    defaults:
-#        _controller: CMSBundle:Action:invalid
-#        slug: ""
-#    requirements:
-#        slug: ".+"
