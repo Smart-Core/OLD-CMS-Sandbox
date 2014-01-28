@@ -5,8 +5,8 @@ parameters:
     database_host:      localhost
     database_port:      ~
     database_name:      smart_core
-    database_user:      smart_core
-    database_password:  123
+    database_user:      root
+    database_password:  ~
 
     #database_driver_db1:   pdo_mysql
     #database_host_db1:     localhost
@@ -24,7 +24,8 @@ parameters:
 
     locale: ru
 
-    tagcache_driver: File # Memcache, Memcached, File, Sqlite, Apc, Nullcache
+    tagcache_driver:  File # Memcache, Memcached, File, Sqlite, Apc, Nullcache
+    orm_cache_driver: ~    # apc, wincache, xcache
 
     registration_email_confirmation: registration-email-confirmation@localhost.org
 
