@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\Entity;
+namespace Demo\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,7 +16,7 @@ class Test1
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\Column(type="string")
      */
