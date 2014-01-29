@@ -165,7 +165,7 @@ fos_user:
 tagcache:
     driver:        %tagcache_driver% # Memcache, Memcached, File, Sqlite, Apc, Nullcache
     #debug:         %kernel.debug%
-    namespace:     'smart_core'
+    namespace:     %secret%
     options:
         cache_dir: "%kernel.cache_dir%/smart_core_tagcache"
         hashkey:   true
