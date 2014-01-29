@@ -129,7 +129,6 @@ class EngineRouter
 
                     $parent_folder = $folder;
                     $router_node_id = $folder->getRouterNodeId();
-                    $folder->setUri($data['current_folder_path']);
                     $data['folders'][$folder->getId()] = $folder;
                     $data['current_folder_id'] = $folder->getId();
                 } else {

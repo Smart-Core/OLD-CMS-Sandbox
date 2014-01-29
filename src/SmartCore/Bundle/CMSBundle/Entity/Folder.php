@@ -144,12 +144,6 @@ class Folder
     protected $form_title;
 
     /**
-     * Полный URI. Генерируется динамически.
-     * @deprecated
-     */
-    protected $uri;
-
-    /**
      * Constructor.
      */
     public function __construct()
@@ -175,7 +169,6 @@ class Folder
 
         // Unmapped
         $this->form_title   = '';
-        $this->uri          = null;
     }
 
     /**
@@ -478,29 +471,6 @@ class Folder
     public function getTemplateSelf()
     {
         return $this->template_self;
-    }
-
-    /**
-     * @param string $uri
-     * @return $this
-     *
-     * @deprecated
-     */
-    public function setUri($uri)
-    {
-        $this->uri = $uri;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     *
-     * @deprecated
-     */
-    public function getUri()
-    {
-        return $this->uri;
     }
 
     /**
