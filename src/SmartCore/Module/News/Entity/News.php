@@ -7,7 +7,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="SmartCore\Module\News\Repository\NewsRepository")
+ * @ORM\Entity(repositoryClass="NewsRepository")
  * @ORM\Table(name="news")
  * @UniqueEntity(fields={"slug"}, message="URL должно быть уникальным, оно используется в строке запроса.")
  */

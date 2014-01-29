@@ -2,12 +2,11 @@
 
 namespace SmartCore\Module\Menu\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use SmartCore\Bundle\CMSBundle\Container;
 
-class NodePropertiesFormType extends AbstractType
+class NodePropertiesFormType extends AbstractNodePropertiesFormType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -33,15 +32,8 @@ class NodePropertiesFormType extends AbstractType
         ;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults([
-            'csrf_protection' => false,
-        ]);
-    }
-
     public function getName()
     {
-        return 'menu_node_properties';
+        return 'smart_module_menu_node_properties';
     }
 }

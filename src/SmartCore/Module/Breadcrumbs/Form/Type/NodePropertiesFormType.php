@@ -2,11 +2,10 @@
 
 namespace SmartCore\Module\Breadcrumbs\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class NodePropertiesFormType extends AbstractType
+class NodePropertiesFormType extends AbstractNodePropertiesFormType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -16,13 +15,8 @@ class NodePropertiesFormType extends AbstractType
         ;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(['csrf_protection' => false]);
-    }
-
     public function getName()
     {
-        return 'breadcrumbs_node_properties';
+        return 'smart_module_breadcrumbs_node_properties';
     }
 }

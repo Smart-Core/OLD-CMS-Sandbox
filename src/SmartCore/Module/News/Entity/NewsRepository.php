@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Module\News\Repository;
+namespace SmartCore\Module\News\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
