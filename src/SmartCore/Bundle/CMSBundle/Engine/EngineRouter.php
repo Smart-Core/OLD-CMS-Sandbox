@@ -18,6 +18,15 @@ class EngineRouter
     protected $router_data = null;
 
     /**
+     * @param  mixed|null $obj
+     * @return string
+     */
+    public function getPath($obj = null)
+    {
+        return $this->container->get('cms.folder')->getUri($obj);
+    }
+
+    /**
      * Tries to match a URL path with a set of routes.
      *
      * If the matcher can not find information, it must throw one of the exceptions documented
@@ -195,6 +204,6 @@ class EngineRouter
      */
     public function redirect($obj = null)
     {
-        return new RedirectResponse($this->container->get('cms.folder')->getUri($obj));
+        return new RedirectResponse($this->getPath($obj));
     }
 }
