@@ -18,7 +18,7 @@ class EngineRouter
     protected $router_data = null;
 
     /**
-     * @param  mixed|null $obj
+     * @param  mixed|null $obj Node, Folder, $folderId or NULL for current folder Id form cms.context.
      * @return string
      */
     public function getPath($obj = null)

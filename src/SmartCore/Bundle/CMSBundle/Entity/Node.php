@@ -583,6 +583,14 @@ class Node implements \Serializable
      */
     public function getController($controllerName = null, $actionName = 'index')
     {
+        if (null !== $controllerName or 'index' !== $actionName) {
+            $className = (null === $controllerName) ? $this->module : $controllerName;
+
+            return [
+                '_controller' => $this->module . 'Module:' . $className . ':' . $actionName,
+            ];
+        }
+
         if (empty($this->controller)) {
             $className = (null === $controllerName) ? $this->module : $controllerName;
             $this->controller['_controller'] = $this->module . 'Module:' . $className . ':' . $actionName;
