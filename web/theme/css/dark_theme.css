@@ -12,6 +12,10 @@ body > .container a:hover,
 body > .container a:focus {
     color: yellow;
 }
+hr {
+    border: 0px;
+    border-bottom: 1px solid #707372;
+}
 ul.main_menu li.current > a {
     color: orange;
 }
