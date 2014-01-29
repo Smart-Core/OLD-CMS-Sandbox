@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
@@ -22,9 +23,9 @@ class EngineRouter
      * If the matcher can not find information, it must throw one of the exceptions documented
      * below.
      *
-     * @param string $slug The path info to be parsed (raw format, i.e. not urldecoded)
+     * @param  string $slug The path info to be parsed (raw format, i.e. not urldecoded)
      *
-     * @return array Массив следующего формата:
+     * @return array  Массив следующего формата:
      *      [folders]: array
      *          {folder_id}: SmartCore\Bundle\CMSBundle\Entity\Folder
      *      [meta]: array
@@ -152,8 +153,8 @@ class EngineRouter
     }
 
     /**
-     * @param string $module
-     * @param string $path
+     * @param  string $module
+     * @param  string $path
      * @return array
      */
     public function matchModule($module, $path)
@@ -166,8 +167,8 @@ class EngineRouter
     }
 
     /**
-     * @param string $module
-     * @param string $path
+     * @param  string $module
+     * @param  string $path
      * @return array
      */
     public function matchModuleAdmin($module, $path)
@@ -176,8 +177,8 @@ class EngineRouter
     }
 
     /**
-     * @param string $module
-     * @param string $path
+     * @param  string $module
+     * @param  string $path
      * @return array
      */
     public function matchModuleApi($module, $path)
@@ -187,5 +188,14 @@ class EngineRouter
         }
 
         return null;
+    }
+
+    /**
+     * @param  mixed|null $obj
+     * @return RedirectResponse
+     */
+    public function redirect($obj = null)
+    {
+        return new RedirectResponse($this->container->get('cms.folder')->getUri($obj));
     }
 }

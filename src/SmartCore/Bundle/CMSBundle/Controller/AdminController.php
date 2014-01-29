@@ -174,10 +174,11 @@ class AdminController extends Controller
                 if ($form->isValid()) {
                     $engineFolder->update($form->getData());
 
+                    $this->get('tagcache')->deleteTag('folder');
                     $this->get('session')->getFlashBag()->add('success', 'Папка создана.');
 
-                    if (isset($_GET['redirect_to'])) {
-                        return $this->redirect($engineFolder->getUri($folder->getId()));
+                    if ($request->query->has('redirect_to')) {
+                        return $this->get('cms.router')->redirect($folder);
                     }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
@@ -231,8 +232,8 @@ class AdminController extends Controller
                     $this->get('tagcache')->deleteTag('folder');
                     $this->get('session')->getFlashBag()->add('success', 'Папка обновлена.');
 
-                    if (isset($_GET['redirect_to'])) {
-                        return $this->redirect($engineFolder->getUri($folder->getId()));
+                    if ($request->query->has('redirect_to')) {
+                        return $this->get('cms.router')->redirect($folder);
                     }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
@@ -307,11 +308,12 @@ class AdminController extends Controller
                         $this->get('cms.folder')->update($folder);
                     }
 
-                    if (isset($_GET['redirect_to']) and $_GET['redirect_to'] == 'front') {
-                        return $this->redirect($this->get('cms.folder')->getUri($created_node->getFolderId()));
-                    }
-
+                    $this->get('tagcache')->deleteTag('node');
                     $this->get('session')->getFlashBag()->add('success', 'Нода создана.');
+
+                    if ('front' === $request->query->get('redirect_to')) {
+                        return $this->get('cms.router')->redirect($created_node);
+                    }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure_node_properties', ['id' => $created_node->getId()]));
                 }
@@ -356,10 +358,11 @@ class AdminController extends Controller
                     $updated_node->setParams($form_properties->getData());
                     $engineNode->update($updated_node);
 
+                    $this->get('tagcache')->deleteTag('node');
                     $this->get('session')->getFlashBag()->add('success', 'Нода обновлена.');
 
-                    if (isset($_GET['redirect_to'])) {
-                        return $this->redirect($this->get('cms.folder')->getUri($updated_node->getFolderId()));
+                    if ($request->query->has('redirect_to')) {
+                        return $this->get('cms.router')->redirect($updated_node);
                     }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));

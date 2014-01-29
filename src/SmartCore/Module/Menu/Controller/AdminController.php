@@ -61,7 +61,7 @@ class AdminController extends Controller
                     $em->persist($form->getData());
                     $em->flush();
 
-                    $this->getCacheService()->deleteTag('module_menu');
+                    $this->getCacheService()->deleteTag('smart_module.menu');
                     $this->get('session')->getFlashBag()->add('success', 'Пункт меню обновлён.'); // @todo translate
 
                     return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
@@ -71,7 +71,7 @@ class AdminController extends Controller
                 $em->remove($form->getData());
                 $em->flush();
 
-                $this->getCacheService()->deleteTag('smart_module_menu');
+                $this->getCacheService()->deleteTag('smart_module.menu');
                 $this->get('session')->getFlashBag()->add('success', 'Пункт меню удалён.');
 
                 return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
@@ -110,6 +110,7 @@ class AdminController extends Controller
                     $em->persist($form->getData());
                     $em->flush();
 
+                    $this->getCacheService()->deleteTag('smart_module.menu');
                     $this->get('session')->getFlashBag()->add('success', 'Группа меню обновлена.'); // @todo translate
 
                     return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group_id]));
@@ -119,6 +120,7 @@ class AdminController extends Controller
                 $em->remove($form->getData());
                 $em->flush();
 
+                $this->getCacheService()->deleteTag('smart_module.menu');
                 $this->get('session')->getFlashBag()->add('success', 'Группа меню удалеа.');
 
                 return $this->redirect($this->generateUrl('smart_menu_admin'));

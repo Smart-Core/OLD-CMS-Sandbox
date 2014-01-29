@@ -234,7 +234,7 @@ class Profiler
         '. Memory <b>', round((memory_get_usage() - self::$globalStartMemory) / 1024 / 1024, 2), '</b> MB (<b>',
         round((memory_get_peak_usage(true) - self::$globalStartMemory) / 1024 / 1024, 2), '</b> peak).';
 
-        echo ' Files: <b>' . count(get_included_files()) . "</b>.\n";
+        //echo ' Files: <b>' . count(get_included_files()) . "</b>.\n";
 
         if (!is_null(self::$dbLogger) and is_object(self::$dbLogger)) {
             echo ' DB: <b>' . self::$dbLogger->currentQuery . '</b>';
