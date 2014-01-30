@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             //new JMS\SerializerBundle\JMSSerializerBundle(), // "jms/serializer-bundle": "*",
+            //new HWI\Bundle\OAuthBundle\HWIOAuthBundle(), // "hwi/oauth-bundle": "0.3.*@dev",
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\RadBundle\KnpRadBundle(),
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),

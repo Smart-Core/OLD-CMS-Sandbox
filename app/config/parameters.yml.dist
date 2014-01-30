@@ -28,6 +28,7 @@ parameters:
     orm_cache_driver: ~    # apc, wincache, xcache
 
     registration_email_confirmation: registration-email-confirmation@localhost.org
+    email_resetting: no-reply@localhost.org
 
     secret: SmartCoreThisTokenIsNotSoSecretChangeIt
 
