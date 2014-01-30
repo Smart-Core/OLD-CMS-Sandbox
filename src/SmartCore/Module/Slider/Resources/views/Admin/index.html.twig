@@ -1,0 +1,49 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_title %}{{ 'Slider'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h4>{{ 'Slider'|trans }}</h4>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="all">
+            <table class="table table-bordered table-hover">
+                <thead><tr>
+                    <th>id</th>
+                    <th>{{ 'Slide'|trans }}</th>
+                    <th>{{ 'Position'|trans }}</th>
+                    <th>{{ 'Title'|trans }}</th>
+                    <th>{{ 'Original filename'|trans }}</th>
+                    <th>{{ 'Status'|trans }}</th>
+                    <th>{{ 'Created'|trans }}</th>
+                </tr></thead>
+                <tbody>
+                {% for slide in slides %}
+                    <tr>
+                        <td>{{ slide.id }}</td>
+                        <td><a href="#@todo edit"><img src="{{ asset(webPath) }}{{ slide.filename }}" alt="" width="100" /></a></td>
+                        <td>{{ slide.position }}</td>
+                        <td>{{ slide.title }}</td>
+                        <td>{{ slide.originalFileName }}</td>
+                        <td>
+                            {% if slide.enabled %}
+                                Вкл.
+                            {% else %}
+                                <span class="label label-important">Отключен</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ slide.createdAt|localizeddate('long') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="well">
+        {{ form(form) }}
+    </div>
+
+{% endblock content %}

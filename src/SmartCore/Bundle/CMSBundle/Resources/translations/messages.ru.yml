@@ -27,6 +27,7 @@ Edit node: Редактировать ноду
 Editor: Редактор
 Exit: Выход
 Filemanager: Управление файлами
+File: Файл
 Files: Файлы
 Folder: Папка
 Folder edit: Редактирование папки
@@ -49,6 +50,7 @@ New user: Новый пользователь
 Node edit: Редактирование ноды
 Nodes count: Кол-во нод
 Node properties: Кол-во нод
+Original filename: Оригинальное имя файла
 Page: Страница
 Parent folder: Родительская папка
 Parent item: Родительский пункт
@@ -64,6 +66,8 @@ Roles: Роли
 Role edit: Редактирование роли
 Save: Сохранить
 Send: Отправить
+Slide: Слайд
+Slider: Слайдер
 Slug: Часть URI
 Status: Статус
 Structure: Структура
@@ -75,5 +79,6 @@ Title: Заголовок
 Uri part: Часть URI
 Update: Обновить
 Updated: Обновлено
+Upload: Загрузить
 Username: Имя пользователя
 Users: Пользователи

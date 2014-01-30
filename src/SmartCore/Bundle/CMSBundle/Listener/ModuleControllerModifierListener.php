@@ -66,14 +66,14 @@ class ModuleControllerModifierListener
                 $basePath = substr($basePath, 0, strlen($basePath) - 1);
             }
 
-            $routeParams = $request->attributes->get('_route_params', null);
+            //$routeParams = $request->attributes->get('_route_params', null);
 
-            if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
+            //if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
                 $routeParams = $node->getControllerParams();
                 $routeParams['_basePath'] = $basePath;
 
                 $request->attributes->set('_route_params', $routeParams);
-            }
+            //}
 
             if (method_exists($controller[0], 'setNode')) {
                 $controller[0]->setNode($node);

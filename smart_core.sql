@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Янв 29 2014 г., 21:09
+-- Время создания: Янв 31 2014 г., 00:18
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.5.8
+-- Версия PHP: 5.4.24
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_folders` (
   KEY `is_active` (`is_active`),
   KEY `is_deleted` (`is_deleted`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_folders`
@@ -124,8 +124,8 @@ INSERT INTO `aaa_engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`,
 (7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL),
 (8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
 (9, 1, 'Обратная связь', 0, 0, 'feedback', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-21 13:35:11', NULL),
-(10, 1, 'test', 0, 0, '10', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-23 23:06:27', NULL),
-(11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL);
+(11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
+(12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_nodes`
@@ -168,7 +168,7 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (5, 1, 3, 1, 'Menu', 'a:4:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL),
 (6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
 (7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
-(9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 0, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL),
+(9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL),
 (10, 7, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:7;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0, NULL),
 (11, 5, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:8;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0, NULL),
 (12, 8, 1, 1, 'News', 'a:1:{s:14:"items_per_page";i:3;}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0, NULL),
@@ -179,7 +179,8 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (17, 1, 3, 1, 'Widget', 'a:3:{s:7:"node_id";s:2:"12";s:10:"controller";s:15:"NewsWidget:last";s:6:"params";s:8:"count: 3";}', 10, 0, NULL, 1, '2014-01-29 18:27:59', 0, NULL),
 (18, 1, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL),
 (19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL),
-(20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL);
+(20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL),
+(21, 12, 1, 1, 'Slider', 'a:0:{}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -305,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `aaa_menu` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Дамп данных таблицы `aaa_menu`
@@ -320,7 +321,8 @@ INSERT INTO `aaa_menu` (`item_id`, `group_id`, `folder_id`, `is_active`, `positi
 (7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2014-01-20 06:36:00', NULL, NULL),
 (8, 1, 8, 1, 1, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2014-01-21 15:52:18', NULL, NULL),
 (9, 1, 9, 1, 4, NULL, NULL, NULL, 1, '2014-01-21 15:51:46', '2014-01-21 15:53:27', NULL, NULL),
-(10, 1, 11, 1, 0, NULL, NULL, NULL, 1, '2014-01-29 10:31:12', '2014-01-29 10:34:31', 5, 'N;');
+(10, 1, 11, 1, 0, NULL, NULL, NULL, 1, '2014-01-29 10:31:12', '2014-01-29 10:34:31', 5, 'N;'),
+(11, 1, 12, 1, 2, NULL, NULL, NULL, 1, '2014-01-30 20:42:06', NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -435,6 +437,62 @@ CREATE TABLE IF NOT EXISTS `aaa_sitemap_urls` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `aaa_sliders`
+--
+
+DROP TABLE IF EXISTS `aaa_sliders`;
+CREATE TABLE IF NOT EXISTS `aaa_sliders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `width` smallint(6) DEFAULT NULL,
+  `height` smallint(6) DEFAULT NULL,
+  `mode` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `library` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slide_properties` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `aaa_sliders`
+--
+
+INSERT INTO `aaa_sliders` (`id`, `title`, `width`, `height`, `mode`, `library`, `slide_properties`) VALUES
+(1, 'На главной', 600, 400, 'INSET', 'jcarousel', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_slides`
+--
+
+DROP TABLE IF EXISTS `aaa_slides`;
+CREATE TABLE IF NOT EXISTS `aaa_slides` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enabled` tinyint(1) DEFAULT NULL,
+  `file_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `original_file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `position` smallint(6) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_56692A96D7DF1668` (`file_name`),
+  KEY `position` (`position`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `aaa_slides`
+--
+
+INSERT INTO `aaa_slides` (`id`, `enabled`, `file_name`, `original_file_name`, `title`, `position`, `created_at`, `user_id`, `properties`) VALUES
+(2, 1, 'd38efae3c66fc0f775281e89e00496ef.jpeg', 'Code Complete.jpg', 'Книга', 0, '2014-01-30 23:33:52', 1, 'a:0:{}'),
+(3, 1, '19975be1a6f8a5829f0333ad0fb983c5.png', 'oum logo.png', 'Логотип', 0, '2014-01-31 00:00:16', 1, 'a:0:{}');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `aaa_texter`
 --
 
@@ -529,14 +587,14 @@ CREATE TABLE IF NOT EXISTS `aaa_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `aaa_users`
 --
 
 INSERT INTO `aaa_users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-29 18:42:51', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-30 19:58:57', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 

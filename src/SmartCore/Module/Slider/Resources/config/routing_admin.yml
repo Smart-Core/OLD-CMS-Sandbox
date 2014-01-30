@@ -1,0 +1,5 @@
+
+smart_module.slider.admin:
+    path: /
+    defaults:
+        _controller: SliderModule:AdminSlider:index

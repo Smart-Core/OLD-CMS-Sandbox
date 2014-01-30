@@ -35,7 +35,13 @@
                     {% if allow_delete %}
                         <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить?')"><i class="icon-trash icon-white"></i> {{ 'Delete'|trans }}</button>
                     {% endif %}
-                    <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+
+                    {% if app.request.query.has('redirect_to') %}
+                        <a class="btn cmf-cancel" href="{{ app.request.query.get('redirect_to') }}">Отменить</a>
+                    {% else %}
+                        <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">Отменить</a>
+                    {% endif %}
+
                 </div>
             </div>
 
