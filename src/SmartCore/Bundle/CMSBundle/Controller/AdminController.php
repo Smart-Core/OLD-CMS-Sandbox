@@ -375,6 +375,7 @@ class AdminController extends Controller
         return $this->render('CMSBundle:Admin:node_edit.html.twig', [
             'form'            => $form->createView(),
             'form_properties' => $form_properties->createView(),
+            'node'            => $node,
         ]);
     }
 
