@@ -1,0 +1,17 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_title %}{{ 'Slider'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <ul class="nav nav-pills" id="myTab">
+        <li><a href="{{ path('smart_module.slider.admin') }}">Список всех слайдеров</a></li>
+        <li><a href="{{ path('smart_module.slider.admin_slider', {'id': slider.id }) }}">Редактирование слайдера <b>&laquo;{{ slider.title }}&raquo;</b></a></li>
+        <li class="active"><a href="{{ path('smart_module.slider.admin_slider_edit', {'id': slider.id}) }}">Свойства слайдера</a></li>
+    </ul>
+
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
+    </div>
+
+{% endblock content %}

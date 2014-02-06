@@ -3,3 +3,17 @@ smart_module.slider.admin:
     path: /
     defaults:
         _controller: SliderModule:AdminSlider:index
+
+smart_module.slider.admin_slider:
+    path: /{id}/
+    defaults:
+        _controller: SliderModule:AdminSlider:slider
+    requirements:
+        id: \d+
+
+smart_module.slider.admin_slider_edit:
+    path: /{id}/edit
+    defaults:
+        _controller: SliderModule:AdminSlider:sliderEdit
+    requirements:
+        id: \d+

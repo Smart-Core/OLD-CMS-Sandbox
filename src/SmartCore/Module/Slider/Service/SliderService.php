@@ -4,6 +4,7 @@ namespace SmartCore\Module\Slider\Service;
 
 use Doctrine\ORM\EntityManager;
 use SmartCore\Module\Slider\Entity\Slide;
+use SmartCore\Module\Slider\Entity\Slider;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 class SliderService
@@ -58,6 +59,59 @@ class SliderService
     public function all()
     {
         return $this->em->getRepository('SliderModule:Slide')->findBy([], ['position' => 'ASC']);
+    }
+
+    /**
+     * @return Slider[]
+     */
+    public function allSliders()
+    {
+        return $this->em->getRepository('SliderModule:Slider')->findBy([], ['title' => 'ASC']);
+    }
+
+    /**
+     * @param Slider $slider
+     * @return $this
+     */
+    public function createSlider(Slider $slider)
+    {
+        $this->em->persist($slider);
+        $this->em->flush($slider);
+
+        return $this;
+    }
+
+    /**
+     * @param Slider $slider
+     * @return $this
+     */
+    public function updateSlider(Slider $slider)
+    {
+        $this->em->persist($slider);
+        $this->em->flush($slider);
+
+        return $this;
+    }
+
+    /**
+     * @param  Slider $slider
+     * @return $this
+     */
+    public function deleteSlider(Slider $slider)
+    {
+        $this->em->remove($slider);
+        $this->em->flush($slider);
+
+        return $this;
+    }
+
+    /**
+     * @param  int $id
+     * @return Slider
+     */
+    public function getSlider($id)
+    {
+        return $this->em->getRepository('SliderModule:Slider')->find($id);
     }
 
     /**

@@ -72,6 +72,96 @@ class Slider
     }
 
     /**
+     * @param int $width
+     * @return $this
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @param string $slide_properties
+     * @return $this
+     */
+    public function setSlideProperties($slide_properties)
+    {
+        $this->slide_properties = $slide_properties;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlideProperties()
+    {
+        return $this->slide_properties;
+    }
+
+    /**
+     * @param string $mode
+     * @return $this
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @param string $library
+     * @return $this
+     */
+    public function setLibrary($library)
+    {
+        $this->library = $library;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLibrary()
+    {
+        return $this->library;
+    }
+
+    /**
+     * @param int $height
+     * @return $this
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
      * @param string $title
      * @return Slider
      */
