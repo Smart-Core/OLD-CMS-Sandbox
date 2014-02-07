@@ -5,21 +5,13 @@ namespace SmartCore\Module\Blog\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 
-class WidgetController extends Controller
+class BlogWidgetController extends Controller
 {
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-/*        $this->bundleName           = 'BlogModule';
-
-        $this->articleServiceName   = 'smart_blog.article';
-        $this->categoryServiceName  = 'smart_blog.category';
-        $this->tagServiceName       = 'smart_blog.tag';
-        $this->routeTag             = 'smart_blog_tag';*/
-    }
+    use CacheTrait;
+    use NodeTrait;
 
     /**
      * @param integer $limit

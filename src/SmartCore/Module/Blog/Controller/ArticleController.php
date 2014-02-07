@@ -23,13 +23,13 @@ class ArticleController extends Controller
         if (!$article) {
             throw $this->createNotFoundException();
         }
+        $breadchumbs =   $this->get('cms.breadcrumbs');
         if ($article->getCategory()) {
-            $breadchumbs =   $this->get('cms.breadcrumbs');
             foreach ($article->getCategory()->getParents() as $category)
                 $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
             $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
-            $breadchumbs->add($article->getTitle(), $article->getTitle());
         }
+        $breadchumbs->add($article->getTitle(), $article->getTitle());
 
         return $this->render('BlogModule:Article:show.html.twig', [
             'article' => $article,
@@ -130,14 +130,14 @@ class ArticleController extends Controller
                 return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
             }
         }
+        $breadchumbs =   $this->get('cms.breadcrumbs');
         if ($article->getCategory()) {
-            $breadchumbs =   $this->get('cms.breadcrumbs');
             foreach ($article->getCategory()->getParents() as $category)
                 $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
             $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
-            $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug'=> $article->getSlug()]), $article->getTitle());
-            $breadchumbs->add('Редактирование', 'Редактирование');
         }
+        $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug'=> $article->getSlug()]), $article->getTitle());
+        $breadchumbs->add('Редактирование', 'Редактирование');
 
         return $this->render('BlogModule:Article:edit.html.twig', [
             'form' => $form->createView(),
