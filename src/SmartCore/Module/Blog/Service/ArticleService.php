@@ -44,7 +44,7 @@ class ArticleService extends AbstractBlogService
         $this->cache            = $cache;
         $this->em               = $em;
         $this->eventDispatcher  = $eventDispatcher;
-        $this->eventClass       = 'SmartCore\Bundle\BlogBundle\SmartBlogEvents'; // @todo эксперименты с событиями.
+        $this->eventClass       = '\SmartCore\Module\Blog\SmartBlogEvents'; // @todo эксперименты с событиями.
 
         $this->setItemsCountPerPage($itemsPerPage);
     }

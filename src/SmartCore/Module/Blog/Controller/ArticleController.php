@@ -57,7 +57,7 @@ class ArticleController extends Controller
      */
     public function __construct()
     {
-        $this->bundleName           = 'SmartBlogBundle';
+        $this->bundleName           = 'BlogModule';
 
         $this->articleServiceName   = 'smart_blog.article';
         $this->articleCreateForm    = 'smart_blog.article.create.form.type';

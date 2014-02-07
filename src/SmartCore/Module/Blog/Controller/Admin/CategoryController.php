@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $this->bundleName             = 'SmartBlogBundle';
+        $this->bundleName             = 'BlogModule';
 
         $this->categoryCreateForm     = 'smart_blog.category.create.form.type';
         $this->categoryEditForm       = 'smart_blog.category.edit.form.type';

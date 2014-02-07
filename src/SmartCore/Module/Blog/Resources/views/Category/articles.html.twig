@@ -1,4 +1,4 @@
-{% extends 'SmartBlogBundle::layout.html.twig' %}
+{% extends 'BlogModule::layout.html.twig' %}
 
 {% block smart_blog_content %}
 
@@ -23,7 +23,7 @@
     {% endif %}
 
     {% block smart_blog_content_articles %}
-        {% include 'SmartBlogBundle:Article:_list.html.twig' %}
+        {% include 'BlogModule:Article:_list.html.twig' %}
     {% endblock smart_blog_content_articles %}
 
 {% endblock smart_blog_content %}

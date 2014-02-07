@@ -48,7 +48,7 @@ class WidgetController extends Controller
      */
     public function __construct()
     {
-        $this->bundleName           = 'SmartBlogBundle';
+        $this->bundleName           = 'BlogModule';
 
         $this->articleServiceName   = 'smart_blog.article';
         $this->categoryServiceName  = 'smart_blog.category';

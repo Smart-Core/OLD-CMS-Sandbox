@@ -59,7 +59,7 @@ class TagController extends Controller
      */
     public function __construct()
     {
-        $this->bundleName        = 'SmartBlogBundle';
+        $this->bundleName        = 'BlogModule';
 
         $this->tagCreateForm     = 'smart_blog.tag.create.form.type';
         $this->tagEditForm       = 'smart_blog.tag.edit.form.type';

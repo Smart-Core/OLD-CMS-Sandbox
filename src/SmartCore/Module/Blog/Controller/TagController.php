@@ -43,7 +43,7 @@ class TagController extends Controller
      */
     public function __construct()
     {
-        $this->bundleName       = 'SmartBlogBundle';
+        $this->bundleName       = 'BlogModule';
 
         $this->tagServiceName   = 'smart_blog.tag';
         $this->routeIndex       = 'smart_blog_tag_index';
