@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Blog;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\Bundle;
 
 class BlogModule extends Bundle
 {
