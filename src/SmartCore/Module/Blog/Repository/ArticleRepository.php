@@ -149,7 +149,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
             throw new \Exception('
 
                 Посчет архива статей, пока работает только с БД MySQL.
-                Call in SmartCore\Bundle\BlogBundle\Repository\ArticleRepository::getArchiveMonthly();
+                Call in SmartCore\Module\Blog\Repository\ArticleRepository::getArchiveMonthly();
 
             ');
         }

@@ -75,8 +75,8 @@ abstract class Article implements ArticleInterface
         $this->created_at = new \DateTime();
         $this->enabled    = true;
 
-        if (array_key_exists('SmartCore\Bundle\BlogBundle\Model\TagTrait', class_uses($this, false))
-            or array_key_exists('SmartCore\Bundle\BlogBundle\Model\TaggableInterface', class_implements($this, false))
+        if (array_key_exists('SmartCore\Module\Blog\Model\TagTrait', class_uses($this, false))
+            or array_key_exists('SmartCore\Module\Blog\Model\TaggableInterface', class_implements($this, false))
         ) {
             $this->tags = new ArrayCollection();
         }
