@@ -26,7 +26,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
     use TagTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SmartCore\Module\User\Entity\User")
+     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\FOSUserBundle\Entity\User")
      * @ORM\JoinColumn(name="author_id")
      */
     protected $author;

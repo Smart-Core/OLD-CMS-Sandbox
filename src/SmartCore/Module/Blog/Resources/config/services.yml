@@ -1,3 +1,9 @@
+parameters:
+    smart_blog.items_per_page: 10
+    smart_blog.model.article.class: SmartCore\Module\Blog\Entity\Article
+    smart_blog.model.tag.class: SmartCore\Module\Blog\Entity\Tag
+    smart_blog.model.category.class: SmartCore\Module\Blog\Entity\Category
+
 services:
     smart_blog.article:
         class: SmartCore\Module\Blog\Service\ArticleService
