@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Янв 31 2014 г., 00:18
+-- Время создания: Фев 07 2014 г., 18:37
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.4.24
+-- Версия PHP: 5.5.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -18,6 +18,110 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- База данных: `smart_core`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_blog_articles`
+--
+
+DROP TABLE IF EXISTS `aaa_blog_articles`;
+CREATE TABLE IF NOT EXISTS `aaa_blog_articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `image_id` int(11) DEFAULT NULL,
+  `is_commentable` tinyint(1) NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `annotation` longtext COLLATE utf8_unicode_ci,
+  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `keywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_E42BC34B989D9B62` (`slug`),
+  KEY `IDX_E42BC34BF675F31B` (`author_id`),
+  KEY `IDX_E42BC34B12469DE2` (`category_id`),
+  KEY `created_at` (`created_at`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `aaa_blog_articles`
+--
+
+INSERT INTO `aaa_blog_articles` (`id`, `author_id`, `category_id`, `image_id`, `is_commentable`, `enabled`, `title`, `slug`, `annotation`, `text`, `keywords`, `description`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, NULL, 1, 1, '123', '123', '123 13 13 132 13 13 14 26523561251251 2354', 'asfdasdf asdf asd f', NULL, NULL, '2014-02-07 18:25:35', '2014-02-07 18:27:02'),
+(2, NULL, NULL, NULL, 1, 1, 'asd', 'asd', NULL, 'asd asd asd as dasd asd', NULL, NULL, '2014-02-07 18:26:46', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_blog_articles_tags_relations`
+--
+
+DROP TABLE IF EXISTS `aaa_blog_articles_tags_relations`;
+CREATE TABLE IF NOT EXISTS `aaa_blog_articles_tags_relations` (
+  `article_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`article_id`,`tag_id`),
+  KEY `IDX_1994F0217294869C` (`article_id`),
+  KEY `IDX_1994F021BAD26311` (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `aaa_blog_articles_tags_relations`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_blog_categories`
+--
+
+DROP TABLE IF EXISTS `aaa_blog_categories`;
+CREATE TABLE IF NOT EXISTS `aaa_blog_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent` int(11) DEFAULT NULL,
+  `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_D7E9F9CF989D9B62` (`slug`),
+  KEY `IDX_D7E9F9CF3D8E604F` (`parent`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_blog_categories`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_blog_tags`
+--
+
+DROP TABLE IF EXISTS `aaa_blog_tags`;
+CREATE TABLE IF NOT EXISTS `aaa_blog_tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `weight` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_DFC6FD1B989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_DFC6FD1B2B36786B` (`title`),
+  KEY `weight` (`weight`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_blog_tags`
+--
+
 
 -- --------------------------------------------------------
 
@@ -108,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_folders` (
   KEY `is_active` (`is_active`),
   KEY `is_deleted` (`is_deleted`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_folders`
@@ -125,7 +229,8 @@ INSERT INTO `aaa_engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`,
 (8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
 (9, 1, 'Обратная связь', 0, 0, 'feedback', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-21 13:35:11', NULL),
 (11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
-(12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL);
+(12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL),
+(13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_nodes`
@@ -180,7 +285,8 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (18, 1, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL),
 (19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL),
 (20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL),
-(21, 12, 1, 1, 'Slider', 'a:0:{}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL);
+(21, 12, 1, 1, 'Slider', 'a:0:{}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL),
+(22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -306,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `aaa_menu` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `aaa_menu`
@@ -322,7 +428,8 @@ INSERT INTO `aaa_menu` (`item_id`, `group_id`, `folder_id`, `is_active`, `positi
 (8, 1, 8, 1, 1, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2014-01-21 15:52:18', NULL, NULL),
 (9, 1, 9, 1, 4, NULL, NULL, NULL, 1, '2014-01-21 15:51:46', '2014-01-21 15:53:27', NULL, NULL),
 (10, 1, 11, 1, 0, NULL, NULL, NULL, 1, '2014-01-29 10:31:12', '2014-01-29 10:34:31', 5, 'N;'),
-(11, 1, 12, 1, 2, NULL, NULL, NULL, 1, '2014-01-30 20:42:06', NULL, NULL, 'N;');
+(11, 1, 12, 1, 2, NULL, NULL, NULL, 1, '2014-01-30 20:42:06', NULL, NULL, 'N;'),
+(12, 1, 13, 1, 2, NULL, NULL, NULL, 1, '2014-02-07 18:02:12', '2014-02-07 18:02:22', NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -450,14 +557,15 @@ CREATE TABLE IF NOT EXISTS `aaa_sliders` (
   `library` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slide_properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `aaa_sliders`
 --
 
 INSERT INTO `aaa_sliders` (`id`, `title`, `width`, `height`, `mode`, `library`, `slide_properties`) VALUES
-(1, 'На главной', 600, 400, 'INSET', 'jcarousel', NULL);
+(1, 'На главной', 600, 400, 'INSET', 'jcarousel', NULL),
+(3, 'Тест', NULL, NULL, 'INSET', 'jcarousel', NULL);
 
 -- --------------------------------------------------------
 
@@ -476,19 +584,21 @@ CREATE TABLE IF NOT EXISTS `aaa_slides` (
   `created_at` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `slider_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_56692A96D7DF1668` (`file_name`),
   KEY `position` (`position`),
-  KEY `user_id` (`user_id`)
+  KEY `user_id` (`user_id`),
+  KEY `IDX_56692A962CCC9638` (`slider_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `aaa_slides`
 --
 
-INSERT INTO `aaa_slides` (`id`, `enabled`, `file_name`, `original_file_name`, `title`, `position`, `created_at`, `user_id`, `properties`) VALUES
-(2, 1, 'd38efae3c66fc0f775281e89e00496ef.jpeg', 'Code Complete.jpg', 'Книга', 0, '2014-01-30 23:33:52', 1, 'a:0:{}'),
-(3, 1, '19975be1a6f8a5829f0333ad0fb983c5.png', 'oum logo.png', 'Логотип', 0, '2014-01-31 00:00:16', 1, 'a:0:{}');
+INSERT INTO `aaa_slides` (`id`, `enabled`, `file_name`, `original_file_name`, `title`, `position`, `created_at`, `user_id`, `properties`, `slider_id`) VALUES
+(2, 1, 'd38efae3c66fc0f775281e89e00496ef.jpeg', 'Code Complete.jpg', 'Книга', 0, '2014-01-30 23:33:52', 1, 'a:0:{}', 1),
+(3, 1, '19975be1a6f8a5829f0333ad0fb983c5.png', 'oum logo.png', 'Логотип', 0, '2014-01-31 00:00:16', 1, 'a:0:{}', 1);
 
 -- --------------------------------------------------------
 
@@ -520,7 +630,7 @@ INSERT INTO `aaa_texter` (`item_id`, `locale`, `text`, `meta`, `created`, `user_
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1, 0),
 (6, 'ru', 'Text under menu in <strong>User</strong> folder.\r', 'a:0:{}', '2013-03-25 21:53:12', 1, 1),
 (7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g', 'a:0:{}', '2013-08-10 11:14:55', 1, 1),
-(8, 'ru', '<p>Нельзя так просто взять и написать цмс-ку ;)<br /><br /><img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /></p>', 'a:0:{}', '2013-12-20 20:11:42', 1, 1),
+(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;)<br />\r\n  <br />\r\n  <img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1),
 (9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>', 'a:0:{}', '2014-01-20 03:47:18', 1, 1),
 (10, 'ru', 'Очень интересные новости ;)', 'a:0:{}', '2014-01-22 19:02:28', 1, 1),
 (11, 'ru', 'Для жаждущих с Сущностью Вечной слиянья<br />\r\nЕсть йога познанья и йога деянья,<br />\r\n<br />\r\nВ бездействии мы не обрящем блаженства;<br />\r\nКто дела не начал, тот чужд совершенства.<br />\r\n<br />\r\nОднако без действий никто не пребудет:<br />\r\nТы хочешь того иль не хочешь — принудит<br />\r\n<br />\r\nПрирода тебя: нет иного удела,<br />\r\nИ, ей повинуясь, ты делаешь дело.<br />\r\n<br />\r\nКто, чувства поправ, все же помнит впечали<br />\r\nПредметы, что чувства его услаждали,—<br />\r\n<br />\r\nТот, связанный, следует ложной дорогой;<br />\r\nА тот, о сын Кунти, кто, волею строгой<br />\r\n<br />\r\nВсе чувства поправ, йогу действия начал,—<br />\r\nНа правой дороге себя обозначил.<br />\r\n<br />\r\nПоэтому действуй; бездействию дело<br />\r\nВсегда предпочти; отравления тела —<br />\r\n<br />\r\nИ то без усилий свершить невозможно:<br />\r\nДеянье — надежно, бездействие — ложно. &nbsp;\r', 'a:0:{}', '2014-01-29 10:01:55', 1, 1),
@@ -587,14 +697,14 @@ CREATE TABLE IF NOT EXISTS `aaa_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `aaa_users`
 --
 
 INSERT INTO `aaa_users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-01-30 19:58:57', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-07 14:12:47', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
@@ -742,6 +852,26 @@ INSERT INTO `engine_roles_users_relation` (`role_id`, `user_id`) VALUES
 --
 
 --
+-- Ограничения внешнего ключа таблицы `aaa_blog_articles`
+--
+ALTER TABLE `aaa_blog_articles`
+  ADD CONSTRAINT `FK_E42BC34B12469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_blog_categories` (`id`),
+  ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `aaa_users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_blog_articles_tags_relations`
+--
+ALTER TABLE `aaa_blog_articles_tags_relations`
+  ADD CONSTRAINT `FK_1994F021BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `aaa_blog_tags` (`id`),
+  ADD CONSTRAINT `FK_1994F0217294869C` FOREIGN KEY (`article_id`) REFERENCES `aaa_blog_articles` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_blog_categories`
+--
+ALTER TABLE `aaa_blog_categories`
+  ADD CONSTRAINT `FK_D7E9F9CF3D8E604F` FOREIGN KEY (`parent`) REFERENCES `aaa_blog_categories` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `aaa_engine_blocks_inherit`
 --
 ALTER TABLE `aaa_engine_blocks_inherit`
@@ -768,3 +898,9 @@ ALTER TABLE `aaa_menu`
   ADD CONSTRAINT `FK_D885BF9A162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`),
   ADD CONSTRAINT `FK_D885BF9A5550C4ED` FOREIGN KEY (`pid`) REFERENCES `aaa_menu` (`item_id`),
   ADD CONSTRAINT `FK_D885BF9AFE54D947` FOREIGN KEY (`group_id`) REFERENCES `aaa_menu_groups` (`group_id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_slides`
+--
+ALTER TABLE `aaa_slides`
+  ADD CONSTRAINT `FK_56692A962CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `aaa_sliders` (`id`);
