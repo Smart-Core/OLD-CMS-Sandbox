@@ -23,7 +23,7 @@
                     <th>{{ 'Created'|trans }}</th>
                 </tr></thead>
                 <tbody>
-                {% for slide in slides %}
+                {% for slide in slider.slides %}
                     <tr>
                         <td>{{ slide.id }}</td>
                         <td><a href="#@todo edit"><img src="{{ asset(webPath) }}{{ slide.filename }}" alt="" width="100" /></a></td>

@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Slider\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,6 +63,20 @@ class Slider
      */
     private $slide_properties;
 
+    /**
+     * @var Slide[]
+     *
+     * @Orm\OneToMany(targetEntity="Slide", mappedBy="slider")
+     */
+    protected $slides;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->slides = new ArrayCollection();
+    }
 
     /**
      * @return integer
@@ -159,6 +174,25 @@ class Slider
     public function getHeight()
     {
         return $this->height;
+    }
+
+    /**
+     * @param \SmartCore\Module\Slider\Entity\Slide[] $slides
+     * @return $this
+     */
+    public function setSlides($slides)
+    {
+        $this->slides = $slides;
+
+        return $this;
+    }
+
+    /**
+     * @return \SmartCore\Module\Slider\Entity\Slide[]
+     */
+    public function getSlides()
+    {
+        return $this->slides;
     }
 
     /**
