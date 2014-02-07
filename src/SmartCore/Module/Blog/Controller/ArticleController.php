@@ -6,66 +6,10 @@ use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use SmartCore\Module\Blog\Pagerfanta\SimpleDoctrineORMAdapter;
+use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 
 class ArticleController extends Controller
 {
-    /**
-     * Имя бандла. Для перегрузки шаблонов.
-     *
-     * @var string
-     */
-    protected $bundleName;
-
-    /**
-     * Форма создания статьи.
-     *
-     * @var string
-     */
-    protected $articleCreateForm;
-
-    /**
-     * Форма редактирования статьи.
-     *
-     * @var string
-     */
-    protected $articleEditForm;
-
-    /**
-     * Имя сервиса по работе со статьями.
-     *
-     * @var string
-     */
-    protected $articleServiceName;
-
-    /**
-     * Маршрут на список статей.
-     *
-     * @var string
-     */
-    protected $routeIndex;
-
-    /**
-     * Маршрут просмотра статьи.
-     *
-     * @var string
-     */
-    protected $routeArticle;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->bundleName           = 'BlogModule';
-
-        $this->articleServiceName   = 'smart_blog.article';
-        $this->articleCreateForm    = 'smart_blog.article.create.form.type';
-        $this->articleEditForm      = 'smart_blog.article.edit.form.type';
-        $this->routeIndex           = 'smart_blog.article.index';
-        $this->routeArticle         = 'smart_blog.article.show';
-    }
-
     /**
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response
@@ -80,7 +24,7 @@ class ArticleController extends Controller
             throw $this->createNotFoundException();
         }
 
-        return $this->render($this->bundleName . ':Article:show.html.twig', [
+        return $this->render('BlogModule:Article:show.html.twig', [
             'article' => $article,
         ]);
     }
@@ -97,7 +41,7 @@ class ArticleController extends Controller
         }
 
         if ($page == 1) {
-            return $this->redirect($this->generateUrl($this->routeIndex));
+            return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
 
         if (null === $page) {
@@ -112,10 +56,10 @@ class ArticleController extends Controller
         try {
             $pagerfanta->setCurrentPage($page);
         } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl($this->routeIndex));
+            return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
 
-        return $this->render($this->bundleName . ':Article:index.html.twig', [
+        return $this->render('BlogModule:Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,
         ]);
     }
@@ -140,10 +84,10 @@ class ArticleController extends Controller
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
         } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl($this->routeIndex));
+            return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
 
-        return $this->render($this->bundleName . ':Article:archive_list.html.twig', [
+        return $this->render('BlogModule:Article:archive_list.html.twig', [
             'pagerfanta' => $pagerfanta,
             'year'       => $year,
             'month'      => $month,
@@ -166,7 +110,7 @@ class ArticleController extends Controller
             throw $this->createNotFoundException();
         }
 
-        $form = $this->createForm($this->get($this->articleEditForm), $article);
+        $form = $this->createForm($this->get('smart_blog.article.edit.form.type'), $article);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
@@ -174,11 +118,11 @@ class ArticleController extends Controller
                 $article = $form->getData();
                 $articleService->update($article);
 
-                return $this->redirect($this->generateUrl($this->routeArticle, ['slug' => $article->getSlug()] ));
+                return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
             }
         }
 
-        return $this->render($this->bundleName . ':Article:edit.html.twig', [
+        return $this->render('BlogModule:Article:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -193,34 +137,27 @@ class ArticleController extends Controller
         $article        = $articleService->create();
 
         // @todo эксперименты с событиями.
-//        $this->class = 'SmartCore\Bundle\BlogBundle\SmartBlogEvents';
-        /** @var \SmartCore\Bundle\BlogBundle\Events $class */
-//        $class = $this->class;
-
-//        ld(\SmartCore\Bundle\BlogBundle\SmartBlogEvents::ARTICLE_CREATE);
-//        ld($class::articleCreate());
-
-        $form = $this->createForm($this->get($this->articleCreateForm), $article);
+        $form = $this->createForm($this->get('smart_blog.article.create.form.type'), $article);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $articleService->update($article, false);
 
-                return $this->redirect($this->generateUrl($this->routeArticle, ['slug' => $article->getSlug()] ));
+                return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
             }
         }
 
-        return $this->render($this->bundleName . ':Article:create.html.twig', [
+        return $this->render('BlogModule::Article:create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @return \SmartCore\Bundle\BlogBundle\Service\ArticleService
+     * @return \SmartCore\Module\Blog\Service\ArticleService
      */
     protected function getArticleService()
     {
-        return $this->get($this->articleServiceName);
+        return $this->get('smart_blog.article');
     }
 }

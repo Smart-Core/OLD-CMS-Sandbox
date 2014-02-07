@@ -7,66 +7,10 @@ use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use SmartCore\Module\Blog\Pagerfanta\SimpleDoctrineORMAdapter;
+use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 
 class ArticleController extends Controller
 {
-    /**
-     * Форма создания статьи.
-     *
-     * @var string
-     */
-    protected $articleCreateForm;
-
-    /**
-     * Форма редактирования статьи.
-     *
-     * @var string
-     */
-    protected $articleEditForm;
-
-    /**
-     * Имя сервиса по работе со статьями.
-     *
-     * @var string
-     */
-    protected $articleServiceName;
-
-    /**
-     * Маршрут на список статей.
-     *
-     * @var string
-     */
-    protected $routeAdminArticle;
-
-    /**
-     * Маршрут редактирования статьи.
-     *
-     * @var string
-     */
-    protected $routeAdminArticleEdit;
-
-    /**
-     * Имя бандла. Для перегрузки шаблонов.
-     *
-     * @var string
-     */
-    protected $bundleName;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->bundleName            = 'BlogModule';
-
-        $this->articleCreateForm     = 'smart_blog.article.create.form.type';
-        $this->articleEditForm       = 'smart_blog.article.edit.form.type';
-        $this->articleServiceName    = 'smart_blog.article';
-        $this->routeAdminArticle     = 'smart_blog_admin_article';
-        $this->routeAdminArticleEdit = 'smart_blog_admin_article_edit';
-    }
-
     /**
      * @param Request $requst
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -74,7 +18,7 @@ class ArticleController extends Controller
     public function indexAction(Request $requst)
     {
         /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
-        $articleService = $this->get($this->articleServiceName);
+        $articleService = $this->get('smart_blog.article');
 
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoryQuery()));
         $pagerfanta->setMaxPerPage($articleService->getItemsCountPerPage());
@@ -82,10 +26,10 @@ class ArticleController extends Controller
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
         } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl($this->routeAdminArticle));
+            return $this->redirect($this->generateUrl('smart_blog_admin_article'));
         }
 
-        return $this->render($this->bundleName . ':Admin/Article:index.html.twig', [
+        return $this->render('BlogModule:Admin/Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,
         ]);
     }
@@ -99,25 +43,25 @@ class ArticleController extends Controller
     public function editAction(Request $request, $id)
     {
         /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
-        $articleService = $this->get($this->articleServiceName);
+        $articleService = $this->get('smart_blog.article');
         $article        = $articleService->get($id);
 
         if (null === $article) {
             throw $this->createNotFoundException();
         }
 
-        $form = $this->createForm($this->get($this->articleEditForm), $article);
+        $form = $this->createForm($this->get('smart_blog.article.edit.form.type'), $article);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $articleService->update($form->getData());
 
-                return $this->redirect($this->generateUrl($this->routeAdminArticle));
+                return $this->redirect($this->generateUrl('smart_blog_admin_article'));
             }
         }
 
-        return $this->render($this->bundleName . ':Admin/Article:edit.html.twig', [
+        return $this->render('BlogModule:Admin/Article:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -129,21 +73,21 @@ class ArticleController extends Controller
     public function createAction(Request $request)
     {
         /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
-        $articleService = $this->get($this->articleServiceName);
+        $articleService = $this->get('smart_blog.article');
         $article        = $articleService->create();
 
-        $form = $this->createForm($this->get($this->articleCreateForm), $article);
+        $form = $this->createForm($this->get('smart_blog.article.create.form.type'), $article);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $articleService->update($form->getData(), false);
 
-                return $this->redirect($this->generateUrl($this->routeAdminArticle));
+                return $this->redirect($this->generateUrl('smart_blog_admin_article'));
             }
         }
 
-        return $this->render($this->bundleName . ':Admin/Article:create.html.twig', [
+        return $this->render('BlogModule:Admin/Article:create.html.twig', [
             'form' => $form->createView(),
         ]);
     }

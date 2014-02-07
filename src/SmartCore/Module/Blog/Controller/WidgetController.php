@@ -9,51 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 class WidgetController extends Controller
 {
     /**
-     * Имя бандла. Для перегрузки шаблонов.
-     *
-     * @var string
-     */
-    protected $bundleName;
-
-    /**
-     * Имя сервиса по работе с категориями.
-     *
-     * @var string
-     */
-    protected $categoryServiceName;
-
-    /**
-     * Имя сервиса по работе со статьями.
-     *
-     * @var string
-     */
-    protected $articleServiceName;
-
-    /**
-     * Маршрут просмотра списка статей по тэгу.
-     *
-     * @var string
-     */
-    protected $routeTag;
-
-    /**
-     * Имя сервиса по работе с тэгами.
-     *
-     * @var string
-     */
-    protected $tagServiceName;
-
-    /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->bundleName           = 'BlogModule';
+/*        $this->bundleName           = 'BlogModule';
 
         $this->articleServiceName   = 'smart_blog.article';
         $this->categoryServiceName  = 'smart_blog.category';
         $this->tagServiceName       = 'smart_blog.tag';
-        $this->routeTag             = 'smart_blog_tag';
+        $this->routeTag             = 'smart_blog_tag';*/
     }
 
     /**
@@ -62,12 +27,12 @@ class WidgetController extends Controller
      */
     public function archiveMonthlyAction($limit = 24)
     {
-        /** @var \SmartCore\Bundle\BlogBundle\Service\ArticleService $articleService */
-        $articleService = $this->get($this->articleServiceName);
+        /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
+        $articleService = $this->get('smart_blog.article');
         $archive        = $articleService->getCache()->fetch('archive_monthly');
 
         if (false === $archive) {
-            $archive = $this->renderView($this->bundleName . ':Widget:archive_articles.html.twig', [
+            $archive = $this->renderView('BlogModule:Widget:archive_articles.html.twig', [
                 'archiveMonthly' => $articleService->getArchiveMonthly($limit),
             ]);
 
@@ -82,12 +47,12 @@ class WidgetController extends Controller
      */
     public function categoryTreeAction()
     {
-        /** @var \SmartCore\Bundle\BlogBundle\Service\CategoryService $categoryService */
-        $categoryService = $this->get($this->categoryServiceName);
+        /** @var \SmartCore\Module\Blog\Service\CategoryService $categoryService */
+        $categoryService = $this->get('smart_blog.category');
         $categoryTree    = $categoryService->getCache()->fetch('knp_menu_category_tree');
 
         if (false === $categoryTree) {
-            $categoryTree = $this->renderView($this->bundleName . ':Widget:category_tree.html.twig', [
+            $categoryTree = $this->renderView('BlogModule:Widget:category_tree.html.twig', [
                 'categoryClass' => $categoryService->getCategoryClass(),
             ]);
             $categoryService->getCache()->save('knp_menu_category_tree', $categoryTree);
@@ -101,12 +66,12 @@ class WidgetController extends Controller
      */
     public function tagCloudAction()
     {
-        /** @var \SmartCore\Bundle\BlogBundle\Service\TagService $tagService */
-        $tagService = $this->get($this->tagServiceName);
+        /** @var \SmartCore\Module\Blog\Service\TagService $tagService */
+        $tagService = $this->get('smart_blog.tag');
         $cloud      = $tagService->getCache()->fetch('tag_cloud_zend');
 
         if (false === $cloud) {
-            $cloud = $tagService->getCloudZend($this->routeTag)->render();
+            $cloud = $tagService->getCloudZend('smart_blog.tag')->render();
             $tagService->getCache()->save('tag_cloud_zend', $cloud);
         }
 

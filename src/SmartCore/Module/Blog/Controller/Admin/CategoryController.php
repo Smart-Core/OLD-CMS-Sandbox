@@ -9,63 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends Controller
 {
     /**
-     * Имя бандла. Для перегрузки шаблонов.
-     *
-     * @var string
-     */
-    protected $bundleName;
-
-    /**
-     * Маршрут на список категорий.
-     *
-     * @var string
-     */
-    protected $routeIndex;
-
-    /**
-     * Маршрут просмотра списка категорий.
-     *
-     * @var string
-     */
-    protected $routeCategory;
-
-    /**
-     * Форма создания категории.
-     *
-     * @var string
-     */
-    protected $categoryCreateForm;
-
-    /**
-     * Форма редактирования категории.
-     *
-     * @var string
-     */
-    protected $categoryEditForm;
-
-    /**
-     * Имя сервиса по работе с категориями.
-     *
-     * @var string
-     */
-    protected $categoryServiceName;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->bundleName             = 'BlogModule';
-
-        $this->categoryCreateForm     = 'smart_blog.category.create.form.type';
-        $this->categoryEditForm       = 'smart_blog.category.edit.form.type';
-        $this->categoryServiceName    = 'smart_blog.category';
-        $this->routeIndex             = 'smart_blog.category.articles';
-        $this->routeAdminCategory     = 'smart_blog_admin_category';
-        $this->routeAdminCategoryEdit = 'smart_blog_admin_category_edit';
-    }
-
-    /**
      * @param Request $request
      * @return Response
      */
@@ -74,18 +17,18 @@ class CategoryController extends Controller
         $categoryService = $this->getCategoryService();
         $category        = $categoryService->create();
 
-        $form = $this->createForm($this->get($this->categoryCreateForm), $category);
+        $form = $this->createForm($this->get('smart_blog.category.create.form.type'), $category);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $categoryService->update($category);
 
-                return $this->redirect($this->generateUrl($this->routeAdminCategory));
+                return $this->redirect($this->generateUrl('smart_blog_admin_category'));
             }
         }
 
-        return $this->render($this->bundleName . ':Admin/Category:index.html.twig', [
+        return $this->render('BlogModule:Admin/Category:index.html.twig', [
             'categoryClass' => get_class($category),
             'form'          => $form->createView(),
         ]);
@@ -106,18 +49,18 @@ class CategoryController extends Controller
             throw $this->createNotFoundException();
         }
 
-        $form = $this->createForm($this->get($this->categoryEditForm), $category);
+        $form = $this->createForm($this->get('smart_blog.category.edit.form.type'), $category);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $categoryService->update($category);
 
-                return $this->redirect($this->generateUrl($this->routeAdminCategory));
+                return $this->redirect($this->generateUrl('smart_blog_admin_category'));
             }
         }
 
-        return $this->render($this->bundleName . ':Admin/Category:edit.html.twig', [
+        return $this->render('BlogModule:Admin/Category:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -127,6 +70,6 @@ class CategoryController extends Controller
      */
     protected function getCategoryService()
     {
-        return $this->get($this->categoryServiceName);
+        return $this->get('smart_blog.category');
     }
 }

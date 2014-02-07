@@ -6,52 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
 use SmartCore\Module\Blog\Model\CategoryInterface;
-use SmartCore\Module\Blog\Pagerfanta\SimpleDoctrineORMAdapter;
+use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Имя бандла. Для перегрузки шаблонов.
-     *
-     * @var string
-     */
-    protected $bundleName;
-
-    /**
-     * Имя сервиса по работе со статьями.
-     *
-     * @var string
-     */
-    protected $articleServiceName;
-
-    /**
-     * Имя сервиса по работе с категориями.
-     *
-     * @var string
-     */
-    protected $categoryServiceName;
-
-    /**
-     * Маршрут на список категорий.
-     *
-     * @var string
-     */
-    protected $routeIndex;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->bundleName           = 'BlogModule';
-
-        $this->articleServiceName   = 'smart_blog.article';
-        $this->categoryServiceName  = 'smart_blog.category';
-        $this->routeIndex           = 'smart_blog.category.articles';
-    }
-
     /**
      * @param Request $request
      * @param string $slug
@@ -87,8 +47,8 @@ class CategoryController extends Controller
 
         $this->addChild($categories, $lastCategory);
 
-        /** @var \SmartCore\Bundle\BlogBundle\Service\ArticleService $articleService */
-        $articleService = $this->get($this->articleServiceName);
+        /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
+        $articleService = $this->get('smart_blog.article');
 
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoriesQuery($categories->getValues())));
         $pagerfanta->setMaxPerPage($articleService->getItemsCountPerPage());
@@ -96,10 +56,10 @@ class CategoryController extends Controller
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
         } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl($this->routeIndex));
+            return $this->redirect($this->generateUrl('smart_blog.category.articles'));
         }
 
-        return $this->render($this->bundleName . ':Category:articles.html.twig', [
+        return $this->render('BlogModule:Category:articles.html.twig', [
             'categories'    => $requestedCategories,
             'lastCategory'  => $lastCategory,
             'pagerfanta'    => $pagerfanta,
@@ -128,10 +88,10 @@ class CategoryController extends Controller
     }
 
     /**
-     * @return \SmartCore\Bundle\BlogBundle\Service\CategoryService
+     * @return \SmartCore\Module\Blog\Service\CategoryService
      */
     protected function getCategoryService()
     {
-        return $this->get($this->categoryServiceName);
+        return $this->get('smart_blog.category');
     }
 }
