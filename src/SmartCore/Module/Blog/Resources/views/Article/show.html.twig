@@ -1,0 +1,22 @@
+{% extends 'BlogModule::layout.html.twig' %}
+
+{% block smart_blog_content %}
+
+    <h2>{{ article.title }}</h2>
+
+    <p><i class="icon-calendar"></i> {{ article.createdAt | localizeddate('full') }}</p>
+
+    <p>{{ article.annotation }}</p>
+
+    <p>{{ article.text }}</p>
+
+    {% for tag in article.tags %}
+        <a href="{{ path('smart_blog_tag', {'slug': tag.slug}) }}"><span class="label label-info">{{ tag }}</span></a>
+    {% endfor %}
+
+    {% if is_granted('ROLE_BLOGGER') %}
+        <hr />
+        <p><a href="{{ path('smart_blog.article.edit', {'id': article.id}) }}" class="btn">{{ 'Edit'|trans }}</a></p>
+    {% endif %}
+
+{% endblock smart_blog_content %}

@@ -1,0 +1,18 @@
+{% extends 'BlogModule:Admin:layout.html.twig' %}
+
+{% block smart_blog_content %}
+
+    <div class="span3">
+        {{ form(form, {'attr': {'class': 'well'} }) }}
+    </div>
+
+    <div class="span8">
+        {% set menuItem = knp_menu_get('BlogModule:Category:adminTree', [], {'categoryClass': categoryClass}) %}
+        {{ knp_menu_render(menuItem, {
+            'currentClass': 'active',
+            'clear_matcher': false,
+        }) }}
+
+    </div>
+
+{% endblock smart_blog_content %}

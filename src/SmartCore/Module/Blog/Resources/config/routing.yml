@@ -1,0 +1,66 @@
+smart_blog.article.index:
+    path: /
+    defaults: { _controller: BlogModule:Article:index }
+
+smart_blog.article.index.page_1_redirect_TO_index:
+    path: /page/
+    defaults: { _controller: BlogModule:Article:index, page: 1 }
+
+smart_blog.article.index.page:
+    path: /page/{page}/
+    defaults: { _controller: BlogModule:Article:index }
+
+smart_blog.article.show:
+    path: /{slug}.html
+    defaults: { _controller: BlogModule:Article:show }
+
+smart_blog.article.create:
+    path: /create/
+    defaults: { _controller: BlogModule:Article:create }
+
+smart_blog.article.edit:
+    path: /edit/{id}/
+    defaults: { _controller: BlogModule:Article:edit }
+    requirements:
+        id: \d+
+
+smart_blog.category.articles:
+    path: /category/{slug}
+    defaults:
+        _controller: BlogModule:Category:articles
+        slug: ""
+    requirements:
+        slug: ".+"
+
+smart_blog_tag_index:
+    path: /tag/
+    defaults: { _controller: BlogModule:Tag:index }
+
+smart_blog_tag:
+    path: /tag/{slug}/
+    defaults: { _controller: BlogModule:Tag:showArticles }
+
+smart_blog_archive: # @todo
+    path: /archive/
+    defaults: { _controller: BlogModule:Article:archive }
+
+smart_blog_archive_yearly: # @todo
+    path: /archive/{year}/
+    defaults: { _controller: BlogModule:Article:archiveYearly }
+    requirements:
+        year:  \d+
+
+smart_blog_archive_monthly:
+    path: /archive/{year}/{month}/
+    defaults: { _controller: BlogModule:Article:archiveMonthly }
+    requirements:
+        year:  \d+
+        month: \d+
+
+smart_blog_archive_daily: # @todo
+    path: /archive/{year}/{month}/{day}/
+    defaults: { _controller: BlogModule:Article:archiveDaily }
+    requirements:
+        year:  \d+
+        month: \d+
+        day:   \d+

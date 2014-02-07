@@ -1,0 +1,37 @@
+smart_blog_admin_article:
+    path: /
+    defaults: { _controller: BlogModule:Admin/Article:index }
+
+smart_blog_admin_article_edit:
+    path: /{id}/
+    defaults: { _controller: BlogModule:Admin/Article:edit }
+    requirements:
+        id: \d+
+
+smart_blog_admin_article_create:
+    path: /create/
+    defaults: { _controller: BlogModule:Admin/Article:create }
+
+smart_blog_admin_category:
+    path: /
+    defaults: { _controller: BlogModule:Admin/Category:index }
+
+smart_blog_admin_category_edit:
+    path: /{id}/
+    defaults: { _controller: BlogModule:Admin/Category:edit }
+    requirements:
+        id: \d+
+
+smart_blog_admin_category_create:
+    path: /create/
+    defaults: { _controller: BlogModule:Admin/Category:create }
+
+smart_blog_admin_tag:
+    path: /
+    defaults: { _controller: BlogModule:Admin/Tag:index }
+
+smart_blog_admin_tag_edit:
+    path: /{id}/
+    defaults: { _controller: BlogModule:Admin/Tag:edit }
+    requirements:
+        id: \d+
