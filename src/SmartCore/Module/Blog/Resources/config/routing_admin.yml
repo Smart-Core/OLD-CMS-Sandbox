@@ -3,35 +3,35 @@ smart_blog_admin_article:
     defaults: { _controller: BlogModule:Admin/Article:index }
 
 smart_blog_admin_article_edit:
-    path: /{id}/
+    path: /article/{id}/
     defaults: { _controller: BlogModule:Admin/Article:edit }
     requirements:
         id: \d+
 
 smart_blog_admin_article_create:
-    path: /create/
+    path: /article/create/
     defaults: { _controller: BlogModule:Admin/Article:create }
 
 smart_blog_admin_category:
-    path: /
+    path: /category/
     defaults: { _controller: BlogModule:Admin/Category:index }
 
 smart_blog_admin_category_edit:
-    path: /{id}/
+    path: /category/{id}/
     defaults: { _controller: BlogModule:Admin/Category:edit }
     requirements:
         id: \d+
 
 smart_blog_admin_category_create:
-    path: /create/
+    path: /category/create/
     defaults: { _controller: BlogModule:Admin/Category:create }
 
 smart_blog_admin_tag:
-    path: /
+    path: /tag/
     defaults: { _controller: BlogModule:Admin/Tag:index }
 
 smart_blog_admin_tag_edit:
-    path: /{id}/
+    path: /tag/{id}/
     defaults: { _controller: BlogModule:Admin/Tag:edit }
     requirements:
         id: \d+
