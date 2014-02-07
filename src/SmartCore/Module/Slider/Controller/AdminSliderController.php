@@ -59,6 +59,7 @@ class AdminSliderController extends Controller
         $form->add('upload', 'submit', ['attr' => ['class' => 'btn btn-success']]);
 
         $sliderService = $this->get('smart_module.slider');
+        $slider = $sliderService->getSlider($id);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -72,8 +73,7 @@ class AdminSliderController extends Controller
 
         return $this->render('SliderModule:Admin:slider.html.twig', [
             'form'    => $form->createView(),
-            'slides'  => $sliderService->all(),
-            'slider'  => $sliderService->getSlider($id),
+            'slider'  => $slider,
             'webPath' => $sliderService->getWebPath(),
         ]);
     }

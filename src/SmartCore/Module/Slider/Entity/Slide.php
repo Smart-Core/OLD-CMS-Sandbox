@@ -85,7 +85,11 @@ class Slide
     private $user_id;
 
     /**
-     * @var Slider @todo
+     * @var Slider
+     *
+     * @ORM\ManyToOne(targetEntity="Slider", inversedBy="slides")
+     * @ORM\JoinColumn(name="slider_id")
+     * @Assert\NotBlank()
      */
     private $slider;
 
@@ -142,6 +146,24 @@ class Slide
     public function getOriginalFileName()
     {
         return $this->original_file_name;
+    }
+
+    /**
+     * @param \SmartCore\Module\Slider\Entity\Slider $slider
+     * @return $this
+     */
+    public function setSlider(Slider $slider)
+    {
+        $this->slider = $slider;
+        return $this;
+    }
+
+    /**
+     * @return \SmartCore\Module\Slider\Entity\Slider
+     */
+    public function getSlider()
+    {
+        return $this->slider;
     }
 
     /**
