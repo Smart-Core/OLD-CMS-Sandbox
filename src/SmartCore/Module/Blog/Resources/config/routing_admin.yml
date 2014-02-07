@@ -1,5 +1,9 @@
-smart_blog_admin_article:
+smart_blog_admin:
     path: /
+    defaults: { _controller: BlogModule:Admin/Default:index }
+
+smart_blog_admin_article:
+    path: /article/
     defaults: { _controller: BlogModule:Admin/Article:index }
 
 smart_blog_admin_article_edit:

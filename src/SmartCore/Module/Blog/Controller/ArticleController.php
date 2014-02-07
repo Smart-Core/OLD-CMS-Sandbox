@@ -23,6 +23,13 @@ class ArticleController extends Controller
         if (!$article) {
             throw $this->createNotFoundException();
         }
+        if ($article->getCategory()) {
+            $breadchumbs =   $this->get('cms.breadcrumbs');
+            foreach ($article->getCategory()->getParents() as $category)
+                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
+            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
+            $breadchumbs->add($article->getTitle(), $article->getTitle());
+        }
 
         return $this->render('BlogModule:Article:show.html.twig', [
             'article' => $article,
@@ -58,6 +65,8 @@ class ArticleController extends Controller
         } catch (NotValidCurrentPageException $e) {
             return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
+
+        $this->get('cms.breadcrumbs')->add('Записи', 'Записи');
 
         return $this->render('BlogModule:Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,
@@ -120,6 +129,14 @@ class ArticleController extends Controller
 
                 return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
             }
+        }
+        if ($article->getCategory()) {
+            $breadchumbs =   $this->get('cms.breadcrumbs');
+            foreach ($article->getCategory()->getParents() as $category)
+                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
+            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
+            $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug'=> $article->getSlug()]), $article->getTitle());
+            $breadchumbs->add('Редактирование', 'Редактирование');
         }
 
         return $this->render('BlogModule:Article:edit.html.twig', [

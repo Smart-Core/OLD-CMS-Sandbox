@@ -4,28 +4,14 @@ namespace SmartCore\Module\Blog\Controller\Admin;
 
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
-use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Zend\Tag\Cloud;
 
 class TagController extends Controller
 {
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
- /*       $this->bundleName        = 'BlogModule';
-
-        'smart_blog.tag.create.form.type'     = 'smart_blog.tag.create.form.type';
-        'smart_blog.tag.edit.form.type'       = 'smart_blog.tag.edit.form.type';
-        'smart_blog.tag'    = 'smart_blog.tag';
-        'smart_blog_tag_index'        = 'smart_blog_tag_index';
-        'smart_blog_admin_tag'     = 'smart_blog_admin_tag';
-        'smart_blog_admin_tag_edit' = 'smart_blog_admin_tag_edit';*/
-    }
-
     /**
      * @param Request $request
      * @return Response
