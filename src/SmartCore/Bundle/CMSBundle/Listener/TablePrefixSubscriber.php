@@ -38,7 +38,9 @@ class TablePrefixSubscriber implements EventSubscriber
         $classMetadata->setTableName($this->prefix . $classMetadata->getTableName());
 
         foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
-            if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
+            if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY
+                and isset($classMetadata->associationMappings[$fieldName]['joinTable']['name']) // @todo разобраться с модулем Blog
+            ) {
                 $mappedTableName = $classMetadata->associationMappings[$fieldName]['joinTable']['name'];
                 $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->prefix . $mappedTableName;
             }
