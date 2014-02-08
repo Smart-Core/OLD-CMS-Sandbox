@@ -218,6 +218,7 @@ class AdminController extends Controller
             $form
                 ->remove('uri_part')
                 ->remove('parent_folder')
+                ->remove('router_node_id') // @todo пока что запрещается в корневую папку подключать модули с роутингами.
                 ->remove('is_active')
                 ->remove('is_file')
                 ->remove('pos');
