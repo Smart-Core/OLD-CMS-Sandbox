@@ -3,14 +3,11 @@
 namespace SmartCore\Module\Blog\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 
 class BlogWidgetController extends Controller
 {
-    use CacheTrait;
     use NodeTrait;
 
     /**
@@ -21,9 +18,8 @@ class BlogWidgetController extends Controller
     {
         /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
         $articleService = $this->get('smart_blog.article');
-        $archive        = $articleService->getCache()->fetch('archive_monthly');
 
-        if (false === $archive) {
+        if (false === $archive = $articleService->getCache()->fetch('archive_monthly')) {
             $archive = $this->renderView('BlogModule:Widget:archive_articles.html.twig', [
                 'archiveMonthly' => $articleService->getArchiveMonthly($limit),
             ]);
@@ -41,9 +37,8 @@ class BlogWidgetController extends Controller
     {
         /** @var \SmartCore\Module\Blog\Service\CategoryService $categoryService */
         $categoryService = $this->get('smart_blog.category');
-        $categoryTree    = $categoryService->getCache()->fetch('knp_menu_category_tree');
 
-        if (false === $categoryTree) {
+        if (false === $categoryTree = $categoryService->getCache()->fetch('knp_menu_category_tree')) {
             $categoryTree = $this->renderView('BlogModule:Widget:category_tree.html.twig', [
                 'categoryClass' => $categoryService->getCategoryClass(),
             ]);
@@ -60,10 +55,9 @@ class BlogWidgetController extends Controller
     {
         /** @var \SmartCore\Module\Blog\Service\TagService $tagService */
         $tagService = $this->get('smart_blog.tag');
-        $cloud      = $tagService->getCache()->fetch('tag_cloud_zend');
 
-        if (false === $cloud) {
-            $cloud = $tagService->getCloudZend('smart_blog.tag')->render();
+        if (false === $cloud = $tagService->getCache()->fetch('tag_cloud_zend')) {
+            $cloud = $tagService->getCloudZend('smart_blog_tag')->render();
             $tagService->getCache()->save('tag_cloud_zend', $cloud);
         }
 

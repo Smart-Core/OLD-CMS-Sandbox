@@ -1,7 +1,12 @@
 {% extends 'BlogModule:Admin:layout.html.twig' %}
 
-{% block smart_blog_content %}
+{% block html_head_title %} {{ 'Create article'|trans }} / {{ parent() }} {% endblock html_head_title %}
 
-    {% include 'BlogModule:Article:_form.html.twig' %}
+{% block content %}
 
-{% endblock smart_blog_content %}
+    {{ form(form) }}
+
+    {{ tinymce_init() }}
+    {{ elfinder_tinymce_init() }}
+
+{% endblock content %}

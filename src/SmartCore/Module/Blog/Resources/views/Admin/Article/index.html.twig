@@ -1,48 +1,45 @@
 {% extends 'BlogModule:Admin:layout.html.twig' %}
 
-{% block smart_blog_content %}
+{% block html_head_title %} {{ 'Articles'|trans }} / {{ parent() }} {% endblock html_head_title %}
 
-    {% block smart_blog_content_articles %}
+{% block content %}
 
-        <p><a href="{{ path('smart_blog_admin_article_create') }}" class="btn btn-success">{{ 'Add article'|trans }}</a></p>
+    <p><a href="{{ path('smart_blog_admin_article_create') }}" class="btn btn-success">{{ 'Add article'|trans }}</a></p>
 
-        <p>{{ 'Total articles'|trans }}: {{ pagerfanta.count }}</p>
+    <p>{{ 'Total articles'|trans }}: {{ pagerfanta.count }}</p>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>{{ 'Title'|trans }}</th>
-                    <th>{{ 'Category'|trans }}</th> {# @todo убрать или сделать гибкую логику опознания наличия категорий у статей #}
-                    <th>{{ 'Created at'|trans }}</th>
-                    <th>{{ 'Author'|trans }}</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for article in pagerfanta.currentPageResults %}
-                <tr>
-                    <td>{{ article.id }}</td>
-                    <td>
-                        <a href="{{ path('smart_blog_admin_article_edit', {'id': article.id}) }}" title="{{ 'Edit'|trans }}">
-                            {{ article.title }}
-                        </a>
-                    </td>
-                    <td>{{ article.category }}</td>
-                    <td>{{ article.createdAt | localizeddate() }}</td>
-                    <td>{{ article.author }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endblock smart_blog_content_articles %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'Title'|trans }}</th>
+                <th>{{ 'Category'|trans }}</th> {# @todo убрать или сделать гибкую логику опознания наличия категорий у статей #}
+                <th>{{ 'Created at'|trans }}</th>
+                <th>{{ 'Author'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in pagerfanta.currentPageResults %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>
+                    <a href="{{ path('smart_blog_admin_article_edit', {'id': article.id}) }}" title="{{ 'Edit'|trans }}">
+                        {{ article.title }}
+                    </a>
+                </td>
+                <td>{{ article.category }}</td>
+                <td>{{ article.createdAt | localizeddate() }}</td>
+                <td>{{ article.author }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    {% block smart_blog_articles_paginator %}
-        {% if pagerfanta.haveToPaginate %}
-            {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
-                    'css_container_class': 'pagination pagination-centered',
-                })
-            }}
-        {% endif %}
-    {% endblock smart_blog_articles_paginator %}
+    {% if pagerfanta.haveToPaginate %}
+        {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
+                'css_container_class': 'pagination pagination-centered',
+            })
+        }}
+    {% endif %}
 
-{% endblock smart_blog_content %}
+{% endblock content %}

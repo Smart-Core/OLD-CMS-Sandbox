@@ -2,8 +2,6 @@
 
 namespace SmartCore\Module\Blog\Service;
 
-use Doctrine\Common\Cache\Cache;
-
 abstract class AbstractBlogService
 {
     /**
@@ -12,7 +10,7 @@ abstract class AbstractBlogService
     protected $articlesRepo;
 
     /**
-     * @var Cache
+     * @var \Doctrine\Common\Cache\Cache
      */
     protected $cache;
 

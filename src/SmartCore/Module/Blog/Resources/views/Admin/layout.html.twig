@@ -1,21 +1,11 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-    {% block html_head_styles %}
-        {{ parent() }}
-    {% endblock html_head_styles %}
+{% block html_head_title %} {{ 'Blog'|trans }} / {{ parent() }} {% endblock html_head_title %}
 
-{% block content %}
-    <div>
-        {% block subnav %}
-            {{ knp_menu_render('BlogModule:AdminMenu:main', {
+{% block nav %}
+    {{ knp_menu_render('BlogModule:AdminMenu:main', {
             'currentClass': 'active',
             'clear_matcher': false,
-            })
-            }}
-        {% endblock subnav %}
-
-        {% block smart_blog_content %}
-        {% endblock smart_blog_content %}
-    </div>
-{% endblock content %}
-
+        })
+    }}
+{% endblock nav %}

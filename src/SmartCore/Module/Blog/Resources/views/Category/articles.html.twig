@@ -1,29 +1,23 @@
-{% extends 'BlogModule::layout.html.twig' %}
+<h3>Статьи в категории:
+    {% for category in categories %}
+        <a href="{{ path('smart_blog.category.articles', {'slug': category.slugFull}) }}/">{{ category }}</a> /
+    {% endfor %}
+</h3>
 
-{% block smart_blog_content %}
+{% set childenCategories = lastCategory.children %}
 
-    {# @todo переводы #}
+{% if childenCategories|length %}
+    <h4>Вложенные категории:</h4>
 
-    <h1>Статьи в категории:
-        {% for category in categories %}
-            <a href="{{ path('smart_blog.category.articles', {'slug': category.slugFull}) }}/">{{ category }}</a> /
-        {% endfor %}
-    </h1>
+    <ul>
+    {% for category in childenCategories %}
+        <li><a href="{{ path('smart_blog.category.articles', {'slug': category.slugFull}) }}/">{{ category }}</a></li>
+    {% endfor %}
+    </ul>
 
-    {% set childenCategories = lastCategory.children %}
+    <hr />
+{% endif %}
 
-    {% if childenCategories|length %}
-        <h3>Вложенные категории:</h3>
-        <ul>
-        {% for category in childenCategories %}
-            <li><a href="{{ path('smart_blog.category.articles', {'slug': category.slugFull}) }}/">{{ category }}</a></li>
-        {% endfor %}
-        </ul>
-        <hr />
-    {% endif %}
-
-    {% block smart_blog_content_articles %}
-        {% include 'BlogModule:Article:_list.html.twig' %}
-    {% endblock smart_blog_content_articles %}
-
-{% endblock smart_blog_content %}
+{% block smart_blog_content_articles %}
+    {% include 'BlogModule:Article:_list.html.twig' %}
+{% endblock smart_blog_content_articles %}

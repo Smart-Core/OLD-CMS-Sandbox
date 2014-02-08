@@ -1,7 +1,4 @@
-{% extends 'BlogModule::layout.html.twig' %}
+{{ form(form) }}
 
-{% block smart_blog_content %}
-
-    {% include 'BlogModule:Article:_form.html.twig' %}
-
-{% endblock smart_blog_content %}
+{{ tinymce_init() }}
+{{ elfinder_tinymce_init() }}

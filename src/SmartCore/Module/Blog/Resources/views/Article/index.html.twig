@@ -1,9 +1,1 @@
-{% extends 'BlogModule::layout.html.twig' %}
-
-{% block smart_blog_content %}
-
-    {% block smart_blog_content_articles %}
-        {% include 'BlogModule:Article:_list.html.twig' %}
-    {% endblock smart_blog_content_articles %}
-
-{% endblock smart_blog_content %}
+{% include 'BlogModule:Article:_list.html.twig' %}

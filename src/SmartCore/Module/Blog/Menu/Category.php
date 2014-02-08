@@ -52,18 +52,13 @@ class Category extends ContainerAware
      */
     protected function addChild(ItemInterface $menu, CategoryInterface $parent = null, $categoryClass)
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = $this->container->get('doctrine')->getManager();
-
         $categories = $parent
             ? $parent->getChildren()
-            : $em->getRepository($categoryClass)->findBy(['parent' => null]);
-
-        $router = $this->container->get('router');
+            : $this->container->get('doctrine')->getManager()->getRepository($categoryClass)->findBy(['parent' => null]);
 
         /** @var CategoryInterface $category */
         foreach ($categories as $category) {
-            $uri = $router->generate('smart_blog.category.articles', ['slug' => $category->getSlugFull()]) . '/';
+            $uri = $this->container->get('router')->generate('smart_blog.category.articles', ['slug' => $category->getSlugFull()]) . '/';
             $menu->addChild($category->getTitle(), ['uri' => $uri])
                 ->setAttributes([
                     'class' => 'folder',
@@ -88,10 +83,8 @@ class Category extends ContainerAware
             throw new \Exception('Надо указать categoryClass в опциях');
         }
 
-        $categoryClass = $options['categoryClass'];
-
         $menu = $factory->createItem('categories');
-        $this->addChildToAdminTree($menu, null, $categoryClass);
+        $this->addChildToAdminTree($menu, null, $options['categoryClass']);
 
         return $menu;
     }
@@ -106,18 +99,13 @@ class Category extends ContainerAware
      */
     protected function addChildToAdminTree(ItemInterface $menu, CategoryInterface $parent = null, $categoryClass)
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = $this->container->get('doctrine')->getManager();
-
         $categories = $parent
             ? $parent->getChildren()
-            : $em->getRepository($categoryClass)->findBy(['parent' => null]);
-
-        $router = $this->container->get('router');
+            : $this->container->get('doctrine')->getManager()->getRepository($categoryClass)->findBy(['parent' => null]);
 
         /** @var CategoryInterface $category */
         foreach ($categories as $category) {
-            $uri = $router->generate('smart_blog_admin_category_edit', ['id' => $category->getId()]);
+            $uri = $this->container->get('router')->generate('smart_blog_admin_category_edit', ['id' => $category->getId()]);
             $menu->addChild($category->getTitle(), ['uri' => $uri])
                 ->setAttributes([
                     'class' => 'folder',

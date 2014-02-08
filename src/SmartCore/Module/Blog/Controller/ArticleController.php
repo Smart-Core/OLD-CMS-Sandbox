@@ -4,9 +4,9 @@ namespace SmartCore\Module\Blog\Controller;
 
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
+use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 
 class ArticleController extends Controller
 {
@@ -23,11 +23,13 @@ class ArticleController extends Controller
         if (!$article) {
             throw $this->createNotFoundException();
         }
-        $breadchumbs =   $this->get('cms.breadcrumbs');
+
+        $breadchumbs = $this->get('cms.breadcrumbs');
         if ($article->getCategory()) {
-            foreach ($article->getCategory()->getParents() as $category)
-                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
-            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
+            foreach ($article->getCategory()->getParents() as $category) {
+                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]) . '/', $category->getTitle());
+            }
+            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]) . '/', $article->getCategory());
         }
         $breadchumbs->add($article->getTitle(), $article->getTitle());
 
@@ -43,16 +45,8 @@ class ArticleController extends Controller
      */
     public function indexAction(Request $requst, $page = null)
     {
-        if (null === $page and $requst->query->has('page')) {
-            $page = $requst->query->get('page');
-        }
-
-        if ($page == 1) {
-            return $this->redirect($this->generateUrl('smart_blog.article.index'));
-        }
-
         if (null === $page) {
-            $page = 1;
+            $page = $requst->query->get('page', 1);
         }
 
         $articleService = $this->getArticleService();
@@ -65,8 +59,6 @@ class ArticleController extends Controller
         } catch (NotValidCurrentPageException $e) {
             return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
-
-        $this->get('cms.breadcrumbs')->add('Записи', 'Записи');
 
         return $this->render('BlogModule:Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,
@@ -130,10 +122,12 @@ class ArticleController extends Controller
                 return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
             }
         }
-        $breadchumbs =   $this->get('cms.breadcrumbs');
+
+        $breadchumbs = $this->get('cms.breadcrumbs');
         if ($article->getCategory()) {
-            foreach ($article->getCategory()->getParents() as $category)
+            foreach ($article->getCategory()->getParents() as $category) {
                 $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
+            }
             $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
         }
         $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug'=> $article->getSlug()]), $article->getTitle());
@@ -165,7 +159,7 @@ class ArticleController extends Controller
             }
         }
 
-        return $this->render('BlogModule::Article:create.html.twig', [
+        return $this->render('BlogModule:Article:create.html.twig', [
             'form' => $form->createView(),
         ]);
     }

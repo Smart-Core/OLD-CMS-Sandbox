@@ -5,6 +5,7 @@ namespace SmartCore\Module\Blog\Service;
 use Doctrine\Common\Cache\Cache;
 use Doctrine\ORM\EntityManager;
 use Pagerfanta\Pagerfanta;
+use SmartCore\Module\Blog\Entity\Article;
 use SmartCore\Module\Blog\Event\FilterArticleEvent;
 use SmartCore\Module\Blog\Model\ArticleInterface;
 use SmartCore\Module\Blog\Model\CategoryInterface;
@@ -25,12 +26,13 @@ class ArticleService extends AbstractBlogService
      *
      * @todo эксперименты с событиями.
      */
-    protected $eventClass;
+    protected $eventClass = '\SmartCore\Module\Blog\SmartBlogEvents';
 
     /**
-     * Constructor.
-     *
-     * @param \SmartCore\Module\Blog\Repository\ArticleRepository $articlesRepo
+     * @param EntityManager $em
+     * @param ArticleRepositoryInterface $articlesRepo
+     * @param Cache $cache
+     * @param EventDispatcherInterface $eventDispatcher
      * @param int $itemsPerPage
      */
     public function __construct(
@@ -44,7 +46,6 @@ class ArticleService extends AbstractBlogService
         $this->cache            = $cache;
         $this->em               = $em;
         $this->eventDispatcher  = $eventDispatcher;
-        $this->eventClass       = '\SmartCore\Module\Blog\SmartBlogEvents'; // @todo эксперименты с событиями.
 
         $this->setItemsCountPerPage($itemsPerPage);
     }
@@ -102,7 +103,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param int $id
-     * @return ArticleInterface|null
+     * @return Article|null
      */
     public function get($id)
     {
@@ -121,7 +122,7 @@ class ArticleService extends AbstractBlogService
      * @param CategoryInterface $category
      * @param int|null $limit
      * @param int|null $offset
-     * @return ArticleInterface[]|null
+     * @return Article[]|null
      *
      * @todo доделать или удалить.
      */
@@ -134,7 +135,7 @@ class ArticleService extends AbstractBlogService
      * @param CategoryInterface[]|array $categories
      * @param int|null $limit
      * @param int|null $offset
-     * @return ArticleInterface[]|null
+     * @return Article[]|null
      */
     public function getByCategories(array $categories = [], $limit = null, $offset = null)
     {
@@ -171,7 +172,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param string $slug
-     * @return ArticleInterface|null
+     * @return Article|null
      */
     public function getBySlug($slug)
     {
@@ -189,7 +190,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param int|null $limit
-     * @return ArticleInterface[]|null
+     * @return Article[]|null
      */
     public function getLast($limit = 10)
     {

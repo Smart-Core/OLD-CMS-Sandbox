@@ -1,7 +1,9 @@
 {% extends 'BlogModule:Admin:layout.html.twig' %}
 
-{% block smart_blog_content %}
+{% block html_head_title %} {{ 'Edit category'|trans }} / {{ parent() }} {% endblock html_head_title %}
 
-    {% include 'BlogModule:Admin/Category:_form.html.twig' %}
+{% block content %}
 
-{% endblock smart_blog_content %}
+    {{ form(form) }}
+
+{% endblock content %}

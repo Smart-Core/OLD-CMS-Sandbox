@@ -4,7 +4,9 @@ smart_blog.article.index:
 
 smart_blog.article.index.page_1_redirect_TO_index:
     path: /page/
-    defaults: { _controller: BlogModule:Article:index, page: 1 }
+    defaults:
+        _controller: BlogModule:Article:index
+        page: 1
 
 smart_blog.article.index.page:
     path: /page/{page}/
@@ -14,15 +16,15 @@ smart_blog.article.show:
     path: /{slug}.html
     defaults: { _controller: BlogModule:Article:show }
 
-smart_blog.article.create:
-    path: /create/
-    defaults: { _controller: BlogModule:Article:create }
+#smart_blog.article.create:
+#    path: /create/
+#    defaults: { _controller: BlogModule:Article:create }
 
-smart_blog.article.edit:
-    path: /edit/{id}/
-    defaults: { _controller: BlogModule:Article:edit }
-    requirements:
-        id: \d+
+#smart_blog.article.edit:
+#    path: /edit/{id}/
+#    defaults: { _controller: BlogModule:Article:edit }
+#    requirements:
+#        id: \d+
 
 smart_blog.category.articles:
     path: /category/{slug}

@@ -2,11 +2,13 @@
 
 namespace SmartCore\Module\Blog\Repository;
 
+use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 use SmartCore\Module\Blog\Model\ArticleInterface;
 use SmartCore\Module\Blog\Model\CategoryInterface;
 use SmartCore\Module\Blog\Model\TagInterface;
 
-interface ArticleRepositoryInterface
+interface ArticleRepositoryInterface extends ObjectRepository, Selectable
 {
     /**
      * @param int|null $limit

@@ -1,3 +1,4 @@
+
 {% for article in pagerfanta.currentPageResults %}
     <h2><a href="{{ path('smart_blog.article.show', {'slug': article.slug}) }}">{{ article.title }}</a></h2>
 
@@ -20,16 +21,9 @@
     <hr/>
 {% endfor %}
 
-{% block smart_blog_articles_pagerfanta %}
-    {% if pagerfantaRouteName is not defined %}
-        {% set pagerfantaRouteName = null %}
-    {% endif %}
-
-    {% if pagerfanta.haveToPaginate %}
-        {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
-                'routeName': pagerfantaRouteName,
-                'css_container_class': 'pagination pagination-centered',
-            })
-        }}
-    {% endif %}
-{% endblock smart_blog_articles_pagerfanta %}
+{% if pagerfanta.haveToPaginate %}
+    {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
+            'css_container_class': 'pagination pagination-centered',
+        })
+    }}
+{% endif %}

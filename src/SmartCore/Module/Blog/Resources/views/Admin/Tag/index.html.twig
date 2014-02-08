@@ -1,6 +1,8 @@
 {% extends 'BlogModule:Admin:layout.html.twig' %}
 
-{% block smart_blog_content %}
+{% block html_head_title %} {{ 'Tags'|trans }} / {{ parent() }} {% endblock html_head_title %}
+
+{% block content %}
 
     <div class="span3">
         {{ form(form, {'attr': {'class': 'well'} }) }}
@@ -36,14 +38,12 @@
 
         <p>{{ 'Total tags'|trans }}: {{ pagerfanta.count }}</p>
 
-        {% block smart_blog_tags_paginator %}
-            {% if pagerfanta.haveToPaginate %}
-                {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
-                        'css_container_class': 'pagination pagination-centered',
-                    })
-                }}
-            {% endif %}
-        {% endblock smart_blog_tags_paginator %}
+        {% if pagerfanta.haveToPaginate %}
+            {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
+                    'css_container_class': 'pagination pagination-centered',
+                })
+            }}
+        {% endif %}
     </div>
 
-{% endblock smart_blog_content %}
+{% endblock content %}

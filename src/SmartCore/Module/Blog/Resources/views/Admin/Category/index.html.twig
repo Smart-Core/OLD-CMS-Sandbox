@@ -1,6 +1,8 @@
 {% extends 'BlogModule:Admin:layout.html.twig' %}
 
-{% block smart_blog_content %}
+{% block html_head_title %} {{ 'Categories'|trans }} / {{ parent() }} {% endblock html_head_title %}
+
+{% block content %}
 
     <div class="span3">
         {{ form(form, {'attr': {'class': 'well'} }) }}
@@ -15,4 +17,4 @@
 
     </div>
 
-{% endblock smart_blog_content %}
+{% endblock content %}
