@@ -12,7 +12,9 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
         $builder
             ->add('node_id',    null,       ['required' => false, 'attr' => ['class' => 'input-block-level focused']])
             ->add('controller', null,       ['required' => false, 'attr' => ['class' => 'input-block-level']])
-            ->add('params',     'textarea', ['required' => false, 'attr' => ['class' => 'input-block-level', 'cols' => 15, 'style' => 'height: 220px;']])
+            ->add('params',     'textarea', ['required' => false, 'attr' => ['class' => 'input-block-level', 'cols' => 15, 'style' => 'height: 150px;']])
+            ->add('open_tag',   'textarea', ['required' => false, 'attr' => ['class' => 'input-block-level', 'cols' => 5,  'style' => 'height: 78px;']])
+            ->add('close_tag',  'textarea', ['required' => false, 'attr' => ['class' => 'input-block-level', 'cols' => 5,  'style' => 'height: 78px;']])
         ;
     }
 

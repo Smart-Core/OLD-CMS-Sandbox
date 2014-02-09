@@ -58,6 +58,14 @@ class WidgetController extends Controller
             return new Response($response->getStatusCode() . ' ' . Response::$statusTexts[$response->getStatusCode()]);
         }
 
+        if (strlen(trim($response->getContent())) > 0) {
+            $response->setContent(
+                $this->node->getParam('open_tag') . "\n" .
+                $response->getContent() . "\n" .
+                $this->node->getParam('close_tag')
+            );
+        }
+
         return $response;
     }
 }
