@@ -4,9 +4,31 @@
 
 {% block html_head_styles %}
     {{ parent() }}
+    <link href="{{ asset('assets/syntaxhighlighter/styles/shCore.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/syntaxhighlighter/styles/shThemeRDark.css') }}" rel="stylesheet">
     {#<style media="all" type="text/css"> @import url({{ asset('theme/css/screen.css')}}); </style>#}
     {#<style media="all" type="text/css"> @import url({{ asset('theme/css/dark_theme.css')}}); </style>#}
 {% endblock html_head_styles %}
+
+{% block html_head_scripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shCore.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushBash.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushCpp.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushCss.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushIni.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushJScript.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushPhp.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushPlain.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushSql.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushTwig.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushXml.js') }}"></script>
+    <script src="{{ asset('assets/syntaxhighlighter/scripts/shBrushYaml.js') }}"></script>
+    <script type="text/javascript">
+        SyntaxHighlighter.defaults['toolbar'] = false;
+        SyntaxHighlighter.all();
+    </script>
+{% endblock html_head_scripts %}
 
 {% block body %}
 {#
