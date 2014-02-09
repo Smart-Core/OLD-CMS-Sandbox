@@ -11,7 +11,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     {
         $builder
             ->add('delimiter', 'text', ['attr' => ['class' => 'focused']]) // Разделитель
-            ->add('hide_if_only_home', 'checkbox')  // Скрыть, если выбрана корневая папка
+            ->add('hide_if_only_home', 'checkbox', ['required' => false])  // Скрыть, если выбрана корневая папка
         ;
     }
 
