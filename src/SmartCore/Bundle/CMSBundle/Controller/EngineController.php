@@ -88,7 +88,6 @@ class EngineController extends Controller
             $this->get('cms.jslib')->call('jquery-cookie');
             $this->get('html')
                 ->css($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.css')
-                ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/jquery.ba-hashchange.min.js')
                 ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.js')
                 ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
             ;
