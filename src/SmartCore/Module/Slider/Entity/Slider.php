@@ -66,7 +66,8 @@ class Slider
     /**
      * @var Slide[]
      *
-     * @Orm\OneToMany(targetEntity="Slide", mappedBy="slider")
+     * @ORM\OneToMany(targetEntity="Slide", mappedBy="slider")
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $slides;
 
@@ -76,6 +77,14 @@ class Slider
     public function __construct()
     {
         $this->slides = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 
     /**

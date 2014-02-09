@@ -34,6 +34,10 @@ class SliderService
         $this->em = $em;
     }
 
+    /**
+     * @param  Slide $slide
+     * @return $this
+     */
     public function save(Slide $slide)
     {
         $file = $slide->getFile();
@@ -94,6 +98,32 @@ class SliderService
     }
 
     /**
+     * @param Slide $slide
+     * @return $this
+     */
+    public function updateSlide(Slide $slide)
+    {
+        $this->em->persist($slide);
+        $this->em->flush($slide);
+
+        return $this;
+    }
+
+    /**
+     * @param Slide $slide
+     * @return $this
+     */
+    public function deleteSlide(Slide $slide)
+    {
+        unlink($this->webDir . '/' . $slide->getFileName());
+
+        $this->em->remove($slide);
+        $this->em->flush($slide);
+
+        return $this;
+    }
+    
+    /**
      * @param  Slider $slider
      * @return $this
      */
@@ -103,6 +133,15 @@ class SliderService
         $this->em->flush($slider);
 
         return $this;
+    }
+
+    /**
+     * @param  int $id
+     * @return Slide
+     */
+    public function getSlide($id)
+    {
+        return $this->em->getRepository('SliderModule:Slide')->find($id);
     }
 
     /**

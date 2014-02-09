@@ -26,13 +26,13 @@
                 {% for slide in slider.slides %}
                     <tr>
                         <td>{{ slide.id }}</td>
-                        <td><a href="#@todo edit"><img src="{{ asset(webPath) }}{{ slide.filename }}" alt="" width="100" /></a></td>
+                        <td><a href="{{ path('smart_module.slider.admin_slider_item_edit', {'id': slide.id}) }}"><img src="{{ asset(webPath) }}{{ slide.filename }}" alt="" width="100" /></a></td>
                         <td>{{ slide.position }}</td>
                         <td>{{ slide.title }}</td>
                         <td>{{ slide.originalFileName }}</td>
                         <td>
                             {% if slide.enabled %}
-                                Вкл.
+                                <span class="label label-success">Включен</span>
                             {% else %}
                                 <span class="label label-important">Отключен</span>
                             {% endif %}

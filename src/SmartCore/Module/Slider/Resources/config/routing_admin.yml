@@ -11,10 +11,10 @@ smart_module.slider.admin_slider:
     requirements:
         id: \d+
 
-smart_module.slider.admin_slider_item:
+smart_module.slider.admin_slider_item_edit:
     path: /item/{id}/
     defaults:
-        _controller: SliderModule:AdminSlider:item
+        _controller: SliderModule:AdminSlider:slideEdit
     requirements:
         id: \d+
 

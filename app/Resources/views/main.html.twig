@@ -6,6 +6,7 @@
     {{ parent() }}
     <link href="{{ asset('assets/syntaxhighlighter/styles/shCore.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/syntaxhighlighter/styles/shThemeRDark.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/jcarousel/jquery.jcarousel.css') }}" rel="stylesheet">
     {#<style media="all" type="text/css"> @import url({{ asset('theme/css/screen.css')}}); </style>#}
     {#<style media="all" type="text/css"> @import url({{ asset('theme/css/dark_theme.css')}}); </style>#}
 {% endblock html_head_styles %}
@@ -69,3 +70,73 @@
 
 </div>
 {% endblock body %}
+
+{% block body_js %}
+    {{ parent() }}
+    <script src="{{ asset('assets/jcarousel/jquery.jcarousel.min.js') }}"></script>
+    <script src="{{ asset('assets/jcarousel/modernizr.js') }}"></script>
+    <script>
+        $(function () {
+            var jcarousel = $('.jcarousel');
+
+            jcarousel
+                .on('jcarousel:reload jcarousel:create', function () {
+                    jcarousel.jcarousel('items').width(jcarousel.innerWidth());
+                })
+                .jcarousel({
+                    wrap: 'circular',
+                    transitions: Modernizr.csstransitions ? {
+                        transforms:   Modernizr.csstransforms,
+                        transforms3d: Modernizr.csstransforms3d,
+                        easing:       'ease'
+                    } : false
+                }).jcarouselAutoscroll({
+                    interval: 6000,
+                    target: '+=1',
+                    autostart: true
+                });
+
+            $('.jcarousel-control-prev')
+                .on('jcarouselcontrol:active', function() {
+                    $(this).removeClass('inactive');
+                })
+                .on('jcarouselcontrol:inactive', function() {
+                    $(this).addClass('inactive');
+                })
+                .jcarouselControl({
+                    target: '-=1'
+                });
+
+            $('.jcarousel-control-next')
+                .on('jcarouselcontrol:active', function() {
+                    $(this).removeClass('inactive');
+                })
+                .on('jcarouselcontrol:inactive', function() {
+                    $(this).addClass('inactive');
+                })
+                .on('click', function(e) {
+                    e.preventDefault();
+                })
+                .jcarouselControl({
+                    target: '+=1'
+                });
+
+            $('.jcarousel-pagination')
+                .on('jcarouselpagination:active', 'a', function() {
+                    $(this).addClass('active');
+                })
+                .on('jcarouselpagination:inactive', 'a', function() {
+                    $(this).removeClass('active');
+                })
+                .on('click', function(e) {
+                    e.preventDefault();
+                })
+                .jcarouselPagination({
+                    item: function(page) {
+                        //return '<a href="#' + page + '">' + page + '</a>';
+                        return '<a >' + page + '</a>';
+                    }
+                });
+        });
+    </script>
+{% endblock %}

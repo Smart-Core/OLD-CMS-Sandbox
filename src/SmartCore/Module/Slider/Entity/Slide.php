@@ -33,7 +33,6 @@ class Slide
 
     /**
      * @Assert\File(maxSize="2000000")
-     * @Assert\NotBlank
      */
     private $file;
 
@@ -61,7 +60,7 @@ class Slide
     /**
      * @var integer
      *
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $position;
 
@@ -88,7 +87,7 @@ class Slide
      * @var Slider
      *
      * @ORM\ManyToOne(targetEntity="Slider", inversedBy="slides")
-     * @ORM\JoinColumn(name="slider_id")
+     * @ORM\JoinColumn(name="slider_id", nullable=false)
      * @Assert\NotBlank()
      */
     private $slider;
@@ -155,6 +154,7 @@ class Slide
     public function setSlider(Slider $slider)
     {
         $this->slider = $slider;
+
         return $this;
     }
 
@@ -229,7 +229,12 @@ class Slide
      */
     public function setPosition($position)
     {
+        if (null == $position) {
+            $position = 0;
+        }
+
         $this->position = $position;
+
         return $this;
     }
 
