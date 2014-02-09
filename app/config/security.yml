@@ -16,11 +16,11 @@ security:
             context: smart_core_cms
             pattern: ^/admin
             form_login:
-                check_path:  /admin/login_check
-                login_path:  /admin/login
-                default_target_path:  /admin/
+                check_path: /admin/login_check
+                login_path: /admin/login
+                default_target_path: /admin/
             logout:
-                path:   /admin/logout
+                path: /admin/logout
             remember_me:
                 key: "%secret%"
                 name: SMART_CORE_REMEMBER_ME
@@ -35,7 +35,7 @@ security:
                 csrf_provider: form.csrf_provider
                 check_path: /user/login_check
                 login_path: /user/login
-                default_target_path:  /user/
+                default_target_path: /user/
             logout:
                 path: /user/logout
             remember_me:
