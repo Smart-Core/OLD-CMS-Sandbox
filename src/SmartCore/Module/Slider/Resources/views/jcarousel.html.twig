@@ -1,0 +1,93 @@
+
+<div class="jcarousel-wrapper">
+    <div class="jcarousel">
+        <ul class="clearfix">
+            {% for img in slider.slides %}
+                <li><img src="{{ imgPath ~ img.filename }}" width="{{ slider.width }}" height="{{ slider.height }}" alt="{{ img.title }}"></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {#<p class="photo-credits">#}
+    {#Photos by <a href="http://www.mw-fotografie.de">Marc Wiegelmann</a>#}
+    {#</p>#}
+
+    <a class="jcarousel-control-prev">&lsaquo;</a>
+    <a class="jcarousel-control-next">&rsaquo;</a>
+
+    <p class="jcarousel-pagination"></p>
+</div>
+
+<style media="all" type="text/css"> @import url({{ asset('assets/jcarousel/jquery.jcarousel.css')}}); </style>
+<style type="text/css">
+    .jcarousel-wrapper {
+        max-width: {{ slider.width }}px;
+    }
+</style>
+
+<script src="{{ asset('assets/jcarousel/jquery.jcarousel.min.js') }}"></script>
+<script src="{{ asset('assets/jcarousel/modernizr.js') }}"></script>
+<script>
+    $(function () {
+        var jcarousel = $('.jcarousel');
+
+        jcarousel
+            .on('jcarousel:reload jcarousel:create', function () {
+                jcarousel.jcarousel('items').width(jcarousel.innerWidth());
+            })
+            .jcarousel({
+                wrap: 'circular',
+                transitions: Modernizr.csstransitions ? {
+                    transforms:   Modernizr.csstransforms,
+                    transforms3d: Modernizr.csstransforms3d,
+                    easing:       'ease'
+                } : false
+            }).jcarouselAutoscroll({
+                interval: 6000,
+                target: '+=1',
+                autostart: true
+            });
+
+        $('.jcarousel-control-prev')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+        $('.jcarousel-control-next')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .on('click', function(e) {
+                e.preventDefault();
+            })
+            .jcarouselControl({
+                target: '+=1'
+            });
+
+        $('.jcarousel-pagination')
+            .on('jcarouselpagination:active', 'a', function() {
+                $(this).addClass('active');
+            })
+            .on('jcarouselpagination:inactive', 'a', function() {
+                $(this).removeClass('active');
+            })
+            .on('click', function(e) {
+                e.preventDefault();
+            })
+            .jcarouselPagination({
+                item: function(page) {
+                    //return '<a href="#' + page + '">' + page + '</a>';
+                    return '<a>' + page + '</a>';
+                }
+            });
+    });
+</script>

@@ -12,7 +12,7 @@ class SliderController extends Controller
 
     public function indexAction(Request $request)
     {
-        return $this->render('SliderModule::slider.html.twig', [
+        return $this->render('SliderModule::jcarousel.html.twig', [
             // @todo настройку ноды.
             'slider'  => $this->get('slidermodule.entity.slider_repository')->find(1),
             // @todo настройку места хранения картинок, лучше в медиалибе!.
