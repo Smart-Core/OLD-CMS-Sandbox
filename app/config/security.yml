@@ -21,7 +21,12 @@ security:
                 default_target_path:  /admin/
             logout:
                 path:   /admin/logout
-
+            remember_me:
+                key: "%secret%"
+                name: SMART_CORE_REMEMBER_ME
+                lifetime: 36000
+                path: /
+                domain: ~
          main:
             anonymous: ~
             context: smart_core_cms
