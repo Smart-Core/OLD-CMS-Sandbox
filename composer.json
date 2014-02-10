@@ -31,6 +31,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/debugging-bundle": "dev-master",
         "hwi/oauth-bundle": "0.3.*@dev",
+        "knplabs/knp-disqus-bundle":"dev-master",
         "knplabs/knp-menu-bundle":"*",
         "knplabs/rad-bundle": "2.3.x",
         "liip/doctrine-cache-bundle": "dev-master",

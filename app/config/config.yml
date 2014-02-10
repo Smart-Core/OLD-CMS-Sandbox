@@ -123,6 +123,9 @@ stfalcon_tinymce:
             height: 380
             content_css: "/assets/tinymce/css/content.css" # @todo настройка в формате "asset[path/to/style.css]"
 
+knp_disqus:
+    api_key: %knp_disqus.api_key%
+
 liip_doctrine_cache:
     namespaces:
         smart_texter:

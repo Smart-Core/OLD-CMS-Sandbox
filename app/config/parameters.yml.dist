@@ -22,6 +22,8 @@ parameters:
     mailer_user:        ~
     mailer_password:    ~
 
+    knp_disqus.api_key: YOUR_PUBLIC_API_KEY
+
     locale: ru
 
     tagcache_driver:  File # Memcache, Memcached, File, Sqlite, Apc, Nullcache
