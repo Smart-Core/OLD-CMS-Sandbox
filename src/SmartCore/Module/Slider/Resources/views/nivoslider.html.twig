@@ -1,0 +1,20 @@
+
+<style media="all" type="text/css"> @import url({{ asset('assets/nivo-slider/themes/default/default.css')}}); </style>
+<style media="all" type="text/css"> @import url({{ asset('assets/nivo-slider/nivo-slider.css')}}); </style>
+
+<div class="slider-wrapper theme-default">
+    <div id="slider" class="nivoSlider">
+        {% for img in slider.slides %}
+            <img src="{{ imgPath ~ img.filename }}" alt="{{ img.title }}" title="{{ img.title }}">
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{{ asset('assets/nivo-slider/jquery.nivo.slider.pack.js') }}"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+            pauseTime: {{ slider.pauseTime }}
+        });
+    });
+</script>

@@ -10,7 +10,7 @@
     <div class="jcarousel">
         <ul class="clearfix">
             {% for img in slider.slides %}
-                <li><img src="{{ imgPath ~ img.filename }}" width="{{ slider.width }}" height="{{ slider.height }}" alt="{{ img.title }}"></li>
+                <li><img src="{{ imgPath ~ img.filename }}" width="{{ slider.width }}" height="{{ slider.height }}" alt="{{ img.title }}" title="{{ img.title }}"></li>
             {% endfor %}
         </ul>
     </div>
@@ -43,7 +43,7 @@
                     easing:       'ease'
                 } : false
             }).jcarouselAutoscroll({
-                interval: 6000,
+                interval: {{ slider.pauseTime }},
                 target: '+=1',
                 autostart: true
             });

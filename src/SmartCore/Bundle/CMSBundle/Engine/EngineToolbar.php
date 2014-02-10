@@ -67,12 +67,12 @@ class EngineToolbar extends ContainerAware
                     'icon' => 'folder-open',
                     'items' => [
                         'folder_edit' => [
-                            'title' => 'Редактировать раздел',
+                            'title' => 'Редактировать папку',
                             'icon' => 'edit',
                             'uri' => $router->generate('cms_admin_structure_folder', ['id' => $current_folder_id]),
                         ],
                         'folder_new' => [
-                            'title' => 'Добавить раздел',
+                            'title' => 'Добавить папку',
                             'icon' => 'plus',
                             'uri' => $router->generate('cms_admin_structure_folder_create_in_folder', ['folder_pid' => $current_folder_id]),
                         ],

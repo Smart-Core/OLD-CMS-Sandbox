@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Menu\Form\Type;
 
+use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;
-use SmartCore\Bundle\CMSBundle\Container;
 
 class NodePropertiesFormType extends AbstractNodePropertiesFormType
 {

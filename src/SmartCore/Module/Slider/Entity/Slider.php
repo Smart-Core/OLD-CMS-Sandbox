@@ -57,6 +57,13 @@ class Slider
     private $library;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $pause_time;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
@@ -76,6 +83,7 @@ class Slider
      */
     public function __construct()
     {
+        $this->pause_time = 5000;
         $this->slides = new ArrayCollection();
     }
 
@@ -165,6 +173,24 @@ class Slider
     public function getLibrary()
     {
         return $this->library;
+    }
+
+    /**
+     * @param int $pause_time
+     * @return $this
+     */
+    public function setPauseTime($pause_time)
+    {
+        $this->pause_time = $pause_time;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPauseTime()
+    {
+        return $this->pause_time;
     }
 
     /**

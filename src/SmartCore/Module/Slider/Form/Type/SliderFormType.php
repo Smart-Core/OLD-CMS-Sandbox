@@ -14,6 +14,7 @@ class SliderFormType extends AbstractType
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('width')
             ->add('height')
+            ->add('pause_time')
             ->add('slide_properties')
             ->add('mode', 'choice', [
                 'choices' => [
