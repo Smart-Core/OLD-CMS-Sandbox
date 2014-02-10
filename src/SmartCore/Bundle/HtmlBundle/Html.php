@@ -40,7 +40,7 @@ class Html
         $this->setDoctype('html5');
         //$this->setHtml('html5');
         $this->setMetaHttpEquiv('Content-Type', 'text/html; charset=utf-8');
-        $this->setMetaHttpEquiv('Content-Language', 'ru');
+        //$this->setMetaHttpEquiv('Content-Language', 'ru');
     }
 
     /**
