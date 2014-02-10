@@ -228,8 +228,6 @@ class Profiler
 
         $exec_time = microtime(true) - self::$globalStartTime;
 
-        echo "<div style='background-color: #6a6a6a; color: #f3f3f3; font-family: Arial;margin: 10px;'>";
-
         echo 'Time: <b>', round($exec_time, $precision) * 1000 , '</b> ms',
         '. Memory <b>', round((memory_get_usage() - self::$globalStartMemory) / 1024 / 1024, 2), '</b> MB (<b>',
         round((memory_get_peak_usage(true) - self::$globalStartMemory) / 1024 / 1024, 2), '</b> peak).';
@@ -273,8 +271,6 @@ class Profiler
                 echo '<br />' . $value['file'] . ' : <b>' . $value['line'] . '</b>' . $value['content'] . "<hr />\n\n";
             }
         }
-
-        echo "</div>";
     }
 
     /**
