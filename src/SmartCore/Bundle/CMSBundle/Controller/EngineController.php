@@ -63,7 +63,7 @@ class EngineController extends Controller
             return $nodesResponses;
         }
 
-        $this->buildBaseHtml($router_data['template']);
+        $this->buildBaseHtml($router_data);
 
         return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
     }
@@ -73,10 +73,14 @@ class EngineController extends Controller
      *
      * @todo отрефакторить!!!
      */
-    protected function buildBaseHtml($template)
+    protected function buildBaseHtml($router_data)
     {
         // @todo убрать в ini-шник шаблона.
         $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
+
+        foreach ($router_data['meta'] as $key => $value) {
+            $this->get('html')->meta($key, $value);
+        }
 
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
@@ -103,7 +107,7 @@ class EngineController extends Controller
             'vendor'         => $this->get('cms.context')->getGlobalAssets(),
         ];
 
-        $this->get('cms.theme')->processConfig($assets, $template);
+        $this->get('cms.theme')->processConfig($assets, $router_data['template']);
 
         foreach ($this->get('cms.jslib')->all() as $res) {
             if (isset($res['js']) and is_array($res['js'])) {
