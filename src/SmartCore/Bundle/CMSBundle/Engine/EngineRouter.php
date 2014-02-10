@@ -94,27 +94,6 @@ class EngineRouter
                 break;
             }
 
-            // В данной папке есть нода которой передаётся дальнейший парсинг URI.
-            if ($router_node_id !== null) {
-                // Выполняется часть URI парсером модуля и возвращается результат работы, в дальнейшем он будет передан самой ноде.
-                // @todo запрос ноды только для получения имени модуля не сосвсем красиво...
-                //       может быть как-то кешировать это дело, либо хранить имя модуля прямо в таблице папок,
-                //       например в виде массива router_node_id и router_node_module.
-                try {
-                    $node = $this->container->get('cms.node')->get($router_node_id);
-                    $data['node_routing'] = [
-                        'node_id'    => $router_node_id,
-                        'controller' => $this->matchModule(
-                            $node->getModule(),
-                            str_replace($data['current_folder_path'], '', substr('/' . $baseUrl . '/', 0, -1) . $slug)
-                        ),
-                    ];
-                    break;
-                } catch (ResourceNotFoundException $e) {
-                    // Роутинг модуля не нашел запрошенного ресурса.
-                }
-            }
-
             $folder = $this->container->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Folder')->findOneBy([
                 'is_active'     => true,
                 'is_deleted'    => false,
@@ -137,13 +116,35 @@ class EngineRouter
                     }
 
                     $parent_folder = $folder;
-                    $router_node_id = $folder->getRouterNodeId();
+                    $router_node_id = ($folder) ? $folder->getRouterNodeId() : null;
+
                     $data['folders'][$folder->getId()] = $folder;
                     $data['current_folder_id'] = $folder->getId();
+
+                    // В данной папке есть нода которой передаётся дальнейший парсинг URI.
+                    if ($router_node_id !== null) {
+                        // Выполняется часть URI парсером модуля и возвращается результат работы, в дальнейшем он будет передан самой ноде.
+                        // @todo запрос ноды только для получения имени модуля не сосвсем красиво...
+                        //       может быть как-то кешировать это дело, либо хранить имя модуля прямо в таблице папок,
+                        //       например в виде массива router_node_id и router_node_module.
+                        try {
+                            $node = $this->container->get('cms.node')->get($router_node_id);
+
+                            $data['node_routing'] = [
+                                'node_id'    => $router_node_id,
+                                'controller' => $this->matchModule(
+                                        $node->getModule(),
+                                        str_replace($data['current_folder_path'], '', substr('/' . $baseUrl . '/', 0, -1) . $slug)
+                                    ),
+                            ];
+                        } catch (ResourceNotFoundException $e) {
+                            // Роутинг модуля не нашел запрошенного ресурса.
+                        }
+                    }
                 } else {
                     $data['status'] = 403;
                 }
-            } else {
+            } elseif (empty($data['node_routing'])) {
                 $data['status'] = 404;
             }
         }
@@ -164,9 +165,15 @@ class EngineRouter
      * @param  string $module
      * @param  string $path
      * @return array
+     *
+     * @throw ResourceNotFoundException
      */
     public function matchModule($module, $path)
     {
+        if (false === strpos($path, '/')) {
+            $path = '/' . $path;
+        }
+
         if ($this->container->has('cms.router_module.' . $module)) {
             return $this->container->get('cms.router_module.' . $module)->match($path);
         }

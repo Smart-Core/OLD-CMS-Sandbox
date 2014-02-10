@@ -53,7 +53,7 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
                     $importedRoutes->addPrefix(
                         '/{_basePath}/',
                         ['_basePath' => ''],
-                        ['_basePath' => '.+']
+                        ['_basePath' => '.*']
                     );
 
                     $collection->addCollection($importedRoutes);

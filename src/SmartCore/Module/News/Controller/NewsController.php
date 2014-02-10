@@ -59,7 +59,7 @@ class NewsController extends Controller
         $item = $this->getDoctrine()->getRepository('NewsModule:News')->findOneBy(['slug' => $slug ]);
 
         if (empty($item)) {
-            throw $this->createNotFoundException();
+            throw $this->createNotFoundException('News not found');
         }
 
         $this->get('cms.breadcrumbs')->add($item->getSlug(), $item->getTitle());

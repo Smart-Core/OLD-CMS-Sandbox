@@ -35,4 +35,13 @@ class Container
     {
         return self::$container;
     }
+
+    /**
+     * @param  string $name
+     * @return mixed
+     */
+    public static function getParameter($name)
+    {
+        return self::$container->getParameter($name);
+    }
 }
