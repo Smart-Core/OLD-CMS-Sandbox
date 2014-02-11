@@ -3,7 +3,6 @@
 namespace SmartCore\Module\Blog\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use SmartCore\Module\Blog\Model\CategoryInterface;
 
 class CategoryRepository extends EntityRepository
 {

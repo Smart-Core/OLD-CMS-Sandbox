@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\UnicatBundle\Entity;
+namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,23 +8,23 @@ use Doctrine\ORM\Mapping as ORM;
  * ORM\Entity()
  * @ORM\Table(name="unicat_catalogs")
  */
-class Catalog
+class CatalogModel
 {
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
-     * @ORM\Column(name="is_enabled", type="boolean")
-     *
      * @var boolean
+     *
+     * @ORM\Column(type="boolean")
      */
-    protected $isEnabled;
+    protected $is_enabled;
 
     /**
      * @var string
@@ -50,9 +50,9 @@ class Catalog
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_inheritance", type="boolean")
+     * @ORM\Column(type="boolean")
      */
-    protected $isInheritance;
+    protected $is_inheritance;
 
     /**
      * Constructor.
@@ -96,7 +96,7 @@ class Catalog
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -115,7 +115,7 @@ class Catalog
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
@@ -134,7 +134,7 @@ class Catalog
     public function setStructures($structures)
     {
         $this->structures = $structures;
-    
+
         return $this;
     }
 
@@ -153,7 +153,7 @@ class Catalog
     public function setIsInheritance($isInheritance)
     {
         $this->isInheritance = $isInheritance;
-    
+
         return $this;
     }
 

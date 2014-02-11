@@ -1,41 +1,39 @@
 <?php
 
-namespace SmartCore\Bundle\UnicatBundle\Entity;
+namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="unicat_items")
- * @ORM\Entity()
+ * ORM\Entity()
+ * ORM\Table(name="unicat_items")
  */
-class Item
+class ItemModel
 {
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     *
-     * @var integer
      */
     protected $id;
 
     /**
-     * @ORM\Column(name="is_enabled", type="boolean")
-     *
      * @var boolean
-     */
-    protected $isEnabled;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="items", cascade={"persist"})
-     * @ORM\JoinColumn(name="category_id")
-     */
-    protected $category;
-
-    /**
-     * @ORM\Column(type="string", length=100)
      *
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_enabled;
+
+    /**
+     * ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist"})
+     * ORM\JoinTable(name="unicat_items_categories")
+     */
+    protected $categories;
+
+    /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=100)
      */
     protected $slug;
 
@@ -74,12 +72,12 @@ class Item
     }
 
     /**
-     * @param boolean $isEnabled
+     * @param boolean $is_enabled
      * @return $this
      */
-    public function setIsEnabled($isEnabled)
+    public function setIsEnabled($is_enabled)
     {
-        $this->isEnabled = $isEnabled;
+        $this->is_enabled = $is_enabled;
 
         return $this;
     }
@@ -89,7 +87,7 @@ class Item
      */
     public function getIsEnabled()
     {
-        return $this->isEnabled;
+        return $this->is_enabled;
     }
 
     /**
@@ -112,32 +110,13 @@ class Item
     }
 
     /**
-     * @param string $uriPart
-     * @return Item
-     */
-    public function setUriPart($uriPart)
-    {
-        $this->uriPart = $uriPart;
-    
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUriPart()
-    {
-        return $this->uriPart;
-    }
-
-    /**
      * @param array $meta
-     * @return Item
+     * @return $this
      */
     public function setMeta(array $meta)
     {
         $this->meta = $meta;
-    
+
         return $this;
     }
 

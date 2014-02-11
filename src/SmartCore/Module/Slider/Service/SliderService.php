@@ -122,7 +122,7 @@ class SliderService
 
         return $this;
     }
-    
+
     /**
      * @param  Slider $slider
      * @return $this

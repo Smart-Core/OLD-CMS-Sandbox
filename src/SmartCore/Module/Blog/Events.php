@@ -4,7 +4,7 @@ namespace SmartCore\Module\Blog;
 
 abstract class Events
 {
-    static function articleCreate()
+    public static function articleCreate()
     {
         return static::$REFIX . self::ARTICLE_CREATE;
     }

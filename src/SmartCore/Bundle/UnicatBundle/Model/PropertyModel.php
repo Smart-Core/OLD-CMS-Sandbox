@@ -1,30 +1,28 @@
 <?php
 
-namespace SmartCore\Bundle\UnicatBundle\Entity;
+namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
- * @ORM\Table(name="unicat_properties")
+ * ORM\Entity()
+ * ORM\Table(name="unicat_properties")
  */
-class Property
+class PropertyModel
 {
     /**
-     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     *
-     * @var integer
      */
     protected $id;
 
     /**
-     * @ORM\Column(name="is_enabled", type="boolean")
-     *
      * @var boolean
+     *
+     * @ORM\Column(type="boolean")
      */
-    protected $isEnabled;
+    protected $is_enabled;
 
     /**
      * enum('string','text','date','datetime','img','file','select','multiselect','int','double','checkbox','password')
@@ -46,34 +44,34 @@ class Property
     /**
      * Отображать в списке администратора.
      *
-     * @ORM\Column(name="show_in_admin", type="boolean")
-     *
      * @var boolean
+     *
+     * @ORM\Column(type="boolean")
      */
-    protected $showInAdmin;
+    protected $show_in_admin;
 
     /**
      * Отображать в списке записей.
      *
-     * @ORM\Column(name="show_in_list", type="boolean")
-     *
      * @var boolean
+     *
+     * @ORM\Column(type="boolean")
      */
-    protected $showInList;
+    protected $show_in_list;
 
     /**
      * Отображать при просмотре записи.
      *
-     * @ORM\Column(name="show_in_view", type="boolean")
-     *
      * @var boolean
+     *
+     * @ORM\Column(type="boolean")
      */
-    protected $showInView;
+    protected $show_in_view;
 
     /**
-     * @ORM\Column(type="integer")
-     *
      * @var integer
+     *
+     * @ORM\Column(type="integer")
      */
     protected $position;
 
@@ -84,9 +82,9 @@ class Property
     protected $group;
 
     /**
-     * @ORM\Column(type="array")
-     *
      * @var array
+     *
+     * @ORM\Column(type="array")
      *
      * @todo
      */

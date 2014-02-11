@@ -110,6 +110,7 @@ class Slider
     public function setWidth($width)
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -128,6 +129,7 @@ class Slider
     public function setSlideProperties($slide_properties)
     {
         $this->slide_properties = $slide_properties;
+
         return $this;
     }
 
@@ -146,6 +148,7 @@ class Slider
     public function setMode($mode)
     {
         $this->mode = $mode;
+
         return $this;
     }
 
@@ -164,6 +167,7 @@ class Slider
     public function setLibrary($library)
     {
         $this->library = $library;
+
         return $this;
     }
 
@@ -182,6 +186,7 @@ class Slider
     public function setPauseTime($pause_time)
     {
         $this->pause_time = $pause_time;
+
         return $this;
     }
 
@@ -200,6 +205,7 @@ class Slider
     public function setHeight($height)
     {
         $this->height = $height;
+
         return $this;
     }
 

@@ -9,7 +9,6 @@ use SmartCore\Module\Blog\Entity\Article;
 use SmartCore\Module\Blog\Event\FilterArticleEvent;
 use SmartCore\Module\Blog\Model\ArticleInterface;
 use SmartCore\Module\Blog\Model\CategoryInterface;
-use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use SmartCore\Module\Blog\Repository\ArticleRepositoryInterface;
 use SmartCore\Module\Blog\SmartBlogEvents;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

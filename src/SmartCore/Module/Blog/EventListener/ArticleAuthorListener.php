@@ -69,7 +69,7 @@ class ArticleAuthorListener implements EventSubscriberInterface
             $article->setAuthor($this->securityContext->getToken()->getUser());
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */

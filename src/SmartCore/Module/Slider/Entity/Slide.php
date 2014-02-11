@@ -118,6 +118,7 @@ class Slide
     public function setFileName($file_name)
     {
         $this->file_name = $file_name;
+
         return $this;
     }
 
@@ -136,6 +137,7 @@ class Slide
     public function setOriginalFileName($original_file_name)
     {
         $this->original_file_name = $original_file_name;
+
         return $this;
     }
 
@@ -253,6 +255,7 @@ class Slide
     public function setProperties($properties)
     {
         $this->properties = $properties;
+
         return $this;
     }
 
@@ -271,6 +274,7 @@ class Slide
     public function setUserId($user_id)
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 

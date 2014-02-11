@@ -41,4 +41,3 @@ interface TagInterface
      */
     public function setTitle($title);
 }
-
