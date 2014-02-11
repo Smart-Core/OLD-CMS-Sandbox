@@ -33,23 +33,6 @@ abstract class CategoryModel
     protected $is_enabled;
 
     /**
-     * @var CategoryModel
-     *
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
-     **/
-    protected $parent;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
-     */
-    protected $children;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categories")
-     */
-    protected $items;
-
-    /**
      * @ORM\Column(type="smallint")
      */
     protected $position;
@@ -83,6 +66,30 @@ abstract class CategoryModel
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     */
+    protected $children;
+
+    /**
+     * @var CategoryModel
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
+     **/
+    protected $parent;
+
+    /**
+     * @var \SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure")
+     **/
+    protected $structure;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categories")
+     */
+    protected $items;
 
     /**
      * Constructor.

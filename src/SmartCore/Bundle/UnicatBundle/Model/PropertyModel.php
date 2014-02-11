@@ -3,10 +3,13 @@
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ORM\Entity()
  * ORM\Table(name="unicat_properties")
+ *
+ * @UniqueEntity(fields={"name"}, message="Имя свойства должно быть уникальным.")
  */
 class PropertyModel
 {
@@ -25,6 +28,27 @@ class PropertyModel
     protected $is_enabled;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_dedicated_table;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_required;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $position;
+
+    /**
      * enum('string','text','date','datetime','img','file','select','multiselect','int','double','checkbox','password')
      *
      * @ORM\Column(type="string", length=10)
@@ -32,7 +56,7 @@ class PropertyModel
     protected $type;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=32, unique=true)
      */
     protected $name;
 
@@ -69,15 +93,17 @@ class PropertyModel
     protected $show_in_view;
 
     /**
-     * @var integer
-     *
      * @ORM\Column(type="integer")
      */
-    protected $position;
+    protected $user_id;
 
     /**
-     * @todo
-     * @var PrepertyGroup
+     * @ORM\Column(type="datetime")
+     */
+    protected $created_at;
+
+    /**
+     * @todo @var PrepertyGroup
      */
     protected $group;
 
@@ -85,17 +111,23 @@ class PropertyModel
      * @var array
      *
      * @ORM\Column(type="array")
-     *
-     * @todo
      */
-    protected $validators;
+    protected $params;
+
+    /**
+     * @var \SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository")
+     **/
+    protected $repository;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-
+        $this->created_at = new \DateTime();
+        $this->is_enabled = true;
     }
 
     /**

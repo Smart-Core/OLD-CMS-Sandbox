@@ -21,6 +21,8 @@ class HelloController extends Controller
             ->title('hi :)')
         ;
 
+        ld($em->getRepository('SiteBundle:Catalog\Category')->findAll());
+
         ld(unserialize('a:3:{i:0;a:8:{s:2:"id";i:1;s:4:"name";s:6:"rubric";s:5:"table";s:31:"unicat_categories_s1_e1_rubrics";s:7:"entries";s:1:"1";s:5:"descr";s:14:"Рубрики";s:3:"pos";s:1:"1";s:15:"create_datetime";s:19:"2011-10-19 07:34:54";s:7:"reqired";s:1:"0";}i:1;a:8:{s:2:"id";i:3;s:4:"name";s:3:"geo";s:5:"table";s:25:"unicat_structure_geo_base";s:7:"entries";s:6:"single";s:5:"descr";s:14:"Регионы";s:3:"pos";s:1:"3";s:15:"create_datetime";s:19:"2011-10-19 07:39:51";s:7:"reqired";s:1:"1";}i:2;a:8:{s:2:"id";i:4;s:4:"name";s:4:"tags";s:5:"table";s:11:"unicat_tags";s:7:"reqired";s:1:"0";s:7:"entries";s:5:"multi";s:5:"descr";s:4:"Tags";s:3:"pos";s:1:"4";s:15:"create_datetime";s:19:"2011-11-30 11:31:51";}}'));
         ld(unserialize('a:1:{i:0;a:8:{s:2:"id";i:1;s:4:"name";s:17:"subscribe_rubrics";s:5:"table";s:41:"unicat_categories_s2_e3_subscribe_rubrics";s:7:"reqired";s:1:"0";s:7:"entries";s:5:"multi";s:5:"descr";s:31:"Рубрики рассылок";s:3:"pos";s:1:"1";s:15:"create_datetime";s:19:"2011-12-07 03:18:39";}}'));
 

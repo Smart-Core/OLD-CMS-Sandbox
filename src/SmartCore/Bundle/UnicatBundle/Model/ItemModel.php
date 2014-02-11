@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class ItemModel
 {
     /**
-     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -45,15 +45,21 @@ class ItemModel
     protected $meta;
 
     /**
+     * @var array
+     *
+     * @ORM\Column(type="array")
+     */
+    protected $properties;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $user_id;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
-
-    /**
-     * @todo
-     * @var ItemProperty
-     */
-    protected $properties;
 
     /**
      * Constructor.

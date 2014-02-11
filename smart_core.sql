@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 10 2014 г., 11:32
+-- Время создания: Фев 12 2014 г., 00:38
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -208,6 +208,140 @@ INSERT INTO `aaa_blog_tags` (`id`, `slug`, `title`, `created_at`, `weight`) VALU
 (23, 'cms', 'CMS', '2014-02-08 20:57:52', 0),
 (24, 'select', 'Выбор', '2014-02-08 20:57:52', 0),
 (25, 'twig', 'Twig', '2014-02-08 20:57:52', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_categories`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_categories`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_inheritance` tinyint(1) NOT NULL,
+  `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `is_enabled` tinyint(1) NOT NULL,
+  `position` smallint(6) NOT NULL,
+  `structure_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_A2946812989D9B62` (`slug`),
+  KEY `IDX_A2946812727ACA70` (`parent_id`),
+  KEY `is_enabled` (`is_enabled`),
+  KEY `position` (`position`),
+  KEY `IDX_A29468122534008B` (`structure_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `aaa_catalog_categories`
+--
+
+INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `user_id`, `is_enabled`, `position`, `structure_id`) VALUES
+(1, NULL, 'food', 'Еда', 1, 'N;', '2014-02-10 09:29:09', 0, 0, 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_items`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_items`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) NOT NULL,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_catalog_items`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_items_categories_relations`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_items_categories_relations`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_items_categories_relations` (
+  `item_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`item_id`,`category_id`),
+  KEY `IDX_29C9DBA5126F525E` (`item_id`),
+  KEY `IDX_29C9DBA512469DE2` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `aaa_catalog_items_categories_relations`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_items_title`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_items_title`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_items_title` (
+  `item_id` int(11) NOT NULL,
+  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`item_id`),
+  KEY `value` (`value`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `aaa_catalog_items_title`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_properties`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_properties`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `repository_id` int(11) DEFAULT NULL,
+  `is_enabled` tinyint(1) NOT NULL,
+  `is_dedicated_table` tinyint(1) NOT NULL,
+  `is_required` tinyint(1) NOT NULL,
+  `position` int(11) NOT NULL,
+  `type` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `show_in_admin` tinyint(1) NOT NULL,
+  `show_in_list` tinyint(1) NOT NULL,
+  `show_in_view` tinyint(1) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
+  KEY `IDX_367097550C9D4F7` (`repository_id`),
+  KEY `position` (`position`),
+  KEY `is_enabled` (`is_enabled`),
+  KEY `show_in_admin` (`show_in_admin`),
+  KEY `show_in_list` (`show_in_list`),
+  KEY `show_in_view` (`show_in_view`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_catalog_properties`
+--
+
 
 -- --------------------------------------------------------
 
@@ -775,6 +909,62 @@ INSERT INTO `aaa_texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `edit
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `aaa_unicat_repositories`
+--
+
+DROP TABLE IF EXISTS `aaa_unicat_repositories`;
+CREATE TABLE IF NOT EXISTS `aaa_unicat_repositories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_inheritance` tinyint(1) NOT NULL,
+  `media_collection_id` int(11) NOT NULL,
+  `bundle` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `namespace` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `aaa_unicat_repositories`
+--
+
+INSERT INTO `aaa_unicat_repositories` (`id`, `name`, `title`, `is_inheritance`, `media_collection_id`, `bundle`, `namespace`, `user_id`, `created_at`) VALUES
+(1, 'catalog', 'Каталог товаров', 1, 1, 'SiteBundle', 'Catalog', 1, '2014-02-11 23:32:04');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_unicat_structures`
+--
+
+DROP TABLE IF EXISTS `aaa_unicat_structures`;
+CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `repository_id` int(11) DEFAULT NULL,
+  `position` smallint(6) NOT NULL,
+  `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id_required` tinyint(1) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_C3D9EB2050C9D4F7` (`repository_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `aaa_unicat_structures`
+--
+
+INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `description`, `id_required`, `user_id`, `created_at`, `name`) VALUES
+(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories'),
+(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `aaa_users`
 --
 
@@ -979,6 +1169,32 @@ ALTER TABLE `aaa_blog_categories`
   ADD CONSTRAINT `FK_D7E9F9CF3D8E604F` FOREIGN KEY (`parent`) REFERENCES `aaa_blog_categories` (`id`);
 
 --
+-- Ограничения внешнего ключа таблицы `aaa_catalog_categories`
+--
+ALTER TABLE `aaa_catalog_categories`
+  ADD CONSTRAINT `FK_BE577EDA2534008B` FOREIGN KEY (`structure_id`) REFERENCES `aaa_unicat_structures` (`id`),
+  ADD CONSTRAINT `FK_BE577EDA727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `aaa_catalog_categories` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_catalog_items_categories_relations`
+--
+ALTER TABLE `aaa_catalog_items_categories_relations`
+  ADD CONSTRAINT `FK_29C9DBA512469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_29C9DBA5126F525E` FOREIGN KEY (`item_id`) REFERENCES `aaa_catalog_items` (`id`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_catalog_items_title`
+--
+ALTER TABLE `aaa_catalog_items_title`
+  ADD CONSTRAINT `FK_A01C448126F525E` FOREIGN KEY (`item_id`) REFERENCES `aaa_catalog_items` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_catalog_properties`
+--
+ALTER TABLE `aaa_catalog_properties`
+  ADD CONSTRAINT `FK_367097550C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `aaa_engine_blocks_inherit`
 --
 ALTER TABLE `aaa_engine_blocks_inherit`
@@ -995,19 +1211,25 @@ ALTER TABLE `aaa_engine_folders`
 -- Ограничения внешнего ключа таблицы `aaa_engine_nodes`
 --
 ALTER TABLE `aaa_engine_nodes`
-  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`),
-  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `aaa_engine_blocks` (`block_id`);
+  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `aaa_engine_blocks` (`block_id`),
+  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_menu`
 --
 ALTER TABLE `aaa_menu`
-  ADD CONSTRAINT `FK_D885BF9A162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`),
-  ADD CONSTRAINT `FK_D885BF9A5550C4ED` FOREIGN KEY (`pid`) REFERENCES `aaa_menu` (`item_id`),
-  ADD CONSTRAINT `FK_D885BF9AFE54D947` FOREIGN KEY (`group_id`) REFERENCES `aaa_menu_groups` (`group_id`);
+  ADD CONSTRAINT `FK_71085977162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`),
+  ADD CONSTRAINT `FK_710859775550C4ED` FOREIGN KEY (`pid`) REFERENCES `aaa_menu` (`item_id`),
+  ADD CONSTRAINT `FK_71085977FE54D947` FOREIGN KEY (`group_id`) REFERENCES `aaa_menu_groups` (`group_id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_slides`
 --
 ALTER TABLE `aaa_slides`
   ADD CONSTRAINT `FK_56692A962CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `aaa_sliders` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_unicat_structures`
+--
+ALTER TABLE `aaa_unicat_structures`
+  ADD CONSTRAINT `FK_C3D9EB2050C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`);
