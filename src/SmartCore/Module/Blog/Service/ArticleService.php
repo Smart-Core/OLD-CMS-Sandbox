@@ -4,7 +4,6 @@ namespace SmartCore\Module\Blog\Service;
 
 use Doctrine\Common\Cache\Cache;
 use Doctrine\ORM\EntityManager;
-use Pagerfanta\Pagerfanta;
 use SmartCore\Module\Blog\Entity\Article;
 use SmartCore\Module\Blog\Event\FilterArticleEvent;
 use SmartCore\Module\Blog\Model\ArticleInterface;

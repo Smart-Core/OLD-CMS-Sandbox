@@ -1,0 +1,10 @@
+
+smart_module.catalog_admin:
+    path: /
+    defaults:
+        _controller: CatalogModule:AdminCatalog:index
+
+smart_module.catalog_repository_admin:
+    path: /{name}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:repository

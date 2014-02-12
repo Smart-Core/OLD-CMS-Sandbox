@@ -1,0 +1,12 @@
+
+smart_module.catalog:
+    path: /
+    defaults:
+        _controller: CatalogModule:Catalog:index
+
+smart_module.catalog.item:
+    path: /{slug}.html
+    defaults:
+        _controller: CewsModule:Catalog:item
+    requirements:
+        slug: '.+'
