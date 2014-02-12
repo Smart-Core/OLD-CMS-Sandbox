@@ -30,7 +30,7 @@ class UnicatStructure
     /**
      * @ORM\Column(type="string")
      */
-    protected $description;
+    protected $title;
 
     /**
      * single | multi
@@ -92,25 +92,6 @@ class UnicatStructure
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $entries
-     * @return $this
-     */
-    public function setEntries($entries)
-    {
-        $this->entries = $entries;
 
         return $this;
     }
@@ -197,6 +178,25 @@ class UnicatStructure
     public function getRepository()
     {
         return $this->repository;
+    }
+
+    /**
+     * @param mixed $title
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**

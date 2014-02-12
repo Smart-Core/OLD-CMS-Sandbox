@@ -1,0 +1,11 @@
+{% extends '@CatalogModule/Admin/repository.html.twig' %}
+
+{% block html_head_title %}{{ 'Edit category'|trans }} &laquo;{{ category.title }}&raquo; / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h2>{{ 'Edit category'|trans }} &laquo;{{ category.title }}&raquo;</h2>
+
+    {{ form(form) }}
+
+{% endblock content %}

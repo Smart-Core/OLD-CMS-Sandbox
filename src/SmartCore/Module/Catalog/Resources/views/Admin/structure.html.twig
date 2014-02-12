@@ -1,0 +1,28 @@
+{% extends '@CatalogModule/Admin/repository.html.twig' %}
+
+{% block html_head_title %}{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo; / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h2>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h2>
+
+    <div class="span3">
+        {{ form(form, {'attr': {'class': 'well'} }) }}
+
+        <a href="{{ path('smart_module.catalog_repository_admin', {'repository': structure.repository.name}) }}">
+            &laquo; назад к репозиторию &laquo;{{ structure.repository.title }}&raquo;
+        </a>
+    </div>
+
+    <div class="span8">
+        {% set menuItem = knp_menu_get('UnicatBundle:Category:adminTree', [], {
+            'categoryClass': structure.repository.categoryClass,
+            'structure': structure
+        }) %}
+        {{ knp_menu_render(menuItem, {
+            'currentClass': 'active',
+            'clear_matcher': false,
+        }) }}
+    </div>
+
+{% endblock content %}

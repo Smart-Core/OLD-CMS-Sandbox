@@ -103,11 +103,6 @@ class PropertyModel
     protected $created_at;
 
     /**
-     * @todo @var PrepertyGroup
-     */
-    protected $group;
-
-    /**
      * @var array
      *
      * @ORM\Column(type="array")
@@ -120,6 +115,13 @@ class PropertyModel
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository")
      **/
     protected $repository;
+
+    /**
+     * @var PropertyGroupModel
+     *
+     * @ORM\ManyToOne(targetEntity="PropertyGroup", inversedBy="properties")
+     */
+    protected $group;
 
     /**
      * Constructor.
@@ -136,5 +138,241 @@ class PropertyModel
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param mixed $is_dedicated_table
+     * @return $this
+     */
+    public function setIsDedicatedTable($is_dedicated_table)
+    {
+        $this->is_dedicated_table = $is_dedicated_table;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsDedicatedTable()
+    {
+        return $this->is_dedicated_table;
+    }
+
+    /**
+     * @param mixed $is_enabled
+     * @return $this
+     */
+    public function setIsEnabled($is_enabled)
+    {
+        $this->is_enabled = $is_enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsEnabled()
+    {
+        return $this->is_enabled;
+    }
+
+    /**
+     * @param boolean $is_required
+     * @return $this
+     */
+    public function setIsRequired($is_required)
+    {
+        $this->is_required = $is_required;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsRequired()
+    {
+        return $this->is_required;
+    }
+
+    /**
+     * @param mixed $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $params
+     * @return $this
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * @param int $position
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param boolean $show_in_admin
+     * @return $this
+     */
+    public function setShowInAdmin($show_in_admin)
+    {
+        $this->show_in_admin = $show_in_admin;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowInAdmin()
+    {
+        return $this->show_in_admin;
+    }
+
+    /**
+     * @param boolean $show_in_list
+     * @return $this
+     */
+    public function setShowInList($show_in_list)
+    {
+        $this->show_in_list = $show_in_list;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowInList()
+    {
+        return $this->show_in_list;
+    }
+
+    /**
+     * @param boolean $show_in_view
+     * @return $this
+     */
+    public function setShowInView($show_in_view)
+    {
+        $this->show_in_view = $show_in_view;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowInView()
+    {
+        return $this->show_in_view;
+    }
+
+    /**
+     * @param mixed $title
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $type
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $user_id
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
     }
 }

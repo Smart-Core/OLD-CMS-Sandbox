@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 12 2014 г., 17:10
+-- Время создания: Фев 12 2014 г., 22:36
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -229,19 +229,32 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_categories` (
   `position` smallint(6) NOT NULL,
   `structure_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_A2946812989D9B62` (`slug`),
+  UNIQUE KEY `slug_parent` (`slug`,`parent_id`,`structure_id`),
   KEY `IDX_A2946812727ACA70` (`parent_id`),
   KEY `is_enabled` (`is_enabled`),
   KEY `position` (`position`),
   KEY `IDX_A29468122534008B` (`structure_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_categories`
 --
 
 INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `user_id`, `is_enabled`, `position`, `structure_id`) VALUES
-(1, NULL, 'food', 'Еда', 1, 'N;', '2014-02-10 09:29:09', 0, 0, 0, 2);
+(1, NULL, 'connection', 'Техника для связи', 1, 'N;', '2014-02-10 09:29:09', 0, 1, 0, 1),
+(2, 1, 'smartphones', 'Смартфоны', 1, 'N;', '2014-02-12 21:19:29', 0, 1, 0, 1),
+(3, 1, 'signal_amplifiers', 'Усилители сигнала', 1, 'N;', '2014-02-12 22:12:43', 0, 1, 0, 1),
+(4, NULL, 'pc', 'Компьютерная техника', 1, 'N;', '2014-02-12 22:14:33', 0, 1, 0, 1),
+(5, 4, 'notebooks', 'Ноутбуки', 1, 'N;', '2014-02-12 22:15:02', 0, 1, 0, 1),
+(6, 4, 'notebooks_stuff', 'Комплектующие для ноутбуков', 1, 'N;', '2014-02-12 22:15:26', 0, 1, 0, 1),
+(7, 6, 'ram', 'Модули памяти', 1, 'N;', '2014-02-12 22:15:42', 0, 1, 0, 1),
+(8, 6, 'hdd25', 'Жесткие диски 2.5"', 1, 'N;', '2014-02-12 22:15:59', 0, 1, 0, 1),
+(9, NULL, 'samsung', 'Samsung', 1, 'N;', '2014-02-12 22:17:02', 0, 1, 0, 2),
+(10, 4, 'monitors', 'Мониторы', 1, 'N;', '2014-02-12 22:18:24', 0, 1, 0, 1),
+(11, NULL, 'office', 'Офисная техника', 1, 'N;', '2014-02-12 22:19:07', 0, 1, 0, 1),
+(12, 11, 'printers', 'Принтеры', 1, 'N;', '2014-02-12 22:19:27', 0, 1, 0, 1),
+(13, 11, 'scanners', 'Сканеры', 1, 'N;', '2014-02-12 22:19:43', 0, 1, 0, 1),
+(14, NULL, 'sony', 'Sony', 1, 'N;', '2014-02-12 22:20:07', 0, 1, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -328,6 +341,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `group_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
   KEY `IDX_367097550C9D4F7` (`repository_id`),
@@ -335,13 +349,38 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   KEY `is_enabled` (`is_enabled`),
   KEY `show_in_admin` (`show_in_admin`),
   KEY `show_in_list` (`show_in_list`),
-  KEY `show_in_view` (`show_in_view`)
+  KEY `show_in_view` (`show_in_view`),
+  KEY `IDX_3670975FE54D947` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_properties`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_properties_groups`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_properties_groups`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_properties_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_A9A6740412469DE2` (`category_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `aaa_catalog_properties_groups`
+--
+
+INSERT INTO `aaa_catalog_properties_groups` (`id`, `name`, `title`, `created_at`, `category_id`) VALUES
+(1, 'wares_description', 'Описание товара', '2014-02-12 19:24:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -948,7 +987,7 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
   `repository_id` int(11) DEFAULT NULL,
   `position` smallint(6) NOT NULL,
   `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_required` tinyint(1) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -961,7 +1000,7 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
 -- Дамп данных таблицы `aaa_unicat_structures`
 --
 
-INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `description`, `is_required`, `user_id`, `created_at`, `name`) VALUES
+INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`) VALUES
 (1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories'),
 (2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags');
 
@@ -1195,7 +1234,14 @@ ALTER TABLE `aaa_catalog_items_title`
 -- Ограничения внешнего ключа таблицы `aaa_catalog_properties`
 --
 ALTER TABLE `aaa_catalog_properties`
+  ADD CONSTRAINT `FK_3670975FE54D947` FOREIGN KEY (`group_id`) REFERENCES `aaa_catalog_properties_groups` (`id`),
   ADD CONSTRAINT `FK_367097550C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_catalog_properties_groups`
+--
+ALTER TABLE `aaa_catalog_properties_groups`
+  ADD CONSTRAINT `FK_A9A6740412469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_engine_blocks_inherit`

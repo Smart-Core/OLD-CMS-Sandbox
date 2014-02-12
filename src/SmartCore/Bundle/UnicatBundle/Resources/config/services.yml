@@ -1,7 +1,5 @@
-parameters:
-#    unicat.example.class: SmartCore\Bundle\UnicatBundle\Example
 
 services:
-#    unicat.example:
-#        class: %unicat.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    unicat:
+        class: SmartCore\Bundle\UnicatBundle\Service\UnicatService
+        arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]

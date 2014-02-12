@@ -9,8 +9,8 @@
     <table class="table table-bordered table-hover">
         <thead><tr>
             <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
             <th>{{ 'Name'|trans }}</th>
-            <th>{{ 'Description'|trans }}</th>
             <th>{{ 'Entries mode'|trans }}</th>
             <th>{{ 'Is required'|trans }}</th>
             <th>{{ 'Created at'|trans }}</th>
@@ -19,12 +19,31 @@
         {% for item in repository.structures %}
             <tr>
                 <td>{{ item.id }}</td>
-                {#<td><a href="{{ path('smart_module.catalog_repository_admin', {'name': item.name}) }}">{{ item.name }}</a></td>#}
+                <td><a href="{{ path('smart_module.catalog_structure_admin', {'id': item.id}) }}">{{ item.title }}</a></td>
                 <td>{{ item.name }}</td>
-                <td>{{ item.description }}</td>
                 <td>{{ item.entries }}</td>
                 <td>{{ item.isRequired }}</td>
                 <td>{{ item.createdAt|localizeddate('long') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2>{{ 'Properties groups'|trans }}</h2>
+
+    @todo форма добавления группы свойств.
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in properties_groups %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
             </tr>
         {% endfor %}
         </tbody>

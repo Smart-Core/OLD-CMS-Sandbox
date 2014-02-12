@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 
 /**
  * @ORM\Entity()
@@ -103,6 +104,24 @@ class UnicatRepository
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategoryClass()
+    {
+        return $this->entities_namespace . 'Category';
+    }
+
+    /**
+     * @return CategoryModel
+     */
+    public function createCategory()
+    {
+        $class = $this->getCategoryClass();
+
+        return new $class;
     }
 
     /**

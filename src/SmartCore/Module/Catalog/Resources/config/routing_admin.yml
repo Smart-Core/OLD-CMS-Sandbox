@@ -5,6 +5,21 @@ smart_module.catalog_admin:
         _controller: CatalogModule:AdminCatalog:index
 
 smart_module.catalog_repository_admin:
-    path: /{name}/
+    path: /repository_{repository}/
     defaults:
         _controller: CatalogModule:AdminCatalog:repository
+
+smart_module.catalog_structure_admin:
+    path: /structure_{id}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:structure
+    requirements:
+        id: \d+
+
+smart_module.catalog_category_admin:
+    path: /structure_{structure_id}/category_{id}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:category
+    requirements:
+        structure_id: \d+
+        id: \d+
