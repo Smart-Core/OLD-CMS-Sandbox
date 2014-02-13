@@ -21,5 +21,20 @@ smart_module.catalog_category_admin:
     defaults:
         _controller: CatalogModule:AdminCatalog:category
     requirements:
+        id: \d+
         structure_id: \d+
+
+smart_module.catalog_properties_admin:
+    path: /repository_{repository}/properties_group_{group_id}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:properties
+    requirements:
+        group_id: \d+
+
+smart_module.catalog_property_admin:
+    path: /repository_{repository}/properties_group_{group_id}/{id}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:property
+    requirements:
+        group_id: \d+
         id: \d+

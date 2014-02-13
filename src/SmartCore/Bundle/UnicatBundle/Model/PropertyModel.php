@@ -44,7 +44,7 @@ class PropertyModel
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $position;
 
@@ -130,6 +130,8 @@ class PropertyModel
     {
         $this->created_at = new \DateTime();
         $this->is_enabled = true;
+        $this->position = 0;
+        $this->user_id = 0;
     }
 
     /**
@@ -206,6 +208,25 @@ class PropertyModel
     }
 
     /**
+     * @param \SmartCore\Bundle\UnicatBundle\Model\PropertyGroupModel $group
+     * @return $this
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * @return \SmartCore\Bundle\UnicatBundle\Model\PropertyGroupModel
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
      * @param mixed $name
      * @return $this
      */
@@ -249,6 +270,10 @@ class PropertyModel
      */
     public function setPosition($position)
     {
+        if (null === $position) {
+            $position = 0;
+        }
+
         $this->position = $position;
 
         return $this;

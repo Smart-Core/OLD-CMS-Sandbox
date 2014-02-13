@@ -103,4 +103,78 @@ class AdminCatalogController extends Controller
             'structure'  => $structure,
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param string $repository
+     * @param int $group_id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function propertiesAction(Request $request, $repository, $group_id)
+    {
+        $unicat = $this->get('unicat');
+        $repository = $unicat->getRepository($repository);
+        $properties = $unicat->getProperties($repository, $group_id);
+        $form = $unicat->getPropertyCreateForm($repository, $group_id);
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+            if ($form->isValid()) {
+                $unicat->createProperty($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Свойство создано');
+
+                return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
+            }
+        }
+
+        return $this->render('CatalogModule:Admin:properties.html.twig', [
+            'form'       => $form->createView(),
+            'properties' => $properties,
+            'group'      => $unicat->getPropertiesGroup($repository, $group_id),
+            'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param string $repository
+     * @param int $group_id
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function propertyAction(Request $request, $repository, $group_id, $id)
+    {
+        $unicat = $this->get('unicat');
+        $repository = $unicat->getRepository($repository);
+
+        $property = $unicat->getProperty($repository, $id);
+        $form = $unicat->getPropertyEditForm($repository, $property);
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
+            }
+
+            if ($form->get('update')->isClicked() and $form->isValid()) {
+                $unicat->updateProperty($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Свойство обновлено');
+
+                return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
+            }
+
+            if ($form->get('delete')->isClicked() and $form->isValid()) {
+                $unicat->deleteProperty($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Свойство удалено');
+
+                return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
+            }
+        }
+
+        return $this->render('CatalogModule:Admin:property.html.twig', [
+            'form'       => $form->createView(),
+            'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
 }

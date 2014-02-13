@@ -27,6 +27,7 @@ class CategoryFormType extends AbstractType
         $builder
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('slug')
+            ->add('is_inheritance', null, ['required' => false])
             ->add('parent')
         ;
     }

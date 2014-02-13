@@ -6,6 +6,6 @@
 
     <h2>{{ 'Edit category'|trans }} &laquo;{{ category.title }}&raquo;</h2>
 
-    {{ form(form) }}
+    {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}
 
 {% endblock content %}

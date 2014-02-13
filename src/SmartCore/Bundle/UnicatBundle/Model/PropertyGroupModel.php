@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 
 /**
  * ORM\Entity()
@@ -50,6 +51,13 @@ class PropertyGroupModel
      * @ORM\ManyToOne(targetEntity="Category")
      **/
     protected $category;
+
+    /**
+     * @var UnicatRepository
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository")
+     **/
+    protected $repository;
 
     /**
      * Constructor.
@@ -112,6 +120,25 @@ class PropertyGroupModel
     public function getProperties()
     {
         return $this->properties;
+    }
+
+    /**
+     * @param UnicatRepository $repository
+     * @return $this
+     */
+    public function setRepository(UnicatRepository $repository)
+    {
+        $this->repository = $repository;
+
+        return $this;
+    }
+
+    /**
+     * @return UnicatRepository
+     */
+    public function getRepository()
+    {
+        return $this->repository;
     }
 
     /**

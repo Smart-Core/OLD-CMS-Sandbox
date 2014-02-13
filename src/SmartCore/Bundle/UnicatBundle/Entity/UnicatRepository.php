@@ -5,6 +5,7 @@ namespace SmartCore\Bundle\UnicatBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
+use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 
 /**
  * @ORM\Entity()
@@ -115,11 +116,37 @@ class UnicatRepository
     }
 
     /**
+     * @return string
+     */
+    public function getPropertyClass()
+    {
+        return $this->entities_namespace . 'Property';
+    }
+
+    /**
+     * @return string
+     */
+    public function getPropertyGroupClass()
+    {
+        return $this->entities_namespace . 'PropertyGroup';
+    }
+
+    /**
      * @return CategoryModel
      */
     public function createCategory()
     {
         $class = $this->getCategoryClass();
+
+        return new $class;
+    }
+
+    /**
+     * @return PropertyModel
+     */
+    public function createProperty()
+    {
+        $class = $this->getPropertyClass();
 
         return new $class;
     }

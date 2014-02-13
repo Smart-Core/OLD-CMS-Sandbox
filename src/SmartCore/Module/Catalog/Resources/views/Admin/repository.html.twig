@@ -43,7 +43,7 @@
         {% for item in properties_groups %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td>{{ item.title }}</td>
+                <td><a href="{{ path('smart_module.catalog_properties_admin', {'repository': repository.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
             </tr>
         {% endfor %}
         </tbody>

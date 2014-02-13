@@ -1,0 +1,11 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_title %}&laquo;{{ repository.title }}&raquo; Unicat / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h2>{{ 'Property'|trans }}</h2>
+
+    {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
+
+{% endblock content %}

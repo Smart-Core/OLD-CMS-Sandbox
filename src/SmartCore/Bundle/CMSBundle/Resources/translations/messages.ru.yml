@@ -20,6 +20,7 @@ Create node: Подключить модуль
 Create user: Создать пользователя
 Created: Создано
 Date: Дата
+Datetime: Дата и время
 Descr: Описание
 Description: Описание
 Delete: Удалить
@@ -38,6 +39,7 @@ Help: Справка
 Height: Высота
 Homepage: Главная
 Inherit in folders: Наследование в папках
+Integer: Целое число
 Is active: Включено
 Is file: Является файлом?
 Items count: Кол-во записей
@@ -62,6 +64,7 @@ Permissions: Права доступа
 Pos: Позиция
 Position: Позиция
 Properties: Свойства
+Properties group: Группа свойств
 Reports: Отчеты
 Priority: Приоритет
 Role: Роль
@@ -74,12 +77,14 @@ Slide: Слайд
 Slider: Слайдер
 Slug: Часть URI
 Status: Статус
+String: Строка
 Structure: Структура
 Template: Шаблон
 Template inheritable: Наследуемый шаблон
 Template self: Собственный шаблон
 Text: Текст
 Title: Заголовок
+Type: Тип
 Uri part: Часть URI
 Update: Обновить
 Updated: Обновлено
