@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -110,13 +111,6 @@ class PropertyModel
     protected $params;
 
     /**
-     * @var \SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository
-     *
-     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository")
-     **/
-    protected $repository;
-
-    /**
      * @var PropertyGroupModel
      *
      * @ORM\ManyToOne(targetEntity="PropertyGroup", inversedBy="properties")
@@ -130,6 +124,7 @@ class PropertyModel
     {
         $this->created_at = new \DateTime();
         $this->is_enabled = true;
+        $this->params = [];
         $this->position = 0;
         $this->user_id = 0;
     }

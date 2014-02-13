@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryFormType;
+use SmartCore\Bundle\UnicatBundle\Form\Type\ItemFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\PropertyFormType;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
@@ -87,6 +88,31 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
+     * @param mixed $data    The initial data for the form
+     * @param array $options Options for the form
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getItemForm(UnicatRepository $repository, $data = null, array $options = [])
+    {
+        return $this->formFactory->create(new ItemFormType($repository), $data, $options);
+    }
+
+    /**
+     * @param UnicatRepository $repository
+     * @param mixed $data    The initial data for the form
+     * @param array $options Options for the form
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getItemCreateForm(UnicatRepository $repository, $data = null, array $options = [])
+    {
+        return $this->getItemForm($repository, $data, $options)
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
+    }
+
+    /**
+     * @param UnicatRepository $repository
      * @param array $options Options for the form
      *
      * @return \Symfony\Component\Form\Form
@@ -94,9 +120,10 @@ class UnicatService
     public function getPropertyCreateForm(UnicatRepository $repository, $groupId, array $options = [])
     {
         $property = $repository->createProperty();
-        $property->setGroup($this->em->getRepository($repository->getPropertyGroupClass())->find($groupId));
-
-        // @todo $property->setUserId();
+        $property
+            ->setGroup($this->em->getRepository($repository->getPropertyGroupClass())->find($groupId))
+            //@todo ->setUserId()
+        ;
 
         return $this->getPropertyForm($repository, $property, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
@@ -130,9 +157,11 @@ class UnicatService
      * @param int $groupId
      * @return PropertyModel[]
      */
-    public function getProperties(UnicatRepository $repository, $groupId)
+    public function getProperties(UnicatRepository $repository, $groupId = null)
     {
-        return $this->em->getRepository($repository->getPropertyClass())->findBy(['group' => $groupId], ['position' => 'ASC']);
+        $filter = ($groupId) ? ['group' => $groupId] : [];
+
+        return $this->em->getRepository($repository->getPropertyClass())->findBy($filter, ['position' => 'ASC']);
     }
     
     /**

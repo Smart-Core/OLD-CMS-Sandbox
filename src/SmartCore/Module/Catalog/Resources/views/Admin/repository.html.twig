@@ -49,4 +49,8 @@
         </tbody>
     </table>
 
+    <h2>{{ 'Records'|trans }}</h2>
+
+    <a href="{{ path('smart_module.catalog_item_create_admin', {'repository': repository.name}) }}" class="btn btn-primary">{{ 'Create item'|trans }}</a>
+
 {% endblock content %}

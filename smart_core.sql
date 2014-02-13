@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 13 2014 г., 21:15
+-- Время создания: Фев 13 2014 г., 22:58
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -327,7 +327,6 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items_title` (
 DROP TABLE IF EXISTS `aaa_catalog_properties`;
 CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `repository_id` int(11) DEFAULT NULL,
   `is_enabled` tinyint(1) NOT NULL,
   `is_dedicated_table` tinyint(1) NOT NULL,
   `is_required` tinyint(1) NOT NULL,
@@ -344,22 +343,22 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   `group_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
-  KEY `IDX_367097550C9D4F7` (`repository_id`),
   KEY `position` (`position`),
   KEY `is_enabled` (`is_enabled`),
   KEY `show_in_admin` (`show_in_admin`),
   KEY `show_in_list` (`show_in_list`),
   KEY `show_in_view` (`show_in_view`),
   KEY `IDX_3670975FE54D947` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_properties`
 --
 
-INSERT INTO `aaa_catalog_properties` (`id`, `repository_id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`) VALUES
-(1, NULL, 1, 0, 1, 1, 'string', 'title', 'Заголовок', 0, 0, 0, 0, '2014-02-13 20:37:50', 'N;', 1),
-(2, NULL, 1, 0, 0, 2, 'string', 'description', 'Описание', 0, 0, 0, 0, '2014-02-13 21:03:59', 'N;', 1);
+INSERT INTO `aaa_catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`) VALUES
+(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 0, 0, 0, 0, '2014-02-13 20:37:50', 'N;', 1),
+(2, 1, 0, 0, 2, 'textarea', 'description', 'Описание', 0, 0, 0, 0, '2014-02-13 21:03:59', 'N;', 1),
+(3, 1, 0, 0, 3, 'integer', 'price', 'Цена', 0, 0, 0, 0, '2014-02-13 22:29:43', 'N;', 1);
 
 -- --------------------------------------------------------
 
@@ -997,6 +996,7 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title_form` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_C3D9EB2050C9D4F7` (`repository_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -1005,9 +1005,9 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
 -- Дамп данных таблицы `aaa_unicat_structures`
 --
 
-INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`) VALUES
-(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories'),
-(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags');
+INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`) VALUES
+(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория'),
+(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги');
 
 -- --------------------------------------------------------
 
@@ -1239,7 +1239,6 @@ ALTER TABLE `aaa_catalog_items_title`
 -- Ограничения внешнего ключа таблицы `aaa_catalog_properties`
 --
 ALTER TABLE `aaa_catalog_properties`
-  ADD CONSTRAINT `FK_367097550C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`),
   ADD CONSTRAINT `FK_3670975FE54D947` FOREIGN KEY (`group_id`) REFERENCES `aaa_catalog_properties_groups` (`id`);
 
 --

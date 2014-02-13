@@ -38,3 +38,8 @@ smart_module.catalog_property_admin:
     requirements:
         group_id: \d+
         id: \d+
+
+smart_module.catalog_item_create_admin:
+    path: /repository_{repository}/item_create/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:itemCreate

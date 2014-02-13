@@ -36,7 +36,7 @@ class CatalogModel
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      */
     protected $title;
 
@@ -91,7 +91,7 @@ class CatalogModel
 
     /**
      * @param string $name
-     * @return Catalog
+     * @return $this
      */
     public function setName($name)
     {
@@ -110,7 +110,7 @@ class CatalogModel
 
     /**
      * @param string $title
-     * @return Catalog
+     * @return $this
      */
     public function setTitle($title)
     {
@@ -129,7 +129,7 @@ class CatalogModel
 
     /**
      * @param array $structures
-     * @return Catalog
+     * @return $this
      */
     public function setStructures($structures)
     {
@@ -148,7 +148,7 @@ class CatalogModel
 
     /**
      * @param boolean $isInheritance
-     * @return Catalog
+     * @return $this
      */
     public function setIsInheritance($isInheritance)
     {

@@ -29,9 +29,11 @@ class PropertyFormType extends AbstractType
             ->add('name')
             ->add('type', 'choice', [
                 'choices' => [
-                    'string'      => 'String',
                     'text'        => 'Text',
-                    'int'         => 'Integer',
+                    'textarea'    => 'Textarea',
+                    'integer'     => 'Integer',
+                    'email'       => 'Email',
+                    'url'         => 'URL',
                     'date'        => 'Date',
                     'datetime'    => 'Datetime',
                     'checkbox'    => 'Сheckbox',

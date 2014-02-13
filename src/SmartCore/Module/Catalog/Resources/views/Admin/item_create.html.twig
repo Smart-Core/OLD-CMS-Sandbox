@@ -1,0 +1,15 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block html_head_title %}&laquo;{{ repository.title }}&raquo; Unicat / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h2>{{ 'Create item'|trans }}</h2>
+
+    {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
+
+    <a href="{{ path('smart_module.catalog_repository_admin', {'repository': repository.name}) }}">
+        &laquo; назад к репозиторию &laquo;{{ repository.title }}&raquo;
+    </a>
+
+{% endblock content %}

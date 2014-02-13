@@ -118,6 +118,14 @@ class UnicatRepository
     /**
      * @return string
      */
+    public function getItemClass()
+    {
+        return $this->entities_namespace . 'Item';
+    }
+
+    /**
+     * @return string
+     */
     public function getPropertyClass()
     {
         return $this->entities_namespace . 'Property';
@@ -239,7 +247,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return UnicatStructure[]
      */
     public function getStructures()
     {

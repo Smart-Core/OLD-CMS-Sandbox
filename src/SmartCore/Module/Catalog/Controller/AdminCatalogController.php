@@ -177,4 +177,21 @@ class AdminCatalogController extends Controller
             'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
+
+    public function itemCreateAction(Request $request, $repository)
+    {
+        $unicat = $this->get('unicat');
+        $repository = $unicat->getRepository($repository);
+
+        $form = $unicat->getItemCreateForm($repository);
+
+        if ($request->isMethod('POST')) {
+            ld($_POST);
+        }
+
+        return $this->render('CatalogModule:Admin:item_create.html.twig', [
+            'form'       => $form->createView(),
+            'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
 }

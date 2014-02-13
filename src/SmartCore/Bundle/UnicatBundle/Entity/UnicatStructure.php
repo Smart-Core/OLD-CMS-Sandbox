@@ -33,6 +33,11 @@ class UnicatStructure
     protected $title;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $title_form;
+
+    /**
      * single | multi
      *
      * @ORM\Column(type="string", length=16)
@@ -197,6 +202,24 @@ class UnicatStructure
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @param string $title_form
+     * @return $this
+     */
+    public function setTitleForm($title_form)
+    {
+        $this->title_form = $title_form;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitleForm()
+    {
+        return $this->title_form;
     }
 
     /**
