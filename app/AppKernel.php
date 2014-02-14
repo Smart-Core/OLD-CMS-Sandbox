@@ -53,6 +53,7 @@ class AppKernel extends Kernel
             new SmartCore\Bundle\FelibBundle\SmartCoreFelibBundle(),
             new SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
+            new SmartCore\Bundle\MediaBundle\SmartMediaBundle(),
             new SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
             new SmartCore\Bundle\SimpleProfilerBundle\SmartSimpleProfilerBundle(),
             new SmartCore\Bundle\SitemapBundle\SmartSitemapBundle(),

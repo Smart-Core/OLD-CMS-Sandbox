@@ -1,0 +1,11 @@
+#parameters:
+#    smart_media.example.class: SmartCore\Bundle\MediaBundle\Example
+
+services:
+    smart_media_cloud:
+        class: SmartCore\Bundle\MediaBundle\Service\MediaCloudService
+        arguments: []
+
+    smart_media_collection:
+        class: SmartCore\Bundle\MediaBundle\Service\CollectionService
+        arguments: [@doctrine.orm.default_entity_manager, @kernel]

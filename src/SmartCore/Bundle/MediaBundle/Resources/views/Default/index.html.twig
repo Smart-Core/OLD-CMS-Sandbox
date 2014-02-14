@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smart Media Bundle{% endblock %}
+
+{% block body %}
+
+    <ul>
+    {% for file in files %}
+        <li>{{ file }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock body %}

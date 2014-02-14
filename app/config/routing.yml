@@ -10,6 +10,10 @@ site:
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
+smart_media: # @todo убрать
+    resource: "@SmartMediaBundle/Resources/config/routing.yml"
+    prefix: /
+
 smart_core_cms:
     resource: "@CMSBundle/Resources/config/routing.yml"
     prefix: /

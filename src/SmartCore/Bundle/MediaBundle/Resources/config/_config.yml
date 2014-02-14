@@ -1,0 +1,10 @@
+smart_media:
+    cache: apc
+    providers:
+        local:
+            class: SmartCore\Bundle\MediaBundle\Provider\LocalProvider
+            baseUrl: {basePath}/storage_uploads
+            directory: "%kernel.root_dir%/../web/storage_uploads"
+        remote:
+            class: SmartCore\Bundle\MediaBundle\Provider\RemoteProvider
+            baseUrl: http://example.com

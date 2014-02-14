@@ -1,0 +1,3 @@
+smart_media_index:
+    pattern:  /media/
+    defaults: { _controller: SmartMediaBundle:Default:index }
