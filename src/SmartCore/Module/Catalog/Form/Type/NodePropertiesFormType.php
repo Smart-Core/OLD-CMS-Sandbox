@@ -17,7 +17,6 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
 
         $builder
             ->add('repository_id', 'choice', [
-                'attr' => ['class' => 'input-block-level'],
                 'choices' => $repositories,
                 'required' => false,
             ])

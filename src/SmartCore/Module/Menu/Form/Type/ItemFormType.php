@@ -29,7 +29,6 @@ class ItemFormType extends AbstractType
             ->add('is_active')
             ->add('parent_item', 'entity', [
                 'class'     => 'MenuModule:Item',
-                'attr'      => ['class' => 'input-block-level'],
                 'required'  => false,
             ])
             ->add('folder', 'folder_tree', ['required' => false])

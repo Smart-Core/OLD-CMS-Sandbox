@@ -19,7 +19,6 @@ class ItemPropertiesFormType extends AbstractType
         foreach ($this->properties as $name => $type) {
             $builder->add($name, $type, [
                 'required' => false,
-                'attr'     => ['class' => 'input-block-level'],
             ]);
         }
     }

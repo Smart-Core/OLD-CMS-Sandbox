@@ -11,10 +11,10 @@ class NewsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',      null, ['attr' => ['class' => 'input-block-level focused']])
-            ->add('slug' ,      null, ['attr' => ['class' => 'input-block-level']])
-            ->add('annotation', null, ['attr' => ['class' => 'input-block-level']])
-            ->add('text',       null, ['attr' => ['class' => 'input-block-level wysiwyg', 'data-theme' => 'advanced']])
+            ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('slug')
+            ->add('annotation')
+            ->add('text',  null, ['attr' => ['class' => 'wysiwyg', 'data-theme' => 'advanced']])
         ;
     }
 

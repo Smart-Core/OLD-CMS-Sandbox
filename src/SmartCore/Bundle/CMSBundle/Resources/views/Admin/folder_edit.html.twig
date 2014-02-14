@@ -7,8 +7,6 @@
     {{ knp_menu_render('CMSBundle:AdminMenu:structureOnFolderEdit', {'currentClass': 'active'}) }}
 
     <div class="well well-small">
-        {% form_theme form '@CMS/Form/bootstrap.html.twig' %}
-
         <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal">
             {{ form_widget(form) }}
 

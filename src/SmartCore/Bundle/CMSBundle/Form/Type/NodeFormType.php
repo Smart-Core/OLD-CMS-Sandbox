@@ -21,7 +21,6 @@ class NodeFormType extends AbstractType
             ->add('module', 'choice', [
                 'choices' => $modules,
                 'data' => 'Texter',
-                'attr' => ['class' => 'input-block-level'],
             ])
             ->add('folder', 'folder_tree')
             ->add('block', 'entity', [
@@ -29,7 +28,6 @@ class NodeFormType extends AbstractType
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('b')->orderBy('b.position', 'ASC');
                 },
-                'attr' => ['class' => 'input-block-level'],
                 'required' => true,
             ])
             ->add('template')

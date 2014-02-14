@@ -21,7 +21,6 @@ class FolderTreeType extends DoctrineType
             'property'  => 'form_title',
             'loader'    => $loader,
             'class'     => 'CMSBundle:Folder',
-            'attr'      => ['class' => 'input-block-level'],
         ]);
     }
 

@@ -1,23 +1,9 @@
 {% extends '@MopaBootstrap/Form/fields.html.twig' %}
 
-{% block form_widget_simple %}
+{% block button_row %}
     {% spaceless %}
-        {% set type = type|default('text') %}
-        {% if type != 'hidden' and widget_addon.type|default(null) is not null %}
-            <div class="input-{{ widget_addon.type }}">
-            {% if widget_addon.type == 'prepend' %}
-                {{ block('widget_addon') }}
-            {% endif %}
-        {% endif %}
-        {% if not widget_remove_btn|default(null) %}
-            {% set attr = attr|merge({'class': attr.class|default('') ~ ' not-removable input-block-level'}) %}
-        {% endif %}
-        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
-        {% if type != 'hidden' and  widget_addon.type|default(null) is not null %}
-            {% if widget_addon.type == 'append' %}
-                {{ block('widget_addon') }}
-            {% endif %}
-            </div>
-        {% endif %}
+        <div class="form-button">
+            {{ form_widget(form) }}
+        </div>
     {% endspaceless %}
-{% endblock form_widget_simple %}
+{% endblock button_row %}

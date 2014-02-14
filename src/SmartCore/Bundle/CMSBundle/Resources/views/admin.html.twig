@@ -11,6 +11,15 @@
     {{ parent() }}
     <style media="all" type="text/css"> @import url({{ asset('assets/bootstrap/2.3.2/css/bootstrap.min.css') }}); </style>
     <style media="all" type="text/css"> @import url({{ asset('assets/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }}); </style>
+    <style media="all" type="text/css">
+        .form-button {
+            margin: 3px 0px 5px 20px;
+            float: left;
+        }
+        .well {
+            padding-bottom: 45px;
+        }
+    </style>
 {% endblock html_head_styles %}
 
 {% block html_head_scripts %}
@@ -20,7 +29,7 @@
 {% endblock html_head_scripts %}
 
 {% if form is defined %}
-    {% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
+    {% form_theme form '@CMS/Form/bootstrap_wide.html.twig' %}
 {% endif %}
 
 {% block body_js %}

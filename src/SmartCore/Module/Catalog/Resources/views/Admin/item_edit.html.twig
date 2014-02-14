@@ -6,7 +6,9 @@
 
     <h2>{{ 'Edit item'|trans }}</h2>
 
-    {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}
+    </div>
 
     <a href="{{ path('smart_module.catalog_repository_admin', {'repository': repository.name}) }}">
         &laquo; назад к репозиторию &laquo;{{ repository.title }}&raquo;

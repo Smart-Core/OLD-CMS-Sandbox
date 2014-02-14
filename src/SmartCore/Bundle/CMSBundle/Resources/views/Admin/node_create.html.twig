@@ -7,10 +7,7 @@
     {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 
     <div class="well well-small">
-        {% form_theme form '@CMS/Form/bootstrap.html.twig' %}
-
         <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-
             {% if form_properties.count > 0 %}
                 <ul class="nav nav-pills" id="nodeTab">
                     <li class="active"><a href="#node-properties">Параметры подключения модуля</a></li>
@@ -35,7 +32,6 @@
                     <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
                 </div>
             </div>
-
         </form>
     </div>
 

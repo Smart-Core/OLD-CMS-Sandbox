@@ -4,7 +4,9 @@
 
 {% block content %}
 
-    {{ form(form) }}
+    <div class="well well-small">
+        {{ form(form) }}
+    </div>
 
     {{ tinymce_init() }}
     {{ elfinder_tinymce_init() }}
