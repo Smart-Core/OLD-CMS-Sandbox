@@ -32,10 +32,10 @@ class ItemFormType extends AbstractType
                 'required'  => false,
             ])
             ->add('folder', 'folder_tree', ['required' => false])
-            ->add('title',      null, ['attr' => ['class' => 'input-block-level focused']])
-            ->add('url',        null, ['attr' => ['class' => 'input-block-level']])
-            ->add('descr',      null, ['attr' => ['class' => 'input-block-level']])
-            ->add('position',   null, ['attr' => ['class' => 'input-block-level']])
+            ->add('title',  null, ['attr' => ['class' => 'focused']])
+            ->add('url')
+            ->add('descr')
+            ->add('position')
         ;
 
         if ($options['data']->getGroup() instanceof Group) {
