@@ -67,7 +67,7 @@ class ItemFormType extends AbstractType
                 },
             ];
 
-            if ('single' === $structure->getEntries()) {
+            if ('single' === $structure->getEntries() and isset($options['data'])) {
                 /** @var CategoryModel $category */
                 foreach ($options['data']->getCategories() as $category) {
                     if ($category->getStructure()->getName() === $structure->getName()) {

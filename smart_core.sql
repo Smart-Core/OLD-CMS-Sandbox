@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 14 2014 г., 11:02
+-- Время создания: Фев 14 2014 г., 13:14
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -273,14 +273,15 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_items`
 --
 
 INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
-(1, 0, 'np900', 'N;', 'a:4:{s:5:"title";s:4:"dsfg";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:1;s:5:"price";i:5451;}', 0, '2014-02-14 07:48:18');
+(1, 0, 'np900', 'N;', 'a:4:{s:5:"title";s:4:"dsfg";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:1;s:5:"price";i:5451;}', 0, '2014-02-14 07:48:18'),
+(2, 0, 'galaxy-s4', 'N;', 'a:3:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;}', 0, '2014-02-14 13:13:57');
 
 -- --------------------------------------------------------
 
@@ -303,7 +304,9 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items_categories_relations` (
 
 INSERT INTO `aaa_catalog_items_categories_relations` (`item_id`, `category_id`) VALUES
 (1, 5),
-(1, 9);
+(1, 9),
+(2, 2),
+(2, 9);
 
 -- --------------------------------------------------------
 
@@ -326,7 +329,9 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items_categories_relations_single` (
 
 INSERT INTO `aaa_catalog_items_categories_relations_single` (`item_id`, `category_id`) VALUES
 (1, 5),
-(1, 9);
+(1, 9),
+(2, 2),
+(2, 9);
 
 -- --------------------------------------------------------
 
@@ -1078,7 +1083,7 @@ CREATE TABLE IF NOT EXISTS `aaa_users` (
 --
 
 INSERT INTO `aaa_users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-12 16:33:51', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-14 12:15:34', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
