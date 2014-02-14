@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Service;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
@@ -12,6 +13,8 @@ use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class UnicatService
 {
@@ -242,14 +245,59 @@ class UnicatService
     }
 
     /**
-     * @param ItemModel $item
-     * @param UnicatRepository $repository
-     * @param array $structures
+     * @param FormInterface $form
+     * @param Request $request
      * @return $this
      */
-    public function createItem(ItemModel $item, UnicatRepository $repository, $structures)
+    public function createItem(FormInterface $form, Request $request)
     {
+        return $this->saveItem($form, $request);
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param Request $request
+     * @return $this
+     */
+    public function updateItem(FormInterface $form, Request $request)
+    {
+        return $this->saveItem($form, $request);
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param Request $request
+     * @return $this|array
+     */
+    public function saveItem(FormInterface $form, Request $request)
+    {
+        /** @var ItemModel $item */
+        $item = $form->getData();
+
+        /** @var UnicatRepository $repository */
+        $repository = $form->getConfig()->getType()->getInnerType()->getRepository();
+
         //@todo $structuresColection = $this->em->getRepository($repository->getCategoryClass())->findIn($structures);
+
+        $pd = $request->request->get($form->getName());
+
+        $structures = [];
+        foreach ($pd as $key => $val) {
+            if (false !== strpos($key, 'structure:')) {
+                //$name = str_replace('structure:', '', $key);
+                //$structures[$name] = $val;
+
+                if (is_array($val)) {
+                    foreach ($val as $val2) {
+                        $structures[] = $val2;
+                    }
+                } else {
+                    $structures[] = $val;
+                }
+            }
+        }
+
+        $request->request->set($form->getName(), $pd);
 
         $list_string = '';
         foreach ($structures as $node_id) {
@@ -262,29 +310,21 @@ class UnicatService
             return [];
         }
 
-        $structuresColection = $this->em->createQuery("
+        $structuresSingleColection = $this->em->createQuery("
             SELECT c
             FROM {$repository->getCategoryClass()} c
             WHERE c.id IN({$list_string})
         ")->getResult();
 
-        $item->setCategories($structuresColection);
+        $structuresColection = new ArrayCollection(); // @todo наследуемые категории.
+
+        $item->setCategories($structuresSingleColection);
+        $item->setCategoriesSingle($structuresSingleColection);
 
         $this->em->persist($item);
         $this->em->flush($item);
 
         return $this;
-    }
-
-    /**
-     * @param ItemModel $item
-     * @param UnicatRepository $repository
-     * @param array $structures
-     * @return $this
-     */
-    public function updateItem(ItemModel $item, UnicatRepository $repository, $structures)
-    {
-        return $this->createItem($item, $repository, $structures);
     }
 
     /**

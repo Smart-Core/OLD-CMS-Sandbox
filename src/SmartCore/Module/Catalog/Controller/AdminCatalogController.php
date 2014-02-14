@@ -26,6 +26,7 @@ class AdminCatalogController extends Controller
 
         return $this->render('CatalogModule:Admin:repository.html.twig', [
             'properties_groups' => $em->getRepository($repository->getPropertyGroupClass())->findAll(),
+            'properties'        => $em->getRepository($repository->getPropertyClass())->findAll(),
             'items'             => $em->getRepository($repository->getItemClass())->findAll(),
             'repository'        => $repository,
         ]);
@@ -192,31 +193,9 @@ class AdminCatalogController extends Controller
         $form = $unicat->getItemCreateForm($repository);
 
         if ($request->isMethod('POST')) {
-            $pd = $request->request->get($form->getName());
-
-            $structures = [];
-            foreach ($pd as $key => $val) {
-                if (false !== strpos($key, 'structure:')) {
-                    //$name = str_replace('structure:', '', $key);
-                    //$structures[$name] = $val;
-                    
-                    if (is_array($val)) {
-                        foreach ($val as $val2) {
-                            $structures[] = $val2;
-                        }
-                    } else {
-                        $structures[] = $val;
-                    }
-
-                    unset($pd[$key]);
-                }
-            }
-
-            $request->request->set($form->getName(), $pd);
-
             $form->submit($request);
             if ($form->isValid()) {
-                $unicat->createItem($form->getData(), $repository, $structures);
+                $unicat->createItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись создана');
 
                 return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
@@ -243,36 +222,14 @@ class AdminCatalogController extends Controller
         $form = $unicat->getItemEditForm($repository, $unicat->getItem($repository, $id));
 
         if ($request->isMethod('POST')) {
-            $pd = $request->request->get($form->getName());
-
-            $structures = [];
-            foreach ($pd as $key => $val) {
-                if (false !== strpos($key, 'structure:')) {
-                    //$name = str_replace('structure:', '', $key);
-                    //$structures[$name] = $val;
-
-                    if (is_array($val)) {
-                        foreach ($val as $val2) {
-                            $structures[] = $val2;
-                        }
-                    } else {
-                        $structures[] = $val;
-                    }
-
-                    unset($pd[$key]);
-                }
-            }
-
-            $request->request->set($form->getName(), $pd);
-
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 if ($form->get('cancel')->isClicked()) {
                     return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
                 }
 
                 if ($form->get('update')->isClicked() and $form->isValid()) {
-                    $unicat->updateItem($form->getData(), $repository, $structures);
+                    $unicat->updateItem($form, $request);
                     $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');
 
                     return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));

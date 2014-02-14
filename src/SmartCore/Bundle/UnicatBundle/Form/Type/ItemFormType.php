@@ -28,6 +28,14 @@ class ItemFormType extends AbstractType
     }
 
     /**
+     * @return \SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository
+     */
+    public function getRepository()
+    {
+        return $this->repository;
+    }
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -41,23 +49,22 @@ class ItemFormType extends AbstractType
         ;
 
         /** @var \Doctrine\ORM\EntityManager $em */
-        $em = Container::get('doctrine.orm.entity_manager');
+        //$em = Container::get('doctrine.orm.entity_manager');
 
         foreach ($this->repository->getStructures() as $structure) {
             $optionsCat = [
-                'label' => $structure->getTitleForm(),
-                'required' => $structure->getIsRequired(),
-                'expanded' => ('multi' === $structure->getEntries()) ? true : false,
-                'multiple' => ('multi' === $structure->getEntries()) ? true : false,
-                //'data' => ('multi' === $structure->getEntries()) ? null : $em->find($this->repository->getCategoryClass(), 6),
-                'class' => $this->repository->getCategoryClass(),
+                'label'     => $structure->getTitleForm(),
+                'required'  => $structure->getIsRequired(),
+                'expanded'  => ('multi' === $structure->getEntries()) ? true : false,
+                'multiple'  => ('multi' === $structure->getEntries()) ? true : false,
+                'class'     => $this->repository->getCategoryClass(),
                 'query_builder' => function(EntityRepository $er) use ($structure) {
-                        return $er
-                            ->createQueryBuilder('c')
-                            ->where('c.structure = :structure')
-                            ->setParameter('structure', $structure)
-                            ;
-                    },
+                    return $er
+                        ->createQueryBuilder('c')
+                        ->where('c.structure = :structure')
+                        ->setParameter('structure', $structure)
+                        ;
+                },
             ];
 
             if ('single' === $structure->getEntries()) {

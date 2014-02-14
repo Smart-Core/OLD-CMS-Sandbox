@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 14 2014 г., 09:18
+-- Время создания: Фев 14 2014 г., 11:02
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
 --
 
 INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
-(1, 0, 'np900', 'N;', 'a:4:{s:5:"title";s:4:"dsfg";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:1;s:5:"price";i:545;}', 0, '2014-02-14 07:48:18');
+(1, 0, 'np900', 'N;', 'a:4:{s:5:"title";s:4:"dsfg";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:1;s:5:"price";i:5451;}', 0, '2014-02-14 07:48:18');
 
 -- --------------------------------------------------------
 
@@ -302,6 +302,29 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items_categories_relations` (
 --
 
 INSERT INTO `aaa_catalog_items_categories_relations` (`item_id`, `category_id`) VALUES
+(1, 5),
+(1, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_catalog_items_categories_relations_single`
+--
+
+DROP TABLE IF EXISTS `aaa_catalog_items_categories_relations_single`;
+CREATE TABLE IF NOT EXISTS `aaa_catalog_items_categories_relations_single` (
+  `item_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`item_id`,`category_id`),
+  KEY `IDX_67C1BAA1126F525E` (`item_id`),
+  KEY `IDX_67C1BAA112469DE2` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `aaa_catalog_items_categories_relations_single`
+--
+
+INSERT INTO `aaa_catalog_items_categories_relations_single` (`item_id`, `category_id`) VALUES
 (1, 5),
 (1, 9);
 
@@ -362,9 +385,9 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
 --
 
 INSERT INTO `aaa_catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`) VALUES
-(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 0, 0, 0, 0, '2014-02-13 20:37:50', 'N;', 1),
-(2, 1, 0, 0, 2, 'textarea', 'description', 'Описание', 0, 0, 0, 0, '2014-02-13 21:03:59', 'N;', 1),
-(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 0, 0, 0, 0, '2014-02-13 22:29:43', 'N;', 1),
+(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 0, 0, '2014-02-13 20:37:50', 'N;', 1),
+(2, 1, 0, 0, 2, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1),
+(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1),
 (4, 1, 0, 0, 3, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1);
 
 -- --------------------------------------------------------
@@ -1235,6 +1258,13 @@ ALTER TABLE `aaa_catalog_categories`
 ALTER TABLE `aaa_catalog_items_categories_relations`
   ADD CONSTRAINT `FK_29C9DBA512469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_29C9DBA5126F525E` FOREIGN KEY (`item_id`) REFERENCES `aaa_catalog_items` (`id`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_catalog_items_categories_relations_single`
+--
+ALTER TABLE `aaa_catalog_items_categories_relations_single`
+  ADD CONSTRAINT `FK_67C1BAA112469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_67C1BAA1126F525E` FOREIGN KEY (`item_id`) REFERENCES `aaa_catalog_items` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_catalog_items_title`

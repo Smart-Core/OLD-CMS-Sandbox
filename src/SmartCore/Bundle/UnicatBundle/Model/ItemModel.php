@@ -29,9 +29,17 @@ class ItemModel
      * @var CategoryModel[]
      *
      * ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist"})
-     * ORM\JoinTable(name="unicat_items_categories")
+     * ORM\JoinTable(name="unicat_items_categories_relations")
      */
     protected $categories;
+
+    /**
+     * @var CategoryModel[]
+     *
+     * ORM\ManyToMany(targetEntity="Category", inversedBy="itemsSingle", cascade={"persist"})
+     * ORM\JoinTable(name="unicat_items_categories_relations_single")
+     */
+    protected $categoriesSingle;
 
     /**
      * @var string
@@ -149,11 +157,30 @@ class ItemModel
     }
 
     /**
-     * @return mixed
+     * @return CategoryModel[]
      */
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * @param CategoryModel[] $categoriesSingle
+     * @return $this
+     */
+    public function setCategoriesSingle($categoriesSingle)
+    {
+        $this->categoriesSingle = $categoriesSingle;
+
+        return $this;
+    }
+
+    /**
+     * @return CategoryModel[]
+     */
+    public function getCategoriesSingle()
+    {
+        return $this->categoriesSingle;
     }
 
     /**
