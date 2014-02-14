@@ -19,33 +19,32 @@ class File
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Collection", inversedBy="files", cascade={"persist"})
-     * @ORM\JoinColumn(name="collection_id", nullable=false)
-     *
      * @var Collection
+     *
+     * @ORM\ManyToOne(targetEntity="Collection", inversedBy="files", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $collection;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="files", cascade={"persist"})
-     * @ORM\JoinColumn(name="category_id")
-     *
      * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="files", cascade={"persist"})
      */
     protected $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Storage", inversedBy="files", cascade={"persist"})
-     * @ORM\JoinColumn(name="storage_id", nullable=false)
-     *
      * @var Storage
+     *
+     * @ORM\ManyToOne(targetEntity="Storage", inversedBy="files", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $storage;
 
     /**
-     * @ORM\Column(type="string", name="relative_path", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    protected $relativePath;
+    protected $relative_path;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -53,16 +52,16 @@ class File
     protected $filename;
 
     /**
-     * @ORM\Column(name="original_filename", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
-    protected $originalFilename;
+    protected $original_filename;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
-     *
      * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    protected $created_at;
 
     /**
      * @ORM\Column(type="string", length=16)
@@ -70,9 +69,9 @@ class File
     protected $type;
 
     /**
-     * @ORM\Column(name="mime_type", type="string", length=32)
+     * @ORM\Column(type="string", length=32)
      */
-    protected $mimeType;
+    protected $mime_type;
 
     /**
      * @ORM\Column(type="integer")
@@ -84,7 +83,7 @@ class File
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->created_at = new \DateTime();
         $this->storage   = null;
     }
 
@@ -172,12 +171,12 @@ class File
     }
 
     /**
-     * @param mixed $relativePath
+     * @param mixed $relative_path
      * @return $this
      */
-    public function setRelativePath($relativePath)
+    public function setRelativePath($relative_path)
     {
-        $this->relativePath = $relativePath;
+        $this->relative_path = $relative_path;
 
         return $this;
     }
@@ -187,7 +186,7 @@ class File
      */
     public function getRelativePath()
     {
-        return $this->relativePath;
+        return $this->relative_path;
     }
 
     /**
@@ -197,7 +196,7 @@ class File
     public function setOriginalFilename($originalFilename)
     {
         $this->filename = hash('crc32', $originalFilename) . '.' . strtolower(substr($originalFilename, strrpos($originalFilename, '.') + 1));
-        $this->originalFilename = $originalFilename;
+        $this->original_filename = $originalFilename;
     
         return $this;
     }
@@ -207,7 +206,7 @@ class File
      */
     public function getOriginalFilename()
     {
-        return $this->originalFilename;
+        return $this->original_filename;
     }
 
     /**
@@ -215,7 +214,7 @@ class File
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
@@ -243,7 +242,7 @@ class File
      */
     public function setMimeType($mimeType)
     {
-        $this->mimeType = $mimeType;
+        $this->mime_type = $mimeType;
     
         return $this;
     }
@@ -253,7 +252,7 @@ class File
      */
     public function getMimeType()
     {
-        return $this->mimeType;
+        return $this->mime_type;
     }
 
     /**

@@ -41,12 +41,12 @@ class Collection
     protected $params;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Storage", cascade={"persist"})
-     * @ORM\JoinColumn(name="default_storage_id", nullable=false)
-     *
      * @var Storage
+     *
+     * @ORM\ManyToOne(targetEntity="Storage", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    protected $defaultStorage;
+    protected $default_storage;
 
     /**
      * Относительный путь можно менять, только если нету файлов в коллекции
@@ -54,38 +54,38 @@ class Collection
      *
      * @var string
      *
-     * @ORM\Column(name="relative_path", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
-    protected $relativePath;
+    protected $relative_path;
 
     /**
      * Маска имени файла. Если пустая строка, то использовать оригинальное имя файла,
      * совместимое с вебформатом т.е. без пробелов и русских букв.
      *
-     * @ORM\Column(name="filename_pattern", type="string", length=64)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=128)
      */
-    protected $filenamePattern;
+    protected $filename_pattern;
 
     /**
-     * @ORM\Column(name="file_relative_path_pattern", type="string", length=255)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
      */
-    protected $fileRelativePathPattern;
+    protected $file_relative_path_pattern;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
-     *
      * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    protected $createdAt;
+    protected $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="File", mappedBy="collection")
-     *
      * @var File[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="File", mappedBy="collection")
      */
     protected $files;
 
@@ -96,12 +96,12 @@ class Collection
      */
     public function __construct($relativePath = '')
     {
-        $this->createdAt        = new \DateTime();
+        $this->created_at       = new \DateTime();
         $this->files            = new ArrayCollection();
-        $this->relativePath     = $relativePath;
+        $this->relative_path    = $relativePath;
 
-        $this->filenamePattern          = '{hour}_{minutes}_{rand(10)}';
-        $this->fileRelativePathPattern  = '{year}/{month}/{day}/';
+        $this->filename_pattern            = '{hour}_{minutes}_{rand(10)}';
+        $this->file_relative_path_pattern  = '{year}/{month}/{day}/';
     }
 
     /**
@@ -117,64 +117,26 @@ class Collection
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
-     * @param Storage $defaultStorage
+     * @param Storage $default_storage
      * @return $this
      */
-    public function setDefaultStorage(Storage $defaultStorage)
+    public function setDefaultStorage(Storage $default_storage)
     {
-        $this->defaultStorage = $defaultStorage;
+        $this->default_storage = $default_storage;
 
         return $this;
     }
 
     /**
-     * @return Storage
+     * @return mixed
      */
     public function getDefaultStorage()
     {
-        return $this->defaultStorage;
-    }
-
-    /**
-     * @param string $filenamePattern
-     * @return $this
-     */
-    public function setFilenamePattern($filenamePattern)
-    {
-        $this->filenamePattern = $filenamePattern;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFilenamePattern()
-    {
-        return $this->filenamePattern;
-    }
-
-    /**
-     * @param string $fileRelativePathPattern
-     * @return $this
-     */
-    public function setFileRelativePathPattern($fileRelativePathPattern)
-    {
-        $this->fileRelativePathPattern = $fileRelativePathPattern;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileRelativePathPattern()
-    {
-        return $this->fileRelativePathPattern;
+        return $this->default_storage;
     }
 
     /**
@@ -235,12 +197,68 @@ class Collection
     }
 
     /**
-     * @param string $relativePath
+     * @param string $file_relative_path_pattern
      * @return $this
      */
-    public function setRelativePath($relativePath)
+    public function setFileRelativePathPattern($file_relative_path_pattern)
     {
-        $this->relativePath = $relativePath;
+        $this->file_relative_path_pattern = $file_relative_path_pattern;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileRelativePathPattern()
+    {
+        return $this->file_relative_path_pattern;
+    }
+
+    /**
+     * @param string $filename_pattern
+     * @return $this
+     */
+    public function setFilenamePattern($filename_pattern)
+    {
+        $this->filename_pattern = $filename_pattern;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFilenamePattern()
+    {
+        return $this->filename_pattern;
+    }
+
+    /**
+     * @param mixed $files
+     * @return $this
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+
+        return $this;
+    }
+
+    /**
+     * @return File[]
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param string $relative_path
+     * @return $this
+     */
+    public function setRelativePath($relative_path)
+    {
+        $this->relative_path = $relative_path;
 
         return $this;
     }
@@ -250,6 +268,6 @@ class Collection
      */
     public function getRelativePath()
     {
-        return $this->relativePath;
+        return $this->relative_path;
     }
 }

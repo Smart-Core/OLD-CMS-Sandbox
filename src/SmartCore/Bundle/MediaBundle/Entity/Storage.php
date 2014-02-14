@@ -20,9 +20,9 @@ class Storage
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @var string instanceof ProviderInterface
+     *
+     * @ORM\Column(type="string", length=255)
      */
     protected $provider;
 
@@ -32,30 +32,30 @@ class Storage
     protected $title;
 
     /**
-     * @ORM\Column(type="string", name="base_url", length=100)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
      */
-    protected $baseUrl;
+    protected $base_url;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $description;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
-     *
      * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    protected $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="File", mappedBy="storage")
-     *
      * @var File[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="File", mappedBy="storage")
      */
     protected $files;
 
@@ -64,7 +64,7 @@ class Storage
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->created_at = new \DateTime();
         $this->files     = new ArrayCollection();
     }
 
@@ -77,12 +77,20 @@ class Storage
     }
 
     /**
-     * @param string $baseUrl
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param string $base_url
      * @return $this
      */
-    public function setBaseUrl($baseUrl)
+    public function setBaseUrl($base_url)
     {
-        $this->baseUrl = $baseUrl;
+        $this->base_url = $base_url;
 
         return $this;
     }
@@ -92,9 +100,8 @@ class Storage
      */
     public function getBaseUrl()
     {
-        return $this->baseUrl;
+        return $this->base_url;
     }
-
     /**
      * @param string $provider
      * @return $this
@@ -150,5 +157,13 @@ class Storage
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return File[]
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

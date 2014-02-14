@@ -84,12 +84,16 @@ class CollectionService
     /**
      * @param integer $id
      * @param array|null $transforms
-     * @return string
+     * @return string|null
      */
     public function getUriByFileId($id, array $transforms = null)
     {
         /** @var File $file */
         $file = $this->filesRepo->find($id);
+
+        if (null === $file) {
+            return null;
+        }
 
         $fileUrl =
             $file->getStorage()->getBaseUrl() .

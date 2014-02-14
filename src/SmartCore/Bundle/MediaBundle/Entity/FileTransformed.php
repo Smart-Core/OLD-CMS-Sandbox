@@ -19,28 +19,25 @@ class FileTransformed
 
     /**
      * @ORM\ManyToOne(targetEntity="File")
-     * @ORM\JoinColumn(name="original_file_id")
      */
-    protected $originalFile;
+    protected $original_file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Collection", inversedBy="files")
-     * @ORM\JoinColumn(name="collection_id")
      */
     protected $collection;
 
     /**
      * @ORM\ManyToOne(targetEntity="Storage", inversedBy="files")
-     * @ORM\JoinColumn(name="storage_id")
      */
     protected $storage;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    protected $created_at;
 
     /**
      * @var integer
@@ -54,6 +51,15 @@ class FileTransformed
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->created_at = new \DateTime();
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
 }
