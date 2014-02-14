@@ -25,8 +25,9 @@ class AdminCatalogController extends Controller
         $repository = $em->getRepository('UnicatBundle:UnicatRepository')->findOneBy(['name' => $repository]);
 
         return $this->render('CatalogModule:Admin:repository.html.twig', [
-            'repository' => $repository,
-            'properties_groups' => $em->getRepository($repository->getEntitiesNamespace() . 'PropertyGroup')->findAll(),
+            'properties_groups' => $em->getRepository($repository->getPropertyGroupClass())->findAll(),
+            'items'             => $em->getRepository($repository->getItemClass())->findAll(),
+            'repository'        => $repository,
         ]);
     }
 
@@ -216,13 +217,70 @@ class AdminCatalogController extends Controller
             $form->submit($request);
             if ($form->isValid()) {
                 $unicat->createItem($form->getData(), $repository, $structures);
-                //$this->get('session')->getFlashBag()->add('success', 'Свойство создано');
+                $this->get('session')->getFlashBag()->add('success', 'Запись создана');
 
-                //return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
             }
         }
 
         return $this->render('CatalogModule:Admin:item_create.html.twig', [
+            'form'       => $form->createView(),
+            'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param string $repository
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function itemEditAction(Request $request, $repository, $id)
+    {
+        $unicat = $this->get('unicat');
+        $repository = $unicat->getRepository($repository);
+
+        $form = $unicat->getItemEditForm($repository, $unicat->getItem($repository, $id));
+
+        if ($request->isMethod('POST')) {
+            $pd = $request->request->get($form->getName());
+
+            $structures = [];
+            foreach ($pd as $key => $val) {
+                if (false !== strpos($key, 'structure:')) {
+                    //$name = str_replace('structure:', '', $key);
+                    //$structures[$name] = $val;
+
+                    if (is_array($val)) {
+                        foreach ($val as $val2) {
+                            $structures[] = $val2;
+                        }
+                    } else {
+                        $structures[] = $val;
+                    }
+
+                    unset($pd[$key]);
+                }
+            }
+
+            $request->request->set($form->getName(), $pd);
+
+            $form->submit($request);
+            if ($form->isValid()) {
+                if ($form->get('cancel')->isClicked()) {
+                    return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
+                }
+
+                if ($form->get('update')->isClicked() and $form->isValid()) {
+                    $unicat->updateItem($form->getData(), $repository, $structures);
+                    $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');
+
+                    return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
+                }
+            }
+        }
+
+        return $this->render('CatalogModule:Admin:item_edit.html.twig', [
             'form'       => $form->createView(),
             'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
         ]);

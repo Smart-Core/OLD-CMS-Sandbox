@@ -26,6 +26,8 @@ class ItemModel
     protected $is_enabled;
 
     /**
+     * @var CategoryModel[]
+     *
      * ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist"})
      * ORM\JoinTable(name="unicat_items_categories")
      */
@@ -34,7 +36,7 @@ class ItemModel
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     protected $slug;
 
@@ -78,6 +80,22 @@ class ItemModel
      */
     public function __get($name)
     {
+        if (false !== strpos($name, 'structure:')) {
+            $structureName = str_replace('structure:', '', $name);
+
+            if ($this->categories->count() > 0) {
+                $structureCollection = new ArrayCollection();
+
+                foreach ($this->categories as $category) {
+                    if ($category->getStructure()->getName() == $structureName) {
+                        $structureCollection->add($category);
+                    }
+                }
+
+                return $structureCollection;
+            }
+        }
+
         if (false !== strpos($name, 'property:')) {
             $properyName = str_replace('property:', '', $name);
 

@@ -43,3 +43,10 @@ smart_module.catalog_item_create_admin:
     path: /repository_{repository}/item_create/
     defaults:
         _controller: CatalogModule:AdminCatalog:itemCreate
+
+smart_module.catalog_item_edit_admin:
+    path: /repository_{repository}/item_{id}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:itemEdit
+    requirements:
+        id: \d+

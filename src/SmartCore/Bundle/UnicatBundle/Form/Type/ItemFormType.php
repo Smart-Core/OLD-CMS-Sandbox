@@ -5,6 +5,7 @@ namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
+use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use SmartCore\Bundle\UnicatBundle\Service\UnicatService;
 use Symfony\Component\Form\AbstractType;
@@ -39,21 +40,36 @@ class ItemFormType extends AbstractType
             ->add('is_enabled', null, ['required' => false])
         ;
 
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = Container::get('doctrine.orm.entity_manager');
+
         foreach ($this->repository->getStructures() as $structure) {
-            $builder->add('structure:' . $structure->getName(), 'entity', [
+            $optionsCat = [
                 'label' => $structure->getTitleForm(),
                 'required' => $structure->getIsRequired(),
                 'expanded' => ('multi' === $structure->getEntries()) ? true : false,
                 'multiple' => ('multi' === $structure->getEntries()) ? true : false,
+                //'data' => ('multi' === $structure->getEntries()) ? null : $em->find($this->repository->getCategoryClass(), 6),
                 'class' => $this->repository->getCategoryClass(),
                 'query_builder' => function(EntityRepository $er) use ($structure) {
-                    return $er
-                        ->createQueryBuilder('c')
-                        ->where('c.structure = :structure')
-                        ->setParameter('structure', $structure)
-                    ;
-                },
-            ]);
+                        return $er
+                            ->createQueryBuilder('c')
+                            ->where('c.structure = :structure')
+                            ->setParameter('structure', $structure)
+                            ;
+                    },
+            ];
+
+            if ('single' === $structure->getEntries()) {
+                /** @var CategoryModel $category */
+                foreach ($options['data']->getCategories() as $category) {
+                    if ($category->getStructure()->getName() === $structure->getName()) {
+                        $optionsCat['data'] = $category;
+                    }
+                }
+            }
+
+            $builder->add('structure:' . $structure->getName(), 'entity', $optionsCat);
         }
 
         /** @var UnicatService $unicat */

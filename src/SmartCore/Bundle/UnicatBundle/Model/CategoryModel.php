@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -83,7 +84,7 @@ abstract class CategoryModel
     protected $parent;
 
     /**
-     * @var \SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure
+     * @var UnicatStructure
      *
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure")
      **/
@@ -246,10 +247,10 @@ abstract class CategoryModel
     }
 
     /**
-     * @param mixed $structure
+     * @param UnicatStructure $structure
      * @return $this
      */
-    public function setStructure($structure)
+    public function setStructure(UnicatStructure $structure)
     {
         $this->structure = $structure;
 
@@ -257,7 +258,7 @@ abstract class CategoryModel
     }
 
     /**
-     * @return mixed
+     * @return UnicatStructure
      */
     public function getStructure()
     {

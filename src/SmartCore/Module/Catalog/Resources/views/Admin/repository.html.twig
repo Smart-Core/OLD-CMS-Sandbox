@@ -53,4 +53,23 @@
 
     <a href="{{ path('smart_module.catalog_item_create_admin', {'repository': repository.name}) }}" class="btn btn-primary">{{ 'Create item'|trans }}</a>
 
+    <p>Всего записей: <b>{{ items|length }}</b></p>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Slug'|trans }}</th>
+            <th>{{ 'Created at'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td><a href="{{ path('smart_module.catalog_item_edit_admin', {'repository': repository.name, 'id': item.id}) }}">{{ item.slug }}</a></td>
+                <td>{{ item.createdAt|localizeddate('long') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock content %}

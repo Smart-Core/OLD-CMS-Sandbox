@@ -114,6 +114,20 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
+     * @param mixed $data    The initial data for the form
+     * @param array $options Options for the form
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getItemEditForm(UnicatRepository $repository, $data = null, array $options = [])
+    {
+        return $this->getItemForm($repository, $data, $options)
+            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn' ]]);
+    }
+
+    /**
+     * @param UnicatRepository $repository
      * @param array $options Options for the form
      *
      * @return \Symfony\Component\Form\Form
@@ -151,6 +165,16 @@ class UnicatService
     public function getCategory(UnicatStructure $structure, $id)
     {
         return $this->em->getRepository($structure->getRepository()->getCategoryClass())->find($id);
+    }
+
+    /**
+     * @param UnicatRepository $repository
+     * @param int $id
+     * @return ItemModel|null
+     */
+    public function getItem(UnicatRepository $repository, $id)
+    {
+        return $this->em->getRepository($repository->getItemClass())->find($id);
     }
 
     /**
@@ -250,6 +274,17 @@ class UnicatService
         $this->em->flush($item);
 
         return $this;
+    }
+
+    /**
+     * @param ItemModel $item
+     * @param UnicatRepository $repository
+     * @param array $structures
+     * @return $this
+     */
+    public function updateItem(ItemModel $item, UnicatRepository $repository, $structures)
+    {
+        return $this->createItem($item, $repository, $structures);
     }
 
     /**

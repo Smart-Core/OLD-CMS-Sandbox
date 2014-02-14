@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 13 2014 г., 22:58
+-- Время создания: Фев 14 2014 г., 09:18
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -271,13 +271,16 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
   `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_items`
 --
 
+INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
+(1, 0, 'np900', 'N;', 'a:4:{s:5:"title";s:4:"dsfg";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:1;s:5:"price";i:545;}', 0, '2014-02-14 07:48:18');
 
 -- --------------------------------------------------------
 
@@ -298,6 +301,9 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items_categories_relations` (
 -- Дамп данных таблицы `aaa_catalog_items_categories_relations`
 --
 
+INSERT INTO `aaa_catalog_items_categories_relations` (`item_id`, `category_id`) VALUES
+(1, 5),
+(1, 9);
 
 -- --------------------------------------------------------
 
@@ -349,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   KEY `show_in_list` (`show_in_list`),
   KEY `show_in_view` (`show_in_view`),
   KEY `IDX_3670975FE54D947` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_properties`
@@ -358,7 +364,8 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
 INSERT INTO `aaa_catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`) VALUES
 (1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 0, 0, 0, 0, '2014-02-13 20:37:50', 'N;', 1),
 (2, 1, 0, 0, 2, 'textarea', 'description', 'Описание', 0, 0, 0, 0, '2014-02-13 21:03:59', 'N;', 1),
-(3, 1, 0, 0, 3, 'integer', 'price', 'Цена', 0, 0, 0, 0, '2014-02-13 22:29:43', 'N;', 1);
+(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 0, 0, 0, 0, '2014-02-13 22:29:43', 'N;', 1),
+(4, 1, 0, 0, 3, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1);
 
 -- --------------------------------------------------------
 
