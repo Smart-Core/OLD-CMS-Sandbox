@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,7 +67,40 @@ class ItemModel
      */
     public function __construct()
     {
+        $this->categories = new ArrayCollection();
         $this->created_at = new \DateTime();
+        $this->user_id = 0;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (false !== strpos($name, 'property:')) {
+            $properyName = str_replace('property:', '', $name);
+
+            if (isset($this->properties[$properyName])) {
+                return $this->properties[$properyName];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return $this
+     */
+    public function __set($name, $value)
+    {
+        if (false !== strpos($name, 'property:')) {
+            $this->properties[str_replace('property:', '', $name)] = $value;
+        }
+
+        return $this;
     }
 
     /**
@@ -75,6 +109,33 @@ class ItemModel
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param mixed $categories
+     * @return $this
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 
     /**
@@ -94,6 +155,24 @@ class ItemModel
     public function getIsEnabled()
     {
         return $this->is_enabled;
+    }
+
+    /**
+     * @param array $properties
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
     }
 
     /**
@@ -132,5 +211,23 @@ class ItemModel
     public function getMeta()
     {
         return $this->meta;
+    }
+
+    /**
+     * @param int $user_id
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
     }
 }

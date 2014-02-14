@@ -178,6 +178,11 @@ class AdminCatalogController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param string $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function itemCreateAction(Request $request, $repository)
     {
         $unicat = $this->get('unicat');
@@ -186,7 +191,35 @@ class AdminCatalogController extends Controller
         $form = $unicat->getItemCreateForm($repository);
 
         if ($request->isMethod('POST')) {
-            ld($_POST);
+            $pd = $request->request->get($form->getName());
+
+            $structures = [];
+            foreach ($pd as $key => $val) {
+                if (false !== strpos($key, 'structure:')) {
+                    //$name = str_replace('structure:', '', $key);
+                    //$structures[$name] = $val;
+                    
+                    if (is_array($val)) {
+                        foreach ($val as $val2) {
+                            $structures[] = $val2;
+                        }
+                    } else {
+                        $structures[] = $val;
+                    }
+
+                    unset($pd[$key]);
+                }
+            }
+
+            $request->request->set($form->getName(), $pd);
+
+            $form->submit($request);
+            if ($form->isValid()) {
+                $unicat->createItem($form->getData(), $repository, $structures);
+                //$this->get('session')->getFlashBag()->add('success', 'Свойство создано');
+
+                //return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
+            }
         }
 
         return $this->render('CatalogModule:Admin:item_create.html.twig', [

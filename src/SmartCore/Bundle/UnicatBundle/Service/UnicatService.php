@@ -9,6 +9,7 @@ use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\ItemFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\PropertyFormType;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
+use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
 
@@ -212,6 +213,41 @@ class UnicatService
     {
         $this->em->persist($category);
         $this->em->flush($category);
+
+        return $this;
+    }
+
+    /**
+     * @param ItemModel $item
+     * @param UnicatRepository $repository
+     * @param array $structures
+     * @return $this
+     */
+    public function createItem(ItemModel $item, UnicatRepository $repository, $structures)
+    {
+        //@todo $structuresColection = $this->em->getRepository($repository->getCategoryClass())->findIn($structures);
+
+        $list_string = '';
+        foreach ($structures as $node_id) {
+            $list_string .= $node_id . ',';
+        }
+
+        $list_string = substr($list_string, 0, strlen($list_string)-1);
+
+        if (false == $list_string) {
+            return [];
+        }
+
+        $structuresColection = $this->em->createQuery("
+            SELECT c
+            FROM {$repository->getCategoryClass()} c
+            WHERE c.id IN({$list_string})
+        ")->getResult();
+
+        $item->setCategories($structuresColection);
+
+        $this->em->persist($item);
+        $this->em->flush($item);
 
         return $this;
     }
