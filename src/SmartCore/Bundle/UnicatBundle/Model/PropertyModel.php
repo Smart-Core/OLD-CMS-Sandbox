@@ -359,7 +359,7 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      * @return $this
      */
     public function setType($type)
@@ -370,7 +370,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getType()
     {
@@ -378,7 +378,16 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $user_id
+     * @param string $type
+     * @return bool
+     */
+    public function isType($type)
+    {
+        return ($type === $this->type) ? true : false;
+    }
+
+    /**
+     * @param int $user_id
      * @return $this
      */
     public function setUserId($user_id)
@@ -389,7 +398,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getUserId()
     {

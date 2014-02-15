@@ -40,6 +40,11 @@ fm_elfinder:
                 upload_deny: ['all']
                 upload_max_size: 2M
 
+genemu_form:
+    image: ~
+    file:
+        swf: /assets/uploadify/uploadify.swf
+
 # Twig Configuration
 twig:
     debug:            %kernel.debug%

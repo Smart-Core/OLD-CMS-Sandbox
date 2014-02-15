@@ -10,6 +10,11 @@ site:
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
+genemu_image:
+    resource: "@GenemuFormBundle/Resources/config/routing/image.xml"
+genemu_upload:
+    resource: "@GenemuFormBundle/Resources/config/routing/upload.xml"
+
 smart_media: # @todo убрать
     resource: "@SmartMediaBundle/Resources/config/routing.yml"
     prefix: /

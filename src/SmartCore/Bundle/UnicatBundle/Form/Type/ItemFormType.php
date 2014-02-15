@@ -85,7 +85,15 @@ class ItemFormType extends AbstractType
 
         /** @var $property PropertyModel */
         foreach ($properties as $property) {
-            $builder->add('property:' . $property->getName(), $property->getType(), [
+
+            $type = $property->getType();
+
+            if ($property->isType('image')) {
+                //$type = 'genemu_jqueryimage';
+                $type = 'file';
+            }
+
+            $builder->add('property:' . $property->getName(), $type, [
                 'required'  => $property->getIsRequired(),
                 'label'     => $property->getTitle(),
             ]);
