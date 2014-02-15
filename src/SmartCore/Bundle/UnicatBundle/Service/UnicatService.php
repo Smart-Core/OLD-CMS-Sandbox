@@ -4,6 +4,8 @@ namespace SmartCore\Bundle\UnicatBundle\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
+use SmartCore\Bundle\MediaBundle\Service\CollectionService;
+use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryFormType;
@@ -29,13 +31,20 @@ class UnicatService
     protected $formFactory;
 
     /**
+     * @var CollectionService
+     */
+    protected $mc;
+
+    /**
      * @param EntityManager $em
      * @param FormFactoryInterface $formFactory
+     * MediaCloudService $mediaCloud
      */
-    public function __construct(EntityManager $em, FormFactoryInterface $formFactory)
+    public function __construct(EntityManager $em, FormFactoryInterface $formFactory, MediaCloudService $mediaCloud)
     {
-        $this->em = $em;
+        $this->em          = $em;
         $this->formFactory = $formFactory;
+        $this->mc          = $mediaCloud->getCollection(1); // @todo настройку медиаколлекции.
     }
 
     /**
@@ -277,6 +286,33 @@ class UnicatService
         /** @var UnicatRepository $repository */
         $repository = $form->getConfig()->getType()->getInnerType()->getRepository();
 
+        // Проверка и модификация свойств. В частности загрука картинок и валидация.
+        $properties = $this->getProperties($repository);
+
+        foreach ($properties as $property) {
+            if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
+                $file = $item->getProperty($property->getName());
+
+                // пляска с бубном с загрузкой картинки, когда надо взять предыдущее значение...
+                if (null == $file) {
+                    $tableItems = $this->em->getClassMetadata($repository->getItemClass())->getTableName();
+                    $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
+                    $res = $this->em->getConnection()->query($sql)->fetch();
+
+                    if (!empty($res)) {
+                        $previousProperties = unserialize($res['properties']);
+                        $fileId = $previousProperties[$property->getName()];
+                    } else {
+                        $fileId = null;
+                    }
+                } else {
+                    $fileId = $this->mc->upload($file);
+                }
+
+                $item->setProperty($property->getName(), $fileId);
+            }
+        }
+
         //@todo $structuresColection = $this->em->getRepository($repository->getCategoryClass())->findIn($structures);
 
         $pd = $request->request->get($form->getName());
@@ -299,6 +335,7 @@ class UnicatService
 
         $request->request->set($form->getName(), $pd);
 
+        // @todo убрать выборку струкур в StructureRepository (Entity)
         $list_string = '';
         foreach ($structures as $node_id) {
             $list_string .= $node_id . ',';

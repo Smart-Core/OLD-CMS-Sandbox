@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\CMSBundle\Container;
+use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
@@ -48,9 +49,6 @@ class ItemFormType extends AbstractType
             ->add('is_enabled', null, ['required' => false])
         ;
 
-        /** @var \Doctrine\ORM\EntityManager $em */
-        //$em = Container::get('doctrine.orm.entity_manager');
-
         foreach ($this->repository->getStructures() as $structure) {
             $optionsCat = [
                 'label'     => $structure->getTitleForm(),
@@ -79,24 +77,28 @@ class ItemFormType extends AbstractType
             $builder->add('structure:' . $structure->getName(), 'entity', $optionsCat);
         }
 
-        /** @var UnicatService $unicat */
-        $unicat = Container::get('unicat');
-        $properties = $unicat->getProperties($this->repository);
-
         /** @var $property PropertyModel */
-        foreach ($properties as $property) {
-
+        foreach (Container::get('unicat')->getProperties($this->repository) as $property) {
             $type = $property->getType();
-
-            if ($property->isType('image')) {
-                //$type = 'genemu_jqueryimage';
-                $type = 'file';
-            }
-
-            $builder->add('property:' . $property->getName(), $type, [
+            $propertyOptions = [
                 'required'  => $property->getIsRequired(),
                 'label'     => $property->getTitle(),
-            ]);
+            ];
+
+            if ($property->isType('image')) {
+                // @todo сделать вджет загрузки картинок.
+                //$type = 'genemu_jqueryimage';
+                $type = 'file';
+
+                if (isset($options['data'])) {
+                    /** @var CollectionService $mc */
+                    //$mc = Container::get('smart_media')->getCollection(1); // @todo избавиться от зависимости медиаколлекции.
+                    //$propertyOptions['data'] = $mc->getSplFile($options['data']->getProperty($property->getName()));
+                    $propertyOptions['data'] = new \Symfony\Component\HttpFoundation\File\File('', false);
+                }
+            }
+
+            $builder->add('property:' . $property->getName(), $type, $propertyOptions);
         }
     }
 

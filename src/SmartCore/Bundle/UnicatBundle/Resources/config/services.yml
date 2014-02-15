@@ -2,4 +2,4 @@
 services:
     unicat:
         class: SmartCore\Bundle\UnicatBundle\Service\UnicatService
-        arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
+        arguments: [ @doctrine.orm.default_entity_manager, @form.factory, @smart_media ]

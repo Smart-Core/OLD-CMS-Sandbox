@@ -3,10 +3,8 @@
 namespace SmartCore\Bundle\MediaBundle\Provider;
 
 use Doctrine\ORM\EntityRepository;
-use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\MediaBundle\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class LocalProvider implements ProviderInterface
@@ -15,16 +13,6 @@ class LocalProvider implements ProviderInterface
      * @var string
      */
     //protected $sourceRoot = '%kernel.root_dir%/usr/media_cloud';
-
-    /**
-     * @var string
-     */
-    //protected $webRoot = '%kernel.root_dir%/../web/_media';
-
-    /**
-     * @var Collection
-     */
-    protected $collection;
 
     /**
      * @var EntityRepository
@@ -55,6 +43,10 @@ class LocalProvider implements ProviderInterface
      */
     public function get($id, $filter = null)
     {
+        if (null === $id) {
+            return null;
+        }
+
         /** @var File $file */
         $file = $this->filesRepo->find($id);
 
@@ -66,25 +58,31 @@ class LocalProvider implements ProviderInterface
     }
 
     /**
-     * @param UploadedFile $file
-     * @param int $category
-     * @param array $tags
-     * @return int - ID файла в коллекции.
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\File\File
      */
-    public function upload(UploadedFile $file, $category = null, array $tags = null)
+    public function getSplFile($id)
     {
-        // @todo
+        return new \Symfony\Component\HttpFoundation\File\File(
+            // dirname($this->request->server->get('SCRIPT_FILENAME')) .
+            $this->get($id), false
+        );
     }
-
+    
     /**
-     * @param Collection $collection
-     * @return $this
+     * @param File $file
+     * @return \Symfony\Component\HttpFoundation\File\File|void
+     * @throws \RuntimeException
      */
-    public function setCollection(Collection $collection)
+    public function upload(File $file)
     {
-        $this->collection = $collection;
+        $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')) . $file->getFullRelativePath();
 
-        return $this;
+        if (!is_dir($webDir) and false === @mkdir($webDir, 0777, true)) {
+            throw new \RuntimeException(sprintf("Unable to create the %s directory.\n", $webDir));
+        }
+
+        return $file->getUploadedFile()->move($webDir, $file->getFilename());
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
@@ -61,13 +62,6 @@ class File
     protected $original_filename;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
      * @ORM\Column(type="string", length=8)
      */
     protected $type;
@@ -93,12 +87,73 @@ class File
     protected $user_id;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created_at;
+
+    /**
+     * @var UploadedFile
+     */
+    protected $uploadedFile;
+
+    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->user_id    = 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function generateRelativePath()
+    {
+        // @todo проверка на установленный Storage и Collection
+
+        $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
+
+        $file_relative_path_pattern = $this->getCollection()->getFileRelativePathPattern();
+        $file_relative_path_pattern = str_replace('{year}',  date('Y'), $file_relative_path_pattern);
+        $file_relative_path_pattern = str_replace('{month}', date('m'), $file_relative_path_pattern);
+        $file_relative_path_pattern = str_replace('{day}',   date('d'), $file_relative_path_pattern);
+
+        $this->setRelativePath($file_relative_path_pattern);
+
+        return $relativePath . $file_relative_path_pattern;
+    }
+
+    /**
+     * @param UploadedFile $file
+     * @return $this
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->uploadedFile = $file;
+        $this->setFilename($file);
+
+        if (false !== strpos($file->getMimeType(), 'image/')) {
+            $this->setType('image');
+        } else {
+            $this->setType($file->getType());
+        }
+
+        $this->setMimeType($file->getMimeType());
+        $this->setOriginalSize($file->getSize());
+        $this->setSize($file->getSize());
+
+        return $this;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getUploadedFile()
+    {
+        return $this->uploadedFile;
     }
 
     /**
@@ -114,7 +169,11 @@ class File
      */
     public function getFullRelativePath()
     {
-        return $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath() . $this->getRelativePath() . '/';
+        if (empty($this->relative_path)) {
+            $this->generateRelativePath();
+        }
+
+        return $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath() . $this->getRelativePath();
     }
     
     /**
@@ -122,7 +181,7 @@ class File
      */
     public function getFullRelativeUrl()
     {
-        return $this->getFullRelativePath() . $this->getFilename();
+        return $this->getFullRelativePath() . '/' . $this->getFilename();
     }
 
     /**
@@ -186,9 +245,9 @@ class File
      * @param string $filename
      * @return $this
      */
-    public function setFilename($filename)
+    public function setFilename($file)
     {
-        $this->setOriginalFilename($filename);
+        $this->setOriginalFilename($file);
 
         return $this;
     }
@@ -224,10 +283,18 @@ class File
      * @param string $originalFilename
      * @return $this
      */
-    public function setOriginalFilename($originalFilename)
+    public function setOriginalFilename(UploadedFile $originalFile)
     {
-        $this->filename = hash('crc32', $originalFilename) . '.' . strtolower(substr($originalFilename, strrpos($originalFilename, '.') + 1));
-        $this->original_filename = $originalFilename;
+        $filename = $this->collection->getFilenamePattern();
+
+        // @todo внешний генератор имён.
+        $filename = str_replace('{hour}', date('H'), $filename);
+        $filename = str_replace('{minutes}', date('i'), $filename);
+        $filename = str_replace('{rand(10)}', substr(md5(microtime(true) . $originalFile->getClientOriginalName()), 0, 10), $filename);
+
+        $this->filename = $filename . '.' . $originalFile->guessClientExtension();
+        //$this->filename = hash('crc32', $originalFilename) . '.' . strtolower(substr($originalFilename, strrpos($originalFilename, '.') + 1));
+        $this->original_filename = $originalFile->getClientOriginalName();
     
         return $this;
     }

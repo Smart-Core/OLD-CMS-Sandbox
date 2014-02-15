@@ -209,6 +209,7 @@ class ItemModel
     public function setProperties($properties)
     {
         $this->properties = $properties;
+
         return $this;
     }
 
@@ -218,6 +219,36 @@ class ItemModel
     public function getProperties()
     {
         return $this->properties;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed|null
+     */
+    public function getProperty($name)
+    {
+        return (isset($this->properties[$name])) ? $this->properties[$name] : null;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return $this
+     */
+    public function setProperty($name, $value)
+    {
+        $this->properties[$name] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function hasProperty($name)
+    {
+        return (isset($this->properties[$name]) or null === @$this->properties[$name]) ? true : false;
     }
 
     /**

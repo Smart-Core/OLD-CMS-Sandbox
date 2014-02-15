@@ -18,12 +18,10 @@ interface ProviderInterface
     public function get($id, $filter = null);
 
     /**
-     * @param UploadedFile $file
-     * @param int $category
-     * @param array $tags
-     * @return int - ID файла в коллекции.
+     * @param File $file
+     * @return void
      */
-    public function upload(UploadedFile $file, $category = null, array $tags = null);
+    public function upload(File $file);
 
     /**
      * @param int $id
@@ -41,10 +39,4 @@ interface ProviderInterface
      * @return File[]|null
      */
     public function findBy($categoryId = null, array $orderBy = null, $limit = null, $offset = null);
-
-    /**
-     * @param Collection $collection
-     * @return $this
-     */
-    public function setCollection(Collection $collection);
 }
