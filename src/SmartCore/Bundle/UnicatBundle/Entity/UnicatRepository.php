@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 
@@ -49,11 +50,9 @@ class UnicatRepository
     protected $is_inheritance;
 
     /**
-     * Медиаколлекция по умолчанию.
-     *
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\MediaBundle\Entity\Collection")
      */
-    protected $media_collection_id;
+    protected $media_collection;
 
     /**
      * @ORM\Column(type="integer")
@@ -77,10 +76,10 @@ class UnicatRepository
      */
     public function __construct()
     {
-        $this->created_at = new \DateTime();
-        $this->is_inheritance = true;
-        $this->entities_namespace = null;
-        $this->structures = new ArrayCollection();
+        $this->created_at           = new \DateTime();
+        $this->is_inheritance       = true;
+        $this->entities_namespace   = null;
+        $this->structures           = new ArrayCollection();
     }
 
     /**
@@ -160,7 +159,7 @@ class UnicatRepository
     }
 
     /**
-     * @param mixed $entities_namespace
+     * @param string $entities_namespace
      * @return $this
      */
     public function setEntitiesNamespace($entities_namespace)
@@ -171,7 +170,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEntitiesNamespace()
     {
@@ -179,7 +178,7 @@ class UnicatRepository
     }
 
     /**
-     * @param mixed $is_inheritance
+     * @param bool $is_inheritance
      * @return $this
      */
     public function setIsInheritance($is_inheritance)
@@ -190,7 +189,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsInheritance()
     {
@@ -198,26 +197,26 @@ class UnicatRepository
     }
 
     /**
-     * @param mixed $media_collection_id
+     * @param Collection $media_collection
      * @return $this
      */
-    public function setMediaCollectionId($media_collection_id)
+    public function setMediaCollection($media_collection)
     {
-        $this->media_collection_id = $media_collection_id;
+        $this->media_collection = $media_collection;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return Collection
      */
-    public function getMediaCollectionId()
+    public function getMediaCollection()
     {
-        return $this->media_collection_id;
+        return $this->media_collection;
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      * @return $this
      */
     public function setName($name)
@@ -228,7 +227,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -236,7 +235,7 @@ class UnicatRepository
     }
 
     /**
-     * @param mixed $structures
+     * @param ArrayCollection $structures
      * @return $this
      */
     public function setStructures($structures)
@@ -255,7 +254,7 @@ class UnicatRepository
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      * @return $this
      */
     public function setTitle($title)
@@ -266,7 +265,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -274,7 +273,7 @@ class UnicatRepository
     }
 
     /**
-     * @param mixed $user_id
+     * @param int $user_id
      * @return $this
      */
     public function setUserId($user_id)
@@ -285,7 +284,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getUserId()
     {

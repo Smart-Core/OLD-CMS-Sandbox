@@ -5,3 +5,9 @@ services:
     smart_media:
         class: SmartCore\Bundle\MediaBundle\Service\MediaCloudService
         arguments: [ @service_container ]
+
+    smart_media.twig.extension:
+        class: SmartCore\Bundle\MediaBundle\Twig\MediaExtension
+        arguments: [ @smart_media ]
+        tags:
+            - { name: twig.extension }

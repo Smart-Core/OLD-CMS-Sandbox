@@ -21,9 +21,12 @@ class CatalogController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $unicat = $this->get('unicat');
+        $repository = $unicat->getRepository($this->repository_id);
+
         return $this->render('CatalogModule::catalog.html.twig', [
-            'repository_id' => $this->repository_id,
-            'items' => '@todo',
+            'items'      => $unicat->findAllItems($repository),
+            'repository' => $repository,
         ]);
     }
 }

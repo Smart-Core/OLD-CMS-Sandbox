@@ -191,6 +191,15 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
+     * @return ItemModel|null
+     */
+    public function findAllItems(UnicatRepository $repository)
+    {
+        return $this->em->getRepository($repository->getItemClass())->findAll();
+    }
+
+    /**
+     * @param UnicatRepository $repository
      * @param int $groupId
      * @return PropertyModel[]
      */

@@ -1,2 +1,18 @@
 
-@todo catalog.html.twig
+{% set mc = repository.mediaCollection.id %}
+
+{% for item in items %}
+    <h1>{{ item.property('title') }}</h1>
+
+    {% if item.property('description') %} <p>Описание: {{ item.property('description') }}</p> {% endif %}
+
+    <p>Наличие: {% if item.property('in_sight') %} есть {% else %} нет {% endif %} </p>
+
+    <p>Цена: {{ item.property('price') }}</p>
+
+    {% if item.property('image') %}
+        <p>Картинка: {{ smart_media_img(item.property('image'), mc) }}</p>
+    {% endif %}
+
+    <hr />
+{% endfor %}

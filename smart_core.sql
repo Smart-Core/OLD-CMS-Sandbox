@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 16 2014 г., 00:52
+-- Время создания: Фев 16 2014 г., 01:46
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
 --
 
 INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
-(1, 0, 'np900', 'N;', 'a:5:{s:5:"title";s:4:"dsfg";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:1;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18'),
+(1, 0, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18'),
 (2, 0, 'galaxy-s4', 'N;', 'a:3:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;}', 0, '2014-02-14 13:13:57');
 
 -- --------------------------------------------------------
@@ -1137,12 +1137,13 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_repositories` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_inheritance` tinyint(1) NOT NULL,
-  `media_collection_id` int(11) NOT NULL,
+  `media_collection_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `entities_namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `name` (`name`)
+  KEY `name` (`name`),
+  KEY `IDX_E243B95B52E685C` (`media_collection_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1489,6 +1490,12 @@ ALTER TABLE `aaa_menu`
 --
 ALTER TABLE `aaa_slides`
   ADD CONSTRAINT `FK_56692A962CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `aaa_sliders` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_unicat_repositories`
+--
+ALTER TABLE `aaa_unicat_repositories`
+  ADD CONSTRAINT `FK_E243B95B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `aaa_media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_unicat_structures`
