@@ -10,27 +10,28 @@ class SmartMediaBundleUseCases
 {
     public function examples()
     {
-        $collection = new CollectionService();
-        $cloud = new MediaCloudService();
+        $container = 'container';
+
+        $collection = new CollectionService($container);
+        $cloud = new MediaCloudService($container);
 
         $file = new UploadedFile('/path/to/file', 'filename');
 
         // Создание файла в коллекции.
-        $fileId = $collection->createFile($file);
+        $fileId = $collection->upload($file);
 
         // Создание файла в коллекции помеченные тэгами.
-        $fileId = $collection->createFile($file, ['tags' => ['user_id_123', 'symfony2']]);
+        $fileId = $collection->upload($file, ['tags' => ['user_id_123', 'symfony2']]);
 
         // Получить ссылку на оригинальный файл.
-        $url = $collection->getUriByFileId($fileId);
+        $url = $collection->get($fileId);
 
         // Получить ссылку на трансформированный файл.
         // Примерно как тут http://cloudinary.com/documentation/image_transformations
-        $url = $collection->getUriByFileId($fileId, [
+        $url = $collection->get($fileId, [
             'width'  => 100,
             'height' => 150,
             'crop'   => 'fill',
         ]);
-
     }
 }

@@ -1,10 +1,12 @@
 smart_media:
-    cache: apc
+    cache: apc # file, memcache
     providers:
         local:
             class: SmartCore\Bundle\MediaBundle\Provider\LocalProvider
-            baseUrl: {basePath}/storage_uploads
-            directory: "%kernel.root_dir%/../web/storage_uploads"
+            baseUrl: '{basePath}/_media'
+            directoryOriginal: '%kernel.root_dir%/usr/media_cloud'
+            directoryWeb: '%kernel.root_dir%/../web/_media'
+            webPath: '/_media'
         remote:
             class: SmartCore\Bundle\MediaBundle\Provider\RemoteProvider
             baseUrl: http://example.com

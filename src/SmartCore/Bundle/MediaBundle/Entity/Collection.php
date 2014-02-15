@@ -4,7 +4,6 @@ namespace SmartCore\Bundle\MediaBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\MediaBundle\Entity\Storage;
 
 /**
  * @ORM\Entity
@@ -27,11 +26,11 @@ class Collection
     protected $title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
-    protected $description;
+    protected $default_filter;
 
     /**
      * @ORM\Column(type="array")
@@ -59,6 +58,13 @@ class Collection
     protected $relative_path;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $file_relative_path_pattern;
+
+    /**
      * Маска имени файла. Если пустая строка, то использовать оригинальное имя файла,
      * совместимое с вебформатом т.е. без пробелов и русских букв.
      *
@@ -67,13 +73,6 @@ class Collection
      * @ORM\Column(type="string", length=128)
      */
     protected $filename_pattern;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $file_relative_path_pattern;
 
     /**
      * @var \DateTime
@@ -159,12 +158,12 @@ class Collection
     }
 
     /**
-     * @param string $description
+     * @param string $default_filter
      * @return $this
      */
-    public function setDescription($description)
+    public function setDefaultFilter($default_filter)
     {
-        $this->description = $description;
+        $this->default_filter = $default_filter;
 
         return $this;
     }
@@ -172,9 +171,9 @@ class Collection
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDefaultFilter()
     {
-        return $this->description;
+        return $this->default_filter;
     }
 
     /**

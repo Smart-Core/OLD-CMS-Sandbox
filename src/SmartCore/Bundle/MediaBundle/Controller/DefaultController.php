@@ -8,11 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $collection = $this->get('smart_media_collection');
+        $mc = $this->get('smart_media')->getCollection(1);
 
         $files = [
-            $collection->getUriByFileId(1),
-            $collection->getUriByFileId(2),
+            $mc->get(1),
+            $mc->get(2),
         ];
 
         return $this->render('SmartMediaBundle:Default:index.html.twig', [

@@ -6,20 +6,20 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\MediaBundle\Entity\Category;
 use SmartCore\Bundle\MediaBundle\Entity\File;
+use SmartCore\Bundle\MediaBundle\Provider\LocalProvider;
+use SmartCore\Bundle\MediaBundle\Provider\ProviderInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 class CollectionService
 {
+    use ContainerAwareTrait;
+
     /**
      * @var EntityManager
      */
     protected $em;
-
-    /**
-     * @var KernelInterface
-     */
-    protected $kernel;
 
     /**
      * @var EntityRepository
@@ -37,16 +37,38 @@ class CollectionService
     protected $storagesRepo;
 
     /**
-     * @param EntityManager $em
-     * @param KernelInterface $kernel
+     * @var ProviderInterface
      */
-    public function __construct(EntityManager $em, KernelInterface $kernel)
+    protected $provider;
+
+    /**
+     * @param ContainerInterface $container
+     */
+    public function __construct(ContainerInterface $container, $id = null)
     {
-        $this->em               = $em;
-        $this->kernel           = $kernel;
-        $this->collectionsRepo  = $em->getRepository('SmartMediaBundle:Collection');
-        $this->filesRepo        = $em->getRepository('SmartMediaBundle:File');
-        $this->storagesRepo     = $em->getRepository('SmartMediaBundle:Storage');
+        $this->em               = $container->get('doctrine.orm.entity_manager');
+        $this->collectionsRepo  = $this->em->getRepository('SmartMediaBundle:Collection');
+        $this->filesRepo        = $this->em->getRepository('SmartMediaBundle:File');
+        $this->storagesRepo     = $this->em->getRepository('SmartMediaBundle:Storage');
+
+        // @todo разные провайдеры.
+        $this->provider = new LocalProvider($this->filesRepo, $container);
+
+        if ($id) {
+            $this->provider->setCollection($this->collectionsRepo->find($id));
+        }
+    }
+
+    /**
+     * Получить ссылку на файл.
+     *
+     * @param integer $id
+     * @param string|null $filter
+     * @return string|null
+     */
+    public function get($id, $filter = null)
+    {
+        return $this->provider->get($id, $filter);
     }
 
     /**
@@ -55,7 +77,7 @@ class CollectionService
      * @param array $tags
      * @return int - ID файла в коллекции.
      */
-    public function createFile(UploadedFile $file, $category = null, array $tags = null)
+    public function upload(UploadedFile $file, $category = null, array $tags = null)
     {
         // @todo
     }
@@ -64,53 +86,22 @@ class CollectionService
      * @param int $id
      * @return bool
      */
-    public function deleteFile($id)
+    public function remove($id)
     {
         // @todo
     }
 
     /**
+     * Получить список файлов.
+     *
      * @param int|null $categoryId
      * @param array|null $orderBy
      * @param int|null $limit
      * @param int|null $offset
      * @return File[]|null
      */
-    public function getFilesList($categoryId = null, array $orderBy = null, $limit = null, $offset = null)
+    public function findBy($categoryId = null, array $orderBy = null, $limit = null, $offset = null)
     {
         // @todo
-    }
-
-    /**
-     * @param integer $id
-     * @param array|null $transforms
-     * @return string|null
-     */
-    public function getUriByFileId($id, array $transforms = null)
-    {
-        /** @var File $file */
-        $file = $this->filesRepo->find($id);
-
-        if (null === $file) {
-            return null;
-        }
-
-        $fileUrl =
-            $file->getStorage()->getBaseUrl() .
-            $file->getCollection()->getRelativePath() .
-            $file->getRelativePath() . '/' .
-            $file->getFilename();
-
-        $fileUrl = str_replace('{basePath}', $this->kernel->getContainer()->get('request')->getBasePath(), $fileUrl);
-
-        return $fileUrl;
-    }
-
-    /**
-     * @param int|null $categoryId
-     */
-    public function getCategories($categoryId = null)
-    {
-        // @todo подумать как лучше получать список категорий.
     }
 }

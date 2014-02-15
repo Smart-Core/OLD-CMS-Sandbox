@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "description": "Symfony Media Cloud Storage Bundle.",
-    "keywords": ["media"],
+    "keywords": ["media", "bundle"],
     "authors": [
         {
             "name": "Artem Ryzhkov",
@@ -13,11 +13,10 @@
     ],
     "require": {
         "php": ">=5.4.1",
-        "fabpot/goutte": "dev-master",
-        "knplabs/gaufrette": "dev-master",
+        "avalanche123/imagine-bundle": "*"
     },
     "autoload": {
-        "psr-0": { "SmartCore\\Bundle\\SitemapBundle": "" }
+        "psr-0": { "SmartCore\\Bundle\\MediaBundle": "" }
     },
-    "target-dir": "SmartCore/Bundle/SitemapBundle"
+    "target-dir": "SmartCore/Bundle/MediaBundle"
 }

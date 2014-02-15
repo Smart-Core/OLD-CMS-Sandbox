@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 14 2014 г., 14:48
+-- Время создания: Фев 15 2014 г., 20:51
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -728,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `default_storage_id` int(11) NOT NULL,
   `title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8_unicode_ci,
+  `default_filter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `relative_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `filename_pattern` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
@@ -742,7 +742,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_collections` (
 -- Дамп данных таблицы `aaa_media_collections`
 --
 
-INSERT INTO `aaa_media_collections` (`id`, `default_storage_id`, `title`, `description`, `params`, `relative_path`, `filename_pattern`, `file_relative_path_pattern`, `created_at`) VALUES
+INSERT INTO `aaa_media_collections` (`id`, `default_storage_id`, `title`, `default_filter`, `params`, `relative_path`, `filename_pattern`, `file_relative_path_pattern`, `created_at`) VALUES
 (1, 1, 'Каталог товаров', NULL, 'N;', '/catalog', '{hour}_{minutes}_{rand(10)}', '{year}/{month}/{day}/', '2014-02-14 13:43:18');
 
 -- --------------------------------------------------------
@@ -761,22 +761,25 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files` (
   `filename` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `original_filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
-  `type` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
   `mime_type` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `original_size` int(11) NOT NULL,
   `size` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D2E50011514956FD` (`collection_id`),
   KEY `IDX_D2E5001112469DE2` (`category_id`),
-  KEY `IDX_D2E500115CC5DB90` (`storage_id`)
+  KEY `IDX_D2E500115CC5DB90` (`storage_id`),
+  KEY `type` (`type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files`
 --
 
-INSERT INTO `aaa_media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `relative_path`, `filename`, `original_filename`, `created_at`, `type`, `mime_type`, `size`) VALUES
-(1, 1, NULL, 1, NULL, '16c03411.jpg', 'example.jpg', '2014-02-14 13:45:20', 'image', 'image/jpeg', 65000),
-(2, 1, NULL, 1, '/2013/10', 'c834053c.jpg', 'google.jpg', '2014-02-14 13:49:55', 'image', 'image/jpeg', 200000);
+INSERT INTO `aaa_media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `relative_path`, `filename`, `original_filename`, `created_at`, `type`, `mime_type`, `original_size`, `size`, `user_id`) VALUES
+(1, 1, NULL, 1, NULL, '16c03411.jpg', 'example.jpg', '2014-02-14 13:45:20', 'image', 'image/jpeg', 0, 65000, 0),
+(2, 1, NULL, 1, '/2013/10', 'c834053c.jpg', 'google.jpg', '2014-02-14 13:49:55', 'image', 'image/jpeg', 0, 200000, 0);
 
 -- --------------------------------------------------------
 
@@ -787,15 +790,17 @@ INSERT INTO `aaa_media_files` (`id`, `collection_id`, `category_id`, `storage_id
 DROP TABLE IF EXISTS `aaa_media_files_transformed`;
 CREATE TABLE IF NOT EXISTS `aaa_media_files_transformed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `original_file_id` int(11) DEFAULT NULL,
-  `collection_id` int(11) DEFAULT NULL,
-  `storage_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
+  `file_id` int(11) NOT NULL,
+  `collection_id` int(11) NOT NULL,
+  `storage_id` int(11) NOT NULL,
+  `filter` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `size` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_B0A0921B154BD79B` (`original_file_id`),
+  KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
-  KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
+  KEY `IDX_B0A0921B5CC5DB90` (`storage_id`),
+  KEY `filter` (`filter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -814,8 +819,8 @@ CREATE TABLE IF NOT EXISTS `aaa_media_storages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `provider` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `base_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `relative_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -824,8 +829,8 @@ CREATE TABLE IF NOT EXISTS `aaa_media_storages` (
 -- Дамп данных таблицы `aaa_media_storages`
 --
 
-INSERT INTO `aaa_media_storages` (`id`, `provider`, `title`, `base_url`, `description`, `created_at`) VALUES
-(1, 'SmartCore\\Provider\\LocalProvider', 'Локальное хранилище', '{basePath}/media', NULL, '2014-02-14 13:41:32');
+INSERT INTO `aaa_media_storages` (`id`, `provider`, `title`, `relative_path`, `params`, `created_at`) VALUES
+(1, 'SmartCore\\Bundle\\MediaBundle\\Provider\\LocalProvider', 'Локальное хранилище', '/_media', 'N;', '2014-02-14 13:41:32');
 
 -- --------------------------------------------------------
 
@@ -1374,8 +1379,8 @@ ALTER TABLE `aaa_blog_articles`
 -- Ограничения внешнего ключа таблицы `aaa_blog_articles_tags_relations`
 --
 ALTER TABLE `aaa_blog_articles_tags_relations`
-  ADD CONSTRAINT `FK_1994F021BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `aaa_blog_tags` (`id`),
-  ADD CONSTRAINT `FK_1994F0217294869C` FOREIGN KEY (`article_id`) REFERENCES `aaa_blog_articles` (`id`);
+  ADD CONSTRAINT `FK_1994F0217294869C` FOREIGN KEY (`article_id`) REFERENCES `aaa_blog_articles` (`id`),
+  ADD CONSTRAINT `FK_1994F021BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `aaa_blog_tags` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_blog_categories`
@@ -1420,8 +1425,8 @@ ALTER TABLE `aaa_catalog_properties`
 -- Ограничения внешнего ключа таблицы `aaa_catalog_properties_groups`
 --
 ALTER TABLE `aaa_catalog_properties_groups`
-  ADD CONSTRAINT `FK_A9A6740450C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`),
-  ADD CONSTRAINT `FK_A9A6740412469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`);
+  ADD CONSTRAINT `FK_A9A6740412469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`),
+  ADD CONSTRAINT `FK_A9A6740450C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_engine_blocks_inherit`
@@ -1440,8 +1445,8 @@ ALTER TABLE `aaa_engine_folders`
 -- Ограничения внешнего ключа таблицы `aaa_engine_nodes`
 --
 ALTER TABLE `aaa_engine_nodes`
-  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `aaa_engine_blocks` (`block_id`),
-  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`);
+  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `aaa_engine_folders` (`folder_id`),
+  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `aaa_engine_blocks` (`block_id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_media_categories`
@@ -1459,17 +1464,17 @@ ALTER TABLE `aaa_media_collections`
 -- Ограничения внешнего ключа таблицы `aaa_media_files`
 --
 ALTER TABLE `aaa_media_files`
-  ADD CONSTRAINT `FK_D2E500115CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`),
   ADD CONSTRAINT `FK_D2E5001112469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_media_categories` (`id`),
-  ADD CONSTRAINT `FK_D2E50011514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`);
+  ADD CONSTRAINT `FK_D2E50011514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`),
+  ADD CONSTRAINT `FK_D2E500115CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_media_files_transformed`
 --
 ALTER TABLE `aaa_media_files_transformed`
+  ADD CONSTRAINT `FK_B0A0921B514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`),
   ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B154BD79B` FOREIGN KEY (`original_file_id`) REFERENCES `aaa_media_files` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`);
+  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_menu`

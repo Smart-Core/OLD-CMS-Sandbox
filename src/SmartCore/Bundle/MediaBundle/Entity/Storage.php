@@ -4,7 +4,7 @@ namespace SmartCore\Bundle\MediaBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\MediaBundle\Model\ProviderInterface;
+use SmartCore\Bundle\MediaBundle\Provider\ProviderInterface;
 
 /**
  * @ORM\Entity
@@ -32,18 +32,14 @@ class Storage
     protected $title;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
-    protected $base_url;
+    protected $relative_path;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array")
      */
-    protected $description;
+    protected $params;
 
     /**
      * @var \DateTime
@@ -85,23 +81,43 @@ class Storage
     }
 
     /**
-     * @param string $base_url
+     * @param mixed $relative_path
      * @return $this
      */
-    public function setBaseUrl($base_url)
+    public function setRelativePath($relative_path)
     {
-        $this->base_url = $base_url;
+        $this->relative_path = $relative_path;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getBaseUrl()
+    public function getRelativePath()
     {
-        return $this->base_url;
+        return $this->relative_path;
     }
+
+    /**
+     * @param array $params
+     * @return $this
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
     /**
      * @param string $provider
      * @return $this
@@ -138,25 +154,6 @@ class Storage
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * @param string $description
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
