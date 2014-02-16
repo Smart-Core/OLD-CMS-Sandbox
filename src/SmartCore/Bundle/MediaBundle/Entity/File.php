@@ -127,7 +127,11 @@ class File
             $filter = $this->getCollection()->getDefaultFilter();
         }
 
-        return $relativePath . $this->generatePattern($filter);
+        if (empty($filter)) {
+            $filter = 'orig';
+        }
+
+        return $relativePath . '/' . $filter . $this->generatePattern($filter);
     }
 
     /**
@@ -137,7 +141,6 @@ class File
     public function generatePattern($filter = null)
     {
         $pattern = $this->getCollection()->getFileRelativePathPattern();
-        $pattern = str_replace('{filter}', empty($filter) ? 'orig' : $filter, $pattern);
         $pattern = str_replace('{year}',  date('Y'), $pattern);
         $pattern = str_replace('{month}', date('m'), $pattern);
         $pattern = str_replace('{day}',   date('d'), $pattern);
@@ -154,7 +157,13 @@ class File
             $this->relative_path = $this->generatePattern();
         }
 
-        return $this->generateRelativePath($filter);
+        $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
+
+        if (empty($filter)) {
+            $filter = 'orig';
+        }
+
+        return $relativePath . '/' . $filter . $this->relative_path;
     }
 
     /**
@@ -230,6 +239,7 @@ class File
     public function setCollection(Collection $collection)
     {
         $this->collection = $collection;
+        $this->storage = $collection->getDefaultStorage();
 
         return $this;
     }

@@ -100,8 +100,6 @@ class LocalProvider implements ProviderInterface
 
                 $this->em->persist($fileTransformed);
                 $this->em->flush($fileTransformed);
-            } else {
-                $file->setRelativePath($file->generatePattern($filter));
             }
         }
 

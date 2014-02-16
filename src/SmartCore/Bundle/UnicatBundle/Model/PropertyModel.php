@@ -137,7 +137,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -145,7 +145,7 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $is_dedicated_table
+     * @param bool $is_dedicated_table
      * @return $this
      */
     public function setIsDedicatedTable($is_dedicated_table)
@@ -156,7 +156,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsDedicatedTable()
     {
@@ -164,7 +164,7 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $is_enabled
+     * @param bool $is_enabled
      * @return $this
      */
     public function setIsEnabled($is_enabled)
@@ -175,7 +175,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsEnabled()
     {
@@ -205,7 +205,7 @@ class PropertyModel
      * @param \SmartCore\Bundle\UnicatBundle\Model\PropertyGroupModel $group
      * @return $this
      */
-    public function setGroup($group)
+    public function setGroup(PropertyGroupModel $group)
     {
         $this->group = $group;
 
@@ -221,7 +221,7 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      * @return $this
      */
     public function setName($name)
@@ -232,7 +232,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -240,10 +240,10 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $params
+     * @param array $params
      * @return $this
      */
-    public function setParams($params)
+    public function setParams(array $params = null)
     {
         $this->params = $params;
 
@@ -251,7 +251,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getParams()
     {
@@ -339,7 +339,7 @@ class PropertyModel
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      * @return $this
      */
     public function setTitle($title)
@@ -350,7 +350,7 @@ class PropertyModel
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {

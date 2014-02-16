@@ -120,6 +120,7 @@ class FileTransformed
         $this->file = $file;
         $this->setCollection($file->getCollection());
         $this->setStorage($file->getStorage());
+
         return $this;
     }
 

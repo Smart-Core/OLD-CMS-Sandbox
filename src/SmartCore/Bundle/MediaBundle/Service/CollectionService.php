@@ -87,7 +87,6 @@ class CollectionService
         $file = new File();
         $file
             ->setCollection($this->collection)
-            ->setStorage($this->collection->getDefaultStorage())
             ->setFile($uploadedFile)
         ;
 

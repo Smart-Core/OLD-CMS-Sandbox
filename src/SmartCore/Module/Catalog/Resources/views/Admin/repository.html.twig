@@ -70,11 +70,9 @@
                 <td>{{ item.id }}</td>
                 <td><a href="{{ path('smart_module.catalog_item_edit_admin', {'repository': repository.name, 'id': item.id}) }}">{{ item.slug }}</a></td>
                 {% for property in properties %}
-                    {% for propertyName, propertyValue in item.properties %}
-                        {% if property.showInAdmin and property.name == propertyName %}
-                            <td><a href="{{ path('smart_module.catalog_item_edit_admin', {'repository': repository.name, 'id': item.id}) }}">{{ propertyValue }}</a></td>
-                        {% endif %}
-                    {% endfor %}
+                    {% if property.showInAdmin %}
+                        <td><a href="{{ path('smart_module.catalog_item_edit_admin', {'repository': repository.name, 'id': item.id}) }}">{{ item.getProperty(property.name) }}</a></td>
+                    {% endif %}
                 {% endfor %}
                 <td>{{ item.createdAt|localizeddate('long') }}</td>
             </tr>

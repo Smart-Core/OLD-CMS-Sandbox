@@ -27,7 +27,7 @@ class AdminCatalogController extends Controller
         return $this->render('CatalogModule:Admin:repository.html.twig', [
             'properties_groups' => $em->getRepository($repository->getPropertyGroupClass())->findAll(),
             'properties'        => $em->getRepository($repository->getPropertyClass())->findAll(),
-            'items'             => $em->getRepository($repository->getItemClass())->findAll(),
+            'items'             => $em->getRepository($repository->getItemClass())->findBy([], ['id' => 'DESC']),
             'repository'        => $repository,
         ]);
     }
