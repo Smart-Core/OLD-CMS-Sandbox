@@ -3,7 +3,6 @@
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**

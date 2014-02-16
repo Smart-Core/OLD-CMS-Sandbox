@@ -9,7 +9,7 @@
     <p>Цена: {{ item.property('price') }}</p>
 
     {% if item.property('image') %}
-        <p>Картинка: {{ smart_media_img(item.property('image')) }}</p>
+        <p>Картинка: {{ smart_media_img(item.property('image'), 'my_thumb') }}</p>
     {% endif %}
 
     <hr />

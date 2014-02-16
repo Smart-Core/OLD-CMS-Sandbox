@@ -209,7 +209,7 @@ class UnicatService
 
         return $this->em->getRepository($repository->getPropertyClass())->findBy($filter, ['position' => 'ASC']);
     }
-    
+
     /**
      * @param UnicatRepository $repository
      * @param int $groupId
@@ -240,7 +240,7 @@ class UnicatService
 
         return $this->em->getRepository('UnicatBundle:UnicatRepository')->findOneBy([$key => $val]);
     }
-    
+
     /**
      * @param int $id
      * @return UnicatStructure

@@ -4,11 +4,9 @@ namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\CMSBundle\Container;
-use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
-use SmartCore\Bundle\UnicatBundle\Service\UnicatService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -56,7 +54,7 @@ class ItemFormType extends AbstractType
                 'expanded'  => ('multi' === $structure->getEntries()) ? true : false,
                 'multiple'  => ('multi' === $structure->getEntries()) ? true : false,
                 'class'     => $this->repository->getCategoryClass(),
-                'query_builder' => function(EntityRepository $er) use ($structure) {
+                'query_builder' => function (EntityRepository $er) use ($structure) {
                     return $er
                         ->createQueryBuilder('c')
                         ->where('c.structure = :structure')

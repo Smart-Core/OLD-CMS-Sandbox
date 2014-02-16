@@ -145,7 +145,7 @@ class Collection
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
@@ -183,7 +183,7 @@ class Collection
     public function setParams($params)
     {
         $this->params = $params;
-    
+
         return $this;
     }
 
@@ -202,6 +202,7 @@ class Collection
     public function setFileRelativePathPattern($file_relative_path_pattern)
     {
         $this->file_relative_path_pattern = $file_relative_path_pattern;
+
         return $this;
     }
 

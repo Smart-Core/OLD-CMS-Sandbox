@@ -2,9 +2,7 @@
 
 namespace SmartCore\Bundle\MediaBundle\Twig;
 
-use SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class MediaExtension extends \Twig_Extension
 {

@@ -2,9 +2,7 @@
 
 namespace SmartCore\Bundle\MediaBundle\Provider;
 
-use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\MediaBundle\Entity\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface ProviderInterface
 {

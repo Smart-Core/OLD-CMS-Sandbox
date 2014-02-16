@@ -211,6 +211,7 @@ class UnicatStructure
     public function setTitleForm($title_form)
     {
         $this->title_form = $title_form;
+
         return $this;
     }
 

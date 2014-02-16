@@ -98,7 +98,7 @@ class Category
     public function setSlug($slug)
     {
         $this->slug = $slug;
-    
+
         return $this;
     }
 
@@ -117,7 +117,7 @@ class Category
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 

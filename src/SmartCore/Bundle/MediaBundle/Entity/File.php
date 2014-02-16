@@ -178,7 +178,7 @@ class File
 
         return $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath() . $this->getRelativePath();
     }
-    
+
     /**
      * @return string
      */
@@ -298,7 +298,7 @@ class File
         $this->filename = $filename . '.' . $originalFile->guessClientExtension();
         //$this->filename = hash('crc32', $originalFilename) . '.' . strtolower(substr($originalFilename, strrpos($originalFilename, '.') + 1));
         $this->original_filename = $originalFile->getClientOriginalName();
-    
+
         return $this;
     }
 
@@ -344,7 +344,7 @@ class File
     public function setMimeType($mimeType)
     {
         $this->mime_type = $mimeType;
-    
+
         return $this;
     }
 
@@ -382,7 +382,7 @@ class File
     public function setSize($size)
     {
         $this->size = $size;
-    
+
         return $this;
     }
 

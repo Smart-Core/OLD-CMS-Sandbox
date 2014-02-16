@@ -22,6 +22,12 @@ framework:
     templating:      { engines: ['twig', 'php'] } #assets_version: SomeVersionScheme
     translator:      { fallback: en }
 
+avalanche_imagine:
+    filters:
+        my_thumb:
+            type:    thumbnail
+            options: { size: [120, 90], mode: outbound }
+
 fm_elfinder:
     locale: %locale% # defaults to current request locale
     editor: tinymce # other choices are ckeditor, tinymce or simple
