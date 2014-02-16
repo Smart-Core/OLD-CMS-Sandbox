@@ -1,6 +1,4 @@
 
-{% set mc = repository.mediaCollection.id %}
-
 {% for item in items %}
     <h1>{{ item.property('title') }}</h1>
 
@@ -11,7 +9,7 @@
     <p>Цена: {{ item.property('price') }}</p>
 
     {% if item.property('image') %}
-        <p>Картинка: {{ smart_media_img(item.property('image'), mc) }}</p>
+        <p>Картинка: {{ smart_media_img(item.property('image')) }}</p>
     {% endif %}
 
     <hr />

@@ -25,8 +25,7 @@ class CatalogController extends Controller
         $repository = $unicat->getRepository($this->repository_id);
 
         return $this->render('CatalogModule::catalog.html.twig', [
-            'items'      => $unicat->findAllItems($repository),
-            'repository' => $repository,
+            'items' => $unicat->findAllItems($repository),
         ]);
     }
 }

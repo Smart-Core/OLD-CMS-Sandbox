@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\MediaBundle\Service;
 
 use Doctrine\ORM\EntityManager;
+use SmartCore\Bundle\MediaBundle\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -16,22 +17,48 @@ class MediaCloudService
     protected $em;
 
     /**
+     * @var CollectionService[]
+     */
+    protected $collections;
+
+    /**
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+        $this->em        = $container->get('doctrine.orm.entity_manager');
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return CollectionService
      */
     public function getCollection($id)
     {
-        return new CollectionService($this->container, $id);
+        if (!isset($this->collections[$id])) {
+            $this->collections[$id] = new CollectionService($this->container, $id);
+        }
+
+        return $this->collections[$id];
     }
 
+    /**
+     * Получить ссылку на файл.
+     *
+     * @param int $id
+     * @param string $filer
+     * @return string
+     *
+     * @todo кеширование.
+     */
+    public function getFileUrl($id, $filer = null)
+    {
+        /** @var File $file */
+        $file = $this->em->getRepository('SmartMediaBundle:File')->find($id);
+
+        return $this->getCollection($file->getCollection()->getId())->get($id, $filer);
+    }
 
     public function createCollection()
     {

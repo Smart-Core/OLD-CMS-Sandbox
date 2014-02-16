@@ -44,8 +44,9 @@ class CollectionService
 
     /**
      * @param ContainerInterface $container
+     * @param int $id
      */
-    public function __construct(ContainerInterface $container, $id = null)
+    public function __construct(ContainerInterface $container, $id)
     {
         $this->em               = $container->get('doctrine.orm.entity_manager');
         $this->collectionsRepo  = $this->em->getRepository('SmartMediaBundle:Collection');
@@ -66,18 +67,6 @@ class CollectionService
     public function get($id, $filter = null)
     {
         return $this->provider->get($id, $filter);
-    }
-
-    /**
-     * Получить ссылку на файл.
-     *
-     * @param integer $id
-     * @param string|null $filter
-     * @return string|null
-     */
-    public function getSplFile($id, $filter = null)
-    {
-        return $this->provider->getSplFile($id, $filter);
     }
 
     /**

@@ -91,9 +91,6 @@ class ItemFormType extends AbstractType
                 $type = 'file';
 
                 if (isset($options['data'])) {
-                    /** @var CollectionService $mc */
-                    //$mc = Container::get('smart_media')->getCollection(1); // @todo избавиться от зависимости медиаколлекции.
-                    //$propertyOptions['data'] = $mc->getSplFile($options['data']->getProperty($property->getName()));
                     $propertyOptions['data'] = new \Symfony\Component\HttpFoundation\File\File('', false);
                 }
             }

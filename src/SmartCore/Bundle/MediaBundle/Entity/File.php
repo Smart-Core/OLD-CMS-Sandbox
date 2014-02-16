@@ -116,7 +116,10 @@ class File
 
         $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
 
+        $filter = $this->getCollection()->getDefaultFilter();
+
         $file_relative_path_pattern = $this->getCollection()->getFileRelativePathPattern();
+        $file_relative_path_pattern = str_replace('{filter}', empty($filter) ? 'orig' : $filter, $file_relative_path_pattern);
         $file_relative_path_pattern = str_replace('{year}',  date('Y'), $file_relative_path_pattern);
         $file_relative_path_pattern = str_replace('{month}', date('m'), $file_relative_path_pattern);
         $file_relative_path_pattern = str_replace('{day}',   date('d'), $file_relative_path_pattern);

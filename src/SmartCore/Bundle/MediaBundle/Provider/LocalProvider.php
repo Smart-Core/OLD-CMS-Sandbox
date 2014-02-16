@@ -58,18 +58,6 @@ class LocalProvider implements ProviderInterface
     }
 
     /**
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\File\File
-     */
-    public function getSplFile($id)
-    {
-        return new \Symfony\Component\HttpFoundation\File\File(
-            // dirname($this->request->server->get('SCRIPT_FILENAME')) .
-            $this->get($id), false
-        );
-    }
-    
-    /**
      * @param File $file
      * @return \Symfony\Component\HttpFoundation\File\File|void
      * @throws \RuntimeException

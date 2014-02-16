@@ -100,7 +100,7 @@ class Collection
         $this->relative_path    = $relativePath;
 
         $this->filename_pattern            = '{hour}_{minutes}_{rand(10)}';
-        $this->file_relative_path_pattern  = '{year}/{month}/{day}/';
+        $this->file_relative_path_pattern  = '/{year}/{month}/{day}';
     }
 
     /**

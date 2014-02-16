@@ -35,20 +35,21 @@ class MediaExtension extends \Twig_Extension
     }
 
     /**
-     * @param  int $fileId
-     * @param  int $collectionId
+     * @param  int $id
      * @return string
      */
-    public function generateFileUrl($fileId, $collectionId = 1)
+    public function generateFileUrl($id, $filer = null)
     {
-        $mc = $this->media->getCollection($collectionId);
-
-        return (empty($fileId)) ? null :  $mc->get($fileId);
+        return (empty($id)) ? null : $this->media->getFileUrl($id, $filer);
     }
 
-    public function renderImgTag($fileId, $collectionId = 1)
+    /**
+     * @param int $id
+     * @return null|string
+     */
+    public function renderImgTag($id, $filer = null)
     {
-        return (empty($fileId)) ? null : '<img src="' . $this->generateFileUrl($fileId, $collectionId)  . '" alt="" />';
+        return (empty($id)) ? null : '<img src="' . $this->generateFileUrl($id, $filer)  . '" alt="" />';
     }
 
     /**
