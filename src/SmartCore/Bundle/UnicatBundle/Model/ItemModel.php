@@ -4,10 +4,12 @@ namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ORM\Entity()
  * ORM\Table(name="unicat_items")
+ * @UniqueEntity(fields={"slug", "slug"}, message="Запись с таким сегментом URI уже существует.")
  */
 class ItemModel
 {
