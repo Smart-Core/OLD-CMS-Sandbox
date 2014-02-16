@@ -54,7 +54,7 @@ class CollectionService
         $this->filesRepo        = $this->em->getRepository('SmartMediaBundle:File');
 
         // @todo разные провайдеры.
-        $this->provider = new LocalProvider($this->filesRepo, $container);
+        $this->provider = new LocalProvider($container);
     }
 
     /**

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 16 2014 г., 13:33
+-- Время создания: Фев 16 2014 г., 14:51
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -795,19 +795,24 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files_transformed` (
   `collection_id` int(11) NOT NULL,
   `storage_id` int(11) NOT NULL,
   `filter` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `size` bigint(20) NOT NULL,
+  `size` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `filter_file_id` (`filter`,`file_id`),
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
-  KEY `IDX_B0A0921B5CC5DB90` (`storage_id`),
-  KEY `filter` (`filter`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files_transformed`
 --
 
+INSERT INTO `aaa_media_files_transformed` (`id`, `file_id`, `collection_id`, `storage_id`, `filter`, `size`, `created_at`) VALUES
+(1, 1, 1, 1, '300-300', 6438, '2014-02-16 14:48:48'),
+(2, 2, 1, 1, '300-300', 14464, '2014-02-16 14:48:48'),
+(3, 1, 1, 1, '100-100', 1809, '2014-02-16 14:49:22'),
+(4, 2, 1, 1, '100-100', 3157, '2014-02-16 14:49:22');
 
 -- --------------------------------------------------------
 
@@ -1474,9 +1479,9 @@ ALTER TABLE `aaa_media_files`
 -- Ограничения внешнего ключа таблицы `aaa_media_files_transformed`
 --
 ALTER TABLE `aaa_media_files_transformed`
-  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`),
   ADD CONSTRAINT `FK_B0A0921B514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`);
+  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`),
+  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_menu`

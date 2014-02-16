@@ -24,9 +24,15 @@ framework:
 
 avalanche_imagine:
     filters:
-        my_thumb:
+        100-100:
             type:    thumbnail
-            options: { size: [120, 90], mode: outbound }
+            options: { size: [100, 100], mode: inset, quality: 100, format: jpeg }
+        200-200:
+            type:    thumbnail
+            options: { size: [200, 200], mode: inset, quality: 100, format: jpeg }
+        300-300:
+            type:    thumbnail
+            options: { size: [300, 300], mode: inset, quality: 100, format: jpeg }
 
 fm_elfinder:
     locale: %locale% # defaults to current request locale

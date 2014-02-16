@@ -49,7 +49,7 @@ class FileTransformed
     /**
      * @var integer
      *
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="integer")
      */
     protected $size;
 
@@ -69,7 +69,7 @@ class FileTransformed
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -85,10 +85,10 @@ class FileTransformed
     }
 
     /**
-     * @param mixed $collection
+     * @param Collection $collection
      * @return $this
      */
-    public function setCollection($collection)
+    public function setCollection(Collection $collection)
     {
         $this->collection = $collection;
 
@@ -96,7 +96,7 @@ class FileTransformed
     }
 
     /**
-     * @return mixed
+     * @return Collection
      */
     public function getCollection()
     {
@@ -104,18 +104,19 @@ class FileTransformed
     }
 
     /**
-     * @param mixed $file
+     * @param File $file
      * @return $this
      */
-    public function setFile($file)
+    public function setFile(File $file)
     {
         $this->file = $file;
-
+        $this->setCollection($file->getCollection());
+        $this->setStorage($file->getStorage());
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return File
      */
     public function getFile()
     {
@@ -161,10 +162,10 @@ class FileTransformed
     }
 
     /**
-     * @param mixed $storage
+     * @param Storage $storage
      * @return $this
      */
-    public function setStorage($storage)
+    public function setStorage(Storage $storage)
     {
         $this->storage = $storage;
 
@@ -172,7 +173,7 @@ class FileTransformed
     }
 
     /**
-     * @return mixed
+     * @return Storage
      */
     public function getStorage()
     {

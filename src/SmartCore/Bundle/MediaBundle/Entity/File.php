@@ -110,13 +110,15 @@ class File
     /**
      * @return string
      */
-    public function generateRelativePath()
+    public function generateRelativePath($filter = null)
     {
         // @todo проверка на установленный Storage и Collection
 
         $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
 
-        $filter = $this->getCollection()->getDefaultFilter();
+        if (!$filter) {
+            $filter = $this->getCollection()->getDefaultFilter();
+        }
 
         $file_relative_path_pattern = $this->getCollection()->getFileRelativePathPattern();
         $file_relative_path_pattern = str_replace('{filter}', empty($filter) ? 'orig' : $filter, $file_relative_path_pattern);
@@ -138,6 +140,7 @@ class File
         $this->uploadedFile = $file;
         $this->setFilename($file);
 
+        // @todo video и т.д
         if (false !== strpos($file->getMimeType(), 'image/')) {
             $this->setType('image');
         } else {
