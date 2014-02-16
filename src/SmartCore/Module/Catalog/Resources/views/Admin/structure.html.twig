@@ -6,12 +6,14 @@
 
     <h2>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h2>
 
-    <div class="span3">
-        {{ form(form, {'attr': {'class': 'well'} }) }}
-
+    <div class="span12">
         <a href="{{ path('smart_module.catalog_repository_admin', {'repository': structure.repository.name}) }}">
             &laquo; назад к репозиторию &laquo;{{ structure.repository.title }}&raquo;
         </a>
+    </div>
+
+    <div class="span3">
+        {{ form(form, {'attr': {'class': 'well'} }) }}
     </div>
 
     <div class="span8">

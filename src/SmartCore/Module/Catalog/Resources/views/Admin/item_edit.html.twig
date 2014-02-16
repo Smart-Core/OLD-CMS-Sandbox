@@ -4,14 +4,14 @@
 
 {% block content %}
 
-    <h2>{{ 'Edit item'|trans }}</h2>
+    <h2>{{ 'Edit record'|trans }}</h2>
+
+    <p><a href="{{ path('smart_module.catalog_repository_admin', {'repository': repository.name}) }}">
+        &laquo; назад к репозиторию &laquo;{{ repository.title }}&raquo;
+    </a></p>
 
     <div class="well">
         {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}
     </div>
-
-    <a href="{{ path('smart_module.catalog_repository_admin', {'repository': repository.name}) }}">
-        &laquo; назад к репозиторию &laquo;{{ repository.title }}&raquo;
-    </a>
 
 {% endblock content %}
