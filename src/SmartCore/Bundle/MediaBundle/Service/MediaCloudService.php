@@ -57,6 +57,10 @@ class MediaCloudService
         /** @var File $file */
         $file = $this->em->getRepository('SmartMediaBundle:File')->find($id);
 
+        if (empty($file)) {
+            return null;
+        }
+
         return $this->getCollection($file->getCollection()->getId())->get($id, $filer);
     }
 
