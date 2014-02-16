@@ -223,11 +223,11 @@ class AdminCatalogController extends Controller
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
-            if ($form->isValid()) {
-                if ($form->get('cancel')->isClicked()) {
-                    return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
-                }
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
+            }
 
+            if ($form->isValid()) {
                 if ($form->get('update')->isClicked() and $form->isValid()) {
                     $unicat->updateItem($form, $request);
                     $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');

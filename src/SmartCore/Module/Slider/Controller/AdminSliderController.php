@@ -97,7 +97,7 @@ class AdminSliderController extends Controller
         $form = $this->createForm('smart_module_slider', $slider);
         $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
         $form->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить слайдер?')"]]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);

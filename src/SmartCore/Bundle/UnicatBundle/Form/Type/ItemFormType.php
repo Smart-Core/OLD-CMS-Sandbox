@@ -86,7 +86,6 @@ class ItemFormType extends AbstractType
             if ($property->isType('image')) {
                 // @todo сделать вджет загрузки картинок.
                 //$type = 'genemu_jqueryimage';
-//                $type = 'file';
                 $type = new PropertyImageFormType();
 
                 if (isset($options['data'])) {

@@ -84,7 +84,7 @@ class UnicatService
     {
         return $this->getCategoryForm($category->getStructure()->getRepository(), $category, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -135,7 +135,7 @@ class UnicatService
     {
         return $this->getItemForm($repository, $data, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -166,7 +166,7 @@ class UnicatService
     {
         return $this->getPropertyForm($repository, $property, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
