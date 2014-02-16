@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\MediaBundle\Entity\Category;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\MediaBundle\Entity\File;
+use SmartCore\Bundle\MediaBundle\Entity\FileTransformed;
 use SmartCore\Bundle\MediaBundle\Provider\LocalProvider;
 use SmartCore\Bundle\MediaBundle\Provider\ProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -38,6 +39,11 @@ class CollectionService
     protected $filesRepo;
 
     /**
+     * @var EntityRepository
+     */
+    protected $filesTransformedRepo;
+
+    /**
      * @var ProviderInterface
      */
     protected $provider;
@@ -52,6 +58,7 @@ class CollectionService
         $this->collectionsRepo  = $this->em->getRepository('SmartMediaBundle:Collection');
         $this->collection       = $this->collectionsRepo->find($id);
         $this->filesRepo        = $this->em->getRepository('SmartMediaBundle:File');
+        $this->filesTransformedRepo = $this->em->getRepository('SmartMediaBundle:FileTransformed');
 
         // @todo разные провайдеры.
         $this->provider = new LocalProvider($container);
@@ -71,7 +78,7 @@ class CollectionService
 
     /**
      * @param UploadedFile $file
-     * @param Category $category
+     * @param Category|int $category
      * @param array $tags
      * @return int - ID файла в коллекции.
      */
@@ -98,7 +105,16 @@ class CollectionService
      */
     public function remove($id)
     {
-        // @todo
+        if (empty($id)) {
+            return null;
+        }
+
+        $this->provider->remove($id);
+
+        $file = $this->filesRepo->find($id);
+
+        $this->em->remove($file);
+        $this->em->flush($file);
     }
 
     /**

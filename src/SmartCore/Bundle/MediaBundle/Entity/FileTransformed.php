@@ -22,8 +22,8 @@ class FileTransformed
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="File")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="File", inversedBy="filesTransformed", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $file;
 
@@ -66,6 +66,14 @@ class FileTransformed
     public function __construct()
     {
         $this->created_at = new \DateTime();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullRelativeUrl()
+    {
+        return $this->getFile()->getFullRelativeUrl($this->getFilter());
     }
 
     /**

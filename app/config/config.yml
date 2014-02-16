@@ -62,6 +62,9 @@ twig:
     debug:            %kernel.debug%
     strict_variables: false
     autoescape:       false
+    form:
+        resources:
+            - 'UnicatBundle:Form:fields.html.twig' # @todo убрать в бандл юниката
 
 # Assetic Configuration
 assetic:

@@ -96,7 +96,7 @@ abstract class CategoryModel
     protected $items;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categoriesSingle")
      */
     protected $itemsSingle;
 

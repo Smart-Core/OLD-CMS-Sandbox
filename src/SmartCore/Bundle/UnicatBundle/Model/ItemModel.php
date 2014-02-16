@@ -232,6 +232,17 @@ class ItemModel
 
     /**
      * @param string $name
+     * @return $this
+     */
+    public function removeProperty($name)
+    {
+        unset($this->properties[$name]);
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
      * @param mixed $value
      * @return $this
      */

@@ -101,11 +101,11 @@ class LocalProvider implements ProviderInterface
                 $this->em->persist($fileTransformed);
                 $this->em->flush($fileTransformed);
             } else {
-                $file->generateRelativePath($filter);
+                $file->setRelativePath($file->generatePattern($filter));
             }
         }
 
-        return $this->request->getBasePath() . $file->getFullRelativeUrl();
+        return $this->request->getBasePath() . $file->getFullRelativeUrl($filter);
     }
 
     /**
@@ -127,10 +127,24 @@ class LocalProvider implements ProviderInterface
     /**
      * @param int $id
      * @return bool
+     *
+     * @todo качественную обработку ошибок.
      */
     public function remove($id)
     {
-        // @todo
+        $filesTransformed = $this->filesTransformedRepo->findBy(['file' => $id]);
+
+        /** @var FileTransformed $fileTransformed */
+        foreach ($filesTransformed as $fileTransformed) {
+            $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')) . $fileTransformed->getFullRelativeUrl();
+
+            if (file_exists($fullPath)) {
+                @unlink($fullPath);
+            }
+        }
+
+        $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')) . $fileTransformed->getFile()->getFullRelativeUrl();
+        @unlink($fullPath);
     }
 
     /**

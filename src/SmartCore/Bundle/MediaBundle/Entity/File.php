@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="media_files",
  *      indexes={
  *          @ORM\Index(name="type", columns={"type"})
@@ -94,6 +93,13 @@ class File
     protected $created_at;
 
     /**
+     * @var FileTransformed[]
+     *
+     * @ORM\OneToMany(targetEntity="FileTransformed", mappedBy="file", cascade={"persist"})
+     */
+    protected $filesTransformed;
+
+    /**
      * @var UploadedFile
      */
     protected $uploadedFile;
@@ -105,6 +111,7 @@ class File
     {
         $this->created_at = new \DateTime();
         $this->user_id    = 0;
+        $this->storage    = null;
     }
 
     /**
@@ -120,15 +127,50 @@ class File
             $filter = $this->getCollection()->getDefaultFilter();
         }
 
-        $file_relative_path_pattern = $this->getCollection()->getFileRelativePathPattern();
-        $file_relative_path_pattern = str_replace('{filter}', empty($filter) ? 'orig' : $filter, $file_relative_path_pattern);
-        $file_relative_path_pattern = str_replace('{year}',  date('Y'), $file_relative_path_pattern);
-        $file_relative_path_pattern = str_replace('{month}', date('m'), $file_relative_path_pattern);
-        $file_relative_path_pattern = str_replace('{day}',   date('d'), $file_relative_path_pattern);
+        return $relativePath . $this->generatePattern($filter);
+    }
 
-        $this->setRelativePath($file_relative_path_pattern);
+    /**
+     * @param string|null $filter
+     * @return mixed|string
+     */
+    public function generatePattern($filter = null)
+    {
+        $pattern = $this->getCollection()->getFileRelativePathPattern();
+        $pattern = str_replace('{filter}', empty($filter) ? 'orig' : $filter, $pattern);
+        $pattern = str_replace('{year}',  date('Y'), $pattern);
+        $pattern = str_replace('{month}', date('m'), $pattern);
+        $pattern = str_replace('{day}',   date('d'), $pattern);
 
-        return $relativePath . $file_relative_path_pattern;
+        return $pattern;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullRelativePath($filter = null)
+    {
+        if (empty($this->relative_path)) {
+            $this->relative_path = $this->generatePattern();
+        }
+
+        return $this->generateRelativePath($filter);
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullRelativeUrl($filter = null)
+    {
+        return $this->getFullRelativePath($filter) . '/' . $this->getFilename();
+    }
+
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -160,34 +202,6 @@ class File
     public function getUploadedFile()
     {
         return $this->uploadedFile;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFullRelativePath()
-    {
-        if (empty($this->relative_path)) {
-            $this->generateRelativePath();
-        }
-
-        return $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath() . $this->getRelativePath();
-    }
-
-    /**
-     * @return string
-     */
-    public function getFullRelativeUrl()
-    {
-        return $this->getFullRelativePath() . '/' . $this->getFilename();
     }
 
     /**
@@ -226,6 +240,14 @@ class File
     public function getCollection()
     {
         return $this->collection;
+    }
+
+    /**
+     * @return \SmartCore\Bundle\MediaBundle\Entity\FileTransformed[]
+     */
+    public function getFilesTransformed()
+    {
+        return $this->filesTransformed;
     }
 
     /**
@@ -299,7 +321,6 @@ class File
         $filename = str_replace('{rand(10)}', substr(md5(microtime(true) . $originalFile->getClientOriginalName()), 0, 10), $filename);
 
         $this->filename = $filename . '.' . $originalFile->guessClientExtension();
-        //$this->filename = hash('crc32', $originalFilename) . '.' . strtolower(substr($originalFilename, strrpos($originalFilename, '.') + 1));
         $this->original_filename = $originalFile->getClientOriginalName();
 
         return $this;
@@ -414,15 +435,5 @@ class File
     public function getUserId()
     {
         return $this->user_id;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function doStuffOnPrePersist()
-    {
-        if (null === $this->storage) {
-            $this->storage = $this->collection->getDefaultStorage();
-        }
     }
 }

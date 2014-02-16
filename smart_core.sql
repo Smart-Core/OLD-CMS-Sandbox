@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 16 2014 г., 14:51
+-- Время создания: Фев 16 2014 г., 20:30
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -1479,9 +1479,9 @@ ALTER TABLE `aaa_media_files`
 -- Ограничения внешнего ключа таблицы `aaa_media_files_transformed`
 --
 ALTER TABLE `aaa_media_files_transformed`
+  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_B0A0921B514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`);
+  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_menu`

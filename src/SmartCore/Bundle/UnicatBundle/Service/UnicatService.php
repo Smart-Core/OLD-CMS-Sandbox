@@ -300,22 +300,29 @@ class UnicatService
 
         foreach ($properties as $property) {
             if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
-                $file = $item->getProperty($property->getName());
+                $tableItems = $this->em->getClassMetadata($repository->getItemClass())->getTableName();
+                $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
+                $res = $this->em->getConnection()->query($sql)->fetch();
 
-                // пляска с бубном с загрузкой картинки, когда надо взять предыдущее значение...
-                if (null == $file) {
-                    $tableItems = $this->em->getClassMetadata($repository->getItemClass())->getTableName();
-                    $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
-                    $res = $this->em->getConnection()->query($sql)->fetch();
-
-                    if (!empty($res)) {
-                        $previousProperties = unserialize($res['properties']);
-                        $fileId = $previousProperties[$property->getName()];
-                    } else {
-                        $fileId = null;
-                    }
+                if (!empty($res)) {
+                    $previousProperties = unserialize($res['properties']);
+                    $fileId = $previousProperties[$property->getName()];
                 } else {
-                    $fileId = $this->mc->upload($file);
+                    $fileId = null;
+                }
+
+                // удаление файла.
+                $_delete_ = $request->request->get('_delete_');
+                if (is_array($_delete_) and isset($_delete_['property:' . $property->getName()]) and 'on' === $_delete_['property:' . $property->getName()]) {
+                    $this->mc->remove($fileId);
+                    $fileId = null;
+                } else {
+                    $file = $item->getProperty($property->getName());
+
+                    if ($file) {
+                        $this->mc->remove($fileId);
+                        $fileId = $this->mc->upload($file);
+                    }
                 }
 
                 $item->setProperty($property->getName(), $fileId);
