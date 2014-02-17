@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 17 2014 г., 01:45
+-- Время создания: Фев 17 2014 г., 20:12
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -1234,7 +1234,7 @@ CREATE TABLE IF NOT EXISTS `aaa_users` (
 --
 
 INSERT INTO `aaa_users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-16 12:50:24', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-17 19:36:51', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
@@ -1312,70 +1312,6 @@ INSERT INTO `engine_permissions_groups` (`group_id`, `descr`) VALUES
 ('engine', 'Ядро'),
 ('module.smartcore.news', 'Модуль Новости'),
 ('module.smartcore.texter', 'Модуль Текстер');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `engine_roles`
---
-
-DROP TABLE IF EXISTS `engine_roles`;
-CREATE TABLE IF NOT EXISTS `engine_roles` (
-  `role_id` varchar(50) NOT NULL,
-  `pos` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `descr` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Роли пользователей';
-
---
--- Дамп данных таблицы `engine_roles`
---
-
-INSERT INTO `engine_roles` (`role_id`, `pos`, `descr`) VALUES
-('ROLE_ADMIN', 0, '-'),
-('ROLE_GUEST', 0, 'Анонимный посетитель'),
-('ROLE_NEWSMAKER', 0, 'Новостеписатель'),
-('ROLE_ROOT', 0, 'Супер админ'),
-('ROLE_USER', 0, 'Зарегистрированный пользователь');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `engine_roles_hierarchy`
---
-
-DROP TABLE IF EXISTS `engine_roles_hierarchy`;
-CREATE TABLE IF NOT EXISTS `engine_roles_hierarchy` (
-  `role_id` varchar(50) NOT NULL,
-  `parent_role_id` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Иерархия ролей';
-
---
--- Дамп данных таблицы `engine_roles_hierarchy`
---
-
-INSERT INTO `engine_roles_hierarchy` (`role_id`, `parent_role_id`) VALUES
-('ROLE_NEWSMAKER', 'ROLE_USER');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `engine_roles_users_relation`
---
-
-DROP TABLE IF EXISTS `engine_roles_users_relation`;
-CREATE TABLE IF NOT EXISTS `engine_roles_users_relation` (
-  `role_id` varchar(50) NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`role_id`,`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связи полей и юзеров.';
-
---
--- Дамп данных таблицы `engine_roles_users_relation`
---
-
-INSERT INTO `engine_roles_users_relation` (`role_id`, `user_id`) VALUES
-('ROLE_ROOT', 1);
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -1477,17 +1413,17 @@ ALTER TABLE `aaa_media_collections`
 -- Ограничения внешнего ключа таблицы `aaa_media_files`
 --
 ALTER TABLE `aaa_media_files`
-  ADD CONSTRAINT `FK_D2E500115CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`),
   ADD CONSTRAINT `FK_D2E5001112469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_media_categories` (`id`),
-  ADD CONSTRAINT `FK_D2E50011514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`);
+  ADD CONSTRAINT `FK_D2E50011514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`),
+  ADD CONSTRAINT `FK_D2E500115CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_media_files_transformed`
 --
 ALTER TABLE `aaa_media_files_transformed`
-  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_B0A0921B514956FD` FOREIGN KEY (`collection_id`) REFERENCES `aaa_media_collections` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`);
+  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `aaa_media_storages` (`id`),
+  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `aaa_media_files` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_menu`

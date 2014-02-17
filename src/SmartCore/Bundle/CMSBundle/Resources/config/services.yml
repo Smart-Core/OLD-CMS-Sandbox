@@ -97,7 +97,7 @@ services:
         class: SmartCore\Bundle\CMSBundle\Form\Tree\FolderTreeType
         arguments: [ @doctrine ]
         tags:
-            - { name: form.type, alias: folder_tree }
+            - { name: form.type, alias: cms_folder_tree }
 # Twig
     cms.twig.html_title_extension:
         class: SmartCore\Bundle\CMSBundle\Twig\HtmlTitleExtension

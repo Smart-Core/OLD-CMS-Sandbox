@@ -31,7 +31,7 @@ class ItemFormType extends AbstractType
                 'class'     => 'MenuModule:Item',
                 'required'  => false,
             ])
-            ->add('folder', 'folder_tree', ['required' => false])
+            ->add('folder', 'cms_folder_tree', ['required' => false])
             ->add('title',  null, ['attr' => ['class' => 'focused']])
             ->add('url')
             ->add('descr')

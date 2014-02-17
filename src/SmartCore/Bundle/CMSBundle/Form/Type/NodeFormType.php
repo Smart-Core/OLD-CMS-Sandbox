@@ -22,7 +22,7 @@ class NodeFormType extends AbstractType
                 'choices' => $modules,
                 'data' => 'Texter',
             ])
-            ->add('folder', 'folder_tree')
+            ->add('folder', 'cms_folder_tree')
             ->add('block', 'entity', [
                 'class' => 'CMSBundle:Block',
                 'query_builder' => function (EntityRepository $er) {

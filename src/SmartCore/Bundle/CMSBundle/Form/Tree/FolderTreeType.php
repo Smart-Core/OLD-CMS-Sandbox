@@ -31,6 +31,6 @@ class FolderTreeType extends DoctrineType
 
     public function getName()
     {
-        return 'folder_tree';
+        return 'cms_folder_tree';
     }
 }

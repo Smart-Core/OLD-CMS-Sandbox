@@ -15,7 +15,7 @@ class FolderFormType extends AbstractType
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('uri_part')
             ->add('descr')
-            ->add('parent_folder', 'folder_tree')
+            ->add('parent_folder', 'cms_folder_tree')
             ->add('router_node_id')
             ->add('position')
             ->add('is_active')
