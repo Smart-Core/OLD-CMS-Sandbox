@@ -64,19 +64,18 @@ class UnicatService
     }
 
     /**
-     * @param int $repository_id
+     * @param string|int $repository_id
      * @return UnicatRepositoryManager
      */
     public function getRepositoryManager($repository_id)
     {
-        if (!isset($this->urms[$repository_id])) {
-            $this->urms[$repository_id] = new UnicatRepositoryManager(
-                $this->em,
-                $this->getRepository($repository_id)
-            );
+        $repository = $this->getRepository($repository_id);
+
+        if (!isset($this->urms[$repository->getId()])) {
+            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $repository);
         }
 
-        return $this->urms[$repository_id];
+        return $this->urms[$repository->getId()];
     }
     
     /**
