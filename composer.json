@@ -38,6 +38,7 @@
         "liip/functional-test-bundle": "dev-master",
         "liip/theme-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "2.3.x-dev",
+        "mremi/templating-extra-bundle": "dev-master",
         "phpspec/phpspec": "~2@dev",
         "raulfraile/ladybug-bundle": "v0.7",
         "rickysu/tagcache-bundle": "dev-master",
