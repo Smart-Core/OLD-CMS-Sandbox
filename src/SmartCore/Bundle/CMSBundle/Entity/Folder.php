@@ -13,9 +13,9 @@ use SmartCore\Bundle\CMSBundle\Container;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="engine_folders",
  *      indexes={
- *          @ORM\Index(name="is_active", columns={"is_active"}),
+ *          @ORM\Index(name="is_active",  columns={"is_active"}),
  *          @ORM\Index(name="is_deleted", columns={"is_deleted"}),
- *          @ORM\Index(name="position", columns={"position"})
+ *          @ORM\Index(name="position",   columns={"position"})
  *      },
  *      uniqueConstraints={
  *          @ORM\UniqueConstraint(name="folder_pid_uri_part", columns={"folder_pid", "uri_part"}),
@@ -141,7 +141,7 @@ class Folder
     /**
      * Для отображения в формах. Не маппится в БД.
      */
-    protected $form_title;
+    protected $form_title = '';
 
     /**
      * Constructor.
@@ -166,9 +166,6 @@ class Folder
         $this->template_inheritable = null;
         $this->template_self        = null;
         $this->uri_part             = null;
-
-        // Unmapped
-        $this->form_title   = '';
     }
 
     /**

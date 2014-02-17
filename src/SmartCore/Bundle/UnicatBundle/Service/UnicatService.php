@@ -17,6 +17,7 @@ use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class UnicatService
 {
@@ -36,21 +37,52 @@ class UnicatService
     protected $mc;
 
     /**
+     * @var SecurityContextInterface
+     */
+    protected $securityContext;
+
+    /**
+     * @var UnicatRepositoryManager[]
+     */
+    protected $urms;
+
+    /**
      * @param EntityManager $em
      * @param FormFactoryInterface $formFactory
-     * MediaCloudService $mediaCloud
+     * @param MediaCloudService $mediaCloud
      */
-    public function __construct(EntityManager $em, FormFactoryInterface $formFactory, MediaCloudService $mediaCloud)
-    {
+    public function __construct(
+        EntityManager $em,
+        FormFactoryInterface $formFactory,
+        MediaCloudService $mediaCloud,
+        SecurityContextInterface $securityContext
+    ) {
         $this->em          = $em;
         $this->formFactory = $formFactory;
         $this->mc          = $mediaCloud->getCollection(1); // @todo настройку медиаколлекции.
+        $this->securityContext = $securityContext;
     }
 
     /**
+     * @param int $repository_id
+     * @return UnicatRepositoryManager
+     */
+    public function getRepositoryManager($repository_id)
+    {
+        if (!isset($this->urms[$repository_id])) {
+            $this->urms[$repository_id] = new UnicatRepositoryManager(
+                $this->em,
+                $this->getRepository($repository_id)
+            );
+        }
+
+        return $this->urms[$repository_id];
+    }
+    
+    /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -61,14 +93,17 @@ class UnicatService
 
     /**
      * @param UnicatStructure $structure
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
     public function getCategoryCreateForm(UnicatStructure $structure, array $options = [])
     {
         $category = $structure->getRepository()->createCategory();
-        $category->setStructure($structure);
+        $category
+            ->setStructure($structure)
+            ->setUserId($this->getUserId())
+        ;
 
         return $this->getCategoryForm($structure->getRepository(), $category, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
@@ -76,7 +111,7 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -90,7 +125,7 @@ class UnicatService
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -102,7 +137,7 @@ class UnicatService
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -114,7 +149,7 @@ class UnicatService
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -127,7 +162,7 @@ class UnicatService
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -140,7 +175,7 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -149,7 +184,7 @@ class UnicatService
         $property = $repository->createProperty();
         $property
             ->setGroup($this->em->getRepository($repository->getPropertyGroupClass())->find($groupId))
-            //@todo ->setUserId()
+            ->setUserId($this->getUserId())
         ;
 
         return $this->getPropertyForm($repository, $property, $options)
@@ -158,7 +193,7 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
-     * @param array $options Options for the form
+     * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      */
@@ -191,11 +226,12 @@ class UnicatService
 
     /**
      * @param UnicatRepository $repository
+     * @param array|null $orderBy
      * @return ItemModel|null
      */
-    public function findAllItems(UnicatRepository $repository)
+    public function findAllItems(UnicatRepository $repository, $orderBy = null)
     {
-        return $this->em->getRepository($repository->getItemClass())->findAll();
+        return $this->em->getRepository($repository->getItemClass())->findBy([], $orderBy);
     }
 
     /**
@@ -351,7 +387,7 @@ class UnicatService
 
         $request->request->set($form->getName(), $pd);
 
-        // @todo убрать выборку струкур в StructureRepository (Entity)
+        // @todo убрать выборку структур в StructureRepository (Entity)
         $list_string = '';
         foreach ($structures as $node_id) {
             $list_string .= $node_id . ',';
@@ -371,8 +407,8 @@ class UnicatService
 
         $structuresColection = new ArrayCollection(); // @todo наследуемые категории.
 
-        $item->setCategories($structuresSingleColection);
-        $item->setCategoriesSingle($structuresSingleColection);
+        $item->setCategories($structuresSingleColection)
+             ->setCategoriesSingle($structuresSingleColection);
 
         $this->em->persist($item);
         $this->em->flush($item);
@@ -442,5 +478,21 @@ class UnicatService
         $this->em->flush($property);
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    protected function getUserId()
+    {
+        if (null === $token = $this->securityContext->getToken()) {
+            return 0;
+        }
+
+        if (!is_object($user = $token->getUser())) {
+            return 0;
+        }
+
+        return $user->getId();
     }
 }

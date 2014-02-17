@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
+use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 
 /**
@@ -144,6 +145,16 @@ class UnicatRepository
     public function createCategory()
     {
         $class = $this->getCategoryClass();
+
+        return new $class;
+    }
+
+    /**
+     * @return ItemModel
+     */
+    public function createItem()
+    {
+        $class = $this->getItemClass();
 
         return new $class;
     }

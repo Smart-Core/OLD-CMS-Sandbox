@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 17 2014 г., 20:12
+-- Время создания: Фев 17 2014 г., 22:46
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_categories` (
   KEY `is_enabled` (`is_enabled`),
   KEY `position` (`position`),
   KEY `IDX_A29468122534008B` (`structure_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_categories`
@@ -254,7 +254,11 @@ INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_in
 (11, NULL, 'office', 'Офисная техника', 0, 'N;', '2014-02-12 22:19:07', 0, 1, 0, 1),
 (12, 11, 'printers', 'Принтеры', 0, 'N;', '2014-02-12 22:19:27', 0, 1, 0, 1),
 (13, 11, 'scanners', 'Сканеры', 0, 'N;', '2014-02-12 22:19:43', 0, 1, 0, 1),
-(14, NULL, 'sony', 'Sony', 0, 'N;', '2014-02-12 22:20:07', 0, 1, 0, 2);
+(14, NULL, 'sony', 'Sony', 0, 'N;', '2014-02-12 22:20:07', 0, 1, 0, 2),
+(15, 14, 'vaio', 'Vaio', 1, 'N;', '2014-02-17 21:37:57', 0, 1, 0, 2),
+(16, NULL, 'canon', 'Canon', 1, 'N;', '2014-02-17 21:38:32', 0, 1, 0, 2),
+(17, NULL, 'portable', 'Портативная электроника', 0, 'N;', '2014-02-17 22:00:09', 0, 1, 0, 1),
+(18, 17, 'reflex_cameras', 'Зеркальные фотоаппараты', 1, 'N;', '2014-02-17 22:08:49', 1, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -265,7 +269,7 @@ INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_in
 DROP TABLE IF EXISTS `aaa_catalog_items`;
 CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_enabled` tinyint(1) NOT NULL,
+  `is_enabled` tinyint(1) DEFAULT NULL,
   `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
@@ -273,16 +277,17 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_items`
 --
 
 INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
-(1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:20:"dfgb dfh dfj dfj gfj";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18'),
+(1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18'),
 (2, 1, 'galaxy-s4', 'N;', 'a:4:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;}', 0, '2014-02-14 13:13:57'),
-(3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23');
+(3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23'),
+(4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56');
 
 -- --------------------------------------------------------
 
@@ -308,7 +313,9 @@ INSERT INTO `aaa_catalog_items_categories_relations` (`item_id`, `category_id`) 
 (1, 9),
 (2, 2),
 (2, 9),
-(3, 8);
+(3, 8),
+(4, 16),
+(4, 18);
 
 -- --------------------------------------------------------
 
@@ -334,7 +341,9 @@ INSERT INTO `aaa_catalog_items_categories_relations_single` (`item_id`, `categor
 (1, 9),
 (2, 2),
 (2, 9),
-(3, 8);
+(3, 8),
+(4, 16),
+(4, 18);
 
 -- --------------------------------------------------------
 
@@ -775,7 +784,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files` (
   KEY `IDX_D2E5001112469DE2` (`category_id`),
   KEY `IDX_D2E500115CC5DB90` (`storage_id`),
   KEY `type` (`type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files`
@@ -784,7 +793,8 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files` (
 INSERT INTO `aaa_media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `relative_path`, `filename`, `original_filename`, `type`, `mime_type`, `original_size`, `size`, `user_id`, `created_at`) VALUES
 (1, 1, NULL, 1, '/2014/02/16', '00_52_bbc4f846f6.jpeg', 'samsung-np900x3c-a02ru-1.jpg', 'image', 'image/jpeg', 131476, 131476, 0, '2014-02-16 00:52:17'),
 (3, 1, NULL, 1, '/2014/02/17', '01_19_53bd2543df.jpeg', '154655_0.1362072510.jpg', 'image', 'image/jpeg', 29693, 29693, 0, '2014-02-17 01:19:23'),
-(4, 1, NULL, 1, '/2014/02/17', '01_41_ec3e194bc1.jpeg', 'pic_18468_1.jpg', 'image', 'image/jpeg', 364655, 364655, 0, '2014-02-17 01:41:47');
+(4, 1, NULL, 1, '/2014/02/17', '01_41_ec3e194bc1.jpeg', 'pic_18468_1.jpg', 'image', 'image/jpeg', 364655, 364655, 0, '2014-02-17 01:41:47'),
+(5, 1, NULL, 1, '/2014/02/17', '22_11_083fd66af8.jpeg', 'EOS_650D.jpg', 'image', 'image/jpeg', 1695916, 1695916, 0, '2014-02-17 22:11:20');
 
 -- --------------------------------------------------------
 
@@ -806,7 +816,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files_transformed`
@@ -818,7 +828,9 @@ INSERT INTO `aaa_media_files_transformed` (`id`, `file_id`, `collection_id`, `st
 (5, 3, 1, 1, '100-100', 2201, '2014-02-17 01:24:51'),
 (6, 3, 1, 1, '300-300', 8678, '2014-02-17 01:25:09'),
 (7, 4, 1, 1, '100-100', 2001, '2014-02-17 01:41:50'),
-(8, 4, 1, 1, '300-300', 8494, '2014-02-17 01:41:53');
+(8, 4, 1, 1, '300-300', 8494, '2014-02-17 01:41:53'),
+(9, 5, 1, 1, '300-300', 9631, '2014-02-17 22:11:27'),
+(10, 5, 1, 1, '100-100', 2219, '2014-02-17 22:38:10');
 
 -- --------------------------------------------------------
 
@@ -1234,7 +1246,7 @@ CREATE TABLE IF NOT EXISTS `aaa_users` (
 --
 
 INSERT INTO `aaa_users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-17 19:36:51', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-02-17 21:34:01', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 

@@ -2,9 +2,9 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
-use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
+use SmartCore\Bundle\UnicatBundle\Form\Tree\CategoryTreeType;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\AbstractType;
@@ -41,10 +41,9 @@ class ItemFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // @todo Meta-Keywords и Meta-Description
-
         $builder
             ->add('slug', null, ['attr' => ['class' => 'focused']])
-            ->add('is_enabled', null, ['required' => false])
+            ->add('is_enabled')
         ;
 
         foreach ($this->repository->getStructures() as $structure) {
@@ -54,13 +53,6 @@ class ItemFormType extends AbstractType
                 'expanded'  => ('multi' === $structure->getEntries()) ? true : false,
                 'multiple'  => ('multi' === $structure->getEntries()) ? true : false,
                 'class'     => $this->repository->getCategoryClass(),
-                'query_builder' => function (EntityRepository $er) use ($structure) {
-                    return $er
-                        ->createQueryBuilder('c')
-                        ->where('c.structure = :structure')
-                        ->setParameter('structure', $structure)
-                        ;
-                },
             ];
 
             if ('single' === $structure->getEntries() and isset($options['data'])) {
@@ -72,7 +64,8 @@ class ItemFormType extends AbstractType
                 }
             }
 
-            $builder->add('structure:' . $structure->getName(), 'entity', $optionsCat);
+            $categoryTreeType = (new CategoryTreeType(Container::get('doctrine')))->setStructure($structure);
+            $builder->add('structure:' . $structure->getName(), $categoryTreeType, $optionsCat);
         }
 
         /** @var $property PropertyModel */
@@ -89,7 +82,6 @@ class ItemFormType extends AbstractType
                 $type = new PropertyImageFormType();
 
                 if (isset($options['data'])) {
-                    //$propertyOptions['data'] = new \Symfony\Component\HttpFoundation\File\File('', false);
                     $propertyOptions['data'] = $options['data']->getProperty($property->getName());
                 }
             }

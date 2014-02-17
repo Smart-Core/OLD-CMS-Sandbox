@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * ORM\Table(name="unicat_categories"
  *      indexes={
  *          ORM\Index(name="is_enabled", columns={"is_enabled"}),
- *          ORM\Index(name="position", columns={"position"})
+ *          ORM\Index(name="position",   columns={"position"})
  *      },
  *      uniqueConstraints={
  *          ORM\UniqueConstraint(name="slug_parent_structure", columns={"slug", "parent_id", "structure_id"}),
@@ -99,6 +99,11 @@ abstract class CategoryModel
      * @ORM\ManyToMany(targetEntity="Item", mappedBy="categoriesSingle")
      */
     protected $itemsSingle;
+
+    /**
+     * Для отображения в формах. Не маппится в БД.
+     */
+    protected $form_title = '';
 
     /**
      * Constructor.
@@ -322,5 +327,24 @@ abstract class CategoryModel
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * @param string $form_title
+     * @return $this
+     */
+    public function setFormTitle($form_title)
+    {
+        $this->form_title = $form_title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFormTitle()
+    {
+        return $this->form_title;
     }
 }

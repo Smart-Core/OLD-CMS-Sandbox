@@ -23,7 +23,7 @@ class ItemModel
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_enabled;
 
@@ -81,7 +81,8 @@ class ItemModel
     {
         $this->categories = new ArrayCollection();
         $this->created_at = new \DateTime();
-        $this->user_id = 0;
+        $this->is_enabled = true;
+        $this->user_id    = 0;
     }
 
     /**
@@ -308,6 +309,14 @@ class ItemModel
      */
     public function setUserId($user_id)
     {
+        if (is_object($user_id) and method_exists($user_id, 'getId')) {
+            $user_id = $user_id->getId();
+        }
+
+        if (null === $user_id) {
+            $user_id = 0;
+        }
+
         $this->user_id = $user_id;
 
         return $this;

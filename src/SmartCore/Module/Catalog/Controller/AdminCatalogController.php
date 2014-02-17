@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminCatalogController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         /** @var \Doctrine\ORM\EntityManager $em */
@@ -17,12 +20,16 @@ class AdminCatalogController extends Controller
         ]);
     }
 
+    /**
+     * @param string $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function repositoryAction($repository)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $repository = $em->getRepository('UnicatBundle:UnicatRepository')->findOneBy(['name' => $repository]);
+        $repository = $this->get('unicat')->getRepository($repository);
 
         return $this->render('CatalogModule:Admin:repository.html.twig', [
             'properties_groups' => $em->getRepository($repository->getPropertyGroupClass())->findAll(),
@@ -61,7 +68,7 @@ class AdminCatalogController extends Controller
                 return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id]));
             }
 
-            if ($form->get('delete')->isClicked() and $form->isValid()) {
+            if ($form->has('delete') and $form->get('delete')->isClicked()) {
                 $unicat->deleteCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория удалена');
 
@@ -166,7 +173,7 @@ class AdminCatalogController extends Controller
                 return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
             }
 
-            if ($form->get('delete')->isClicked() and $form->isValid()) {
+            if ($form->has('delete') and $form->get('delete')->isClicked()) {
                 $unicat->deleteProperty($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Свойство удалено');
 
@@ -190,7 +197,10 @@ class AdminCatalogController extends Controller
         $unicat = $this->get('unicat');
         $repository = $unicat->getRepository($repository);
 
-        $form = $unicat->getItemCreateForm($repository);
+        $newItem = $repository->createItem();
+        $newItem->setUserId($this->getUser());
+
+        $form = $unicat->getItemCreateForm($repository, $newItem);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -227,13 +237,11 @@ class AdminCatalogController extends Controller
                 return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
             }
 
-            if ($form->isValid()) {
-                if ($form->get('update')->isClicked() and $form->isValid()) {
-                    $unicat->updateItem($form, $request);
-                    $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');
+            if ($form->isValid() and $form->get('update')->isClicked() and $form->isValid()) {
+                $unicat->updateItem($form, $request);
+                $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');
 
-                    return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
-                }
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
             }
         }
 
