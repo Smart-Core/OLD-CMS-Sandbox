@@ -4,6 +4,8 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
+use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use SmartCore\Bundle\CMSBundle\Container;
@@ -19,6 +21,9 @@ use SmartCore\Bundle\CMSBundle\Container;
  */
 class Block
 {
+    use SignedTrait;
+    use CreatedAtTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="smallint")
@@ -47,35 +52,26 @@ class Block
     protected $descr;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    protected $create_by_user_id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $create_datetime;
-
-    /**
+     * @var Folder[]|ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="Folder")
      * @ORM\JoinTable(name="engine_blocks_inherit",
      *      joinColumns={@ORM\JoinColumn(name="block_id", referencedColumnName="block_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")}
      *      )
-     * @var ArrayCollection
      */
     protected $folders;
 
     /**
      * Constructor.
      */
-    public function __construct()
+    public function __construct($name = null, $descr = null)
     {
-        $this->create_by_user_id = 0;
-        $this->create_datetime = new \DateTime();
-        $this->position = 0;
-        $this->descr = null;
-        $this->folders = new ArrayCollection();
+        $this->created_at   = new \DateTime();
+        $this->folders      = new ArrayCollection();
+        $this->descr        = $descr;
+        $this->name         = $name;
+        $this->position     = 0;
     }
 
     /**
@@ -85,13 +81,7 @@ class Block
     {
         $descr = $this->getDescr();
 
-        if (empty($descr)) {
-            $full_title = $this->getName();
-        } else {
-            $full_title = $descr . ' (' . $this->getName() . ')';
-        }
-
-        return $full_title;
+        return (empty($descr)) ? $this->getName() : $descr . ' (' . $this->getName() . ')';
     }
 
     /**
@@ -133,7 +123,7 @@ class Block
     }
 
     /**
-     * @param Folder $folder
+     * @param Folder[] $folder
      * @return $this
      */
     public function setFolders($folders)
@@ -157,7 +147,9 @@ class Block
      */
     public function setName($name)
     {
-        $this->name = $name;
+        if ('content' !== $this->name) {
+            $this->name = $name;
+        }
 
         return $this;
     }
@@ -194,32 +186,13 @@ class Block
     }
 
     /**
-     * @param integer $create_by_user_id
-     * @return $this
-     */
-    public function setCreateByUserId($create_by_user_id)
-    {
-        $this->create_by_user_id = $create_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getCreateByUserId()
-    {
-        return $this->create_by_user_id;
-    }
-
-    /**
      * Получить кол-во включенных нод.
      *
      * @todo убрать в сервис.
      */
     public function getNodesCount()
     {
-        $query = Container::get('doctrine.orm.default_entity_manager')->createQuery("
+        $query = Container::get('doctrine.orm.entity_manager')->createQuery("
             SELECT COUNT(n.node_id)
             FROM CMSBundle:Node n
             JOIN CMSBundle:Block b

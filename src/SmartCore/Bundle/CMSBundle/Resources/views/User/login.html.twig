@@ -44,4 +44,8 @@
 
     {{ render(controller('FOSUserBundle:Security:login')) }}
 
+    <script>
+        $('.form-signin').prepend('<h2 class="form-signin-heading">{{ 'Sign in'|trans }}</h2>');
+    </script>
+
 {% endblock content %}

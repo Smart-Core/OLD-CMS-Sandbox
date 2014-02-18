@@ -15,7 +15,7 @@ parameters:
     #database_user_db1:     smart_core
     #database_password_db1: 123
 
-    database_table_prefix: aaa_
+    database_table_prefix: ~ # aaa_
 
     mailer_transport:   mail
     mailer_host:        localhost
@@ -26,8 +26,8 @@ parameters:
 
     locale: ru
 
-    tagcache_driver:  File # Memcache, Memcached, File, Sqlite, Apc, Nullcache
-    orm_cache_driver: ~    # apc, wincache, xcache
+    tagcache_driver: Nullcache # Memcache, Memcached, File, Sqlite, Apc, Nullcache
+    orm_cache_driver: ~ # apc, wincache, xcache
 
     registration_email_confirmation: registration-email-confirmation@localhost.org
     email_resetting: no-reply@localhost.org

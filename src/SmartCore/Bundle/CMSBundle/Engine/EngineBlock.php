@@ -17,7 +17,7 @@ class EngineBlock
     /**
      * @var FormFactoryInterface
      */
-    protected $form_factory;
+    protected $formFactory;
 
     /**
      * @var \Doctrine\ORM\EntityRepository
@@ -28,11 +28,11 @@ class EngineBlock
      * @param EntityManager $em
      * @param FormFactoryInterface $form_factory
      */
-    public function __construct(EntityManager $em, FormFactoryInterface $form_factory)
+    public function __construct(EntityManager $em, FormFactoryInterface $formFactory)
     {
         $this->em = $em;
-        $this->form_factory = $form_factory;
-        $this->repository = $em->getRepository('CMSBundle:Block');
+        $this->formFactory = $formFactory;
+        $this->repository  = $em->getRepository('CMSBundle:Block');
     }
 
     /**
@@ -40,15 +40,23 @@ class EngineBlock
      */
     public function all()
     {
-        return $this->repository->findBy([], ['position' => 'ASC']);
+        $blocks = $this->repository->findBy([], ['position' => 'ASC']);
+
+        if (empty($blocks)) {
+            $this->update(new Block('content', 'Content workspace'));
+            return $this->all();
+        }
+
+        return $blocks;
     }
 
     /**
+     * @param null $name
      * @return Block
      */
-    public function create()
+    public function create($name = null, $descr = null)
     {
-        return new Block();
+        return new Block($name, $descr);
     }
 
     /**
@@ -61,7 +69,7 @@ class EngineBlock
      */
     public function createForm($data = null, array $options = [])
     {
-        return $this->form_factory->create(new BlockFormType(), $data, $options);
+        return $this->formFactory->create(new BlockFormType(), $data, $options);
     }
 
     /**
@@ -79,7 +87,7 @@ class EngineBlock
     public function remove(Block $entity)
     {
         $this->em->remove($entity);
-        $this->em->flush();
+        $this->em->flush($entity);
     }
 
     /**
@@ -88,6 +96,6 @@ class EngineBlock
     public function update(Block $entity)
     {
         $this->em->persist($entity);
-        $this->em->flush();
+        $this->em->flush($entity);
     }
 }

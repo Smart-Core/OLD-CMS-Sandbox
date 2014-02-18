@@ -12,6 +12,9 @@ class NodeFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // Запрос списка блоков, чтобы в случае отсутствия, был создан дефолтный блок.
+        Container::get('cms.block')->all();
+
         $modules = [];
         foreach (Container::get('cms.module')->all() as $module_name => $_dummy) {
             $modules[$module_name] = $module_name;
@@ -20,7 +23,7 @@ class NodeFormType extends AbstractType
         $builder
             ->add('module', 'choice', [
                 'choices' => $modules,
-                'data' => 'Texter',
+                'data' => 'Texter', // @todo настройку модуля по умолчанию.
             ])
             ->add('folder', 'cms_folder_tree')
             ->add('block', 'entity', [

@@ -70,7 +70,7 @@ class AdminController extends Controller
     {
         $engineBlock = $this->get('cms.block');
         $block = $engineBlock->create();
-        $block->setCreateByUserId($this->getUser()->getId());
+        $block->setUserId($this->getUser());
 
         $form = $engineBlock->createForm($block);
 

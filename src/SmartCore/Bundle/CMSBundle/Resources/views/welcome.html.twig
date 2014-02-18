@@ -1,0 +1,23 @@
+
+{% extends '@Html/base.html.twig' %}
+
+{% block html_head_title %}{{ cms_html_title({'delimiter': '&ndash;', 'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)', 'site_short_name': 'Smart Core CMS',}) }}{% endblock html_head_title %}
+
+{% block html_head_styles %}
+    {{ parent() }}
+    <style type="text/css">
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+{% endblock html_head_styles %}
+
+{% block body %}
+    <div class="container">
+        <div class="hero-unit">
+            <h1>Welcome to Smart Core CMS!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        </div>
+    </div>
+{% endblock body %}

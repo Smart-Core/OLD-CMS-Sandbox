@@ -37,6 +37,12 @@ class EngineController extends Controller
             $tagcache->set($cache_key, $router_data, ['folder', 'node']);
         }
 
+        if (empty($router_data['folders'])) {
+            $this->get('cms.jslib')->call('bootstrap');
+            $this->buildBaseHtml($router_data);
+            return $this->render('CMSBundle::welcome.html.twig');
+        }
+
         if ($router_data['status'] == 404) {
             throw new NotFoundHttpException('Page not found.');
         } elseif ($router_data['status'] == 403) {
@@ -76,7 +82,7 @@ class EngineController extends Controller
     protected function buildBaseHtml($router_data)
     {
         // @todo убрать в ini-шник шаблона.
-        $this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
+        //$this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
 
         foreach ($router_data['meta'] as $key => $value) {
             $this->get('html')->meta($key, $value);
