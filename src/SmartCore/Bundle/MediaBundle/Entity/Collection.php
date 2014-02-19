@@ -131,7 +131,7 @@ class Collection
     }
 
     /**
-     * @return mixed
+     * @return Storage
      */
     public function getDefaultStorage()
     {

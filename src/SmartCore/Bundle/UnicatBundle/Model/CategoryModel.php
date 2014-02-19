@@ -62,6 +62,11 @@ abstract class CategoryModel
     protected $meta;
 
     /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    protected $properties;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $user_id;
@@ -110,12 +115,13 @@ abstract class CategoryModel
      */
     public function __construct()
     {
-        $this->created_at = new \DateTime();
-        $this->is_enabled = true;
-        $this->is_inheritance = true;
-        $this->meta = null;
-        $this->position = 0;
-        $this->user_id = 0;
+        $this->created_at       = new \DateTime();
+        $this->is_enabled       = true;
+        $this->is_inheritance   = true;
+        $this->meta             = null;
+        $this->position         = 0;
+        $this->properties       = null;
+        $this->user_id          = 0;
     }
 
     /**
@@ -311,6 +317,55 @@ abstract class CategoryModel
     public function getMeta()
     {
         return $this->meta;
+    }
+
+    /**
+     * @param array $properties
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return $this
+     */
+    public function setProperty($name, $value)
+    {
+        $this->properties[$name] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return empty($this->properties) ? [] : $this->properties;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed|null
+     */
+    public function getProperty($name)
+    {
+        return isset($this->properties[$name]) ? $this->properties[$name] : null;
+    }
+
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function hasProperty($name)
+    {
+        return isset($this->properties[$name]) ? true : false;
     }
 
     /**

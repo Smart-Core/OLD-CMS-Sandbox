@@ -69,7 +69,7 @@ class ItemFormType extends AbstractType
         }
 
         /** @var $property PropertyModel */
-        foreach (Container::get('unicat')->getProperties($this->repository) as $property) {
+        foreach (Container::getContainer()->get('unicat')->getProperties($this->repository) as $property) {
             $type = $property->getType();
             $propertyOptions = [
                 'required'  => $property->getIsRequired(),

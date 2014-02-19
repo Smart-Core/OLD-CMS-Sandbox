@@ -110,7 +110,8 @@ class Category extends ContainerAware
         foreach ($categories as $category) {
             $uri = $this->container->get('router')->generate('smart_module.catalog_category_admin', [
                 'id' => $category->getId(),
-                'structure_id' => $category->getStructure()->getId()
+                'structure_id' => $category->getStructure()->getId(),
+                'repository' => $category->getStructure()->getRepository()->getName(),
             ]);
             $menu->addChild($category->getTitle(), ['uri' => $uri])
                 ->setAttributes([

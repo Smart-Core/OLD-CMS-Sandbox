@@ -19,7 +19,12 @@
         {% for item in repository.structures %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td><a href="{{ path('smart_module.catalog_structure_admin', {'id': item.id, 'repository': item.repository.name}) }}">{{ item.title }}</a></td>
+                <td>
+                    <a href="{{ path('smart_module.catalog_structure_admin', {'id': item.id, 'repository': item.repository.name}) }}">{{ item.title }}</a>
+                    <a href="{{ path('smart_module.catalog_structure_edit_admin', {'id': item.id, 'repository': item.repository.name}) }}" style="float: right;">
+                        <i class="icon-edit" title="Edit"></i>
+                    </a>
+                </td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.entries }}</td>
                 <td>{{ item.isRequired }}</td>

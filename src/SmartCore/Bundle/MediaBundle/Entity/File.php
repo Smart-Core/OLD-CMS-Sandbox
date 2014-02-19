@@ -131,14 +131,14 @@ class File
             $filter = 'orig';
         }
 
-        return $relativePath . '/' . $filter . $this->generatePattern($filter);
+        return $relativePath . '/' . $filter . $this->generatePattern();
     }
 
     /**
      * @param string|null $filter
      * @return mixed|string
      */
-    public function generatePattern($filter = null)
+    public function generatePattern()
     {
         $pattern = $this->getCollection()->getFileRelativePathPattern();
         $pattern = str_replace('{year}',  date('Y'), $pattern);

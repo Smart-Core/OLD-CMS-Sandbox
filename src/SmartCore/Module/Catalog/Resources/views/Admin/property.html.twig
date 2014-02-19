@@ -1,10 +1,10 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block html_head_title %}&laquo;{{ repository.title }}&raquo; Unicat / {{ parent() }}{% endblock html_head_title %}
+{% block html_head_title %}{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo; / &laquo;{{ repository.title }}&raquo; Unicat / {{ parent() }}{% endblock html_head_title %}
 
 {% block content %}
 
-    <h2>{{ 'Property'|trans }}</h2>
+    <h2>{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo;</h2>
 
     <div class="well">
         {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}

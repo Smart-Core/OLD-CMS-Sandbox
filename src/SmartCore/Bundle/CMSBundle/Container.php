@@ -12,7 +12,7 @@ class Container
     private static $container;
 
     /**
-     * @param $name
+     * @param  string $name
      * @return ContainerInterface
      */
     public static function get($name)
@@ -23,7 +23,7 @@ class Container
     /**
      * @param ContainerInterface $container
      */
-    public static function set(ContainerInterface $container)
+    public static function setContainer(ContainerInterface $container)
     {
         self::$container = $container;
     }

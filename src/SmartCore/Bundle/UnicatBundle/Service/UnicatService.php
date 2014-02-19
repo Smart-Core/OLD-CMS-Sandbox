@@ -16,6 +16,7 @@ use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
@@ -65,10 +66,14 @@ class UnicatService
 
     /**
      * @param string|int $repository_id
-     * @return UnicatRepositoryManager
+     * @return UnicatRepositoryManager|null
      */
     public function getRepositoryManager($repository_id)
     {
+        if (empty($repository_id)) {
+            return null;
+        }
+
         $repository = $this->getRepository($repository_id);
 
         if (!isset($this->urms[$repository->getId()])) {
@@ -101,6 +106,7 @@ class UnicatService
         $category = $structure->getRepository()->createCategory();
         $category
             ->setStructure($structure)
+            ->setIsInheritance($structure->getIsDefaultInheritance())
             ->setUserId($this->getUserId())
         ;
 
@@ -441,6 +447,15 @@ class UnicatService
      */
     public function updateCategory(CategoryModel $category)
     {
+        $properties = $category->getProperties();
+
+        foreach ($properties as $propertyName => $propertyValue) {
+            if ($propertyValue instanceof UploadedFile) {
+                $fileId = $this->mc->upload($propertyValue);
+                $category->setProperty($propertyName, $fileId);
+            }
+        }
+
         $this->em->persist($category);
         $this->em->flush($category);
 

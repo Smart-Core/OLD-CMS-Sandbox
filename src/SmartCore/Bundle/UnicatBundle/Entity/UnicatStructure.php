@@ -45,9 +45,14 @@ class UnicatStructure
     protected $entries;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_required;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $is_default_inheritance;
 
     /**
      * @ORM\Column(type="integer")
@@ -55,9 +60,9 @@ class UnicatStructure
     protected $user_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="text", nullable=true)
      */
-    protected $created_at;
+    protected $properties;
 
     /**
      * @var UnicatRepository
@@ -67,13 +72,21 @@ class UnicatStructure
     protected $repository;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $created_at;
+
+    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->position   = 0;
+        $this->properties = [];
         $this->user_id    = 0;
+        $this->is_default_inheritance = false;
+        $this->is_required = true;
     }
 
     /**
@@ -123,11 +136,38 @@ class UnicatStructure
     }
 
     /**
+     * @param bool $is_default_inheritance
+     * @return $this
+     */
+    public function setIsDefaultInheritance($is_default_inheritance)
+    {
+        if (empty($is_default_inheritance)) {
+            $is_default_inheritance = 0;
+        }
+
+        $this->is_default_inheritance = $is_default_inheritance;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsDefaultInheritance()
+    {
+        return $this->is_default_inheritance;
+    }
+
+    /**
      * @param bool $is_required
      * @return $this
      */
     public function setIsRequired($is_required)
     {
+        if (empty($is_required)) {
+            $is_required = 0;
+        }
+
         $this->is_required = $is_required;
 
         return $this;
@@ -177,6 +217,25 @@ class UnicatStructure
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * @param string $properties
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProperties()
+    {
+        return $this->properties;
     }
 
     /**

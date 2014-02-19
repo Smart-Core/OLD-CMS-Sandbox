@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 19 2014 г., 13:13
+-- Время создания: Фев 19 2014 г., 20:53
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -228,6 +228,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_categories` (
   `is_enabled` tinyint(1) NOT NULL,
   `position` smallint(6) NOT NULL,
   `structure_id` int(11) DEFAULT NULL,
+  `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug_parent` (`slug`,`parent_id`,`structure_id`),
   KEY `IDX_A2946812727ACA70` (`parent_id`),
@@ -240,25 +241,25 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_categories` (
 -- Дамп данных таблицы `aaa_catalog_categories`
 --
 
-INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `user_id`, `is_enabled`, `position`, `structure_id`) VALUES
-(1, NULL, 'connection', 'Техника для связи', 0, 'N;', '2014-02-10 09:29:09', 0, 1, 0, 1),
-(2, 1, 'smartphones', 'Смартфоны', 0, 'N;', '2014-02-12 21:19:29', 0, 1, 0, 1),
-(3, 1, 'signal_amplifiers', 'Усилители сигнала', 0, 'N;', '2014-02-12 22:12:43', 0, 1, 0, 1),
-(4, NULL, 'pc', 'Компьютерная техника', 0, 'N;', '2014-02-12 22:14:33', 0, 1, 0, 1),
-(5, 4, 'notebooks', 'Ноутбуки', 0, 'N;', '2014-02-12 22:15:02', 0, 1, 0, 1),
-(6, 4, 'notebooks_stuff', 'Комплектующие для ноутбуков', 0, 'N;', '2014-02-12 22:15:26', 0, 1, 0, 1),
-(7, 6, 'ram', 'Модули памяти', 0, 'N;', '2014-02-12 22:15:42', 0, 1, 0, 1),
-(8, 6, 'hdd25', 'Жесткие диски 2.5', 0, 'N;', '2014-02-12 22:15:59', 0, 1, 0, 1),
-(9, NULL, 'samsung', 'Samsung', 0, 'N;', '2014-02-12 22:17:02', 0, 1, 0, 2),
-(10, 4, 'monitors', 'Мониторы', 0, 'N;', '2014-02-12 22:18:24', 0, 1, 0, 1),
-(11, NULL, 'office', 'Офисная техника', 0, 'N;', '2014-02-12 22:19:07', 0, 1, 0, 1),
-(12, 11, 'printers', 'Принтеры', 0, 'N;', '2014-02-12 22:19:27', 0, 1, 0, 1),
-(13, 11, 'scanners', 'Сканеры', 0, 'N;', '2014-02-12 22:19:43', 0, 1, 0, 1),
-(14, NULL, 'sony', 'Sony', 0, 'N;', '2014-02-12 22:20:07', 0, 1, 0, 2),
-(15, 14, 'vaio', 'Vaio', 1, 'N;', '2014-02-17 21:37:57', 0, 1, 0, 2),
-(16, NULL, 'canon', 'Canon', 1, 'N;', '2014-02-17 21:38:32', 0, 1, 0, 2),
-(17, NULL, 'portable', 'Портативная электроника', 0, 'N;', '2014-02-17 22:00:09', 0, 1, 0, 1),
-(18, 17, 'reflex_cameras', 'Зеркальные фотоаппараты', 1, 'N;', '2014-02-17 22:08:49', 1, 1, 0, 1);
+INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `user_id`, `is_enabled`, `position`, `structure_id`, `properties`) VALUES
+(1, NULL, 'connection', 'Техника для связи', 0, 'N;', '2014-02-10 09:29:09', 0, 1, 0, 1, NULL),
+(2, 1, 'smartphones', 'Смартфоны', 0, 'N;', '2014-02-12 21:19:29', 0, 1, 0, 1, NULL),
+(3, 1, 'signal_amplifiers', 'Усилители сигнала', 0, 'N;', '2014-02-12 22:12:43', 0, 1, 0, 1, NULL),
+(4, NULL, 'pc', 'Компьютерная техника', 0, 'N;', '2014-02-12 22:14:33', 0, 1, 0, 1, NULL),
+(5, 4, 'notebooks', 'Ноутбуки', 0, 'N;', '2014-02-12 22:15:02', 0, 1, 0, 1, NULL),
+(6, 4, 'notebooks_stuff', 'Комплектующие для ноутбуков', 0, 'N;', '2014-02-12 22:15:26', 0, 1, 0, 1, NULL),
+(7, 6, 'ram', 'Модули памяти', 0, 'N;', '2014-02-12 22:15:42', 0, 1, 0, 1, NULL),
+(8, 6, 'hdd25', 'Жесткие диски 2.5', 0, 'N;', '2014-02-12 22:15:59', 0, 1, 0, 1, NULL),
+(9, NULL, 'samsung', 'Samsung', 0, 'N;', '2014-02-12 22:17:02', 0, 1, 0, 2, NULL),
+(10, 4, 'monitors', 'Мониторы', 0, 'N;', '2014-02-12 22:18:24', 0, 1, 0, 1, NULL),
+(11, NULL, 'office', 'Офисная техника', 0, 'N;', '2014-02-12 22:19:07', 0, 1, 0, 1, NULL),
+(12, 11, 'printers', 'Принтеры', 0, 'N;', '2014-02-12 22:19:27', 0, 1, 0, 1, NULL),
+(13, 11, 'scanners', 'Сканеры', 0, 'N;', '2014-02-12 22:19:43', 0, 1, 0, 1, NULL),
+(14, NULL, 'sony', 'Sony', 0, 'N;', '2014-02-12 22:20:07', 0, 1, 0, 2, NULL),
+(15, 14, 'vaio', 'Vaio', 1, 'N;', '2014-02-17 21:37:57', 0, 1, 0, 2, NULL),
+(16, NULL, 'canon', 'Canon', 1, 'N;', '2014-02-17 21:38:32', 0, 1, 0, 2, NULL),
+(17, NULL, 'portable', 'Портативная электроника', 0, 'N;', '2014-02-17 22:00:09', 0, 1, 0, 1, NULL),
+(18, 17, 'reflex_cameras', 'Зеркальные фотоаппараты', 1, 'N;', '2014-02-17 22:08:49', 1, 1, 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1190,11 +1191,13 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
   `position` smallint(6) DEFAULT NULL,
   `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `is_required` tinyint(1) NOT NULL,
+  `is_required` tinyint(1) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `title_form` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_default_inheritance` tinyint(1) DEFAULT NULL,
+  `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `IDX_C3D9EB2050C9D4F7` (`repository_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -1203,9 +1206,9 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
 -- Дамп данных таблицы `aaa_unicat_structures`
 --
 
-INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`) VALUES
-(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория'),
-(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги');
+INSERT INTO `aaa_unicat_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`) VALUES
+(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, ''),
+(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги', 0, '');
 
 -- --------------------------------------------------------
 

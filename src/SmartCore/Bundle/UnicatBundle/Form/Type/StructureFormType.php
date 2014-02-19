@@ -17,8 +17,10 @@ class StructureFormType extends AbstractType
             ->add('entries', 'choice', [
                 'choices' => ['single' => 'single', 'multi' => 'multi']
             ])
-            ->add('is_required', null, ['required' => false])
+            ->add('is_required')
+            ->add('is_default_inheritance')
             ->add('position')
+            ->add('properties')
         ;
     }
 

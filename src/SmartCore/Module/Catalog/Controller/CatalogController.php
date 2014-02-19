@@ -21,8 +21,8 @@ class CatalogController extends Controller
     {
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
 
-        return $this->render('CatalogModule::catalog.html.twig', [
-            'items' => $urm->findAllItems(['id' => 'DESC']),
+        return $this->render('CatalogModule::items.html.twig', [
+            'items' => $urm ? $urm->findAllItems(['id' => 'DESC']) : [],
         ]);
     }
 }

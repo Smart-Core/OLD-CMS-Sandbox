@@ -75,6 +75,17 @@ class UnicatRepositoryManager
      * @param array $options
      * @return $this|\Symfony\Component\Form\Form
      */
+    public function getStructureEditForm($data = null, array $options = [])
+    {
+        return $this->getStructureForm($data, $options)
+            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+    }
+
+    /**
+     * @param array $options
+     * @return $this|\Symfony\Component\Form\Form
+     */
     public function getPropertiesGroupCreateForm(array $options = [])
     {
         $group = $this->repository->createPropertiesGroup();
@@ -103,6 +114,15 @@ class UnicatRepositoryManager
     public function getPropertiesGroupForm($data = null, array $options = [])
     {
         return $this->formFactory->create(new PropertiesGroupFormType($this->repository), $data, $options);
+    }
+
+    /**
+     * @param int $id
+     * @return UnicatStructure
+     */
+    public function getStructure($id)
+    {
+        return $this->em->getRepository('UnicatBundle:UnicatStructure')->find($id);
     }
 
     /**

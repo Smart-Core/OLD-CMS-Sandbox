@@ -45,7 +45,7 @@ class AdminCatalogController extends Controller
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function categoryAction(Request $request, $structure_id, $id)
+    public function categoryEditAction(Request $request, $structure_id, $id, $repository)
     {
         $unicat = $this->get('unicat');
 
@@ -58,25 +58,25 @@ class AdminCatalogController extends Controller
             $form->submit($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id]));
+                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository]));
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
                 $unicat->updateCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория обновлена');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id]));
+                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository]));
             }
 
             if ($form->has('delete') and $form->get('delete')->isClicked()) {
                 $unicat->deleteCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория удалена');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id]));
+                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository]));
             }
         }
 
-        return $this->render('CatalogModule:Admin:category.html.twig', [
+        return $this->render('CatalogModule:Admin:category_edit.html.twig', [
             'category'   => $category,
             'form'       => $form->createView(),
             'repository' => $structure->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
@@ -92,7 +92,7 @@ class AdminCatalogController extends Controller
      */
     public function structureAction(Request $request, $id, $repository)
     {
-        $unicat = $this->get('unicat');
+        $unicat     = $this->get('unicat');
         $structure  = $unicat->getStructure($id);
 
         $form = $unicat->getCategoryCreateForm($structure);
@@ -103,7 +103,7 @@ class AdminCatalogController extends Controller
                 $unicat->createCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория создана');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $id]));
+                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $id, 'repository' => $repository]));
             }
         }
 
@@ -145,6 +145,38 @@ class AdminCatalogController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @param string|int $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function structureEditAction(Request $request, $id, $repository)
+    {
+        $urm = $this->get('unicat')->getRepositoryManager($repository);
+        $form = $urm->getStructureEditForm($urm->getStructure($id));
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
+            }
+
+            if ($form->get('update')->isClicked() and $form->isValid()) {
+                $urm->updateStructure($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Структура обновлена');
+
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
+            }
+        }
+
+        return $this->render('CatalogModule:Admin:structure_edit.html.twig', [
+            'form'       => $form->createView(),
+            'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
+    
     /**
      * @param Request $request
      * @param string|int $repository
