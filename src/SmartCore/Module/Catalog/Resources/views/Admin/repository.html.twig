@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <h2>{{ 'Structures'|trans }}</h2>
+    <h2>{{ 'Structures'|trans }} <a href="{{ path('smart_module.catalog_structure_create_admin', {'repository': repository.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create structure'|trans }}</a></h2>
 
     <table class="table table-bordered table-hover">
         <thead><tr>

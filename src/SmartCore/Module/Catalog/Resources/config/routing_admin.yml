@@ -16,6 +16,11 @@ smart_module.catalog_structure_admin:
     requirements:
         id: \d+
 
+smart_module.catalog_structure_create_admin:
+    path: /repository_{repository}/structure_create/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:structureCreate
+
 smart_module.catalog_category_admin:
     path: /structure_{structure_id}/category_{id}/
     defaults:

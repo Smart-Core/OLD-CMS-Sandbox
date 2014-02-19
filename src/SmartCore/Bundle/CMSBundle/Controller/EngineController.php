@@ -40,6 +40,7 @@ class EngineController extends Controller
         if (empty($router_data['folders'])) {
             $this->get('cms.jslib')->call('bootstrap');
             $this->buildBaseHtml($router_data);
+
             return $this->render('CMSBundle::welcome.html.twig');
         }
 

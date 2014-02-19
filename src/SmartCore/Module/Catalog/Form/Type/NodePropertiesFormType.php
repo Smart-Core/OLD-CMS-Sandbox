@@ -11,13 +11,13 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $repositories = [];
-        foreach (Container::get('doctrine.orm.default_entity_manager')->getRepository('UnicatBundle:UnicatRepository')->findAll() as $repo) {
+        foreach (Container::get('unicat')->allRepositories() as $repo) {
             $repositories[$repo->getId()] = $repo;
         }
 
         $builder
             ->add('repository_id', 'choice', [
-                'choices' => $repositories,
+                'choices'  => $repositories,
                 'required' => false,
             ])
         ;

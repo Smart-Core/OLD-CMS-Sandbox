@@ -115,6 +115,37 @@ class AdminCatalogController extends Controller
 
     /**
      * @param Request $request
+     * @param $repository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function structureCreateAction(Request $request, $repository)
+    {
+        $urm = $this->get('unicat')->getRepositoryManager($repository);
+        $form = $urm->getStructureCreateForm();
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
+            }
+
+            if ($form->get('create')->isClicked() and $form->isValid()) {
+                $urm->updateStructure($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Структура создана');
+
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
+            }
+        }
+
+        return $this->render('CatalogModule:Admin:structure_create.html.twig', [
+            'form'       => $form->createView(),
+            'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
+
+    /**
+     * @param Request $request
      * @param string $repository
      * @param int $group_id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response

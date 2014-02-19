@@ -72,12 +72,12 @@ class UnicatService
         $repository = $this->getRepository($repository_id);
 
         if (!isset($this->urms[$repository->getId()])) {
-            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $repository);
+            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $this->formFactory, $repository);
         }
 
         return $this->urms[$repository->getId()];
     }
-    
+
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
@@ -274,6 +274,14 @@ class UnicatService
         $key = intval($val) ? 'id' : 'name';
 
         return $this->em->getRepository('UnicatBundle:UnicatRepository')->findOneBy([$key => $val]);
+    }
+
+    /**
+     * @return UnicatRepository[]
+     */
+    public function allRepositories()
+    {
+        return $this->em->getRepository('UnicatBundle:UnicatRepository')->findAll();
     }
 
     /**

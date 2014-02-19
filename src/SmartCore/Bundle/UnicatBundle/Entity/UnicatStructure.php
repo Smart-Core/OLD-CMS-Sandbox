@@ -18,7 +18,7 @@ class UnicatStructure
     protected $id;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     protected $position;
 
@@ -72,6 +72,8 @@ class UnicatStructure
     public function __construct()
     {
         $this->created_at = new \DateTime();
+        $this->position   = 0;
+        $this->user_id    = 0;
     }
 
     /**
@@ -83,7 +85,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -91,7 +93,7 @@ class UnicatStructure
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
      * @return $this
      */
     public function setDescription($description)
@@ -102,7 +104,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEntries()
     {
@@ -110,7 +112,18 @@ class UnicatStructure
     }
 
     /**
-     * @param mixed $is_required
+     * @param string $entries
+     * @return $this
+     */
+    public function setEntries($entries)
+    {
+        $this->entries = $entries;
+
+        return $this;
+    }
+
+    /**
+     * @param bool $is_required
      * @return $this
      */
     public function setIsRequired($is_required)
@@ -121,7 +134,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsRequired()
     {
@@ -129,7 +142,7 @@ class UnicatStructure
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      * @return $this
      */
     public function setName($name)
@@ -140,7 +153,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -148,7 +161,7 @@ class UnicatStructure
     }
 
     /**
-     * @param mixed $position
+     * @param int $position
      * @return $this
      */
     public function setPosition($position)
@@ -159,7 +172,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getPosition()
     {
@@ -167,10 +180,10 @@ class UnicatStructure
     }
 
     /**
-     * @param \SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository $repository
+     * @param UnicatRepository $repository
      * @return $this
      */
-    public function setRepository($repository)
+    public function setRepository(UnicatRepository $repository)
     {
         $this->repository = $repository;
 
@@ -178,7 +191,7 @@ class UnicatStructure
     }
 
     /**
-     * @return \SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository
+     * @return UnicatRepository
      */
     public function getRepository()
     {
@@ -186,7 +199,7 @@ class UnicatStructure
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      * @return $this
      */
     public function setTitle($title)
@@ -197,7 +210,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -224,11 +237,19 @@ class UnicatStructure
     }
 
     /**
-     * @param mixed $user_id
+     * @param int $user_id
      * @return $this
      */
     public function setUserId($user_id)
     {
+        if (is_object($user_id) and method_exists($user_id, 'getId')) {
+            $user_id = $user_id->getId();
+        }
+
+        if (null === $user_id) {
+            $user_id = 0;
+        }
+
         $this->user_id = $user_id;
 
         return $this;

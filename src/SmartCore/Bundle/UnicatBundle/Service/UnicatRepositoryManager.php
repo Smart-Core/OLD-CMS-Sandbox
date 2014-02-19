@@ -4,7 +4,12 @@ namespace SmartCore\Bundle\UnicatBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
+use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
+use SmartCore\Bundle\UnicatBundle\Form\Type\StructureFormType;
+use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
+use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
+use Symfony\Component\Form\FormFactoryInterface;
 
 class UnicatRepositoryManager
 {
@@ -14,6 +19,11 @@ class UnicatRepositoryManager
     protected $em;
 
     /**
+     * @var FormFactoryInterface
+     */
+    protected $formFactory;
+
+    /**
      * @var UnicatRepository
      */
     protected $repository;
@@ -21,10 +31,11 @@ class UnicatRepositoryManager
     /**
      * @param UnicatRepository $repository
      */
-    public function __construct(EntityManager $em, UnicatRepository $repository)
+    public function __construct(EntityManager $em, FormFactoryInterface $formFactory, UnicatRepository $repository)
     {
-        $this->em         = $em;
-        $this->repository = $repository;
+        $this->em          = $em;
+        $this->formFactory = $formFactory;
+        $this->repository  = $repository;
     }
 
     /**
@@ -42,5 +53,77 @@ class UnicatRepositoryManager
     public function findAllItems($orderBy = null)
     {
         return $this->em->getRepository($this->repository->getItemClass())->findBy([], $orderBy);
+    }
+
+    /**
+     * @param array $options
+     * @return $this|\Symfony\Component\Form\Form
+     */
+    public function getStructureCreateForm(array $options = [])
+    {
+        $structure = new UnicatStructure();
+        $structure->setRepository($this->repository);
+
+        return $this->getStructureForm($structure, $options)
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+    }
+
+    /**
+     * @param mixed|null $data
+     * @param array $options
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getStructureForm($data = null, array $options = [])
+    {
+        return $this->formFactory->create(new StructureFormType(), $data, $options);
+    }
+
+    /**
+     * @param PropertyModel $property
+     * @return $this
+     */
+    public function createProperty(PropertyModel $property)
+    {
+        $this->em->persist($property);
+        $this->em->flush($property);
+
+        return $this;
+    }
+
+    /**
+     * @param CategoryModel $category
+     * @return $this
+     */
+    public function updateCategory(CategoryModel $category)
+    {
+        $this->em->persist($category);
+        $this->em->flush($category);
+
+        return $this;
+    }
+
+    /**
+     * @param PropertyModel $property
+     * @return $this
+     */
+    public function updateProperty(PropertyModel $property)
+    {
+        $this->em->persist($property);
+        $this->em->flush($property);
+
+        return $this;
+    }
+
+    /**
+     * @param UnicatStructure $entity
+     * @return $this
+     */
+    public function updateStructure(UnicatStructure $entity)
+    {
+        $this->em->persist($entity);
+        $this->em->flush($entity);
+
+        return $this;
     }
 }

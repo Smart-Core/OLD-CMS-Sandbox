@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 19 2014 г., 00:17
+-- Время создания: Фев 19 2014 г., 13:13
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -1187,7 +1187,7 @@ DROP TABLE IF EXISTS `aaa_unicat_structures`;
 CREATE TABLE IF NOT EXISTS `aaa_unicat_structures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `repository_id` int(11) DEFAULT NULL,
-  `position` smallint(6) NOT NULL,
+  `position` smallint(6) DEFAULT NULL,
   `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_required` tinyint(1) NOT NULL,

@@ -44,6 +44,7 @@ class EngineBlock
 
         if (empty($blocks)) {
             $this->update(new Block('content', 'Content workspace'));
+
             return $this->all();
         }
 
