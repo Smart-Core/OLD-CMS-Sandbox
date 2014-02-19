@@ -2,7 +2,7 @@
 
 namespace Demo\SiteBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Knp\RadBundle\AppBundle\Bundle;
 
 class SiteBundle extends Bundle
 {
