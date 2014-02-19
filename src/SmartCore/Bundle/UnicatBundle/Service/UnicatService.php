@@ -182,7 +182,7 @@ class UnicatService
     {
         $property = $repository->createProperty();
         $property
-            ->setGroup($this->em->getRepository($repository->getPropertyGroupClass())->find($groupId))
+            ->setGroup($this->em->getRepository($repository->getPropertiesGroupClass())->find($groupId))
             ->setUserId($this->getUserId())
         ;
 
@@ -252,7 +252,7 @@ class UnicatService
      */
     public function getPropertiesGroup(UnicatRepository $repository, $groupId)
     {
-        return $this->em->getRepository($repository->getPropertyGroupClass())->find($groupId);
+        return $this->em->getRepository($repository->getPropertiesGroupClass())->find($groupId);
     }
 
     /**

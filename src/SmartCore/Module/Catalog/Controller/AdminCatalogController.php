@@ -32,7 +32,7 @@ class AdminCatalogController extends Controller
         $repository = $this->get('unicat')->getRepository($repository);
 
         return $this->render('CatalogModule:Admin:repository.html.twig', [
-            'properties_groups' => $em->getRepository($repository->getPropertyGroupClass())->findAll(),
+            'properties_groups' => $em->getRepository($repository->getPropertiesGroupClass())->findAll(),
             'properties'        => $em->getRepository($repository->getPropertyClass())->findAll(),
             'items'             => $em->getRepository($repository->getItemClass())->findBy([], ['id' => 'DESC']),
             'repository'        => $repository,
@@ -86,10 +86,11 @@ class AdminCatalogController extends Controller
 
     /**
      * @param Request $request
+     * @param string|int $repository
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function structureAction(Request $request, $id)
+    public function structureAction(Request $request, $id, $repository)
     {
         $unicat = $this->get('unicat');
         $structure  = $unicat->getStructure($id);
@@ -144,6 +145,37 @@ class AdminCatalogController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param string|int $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function propertiesGroupCreateAction(Request $request, $repository)
+    {
+        $urm = $this->get('unicat')->getRepositoryManager($repository);
+        $form = $urm->getPropertiesGroupCreateForm();
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
+            }
+
+            if ($form->get('create')->isClicked() and $form->isValid()) {
+                $urm->updatePropertiesGroup($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Группа свойств создана');
+
+                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
+            }
+        }
+
+        return $this->render('CatalogModule:Admin:properties_group_create.html.twig', [
+            'form'       => $form->createView(),
+            'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
+        ]);
+    }
+    
     /**
      * @param Request $request
      * @param string $repository

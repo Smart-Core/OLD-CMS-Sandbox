@@ -110,9 +110,9 @@ class PropertyModel
     protected $params;
 
     /**
-     * @var PropertyGroupModel
+     * @var PropertiesGroupModel
      *
-     * @ORM\ManyToOne(targetEntity="PropertyGroup", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="PropertiesGroup", inversedBy="properties")
      */
     protected $group;
 
@@ -202,10 +202,10 @@ class PropertyModel
     }
 
     /**
-     * @param \SmartCore\Bundle\UnicatBundle\Model\PropertyGroupModel $group
+     * @param \SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel $group
      * @return $this
      */
-    public function setGroup(PropertyGroupModel $group)
+    public function setGroup(PropertiesGroupModel $group)
     {
         $this->group = $group;
 
@@ -213,7 +213,7 @@ class PropertyModel
     }
 
     /**
-     * @return \SmartCore\Bundle\UnicatBundle\Model\PropertyGroupModel
+     * @return \SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel
      */
     public function getGroup()
     {

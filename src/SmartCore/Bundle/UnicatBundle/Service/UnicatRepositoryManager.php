@@ -5,9 +5,11 @@ namespace SmartCore\Bundle\UnicatBundle\Service;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
+use SmartCore\Bundle\UnicatBundle\Form\Type\PropertiesGroupFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\StructureFormType;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
+use SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
 
@@ -70,6 +72,20 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @param array $options
+     * @return $this|\Symfony\Component\Form\Form
+     */
+    public function getPropertiesGroupCreateForm(array $options = [])
+    {
+        $group = $this->repository->createPropertiesGroup();
+        $group->setRepository($this->repository);
+
+        return $this->getPropertiesGroupForm($group, $options)
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+    }
+
+    /**
      * @param mixed|null $data
      * @param array $options
      * @return \Symfony\Component\Form\Form
@@ -77,6 +93,16 @@ class UnicatRepositoryManager
     public function getStructureForm($data = null, array $options = [])
     {
         return $this->formFactory->create(new StructureFormType(), $data, $options);
+    }
+
+    /**
+     * @param mixed|null $data
+     * @param array $options
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getPropertiesGroupForm($data = null, array $options = [])
+    {
+        return $this->formFactory->create(new PropertiesGroupFormType($this->repository), $data, $options);
     }
 
     /**
@@ -111,6 +137,18 @@ class UnicatRepositoryManager
     {
         $this->em->persist($property);
         $this->em->flush($property);
+
+        return $this;
+    }
+
+    /**
+     * @param PropertiesGroupModel $property
+     * @return $this
+     */
+    public function updatePropertiesGroup(PropertiesGroupModel $entity)
+    {
+        $this->em->persist($entity);
+        $this->em->flush($entity);
 
         return $this;
     }

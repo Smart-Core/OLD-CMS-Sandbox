@@ -10,7 +10,7 @@ smart_module.catalog_repository_admin:
         _controller: CatalogModule:AdminCatalog:repository
 
 smart_module.catalog_structure_admin:
-    path: /structure_{id}/
+    path: /repository_{repository}/structure_{id}/
     defaults:
         _controller: CatalogModule:AdminCatalog:structure
     requirements:
@@ -28,6 +28,11 @@ smart_module.catalog_category_admin:
     requirements:
         id: \d+
         structure_id: \d+
+
+smart_module.catalog_properties_group_create_admin:
+    path: /repository_{repository}/properties_group_create/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:propertiesGroupCreate
 
 smart_module.catalog_properties_admin:
     path: /repository_{repository}/properties_group_{group_id}/

@@ -3,12 +3,12 @@
 namespace Demo\SiteBundle\Entity\Catalog;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\UnicatBundle\Model\PropertyGroupModel;
+use SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="catalog_properties_groups" )
  */
-class PropertyGroup extends PropertyGroupModel
+class PropertiesGroup extends PropertiesGroupModel
 {
 }

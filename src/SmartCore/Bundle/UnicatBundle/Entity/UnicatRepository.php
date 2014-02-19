@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
+use SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 
 /**
@@ -134,9 +135,9 @@ class UnicatRepository
     /**
      * @return string
      */
-    public function getPropertyGroupClass()
+    public function getPropertiesGroupClass()
     {
-        return $this->entities_namespace . 'PropertyGroup';
+        return $this->entities_namespace . 'PropertiesGroup';
     }
 
     /**
@@ -165,6 +166,16 @@ class UnicatRepository
     public function createProperty()
     {
         $class = $this->getPropertyClass();
+
+        return new $class;
+    }
+
+    /**
+     * @return PropertiesGroupModel
+     */
+    public function createPropertiesGroup()
+    {
+        $class = $this->getPropertiesGroupClass();
 
         return new $class;
     }

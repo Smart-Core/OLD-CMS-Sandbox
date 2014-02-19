@@ -10,7 +10,7 @@ use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
  * ORM\Entity()
  * ORM\Table(name="unicat_properties_groups")
  */
-class PropertyGroupModel
+class PropertiesGroupModel
 {
     /**
      * @ORM\Id
@@ -101,6 +101,25 @@ class PropertyGroupModel
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param CategoryModel $category
+     * @return $this
+     */
+    public function setCategory(CategoryModel $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return CategoryModel
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
