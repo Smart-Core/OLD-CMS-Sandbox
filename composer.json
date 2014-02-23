@@ -1,6 +1,7 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "smart-core/smart-core-cms-sandbox",
+    "description": "Smart Core CMS Sandbox",
+    "license": "MIT",
     "autoload": {
         "psr-0": { "": "src/" }
     },
