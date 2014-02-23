@@ -29,6 +29,11 @@ class CollectionService
     protected $em;
 
     /**
+     * @var GeneratorService
+     */
+    protected $generator;
+
+    /**
      * @var EntityRepository
      */
     protected $collectionsRepo;
@@ -55,6 +60,7 @@ class CollectionService
     public function __construct(ContainerInterface $container, $id)
     {
         $this->em               = $container->get('doctrine.orm.entity_manager');
+        $this->generator        = $container->get('smart_media.generator');
         $this->collectionsRepo  = $this->em->getRepository('SmartMediaBundle:Collection');
         $this->collection       = $this->collectionsRepo->find($id);
         $this->filesRepo        = $this->em->getRepository('SmartMediaBundle:File');
@@ -84,10 +90,11 @@ class CollectionService
      */
     public function upload(UploadedFile $uploadedFile, $category = null, array $tags = null)
     {
-        $file = new File();
+        $file = new File($uploadedFile);
         $file
             ->setCollection($this->collection)
-            ->setFile($uploadedFile)
+            ->setFilename($this->generator->generateFileName($file))
+            ->setRelativePath($this->generator->generateFilePath($file))
         ;
 
         $newFile = $this->provider->upload($file);

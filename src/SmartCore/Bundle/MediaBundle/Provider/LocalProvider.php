@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\MediaBundle\Entity\File;
 use SmartCore\Bundle\MediaBundle\Entity\FileTransformed;
+use SmartCore\Bundle\MediaBundle\Service\GeneratorService;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +36,11 @@ class LocalProvider implements ProviderInterface
     protected $filesTransformedRepo;
 
     /**
+     * @var GeneratorService
+     */
+    protected $generator;
+
+    /**
      * @var Request
      */
     protected $request;
@@ -49,6 +55,7 @@ class LocalProvider implements ProviderInterface
         $this->em                   = $container->get('doctrine.orm.entity_manager');
         $this->filesRepo            = $this->em->getRepository('SmartMediaBundle:File');
         $this->filesTransformedRepo = $this->em->getRepository('SmartMediaBundle:FileTransformed');
+        $this->generator            = $container->get('smart_media.generator');
         $this->request              = $container->get('request_stack')->getCurrentRequest();
     }
 
@@ -81,7 +88,7 @@ class LocalProvider implements ProviderInterface
 
                 $originalImage = $imagine->open(dirname($this->request->server->get('SCRIPT_FILENAME')) . $file->getFullRelativeUrl());
 
-                $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')) . $file->generateRelativePath($filter);
+                $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')) . $this->generator->generateRelativePath($file, $filter);
                 if (!is_dir($webDir) and false === @mkdir($webDir, 0777, true)) {
                     throw new \RuntimeException(sprintf("Unable to create the %s directory.\n", $webDir));
                 }

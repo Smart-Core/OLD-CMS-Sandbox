@@ -107,45 +107,27 @@ class File
     /**
      * Constructor.
      */
-    public function __construct()
+    public function __construct(UploadedFile $uploadedFile = null)
     {
         $this->created_at = new \DateTime();
         $this->user_id    = 0;
         $this->storage    = null;
-    }
 
-    /**
-     * @return string
-     */
-    public function generateRelativePath($filter = null)
-    {
-        // @todo проверка на установленный Storage и Collection
+        if ($uploadedFile) {
+            $this->uploadedFile = $uploadedFile;
 
-        $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
+            // @todo video и т.д
+            if (false !== strpos($uploadedFile->getMimeType(), 'image/')) {
+                $this->setType('image');
+            } else {
+                $this->setType($uploadedFile->getType());
+            }
 
-        if (!$filter) {
-            $filter = $this->getCollection()->getDefaultFilter();
+            $this->setMimeType($uploadedFile->getMimeType());
+            $this->setOriginalFilename($uploadedFile->getClientOriginalName());
+            $this->setOriginalSize($uploadedFile->getSize());
+            $this->setSize($uploadedFile->getSize());
         }
-
-        if (empty($filter)) {
-            $filter = 'orig';
-        }
-
-        return $relativePath . '/' . $filter . $this->generatePattern();
-    }
-
-    /**
-     * @param string|null $filter
-     * @return mixed|string
-     */
-    public function generatePattern()
-    {
-        $pattern = $this->getCollection()->getFileRelativePathPattern();
-        $pattern = str_replace('{year}',  date('Y'), $pattern);
-        $pattern = str_replace('{month}', date('m'), $pattern);
-        $pattern = str_replace('{day}',   date('d'), $pattern);
-
-        return $pattern;
     }
 
     /**
@@ -153,10 +135,6 @@ class File
      */
     public function getFullRelativePath($filter = null)
     {
-        if (empty($this->relative_path)) {
-            $this->relative_path = $this->generatePattern();
-        }
-
         $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
 
         if (empty($filter)) {
@@ -180,29 +158,6 @@ class File
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param UploadedFile $file
-     * @return $this
-     */
-    public function setFile(UploadedFile $file)
-    {
-        $this->uploadedFile = $file;
-        $this->setFilename($file);
-
-        // @todo video и т.д
-        if (false !== strpos($file->getMimeType(), 'image/')) {
-            $this->setType('image');
-        } else {
-            $this->setType($file->getType());
-        }
-
-        $this->setMimeType($file->getMimeType());
-        $this->setOriginalSize($file->getSize());
-        $this->setSize($file->getSize());
-
-        return $this;
     }
 
     /**
@@ -283,9 +238,9 @@ class File
      * @param string $filename
      * @return $this
      */
-    public function setFilename($file)
+    public function setFilename($filename)
     {
-        $this->setOriginalFilename($file);
+        $this->filename = $filename;
 
         return $this;
     }
@@ -321,17 +276,9 @@ class File
      * @param string $originalFilename
      * @return $this
      */
-    public function setOriginalFilename(UploadedFile $originalFile)
+    public function setOriginalFilename($originalFile)
     {
-        $filename = $this->collection->getFilenamePattern();
-
-        // @todo внешний генератор имён.
-        $filename = str_replace('{hour}', date('H'), $filename);
-        $filename = str_replace('{minutes}', date('i'), $filename);
-        $filename = str_replace('{rand(10)}', substr(md5(microtime(true) . $originalFile->getClientOriginalName()), 0, 10), $filename);
-
-        $this->filename = $filename . '.' . $originalFile->guessClientExtension();
-        $this->original_filename = $originalFile->getClientOriginalName();
+        $this->original_filename = $originalFile;
 
         return $this;
     }
