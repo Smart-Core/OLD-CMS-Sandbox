@@ -11,62 +11,18 @@
             {{ form_errors(form) }}
             <fieldset>
                 <div class="tabbable">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-pills">
                     <li class="active">
                         <a href="#base-setting" data-toggle="tab">Основные настройки</a>
                     </li>
                     <li><a href="#meta-setting" data-toggle="tab">Мета теги</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="base-setting">
-
-                        <div class="control-group">
-                            {{ form_label(form.title) }}
-                            {{ form_errors(form.title) }}
-                            <div class=" controls">{{ form_widget(form.title) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.descr) }}
-                            {{ form_errors(form.descr) }}
-                            <div class=" controls">{{ form_widget(form.descr) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.router_node_id) }}
-                            {{ form_errors(form.router_node_id) }}
-                            <div class=" controls">{{ form_widget(form.router_node_id) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.position) }}
-                            {{ form_errors(form.position) }}
-                            <div class=" controls">{{ form_widget(form.position) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.has_inherit_nodes) }}
-                            {{ form_errors(form.has_inherit_nodes) }}
-                            <div class=" controls">{{ form_widget(form.has_inherit_nodes) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.template_inheritable) }}
-                            {{ form_errors(form.template_inheritable) }}
-                            <div class=" controls">{{ form_widget(form.template_inheritable) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.template_self) }}
-                            {{ form_errors(form.template_self) }}
-                            <div class=" controls">{{ form_widget(form.template_self) }}</div>
-                        </div>
+                    <div class="tab-pane" id="meta-setting">
+                        {{ form_widget(form.meta) }}
                     </div>
-                     <div class="tab-pane" id="meta-setting">
-                        <div class="control-group">
-                            {{ form_label(form.meta.description) }}
-                            {{ form_errors(form.meta.description) }}
-                            <div class=" controls">{{ form_widget(form.meta.description) }}</div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.meta.keywords) }}
-                            {{ form_errors(form.meta.keywords) }}
-                            <div class=" controls">{{ form_widget(form.meta.keywords) }}</div>
-                        </div>
+                    <div class="tab-pane active" id="base-setting">
+                        {{ form_widget(form) }}
                     </div>
                 </div>
                 </div>
@@ -83,9 +39,9 @@
             {{ form_end(form) }}
         </div>
 
-
- <!--       <div class="well well-small">
-        <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+ {# @todo сделать табы формы на яваскрипте FS#404
+    <div class="well well-small">
+        {{ form_start(form, {'attr':{'class':'form-horizontal'}}) }}
             {{ form_widget(form) }}
 
             <div class="control-group">
@@ -97,9 +53,9 @@
                     <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
                 </div>
             </div>
-
-        </form>
-    </div>-->
+        {{ form_end(form) }}
+    </div>
+#}
 
     </div>
 {% endblock content %}
