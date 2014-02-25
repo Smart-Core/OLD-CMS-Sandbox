@@ -7,7 +7,7 @@ use Knp\Menu\ItemInterface;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-class Category extends ContainerAware
+class CategoryMenu extends ContainerAware
 {
     /**
      * @param FactoryInterface $factory
@@ -20,8 +20,17 @@ class Category extends ContainerAware
             throw new \Exception('Надо указать categoryClass в опциях');
         }
 
+        if (!isset($options['routeName'])) {
+            throw new \Exception('Надо указать routeName в опциях');
+        }
+
         $menu = $factory->createItem('categories');
-        $this->addChild($menu, null, $options['categoryClass']);
+
+        if (!empty($options['css_class'])) {
+            $menu->setChildrenAttribute('class', $options['css_class']);
+        }
+
+        $this->addChild($menu, null, $options);
         $this->removeFactory($menu);
 
         return $menu;
@@ -47,28 +56,30 @@ class Category extends ContainerAware
      *
      * @param ItemInterface $menu
      * @param CategoryModel|null $parent
-     * @param string $categoryClass
+     * @param array $options
      * @return void
      */
-    protected function __addChild(ItemInterface $menu, CategoryModel $parent = null, $categoryClass) // @todo
+    protected function addChild(ItemInterface $menu, CategoryModel $parent = null, array $options)
     {
         $categories = $parent
             ? $parent->getChildren()
-            : $this->container->get('doctrine')->getManager()->getRepository($categoryClass)->findBy(['parent' => null]);
+            : $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy(['parent' => null]);
 
         /** @var CategoryModel $category */
         foreach ($categories as $category) {
-            $uri = $this->container->get('router')->generate('smart_module.catalog.category', ['slug' => $category->getSlugFull()]) . '/';
-            $menu->addChild($category->getTitle(), ['uri' => $uri])
+            $uri = $this->container->get('router')->generate($options['routeName'], ['slug' => $category->getSlugFull()]) . '/';
+            $menu->addChild($category->getTitle(), ['uri' => $uri]);
+                /*
                 ->setAttributes([
                     'class' => 'folder',
-                    'id'    => 'category_id_' . $category->getId(),
+                    'id' => 'category_id_' . $category->getId(),
                 ]);
+                */
 
             /** @var ItemInterface $sub_menu */
             $sub_menu = $menu[$category->getTitle()];
 
-            $this->addChild($sub_menu, $category, $categoryClass);
+            $this->addChild($sub_menu, $category, $options);
         }
     }
 
@@ -94,7 +105,7 @@ class Category extends ContainerAware
      *
      * @param ItemInterface $menu
      * @param CategoryModel|null $parent
-     * @param string $categoryClass
+     * @param array $options
      * @return void
      */
     protected function addChildToAdminTree(ItemInterface $menu, $parent = null, $options)
@@ -109,15 +120,17 @@ class Category extends ContainerAware
         /** @var CategoryModel $category */
         foreach ($categories as $category) {
             $uri = $this->container->get('router')->generate('smart_module.catalog_category_admin', [
-                'id' => $category->getId(),
+                'id'           => $category->getId(),
                 'structure_id' => $category->getStructure()->getId(),
-                'repository' => $category->getStructure()->getRepository()->getName(),
+                'repository'   => $category->getStructure()->getRepository()->getName(),
             ]);
-            $menu->addChild($category->getTitle(), ['uri' => $uri])
+            $menu->addChild($category->getTitle(), ['uri' => $uri]);
+                /*
                 ->setAttributes([
                     'class' => 'folder',
                     'id'    => 'category_id_' . $category->getId(),
                 ]);
+                */
 
             /** @var ItemInterface $sub_menu */
             $sub_menu = $menu[$category->getTitle()];

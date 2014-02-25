@@ -56,12 +56,13 @@ class Storage
     protected $files;
 
     /**
-     * Constructor.
+     * @param string $relativePath
      */
-    public function __construct()
+    public function __construct($relativePath = '')
     {
-        $this->created_at = new \DateTime();
-        $this->files     = new ArrayCollection();
+        $this->created_at       = new \DateTime();
+        $this->files            = new ArrayCollection();
+        $this->relative_path    = $relativePath;
     }
 
     /**

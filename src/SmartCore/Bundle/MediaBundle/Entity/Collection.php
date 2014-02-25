@@ -89,8 +89,6 @@ class Collection
     protected $files;
 
     /**
-     * Constructor.
-     *
      * @param string $relativePath
      */
     public function __construct($relativePath = '')

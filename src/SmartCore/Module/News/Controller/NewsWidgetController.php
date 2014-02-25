@@ -33,6 +33,5 @@ class NewsWidgetController extends Controller
         }
 
         return new Response($news);
-
     }
 }

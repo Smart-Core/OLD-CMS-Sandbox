@@ -118,7 +118,7 @@ abstract class CategoryModel
         $this->created_at       = new \DateTime();
         $this->is_enabled       = true;
         $this->is_inheritance   = true;
-        $this->meta             = null;
+        $this->meta             = [];
         $this->position         = 0;
         $this->properties       = null;
         $this->user_id          = 0;
@@ -301,22 +301,28 @@ abstract class CategoryModel
     }
 
     /**
-     * @param mixed $meta
+     * @param array $meta
      * @return $this
      */
-    public function setMeta($meta)
+    public function setMeta(array $meta)
     {
+        foreach ($meta as $name => $value) {
+            if (empty($value)) {
+                unset($meta[$name]);
+            }
+        }
+
         $this->meta = $meta;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getMeta()
     {
-        return $this->meta;
+        return empty($this->meta) ? [] : $this->meta;
     }
 
     /**
@@ -401,5 +407,21 @@ abstract class CategoryModel
     public function getFormTitle()
     {
         return $this->form_title;
+    }
+
+    /**
+     * Получить полный путь, включая родительские категории.
+     *
+     * @return string
+     */
+    public function getSlugFull()
+    {
+        $slug = $this->getSlug();
+
+        if ($this->getParent()) {
+            $slug  = $this->getParent()->getSlugFull() . '/' . $slug;
+        }
+
+        return $slug;
     }
 }

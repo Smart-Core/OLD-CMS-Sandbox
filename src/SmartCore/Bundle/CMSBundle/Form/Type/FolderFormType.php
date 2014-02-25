@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Form\Type;
 
 //use SmartCore\Bundle\CMSBundle\Form\EventListener\FolderSubscriber;
+use SmartCore\Bundle\SeoBundle\Form\Type\MetaFromType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -23,6 +24,7 @@ class FolderFormType extends AbstractType
             ->add('has_inherit_nodes')
             ->add('template_inheritable')
             ->add('template_self')
+            ->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
             //->add('permissions', 'text')
             //->add('lockout_nodes', 'text')
             //->addEventSubscriber(new FolderSubscriber())

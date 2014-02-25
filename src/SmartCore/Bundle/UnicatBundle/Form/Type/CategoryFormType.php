@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
 use SmartCore\Bundle\CMSBundle\Container;
+use SmartCore\Bundle\SeoBundle\Form\Type\MetaFromType;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use SmartCore\Bundle\UnicatBundle\Form\Tree\CategoryTreeType;
@@ -39,6 +40,7 @@ class CategoryFormType extends AbstractType
             ->add('slug')
             ->add('is_inheritance', null, ['required' => false])
             ->add('parent', $categoryTreeType)
+            ->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
         ;
 
         $structure = null;

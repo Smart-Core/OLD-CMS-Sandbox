@@ -37,7 +37,7 @@ class EngineController extends Controller
             $tagcache->set($cache_key, $router_data, ['folder', 'node']);
         }
 
-        if (empty($router_data['folders'])) {
+        if (empty($router_data['folders'])) { // Случай пустой инсталляции, когда еще ни одна папка не создана.
             $this->get('cms.jslib')->call('bootstrap');
             $this->buildBaseHtml($router_data);
 
@@ -49,6 +49,8 @@ class EngineController extends Controller
         } elseif ($router_data['status'] == 403) {
             throw new AccessDeniedHttpException('Access Denied.');
         }
+
+        $this->get('html')->setMetas($router_data['meta']);
 
         foreach ($router_data['folders'] as $folder) {
             $this->get('cms.breadcrumbs')->add($this->get('cms.folder')->getUri($folder), $folder->getTitle(), $folder->getDescr());
@@ -82,13 +84,6 @@ class EngineController extends Controller
      */
     protected function buildBaseHtml($router_data)
     {
-        // @todo убрать в ini-шник шаблона.
-        //$this->get('html')->meta('viewport', 'width=device-width, initial-scale=1.0');
-
-        foreach ($router_data['meta'] as $key => $value) {
-            $this->get('html')->meta($key, $value);
-        }
-
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
                 'toolbar' => $this->get('cms.toolbar')->getArray(),

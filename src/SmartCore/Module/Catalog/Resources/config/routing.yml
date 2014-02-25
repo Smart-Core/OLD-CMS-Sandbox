@@ -7,6 +7,13 @@ smart_module.catalog:
 smart_module.catalog.item:
     path: /{slug}.html
     defaults:
-        _controller: CewsModule:Catalog:item
+        _controller: CatalogModule:Catalog:item
+    requirements:
+        slug: '.+'
+
+smart_module.catalog.category:
+    path: /{slug}
+    defaults:
+        _controller: CatalogModule:Catalog:category
     requirements:
         slug: '.+'

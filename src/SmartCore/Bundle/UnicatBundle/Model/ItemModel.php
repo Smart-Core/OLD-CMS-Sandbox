@@ -300,7 +300,7 @@ class ItemModel
      */
     public function getMeta()
     {
-        return $this->meta;
+        return empty($this->meta) ? [] : $this->meta;
     }
 
     /**

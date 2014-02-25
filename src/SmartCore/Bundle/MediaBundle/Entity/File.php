@@ -23,6 +23,12 @@ class File
     protected $id;
 
     /**
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_preuploaded;
+
+    /**
      * @var Collection
      *
      * @ORM\ManyToOne(targetEntity="Collection", inversedBy="files")
@@ -109,9 +115,10 @@ class File
      */
     public function __construct(UploadedFile $uploadedFile = null)
     {
-        $this->created_at = new \DateTime();
-        $this->user_id    = 0;
-        $this->storage    = null;
+        $this->created_at     = new \DateTime();
+        $this->is_preuploaded = true;
+        $this->user_id        = 0;
+        $this->storage        = null;
 
         if ($uploadedFile) {
             $this->uploadedFile = $uploadedFile;
@@ -158,6 +165,25 @@ class File
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param boolean $is_preuploaded
+     * @return $this
+     */
+    public function setIsPreuploaded($is_preuploaded)
+    {
+        $this->is_preuploaded = $is_preuploaded;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsPreuploaded()
+    {
+        return $this->is_preuploaded;
     }
 
     /**

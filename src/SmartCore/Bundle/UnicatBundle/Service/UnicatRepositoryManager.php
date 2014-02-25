@@ -58,6 +58,22 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @return \Doctrine\ORM\EntityRepository
+     */
+    public function getCategoryRepository()
+    {
+        return $this->em->getRepository($this->repository->getCategoryClass());
+    }
+    
+    /**
+     * @return string
+     */
+    public function getCategoryClass()
+    {
+        return $this->repository->getCategoryClass();
+    }
+
+    /**
      * @param array $options
      * @return $this|\Symfony\Component\Form\Form
      */

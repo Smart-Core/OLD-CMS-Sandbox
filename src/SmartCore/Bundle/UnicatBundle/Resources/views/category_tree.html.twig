@@ -1,0 +1,20 @@
+{% if not depth %}
+    {% set depth = null %}
+{% endif %}
+
+{% if not template %}
+    {% set template = 'knp_menu.html.twig' %}
+{% endif %}
+
+{% set menuItem = knp_menu_get('UnicatBundle:CategoryMenu:tree', [], {
+    'categoryClass': categoryClass,
+    'routeName': routeName,
+    'css_class': css_class,
+    'depth': depth,
+}) %}
+
+{{ knp_menu_render(menuItem, {
+    'currentClass': 'active',
+    'clear_matcher': false,
+    'template': template,
+}) }}

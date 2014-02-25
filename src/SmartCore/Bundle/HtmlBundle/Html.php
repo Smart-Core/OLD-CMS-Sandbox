@@ -39,12 +39,13 @@ class Html
     {
         $this->setDoctype('html5');
         //$this->setHtml('html5');
-        $this->setMetaHttpEquiv('Content-Type', 'text/html; charset=utf-8');
+        //$this->setMetaHttpEquiv('Content-Type', 'text/html; charset=utf-8');
         //$this->setMetaHttpEquiv('Content-Language', 'ru');
     }
 
     /**
      * Здесь же генерация открытия тега <html> с аргументами для доктайпа.
+     *
      * @return string
      */
     public function getDoctype()
@@ -110,26 +111,19 @@ class Html
      */
     public function isHtml5()
     {
-        if ($this->doctype == 'html5') {
-            return true;
-        } else {
-            return false;
-        }
+        return ($this->doctype == 'html5') ? true : false;
     }
 
     /**
      * Set document type.
      *
      * @param string $doctype
+     * @return $this
      */
     public function setDoctype($doctype = 'html5')
     {
         $this->doctype = $doctype;
-        if (strpos(strtolower($doctype), 'html4')) {
-            $this->end = '';
-        } else {
-            $this->end = ' /';
-        }
+        $this->end     = (strpos(strtolower($doctype), 'html4')) ? '' : ' /';
 
         return $this;
     }
@@ -138,6 +132,7 @@ class Html
      * Добавить Мета-тэг keywords.
      *
      * @param string $keyword
+     * @return $this
      */
     public function addMetaKeyword($keyword)
     {
@@ -154,6 +149,7 @@ class Html
      * Установить Мета-тэг description.
      *
      * @param string $descr
+     * @return $this
      */
     public function setMetaDescription($descr)
     {
@@ -162,6 +158,10 @@ class Html
         return $this;
     }
 
+    /**
+     * @param string $lang
+     * @return $this
+     */
     public function setLang($lang)
     {
         $this->lang = strtolower($lang);
@@ -169,6 +169,9 @@ class Html
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getLang()
     {
         return $this->lang;
@@ -179,6 +182,7 @@ class Html
      *
      * @param string $attr
      * @param string $value
+     * @return $this
      */
     public function setBodyAttribute($attr, $value)
     {
@@ -193,6 +197,7 @@ class Html
      * @param string $name
      * @param string $content
      * @param string $type (name, http-equiv, property)
+     * @return $this
      */
     public function setMeta($name, $content, $type = 'name')
     {
@@ -202,10 +207,24 @@ class Html
     }
 
     /**
+     * Установить мета тэги.
+     *
+     * @param array  $meta_tags
+     * @return $this
+     */
+    public function setMetas(array $meta_tags)
+    {
+        $this->meta['name'] = $meta_tags;
+
+        return $this;
+    }
+
+    /**
      * Добавить мета тэг http-equiv.
      *
      * @param string $name
      * @param string $content
+     * @return $this
      */
     public function setMetaHttpEquiv($name, $content)
     {
@@ -219,6 +238,7 @@ class Html
      *
      * @param string $name
      * @param string $content
+     * @return $this
      */
     public function setMetaProperty($name, $content)
     {
@@ -229,6 +249,11 @@ class Html
 
     /**
      * Привязка внешних документов.
+     *
+     * @param string $href
+     * @param array null $params
+     * @param int $priority
+     * @return $this
      */
     public function addLink($href, $params = null, $priority = 0)
     {
@@ -253,6 +278,7 @@ class Html
      * @param string $input - src или code.
      * @param array|string $params - параметры. (_code - вставить код между тегами <script> и </script>.)
      * @param int $priority - позиция (чем больше, чем раньше подключится)
+     * @return $this
      */
     public function addScript($input, $params = null, $priority = 0)
     {
@@ -284,6 +310,7 @@ class Html
      * @param string $input - href или code.
      * @param array|string $params - параметры. (_code - вставляет код между тегами <style> и </style>)
      * @param int $priority - позиция (чем больше, чем раньше подключится)
+     * @return $this
      */
     public function addStyle($input, $params = null, $priority = 0)
     {
@@ -300,8 +327,8 @@ class Html
             $data['href'] = $input;
         } elseif (substr($tmp['path'], -5) == '.less') {
             $this->addLink($input, array(
-                'rel' => 'stylesheet/less',
-                'type' => 'text/css',
+                'rel'   => 'stylesheet/less',
+                'type'  => 'text/css',
                 'media' => $data['media'],
             ));
 
@@ -321,7 +348,8 @@ class Html
      * Добавить JS код, который должен быть исполнен при событии document-ready.
      * Метод автоматически подключает либу jquery.
      *
-     * @param text $js_code
+     * @param string $js_code
+     * @return $this
      */
     public function addDocumentReady($js_code)
     {
@@ -334,6 +362,7 @@ class Html
      * Установить значение тэга <title>
      *
      * @param string $title
+     * @return $this
      */
     public function setTitle($title)
     {
@@ -346,6 +375,7 @@ class Html
      * Добавить строку перед title.
      *
      * @param string $title
+     * @return $this
      */
     public function titlePrepend($title)
     {
@@ -358,6 +388,7 @@ class Html
      * Добавить строку после title.
      *
      * @param string $title
+     * @return $this
      */
     public function titleAppend($title)
     {
@@ -409,6 +440,11 @@ class Html
     public function meta($name, $content, $type = 'name')
     {
         return $this->setMeta($name, $content, $type);
+    }
+
+    public function metas($meta_tags)
+    {
+        return $this->setMetas($meta_tags);
     }
 
     public function title($title)

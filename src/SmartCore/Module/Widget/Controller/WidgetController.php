@@ -55,6 +55,8 @@ class WidgetController extends Controller
         $response = $this->forward($this->node_id . ':' .$this->controller, $path);
 
         if ($response->isServerError()) {
+            return $response; // @todo FS#402
+
             return new Response($response->getStatusCode() . ' ' . Response::$statusTexts[$response->getStatusCode()]);
         }
 

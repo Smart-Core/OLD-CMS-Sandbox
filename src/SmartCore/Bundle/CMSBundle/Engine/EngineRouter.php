@@ -83,7 +83,7 @@ class EngineRouter
         foreach ($path_parts as $key => $segment) {
             // Проверка строки запроса на допустимые символы.
             // @todo сделать проверку на разрешение круглых скобок.
-            if (!empty($segment) and !preg_match('/^[a-z_@0-9.-]*$/iu', $segment)) {
+            if (!empty($segment) and !preg_match('/^[a-zA-Z\sа-яА-ЯЁё_@0-9.-]*$/iu', $segment)) {
                 $data['status'] = 404;
                 break;
             }
@@ -103,10 +103,6 @@ class EngineRouter
 
             if ($folder) {
                 if (true) { // @todo if ($this->Permissions->isAllowed('folder', 'read', $folder->permissions)) {
-                    foreach ($folder->getMeta() as $meta_name => $meta_value) {
-                        $data['meta'][$meta_name] = $meta_value;
-                    }
-
                     if ($folder->getUriPart()) {
                         $data['current_folder_path'] .= $folder->getUriPart() . '/';
                     }
@@ -120,6 +116,7 @@ class EngineRouter
 
                     $data['folders'][$folder->getId()] = $folder;
                     $data['current_folder_id'] = $folder->getId();
+                    $data['meta'] = $folder->getMeta();
 
                     // В данной папке есть нода которой передаётся дальнейший парсинг URI.
                     if ($router_node_id !== null) {

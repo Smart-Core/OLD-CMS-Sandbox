@@ -43,7 +43,7 @@ class FeedbackController extends Controller
 
         $session = $this->get('session')->getFlashBag();
 
-        if ($request->isMethod('POST') and $form->isValid()) {
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($item);
             $em->flush($item);

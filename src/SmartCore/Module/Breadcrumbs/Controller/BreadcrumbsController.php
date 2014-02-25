@@ -13,13 +13,18 @@ class BreadcrumbsController extends Controller
      * Разделитель.
      * @var string
      */
-    protected $delimiter = '&raquo;';
+    protected $delimiter = '»'; //'&raquo;'; // @todo подумать как можно в форме свойств ноды, экранировать спец символы.
 
     /**
      * Скрыть "хлебные крошки", если выбрана корневая папка.
      * @var bool
      */
     protected $hide_if_only_home = false;
+
+    /**
+     * @var string|null
+     */
+    protected $css_class = null;
 
     /**
      * Запуск модуля.
@@ -30,6 +35,7 @@ class BreadcrumbsController extends Controller
             'delimiter' => $this->delimiter,
             'items'     => $this->get('cms.breadcrumbs'),
             'hide_if_only_home' => $this->hide_if_only_home,
+            'css_class' => $this->css_class,
         ]);
     }
 }

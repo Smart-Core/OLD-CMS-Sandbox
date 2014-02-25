@@ -156,7 +156,7 @@ class Folder
         $this->is_file              = false;
         $this->has_inherit_nodes    = false;
         $this->lockout_nodes        = null;
-        $this->meta                 = null;
+        $this->meta                 = [];
         $this->nodes                = new ArrayCollection();
         $this->parent_folder        = null;
         $this->permissions          = null;
@@ -310,8 +310,14 @@ class Folder
      * @param array $meta
      * @return $this
      */
-    public function setMeta($meta)
+    public function setMeta(array $meta)
     {
+        foreach ($meta as $name => $value) {
+            if (empty($value)) {
+                unset($meta[$name]);
+            }
+        }
+
         $this->meta = $meta;
 
         return $this;

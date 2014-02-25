@@ -3,6 +3,9 @@
     <title>{% block html_head_title %}{% if html.title %}{{ html.title }}{% endif %}{% endblock html_head_title %}</title>
 {# Meta #}    <!-- Meta -->
 {% block html_head_meta %}
+{% if html.isHtml5 %}
+    <meta charset="UTF-8">
+{% endif %}
 {% for type, vals in html.meta %}
 {% for name, content in vals %}
     <meta {{ type }}="{{ name }}" content="{{ content }}"{{ html.end }}>
