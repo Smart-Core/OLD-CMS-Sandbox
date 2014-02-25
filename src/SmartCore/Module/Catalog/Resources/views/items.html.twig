@@ -1,4 +1,18 @@
 
+{% set childenCategories = category.children %}
+
+{% if childenCategories|length %}
+    <h4>Вложенные категории:</h4>
+
+    <ul>
+        {% for category in childenCategories %}
+            <li><a href="{{ path('smart_module.catalog.category', {'slug': category.slugFull}) }}/">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+    <hr />
+{% endif %}
+
+{% if items|length %}
 {% for item in items %}
     <h1>{{ item.property('title') }}</h1>
 
@@ -16,3 +30,4 @@
 
     <hr />
 {% endfor %}
+{% endif %}

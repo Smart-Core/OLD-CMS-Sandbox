@@ -66,7 +66,8 @@ class CatalogController extends Controller
         $this->get('html')->setMetas($lastCategory->getMeta());
 
         return $this->render('CatalogModule::items.html.twig', [
-            'items' => $urm ? $urm->findAllItems(['id' => 'DESC']) : [],
+            'items' => false, // $urm ? $urm->findAllItems(['id' => 'DESC']) : [],
+            'category' => $lastCategory,
         ]);
     }
 }
