@@ -14,16 +14,18 @@
             <div class="tabbable">
                 <ul class="nav nav-pills">
                     <li class="active"><a href="#base-settings" data-toggle="tab">{{ 'Base settings'|trans }}</a></li>
-                    <li><a href="#cat-properties" data-toggle="tab">{{ 'Properties'|trans }}</a></li>
+                    {% if form.properties %}<li><a href="#cat-properties" data-toggle="tab">{{ 'Properties'|trans }}</a></li>{% endif %}
                     <li><a href="#meta-tags" data-toggle="tab">{{ 'Meta tags'|trans }}</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane" id="meta-tags">
                         {{ form_widget(form.meta) }}
                     </div>
+                    {% if form.properties %}
                     <div class="tab-pane" id="cat-properties">
                         {{ form_widget(form.properties) }}
                     </div>
+                    {% endif %}
                     <div class="tab-pane active" id="base-settings">
                         {{ form_widget(form) }}
                     </div>
