@@ -8,6 +8,7 @@ use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
+use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryCreateFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\ItemFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\PropertyFormType;
@@ -110,7 +111,7 @@ class UnicatService
             ->setUserId($this->getUserId())
         ;
 
-        return $this->getCategoryForm($structure->getRepository(), $category, $options)
+        return $this->formFactory->create(new CategoryCreateFormType($structure->getRepository()), $category, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
     }
 

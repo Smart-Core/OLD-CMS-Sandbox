@@ -243,7 +243,7 @@ class PropertyModel
      * @param array $params
      * @return $this
      */
-    public function setParams(array $params = null)
+    public function setParams(array $params = [])
     {
         $this->params = $params;
 

@@ -20,6 +20,8 @@ class CatalogController extends Controller
      */
     public function indexAction()
     {
+        return $this->categoryAction('');
+
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
 
         return $this->render('CatalogModule::items.html.twig', [
@@ -31,7 +33,7 @@ class CatalogController extends Controller
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function categoryAction($slug)
+    public function categoryAction($slug = null)
     {
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
 
@@ -63,11 +65,18 @@ class CatalogController extends Controller
         /** @var CategoryModel $lastCategory */
         $lastCategory = end($requestedCategories);
 
-        $this->get('html')->setMetas($lastCategory->getMeta());
+        if ($lastCategory instanceof CategoryModel) {
+            $this->get('html')->setMetas($lastCategory->getMeta());
+            $childenCategories = $lastCategory->getChildren();
+        } else {
+            $childenCategories = $urm->getCategoryRepository()->findBy([
+                'parent' => null,
+            ]);
+        }
 
         return $this->render('CatalogModule::items.html.twig', [
-            'items' => false, // $urm ? $urm->findAllItems(['id' => 'DESC']) : [],
-            'category' => $lastCategory,
+            'childenCategories' => $childenCategories,
+            'items'             => $lastCategory ? $urm->findItemsInCategory($lastCategory) : null,
         ]);
     }
 }

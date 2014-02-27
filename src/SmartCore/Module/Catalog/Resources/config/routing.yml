@@ -11,6 +11,13 @@ smart_module.catalog.item:
     requirements:
         slug: '.+'
 
+smart_module.catalog.item:
+    path: /{slug}/{item}.html
+    defaults:
+        _controller: CatalogModule:Catalog:item
+    requirements:
+        slug: '.+'
+
 smart_module.catalog.category:
     path: /{slug}
     defaults:

@@ -58,6 +58,24 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @param CategoryModel $category
+     * @return ItemModel[]|null
+     */
+    public function findItemsInCategory(CategoryModel $category)
+    {
+        $itemEntity = $this->repository->getItemClass();
+
+        $query = $this->em->createQuery("
+           SELECT i
+           FROM $itemEntity AS i
+           JOIN i.categoriesSingle AS cs
+           WHERE cs.id = :category
+        ")->setParameter('category', $category->getId());
+
+        return $query->getResult();
+    }
+
+    /**
      * @return \Doctrine\ORM\EntityRepository
      */
     public function getCategoryRepository()

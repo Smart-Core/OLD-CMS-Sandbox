@@ -42,6 +42,7 @@ class PropertyFormType extends AbstractType
                     'multiselect' => 'Multiselect',
                 ],
             ])
+            //->add('params', 'textarea') // @todo сделать параметры для типов.
             ->add('position')
             ->add('is_dedicated_table', null, ['required' => false])
             ->add('is_enabled', null, ['required' => false])
