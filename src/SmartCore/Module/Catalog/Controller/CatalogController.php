@@ -20,13 +20,7 @@ class CatalogController extends Controller
      */
     public function indexAction()
     {
-        return $this->categoryAction('');
-
-        $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
-
-        return $this->render('CatalogModule::items.html.twig', [
-            'items' => $urm ? $urm->findAllItems(['id' => 'DESC']) : [],
-        ]);
+        return $this->categoryAction();
     }
 
     /**

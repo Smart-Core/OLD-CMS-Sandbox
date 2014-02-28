@@ -11,7 +11,6 @@
     </a></p>
 
     <div class="well">
-        {#{{ form(form, {'attr': {'class': 'form-horizontal'}}) }}#}
         {{ form_start(form, {'attr':{'class':'form-horizontal'}}) }}
         {{ form_errors(form) }}
         <fieldset>
@@ -37,5 +36,8 @@
         </fieldset>
         {{ form_end(form) }}
     </div>
+
+    {{ tinymce_init() }}
+    {{ elfinder_tinymce_init() }}
 
 {% endblock content %}

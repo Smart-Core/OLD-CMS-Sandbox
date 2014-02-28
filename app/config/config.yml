@@ -142,6 +142,15 @@ stfalcon_tinymce:
             width: "100%"
             height: 380
             content_css: "/assets/tinymce/css/content.css" # @todo настройка в формате "asset[path/to/style.css]"
+        simple:
+            theme: "simple"
+            force_br_newlines : false
+            forced_root_block : ""
+            convert_urls : false
+            relative_urls: false
+            width: "100%"
+            height: 180
+            content_css: "/assets/tinymce/css/content.css" # @todo настройка в формате "asset[path/to/style.css]"
 
 knp_disqus:
     api_key: %knp_disqus.api_key%
