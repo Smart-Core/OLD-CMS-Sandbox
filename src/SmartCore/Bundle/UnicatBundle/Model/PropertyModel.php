@@ -52,7 +52,7 @@ class PropertyModel
     /**
      * enum('string','text','date','datetime','img','file','select','multiselect','int','double','checkbox','password')
      *
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=12)
      */
     protected $type;
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 27 2014 г., 22:31
+-- Время создания: Мар 01 2014 г., 03:00
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -378,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   `is_dedicated_table` tinyint(1) NOT NULL,
   `is_required` tinyint(1) NOT NULL,
   `position` int(11) DEFAULT NULL,
-  `type` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `show_in_admin` tinyint(1) NOT NULL,
@@ -388,6 +388,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
   `created_at` datetime NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `group_id` int(11) DEFAULT NULL,
+  `params_yaml` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
   KEY `position` (`position`),
@@ -402,12 +403,12 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties` (
 -- Дамп данных таблицы `aaa_catalog_properties`
 --
 
-INSERT INTO `aaa_catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`) VALUES
-(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 0, 0, '2014-02-13 20:37:50', 'N;', 1),
-(2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1),
-(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1),
-(4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1),
-(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:0:{}', 1);
+INSERT INTO `aaa_catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`, `params_yaml`) VALUES
+(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 0, 0, '2014-02-13 20:37:50', 'N;', 1, NULL),
+(2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL),
+(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL),
+(4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL),
+(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:0:{}', 1, NULL);
 
 -- --------------------------------------------------------
 

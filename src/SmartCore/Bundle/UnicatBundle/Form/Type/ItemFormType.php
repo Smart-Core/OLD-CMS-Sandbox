@@ -41,7 +41,6 @@ class ItemFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // @todo Meta-Keywords и Meta-Description
         $builder
             ->add('slug', null, ['attr' => ['class' => 'focused']])
             ->add('is_enabled')
@@ -78,8 +77,10 @@ class ItemFormType extends AbstractType
                 'label'     => $property->getTitle(),
             ];
 
+            $propertyOptions = array_merge($propertyOptions, $property->getParams());
+
             if ($property->isType('image')) {
-                // @todo сделать вджет загрузки картинок.
+                // @todo сделать виджет загрузки картинок.
                 //$type = 'genemu_jqueryimage';
                 $type = new PropertyImageFormType();
 
@@ -90,7 +91,26 @@ class ItemFormType extends AbstractType
 
             if ($property->isType('select')) {
                 $type = 'choice';
-                $propertyOptions = array_merge($propertyOptions, $property->getParams());
+            }
+
+            if ($property->isType('multiselect')) {
+                $type = 'choice';
+                $propertyOptions['expanded'] = true;
+                //$propertyOptions['multiple'] = true; // @todo FS#407 продумать мультиселект
+            }
+
+            if (isset($propertyOptions['constraints'])) {
+                $constraintsObjects = [];
+
+                foreach ($propertyOptions['constraints'] as $constraintsList) {
+                    foreach ($constraintsList as $constraintClass => $constraintParams) {
+                        $_class = '\Symfony\Component\Validator\Constraints\\' . $constraintClass;
+
+                        $constraintsObjects[] = new $_class($constraintParams);
+                    }
+                }
+
+                $propertyOptions['constraints'] = $constraintsObjects;
             }
 
             $builder->add('property:' . $property->getName(), $type, $propertyOptions);
