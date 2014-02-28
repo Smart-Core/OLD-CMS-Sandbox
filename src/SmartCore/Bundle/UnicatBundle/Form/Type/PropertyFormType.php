@@ -42,14 +42,14 @@ class PropertyFormType extends AbstractType
                     'multiselect' => 'Multiselect',
                 ],
             ])
-            //->add('params', 'textarea') // @todo сделать параметры для типов.
+            ->add('params_yaml',   null, ['attr' => ['data-editor' => 'yaml']])
             ->add('position')
             ->add('is_dedicated_table', null, ['required' => false])
-            ->add('is_enabled', null, ['required' => false])
-            ->add('is_required', null, ['required' => false])
+            ->add('is_enabled',    null, ['required' => false])
+            ->add('is_required',   null, ['required' => false])
             ->add('show_in_admin', null, ['required' => false])
-            ->add('show_in_list', null, ['required' => false])
-            ->add('show_in_view', null, ['required' => false])
+            ->add('show_in_list',  null, ['required' => false])
+            ->add('show_in_view',  null, ['required' => false])
         ;
     }
 

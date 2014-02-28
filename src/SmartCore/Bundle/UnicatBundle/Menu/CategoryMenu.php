@@ -63,18 +63,12 @@ class CategoryMenu extends ContainerAware
     {
         $categories = $parent
             ? $parent->getChildren()
-            : $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy(['parent' => null]);
+            : $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy(['parent' => null, 'is_enabled' => true]);
 
         /** @var CategoryModel $category */
         foreach ($categories as $category) {
             $uri = $this->container->get('router')->generate($options['routeName'], ['slug' => $category->getSlugFull()]) . '/';
             $menu->addChild($category->getTitle(), ['uri' => $uri]);
-                /*
-                ->setAttributes([
-                    'class' => 'folder',
-                    'id' => 'category_id_' . $category->getId(),
-                ]);
-                */
 
             /** @var ItemInterface $sub_menu */
             $sub_menu = $menu[$category->getTitle()];
@@ -108,7 +102,7 @@ class CategoryMenu extends ContainerAware
      * @param array $options
      * @return void
      */
-    protected function addChildToAdminTree(ItemInterface $menu, $parent = null, $options)
+    protected function addChildToAdminTree(ItemInterface $menu, CategoryModel $parent = null, $options)
     {
         $categories = $parent
             ? $parent->getChildren()
@@ -124,13 +118,11 @@ class CategoryMenu extends ContainerAware
                 'structure_id' => $category->getStructure()->getId(),
                 'repository'   => $category->getStructure()->getRepository()->getName(),
             ]);
-            $menu->addChild($category->getTitle(), ['uri' => $uri]);
-                /*
-                ->setAttributes([
-                    'class' => 'folder',
-                    'id'    => 'category_id_' . $category->getId(),
-                ]);
-                */
+            $newItem = $menu->addChild($category->getTitle(), ['uri' => $uri]);
+
+            if (false === $category->getIsEnabled()) {
+                $newItem->setAttribute('style', 'text-decoration: line-through;');
+            }
 
             /** @var ItemInterface $sub_menu */
             $sub_menu = $menu[$category->getTitle()];

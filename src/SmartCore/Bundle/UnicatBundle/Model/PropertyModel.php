@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * ORM\Entity()
@@ -110,6 +111,13 @@ class PropertyModel
     protected $params;
 
     /**
+     * @var array
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $params_yaml;
+
+    /**
      * @var PropertiesGroupModel
      *
      * @ORM\ManyToOne(targetEntity="PropertiesGroup", inversedBy="properties")
@@ -124,6 +132,7 @@ class PropertyModel
         $this->created_at = new \DateTime();
         $this->is_enabled = true;
         $this->params = [];
+        $this->params_yaml = null;
         $this->position = 0;
         $this->user_id = 0;
     }
@@ -256,6 +265,33 @@ class PropertyModel
     public function getParams()
     {
         return $this->params;
+    }
+
+    /**
+     * @param array $params_yaml
+     * @return $this
+     */
+    public function setParamsYaml($params_yaml)
+    {
+        $this->params_yaml = $params_yaml;
+
+        $params = Yaml::parse($params_yaml);
+
+        if (empty($params)) {
+            $params = [];
+        }
+
+        $this->setParams($params);
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParamsYaml()
+    {
+        return $this->params_yaml;
     }
 
     /**

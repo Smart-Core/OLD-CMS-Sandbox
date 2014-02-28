@@ -36,7 +36,8 @@ class CategoryFormType extends AbstractType
         $categoryTreeType = (new CategoryTreeType(Container::get('doctrine')))->setStructure($category->getStructure());
 
         $builder
-            ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('is_enabled',     null, ['required' => false])
+            ->add('title',          null, ['attr' => ['class' => 'focused']])
             ->add('slug')
             ->add('is_inheritance', null, ['required' => false])
             ->add('parent', $categoryTreeType)

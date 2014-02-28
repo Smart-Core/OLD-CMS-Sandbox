@@ -88,6 +88,11 @@ class ItemFormType extends AbstractType
                 }
             }
 
+            if ($property->isType('select')) {
+                $type = 'choice';
+                $propertyOptions = array_merge($propertyOptions, $property->getParams());
+            }
+
             $builder->add('property:' . $property->getName(), $type, $propertyOptions);
         }
     }

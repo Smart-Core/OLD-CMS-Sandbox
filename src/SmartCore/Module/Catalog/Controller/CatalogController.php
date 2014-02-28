@@ -48,6 +48,7 @@ class CatalogController extends Controller
 
             /** @var CategoryModel $category */
             $category = $urm->getCategoryRepository()->findOneBy([
+                'is_enabled' => true,
                 'parent' => $parent,
                 'slug'   => $categoryName,
             ]);
