@@ -83,7 +83,7 @@ class UnicatStructure
     {
         $this->created_at = new \DateTime();
         $this->position   = 0;
-        $this->properties = [];
+        $this->properties = null;
         $this->user_id    = 0;
         $this->is_default_inheritance = false;
         $this->is_required = true;

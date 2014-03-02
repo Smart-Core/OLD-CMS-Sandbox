@@ -16,19 +16,11 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
         }
 
         $builder
-            ->add('depth', 'integer', [
-                'attr' => ['class' => 'focused'],
-                'required' => false,
-            ])
-            ->add('css_class', 'text', [
-                'required' => false,
-            ])
-            ->add('selected_inheritance', 'checkbox', [
-                'required' => false,
-            ])
-            ->add('group_id', 'choice', [
-                'choices' => $groups,
-            ])
+            ->add('depth',          'integer',  ['attr' => ['class' => 'focused'], 'required' => false])
+            ->add('css_class',      'text',     ['required' => false])
+            ->add('current_class',  'text',     ['required' => false])
+            ->add('selected_inheritance', 'checkbox', ['required' => false])
+            ->add('group_id',       'choice',   ['choices' => $groups])
         ;
     }
 

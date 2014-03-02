@@ -5,6 +5,7 @@ namespace SmartCore\Module\Catalog\Controller;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class CatalogController extends Controller
 {
@@ -29,6 +30,10 @@ class CatalogController extends Controller
      */
     public function categoryAction($slug = null)
     {
+        if (null === $this->repository_id) {
+            return new Response('Module Catalog not yet configured. Node: ' . $this->node->getId() . '<br />');
+        }
+
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
 
         // @todo убрать в URM

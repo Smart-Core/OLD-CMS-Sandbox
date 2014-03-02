@@ -11,6 +11,8 @@ class CategoryCreateFormType extends CategoryFormType
         parent::buildForm($builder, $options);
 
         $builder
+            ->remove('is_enabled')
+            ->remove('is_inheritance')
             ->remove('meta')
             ->remove('properties')
         ;

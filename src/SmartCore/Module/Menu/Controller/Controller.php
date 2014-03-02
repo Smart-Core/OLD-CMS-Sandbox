@@ -11,8 +11,9 @@ abstract class Controller extends BaseController
     use CacheTrait;
     use NodeTrait;
 
-    protected $css_class    = null;
-    protected $depth        = 0;
-    protected $group_id     = null;
+    protected $css_class     = null;
+    protected $current_class = 'active';
+    protected $depth         = 0;
+    protected $group_id      = null;
     protected $selected_inheritance = false;
 }

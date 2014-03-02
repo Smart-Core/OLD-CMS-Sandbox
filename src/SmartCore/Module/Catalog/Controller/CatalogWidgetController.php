@@ -21,9 +21,16 @@ class CatalogWidgetController extends Controller
      * @param int|null $depth
      * @return Response
      */
-    public function categoryTreeAction($depth = null, $css_class = null, $template = 'knp_menu.html.twig')
+    public function categoryTreeAction($depth = null, $css_class = null, $template = 'knp_menu.html.twig', $selected_inheritance = false)
     {
+        if (null === $this->repository_id) {
+            return new Response('Module Catalog not yet configured. Node: ' . $this->node->getId() . '<br />');
+        }
+
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
+
+        // Хак для Menu\RequestVoter
+        $this->get('request')->attributes->set('__selected_inheritance', $selected_inheritance);
 
         // @todo cache
         $categoryTree = $this->renderView('UnicatBundle::category_tree.html.twig', [
@@ -33,6 +40,8 @@ class CatalogWidgetController extends Controller
             'routeName'     => 'smart_module.catalog.category',
             'template'      => $template,
         ]);
+
+        $this->get('request')->attributes->remove('__selected_inheritance');
 
         return new Response($categoryTree);
     }

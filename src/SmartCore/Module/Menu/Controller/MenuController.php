@@ -23,7 +23,7 @@ class MenuController extends Controller
 
             $menu = $this->renderView('MenuModule::' . $this->node->getTemplate('menu') . '.html.twig', [
                 'css_class'     => $this->css_class,
-                'current_class' => '',
+                'current_class' => $this->current_class,
                 'depth'         => $this->depth,
                 'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
             ]);

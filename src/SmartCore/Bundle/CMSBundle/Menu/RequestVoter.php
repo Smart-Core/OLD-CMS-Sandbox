@@ -9,16 +9,16 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class RequestVoter implements VoterInterface
 {
     /**
-     * @var \Symfony\Component\HttpFoundation\Request
+     * @var \Symfony\Component\HttpFoundation\RequestStack
      */
-    private $request;
+    protected $requestStack;
 
     /**
      * @param RequestStack $requestStack
      */
     public function __construct(RequestStack $requestStack)
     {
-        $this->request = $requestStack->getCurrentRequest();
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -27,21 +27,23 @@ class RequestVoter implements VoterInterface
      */
     public function matchItem(ItemInterface $item)
     {
+        $request = $this->requestStack->getCurrentRequest();
+
         $parent = $item->getParent();
 
         while (null !== $parent->getParent()) {
             $parent = $parent->getParent();
         }
 
-        if ($item->getUri() === $this->request->getRequestUri() or
-            $item->getUri() === $this->request->attributes->get('__current_folder_path', false)
+        if ($item->getUri() === $request->getRequestUri() or
+            $item->getUri() === $request->attributes->get('__current_folder_path', false)
         ) {
             // URL's completely match
             return true;
         } elseif (
-            $item->getUri() !== $this->request->getBaseUrl().'/' and
-            $item->getUri() === substr($this->request->getRequestUri(), 0, strlen($item->getUri())) and
-            $this->request->attributes->get('__selected_inheritance', true) and
+            $item->getUri() !== $request->getBaseUrl().'/' and
+            $item->getUri() === substr($request->getRequestUri(), 0, strlen($item->getUri())) and
+            $request->attributes->get('__selected_inheritance', true) and
             $parent->getExtra('select_intehitance', true)
         ) {
             // URL isn't just "/" and the first part of the URL match
