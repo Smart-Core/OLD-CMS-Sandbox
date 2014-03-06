@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 06 2014 г., 01:35
+-- Время создания: Мар 06 2014 г., 14:34
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -576,7 +576,7 @@ CREATE TABLE IF NOT EXISTS `aaa_engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
 
 --
 -- Дамп данных таблицы `aaa_engine_nodes`
@@ -609,7 +609,8 @@ INSERT INTO `aaa_engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`,
 (25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL),
 (26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, NULL, 1, '2014-02-08 21:04:50', 0, NULL),
 (27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, NULL, 1, '2014-02-10 08:13:18', 0, NULL),
-(28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL);
+(28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL),
+(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1170,17 +1171,19 @@ CREATE TABLE IF NOT EXISTS `aaa_unicat_repositories` (
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `entities_namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `default_structure_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
-  KEY `IDX_E243B95B52E685C` (`media_collection_id`)
+  KEY `IDX_E243B95B52E685C` (`media_collection_id`),
+  KEY `IDX_E243B957E2E521` (`default_structure_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `aaa_unicat_repositories`
 --
 
-INSERT INTO `aaa_unicat_repositories` (`id`, `name`, `title`, `is_inheritance`, `media_collection_id`, `user_id`, `created_at`, `entities_namespace`) VALUES
-(1, 'catalog', 'Каталог товаров', 1, 1, 1, '2014-02-11 23:32:04', 'Demo\\SiteBundle\\Entity\\Catalog\\');
+INSERT INTO `aaa_unicat_repositories` (`id`, `name`, `title`, `is_inheritance`, `media_collection_id`, `user_id`, `created_at`, `entities_namespace`, `default_structure_id`) VALUES
+(1, 'catalog', 'Каталог товаров', 1, 1, 1, '2014-02-11 23:32:04', 'Demo\\SiteBundle\\Entity\\Catalog\\', 1);
 
 -- --------------------------------------------------------
 
@@ -1462,6 +1465,7 @@ ALTER TABLE `aaa_slides`
 -- Ограничения внешнего ключа таблицы `aaa_unicat_repositories`
 --
 ALTER TABLE `aaa_unicat_repositories`
+  ADD CONSTRAINT `FK_E243B957E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `aaa_unicat_structures` (`id`),
   ADD CONSTRAINT `FK_E243B95B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `aaa_media_collections` (`id`);
 
 --

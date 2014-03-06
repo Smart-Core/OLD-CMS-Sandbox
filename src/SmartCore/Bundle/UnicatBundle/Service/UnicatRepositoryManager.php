@@ -92,6 +92,14 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @return UnicatStructure
+     */
+    public function getDefaultStructure()
+    {
+        return $this->repository->getDefaultStructure();
+    }
+    
+    /**
      * @param array $options
      * @return $this|\Symfony\Component\Form\Form
      */

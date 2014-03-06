@@ -67,6 +67,13 @@ class UnicatRepository
     protected $created_at;
 
     /**
+     * @var UnicatStructure
+     *
+     * @ORM\ManyToOne(targetEntity="UnicatStructure")
+     */
+    protected $default_structure;
+
+    /**
      * @var UnicatStructure[]
      *
      * @ORM\OneToMany(targetEntity="UnicatStructure", mappedBy="repository")
@@ -265,6 +272,25 @@ class UnicatRepository
         $this->structures = $structures;
 
         return $this;
+    }
+
+    /**
+     * @param UnicatStructure $default_structure
+     * @return $this
+     */
+    public function setDefaultStructure(UnicatStructure $default_structure)
+    {
+        $this->default_structure = $default_structure;
+
+        return $this;
+    }
+
+    /**
+     * @return UnicatStructure
+     */
+    public function getDefaultStructure()
+    {
+        return $this->default_structure;
     }
 
     /**

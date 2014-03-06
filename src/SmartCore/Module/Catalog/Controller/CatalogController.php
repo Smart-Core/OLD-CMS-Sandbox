@@ -70,7 +70,8 @@ class CatalogController extends Controller
             $childenCategories = $lastCategory->getChildren();
         } else {
             $childenCategories = $urm->getCategoryRepository()->findBy([
-                'parent' => null,
+                'parent'    => null,
+                'structure' => $urm->getDefaultStructure(),
             ]);
         }
 

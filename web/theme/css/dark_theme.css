@@ -19,6 +19,9 @@ hr {
 ul.main_menu li.current > a {
     color: orange;
 }
+li.active > a {
+    color: orange;
+}
 /*
 .nav > li > a:hover,
 .nav > li > a:focus {

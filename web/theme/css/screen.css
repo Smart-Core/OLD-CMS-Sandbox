@@ -30,6 +30,9 @@ p {
 ul.main_menu li.current > a {
     color: #191970;
 }
+li.active > a {
+    color: #191970;
+}
 pre {
     font-family: Consolas;
     font-size: 16px;

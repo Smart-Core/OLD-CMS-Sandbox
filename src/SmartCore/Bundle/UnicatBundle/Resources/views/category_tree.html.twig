@@ -8,9 +8,10 @@
 
 {% set menuItem = knp_menu_get('UnicatBundle:CategoryMenu:tree', [], {
     'categoryClass': categoryClass,
-    'routeName': routeName,
     'css_class': css_class,
     'depth': depth,
+    'routeName': routeName,
+    'structure': structure,
 }) %}
 
 {{ knp_menu_render(menuItem, {

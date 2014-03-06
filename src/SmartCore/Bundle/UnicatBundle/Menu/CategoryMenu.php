@@ -63,7 +63,11 @@ class CategoryMenu extends ContainerAware
     {
         $categories = $parent
             ? $parent->getChildren()
-            : $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy(['parent' => null, 'is_enabled' => true]);
+            : $this->container->get('doctrine.orm.entity_manager')->getRepository($options['categoryClass'])->findBy([
+                'parent'     => null,
+                'is_enabled' => true,
+                'structure'  => $options['structure'],
+            ], ['position' => 'ASC']);
 
         /** @var CategoryModel $category */
         foreach ($categories as $category) {

@@ -18,11 +18,20 @@ class CatalogWidgetController extends Controller
     protected $repository_id;
 
     /**
-     * @param int|null $depth
+     * @param int $depth
+     * @param string $css_class
+     * @param string $template
+     * @param bool $selected_inheritance
+     * @param int $structure
      * @return Response
      */
-    public function categoryTreeAction($depth = null, $css_class = null, $template = 'knp_menu.html.twig', $selected_inheritance = false)
-    {
+    public function categoryTreeAction(
+        $css_class = null,
+        $depth = null,
+        $template = 'knp_menu.html.twig',
+        $selected_inheritance = false,
+        $structure = null
+    ) {
         if (null === $this->repository_id) {
             return new Response('Module Catalog not yet configured. Node: ' . $this->node->getId() . '<br />');
         }
@@ -38,6 +47,7 @@ class CatalogWidgetController extends Controller
             'css_class'     => $css_class,
             'depth'         => $depth,
             'routeName'     => 'smart_module.catalog.category',
+            'structure'     => empty($structure) ? $urm->getDefaultStructure() : $urm->getStructure($structure),
             'template'      => $template,
         ]);
 
