@@ -149,6 +149,8 @@ class UnicatRepository
 
     /**
      * @return CategoryModel
+     *
+     * @deprecated
      */
     public function createCategory()
     {
@@ -158,17 +160,9 @@ class UnicatRepository
     }
 
     /**
-     * @return ItemModel
-     */
-    public function createItem()
-    {
-        $class = $this->getItemClass();
-
-        return new $class;
-    }
-
-    /**
      * @return PropertyModel
+     *
+     * @deprecated
      */
     public function createProperty()
     {
@@ -179,6 +173,8 @@ class UnicatRepository
 
     /**
      * @return PropertiesGroupModel
+     *
+     * @deprecated
      */
     public function createPropertiesGroup()
     {

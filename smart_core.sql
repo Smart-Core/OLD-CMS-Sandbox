@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 06 2014 г., 14:34
+-- Время создания: Мар 06 2014 г., 16:41
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.9
 
@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_items`
@@ -288,9 +288,10 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
 
 INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
 (1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18'),
-(2, 1, 'galaxy-s4', 'N;', 'a:4:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;}', 0, '2014-02-14 13:13:57'),
+(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57'),
 (3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23'),
-(4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56');
+(4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56'),
+(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40');
 
 -- --------------------------------------------------------
 
@@ -318,7 +319,8 @@ INSERT INTO `aaa_catalog_items_categories_relations` (`item_id`, `category_id`) 
 (2, 9),
 (3, 8),
 (4, 16),
-(4, 18);
+(4, 18),
+(5, 2);
 
 -- --------------------------------------------------------
 
@@ -346,7 +348,8 @@ INSERT INTO `aaa_catalog_items_categories_relations_single` (`item_id`, `categor
 (2, 9),
 (3, 8),
 (4, 16),
-(4, 18);
+(4, 18),
+(5, 2);
 
 -- --------------------------------------------------------
 
@@ -790,7 +793,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files` (
   KEY `IDX_D2E5001112469DE2` (`category_id`),
   KEY `IDX_D2E500115CC5DB90` (`storage_id`),
   KEY `type` (`type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files`
@@ -800,7 +803,8 @@ INSERT INTO `aaa_media_files` (`id`, `collection_id`, `category_id`, `storage_id
 (1, 1, NULL, 1, 0, '/2014/02/16', '00_52_bbc4f846f6.jpeg', 'samsung-np900x3c-a02ru-1.jpg', 'image', 'image/jpeg', 131476, 131476, 0, '2014-02-16 00:52:17'),
 (3, 1, NULL, 1, 0, '/2014/02/17', '01_19_53bd2543df.jpeg', '154655_0.1362072510.jpg', 'image', 'image/jpeg', 29693, 29693, 0, '2014-02-17 01:19:23'),
 (4, 1, NULL, 1, 0, '/2014/02/17', '01_41_ec3e194bc1.jpeg', 'pic_18468_1.jpg', 'image', 'image/jpeg', 364655, 364655, 0, '2014-02-17 01:41:47'),
-(5, 1, NULL, 1, 0, '/2014/02/17', '22_11_083fd66af8.jpeg', 'EOS_650D.jpg', 'image', 'image/jpeg', 1695916, 1695916, 0, '2014-02-17 22:11:20');
+(5, 1, NULL, 1, 0, '/2014/02/17', '22_11_083fd66af8.jpeg', 'EOS_650D.jpg', 'image', 'image/jpeg', 1695916, 1695916, 0, '2014-02-17 22:11:20'),
+(6, 1, NULL, 1, 1, '/2014/03/06', '16_38_725b3ca498.jpg', '3.jpg', 'image', 'image/jpeg', 897389, 897389, 0, '2014-03-06 16:38:36');
 
 -- --------------------------------------------------------
 
@@ -822,7 +826,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files_transformed`
@@ -836,7 +840,8 @@ INSERT INTO `aaa_media_files_transformed` (`id`, `file_id`, `collection_id`, `st
 (7, 4, 1, 1, '100-100', 2001, '2014-02-17 01:41:50'),
 (8, 4, 1, 1, '300-300', 8494, '2014-02-17 01:41:53'),
 (9, 5, 1, 1, '300-300', 9631, '2014-02-17 22:11:27'),
-(10, 5, 1, 1, '100-100', 2219, '2014-02-17 22:38:10');
+(10, 5, 1, 1, '100-100', 2219, '2014-02-17 22:38:10'),
+(11, 6, 1, 1, '300-300', 12833, '2014-03-06 16:38:41');
 
 -- --------------------------------------------------------
 

@@ -263,9 +263,33 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @return ItemModel
+     */
+    public function createItemEntity()
+    {
+        $class = $this->repository->getItemClass();
+
+        return new $class;
+    }
+
+    /**
      * @param FormInterface $form
      * @param Request $request
      * @return $this
+     *
+     * @todo события
+     */
+    public function createItem(FormInterface $form, Request $request)
+    {
+        return $this->saveItem($form, $request);
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param Request $request
+     * @return $this
+     *
+     * @todo события
      */
     public function updateItem(FormInterface $form, Request $request)
     {

@@ -300,16 +300,6 @@ class UnicatService
     }
 
     /**
-     * @param FormInterface $form
-     * @param Request $request
-     * @return $this
-     */
-    public function createItem(FormInterface $form, Request $request)
-    {
-        return $this->saveItem($form, $request);
-    }
-
-    /**
      * @param PropertyModel $property
      * @return $this
      */

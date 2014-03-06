@@ -290,27 +290,26 @@ class AdminCatalogController extends Controller
      */
     public function itemCreateAction(Request $request, $repository)
     {
-        $unicat = $this->get('unicat');
-        $repository = $unicat->getRepository($repository);
+        $urm  = $this->get('unicat')->getRepositoryManager($repository);
 
-        $newItem = $repository->createItem();
+        $newItem = $urm->createItemEntity();
         $newItem->setUserId($this->getUser());
 
-        $form = $unicat->getItemCreateForm($repository, $newItem);
+        $form = $urm->getItemCreateForm($newItem);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form->isValid()) {
-                $unicat->createItem($form, $request);
+                $urm->createItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись создана');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
+                return $this->redirectToRepositoryAdmin($urm->getRepository());
             }
         }
 
         return $this->render('CatalogModule:Admin:item_create.html.twig', [
             'form'       => $form->createView(),
-            'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
+            'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
 
@@ -353,11 +352,9 @@ class AdminCatalogController extends Controller
     {
         $request = $this->get('request_stack')->getCurrentRequest();
 
-        if ($request->query->has('redirect_to')) {
-            $url = $request->query->get('redirect_to');
-        } else {
-            $url = $this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]);
-        }
+        $url = $request->query->has('redirect_to')
+            ? $request->query->get('redirect_to')
+            : $this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]);
 
         return $this->redirect($url);
     }
