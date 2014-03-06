@@ -12,6 +12,7 @@ use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UnicatRepositoryManager
 {
@@ -73,6 +74,49 @@ class UnicatRepositoryManager
         ")->setParameter('category', $category->getId());
 
         return $query->getResult();
+    }
+
+    /**
+     * @param string|int $val
+     * @return ItemModel|null
+     */
+    public function findItem($val)
+    {
+        $key = intval($val) ? 'id' : 'slug';
+
+        return $this->em->getRepository($this->repository->getItemClass())->findOneBy([$key => $val]);
+    }
+
+    /**
+     * @param string $slug
+     * @return CategoryModel[]
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function findCategoriesBySlug($slug = null)
+    {
+        $categories = [];
+        $parent = null;
+        foreach (explode('/', $slug) as $categoryName) {
+            if (strlen($categoryName) == 0) {
+                break;
+            }
+
+            /** @var CategoryModel $category */
+            $category = $this->getCategoryRepository()->findOneBy([
+                'is_enabled' => true,
+                'parent' => $parent,
+                'slug'   => $categoryName,
+            ]);
+
+            if ($category) {
+                $categories[] = $category;
+                $parent = $category;
+            } else {
+                throw new NotFoundHttpException();
+            }
+        }
+
+        return $categories;
     }
 
     /**

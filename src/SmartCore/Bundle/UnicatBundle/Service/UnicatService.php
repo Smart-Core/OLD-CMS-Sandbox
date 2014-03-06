@@ -90,6 +90,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getCategoryForm(UnicatRepository $repository, $data = null, array $options = [])
     {
@@ -101,6 +103,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getCategoryCreateForm(UnicatStructure $structure, array $options = [])
     {
@@ -120,6 +124,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getCategoryEditForm(CategoryModel $category, array $options = [])
     {
@@ -134,6 +140,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getPropertyForm(UnicatRepository $repository, $data = null, array $options = [])
     {
@@ -146,6 +154,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getItemForm(UnicatRepository $repository, $data = null, array $options = [])
     {
@@ -158,6 +168,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getItemCreateForm(UnicatRepository $repository, $data = null, array $options = [])
     {
@@ -171,6 +183,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getItemEditForm(UnicatRepository $repository, $data = null, array $options = [])
     {
@@ -184,6 +198,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getPropertyCreateForm(UnicatRepository $repository, $groupId, array $options = [])
     {
@@ -202,6 +218,8 @@ class UnicatService
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
+     *
+     * @deprecated
      */
     public function getPropertyEditForm(UnicatRepository $repository, $property, array $options = [])
     {
@@ -213,7 +231,10 @@ class UnicatService
     /**
      * @param UnicatStructure $structure
      * @param int $id
+     *
      * @return CategoryModel|null
+     *
+     * @deprecated
      */
     public function getCategory(UnicatStructure $structure, $id)
     {
@@ -223,7 +244,10 @@ class UnicatService
     /**
      * @param UnicatRepository $repository
      * @param int $id
+     *
      * @return ItemModel|null
+     *
+     * @deprecated
      */
     public function getItem(UnicatRepository $repository, $id)
     {
@@ -233,7 +257,10 @@ class UnicatService
     /**
      * @param UnicatRepository $repository
      * @param array|null $orderBy
+     *
      * @return ItemModel|null
+     *
+     * @deprecated
      */
     public function findAllItems(UnicatRepository $repository, $orderBy = null)
     {
@@ -244,6 +271,8 @@ class UnicatService
      * @param UnicatRepository $repository
      * @param int $groupId
      * @return PropertyModel[]
+     *
+     * @deprecated
      */
     public function getProperties(UnicatRepository $repository, $groupId = null)
     {
@@ -256,6 +285,8 @@ class UnicatService
      * @param UnicatRepository $repository
      * @param int $groupId
      * @return PropertyModel[]
+     *
+     * @deprecated
      */
     public function getPropertiesGroup(UnicatRepository $repository, $groupId)
     {
@@ -266,6 +297,8 @@ class UnicatService
      * @param UnicatRepository $repository
      * @param int $groupId
      * @return PropertyModel[]
+     *
+     * @deprecated
      */
     public function getProperty(UnicatRepository $repository, $id)
     {
@@ -505,6 +538,8 @@ class UnicatService
 
     /**
      * @return int
+     *
+     * @deprecated
      */
     protected function getUserId()
     {

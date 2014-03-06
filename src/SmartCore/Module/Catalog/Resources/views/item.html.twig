@@ -1,0 +1,14 @@
+
+<h1>{{ item.property('title') }}</h1>
+
+{% if item.property('image') %}
+    <p>{{ smart_media_img(item.property('image'), '300-300') }}</p>
+{% endif %}
+
+{% if item.property('description') %} <p>Описание: {{ item.property('description') }}</p> {% endif %}
+
+<p>Наличие: {% if item.property('in_sight') %} есть {% else %} нет {% endif %} </p>
+
+{% if item.property('price') %}
+    <p>Цена: {{ item.property('price') }}</p>
+{% endif %}

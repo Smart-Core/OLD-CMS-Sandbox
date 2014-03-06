@@ -12,10 +12,11 @@ smart_module.catalog.item:
         slug: '.+'
 
 smart_module.catalog.item:
-    path: /{slug}/{item}.html
+    path: /{slug}/{itemSlug}.html
     defaults:
         _controller: CatalogModule:Catalog:item
     requirements:
+        itemSlug: '.+'
         slug: '.+'
 
 smart_module.catalog.category:
