@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Catalog\Controller;
 
+use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -321,28 +322,43 @@ class AdminCatalogController extends Controller
      */
     public function itemEditAction(Request $request, $repository, $id)
     {
-        $unicat = $this->get('unicat');
-        $repository = $unicat->getRepository($repository);
-
-        $form = $unicat->getItemEditForm($repository, $unicat->getItem($repository, $id));
+        $urm  = $this->get('unicat')->getRepositoryManager($repository);
+        $form = $urm->getItemEditForm($urm->findItem($id));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
+                return $this->redirectToRepositoryAdmin($urm->getRepository());
             }
 
             if ($form->isValid() and $form->get('update')->isClicked() and $form->isValid()) {
-                $unicat->updateItem($form, $request);
+                $urm->updateItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]));
+                return $this->redirectToRepositoryAdmin($urm->getRepository());
             }
         }
 
         return $this->render('CatalogModule:Admin:item_edit.html.twig', [
             'form'       => $form->createView(),
-            'repository' => $repository, // @todo убрать, это пока для наследуемого шаблона.
+            'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
+    }
+
+    /**
+     * @param UnicatRepository $repository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    protected function redirectToRepositoryAdmin(UnicatRepository $repository)
+    {
+        $request = $this->get('request_stack')->getCurrentRequest();
+
+        if ($request->query->has('redirect_to')) {
+            $url = $request->query->get('redirect_to');
+        } else {
+            $url = $this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]);
+        }
+
+        return $this->redirect($url);
     }
 }

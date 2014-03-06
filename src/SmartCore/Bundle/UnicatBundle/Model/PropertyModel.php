@@ -264,7 +264,7 @@ class PropertyModel
      */
     public function getParams()
     {
-        return $this->params;
+        return (null == $this->params) ? [] : $this->params;
     }
 
     /**

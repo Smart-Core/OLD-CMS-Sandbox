@@ -78,12 +78,25 @@ class UnicatService
         $repository = $this->getRepository($repository_id);
 
         if (!isset($this->urms[$repository->getId()])) {
-            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $this->formFactory, $repository);
+            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $this->formFactory, $repository, $this->mc);
         }
 
         return $this->urms[$repository->getId()];
     }
 
+    /**
+     * @param string|int $repository_id
+     * @return \SmartCore\Bundle\UnicatBundle\Model\PropertyModel[]
+     */
+    public function getProperties($repository)
+    {
+        if ($repository instanceof UnicatRepository) {
+            $repository = $repository->getId();
+        }
+
+        return $this->getRepositoryManager($repository)->getProperties();
+    }
+    
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
@@ -146,51 +159,6 @@ class UnicatService
     public function getPropertyForm(UnicatRepository $repository, $data = null, array $options = [])
     {
         return $this->formFactory->create(new PropertyFormType($repository), $data, $options);
-    }
-
-    /**
-     * @param UnicatRepository $repository
-     * @param mixed $data    The initial data for the form
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getItemForm(UnicatRepository $repository, $data = null, array $options = [])
-    {
-        return $this->formFactory->create(new ItemFormType($repository), $data, $options);
-    }
-
-    /**
-     * @param UnicatRepository $repository
-     * @param mixed $data    The initial data for the form
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getItemCreateForm(UnicatRepository $repository, $data = null, array $options = [])
-    {
-        return $this->getItemForm($repository, $data, $options)
-            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
-    }
-
-    /**
-     * @param UnicatRepository $repository
-     * @param mixed $data    The initial data for the form
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getItemEditForm(UnicatRepository $repository, $data = null, array $options = [])
-    {
-        return $this->getItemForm($repository, $data, $options)
-            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -274,20 +242,6 @@ class UnicatService
      *
      * @deprecated
      */
-    public function getProperties(UnicatRepository $repository, $groupId = null)
-    {
-        $filter = ($groupId) ? ['group' => $groupId] : [];
-
-        return $this->em->getRepository($repository->getPropertyClass())->findBy($filter, ['position' => 'ASC']);
-    }
-
-    /**
-     * @param UnicatRepository $repository
-     * @param int $groupId
-     * @return PropertyModel[]
-     *
-     * @deprecated
-     */
     public function getPropertiesGroup(UnicatRepository $repository, $groupId)
     {
         return $this->em->getRepository($repository->getPropertiesGroupClass())->find($groupId);
@@ -353,114 +307,6 @@ class UnicatService
     public function createItem(FormInterface $form, Request $request)
     {
         return $this->saveItem($form, $request);
-    }
-
-    /**
-     * @param FormInterface $form
-     * @param Request $request
-     * @return $this
-     */
-    public function updateItem(FormInterface $form, Request $request)
-    {
-        return $this->saveItem($form, $request);
-    }
-
-    /**
-     * @param FormInterface $form
-     * @param Request $request
-     * @return $this|array
-     */
-    public function saveItem(FormInterface $form, Request $request)
-    {
-        /** @var ItemModel $item */
-        $item = $form->getData();
-
-        /** @var UnicatRepository $repository */
-        $repository = $form->getConfig()->getType()->getInnerType()->getRepository();
-
-        // Проверка и модификация свойств. В частности загрука картинок и валидация.
-        $properties = $this->getProperties($repository);
-
-        foreach ($properties as $property) {
-            if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
-                $tableItems = $this->em->getClassMetadata($repository->getItemClass())->getTableName();
-                $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
-                $res = $this->em->getConnection()->query($sql)->fetch();
-
-                if (!empty($res)) {
-                    $previousProperties = unserialize($res['properties']);
-                    $fileId = $previousProperties[$property->getName()];
-                } else {
-                    $fileId = null;
-                }
-
-                // удаление файла.
-                $_delete_ = $request->request->get('_delete_');
-                if (is_array($_delete_) and isset($_delete_['property:' . $property->getName()]) and 'on' === $_delete_['property:' . $property->getName()]) {
-                    $this->mc->remove($fileId);
-                    $fileId = null;
-                } else {
-                    $file = $item->getProperty($property->getName());
-
-                    if ($file) {
-                        $this->mc->remove($fileId);
-                        $fileId = $this->mc->upload($file);
-                    }
-                }
-
-                $item->setProperty($property->getName(), $fileId);
-            }
-        }
-
-        //@todo $structuresColection = $this->em->getRepository($repository->getCategoryClass())->findIn($structures);
-
-        $pd = $request->request->get($form->getName());
-
-        $structures = [];
-        foreach ($pd as $key => $val) {
-            if (false !== strpos($key, 'structure:')) {
-                //$name = str_replace('structure:', '', $key);
-                //$structures[$name] = $val;
-
-                if (is_array($val)) {
-                    foreach ($val as $val2) {
-                        $structures[] = $val2;
-                    }
-                } else {
-                    $structures[] = $val;
-                }
-            }
-        }
-
-        $request->request->set($form->getName(), $pd);
-
-        // @todo убрать выборку структур в StructureRepository (Entity)
-        $list_string = '';
-        foreach ($structures as $node_id) {
-            $list_string .= $node_id . ',';
-        }
-
-        $list_string = substr($list_string, 0, strlen($list_string)-1);
-
-        if (false == $list_string) {
-            return [];
-        }
-
-        $structuresSingleColection = $this->em->createQuery("
-            SELECT c
-            FROM {$repository->getCategoryClass()} c
-            WHERE c.id IN({$list_string})
-        ")->getResult();
-
-        $structuresColection = new ArrayCollection(); // @todo наследуемые категории.
-
-        $item->setCategories($structuresSingleColection)
-             ->setCategoriesSingle($structuresSingleColection);
-
-        $this->em->persist($item);
-        $this->em->flush($item);
-
-        return $this;
     }
 
     /**

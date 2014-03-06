@@ -93,12 +93,24 @@ class CatalogController extends Controller
 
         $item = $urm->findItem($itemSlug);
 
+        if (empty($item)) {
+            throw $this->createNotFoundException();
+        }
+
         $this->get('html')->setMetas($item->getMeta());
 
         $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.catalog.item', [
                 'slug' => $lastCategory->getSlugFull(),
                 'itemSlug' => $item->getSlug(),
             ]) . '/', $item->getProperty('title'));
+
+        $this->node->setFrontControls([
+            'edit' => [
+                'title'   => 'Редактировать',
+                'uri'     => $this->generateUrl('smart_module.catalog_item_edit_admin', ['repository' => $urm->getRepository()->getName(), 'id' => $item->getId() ]),
+                'default' => true,
+            ],
+        ]);
 
         return $this->render('CatalogModule::item.html.twig', [
             'category'          => $lastCategory,
