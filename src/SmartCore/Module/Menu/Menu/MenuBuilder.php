@@ -10,29 +10,34 @@ use SmartCore\Module\Menu\Entity\Item;
 
 class MenuBuilder extends ContainerAware
 {
-    /** @var \Doctrine\ORM\EntityManager $em */
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
     protected $em;
 
-    /** @var Group $group */
+    /**
+     * @var Group
+     */
     protected $group;
 
     /**
      * Режим администрирования.
+     *
      * @var bool
      */
     protected $is_admin;
 
     /**
      * CSS стиль меню.
+     *
      * @var string
      */
     protected $css_class;
 
     /**
      * Глубина вложенности.
-     * @var integer
      *
-     * @todo
+     * @var integer
      */
     protected $depth;
 
@@ -70,7 +75,7 @@ class MenuBuilder extends ContainerAware
      */
     protected function processConfig(array $options)
     {
-        $this->em = $this->container->get('doctrine.orm.default_entity_manager');
+        $this->em = $this->container->get('doctrine.orm.entity_manager');
 
         $defaul_options = $options + [
             'css_class' => null,
@@ -98,6 +103,7 @@ class MenuBuilder extends ContainerAware
 
         /** @var Item $item */
         foreach ($items as $item) {
+
             if ($this->is_admin) {
                 $uri = $this->container->get('router')->generate('smart_menu_admin_item', ['item_id' => $item->getId()]);
             } else {
@@ -106,8 +112,11 @@ class MenuBuilder extends ContainerAware
                     : $item->getUrl();
             }
 
+            $item_title = (string) $item;
+            $item_title = isset($menu[$item_title]) ? $item_title . ' (' . $item->getId() . ')' : $item_title;
+
             if ($this->is_admin or $item->getIsActive()) {
-                $new_item = $menu->addChild((string) $item, ['uri' => $uri]);
+                $new_item = $menu->addChild($item_title, ['uri' => $uri]);
                 $new_item->setAttributes([
                     //'class' => 'my_item', // @todo аттрибуты для пунктов меню.
                     'title' => $item->getDescr(),
@@ -120,7 +129,7 @@ class MenuBuilder extends ContainerAware
                 continue;
             }
 
-            $this->addChild($menu[(string) $item], $item);
+            $this->addChild($menu[$item_title], $item);
         }
     }
 }
