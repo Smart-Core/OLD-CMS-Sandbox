@@ -73,7 +73,7 @@ class AppKernel extends Kernel
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
             // $bundles[] = new Leek\GitDebugBundle\LeekGitDebugBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-            $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
+            //$bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle();
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
             $bundles[] = new SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle();
