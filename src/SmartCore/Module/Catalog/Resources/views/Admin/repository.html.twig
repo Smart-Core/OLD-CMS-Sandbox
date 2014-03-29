@@ -28,7 +28,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.entries }}</td>
                 <td>{{ item.isRequired }}</td>
-                <td>{{ item.createdAt|localizeddate('long') }}</td>
+                <td>{{ item.createdAt|date('Y-m-d H:i:s') }}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -77,7 +77,7 @@
                         <td><a href="{{ path('smart_module.catalog_item_edit_admin', {'repository': repository.name, 'id': item.id}) }}">{{ item.getProperty(property.name) }}</a></td>
                     {% endif %}
                 {% endfor %}
-                <td>{{ item.createdAt|localizeddate('long') }}</td>
+                <td>{{ item.createdAt|date('Y-m-d H:i:s') }}</td>
             </tr>
         {% endfor %}
         </tbody>

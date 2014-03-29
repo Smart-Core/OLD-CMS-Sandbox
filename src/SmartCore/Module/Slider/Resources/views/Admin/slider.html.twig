@@ -37,7 +37,7 @@
                                 <span class="label label-important">Отключен</span>
                             {% endif %}
                         </td>
-                        <td>{{ slide.createdAt|localizeddate('long') }}</td>
+                        <td>{{ slide.createdAt|date('Y-m-d H:i:s') }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -30,7 +30,7 @@
                     </td>
                     <td>{{ tag.slug }}</td>
                     <td>{{ tag.weight }}</td>
-                    <td>{{ tag.createdAt | localizeddate() }}</td>
+                    <td>{{ tag.createdAt|date('Y-m-d H:i:s') }}</td>
                 </tr>
             {% endfor %}
             </tbody>

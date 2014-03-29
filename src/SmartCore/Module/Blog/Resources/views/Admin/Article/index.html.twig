@@ -28,7 +28,7 @@
                     </a>
                 </td>
                 <td>{{ article.category }}</td>
-                <td>{{ article.createdAt | localizeddate() }}</td>
+                <td>{{ article.createdAt|date('Y-m-d H:i:s') }}</td>
                 <td>{{ article.author }}</td>
             </tr>
         {% endfor %}
