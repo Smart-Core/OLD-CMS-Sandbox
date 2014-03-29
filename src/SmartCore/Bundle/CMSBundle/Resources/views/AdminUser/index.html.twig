@@ -41,8 +41,8 @@
                     {% endfor %}
                     </ul>
                 </td>
-                <td>{{ user.created|localizeddate() }}</td>
-                <td>{{ user.lastLogin|localizeddate() }}</td>
+                <td>{{ user.created|date('Y-m-d H:i:s') }}</td>
+                <td>{{ user.lastLogin|date('Y-m-d H:i:s') }}</td>
             </tr>
         {% endfor %}
         </tbody>
