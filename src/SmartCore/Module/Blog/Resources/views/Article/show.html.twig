@@ -1,6 +1,6 @@
 <h2>{{ article.title }}</h2>
 
-<p><i class="icon-calendar"></i> {{ article.createdAt|date('Y-m-d H:i:s') }}</p>
+<p><i class="icon-calendar"></i> {{ article.createdAt | localizeddate('full') }}</p>
 
 <p>{{ article.annotation }}</p>
 

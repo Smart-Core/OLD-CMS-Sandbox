@@ -23,7 +23,7 @@
                         <td>{{ item.id }}</td>
                         <td><a href="{{ path('smart_module.news_admin.edit', {'id': item.id}) }}">{{ item.title }}</a></td>
                         <td>{{ item.annotation }}</td>
-                        <td>{{ item.created|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ item.created|localizeddate('long') }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

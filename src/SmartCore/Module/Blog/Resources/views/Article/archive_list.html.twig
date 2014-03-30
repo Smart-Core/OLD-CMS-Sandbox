@@ -1,7 +1,7 @@
 {% for article in pagerfanta.currentPageResults %}
     <h2><a href="{{ path('smart_blog.article.show', {'slug': article.slug}) }}">{{ article.title }}</a></h2>
 
-    <p><i class="icon-calendar"></i> {{ article.createdAt|date('Y-m-d H:i:s') }}</p>
+    <p><i class="icon-calendar"></i> {{ article.createdAt | localizeddate('full') }}</p>
 
     <p>{{ article.annotation }}</p>
 

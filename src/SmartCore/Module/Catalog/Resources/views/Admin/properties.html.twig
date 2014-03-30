@@ -47,7 +47,7 @@
                     {% if item.showInView  %}view&nbsp;{% endif %}
                 </td>
                 <td>{{ item.isDedicatedTable }}</td>
-                <td>{{ item.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ item.createdAt|localizeddate('long') }}</td>
             </tr>
         {% endfor %}
         </tbody>

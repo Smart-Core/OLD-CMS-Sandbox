@@ -6,8 +6,7 @@
                     'year':  month.date|date('Y'),
                     'month': month.date|date('n'),
                 }) }}">
-                {#{{ month.date | localizeddate('none', 'none', null, null, 'LLLL YYYY') }} ({{ month.count }})#}
-                {{ month.date|date('m Y') }} ({{ month.count }})
+                {{ month.date | localizeddate('none', 'none', null, null, 'LLLL YYYY') }} ({{ month.count }})
             </a>
         </li>
         {% endfor %}
