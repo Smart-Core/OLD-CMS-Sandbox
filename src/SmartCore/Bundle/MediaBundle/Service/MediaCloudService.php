@@ -54,6 +54,10 @@ class MediaCloudService
      */
     public function getFileUrl($id, $filer = null)
     {
+        if (!is_numeric($id)) {
+            return null;
+        }
+
         /** @var File $file */
         $file = $this->em->getRepository('SmartMediaBundle:File')->find($id);
 
