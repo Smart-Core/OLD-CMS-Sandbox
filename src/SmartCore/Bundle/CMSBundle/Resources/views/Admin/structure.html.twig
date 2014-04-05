@@ -4,14 +4,14 @@
 
 {% block html_head_styles %}
     {{ parent() }}
-    <style media="all" type="text/css"> @import url({{ asset('assets/jquery-dynatree/1.2.5/src/skin-vista/ui.dynatree.css') }}); </style>
+    <style media="all" type="text/css"> @import url({{ asset('bundles/felib/jquery-dynatree/1.2.5/src/skin-vista/ui.dynatree.css') }}); </style>
 {% endblock html_head_styles %}
 
 {% block html_head_scripts %}
     {{ parent() }}
-    <script src="{{ asset('assets/jquery-dynatree/1.2.5/jquery/jquery.cookie.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/jquery-dynatree/1.2.5/jquery/jquery-ui.custom.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/jquery-dynatree/1.2.5/src/jquery.dynatree.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/felib/jquery-dynatree/1.2.5/jquery/jquery.cookie.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/felib/jquery-dynatree/1.2.5/jquery/jquery-ui.custom.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/felib/jquery-dynatree/1.2.5/src/jquery.dynatree.js') }}" type="text/javascript"></script>
 {% endblock html_head_scripts %}
 
 {% block subnav %}
