@@ -1,9 +1,13 @@
 smart_core_felib:
+    path: 'bundles/felib/' # тут можно переопределить дефолнтное положение библиотек.
+    profile: yandex # использовать профиль, по умолчанию отключено.
     defaults:
-        jquery: 1.9.1
+        jquery: 2.1.0
     libs:
-        tinymce:
+        tinymce: # новая библиотека
             deps: jquery
             version: 3.5.10
             js: tiny_mce.js
-            path: 'assets/tinymce/' # путь к библиотеки взамен дефолтного bundles/felib/
+            path: 'assets/' # путь к библиотеки взамен дефолтного bundles/felib/, относительные пути будут дописаны после basePath.
+        jquery:
+            path: 'http://mystatic.server/mylibs/' # переопределение пути только для jquery.
