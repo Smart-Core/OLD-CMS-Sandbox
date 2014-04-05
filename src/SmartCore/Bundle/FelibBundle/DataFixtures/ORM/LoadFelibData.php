@@ -70,7 +70,7 @@ class LoadFelibData extends ContainerAware implements FixtureInterface, OrderedF
         // less
         $lib = new Library();
         $lib->setName('less')
-            ->setCurrentVersion('1.3.3')
+            ->setCurrentVersion('1.7.0')
             ->setFiles('less.min.js');
         $manager->persist($lib);
         $manager->flush($lib);
@@ -78,8 +78,8 @@ class LoadFelibData extends ContainerAware implements FixtureInterface, OrderedF
         $libPath = new LibraryPath();
         $libPath
             ->setLibId($lib->getId())
-            ->setVersion('1.3.3')
-            ->setPath('less/1.3.3/');
+            ->setVersion('1.7.0')
+            ->setPath('less/1.7.0/');
         $manager->persist($libPath);
         $manager->flush($libPath);
     }

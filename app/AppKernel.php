@@ -50,7 +50,7 @@ class AppKernel extends Kernel
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new RickySu\TagcacheBundle\TagcacheBundle(),
             new SmartCore\Bundle\CMSBundle\CMSBundle(),
-            new SmartCore\Bundle\FelibBundle\SmartCoreFelibBundle(),
+            new SmartCore\Bundle\FelibBundle\FelibBundle(),
             new SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new SmartCore\Bundle\MediaBundle\SmartMediaBundle(),

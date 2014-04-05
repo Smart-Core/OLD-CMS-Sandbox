@@ -58,7 +58,7 @@ class FelibService
     public function __construct(EntityManager $em, ContainerInterface $continer, TagcacheAdapter $tagcache)
     {
         $this->basePath     = $continer->get('request')->getBasePath() . '/';
-        $this->globalAssets = $this->basePath . 'assets/';
+        $this->globalAssets = $this->basePath . 'bundles/felib/';
         $this->db           = $em->getConnection();
         $this->em           = $em;
         $this->tagcache     = $tagcache;
@@ -67,7 +67,7 @@ class FelibService
         if (false == $this->scripts = $tagcache->get($cache_key)) {
             $this->scripts = [];
 
-            foreach ($em->getRepository('SmartCoreFelibBundle:Library')->findAll([], ['proirity' => 'DESC']) as $lib) {
+            foreach ($em->getRepository('FelibBundle:Library')->findAll([], ['proirity' => 'DESC']) as $lib) {
                 $this->scripts[$lib->getName()] = $lib;
             }
 
@@ -126,7 +126,7 @@ class FelibService
                 continue;
             }
 
-            $pathEntity = $this->em->getRepository('SmartCoreFelibBundle:LibraryPath')->findOneBy([
+            $pathEntity = $this->em->getRepository('FelibBundle:LibraryPath')->findOneBy([
                 'lib_id'  => $this->scripts[$name]->getId(),
                 'version' => empty($version) ? $this->scripts[$name]->getCurrentVersion() : $version,
             ])->getPath();

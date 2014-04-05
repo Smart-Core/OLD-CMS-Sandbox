@@ -38,7 +38,7 @@ class EngineController extends Controller
         }
 
         if (empty($router_data['folders'])) { // Случай пустой инсталляции, когда еще ни одна папка не создана.
-            $this->get('cms.jslib')->call('bootstrap');
+            $this->get('smart.felib')->call('bootstrap');
             $this->buildBaseHtml($router_data);
 
             return $this->render('CMSBundle::welcome.html.twig');
@@ -90,8 +90,8 @@ class EngineController extends Controller
                 'node'    => $this->cms_front_controls['node'],
             ];
 
-            $this->get('cms.jslib')->call('bootstrap');
-            $this->get('cms.jslib')->call('jquery-cookie');
+            $this->get('smart.felib')->call('bootstrap');
+            $this->get('smart.felib')->call('jquery-cookie');
             $this->get('html')
                 ->css($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.css')
                 ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.js')
@@ -111,7 +111,7 @@ class EngineController extends Controller
 
         $this->get('cms.theme')->processConfig($assets, $router_data['template']);
 
-        foreach ($this->get('cms.jslib')->all() as $res) {
+        foreach ($this->get('smart.felib')->all() as $res) {
             if (isset($res['js']) and is_array($res['js'])) {
                 foreach ($res['js'] as $js) {
                     $this->get('html')->js($js, 200);

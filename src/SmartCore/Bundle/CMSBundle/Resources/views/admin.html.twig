@@ -10,8 +10,8 @@
 {% block html_head_styles %}
     {{ parent() }}
     {#<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />#}
-    <style media="all" type="text/css"> @import url({{ asset('assets/bootstrap/2.3.2/css/bootstrap.min.css') }}); </style>
-    <style media="all" type="text/css"> @import url({{ asset('assets/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }}); </style>
+    <style media="all" type="text/css"> @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap.min.css') }}); </style>
+    <style media="all" type="text/css"> @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }}); </style>
     <style media="all" type="text/css">
         .form-button {
             margin: 3px 0px 5px 20px;
@@ -23,9 +23,6 @@
     </style>
 
     {#
-    <link href="{{ asset('assets/uploadify/uploadify.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/jcrop/css/jquery.Jcrop.css') }}" rel="stylesheet" />
-
     {% if form is defined %}
         {{ form_stylesheet(form) }}
     {% endif %}
@@ -34,13 +31,10 @@
 
 {% block html_head_scripts %}
     {{ parent() }}
-    <script src="{{ asset('assets/jquery/1.9.1/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/bootstrap/2.3.2/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/felib/jquery/1.9.1/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/felib/bootstrap/2.3.2/js/bootstrap.min.js') }}" type="text/javascript"></script>
     {#
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script src="{{ asset('assets/uploadify/jquery.uploadify.min.js') }}"></script>
-    <script src="{{ asset('assets/uploadify/swfobject.js') }}"></script>
-    <script src="{{ asset('assets/jcrop/js/jquery.Jcrop.min.js') }}"></script>
 
     {% if form is defined %}
         {{ form_javascript(form) }}

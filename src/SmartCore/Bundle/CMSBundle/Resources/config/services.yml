@@ -59,8 +59,6 @@ services:
         class: SmartCore\Bundle\CMSBundle\Engine\Theme
         calls:
             - [ setContainer, [ @service_container ] ]
-    cms.jslib:
-        alias: smart.felib
     cms.router:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineRouter
         calls:
