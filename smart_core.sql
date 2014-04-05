@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 06 2014 г., 16:41
+-- Время создания: Апр 06 2014 г., 03:33
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.5.9
+-- Версия PHP: 5.5.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -686,7 +686,7 @@ INSERT INTO `aaa_front_end_libraries` (`id`, `name`, `related_by`, `proirity`, `
 (1, 'jquery', NULL, 1000, '1.9.1', 'jquery.min.js'),
 (2, 'bootstrap', 'jquery', 0, '2.3.2', 'css/bootstrap.min.css,css/bootstrap-responsive.min.css,js/bootstrap.min.js'),
 (3, 'jquery-cookie', 'jquery', 0, '1.3.1', 'jquery.cookie.js'),
-(4, 'less', NULL, 0, '1.3.3', 'less.min.js');
+(4, 'less', NULL, 0, '1.7.0', 'less.min.js');
 
 -- --------------------------------------------------------
 
@@ -712,7 +712,7 @@ INSERT INTO `aaa_front_end_libraries_paths` (`id`, `lib_id`, `version`, `path`) 
 (1, 1, '1.9.1', 'jquery/1.9.1/'),
 (2, 2, '2.3.2', 'bootstrap/2.3.2/'),
 (3, 3, '1.3.1', 'jquery-cookie/1.3.1/'),
-(4, 4, '1.3.3', 'less/1.3.3/'),
+(4, 4, '1.7.0', 'less/1.7.0/'),
 (5, 2, '3.1.0', 'bootstrap/3.1.0/');
 
 -- --------------------------------------------------------
