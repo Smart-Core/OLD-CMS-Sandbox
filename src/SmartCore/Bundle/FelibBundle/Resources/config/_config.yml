@@ -1,0 +1,9 @@
+smart_core_felib:
+    defaults:
+        jquery: 1.9.1
+    libs:
+        tinymce:
+            deps: jquery
+            version: 3.5.10
+            js: tiny_mce.js
+            path: 'assets/tinymce/' # путь к библиотеки взамен дефолтного bundles/felib/
