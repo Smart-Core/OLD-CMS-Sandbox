@@ -48,8 +48,8 @@
         "stfalcon/tinymce-bundle": "v0.2.1",
         "whiteoctober/breadcrumbs-bundle": "dev-master",
         "white-october/pagerfanta-bundle": "dev-master",
-        "zendframework/zend-servicemanager": "2.2.*",
-        "zendframework/zend-tag": "2.2.*"
+        "zendframework/zend-servicemanager": "~2",
+        "zendframework/zend-tag": "~2"
     },
     "scripts": {
         "post-install-cmd": [
