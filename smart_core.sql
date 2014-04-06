@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Апр 06 2014 г., 03:33
+-- Время создания: Апр 07 2014 г., 03:35
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.5.10
+-- Версия PHP: 5.5.11
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -659,61 +659,6 @@ CREATE TABLE IF NOT EXISTS `aaa_feedbacks` (
 -- Дамп данных таблицы `aaa_feedbacks`
 --
 
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `aaa_front_end_libraries`
---
-
-DROP TABLE IF EXISTS `aaa_front_end_libraries`;
-CREATE TABLE IF NOT EXISTS `aaa_front_end_libraries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `related_by` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `proirity` smallint(6) NOT NULL,
-  `current_version` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `files` longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_23D980CD5E237E06` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
-
---
--- Дамп данных таблицы `aaa_front_end_libraries`
---
-
-INSERT INTO `aaa_front_end_libraries` (`id`, `name`, `related_by`, `proirity`, `current_version`, `files`) VALUES
-(1, 'jquery', NULL, 1000, '1.9.1', 'jquery.min.js'),
-(2, 'bootstrap', 'jquery', 0, '2.3.2', 'css/bootstrap.min.css,css/bootstrap-responsive.min.css,js/bootstrap.min.js'),
-(3, 'jquery-cookie', 'jquery', 0, '1.3.1', 'jquery.cookie.js'),
-(4, 'less', NULL, 0, '1.7.0', 'less.min.js');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `aaa_front_end_libraries_paths`
---
-
-DROP TABLE IF EXISTS `aaa_front_end_libraries_paths`;
-CREATE TABLE IF NOT EXISTS `aaa_front_end_libraries_paths` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lib_id` int(11) NOT NULL,
-  `version` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `version_lib` (`version`,`lib_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
-
---
--- Дамп данных таблицы `aaa_front_end_libraries_paths`
---
-
-INSERT INTO `aaa_front_end_libraries_paths` (`id`, `lib_id`, `version`, `path`) VALUES
-(1, 1, '1.9.1', 'jquery/1.9.1/'),
-(2, 2, '2.3.2', 'bootstrap/2.3.2/'),
-(3, 3, '1.3.1', 'jquery-cookie/1.3.1/'),
-(4, 4, '1.7.0', 'less/1.7.0/'),
-(5, 2, '3.1.0', 'bootstrap/3.1.0/');
 
 -- --------------------------------------------------------
 
