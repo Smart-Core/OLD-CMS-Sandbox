@@ -1,7 +1,0 @@
-parameters:
-#    smart_core_felib.example.class: SmartCore\Bundle\FelibBundle\Example
-
-services:
-    smart.felib:
-        class: SmartCore\Bundle\FelibBundle\Service\FelibService
-        arguments: [ @doctrine.orm.entity_manager, @service_container, @tagcache ]

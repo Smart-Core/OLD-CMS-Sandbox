@@ -44,6 +44,7 @@
         "raulfraile/ladybug-bundle": "v0.7",
         "rickysu/tagcache-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
+        "smart-core/felib-bundle": "dev-master",
         "smart-core/session-bundle": "dev-master",
         "stfalcon/tinymce-bundle": "v0.2.1",
         "whiteoctober/breadcrumbs-bundle": "dev-master",
