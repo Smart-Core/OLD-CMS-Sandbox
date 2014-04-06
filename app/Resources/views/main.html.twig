@@ -1,27 +1,19 @@
 {% extends '@Html/base.html.twig' %}
 
-{% block html_head_title %}{{ cms_html_title({'delimiter': '&ndash;', 'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)', 'site_short_name': 'Smart Core CMS',}) }}{% endblock html_head_title %}
+{% block html_head_title %}{{ cms_html_title({
+    'delimiter': '&ndash;',
+    'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)',
+    'site_short_name': 'Smart Core CMS'
+}) }}{% endblock html_head_title %}
 
 {% block html_head_styles %}
     {{ parent() }}
-    <link href="{{ asset('bundles/felib/syntaxhighlighter/styles/shCore.css') }}" rel="stylesheet">
-    <link href="{{ asset('bundles/felib/syntaxhighlighter/styles/shThemeRDark.css') }}" rel="stylesheet">
+    {{ felib_css('syntaxhighlighter') }}
 {% endblock html_head_styles %}
 
 {% block html_head_scripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shCore.min.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushBash.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushCpp.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushCss.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushIni.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushJScript.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushPhp.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushPlain.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushSql.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushTwig.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushXml.js') }}"></script>
-    <script src="{{ asset('bundles/felib/syntaxhighlighter/scripts/shBrushYaml.js') }}"></script>
+    {{ felib_js('syntaxhighlighter') }}
     <script type="text/javascript">
         SyntaxHighlighter.defaults['toolbar'] = false;
         SyntaxHighlighter.all();
@@ -47,7 +39,6 @@
         </div>
     </div>
 </div>
-
 <div class="row-fluid" id="footer">
     <div class="span9">
         {{ footer }}
@@ -60,6 +51,5 @@
         <p><small>{{ simple_profiler() }}</small></p>
     </div>
 </div>
-
 </div>
 {% endblock body %}
