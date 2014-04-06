@@ -2,10 +2,10 @@
 
 {% block html_head_styles %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/lib/codemirror.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/addon/hint/show-hint.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/addon/display/fullscreen.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/codemirror/3.21/theme/cobalt.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/addon/hint/show-hint.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/addon/display/fullscreen.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/theme/cobalt.css') }}">
     <style media="all" type="text/css">
         .CodeMirror {
             height: 530px;
@@ -22,19 +22,19 @@
 
 {% block html_head_scripts %}
     {{ parent() }}
-    <script src="{{ asset('assets/codemirror/3.21/lib/codemirror.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/display/fullscreen.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/edit/closetag.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/fold/xml-fold.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/hint/show-hint.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/hint/xml-hint.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/hint/html-hint.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/addon/selection/active-line.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/mode/xml/xml.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/mode/javascript/javascript.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/mode/css/css.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/mode/htmlmixed/htmlmixed.js') }}"></script>
-    <script src="{{ asset('assets/codemirror/3.21/mode/htmlembedded/htmlembedded.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/display/fullscreen.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/edit/closetag.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/fold/xml-fold.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/hint/show-hint.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/hint/xml-hint.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/hint/html-hint.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/selection/active-line.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/xml/xml.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/css/css.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/htmlembedded/htmlembedded.js') }}"></script>
 {% endblock html_head_scripts %}
 
 {% block body_js %}
@@ -57,7 +57,6 @@
                         if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
                     }
                 }
-
             });
         };
     </script>
