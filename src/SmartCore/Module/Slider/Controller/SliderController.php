@@ -6,6 +6,7 @@ use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Slider\Entity\Slider;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SliderController extends Controller
 {
@@ -22,6 +23,10 @@ class SliderController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (null === $this->slider_id) {
+            return new Response();
+        }
+
         /** @var Slider $slider */
         $slider = $this->get('slidermodule.entity.slider_repository')->find($this->slider_id);
 

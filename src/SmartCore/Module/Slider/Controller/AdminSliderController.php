@@ -103,7 +103,7 @@ class AdminSliderController extends Controller
             $form->submit($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.slider.admin'));
+                return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $id]));
             }
 
             if ($form->get('delete')->isClicked()) {
@@ -118,7 +118,7 @@ class AdminSliderController extends Controller
                 $sliderService->updateSlider($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Слайдер обновлён');
 
-                return $this->redirect($this->generateUrl('smart_module.slider.admin'));
+                return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $id]));
             }
         }
 
