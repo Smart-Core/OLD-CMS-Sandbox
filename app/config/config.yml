@@ -181,6 +181,7 @@ smart_sitemap:
     ignores:
         - 'http:'
         - 'https:'
+        - 'javascript:'
         - 'mailto:'
         - 'skype:'
         - /user/
