@@ -78,6 +78,7 @@ abstract class CategoryModel
 
     /**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $children;
 

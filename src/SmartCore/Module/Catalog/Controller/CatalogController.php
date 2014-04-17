@@ -46,11 +46,16 @@ class CatalogController extends Controller
 
         if ($lastCategory instanceof CategoryModel) {
             $this->get('html')->setMetas($lastCategory->getMeta());
-            $childenCategories = $lastCategory->getChildren();
+            $childenCategories = $urm->getCategoryRepository()->findBy([
+                'is_enabled' => true,
+                'parent'     => $lastCategory,
+                'structure'  => $urm->getDefaultStructure(),
+            ]);
         } else {
             $childenCategories = $urm->getCategoryRepository()->findBy([
-                'parent'    => null,
-                'structure' => $urm->getDefaultStructure(),
+                'is_enabled' => true,
+                'parent'     => null,
+                'structure'  => $urm->getDefaultStructure(),
             ]);
         }
 
@@ -83,11 +88,16 @@ class CatalogController extends Controller
         $lastCategory = end($requestedCategories);
 
         if ($lastCategory instanceof CategoryModel) {
-            $childenCategories = $lastCategory->getChildren();
+            $childenCategories = $urm->getCategoryRepository()->findBy([
+                'is_enabled' => true,
+                'parent'     => $lastCategory,
+                'structure'  => $urm->getDefaultStructure(),
+            ]);
         } else {
             $childenCategories = $urm->getCategoryRepository()->findBy([
-                'parent'    => null,
-                'structure' => $urm->getDefaultStructure(),
+                'is_enabled' => true,
+                'parent'     => null,
+                'structure'  => $urm->getDefaultStructure(),
             ]);
         }
 
