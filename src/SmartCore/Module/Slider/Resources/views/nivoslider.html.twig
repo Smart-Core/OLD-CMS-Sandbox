@@ -7,7 +7,9 @@
 <div class="slider-wrapper theme-default">
     <div id="slider" class="nivoSlider">
         {% for img in slider.slides %}
+            {% if img.enabled %}
             <img src="{{ imgPath ~ img.filename }}" alt="{{ img.title }}" title="{{ img.title }}">
+            {% endif %}
         {% endfor %}
     </div>
 </div>

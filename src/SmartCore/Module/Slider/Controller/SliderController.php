@@ -3,7 +3,6 @@
 namespace SmartCore\Module\Slider\Controller;
 
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
-use SmartCore\Module\Slider\Entity\Slider;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +26,7 @@ class SliderController extends Controller
             return new Response();
         }
 
-        /** @var Slider $slider */
+        /** @var \SmartCore\Module\Slider\Entity\Slider $slider */
         $slider = $this->get('slidermodule.entity.slider_repository')->find($this->slider_id);
 
         $this->node->addFrontControl('manage_slider', [

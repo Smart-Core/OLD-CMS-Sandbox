@@ -12,7 +12,9 @@
     <div class="jcarousel">
         <ul class="clearfix">
             {% for img in slider.slides %}
+                {% if img.enabled %}
                 <li><img src="{{ imgPath ~ img.filename }}" width="{{ slider.width }}" height="{{ slider.height }}" alt="{{ img.title }}" title="{{ img.title }}"></li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
