@@ -191,7 +191,8 @@ class UnicatRepositoryManager
     public function getItemCreateForm($data = null, array $options = [])
     {
         return $this->getItemForm($data, $options)
-            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**

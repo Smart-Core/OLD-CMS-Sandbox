@@ -312,6 +312,10 @@ class AdminCatalogController extends Controller
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form->isValid()) {
+                if ($form->get('cancel')->isClicked()) {
+                    return $this->redirectToRepositoryAdmin($urm->getRepository());
+                }
+
                 $urm->createItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись создана');
 
