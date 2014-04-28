@@ -59,6 +59,34 @@ class CatalogController extends Controller
             ]);
         }
 
+        $this->node->addFrontControl('create_item', [
+            'default' => true,
+            'title'   => 'Добавить запись',
+            'uri'     => $this->generateUrl('smart_module.catalog_item_create_admin_in_category', [
+                    'repository'          => $urm->getRepository()->getName(),
+                    'default_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
+                ]),
+        ]);
+
+        if ($this->node->isEip() and !empty($lastCategory)) {
+            $this->node->addFrontControl('create_category', [
+                'title'   => 'Создать категорию',
+                'uri'     => $this->generateUrl('smart_module.catalog_structure_admin_with_parent_category_id', [
+                        'repository'            => $urm->getRepository()->getName(),
+                        'parent_category_id'    => empty($lastCategory) ? 0 : $lastCategory->getId(),
+                        'id'                    => $lastCategory->getStructure()->getId(),
+                    ]),
+            ]);
+            $this->node->addFrontControl('edit_category', [
+                'title' => 'Редактировать категорию',
+                'uri'   => $this->generateUrl('smart_module.catalog_category_admin', [
+                        'repository'    => $urm->getRepository()->getName(),
+                        'id'            => $lastCategory->getId(),
+                        'structure_id'  => $lastCategory->getStructure()->getId(),
+                    ]),
+            ]);
+        }
+
         return $this->render('CatalogModule::items.html.twig', [
             'category'          => $lastCategory,
             'childenCategories' => $childenCategories,

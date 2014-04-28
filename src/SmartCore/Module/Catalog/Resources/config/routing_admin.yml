@@ -16,6 +16,14 @@ smart_module.catalog_structure_admin:
     requirements:
         id: \d+
 
+smart_module.catalog_structure_admin_with_parent_category_id:
+    path: /repository_{repository}/structure_{id}/{parent_category_id}/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:structure
+    requirements:
+        parent_category_id: \d+
+        id: \d+
+
 smart_module.catalog_structure_edit_admin:
     path: /repository_{repository}/structure_{id}/edit/
     defaults:
@@ -58,6 +66,13 @@ smart_module.catalog_property_admin:
 
 smart_module.catalog_item_create_admin:
     path: /repository_{repository}/item_create/
+    defaults:
+        _controller: CatalogModule:AdminCatalog:itemCreate
+
+smart_module.catalog_item_create_admin_in_category:
+    path: /repository_{repository}/item_create/{default_category_id}/
+    requirements:
+        default_category_id: \d+
     defaults:
         _controller: CatalogModule:AdminCatalog:itemCreate
 

@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Catalog\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,13 +45,15 @@ class AdminCatalogController extends Controller
      * @param Request $request
      * @param int $structure_id
      * @param int $id
+     * @param string $repository
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function categoryEditAction(Request $request, $structure_id, $id, $repository)
     {
-        $unicat = $this->get('unicat');
+        $urm    = $this->get('unicat')->getRepositoryManager($repository);
+        $unicat = $this->get('unicat'); // @todo перевести всё на $urm.
 
-        $structure = $unicat->getStructure($structure_id);
+        $structure = $urm->getStructure($structure_id);
         $category  = $unicat->getCategory($structure, $id);
 
         $form = $unicat->getCategoryEditForm($category);
@@ -59,21 +62,21 @@ class AdminCatalogController extends Controller
             $form->submit($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository]));
+                return $this->redirectToStructureAdmin($urm->getRepository(), $structure_id);
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
                 $unicat->updateCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория обновлена');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository]));
+                return $this->redirectToStructureAdmin($urm->getRepository(), $structure_id);
             }
 
             if ($form->has('delete') and $form->get('delete')->isClicked()) {
                 $unicat->deleteCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория удалена');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository]));
+                return $this->redirectToStructureAdmin($urm->getRepository(), $structure_id);
             }
         }
 
@@ -87,16 +90,20 @@ class AdminCatalogController extends Controller
 
     /**
      * @param Request $request
-     * @param string|int $repository
      * @param int $id
+     * @param string|int $repository
+     * @param int|null $parent_category_id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function structureAction(Request $request, $id, $repository)
+    public function structureAction(Request $request, $id, $repository, $parent_category_id = null)
     {
-        $unicat     = $this->get('unicat');
+        $urm        = $this->get('unicat')->getRepositoryManager($repository);
+        $unicat     = $this->get('unicat'); // @todo перевести всё на $urm.
         $structure  = $unicat->getStructure($id);
 
-        $form = $unicat->getCategoryCreateForm($structure);
+        $parent_category = $parent_category_id ? $urm->getCategoryRepository()->find($parent_category_id) : null;
+
+        $form = $unicat->getCategoryCreateForm($structure, [], $parent_category);
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -104,7 +111,7 @@ class AdminCatalogController extends Controller
                 $unicat->createCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория создана');
 
-                return $this->redirect($this->generateUrl('smart_module.catalog_structure_admin', ['id' => $id, 'repository' => $repository]));
+                return $this->redirectToStructureAdmin($urm->getRepository(), $id);
             }
         }
 
@@ -286,14 +293,19 @@ class AdminCatalogController extends Controller
     /**
      * @param Request $request
      * @param string $repository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param int $default_category_id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function itemCreateAction(Request $request, $repository)
+    public function itemCreateAction(Request $request, $repository, $default_category_id = null)
     {
         $urm  = $this->get('unicat')->getRepositoryManager($repository);
 
         $newItem = $urm->createItemEntity();
         $newItem->setUserId($this->getUser());
+
+        if ($default_category_id) {
+            $newItem->setCategories(new ArrayCollection([$urm->getCategoryRepository()->find($default_category_id)]));
+        }
 
         $form = $urm->getItemCreateForm($newItem);
 
@@ -355,6 +367,22 @@ class AdminCatalogController extends Controller
         $url = $request->query->has('redirect_to')
             ? $request->query->get('redirect_to')
             : $this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository->getName()]);
+
+        return $this->redirect($url);
+    }
+
+    /**
+     * @param UnicatRepository $repository
+     * @param int $structure_id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    protected function redirectToStructureAdmin(UnicatRepository $repository, $structure_id)
+    {
+        $request = $this->get('request_stack')->getCurrentRequest();
+
+        $url = $request->query->has('redirect_to')
+            ? $request->query->get('redirect_to')
+            : $this->generateUrl('smart_module.catalog_structure_admin', ['id' => $structure_id, 'repository' => $repository->getName()]);
 
         return $this->redirect($url);
     }

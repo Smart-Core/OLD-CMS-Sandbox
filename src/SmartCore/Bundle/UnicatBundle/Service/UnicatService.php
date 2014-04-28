@@ -114,12 +114,13 @@ class UnicatService
     /**
      * @param UnicatStructure $structure
      * @param array $options
+     * @param CategoryModel|null $parent_category
      *
      * @return \Symfony\Component\Form\Form
      *
      * @deprecated убрать в UnicatRepositoryManager
      */
-    public function getCategoryCreateForm(UnicatStructure $structure, array $options = [])
+    public function getCategoryCreateForm(UnicatStructure $structure, array $options = [], CategoryModel $parent_category = null)
     {
         $category = $structure->getRepository()->createCategory();
         $category
@@ -127,6 +128,10 @@ class UnicatService
             ->setIsInheritance($structure->getIsDefaultInheritance())
             ->setUserId($this->getUserId())
         ;
+
+        if ($parent_category) {
+            $category->setParent($parent_category);
+        }
 
         return $this->formFactory->create(new CategoryCreateFormType($structure->getRepository()), $category, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
