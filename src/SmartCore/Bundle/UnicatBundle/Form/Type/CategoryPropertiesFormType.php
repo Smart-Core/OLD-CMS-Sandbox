@@ -16,13 +16,18 @@ class CategoryPropertiesFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        foreach ($this->properties as $name => $type) {
-            if ('image' === $type) {
+        foreach ($this->properties as $name => $options) {
+            if ('image' === $options) {
                 $type = new PropertyImageFormType();
+            } elseif (isset($options['type'])) {
+                $type = $options['type'];
+            } else {
+                $type = $options;
             }
 
             $builder->add($name, $type, [
-                'required' => false,
+                'required'  => false,
+                'attr'      => isset($options['attr']) ? $options['attr'] : [],
             ]);
         }
     }

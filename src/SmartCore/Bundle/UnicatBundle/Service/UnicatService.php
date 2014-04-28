@@ -104,7 +104,7 @@ class UnicatService
      *
      * @return \Symfony\Component\Form\Form
      *
-     * @deprecated
+     * @deprecated убрать в UnicatRepositoryManager
      */
     public function getCategoryForm(UnicatRepository $repository, $data = null, array $options = [])
     {
@@ -117,7 +117,7 @@ class UnicatService
      *
      * @return \Symfony\Component\Form\Form
      *
-     * @deprecated
+     * @deprecated убрать в UnicatRepositoryManager
      */
     public function getCategoryCreateForm(UnicatStructure $structure, array $options = [])
     {

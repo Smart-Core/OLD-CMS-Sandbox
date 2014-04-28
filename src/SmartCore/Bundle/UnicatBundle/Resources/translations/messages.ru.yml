@@ -4,8 +4,10 @@ Create properties groups: Создать группу свойств
 Create record: Создать запись
 Create structure: Создать структуру
 Edit record: Редактировать запись
-Property: Свойство
 Edit property: Редактировать свойство
+Is default inheritance: Наследуемость по умолчанию
+Is inheritance: Наследуемость
+Property: Свойство
 Properties groups: Группы свойств
 Properties group create: Создание группы свойств
 Structures: Структуры
