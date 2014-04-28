@@ -87,6 +87,11 @@ class CatalogController extends Controller
             ]);
         }
 
+        $this->node->addFrontControl('manage_repository', [
+            'title' => 'Управление каталогом',
+            'uri'   => $this->generateUrl('smart_module.catalog_repository_admin', ['repository'    => $urm->getRepository()->getName()]),
+        ]);
+
         return $this->render('CatalogModule::items.html.twig', [
             'category'          => $lastCategory,
             'childenCategories' => $childenCategories,
