@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
-use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 

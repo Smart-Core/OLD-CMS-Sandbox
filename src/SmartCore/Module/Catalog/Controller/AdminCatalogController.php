@@ -184,7 +184,7 @@ class AdminCatalogController extends Controller
             'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
-    
+
     /**
      * @param Request $request
      * @param string|int $repository
@@ -215,7 +215,7 @@ class AdminCatalogController extends Controller
             'repository' => $urm->getRepository(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
-    
+
     /**
      * @param Request $request
      * @param string $repository

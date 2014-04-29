@@ -141,7 +141,7 @@ class UnicatRepositoryManager
     {
         return $this->em->getRepository($this->repository->getCategoryClass());
     }
-    
+
     /**
      * @return string
      */

@@ -47,7 +47,6 @@ class GeneratorService
         return $relativePath . '/' . $filter . $file->getRelativePath();
     }
 
-
     /**
      * @param string|null $pattern
      * @return mixed|string

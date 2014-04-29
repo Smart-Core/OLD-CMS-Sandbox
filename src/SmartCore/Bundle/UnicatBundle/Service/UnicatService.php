@@ -2,7 +2,6 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Service;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
@@ -10,15 +9,12 @@ use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryCreateFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\CategoryFormType;
-use SmartCore\Bundle\UnicatBundle\Form\Type\ItemFormType;
 use SmartCore\Bundle\UnicatBundle\Form\Type\PropertyFormType;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class UnicatService
@@ -96,7 +92,7 @@ class UnicatService
 
         return $this->getRepositoryManager($repository)->getProperties();
     }
-    
+
     /**
      * @param UnicatRepository $repository
      * @param mixed $data    The initial data for the form
