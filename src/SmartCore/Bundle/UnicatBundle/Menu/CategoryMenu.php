@@ -61,10 +61,8 @@ class CategoryMenu extends ContainerAware
      */
     protected function addChild(ItemInterface $menu, CategoryModel $parent = null, array $options)
     {
-        $categories = $parent
-            ? $parent->getChildren()
-            : $this->container->get('doctrine.orm.entity_manager')->getRepository($options['categoryClass'])->findBy([
-                'parent'     => null,
+        $categories = $this->container->get('doctrine.orm.entity_manager')->getRepository($options['categoryClass'])->findBy([
+                'parent'     => $parent,
                 'is_enabled' => true,
                 'structure'  => $options['structure'],
             ], ['position' => 'ASC']);
@@ -108,10 +106,8 @@ class CategoryMenu extends ContainerAware
      */
     protected function addChildToAdminTree(ItemInterface $menu, CategoryModel $parent = null, $options)
     {
-        $categories = $parent
-            ? $parent->getChildren()
-            : $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy([
-                'parent' => null,
+        $categories = $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy([
+                'parent'    => $parent,
                 'structure' => $options['structure'],
             ]);
 
