@@ -1,0 +1,42 @@
+{% extends '@Html/base.html.twig' %}
+
+{% block html_head_title %}{{ cms_html_title({
+    'delimiter': '&ndash;',
+    'site_full_name': 'Новый сайт',
+    'site_short_name': 'Новый сайт'
+}) }}{% endblock html_head_title %}
+
+{% block html_head_styles %}
+    {{ parent() }}
+{% endblock html_head_styles %}
+
+{% block html_head_scripts %}
+    {{ parent() }}
+{% endblock html_head_scripts %}
+
+{% block body %}
+<div class="container">
+    <div class="row-fluid">
+        <div class="span3">
+            {{ main_menu }}
+        </div>
+
+        <div class="span9">
+            <div id="breadcrumbs">
+                {{ breadcrumbs }}
+            </div>
+
+            {% include '@CMS/flash_messages.thml.twig' %}
+
+            <div id="content">
+                {% block content content %}
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid" id="footer">
+        <div class="span12">
+            {{ footer }}
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod 0777 app/console
+chmod 0777 bin/*
