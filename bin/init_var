@@ -17,8 +17,22 @@ else
     echo "$DIR directory created!"
 fi
 
-chmod -R 0777 app/Resources
-chmod -R 0777 app/usr
-chmod -R 0777 web/images
-chmod -R 0777 web/_media
-chmod -R 0777 web/uploads
+#chmod -R 0777 app/Resources
+#chmod -R 0777 app/usr
+#chmod -R 0777 web/images
+#chmod -R 0777 web/_media
+#chmod -R 0777 web/uploads
+
+# update directories permissions
+find app/Resources -type d -exec chmod 777 {} +
+find app/usr -type d -exec chmod 777 {} +
+find web/images -type d -exec chmod 777 {} +
+find web/_media -type d -exec chmod 777 {} +
+find web/uploads -type d -exec chmod 777 {} +
+
+# update files permissions
+find app/Resources -type f -exec chmod 644 {} +
+find app/usr -type f -exec chmod 644 {} +
+find web/images -type f -exec chmod 644 {} +
+find web/_media -type f -exec chmod 644 {} +
+find web/uploads -type f -exec chmod 644 {} +
