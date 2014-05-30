@@ -5,13 +5,6 @@ smart_module.catalog:
         _controller: CatalogModule:Catalog:index
 
 smart_module.catalog.item:
-    path: /{slug}.html
-    defaults:
-        _controller: CatalogModule:Catalog:item
-    requirements:
-        slug: '.+'
-
-smart_module.catalog.item:
     path: /{slug}/{itemSlug}.html
     defaults:
         _controller: CatalogModule:Catalog:item
