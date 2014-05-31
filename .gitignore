@@ -2,6 +2,7 @@
 /_temp/
 /app/bootstrap.php.cache
 /app/SymfonyRequirements.php
+/app/tmp/
 /bin/doctrine*
 /vendor/
 /web/bundles/

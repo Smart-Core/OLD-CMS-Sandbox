@@ -33,6 +33,10 @@ class AppKernel extends Kernel
             //new JMS\DiExtraBundle\JMSDiExtraBundle($this), // "jms/di-extra-bundle": "1.3.*",
             //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(), // "jms/security-extra-bundle": "1.4.*",
 
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
+
+            new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             //new FOS\FacebookBundle\FOSFacebookBundle(),

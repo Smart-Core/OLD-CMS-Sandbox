@@ -21,7 +21,9 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
 
+        "abmundi/database-commands-bundle": "dev-master",
         "avalanche123/imagine-bundle": "*",
+        "dizda/cloud-backup-bundle": "dev-master",
         "egulias/listeners-debug-command-bundle": "*",
         "elao/web-profiler-extra-bundle": "dev-master",
         "fabpot/goutte": "dev-master",

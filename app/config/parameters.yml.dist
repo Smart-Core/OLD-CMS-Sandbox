@@ -17,6 +17,10 @@ parameters:
 
     database_table_prefix: aaa_ # На время разработки используетя префикс таблиц.
 
+    dizda_cloud_dropbox_user:     myDropboxUser
+    dizda_cloud_dropbox_password: MyDropboxPassword
+    dizda_cloud_dropbox_remote_path: ~
+
     mailer_transport:   mail
     mailer_host:        localhost
     mailer_user:        ~
