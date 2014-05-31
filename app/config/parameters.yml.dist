@@ -19,7 +19,7 @@ parameters:
 
     dizda_cloud_dropbox_user:     myDropboxUser
     dizda_cloud_dropbox_password: MyDropboxPassword
-    dizda_cloud_dropbox_remote_path: ~
+    dizda_cloud_dropbox_remote_path: ''
 
     mailer_transport:   mail
     mailer_host:        localhost
