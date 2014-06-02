@@ -45,12 +45,18 @@ fm_elfinder:
     connector:
         debug: true # defaults to false
         roots:       # at least one root must be defined
+            images:
+                driver: LocalFileSystem
+                path: images
+                upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                upload_deny: ['all']
+                upload_max_size: 2M
             uploads:
                 driver: LocalFileSystem
                 path: uploads
                 upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                 upload_deny: ['all']
-                upload_max_size: 2M
+                upload_max_size: 10M
 
 genemu_form:
     image: ~
