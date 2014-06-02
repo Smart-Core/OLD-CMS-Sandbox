@@ -1,13 +1,15 @@
+/!_info/
 /.idea/
 /_temp/
 /app/bootstrap.php.cache
 /app/SymfonyRequirements.php
-/app/tmp/
 /bin/doctrine*
 /vendor/
 /web/bundles/
 /web/uploads/
 /web/sitemap.xml
+*.quarantine
+*.tmb
 composer.lock
 composer.phar
 */config/parameters.yml

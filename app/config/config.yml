@@ -80,7 +80,6 @@ assetic:
         #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
 dizda_cloud_backup:
-    folders: [ web/uploads ]
     output_file_prefix: smart_core
     cloud_storages:
         dropbox:
@@ -91,7 +90,6 @@ dizda_cloud_backup:
         mysql:
             all_databases: false        # Only required when no database is set
             database: %database_name%   # Required if all_databases is false
-             # When no parameters is specified under mysql, the bundle taking those from parameters.yml
 
 # Doctrine Configuration
 doctrine:

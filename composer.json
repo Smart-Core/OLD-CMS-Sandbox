@@ -22,6 +22,7 @@
         "doctrine/doctrine-migrations-bundle": "dev-master",
 
         "abmundi/database-commands-bundle": "dev-master",
+        "asm89/twig-cache-extension": "*",
         "avalanche123/imagine-bundle": "*",
         "dizda/cloud-backup-bundle": "dev-master",
         "egulias/listeners-debug-command-bundle": "*",
@@ -51,6 +52,7 @@
         "smart-core/session-bundle": "dev-master",
         "stfalcon/tinymce-bundle": "v0.2.1",
         "whiteoctober/breadcrumbs-bundle": "dev-master",
+        "pagerfanta/pagerfanta": "v1.0.1",
         "white-october/pagerfanta-bundle": "dev-master",
         "zendframework/zend-servicemanager": "~2",
         "zendframework/zend-tag": "~2"
