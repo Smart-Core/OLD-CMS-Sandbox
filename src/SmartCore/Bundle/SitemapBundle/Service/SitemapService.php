@@ -146,7 +146,7 @@ class SitemapService
             $ignoresPreg .= '|^' . str_replace('/', '\/', $ignore);
         }
 
-        $ignoreFiles = ['zip', 'rar', 'mp3']; // @todo исключения файлов.
+        $ignoreFiles = ['zip', 'rar', 'mp3', 'png', 'jpg', 'jpeg']; // @todo исключения файлов.
 
         foreach ($ignoreFiles as $ignore) {
             $ignoresPreg .= '|' . '.' . $ignore;
