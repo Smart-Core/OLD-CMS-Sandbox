@@ -1,3 +1,7 @@
+smart_chat:
+    resource: "@SmartChatBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # @todo убрать в dev.
 _knp_rad_assistant:
     resource: "@KnpRadBundle/Resources/config/routing/assistant.xml"

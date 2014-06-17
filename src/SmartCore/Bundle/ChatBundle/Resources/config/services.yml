@@ -1,0 +1,7 @@
+parameters:
+#    smart_chat.example.class: SmartCore\Bundle\ChatBundle\Example
+
+services:
+#    smart_chat.example:
+#        class: %smart_chat.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

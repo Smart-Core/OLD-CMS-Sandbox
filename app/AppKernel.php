@@ -53,6 +53,7 @@ class AppKernel extends Kernel
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new RickySu\TagcacheBundle\TagcacheBundle(),
+            new SmartCore\Bundle\ChatBundle\SmartChatBundle(),
             new SmartCore\Bundle\CMSBundle\CMSBundle(),
             new SmartCore\Bundle\FelibBundle\FelibBundle(),
             new SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle(),
