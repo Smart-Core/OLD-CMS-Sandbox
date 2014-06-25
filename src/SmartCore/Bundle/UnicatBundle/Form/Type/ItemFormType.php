@@ -44,6 +44,7 @@ class ItemFormType extends AbstractType
         $builder
             ->add('slug', null, ['attr' => ['class' => 'focused']])
             ->add('is_enabled')
+            ->add('position')
             ->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
         ;
 

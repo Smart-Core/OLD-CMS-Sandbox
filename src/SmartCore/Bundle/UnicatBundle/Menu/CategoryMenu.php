@@ -109,7 +109,7 @@ class CategoryMenu extends ContainerAware
         $categories = $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy([
                 'parent'    => $parent,
                 'structure' => $options['structure'],
-            ]);
+            ], ['position' => 'ASC']);
 
         /** @var CategoryModel $category */
         foreach ($categories as $category) {

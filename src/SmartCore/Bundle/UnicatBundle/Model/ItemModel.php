@@ -8,7 +8,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ORM\Entity()
- * ORM\Table(name="unicat_items")
+ * ORM\Table(name="unicat_items",
+ *      indexes={
+ *          ORM\Index(name="pos", columns={"pos"}),
+ *      }
+ * )
  * @UniqueEntity(fields={"slug", "slug"}, message="Запись с таким сегментом URI уже существует.")
  */
 class ItemModel
@@ -26,6 +30,13 @@ class ItemModel
      * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_enabled;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    protected $position;
 
     /**
      * @var CategoryModel[]
@@ -82,6 +93,7 @@ class ItemModel
         $this->categories = new ArrayCollection();
         $this->created_at = new \DateTime();
         $this->is_enabled = true;
+        $this->position   = 0;
         $this->user_id    = 0;
     }
 
@@ -203,6 +215,25 @@ class ItemModel
     public function getIsEnabled()
     {
         return $this->is_enabled;
+    }
+
+    /**
+     * @param int $position
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     /**

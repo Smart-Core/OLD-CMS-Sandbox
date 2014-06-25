@@ -42,7 +42,10 @@ class UnicatRepositoryManager
     protected $repository;
 
     /**
+     * @param EntityManager $em
+     * @param FormFactoryInterface $formFactory
      * @param UnicatRepository $repository
+     * @param CollectionService $mc
      */
     public function __construct(
         EntityManager $em,
@@ -75,9 +78,12 @@ class UnicatRepositoryManager
 
     /**
      * @param CategoryModel $category
+     * @param array $order
      * @return ItemModel[]|null
+     *
+     * @todo сделать настройку сортировки
      */
-    public function findItemsInCategory(CategoryModel $category)
+    public function findItemsInCategory(CategoryModel $category, array $order = ['position' => 'ASC'])
     {
         $itemEntity = $this->repository->getItemClass();
 
@@ -86,6 +92,7 @@ class UnicatRepositoryManager
            FROM $itemEntity AS i
            JOIN i.categoriesSingle AS cs
            WHERE cs.id = :category
+           ORDER BY i.position ASC
         ")->setParameter('category', $category->getId());
 
         return $query->getResult();

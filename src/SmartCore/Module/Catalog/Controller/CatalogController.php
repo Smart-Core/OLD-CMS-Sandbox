@@ -50,13 +50,13 @@ class CatalogController extends Controller
                 'is_enabled' => true,
                 'parent'     => $lastCategory,
                 'structure'  => $urm->getDefaultStructure(),
-            ]);
+            ], ['position' => 'ASC']);
         } else {
             $childenCategories = $urm->getCategoryRepository()->findBy([
                 'is_enabled' => true,
                 'parent'     => null,
                 'structure'  => $urm->getDefaultStructure(),
-            ]);
+            ], ['position' => 'ASC']);
         }
 
         $this->node->addFrontControl('create_item', [

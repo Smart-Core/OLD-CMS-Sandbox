@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Апр 29 2014 г., 01:26
+-- Время создания: Июн 26 2014 г., 00:14
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -245,8 +245,8 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_categories` (
 
 INSERT INTO `aaa_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `user_id`, `is_enabled`, `position`, `structure_id`, `properties`) VALUES
 (1, NULL, 'connection', 'Техника для связи', 0, 'N;', '2014-02-10 09:29:09', 0, 1, 0, 1, NULL),
-(2, 1, 'smartphones', 'Смартфоны', 0, 'N;', '2014-02-12 21:19:29', 0, 1, 0, 1, NULL),
-(3, 1, 'signal_amplifiers', 'Усилители сигнала', 0, 'N;', '2014-02-12 22:12:43', 0, 1, 0, 1, NULL),
+(2, 1, 'smartphones', 'Смартфоны', 0, 'a:0:{}', '2014-02-12 21:19:29', 0, 1, 1, 1, 'a:1:{s:11:"description";N;}'),
+(3, 1, 'signal_amplifiers', 'Усилители сигнала', 0, 'a:0:{}', '2014-02-12 22:12:43', 0, 1, 0, 1, 'a:1:{s:11:"description";N;}'),
 (4, NULL, 'pc', 'Компьютерная техника', 0, 'N;', '2014-02-12 22:14:33', 0, 1, 0, 1, NULL),
 (5, 4, 'notebooks', 'Ноутбуки', 0, 'N;', '2014-02-12 22:15:02', 0, 1, 0, 1, NULL),
 (6, 4, 'notebooks_stuff', 'Комплектующие для ноутбуков', 0, 'N;', '2014-02-12 22:15:26', 0, 1, 0, 1, NULL),
@@ -278,20 +278,22 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_items` (
   `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
+  `position` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`)
+  UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`),
+  KEY `position` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `aaa_catalog_items`
 --
 
-INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`) VALUES
-(1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18'),
-(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57'),
-(3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23'),
-(4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56'),
-(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40');
+INSERT INTO `aaa_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`, `position`) VALUES
+(1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18', 0),
+(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57', 1),
+(3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
+(4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56', 0),
+(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40', 0);
 
 -- --------------------------------------------------------
 
@@ -440,6 +442,79 @@ CREATE TABLE IF NOT EXISTS `aaa_catalog_properties_groups` (
 
 INSERT INTO `aaa_catalog_properties_groups` (`id`, `name`, `title`, `created_at`, `category_id`, `repository_id`) VALUES
 (1, 'wares_description', 'Описание товара', '2014-02-12 19:24:52', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_chat_messages`
+--
+
+DROP TABLE IF EXISTS `aaa_chat_messages`;
+CREATE TABLE IF NOT EXISTS `aaa_chat_messages` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `room_id` bigint(20) DEFAULT NULL,
+  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_C08B1FA254177093` (`room_id`),
+  KEY `date` (`date`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_chat_messages`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_chat_rooms`
+--
+
+DROP TABLE IF EXISTS `aaa_chat_rooms`;
+CREATE TABLE IF NOT EXISTS `aaa_chat_rooms` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `is_dialog` tinyint(1) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `creator_user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `is_dialog` (`is_dialog`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_chat_rooms`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aaa_chat_rooms_members`
+--
+
+DROP TABLE IF EXISTS `aaa_chat_rooms_members`;
+CREATE TABLE IF NOT EXISTS `aaa_chat_rooms_members` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `room_id` bigint(20) DEFAULT NULL,
+  `status` smallint(6) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_in_room` (`user_id`,`room_id`),
+  KEY `IDX_5E04104754177093` (`room_id`),
+  KEY `status` (`status`),
+  KEY `created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `aaa_chat_rooms_members`
+--
+
 
 -- --------------------------------------------------------
 
@@ -771,7 +846,7 @@ CREATE TABLE IF NOT EXISTS `aaa_media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `aaa_media_files_transformed`
@@ -786,7 +861,8 @@ INSERT INTO `aaa_media_files_transformed` (`id`, `file_id`, `collection_id`, `st
 (8, 4, 1, 1, '300-300', 8494, '2014-02-17 01:41:53'),
 (9, 5, 1, 1, '300-300', 9631, '2014-02-17 22:11:27'),
 (10, 5, 1, 1, '100-100', 2219, '2014-02-17 22:38:10'),
-(11, 6, 1, 1, '300-300', 12833, '2014-03-06 16:38:41');
+(11, 6, 1, 1, '300-300', 12833, '2014-03-06 16:38:41'),
+(12, 6, 1, 1, '100-100', 2934, '2014-06-26 00:10:52');
 
 -- --------------------------------------------------------
 
@@ -962,109 +1038,12 @@ CREATE TABLE IF NOT EXISTS `aaa_sitemap_urls` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_F2FA10BE8852ACDC` (`loc`),
   KEY `title_hash` (`title_hash`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=97 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Дамп данных таблицы `aaa_sitemap_urls`
 --
 
-INSERT INTO `aaa_sitemap_urls` (`id`, `is_visited`, `loc`, `title_hash`, `title`, `title_dublicates`, `lastmod`, `changefreq`, `priority`, `status`, `referer`) VALUES
-(1, 1, '/', '0a2aa0300fe47dca62d6950491c24f2a', 'Smart Core CMS (based on Symfony2 Framework)', 0, NULL, NULL, 1, 200, NULL),
-(2, 1, '/news/', 'e2ab3b05f5973bbc83b861933d3f37e8', 'Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(3, 1, '/news/unser_news/', '04e573e356e9002b03c4b37dc784b6b6', 'Вложенная – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(4, 1, '/simple/', 'fefcea3b739646c56c0d7c3e5584f64b', 'Так просто ;) – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(5, 1, '/slider/', '293e958c4f1d6247bbb65c3584583a42', 'Слайдер – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(6, 1, '/slider/nivo/', 'fab53b920a6e11d94f1cab3160aa72a1', 'Nivo – Слайдер – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(7, 1, '/blog/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(8, 1, '/about/', '3cc3581b75e69971d5898de216bc59f1', 'О компании – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(9, 1, '/about/inner/', 'a1f5e1a2cad0e109c9042c684b0f23f0', 'Вложенная папка – О компании – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(10, 1, '/about/inner/in2/', '13ddc00a572e0bb508c1e09426a3ff3c', 'Еще одна вложенная – Вложенная папка – О компании – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(11, 1, '/feedback/', '3f79dd11985c5f3a2ae23ef232585d9f', 'Обратная связь – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(12, 1, '/catalog/', 'a194b83b6a419cbae911d6e1548111cf', 'Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(13, 1, '/news/pochemu-my-predpochitaem-symfony-2-vmesto-yii.html', 'f6cff4877b82714527a9e7da5ed18f5a', 'Почему мы предпочли Symfony 2 вместо Yii – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(14, 1, '/news/unifying-php.html', '62400782ef80ec6cf3d3424d271fb93a', 'Unifying PHP – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(15, 1, '/news/symfony-2-for-php-developers-part-2.html', '91d930d98a3f38d15fc6a49348a81598', 'Symfony 2 for PHP developers – Part 2 – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/'),
-(16, 1, '/news/page_1/', 'e2ab3b05f5973bbc83b861933d3f37e8', 'Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/'),
-(17, 1, '/news/page_2/', '541e73dce2ef55e7142f932676706c95', 'Страница: 2 – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/'),
-(18, 1, '/news/page_3/', '855bbc5a5a38faaae2fa78eec5355373', 'Страница: 3 – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/'),
-(19, 1, '/blog/category/programing/', '39cde24f4e400d20b79ded6208e3c11d', 'Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(20, 1, '/blog/category/programing/php/', '7f9fa2565cc26f6117075b9031a16f1b', 'PHP – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(21, 1, '/blog/category/programing/php/yii/', 'f89f73ad53fae2beacf3b29825a6453d', 'Yii – PHP – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(22, 1, '/blog/category/programing/php/symfony2/', '56e3251508926ebc7efbacabaee03119', 'Symfony2 – PHP – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(23, 1, '/blog/category/programing/js/', '448aa425cc8f7a893d398ab560b39f0e', 'JavaScript – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(24, 1, '/blog/category/programing/cpp/', 'a46fe16299e72c3c13436c1dc89c9082', 'C++ – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(25, 1, '/blog/category/os/', 'ace36d691698ef5f88c0ddab00235ae8', 'Операционные системы – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(26, 1, '/blog/category/os/debian/', 'bd283c21dadf40ac3d3e1e36f651c656', 'Debian – Операционные системы – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(27, 1, '/blog/category/imposition/', '9e3c90bbb5059f5bc462d29f6becf86c', 'Верстка – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(28, 1, '/blog/category/imposition/css/', '7e657c4a05b4142b2b03159346fc626b', 'CSS – Верстка – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(29, 1, '/blog/category/imposition/css/twitter_bootstrap/', '1376c76a8ad74ae22bda25ee504a3e29', 'Twitter Bootstrap – CSS – Верстка – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(30, 1, '/blog/category/soft/', '52aa92df122319c2701b78b80c450a04', 'Программы (софт) – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(31, 1, '/blog/category/other/', '7e4971217113ea9a2428ebf1bd716a82', 'Другое – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(32, 1, '/blog/tag/breadcrumbs/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(33, 1, '/blog/tag/yii/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(34, 1, '/blog/tag/ckeditor/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(35, 1, '/blog/tag/connect/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(36, 1, '/blog/tag/formatting/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(37, 1, '/blog/tag/date_and_time/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(38, 1, '/blog/tag/symfony2/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(39, 1, '/blog/tag/commands/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(40, 1, '/blog/tag/code_illumination/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(41, 1, '/blog/tag/phpstorm/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(42, 1, '/blog/tag/php/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(43, 1, '/blog/tag/memcached/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(44, 1, '/blog/tag/debian/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(45, 1, '/blog/tag/css/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(46, 1, '/blog/tag/linear_gradient/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(47, 1, '/blog/tag/twitter_bootstrap/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(48, 1, '/blog/tag/forms/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(49, 1, '/blog/tag/visual_sStudio_2012_cpp/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(50, 1, '/blog/tag/editor/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(51, 1, '/blog/tag/encoding/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(52, 1, '/blog/tag/framework/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(53, 1, '/blog/tag/cms/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(54, 1, '/blog/tag/select/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(55, 1, '/blog/tag/twig/', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(56, 1, '/blog/entity_change.html', '2aaf2e0bfbb55ec1879f71c080b44758', 'Проверка на изменение сущности – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(57, 1, '/blog/twig_in_symfony2_work_with_date_and_time.html', 'e098508f9e5cb8b8f352cbb9b4db8f56', 'Twig в Symfony2: работа с датой и временем. – Symfony2 – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(58, 1, '/blog/debain7_hot_commands_of_the_server.html', 'bcec90f5bd0e4889727cef0ad241e945', 'Debain7 – горячие команды сервера – Debian – Операционные системы – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(59, 1, '/blog/installation_memcached_on_windows7_x64_php_5_4_17.html', 'deab6191abab52fd013913fe0cd88a0e', 'Установка Memcached на Windows 7 x64 (php 5.4.17) – PHP – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(60, 1, '/blog/adjustment_symfony2_in_phpstorm.html', '334a07fabcf6ca6daff36644e36944ca', 'Настройка Symfony2 в PhpStorm – Symfony2 – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(61, 1, '/blog/fourth.html', 'f597fe03e281139e83f77ac9f6aa74cd', 'Ссылки на Symfony2 – Symfony2 – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(62, 1, '/blog/s2_sik_knd.html', 'f4c7597d15f821c58d329c7444dd45b5', 'Symfony2: справочник команд – Symfony2 – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(63, 1, '/blog/create_forms_in_visual_sStudio_2012.html', '3686a1864f46f0d1bf54391a7122d8a2', 'Создаем формы в Visual Studio 2012 – C++ – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(64, 1, '/blog/connect_twitter_bootstrap_to_yii.html', '7781301242fdf3b22469dc6b3a05b0f4', 'Подключаем Twitter Bootstrap к Yii – Twitter Bootstrap – Верстка – CSS – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(65, 1, '/blog/highlight_code_on_site.html', '355eacd785a720d4ae15ea0f2ea8cd33', 'Подсвечиваем код на сайте – JavaScript – Программирование – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(66, 1, '/blog/?page=1', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(67, 1, '/blog/?page=2', '839b13fcffa3d89a822d51694e295bfb', 'Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/'),
-(68, 1, '/catalog/connection/', '09da5af03d72b05f74d48f04bd0a7e3f', 'Техника для связи – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(69, 1, '/catalog/connection/smartphones/', 'b1daaea4ad4591020ef5f5fb6138c96a', 'Смартфоны – Техника для связи – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(70, 1, '/catalog/connection/signal_amplifiers/', '78ef56c34573ec08abeab2063f61da5d', 'Усилители сигнала – Техника для связи – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(71, 1, '/catalog/pc/', 'b5071f47a307e8456ae3bd673c2a0d1e', 'Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(72, 1, '/catalog/pc/notebooks/', '7fba6f84e63945a7a8499c65e1827e47', 'Ноутбуки – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(73, 1, '/catalog/pc/notebooks_stuff/', '301b6c69d64fb9f97148e1b999e0f606', 'Комплектующие для ноутбуков – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(74, 1, '/catalog/pc/notebooks_stuff/ram/', '4ff59dbf5571d1370bbc3ed181cc7589', 'Модули памяти – Комплектующие для ноутбуков – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(75, 1, '/catalog/pc/notebooks_stuff/hdd25/', '1d2d7e09d15fcbf4b0312be5937fd6b4', 'Жесткие диски 2.5 – Комплектующие для ноутбуков – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(76, 1, '/catalog/pc/monitors/', '7e352b56837ba134a36380f8b2751de3', 'Мониторы – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(77, 1, '/catalog/office/', 'be1e2548947bd4882bea02549941c956', 'Офисная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(78, 1, '/catalog/office/printers/', '4f945c204f4dfb80a1cf773b7bc92694', 'Принтеры – Офисная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(79, 1, '/catalog/office/scanners/', 'b41b7f6e2a35026d56afe142d4c7d617', 'Сканеры – Офисная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(80, 1, '/catalog/portable/', 'c50de2638e7b264e4cede8345d025cbb', 'Портативная электроника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(81, 1, '/catalog/portable/reflex_cameras/', '0d818c62e1707b3d6b659a7d4009594e', 'Зеркальные фотоаппараты – Портативная электроника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/'),
-(82, 1, '/news/symfony-2-for-php-developers-part-1.html', '5cf74108f3e520074c221d02c2547f2b', 'Symfony 2 for PHP developers – Part 1 – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/page_2/'),
-(83, 1, '/news/php.html', 'c2dd1c903b1c61ffc26d1a6f08ffe2bc', 'PHP: Hypertext Preprocessor – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/page_2/'),
-(84, 1, '/news/first.html', '09574f89eb57ec2f0efc2213e09b93bb', 'Первая – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/page_2/'),
-(85, 1, '/news/second.html', 'd4216545a1486cacb07a3728dbf4e716', 'Вторая – Новости – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/news/page_3/'),
-(86, 1, '/blog/formatting_of_date_and_time_in_yii.html', '7d1954c7dad93a3dc5ecb2356244ad9a', 'Форматирование даты и времени в Yii – Yii – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/category/programing/'),
-(87, 1, '/blog/breadcrumbs_yii.html', '6075633c703ea7d9afa6e1b653532723', 'Хлебные крошки в Yii – Yii – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/category/programing/'),
-(88, 1, '/blog/how_to_connect_ckeditor_to_framework_yii.html', '716636706d44ed713253fff328fc472e', 'Как подключить Ckeditor к фреймворку Yii – Yii – Программирование – PHP – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/category/programing/'),
-(89, 1, '/blog/css_linear_gradient_of_background.html', '67b1d592af0c6b05419a568063394810', 'CSS – линейный градиент фона – CSS – Верстка – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/category/imposition/'),
-(90, 1, '/blog/notepad_plus_plus.html', '7f0a9ad5daca6cbb24a71a59491525b7', 'NotePad++ – Программы (софт) – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/category/soft/'),
-(91, 1, '/blog/framework_vs_cms.html', 'de2dd1c4ba7cf4104751641eb31bc407', 'Что выбрать: фреймворк или CMS – Другое – Блог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/blog/category/other/'),
-(92, 1, '/catalog/connection/smartphones/galaxy-s4.html', 'b1a42ce8b1e400b0b80c8b8e6636bc3c', 'Samsung Galaxy S4 – Смартфоны – Техника для связи – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/connection/smartphones/'),
-(93, 1, '/catalog/connection/smartphones/htc-one.html', 'af0557e611b124fafeb2441b7b091d41', 'HTC One – Смартфоны – Техника для связи – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/connection/smartphones/'),
-(94, 1, '/catalog/pc/notebooks/np900.html', 'afdc658bb19e1af59c6a8d3accde8f4d', 'Samsung NP900 – Ноутбуки – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/pc/notebooks/'),
-(95, 1, '/catalog/pc/notebooks_stuff/hdd25/seagate-500g.html', 'af91819457373679539f1e53c559b23b', 'Seagate 500Gb – Жесткие диски 2.5 – Комплектующие для ноутбуков – Компьютерная техника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/pc/notebooks_stuff/hdd25/'),
-(96, 1, '/catalog/portable/reflex_cameras/canon-650d.html', 'bf440bb7063c5f634237854517c43e9c', 'Canon 650D – Зеркальные фотоаппараты – Портативная электроника – Каталог – Smart Core CMS', 0, NULL, NULL, NULL, 200, '/catalog/portable/reflex_cameras/');
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1282,7 @@ CREATE TABLE IF NOT EXISTS `aaa_users` (
 --
 
 INSERT INTO `aaa_users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-04-27 20:44:53', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-06-25 15:19:49', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
@@ -1445,6 +1424,18 @@ ALTER TABLE `aaa_catalog_properties`
 ALTER TABLE `aaa_catalog_properties_groups`
   ADD CONSTRAINT `FK_A9A6740412469DE2` FOREIGN KEY (`category_id`) REFERENCES `aaa_catalog_categories` (`id`),
   ADD CONSTRAINT `FK_A9A6740450C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `aaa_unicat_repositories` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_chat_messages`
+--
+ALTER TABLE `aaa_chat_messages`
+  ADD CONSTRAINT `FK_C08B1FA254177093` FOREIGN KEY (`room_id`) REFERENCES `aaa_chat_rooms` (`id`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `aaa_chat_rooms_members`
+--
+ALTER TABLE `aaa_chat_rooms_members`
+  ADD CONSTRAINT `FK_5E04104754177093` FOREIGN KEY (`room_id`) REFERENCES `aaa_chat_rooms` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `aaa_engine_blocks_inherit`

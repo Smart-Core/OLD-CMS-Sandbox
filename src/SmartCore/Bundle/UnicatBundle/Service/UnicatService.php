@@ -48,6 +48,7 @@ class UnicatService
      * @param EntityManager $em
      * @param FormFactoryInterface $formFactory
      * @param MediaCloudService $mediaCloud
+     * @param SecurityContextInterface $securityContext
      */
     public function __construct(
         EntityManager $em,
@@ -57,7 +58,7 @@ class UnicatService
     ) {
         $this->em          = $em;
         $this->formFactory = $formFactory;
-        $this->mc          = $mediaCloud->getCollection(1); // @todo настройку медиаколлекции.
+        $this->mc          = $mediaCloud->getCollection(1); // @todo настройку медиаколлекции. @important
         $this->securityContext = $securityContext;
     }
 

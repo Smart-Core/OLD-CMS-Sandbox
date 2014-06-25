@@ -40,6 +40,7 @@ class CategoryFormType extends AbstractType
             ->add('title',          null, ['attr' => ['class' => 'focused']])
             ->add('slug')
             ->add('is_inheritance', null, ['required' => false])
+            ->add('position')
             ->add('parent', $categoryTreeType)
             ->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
         ;

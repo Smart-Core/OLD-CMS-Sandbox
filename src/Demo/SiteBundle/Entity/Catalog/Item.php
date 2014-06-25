@@ -7,7 +7,11 @@ use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="catalog_items")
+ * @ORM\Table(name="catalog_items",
+ *      indexes={
+ *          @ORM\Index(name="position", columns={"position"}),
+ *      }
+ * )
  */
 class Item extends ItemModel
 {
