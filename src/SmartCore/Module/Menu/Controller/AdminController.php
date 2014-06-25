@@ -19,7 +19,7 @@ class AdminController extends Controller
         $form = $this->createForm(new GroupFormType());
 
         if ($request->isMethod('POST') and $request->request->has('create')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $group = $form->getData();
                 $group->setCreateByUserId($this->getUser()->getId());
@@ -56,7 +56,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     $em->persist($form->getData());
                     $em->flush();
@@ -105,7 +105,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     $em->persist($form->getData());
                     $em->flush();
@@ -154,7 +154,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create_item')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     /** @var Item $item */
                     $item = $form->getData();

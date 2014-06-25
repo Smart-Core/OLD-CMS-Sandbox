@@ -37,7 +37,7 @@ class FeedbackController extends Controller
     public function postAction(Request $request)
     {
         $form = $this->createForm(new FeedbackFormType());
-        $form->submit($request);
+        $form->handleRequest($request);
 
         $item = $form->getData();
 

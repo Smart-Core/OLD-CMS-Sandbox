@@ -75,7 +75,7 @@ class AdminController extends Controller
         $form = $engineBlock->createForm($block);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $engineBlock->update($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Блок создан.'); // @todo перевод
@@ -111,7 +111,7 @@ class AdminController extends Controller
         if ($request->isMethod('POST')) {
             $sessionFlashBag = $this->get('session')->getFlashBag();
             if ($request->request->has('update')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     $engineBlock->update($form->getData());
                     $sessionFlashBag->add('success', 'Блок обновлён.'); // @todo перевод
@@ -170,7 +170,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     $engineFolder->update($form->getData());
 
@@ -225,7 +225,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     $engineFolder->update($form->getData());
 
@@ -294,7 +294,7 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create')) {
-                $form->submit($request);
+                $form->handleRequest($request);
                 if ($form->isValid()) {
                     /** @var $created_node \SmartCore\Bundle\CMSBundle\Entity\Node */
                     $created_node = $form->getData();
@@ -350,8 +350,8 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
-                $form->submit($request);
-                $form_properties->submit($request);
+                $form->handleRequest($request);
+                $form_properties->handleRequest($request);
                 if ($form->isValid() and $form_properties->isValid()) {
                     /** @var $updated_node \SmartCore\Bundle\CMSBundle\Entity\Node */
                     $updated_node = $form->getData();

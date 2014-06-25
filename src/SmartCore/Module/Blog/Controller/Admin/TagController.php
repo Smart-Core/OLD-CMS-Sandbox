@@ -63,7 +63,7 @@ class TagController extends Controller
 
         $form = $this->createForm($this->get('smart_blog.tag.edit.form.type'), $tag);
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $tagService->update($tag);

@@ -30,7 +30,7 @@ class NewsAdminController extends Controller
         $form->add('create', 'submit', ['label' => 'Создать', 'attr' => ['class' => 'btn btn-success']]);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость создана.');
             }
@@ -53,7 +53,7 @@ class NewsAdminController extends Controller
         ]);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость сохранена.');
             }

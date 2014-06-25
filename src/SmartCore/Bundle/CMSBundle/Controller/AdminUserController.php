@@ -57,7 +57,7 @@ class AdminUserController extends Controller
         $form->setData($user);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
@@ -97,7 +97,7 @@ class AdminUserController extends Controller
         $form = $this->createForm(new UserFormType(), $user);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $this->container->get('fos_user.user_manager')->updateUser($user);
@@ -124,7 +124,7 @@ class AdminUserController extends Controller
         $form->remove('position');
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $role = $form->getData();
                 $em->persist($role);
@@ -157,7 +157,7 @@ class AdminUserController extends Controller
         $form = $this->createForm(new RoleFormType(), $role);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $em->persist($role);
                 $em->flush($role);

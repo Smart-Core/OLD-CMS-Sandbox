@@ -59,7 +59,7 @@ class AdminCatalogController extends Controller
         $form = $unicat->getCategoryEditForm($category);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirectToStructureAdmin($urm->getRepository(), $structure_id);
@@ -106,7 +106,7 @@ class AdminCatalogController extends Controller
         $form = $unicat->getCategoryCreateForm($structure, [], $parent_category);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $unicat->createCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория создана');
@@ -133,7 +133,7 @@ class AdminCatalogController extends Controller
         $form = $urm->getStructureCreateForm();
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
@@ -165,7 +165,7 @@ class AdminCatalogController extends Controller
         $form = $urm->getStructureEditForm($urm->getStructure($id));
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
@@ -196,7 +196,7 @@ class AdminCatalogController extends Controller
         $form = $urm->getPropertiesGroupCreateForm();
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirect($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $repository]));
@@ -230,7 +230,7 @@ class AdminCatalogController extends Controller
         $form = $unicat->getPropertyCreateForm($repository, $group_id);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $unicat->createProperty($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Свойство создано');
@@ -263,7 +263,7 @@ class AdminCatalogController extends Controller
         $form = $unicat->getPropertyEditForm($repository, $property);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirect($this->generateUrl('smart_module.catalog_properties_admin', ['repository' => $repository->getName(), 'group_id' => $group_id]));
@@ -310,7 +310,7 @@ class AdminCatalogController extends Controller
         $form = $urm->getItemCreateForm($newItem);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 if ($form->get('cancel')->isClicked()) {
                     return $this->redirectToRepositoryAdmin($urm->getRepository());

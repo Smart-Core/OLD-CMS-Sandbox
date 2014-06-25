@@ -20,7 +20,7 @@ class AdminSliderController extends Controller
         $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $sliderService->createSlider($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Слайдер создан');
@@ -67,7 +67,7 @@ class AdminSliderController extends Controller
         $form = $this->createForm('smart_module_slider_item_create', $slide);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid() and null !== $form->get('file')->getData()) {
                 $sliderService->save($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Слайд создан');
@@ -100,7 +100,7 @@ class AdminSliderController extends Controller
         $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $id]));
@@ -141,7 +141,7 @@ class AdminSliderController extends Controller
         $form = $this->createForm('smart_module_slider_item_edit', $slide);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $slide->getSlider()->getId()]));
