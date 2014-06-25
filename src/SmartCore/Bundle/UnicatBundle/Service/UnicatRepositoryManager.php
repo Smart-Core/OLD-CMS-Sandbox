@@ -316,6 +316,7 @@ class UnicatRepositoryManager
     {
         foreach ($this->getProperties() as $property) {
             if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
+                // @todo сделать кеширование при первом же вытаскивании данных о записи. тоже самое в saveItem(), а еще лучше выделить этот код в отельный защищенный метод.
                 $tableItems = $this->em->getClassMetadata($this->repository->getItemClass())->getTableName();
                 $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
                 $res = $this->em->getConnection()->query($sql)->fetch();
@@ -331,7 +332,7 @@ class UnicatRepositoryManager
         }
 
         $this->em->remove($item);
-        $this->em->flush($item);
+        $this->em->flush(); // Надо делать полный flush т.к. каскадом удаляются связи с категориями.
 
         return $this;
     }

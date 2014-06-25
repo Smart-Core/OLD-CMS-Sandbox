@@ -148,8 +148,11 @@ class LocalProvider implements ProviderInterface
             }
         }
 
-        $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')) . $fileTransformed->getFile()->getFullRelativeUrl();
-        @unlink($fullPath);
+        // Удаление оригинала.
+        if ($fileTransformed instanceof FileTransformed) {
+            $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')) . $fileTransformed->getFile()->getFullRelativeUrl();
+            @unlink($fullPath);
+        }
     }
 
     /**
