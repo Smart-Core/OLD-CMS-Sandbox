@@ -346,6 +346,13 @@ class AdminCatalogController extends Controller
                 return $this->redirectToRepositoryAdmin($urm->getRepository());
             }
 
+            if ($form->get('delete')->isClicked()) {
+                $urm->removeItem($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Запись удалена');
+
+                return $this->redirectToRepositoryAdmin($urm->getRepository());
+            }
+
             if ($form->isValid() and $form->get('update')->isClicked() and $form->isValid()) {
                 $urm->updateItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');

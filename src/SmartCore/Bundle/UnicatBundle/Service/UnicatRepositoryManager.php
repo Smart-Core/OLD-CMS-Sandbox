@@ -176,6 +176,7 @@ class UnicatRepositoryManager
     {
         return $this->getItemForm($data, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('delete', 'submit', ['attr' => [ 'class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить запись?')" ]])
             ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
@@ -306,6 +307,36 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @param ItemModel $item
+     * @return $this
+     *
+     * @todo события
+     */
+    public function removeItem(ItemModel $item)
+    {
+        foreach ($this->getProperties() as $property) {
+            if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
+                $tableItems = $this->em->getClassMetadata($this->repository->getItemClass())->getTableName();
+                $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
+                $res = $this->em->getConnection()->query($sql)->fetch();
+
+                $fileId = null;
+                if (!empty($res)) {
+                    $previousProperties = unserialize($res['properties']);
+                    $fileId = $previousProperties[$property->getName()];
+                }
+
+                $this->mc->remove($fileId);
+            }
+        }
+
+        $this->em->remove($item);
+        $this->em->flush($item);
+
+        return $this;
+    }
+
+    /**
      * @param FormInterface $form
      * @param Request $request
      * @return $this|array
@@ -331,7 +362,9 @@ class UnicatRepositoryManager
 
                 // удаление файла.
                 $_delete_ = $request->request->get('_delete_');
-                if (is_array($_delete_) and isset($_delete_['property:' . $property->getName()]) and 'on' === $_delete_['property:' . $property->getName()]) {
+                if (is_array($_delete_)
+                    and isset($_delete_['property:' . $property->getName()])
+                    and 'on' === $_delete_['property:' . $property->getName()]) {
                     $this->mc->remove($fileId);
                     $fileId = null;
                 } else {
