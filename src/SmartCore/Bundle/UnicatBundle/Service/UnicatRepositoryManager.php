@@ -92,6 +92,7 @@ class UnicatRepositoryManager
            FROM $itemEntity AS i
            JOIN i.categoriesSingle AS cs
            WHERE cs.id = :category
+           AND i.is_enabled = 1
            ORDER BY i.position ASC
         ")->setParameter('category', $category->getId());
 

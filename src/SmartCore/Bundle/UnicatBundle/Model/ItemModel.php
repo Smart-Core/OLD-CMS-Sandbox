@@ -218,6 +218,22 @@ class ItemModel
     }
 
     /**
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->is_enabled;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isDisabled()
+    {
+        return !$this->is_enabled;
+    }
+
+    /**
      * @param int $position
      * @return $this
      */
