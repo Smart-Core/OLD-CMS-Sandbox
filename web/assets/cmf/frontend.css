@@ -26,6 +26,18 @@ body {
     left: 0;
     z-index: 999;
 }
+.cmf-frontadmin-node-buttons.btn-group a {
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+}
 ul.dropdown-menu { /* Прижать меню вплотную к плашке*/
     margin: 0;
+}
+.navbar a {
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
 }
