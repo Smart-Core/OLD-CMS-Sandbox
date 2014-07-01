@@ -9,6 +9,11 @@ smart_module.catalog2_repository_admin:
     defaults:
         _controller: Catalog2Module:AdminCatalog2:repository
 
+smart_module.catalog2_repository_edit_admin:
+    path: /repository_{repository}/edit/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:repositoryEdit
+
 smart_module.catalog2_structure_admin:
     path: /repository_{repository}/structure_{id}/
     defaults:

@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\Unicat2Bundle\Entity\UnicatRepository;
 use SmartCore\Bundle\Unicat2Bundle\Entity\UnicatStructure;
+use SmartCore\Bundle\Unicat2Bundle\Form\Type\CategoryFormType;
 use SmartCore\Bundle\Unicat2Bundle\Form\Type\ItemFormType;
 use SmartCore\Bundle\Unicat2Bundle\Form\Type\PropertiesGroupFormType;
 use SmartCore\Bundle\Unicat2Bundle\Form\Type\StructureFormType;
@@ -18,6 +19,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class UnicatRepositoryManager
 {
@@ -42,21 +44,29 @@ class UnicatRepositoryManager
     protected $repository;
 
     /**
+     * @var SecurityContextInterface
+     */
+    protected $securityContext;
+
+    /**
      * @param EntityManager $em
      * @param FormFactoryInterface $formFactory
      * @param UnicatRepository $repository
      * @param CollectionService $mc
+     * @param SecurityContextInterface $securityContext
      */
     public function __construct(
         EntityManager $em,
         FormFactoryInterface $formFactory,
         UnicatRepository $repository,
-        CollectionService $mc
+        CollectionService $mc,
+        SecurityContextInterface $securityContext
     ) {
         $this->em          = $em;
         $this->formFactory = $formFactory;
         $this->mc          = $mc;
         $this->repository  = $repository;
+        $this->securityContext = $securityContext;
     }
 
     /**
@@ -192,6 +202,49 @@ class UnicatRepositoryManager
     }
 
     /**
+     * @param UnicatStructure $structure
+     * @param array $options
+     * @param ItemModel|null $parent_category
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getCategoryCreateForm(UnicatStructure $structure, array $options = [], ItemModel $parent_category = null)
+    {
+        $category = $structure->getRepository()->createCategory();
+
+        $category
+            ->setStructure($structure)
+            ->setIsInheritance($structure->getIsDefaultInheritance())
+            ->setUserId($this->getUserId())
+        ;
+
+        if ($parent_category) {
+            $category->setParent($parent_category);
+        }
+
+        return $this->formFactory->create(new CategoryFormType($this->repository), $category, $options)
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
+    }
+
+    /**
+     * @param mixed $data    The initial data for the form
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getCategoryFormType($data = null, array $options = [])
+    {
+        $form = $this->formFactory->create(new CategoryFormType($this->repository), $data, $options);
+
+        $form
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+
+        return $form;
+    }
+
+
+    /**
      * @param mixed $data    The initial data for the form
      * @param array $options
      *
@@ -294,7 +347,7 @@ class UnicatRepositoryManager
      */
     public function getStructure($id)
     {
-        return $this->em->getRepository('UnicatBundle:UnicatStructure')->find($id);
+        return $this->em->getRepository('Unicat2Bundle:UnicatStructure')->find($id);
     }
 
     /**
@@ -527,5 +580,27 @@ class UnicatRepositoryManager
         $this->em->flush($entity);
 
         return $this;
+    }
+
+    /**
+     * @return int
+     *
+     * @deprecated
+     */
+    protected function getUserId()
+    {
+        if (null === $securityContext = $this->securityContext) {
+            return 0;
+        }
+
+        if (null === $token = $this->securityContext->getToken()) {
+            return 0;
+        }
+
+        if (!is_object($user = $token->getUser())) {
+            return 0;
+        }
+
+        return $user->getId();
     }
 }

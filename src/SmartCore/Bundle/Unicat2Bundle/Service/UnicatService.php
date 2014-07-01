@@ -8,6 +8,7 @@ use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
 use SmartCore\Bundle\Unicat2Bundle\Entity\UnicatRepository;
 use SmartCore\Bundle\Unicat2Bundle\Entity\UnicatStructure;
 use SmartCore\Bundle\Unicat2Bundle\Form\Type\PropertyFormType;
+use SmartCore\Bundle\Unicat2Bundle\Form\Type\RepositoryFormType;
 use SmartCore\Bundle\Unicat2Bundle\Model\ItemModel;
 use SmartCore\Bundle\Unicat2Bundle\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -72,7 +73,13 @@ class UnicatService
         $repository = $this->getRepository($repository_id);
 
         if (!isset($this->urms[$repository->getId()])) {
-            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $this->formFactory, $repository, $this->mc);
+            $this->urms[$repository->getId()] = new UnicatRepositoryManager(
+                $this->em,
+                $this->formFactory,
+                $repository,
+                $this->mc,
+                $this->securityContext
+            );
         }
 
         return $this->urms[$repository->getId()];
@@ -103,32 +110,6 @@ class UnicatService
     public function getCategoryForm(UnicatRepository $repository, $data = null, array $options = [])
     {
         return $this->formFactory->create(new CategoryFormType($repository), $data, $options);
-    }
-
-    /**
-     * @param UnicatStructure $structure
-     * @param array $options
-     * @param CategoryModel|null $parent_category
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated убрать в UnicatRepositoryManager
-     */
-    public function getCategoryCreateForm(UnicatStructure $structure, array $options = [], CategoryModel $parent_category = null)
-    {
-        $category = $structure->getRepository()->createCategory();
-        $category
-            ->setStructure($structure)
-            ->setIsInheritance($structure->getIsDefaultInheritance())
-            ->setUserId($this->getUserId())
-        ;
-
-        if ($parent_category) {
-            $category->setParent($parent_category);
-        }
-
-        return $this->formFactory->create(new CategoryCreateFormType($structure->getRepository()), $category, $options)
-            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
     }
 
     /**
@@ -196,10 +177,33 @@ class UnicatService
     }
 
     /**
+     * @param UnicatRepository $repository
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getRepositoryEditForm($data = null, array $options = [])
+    {
+        return $this->getRepositoryForm($data, $options)
+            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+    }
+
+    /**
+     * @param UnicatRepository|null $data
+     * @param array $options
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function getRepositoryForm($data = null, array $options = [])
+    {
+        return $this->formFactory->create(new RepositoryFormType(), $data, $options);
+    }
+
+    /**
      * @param UnicatStructure $structure
      * @param int $id
      *
-     * @return CategoryModel|null
+     * @return ItemModel|null
      *
      * @deprecated
      */
@@ -313,6 +317,8 @@ class UnicatService
     /**
      * @param CategoryModel $category
      * @return $this
+     * 
+     * @deprecated
      */
     public function updateCategory(CategoryModel $category)
     {
@@ -343,6 +349,18 @@ class UnicatService
         return $this;
     }
 
+    /**
+     * @param UnicatRepository $repository
+     * @return $this
+     */
+    public function updateRepository(UnicatRepository $repository)
+    {
+        $this->em->persist($repository);
+        $this->em->flush($repository);
+
+        return $this;
+    }
+    
     /**
      * @param CategoryModel $category
      * @return $this

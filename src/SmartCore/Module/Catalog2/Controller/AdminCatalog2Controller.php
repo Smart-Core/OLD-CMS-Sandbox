@@ -31,13 +31,42 @@ class AdminCatalog2Controller extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $repository = $this->get('unicat2')->getRepository($repository);
+        $unicat = $this->get('unicat2');
+
+        $repository = $unicat->getRepository($repository);
 
         return $this->render('Catalog2Module:Admin:repository.html.twig', [
-            //'properties_groups' => $em->getRepository($repository->getPropertiesGroupClass())->findAll(),
-            //'properties'        => $em->getRepository($repository->getPropertyClass())->findAll(),
+            'properties_groups' => $em->getRepository($repository->getPropertiesGroupClass())->findAll(),
+            'properties'        => $em->getRepository($repository->getPropertyClass())->findAll(),
             'items'             => $em->getRepository($repository->getItemClass())->findBy([], ['id' => 'DESC']),
             'repository'        => $repository,
+        ]);
+    }
+
+    /**
+     * @param string $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function repositoryEditAction(Request $request, $repository)
+    {
+        $unicat = $this->get('unicat2');
+
+        $repository = $unicat->getRepository($repository);
+        $form = $unicat->getRepositoryEditForm($repository);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->get('update')->isClicked() and $form->isValid()) {
+                $unicat->updateRepository($form->getData());
+                $this->get('session')->getFlashBag()->add('success', 'Репозиторий обновлён');
+            }
+
+            return $this->redirect($this->generateUrl('smart_module.catalog2_admin'));
+        }
+
+        return $this->render('Catalog2Module:Admin:repository_edit.html.twig', [
+            'form'       => $form->createView(),
         ]);
     }
 
@@ -92,26 +121,21 @@ class AdminCatalog2Controller extends Controller
      * @param Request $request
      * @param int $id
      * @param string|int $repository
-     * @param int|null $parent_category_id
+     * @param int|null $parent_category_id @todo
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function structureAction(Request $request, $id, $repository, $parent_category_id = null)
     {
         $urm        = $this->get('unicat2')->getRepositoryManager($repository);
-        $unicat     = $this->get('unicat2'); // @todo перевести всё на $urm.
-        $structure  = $unicat->getStructure($id);
+        $structure  = $urm->getStructure($id);
 
-        //$parent_category = $parent_category_id ? $urm->getCategoryRepository()->find($parent_category_id) : null;
-
-        $parent_category = $urm->getCategory($parent_category_id);
-
-//        $form = $unicat->getCategoryCreateForm($structure, [], $parent_category);
-        $form = $urm->getItemCreateForm();
+        //$form = $urm->getCategoryFormType();
+        $form = $urm->getCategoryCreateForm($structure);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $unicat->createCategory($form->getData());
+                $urm->createItem($form->getData(), $request);
                 $this->get('session')->getFlashBag()->add('success', 'Категория создана');
 
                 return $this->redirectToStructureAdmin($urm->getRepository(), $id);

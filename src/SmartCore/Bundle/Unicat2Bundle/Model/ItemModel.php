@@ -37,11 +37,23 @@ class ItemModel
     protected $is_enabled;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_inheritance;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="integer", nullable=false)
      */
     protected $position;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $title;
 
     /**
      * @var int
@@ -82,7 +94,7 @@ class ItemModel
     protected $created_at;
 
     /**
-     * @var Item[]
+     * @var ItemModel[]
      *
      * @ORM\OneToMany(targetEntity="Item", mappedBy="parent")
      * @ORM\OrderBy({"position" = "ASC"})
@@ -90,7 +102,7 @@ class ItemModel
     protected $children;
 
     /**
-     * @var Item
+     * @var ItemModel
      *
      * @ORM\ManyToOne(targetEntity="Item", inversedBy="children", cascade={"persist"})
      **/
@@ -104,7 +116,7 @@ class ItemModel
     protected $structure;
 
     /**
-     * @var CategoryModel[]
+     * @var ItemModel[]
      *
      * ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist", "remove"})
      * ORM\JoinTable(name="unicat2_items_categories_relations")
@@ -112,7 +124,7 @@ class ItemModel
     protected $categories;
 
     /**
-     * @var CategoryModel[]
+     * @var ItemModel[]
      *
      * ORM\ManyToMany(targetEntity="Category", inversedBy="itemsSingle", cascade={"persist", "remove"})
      * ORM\JoinTable(name="unicat2_items_categories_relations_single")
@@ -127,6 +139,7 @@ class ItemModel
         $this->categories = new ArrayCollection();
         $this->created_at = new \DateTime();
         $this->is_enabled = true;
+        $this->is_inheritance = true;
         $this->position   = 0;
         $this->type       = self::TYPE_CATEGORY;
         $this->user_id    = 0;
@@ -196,7 +209,7 @@ class ItemModel
     }
 
     /**
-     * @param mixed $categories
+     * @param ItemModel[]|ArrayCollection $categories
      * @return $this
      */
     public function setCategories($categories)
@@ -207,7 +220,7 @@ class ItemModel
     }
 
     /**
-     * @return CategoryModel[]
+     * @return ItemModel[]
      */
     public function getCategories()
     {
@@ -215,7 +228,7 @@ class ItemModel
     }
 
     /**
-     * @param CategoryModel[] $categoriesSingle
+     * @param ItemModel[]|ArrayCollection $categoriesSingle
      * @return $this
      */
     public function setCategoriesSingle($categoriesSingle)
@@ -226,7 +239,7 @@ class ItemModel
     }
 
     /**
-     * @return CategoryModel[]
+     * @return ItemModel[]
      */
     public function getCategoriesSingle()
     {
@@ -269,6 +282,33 @@ class ItemModel
     }
 
     /**
+     * @param bool $is_inheritance
+     * @return $this
+     */
+    public function setIsInheritance($is_inheritance)
+    {
+        $this->is_inheritance = $is_inheritance;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsInheritance()
+    {
+        return $this->is_inheritance;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInheritance()
+    {
+        return $this->is_inheritance;
+    }
+
+    /**
      * @param int $position
      * @return $this
      */
@@ -285,6 +325,25 @@ class ItemModel
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * @param string $title
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -386,10 +445,10 @@ class ItemModel
     }
 
     /**
-     * @param \SmartCore\Bundle\Unicat2Bundle\Entity\UnicatStructure $structure
+     * @param UnicatStructure $structure
      * @return $this
      */
-    public function setStructure($structure)
+    public function setStructure(UnicatStructure $structure)
     {
         $this->structure = $structure;
 
@@ -397,7 +456,7 @@ class ItemModel
     }
 
     /**
-     * @return \SmartCore\Bundle\Unicat2Bundle\Entity\UnicatStructure
+     * @return UnicatStructure
      */
     public function getStructure()
     {
@@ -448,5 +507,43 @@ class ItemModel
     public function getUserId()
     {
         return $this->user_id;
+    }
+
+    /**
+     * @param ItemModel[]|ArrayCollection $children
+     * @return $this
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * @return ItemModel[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param ItemModel $parent
+     * @return $this
+     */
+    public function setParent(ItemModel $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return ItemModel
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

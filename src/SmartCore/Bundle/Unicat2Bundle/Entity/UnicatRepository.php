@@ -155,12 +155,13 @@ class UnicatRepository
      */
     public function createCategory()
     {
-        /** @var ItemModel $class */
         $class = $this->getItemClass();
+        $obj = new $class;
 
-        $class->setType(ItemModel::TYPE_CATEGORY);
+        /** @var ItemModel $obj */
+        $obj->setType(ItemModel::TYPE_CATEGORY);
 
-        return new $class;
+        return $obj;
     }
 
     /**
