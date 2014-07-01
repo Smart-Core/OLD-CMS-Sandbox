@@ -1,0 +1,3 @@
+unicat2_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: Unicat2Bundle:Default:index }

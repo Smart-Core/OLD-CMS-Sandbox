@@ -1,0 +1,7 @@
+parameters:
+#    unicat2.example.class: SmartCore\Bundle\Unicat2Bundle\Example
+
+services:
+#    unicat2.example:
+#        class: %unicat2.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
