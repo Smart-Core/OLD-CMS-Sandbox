@@ -12,11 +12,11 @@
         </a>
     </div>
 
-    <div class="span3">
-        {{ form(form, {'attr': {'class': 'well'} }) }}
+    <div class="span5">
+        {% include '@Catalog2Module/Admin/_form.item.html.twig' with {'form': form} %}
     </div>
 
-    <div class="span8">
+    <div class="span7">
         {% set menuItem = knp_menu_get('Unicat2Bundle:CategoryMenu:adminTree', [], {
             'categoryClass': structure.repository.categoryClass,
             'structure': structure
