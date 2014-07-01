@@ -1,0 +1,84 @@
+
+smart_module.catalog2_admin:
+    path: /
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:index
+
+smart_module.catalog2_repository_admin:
+    path: /repository_{repository}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:repository
+
+smart_module.catalog2_structure_admin:
+    path: /repository_{repository}/structure_{id}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:structure
+    requirements:
+        id: \d+
+
+smart_module.catalog2_structure_admin_with_parent_category_id:
+    path: /repository_{repository}/structure_{id}/{parent_category_id}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:structure
+    requirements:
+        parent_category_id: \d+
+        id: \d+
+
+smart_module.catalog2_structure_edit_admin:
+    path: /repository_{repository}/structure_{id}/edit/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:structureEdit
+    requirements:
+        id: \d+
+
+smart_module.catalog2_structure_create_admin:
+    path: /repository_{repository}/structure_create/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:structureCreate
+
+smart_module.catalog2_category_admin:
+    path: /repository_{repository}/structure_{structure_id}/category_{id}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:categoryEdit
+    requirements:
+        id: \d+
+        structure_id: \d+
+
+smart_module.catalog2_properties_group_create_admin:
+    path: /repository_{repository}/properties_group_create/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:propertiesGroupCreate
+
+smart_module.catalog2_properties_admin:
+    path: /repository_{repository}/properties_group_{group_id}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:properties
+    requirements:
+        group_id: \d+
+
+smart_module.catalog2_property_admin:
+    path: /repository_{repository}/properties_group_{group_id}/{id}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:property
+    requirements:
+        group_id: \d+
+        id: \d+
+
+smart_module.catalog2_item_create_admin:
+    path: /repository_{repository}/item_create/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:itemCreate
+
+smart_module.catalog2_item_create_admin_in_category:
+    path: /repository_{repository}/item_create/{default_category_id}/
+    requirements:
+        default_category_id: \d+
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:itemCreate
+
+smart_module.catalog2_item_edit_admin:
+    path: /repository_{repository}/item_{id}/
+    defaults:
+        _controller: Catalog2Module:AdminCatalog2:itemEdit
+    requirements:
+        id: \d+

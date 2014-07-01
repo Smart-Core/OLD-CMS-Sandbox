@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 01 2014 г., 12:59
+-- Время создания: Июл 01 2014 г., 15:13
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -210,6 +210,101 @@ INSERT INTO `blog_tags` (`id`, `slug`, `title`, `created_at`, `weight`) VALUES
 (23, 'cms', 'CMS', '2014-02-08 20:57:52', 0),
 (24, 'select', 'Выбор', '2014-02-08 20:57:52', 0),
 (25, 'twig', 'Twig', '2014-02-08 20:57:52', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `catalog2_items`
+--
+
+DROP TABLE IF EXISTS `catalog2_items`;
+CREATE TABLE IF NOT EXISTS `catalog2_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `structure_id` int(11) DEFAULT NULL,
+  `is_enabled` tinyint(1) DEFAULT NULL,
+  `position` int(11) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_334330BD989D9B62` (`slug`),
+  KEY `IDX_334330BD727ACA70` (`parent_id`),
+  KEY `IDX_334330BD2534008B` (`structure_id`),
+  KEY `position` (`position`),
+  KEY `type` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `catalog2_items`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `catalog2_properties`
+--
+
+DROP TABLE IF EXISTS `catalog2_properties`;
+CREATE TABLE IF NOT EXISTS `catalog2_properties` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) DEFAULT NULL,
+  `is_enabled` tinyint(1) NOT NULL,
+  `is_dedicated_table` tinyint(1) NOT NULL,
+  `is_required` tinyint(1) NOT NULL,
+  `position` int(11) DEFAULT NULL,
+  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `show_in_admin` tinyint(1) NOT NULL,
+  `show_in_list` tinyint(1) NOT NULL,
+  `show_in_view` tinyint(1) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `params_yaml` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_43C18DF75E237E06` (`name`),
+  KEY `IDX_43C18DF7FE54D947` (`group_id`),
+  KEY `is_enabled` (`is_enabled`),
+  KEY `show_in_admin` (`show_in_admin`),
+  KEY `show_in_list` (`show_in_list`),
+  KEY `show_in_view` (`show_in_view`),
+  KEY `position` (`position`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `catalog2_properties`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `catalog2_properties_groups`
+--
+
+DROP TABLE IF EXISTS `catalog2_properties_groups`;
+CREATE TABLE IF NOT EXISTS `catalog2_properties_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) DEFAULT NULL,
+  `repository_id` int(11) DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_577DEB1A126F525E` (`item_id`),
+  KEY `IDX_577DEB1A50C9D4F7` (`repository_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `catalog2_properties_groups`
+--
+
 
 -- --------------------------------------------------------
 
@@ -605,7 +700,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   KEY `is_active` (`is_active`),
   KEY `is_deleted` (`is_deleted`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `engine_folders`
@@ -625,7 +720,8 @@ INSERT INTO `engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`, `po
 (12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL),
 (13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL),
 (14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
-(15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL);
+(15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
+(16, 1, 'Каталог 2', 0, 0, 'catalog2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -654,7 +750,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
 
 --
 -- Дамп данных таблицы `engine_nodes`
@@ -688,7 +784,8 @@ INSERT INTO `engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`, `mo
 (26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, NULL, 1, '2014-02-08 21:04:50', 0, NULL),
 (27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, NULL, 1, '2014-02-10 08:13:18', 0, NULL),
 (28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL),
-(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL);
+(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL),
+(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -913,7 +1010,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `menu`
@@ -933,7 +1030,8 @@ INSERT INTO `menu` (`item_id`, `group_id`, `folder_id`, `is_active`, `position`,
 (12, 1, 13, 1, 2, NULL, NULL, NULL, 1, '2014-02-07 18:02:12', '2014-02-07 18:02:22', NULL, 'N;'),
 (13, 1, 14, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 07:56:17', NULL, 11, 'N;'),
 (14, 1, 4, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 11:28:48', NULL, 8, 'N;'),
-(15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;');
+(15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;'),
+(16, 1, 16, 1, 6, NULL, NULL, NULL, 1, '2014-07-01 13:35:20', NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -1202,12 +1300,14 @@ CREATE TABLE IF NOT EXISTS `unicat2_repositories` (
   KEY `IDX_2867789DB52E685C` (`media_collection_id`),
   KEY `IDX_2867789D7E2E521` (`default_structure_id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `unicat2_repositories`
 --
 
+INSERT INTO `unicat2_repositories` (`id`, `media_collection_id`, `default_structure_id`, `entities_namespace`, `name`, `title`, `is_inheritance`, `user_id`, `created_at`) VALUES
+(3, NULL, NULL, 'Demo\\SiteBundle\\Entity\\Catalog2\\', 'catalog2', 'Каталог товаров 2', 1, 1, '2014-07-01 13:54:11');
 
 -- --------------------------------------------------------
 
@@ -1231,12 +1331,14 @@ CREATE TABLE IF NOT EXISTS `unicat2_structures` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_FCE6DA150C9D4F7` (`repository_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `unicat2_structures`
 --
 
+INSERT INTO `unicat2_structures` (`id`, `repository_id`, `position`, `name`, `title`, `title_form`, `entries`, `is_required`, `is_default_inheritance`, `user_id`, `properties`, `created_at`) VALUES
+(2, 3, 0, 'categories', 'Категории', 'Категория', 'single', 1, 0, 0, NULL, '2014-07-01 14:15:15');
 
 -- --------------------------------------------------------
 
@@ -1441,6 +1543,26 @@ ALTER TABLE `blog_articles_tags_relations`
 --
 ALTER TABLE `blog_categories`
   ADD CONSTRAINT `FK_D7E9F9CF3D8E604F` FOREIGN KEY (`parent`) REFERENCES `blog_categories` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `catalog2_items`
+--
+ALTER TABLE `catalog2_items`
+  ADD CONSTRAINT `FK_334330BD2534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat2_structures` (`id`),
+  ADD CONSTRAINT `FK_334330BD727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `catalog2_items` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `catalog2_properties`
+--
+ALTER TABLE `catalog2_properties`
+  ADD CONSTRAINT `FK_43C18DF7FE54D947` FOREIGN KEY (`group_id`) REFERENCES `catalog2_properties_groups` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `catalog2_properties_groups`
+--
+ALTER TABLE `catalog2_properties_groups`
+  ADD CONSTRAINT `FK_577DEB1A50C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat2_repositories` (`id`),
+  ADD CONSTRAINT `FK_577DEB1A126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog2_items` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_categories`

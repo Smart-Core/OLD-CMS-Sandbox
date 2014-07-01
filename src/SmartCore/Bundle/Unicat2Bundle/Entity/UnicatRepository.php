@@ -5,7 +5,7 @@ namespace SmartCore\Bundle\Unicat2Bundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
-use SmartCore\Bundle\Unicat2Bundle\Model\CategoryModel;
+use SmartCore\Bundle\Unicat2Bundle\Model\ItemModel;
 use SmartCore\Bundle\Unicat2Bundle\Model\PropertiesGroupModel;
 use SmartCore\Bundle\Unicat2Bundle\Model\PropertyModel;
 
@@ -17,7 +17,7 @@ use SmartCore\Bundle\Unicat2Bundle\Model\PropertyModel;
  *      }
  * )
  */
-class Unicat2Repository
+class UnicatRepository
 {
     /**
      * @ORM\Id
@@ -66,16 +66,16 @@ class Unicat2Repository
     protected $created_at;
 
     /**
-     * @var Unicat2Structure
+     * @var UnicatStructure
      *
-     * @ORM\ManyToOne(targetEntity="Unicat2Structure")
+     * @ORM\ManyToOne(targetEntity="UnicatStructure")
      */
     protected $default_structure;
 
     /**
      * @var UnicatStructure[]
      *
-     * @ORM\OneToMany(targetEntity="Unicat2Structure", mappedBy="repository")
+     * @ORM\OneToMany(targetEntity="UnicatStructure", mappedBy="repository")
      */
     protected $structures;
 
@@ -116,10 +116,12 @@ class Unicat2Repository
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getCategoryClass()
     {
-        return $this->entities_namespace . 'Category';
+        return $this->entities_namespace . 'Item';
     }
 
     /**
@@ -147,13 +149,16 @@ class Unicat2Repository
     }
 
     /**
-     * @return CategoryModel
+     * @return ItemModel
      *
      * @deprecated
      */
     public function createCategory()
     {
-        $class = $this->getCategoryClass();
+        /** @var ItemModel $class */
+        $class = $this->getItemClass();
+
+        $class->setType(ItemModel::TYPE_CATEGORY);
 
         return new $class;
     }
@@ -270,10 +275,10 @@ class Unicat2Repository
     }
 
     /**
-     * @param Unicat2Structure $default_structure
+     * @param UnicatStructure $default_structure
      * @return $this
      */
-    public function setDefaultStructure(Unicat2Structure $default_structure)
+    public function setDefaultStructure(UnicatStructure $default_structure)
     {
         $this->default_structure = $default_structure;
 
@@ -281,7 +286,7 @@ class Unicat2Repository
     }
 
     /**
-     * @return Unicat2Structure
+     * @return UnicatStructure
      */
     public function getDefaultStructure()
     {
@@ -289,7 +294,7 @@ class Unicat2Repository
     }
 
     /**
-     * @return Unicat2Structure[]
+     * @return UnicatStructure[]
      */
     public function getStructures()
     {

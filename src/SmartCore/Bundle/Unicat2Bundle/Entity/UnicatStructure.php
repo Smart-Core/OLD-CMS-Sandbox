@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="unicat2_structures")
  */
-class Unicat2Structure
+class UnicatStructure
 {
     /**
      * @ORM\Id
@@ -65,9 +65,9 @@ class Unicat2Structure
     protected $properties;
 
     /**
-     * @var Unicat2Repository
+     * @var UnicatRepository
      *
-     * @ORM\ManyToOne(targetEntity="Unicat2Repository", inversedBy="structures")
+     * @ORM\ManyToOne(targetEntity="UnicatRepository", inversedBy="structures")
      */
     protected $repository;
 

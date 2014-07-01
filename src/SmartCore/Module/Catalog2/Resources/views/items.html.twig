@@ -1,0 +1,31 @@
+
+{% if childenCategories|length %}
+    <h4>Вложенные категории:</h4>
+
+    <ul>
+        {% for category in childenCategories %}
+            <li><a href="{{ path('smart_module.catalog2.category', {'slug': category.slugFull}) }}/">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+    <hr />
+{% endif %}
+
+{% if items|length %}
+{% for item in items %}
+    <h1><a href="{{ path('smart_module.catalog2.item', {'slug': category.slugFull, 'itemSlug': item.slug}) }}">{{ item.property('title') }}</a></h1>
+
+    {% if item.property('description') %} <p>Описание: {{ item.property('description') }}</p> {% endif %}
+
+    <p>Наличие: {% if item.property('in_sight') %} есть {% else %} нет {% endif %} </p>
+
+    {% if item.property('price') %}
+        <p>Цена: {{ item.property('price') }}</p>
+    {% endif %}
+
+    {% if item.property('image') %}
+        <p>{{ smart_media_img(item.property('image'), '300-300') }}</p>
+    {% endif %}
+
+    <hr />
+{% endfor %}
+{% endif %}
