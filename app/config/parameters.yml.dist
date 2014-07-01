@@ -15,7 +15,7 @@ parameters:
     #database_user_db1:     smart_core
     #database_password_db1: 123
 
-    database_table_prefix: aaa_ # На время разработки используетя префикс таблиц.
+    database_table_prefix: ~
 
     dizda_cloud_dropbox_user:     myDropboxUser
     dizda_cloud_dropbox_password: MyDropboxPassword
