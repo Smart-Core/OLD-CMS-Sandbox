@@ -6,17 +6,15 @@
 
     <h2>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h2>
 
+    {#
     <div class="span12">
         <a href="{{ path('smart_module.catalog2_repository_admin', {'repository': structure.repository.name}) }}">
             &laquo; назад к репозиторию &laquo;{{ structure.repository.title }}&raquo;
         </a>
     </div>
+    #}
 
     <div class="span5">
-        {% include '@Catalog2Module/Admin/_form.item.html.twig' with {'form': form} %}
-    </div>
-
-    <div class="span7">
         {% set menuItem = knp_menu_get('Unicat2Bundle:CategoryMenu:adminTree', [], {
             'categoryClass': structure.repository.categoryClass,
             'structure': structure
@@ -26,5 +24,14 @@
             'clear_matcher': false,
         }) }}
     </div>
+
+    <div class="span5">
+        <a href="{{ path('smart_module.catalog2_repository_admin', {'repository': structure.repository.name}) }}">
+            &laquo; назад к репозиторию &laquo;{{ structure.repository.title }}&raquo;
+        </a>
+
+        {% include '@Catalog2Module/Admin/_form.item.html.twig' with {'form': form} %}
+    </div>
+
 
 {% endblock content %}

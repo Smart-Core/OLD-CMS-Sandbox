@@ -17,9 +17,9 @@ class CategoryFormType extends ItemFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /** @var ItemModel $category */
-//        $category = $options['data'];
+        $category = $options['data'];
 
-//        $categoryTreeType = (new CategoryTreeType(Container::get('doctrine')))->setStructure($category->getStructure());
+        $categoryTreeType = (new CategoryTreeType(Container::get('doctrine')))->setStructure($category->getStructure());
 
         $builder
             ->add('title',          null, ['attr' => ['class' => 'focused']])
@@ -28,7 +28,7 @@ class CategoryFormType extends ItemFormType
             ->add('position')
             ->add('parent')
             //->add('is_inheritance')
-            //->add('parent', $categoryTreeType)
+            ->add('parent', $categoryTreeType)
             //->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
         ;
     }

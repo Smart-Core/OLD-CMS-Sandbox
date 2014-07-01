@@ -482,12 +482,15 @@ class UnicatRepositoryManager
         $request->request->set($form->getName(), $pd);
 
         // @todo убрать выборку структур в StructureRepository (Entity)
+        /*
         $list_string = '';
         foreach ($structures as $node_id) {
             $list_string .= $node_id . ',';
         }
 
         $list_string = substr($list_string, 0, strlen($list_string)-1);
+
+        ld($list_string);
 
         if (false == $list_string) {
             return [];
@@ -503,9 +506,11 @@ class UnicatRepositoryManager
 
         $item->setCategories($structuresSingleColection)
             ->setCategoriesSingle($structuresSingleColection);
+        */
 
         $this->em->persist($item);
         $this->em->flush($item);
+
 
         return $this;
     }

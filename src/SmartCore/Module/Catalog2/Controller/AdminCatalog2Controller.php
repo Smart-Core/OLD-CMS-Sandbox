@@ -135,7 +135,7 @@ class AdminCatalog2Controller extends Controller
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $urm->createItem($form->getData(), $request);
+                $urm->createItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Категория создана');
 
                 return $this->redirectToStructureAdmin($urm->getRepository(), $id);

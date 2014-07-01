@@ -132,6 +132,11 @@ class ItemModel
     protected $categoriesSingle;
 
     /**
+     * Для отображения в формах. Не маппится в БД.
+     */
+    protected $form_title = '';
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -143,6 +148,14 @@ class ItemModel
         $this->position   = 0;
         $this->type       = self::TYPE_CATEGORY;
         $this->user_id    = 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
     }
 
     /**
@@ -545,5 +558,24 @@ class ItemModel
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * @param string $form_title
+     * @return $this
+     */
+    public function setFormTitle($form_title)
+    {
+        $this->form_title = $form_title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFormTitle()
+    {
+        return $this->form_title;
     }
 }

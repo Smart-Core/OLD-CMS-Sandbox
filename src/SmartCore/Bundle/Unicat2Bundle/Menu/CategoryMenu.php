@@ -101,11 +101,11 @@ class CategoryMenu extends ContainerAware
      * Рекурсивное построение дерева для админки.
      *
      * @param ItemInterface $menu
-     * @param CategoryModel|null $parent
+     * @param ItemModel|null $parent
      * @param array $options
      * @return void
      */
-    protected function addChildToAdminTree(ItemInterface $menu, CategoryModel $parent = null, $options)
+    protected function addChildToAdminTree(ItemInterface $menu, ItemModel $parent = null, $options)
     {
         $categories = $this->container->get('doctrine')->getManager()->getRepository($options['categoryClass'])->findBy([
                 'parent'    => $parent,
