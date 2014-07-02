@@ -1,15 +1,13 @@
-#!/usr/bin/env php
-<?php
+#!/bin/bash
 
-set_time_limit(0);
+if [ -d var/cache/prod ]
+then
+    echo "Clearing var/cache/prod.."
+    rm -rf var/cache/prod
+fi
 
-$rootDir = dirname(__DIR__);
-
-// php on windows can't use the shebang line from system()
-$interpreter = defined('PHP_WINDOWS_VERSION_BUILD') ? 'php.exe' : '';
-
-// Remove the cache
-echo "Remove the cache... \n";
-system(sprintf('%s %s cache:clear --no-warmup', $interpreter, escapeshellarg($rootDir.'/app/console')));
-system(sprintf('%s %s cache:clear --no-warmup --env=prod', $interpreter, escapeshellarg($rootDir.'/app/console')));
-system(sprintf('%s %s cache:clear --no-warmup --env=prod --no-debug', $interpreter, escapeshellarg($rootDir.'/app/console')));
+if [ -d var/cache/dev ]
+then
+    echo "Clearing var/cache/dev..."
+    rm -rf var/cache/dev
+fi
