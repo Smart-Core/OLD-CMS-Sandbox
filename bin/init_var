@@ -25,6 +25,7 @@ fi
 
 if [ -d "web/uploads" ]
 then
+    echo "web/uploads exists!"
 else
     echo "web/uploads created"
     mkdir web/uploads
