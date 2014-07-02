@@ -38,7 +38,7 @@
         "knplabs/knp-disqus-bundle":"dev-master",
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "2.0.*@dev",
-        "knplabs/rad-bundle": "v2.5.0-beta1",
+        "knplabs/rad-bundle": "*",
         "liip/doctrine-cache-bundle": "dev-master",
         "liip/functional-test-bundle": "dev-master",
         "liip/theme-bundle": "dev-master",
@@ -84,6 +84,9 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
+        "branch-alias": {
+            "dev-master": "2.5-dev"
+        },
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }

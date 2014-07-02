@@ -14,11 +14,14 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class EngineModule extends ContainerAware
 {
     /**
-     * @var \SmartCore\AppKernel
+     * @var \AppKernel
      */
     protected $kernel;
+
+    /**
+     * @var \SmartCore\Bundle\CMSBundle\Module\Bundle
+     */
     protected $modules = [];
-    protected $initialized = false;
 
     /**
      * Constructor.
@@ -26,27 +29,14 @@ class EngineModule extends ContainerAware
     public function __construct(KernelInterface $kernel)
     {
         $this->kernel = $kernel;
-        $this->initialize();
-    }
 
-    /**
-     * Initializes the collection of modules.
-     */
-    public function initialize()
-    {
-        if (!$this->initialized) {
-            $configFile = $this->kernel->getRootDir() . '/usr/modules.ini';
-
-            foreach (parse_ini_file($configFile) as $module_name => $_dummy) {
-                $this->modules[$module_name] = $this->kernel->getBundle($module_name . 'Module');
-            }
-
-            $this->initialized = true;
+        foreach ($this->kernel->getModules() as $module_name => $_dummy) {
+            $this->modules[$module_name] = $this->kernel->getBundle($module_name . 'Module');
         }
     }
 
     /**
-     * Получить список всех модулей.
+     * Получение списка всех модулей.
      *
      * @return \SmartCore\Bundle\CMSBundle\Module\Bundle[]
      */
@@ -56,18 +46,14 @@ class EngineModule extends ContainerAware
     }
 
     /**
-     * Получить информацию о модуле.
+     * Получение информации о модуле.
      *
      * @param string $name
      * @return \SmartCore\Bundle\CMSBundle\Module\Bundle|null
      */
     public function get($name)
     {
-        if (isset($this->modules[$name])) {
-            return $this->modules[$name];
-        } else {
-            return null;
-        }
+        return (isset($this->modules[$name])) ? $this->modules[$name] : null;
     }
 
     /**

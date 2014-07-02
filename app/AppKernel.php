@@ -103,6 +103,8 @@ class AppKernel extends Kernel
                 if (class_exists($module_class)) {
                     $bundles[] = new $module_class;
                     $this->modules[$module_name] = $module_class;
+                } else {
+                    // @todo сообщение об отсутсвии класса.
                 }
             }
         }

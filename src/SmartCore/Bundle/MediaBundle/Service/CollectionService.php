@@ -90,6 +90,7 @@ class CollectionService
      */
     public function upload(UploadedFile $uploadedFile, $category = null, array $tags = null)
     {
+        // @todo проверку на доступность загруженного файла, могут быть проблеммы, если в настройках сервера указан маленький upload_max_filesize и/или post_max_size
         $file = new File($uploadedFile);
         $file
             ->setCollection($this->collection)

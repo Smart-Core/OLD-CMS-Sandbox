@@ -4,13 +4,9 @@ namespace SmartCore\Bundle\Unicat2Bundle\Form\Type;
 
 use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\SeoBundle\Form\Type\MetaFromType;
-use SmartCore\Bundle\Unicat2Bundle\Entity\UnicatRepository;
-use SmartCore\Bundle\Unicat2Bundle\Entity\UnicatStructure;
 use SmartCore\Bundle\Unicat2Bundle\Form\Tree\CategoryTreeType;
 use SmartCore\Bundle\Unicat2Bundle\Model\ItemModel;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Yaml\Yaml;
 
 class CategoryFormType extends ItemFormType
 {

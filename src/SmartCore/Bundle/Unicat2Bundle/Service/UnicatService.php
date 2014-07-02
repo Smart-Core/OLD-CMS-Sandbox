@@ -317,7 +317,7 @@ class UnicatService
     /**
      * @param CategoryModel $category
      * @return $this
-     * 
+     *
      * @deprecated
      */
     public function updateCategory(CategoryModel $category)
@@ -360,7 +360,7 @@ class UnicatService
 
         return $this;
     }
-    
+
     /**
      * @param CategoryModel $category
      * @return $this

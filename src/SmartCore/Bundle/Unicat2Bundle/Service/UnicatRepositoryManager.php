@@ -243,7 +243,6 @@ class UnicatRepositoryManager
         return $form;
     }
 
-
     /**
      * @param mixed $data    The initial data for the form
      * @param array $options
@@ -510,7 +509,6 @@ class UnicatRepositoryManager
 
         $this->em->persist($item);
         $this->em->flush($item);
-
 
         return $this;
     }
