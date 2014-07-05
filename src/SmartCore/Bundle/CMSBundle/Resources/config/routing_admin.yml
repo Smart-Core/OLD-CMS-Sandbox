@@ -156,12 +156,23 @@ cms_admin_config_media:
     defaults:
         _controller: CMSBundle:AdminMediaLibrary:index
 
+cms_admin_config_media_create_storage:
+    path: /config/media/storage_create/
+    defaults:
+        _controller: CMSBundle:AdminMediaLibrary:createStorage
+
+
 cms_admin_config_media_edit_storage:
     path: /config/media/storage_{id}/
     defaults:
         _controller: CMSBundle:AdminMediaLibrary:editStorage
     requirements:
         id: \d+
+
+cms_admin_config_media_create_collection:
+    path: /config/media/collection_create/
+    defaults:
+        _controller: CMSBundle:AdminMediaLibrary:createCollection
 
 cms_admin_config_media_edit_collection:
     path: /config/media/collection_{id}/

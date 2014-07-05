@@ -3,6 +3,8 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Knp\RadBundle\Controller\Controller;
+use SmartCore\Bundle\MediaBundle\Entity\Collection;
+use SmartCore\Bundle\MediaBundle\Entity\Storage;
 use SmartCore\Bundle\MediaBundle\Form\Type\CollectionFormType;
 use SmartCore\Bundle\MediaBundle\Form\Type\StorageFormType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -25,6 +27,36 @@ class AdminMediaLibraryController extends Controller
         return $this->render('CMSBundle:AdminMediaLibrary:index.html.twig', [
             'collections'   => $collections,
             'storages'      => $storages,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function createStorageAction(Request $request)
+    {
+        $form = $this->createForm(new StorageFormType(), new Storage('/_media'));
+        $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirectToRoute('cms_admin_config_media');
+            }
+
+            if ($form->isValid()) {
+                $this->persist($form->getData(), true);
+                $this->addFlash('success', 'Хранилище создано');
+
+                return $this->redirectToRoute('cms_admin_config_media');
+            }
+        }
+
+        return $this->render('CMSBundle:AdminMediaLibrary:create_storage.html.twig', [
+            'form'   => $form->createView(),
         ]);
     }
 
@@ -64,6 +96,36 @@ class AdminMediaLibraryController extends Controller
         }
 
         return $this->render('CMSBundle:AdminMediaLibrary:edit_storage.html.twig', [
+            'form'   => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function createCollectionAction(Request $request)
+    {
+        $form = $this->createForm(new CollectionFormType(), new Collection('/new'));
+        $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirectToRoute('cms_admin_config_media');
+            }
+
+            if ($form->isValid()) {
+                $this->persist($form->getData(), true);
+                $this->addFlash('success', 'Коллекция создана');
+
+                return $this->redirectToRoute('cms_admin_config_media');
+            }
+        }
+
+        return $this->render('CMSBundle:AdminMediaLibrary:edit_collection.html.twig', [
             'form'   => $form->createView(),
         ]);
     }

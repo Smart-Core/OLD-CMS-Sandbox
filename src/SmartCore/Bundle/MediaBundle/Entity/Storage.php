@@ -63,6 +63,8 @@ class Storage
         $this->created_at       = new \DateTime();
         $this->files            = new ArrayCollection();
         $this->relative_path    = $relativePath;
+        $this->title            = 'Новое хранилище';
+        $this->provider         = 'SmartCore\Bundle\MediaBundle\Provider\LocalProvider';
     }
 
     /**

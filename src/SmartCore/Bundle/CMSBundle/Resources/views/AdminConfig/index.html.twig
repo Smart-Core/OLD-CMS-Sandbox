@@ -2,12 +2,8 @@
 
 {% block html_head_title %}{{ 'Configuration'|trans }} / {{ parent() }}{% endblock html_head_title %}
 
-{% block nav %}
-    {#{{ knp_menu_render('CMSBundle:AdminMenu:user', { 'currentClass': 'active', 'clear_matcher': true })}}#}
-{% endblock nav %}
-
 {% block content %}
 
-<a href="{{ path('cms_admin_config_media') }}">Медиа библиотека</a>
+    <a href="{{ path('cms_admin_config_media') }}" class="btn">Медиа библиотека</a>
 
 {% endblock content %}
