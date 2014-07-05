@@ -1,7 +1,7 @@
 
 {% for item in news.currentPageResults %}
     <h3><a href="{{ path('smart_module.news.item', {'slug': item.slug}) }}">{{ item.title }}</a></h3>
-    <p><b>{{ item.created|localizeddate('long') }}</b></p>
+    <p><b>{{ item.createdAt|localizeddate('long') }}</b></p>
     <p>{{ item.annotation }}</p>
     <hr />
 {% endfor %}

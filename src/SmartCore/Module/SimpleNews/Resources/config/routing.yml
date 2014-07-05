@@ -2,18 +2,18 @@
 smart_module.news:
     path: /
     defaults:
-        _controller: NewsModule:News:index
+        _controller: SimpleNewsModule:News:index
 
 smart_module.news.page:
     path: /page_{page}/
     defaults:
-        _controller: NewsModule:News:index
+        _controller: SimpleNewsModule:News:index
     requirements:
         page: \d+
 
 smart_module.news.item:
     path: /{slug}.html
     defaults:
-        _controller: NewsModule:News:item
+        _controller: SimpleNewsModule:News:item
     requirements:
         slug: '.+'

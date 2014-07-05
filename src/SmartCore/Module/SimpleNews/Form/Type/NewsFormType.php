@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Module\News\Form\Type;
+namespace SmartCore\Module\SimpleNews\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +24,7 @@ class NewsFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\News\Entity\News',
+            'data_class' => 'SmartCore\Module\SimpleNews\Entity\News',
         ]);
     }
 

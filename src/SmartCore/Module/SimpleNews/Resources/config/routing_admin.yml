@@ -2,16 +2,16 @@
 smart_module.news_admin:
     path: /
     defaults:
-        _controller: NewsModule:NewsAdmin:index
+        _controller: SimpleNewsModule:NewsAdmin:index
 
 smart_module.news_admin.create:
     path: /create/
     defaults:
-        _controller: NewsModule:NewsAdmin:create
+        _controller: SimpleNewsModule:NewsAdmin:create
 
 smart_module.news_admin.edit:
     path: /{id}/edit
     defaults:
-        _controller: NewsModule:NewsAdmin:edit
+        _controller: SimpleNewsModule:NewsAdmin:edit
     requirements:
         id: \d+

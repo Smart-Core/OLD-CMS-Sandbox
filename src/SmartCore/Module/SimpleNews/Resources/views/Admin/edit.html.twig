@@ -1,4 +1,4 @@
-{% extends '@NewsModule/Admin/index.html.twig' %}
+{% extends '@SimpleNewsModule/Admin/index.html.twig' %}
 
 {% block html_head_title %}Редактирование / {{ parent() }}{% endblock html_head_title %}
 
@@ -9,6 +9,6 @@
         <li class="active"><a>Редактирование новости</a></li>
     </ul>
 
-    {% include '@NewsModule/Admin/_form.html.twig' with {'form': form} %}
+    {% include '@SimpleNewsModule/Admin/_form.html.twig' with {'form': form} %}
 
 {% endblock content %}

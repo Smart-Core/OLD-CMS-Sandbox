@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Module\News\Form\Type;
+namespace SmartCore\Module\SimpleNews\Form\Type;
 
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;

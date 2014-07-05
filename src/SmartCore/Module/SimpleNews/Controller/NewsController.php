@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Module\News\Controller;
+namespace SmartCore\Module\SimpleNews\Controller;
 
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
@@ -33,7 +33,7 @@ class NewsController extends Controller
         }
 
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter(
-            $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllEnablesQuery()
+            $this->getDoctrine()->getRepository('SimpleNewsModule:News')->getFindAllEnablesQuery()
         ));
         $pagerfanta->setMaxPerPage($this->node->getParam('items_per_page', 10));
 
@@ -47,7 +47,7 @@ class NewsController extends Controller
             $this->get('cms.breadcrumbs')->add(null, $this->get('translator')->trans('Page') . ': ' . $page);
         }
 
-        return $this->render('NewsModule::news.html.twig', ['news' => $pagerfanta ]);
+        return $this->render('SimpleNewsModule::news.html.twig', ['news' => $pagerfanta ]);
     }
 
     /**
@@ -58,7 +58,7 @@ class NewsController extends Controller
      */
     public function itemAction($slug)
     {
-        $item = $this->getDoctrine()->getRepository('NewsModule:News')->findOneBy(['slug' => $slug ]);
+        $item = $this->getDoctrine()->getRepository('SimpleNewsModule:News')->findOneBy(['slug' => $slug ]);
 
         if (empty($item)) {
             throw $this->createNotFoundException('News not found');
@@ -80,6 +80,6 @@ class NewsController extends Controller
             ],
         ]);
 
-        return $this->render('NewsModule::item.html.twig', ['item' => $item ]);
+        return $this->render('SimpleNewsModule::item.html.twig', ['item' => $item ]);
     }
 }

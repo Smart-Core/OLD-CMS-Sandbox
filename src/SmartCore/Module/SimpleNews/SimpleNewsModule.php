@@ -1,11 +1,11 @@
 <?php
 
-namespace SmartCore\Module\News;
+namespace SmartCore\Module\SimpleNews;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Module\Bundle;
 
-class NewsModule extends Bundle
+class SimpleNewsModule extends Bundle
 {
     /**
      * Действие при создании ноды.

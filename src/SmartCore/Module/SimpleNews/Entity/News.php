@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Module\News\Entity;
+namespace SmartCore\Module\SimpleNews\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -8,7 +8,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="NewsRepository")
- * @ORM\Table(name="news")
+ * @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="simple_news",
+ *      indexes={
+ *          @ORM\Index(name="is_enabled", columns={"is_enabled"}),
+ *          @ORM\Index(name="created_at", columns={"created_at"}),
+ *          @ORM\Index(name="publish_date", columns={"publish_date"}),
+ *          @ORM\Index(name="end_publish_date", columns={"end_publish_date"}),
+ *      }
+ * )
  * @UniqueEntity(fields={"slug"}, message="URL должно быть уникальным, оно используется в строке запроса.")
  */
 class News
@@ -28,27 +36,44 @@ class News
     protected $is_enabled;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="bigint", nullable=true)
+     */
+    protected $image_id;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=128, unique=true)
      * @Assert\NotBlank()
      */
     protected $slug;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $annotation;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $annotation_widget;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
@@ -56,12 +81,16 @@ class News
     /**
      * Created datetime
      *
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
-    protected $created;
+    protected $created_at;
 
     /**
      * Дата публикации
+     *
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime")
      */
@@ -70,16 +99,20 @@ class News
     /**
      * Дата окончания публикации
      *
-     * @ORM\Column(type="datetime", nullable=TRUE)
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $end_publish_date;
 
     /**
      * Last updated datetime
      *
-     * @ORM\Column(type="datetime", nullable=TRUE)
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $updated;
+    protected $updated_at;
 
     /**
      * Constructor.
@@ -87,10 +120,10 @@ class News
     public function __construct()
     {
         $this->is_enabled       = true;
-        $this->created          = new \DateTime();
+        $this->created_at       = new \DateTime();
         $this->publish_date     = new \DateTime();
         $this->end_publish_date = null;
-        $this->updated          = null;
+        $this->updated_at       = null;
     }
 
     /**
@@ -112,28 +145,28 @@ class News
     /**
      * @return \DateTime
      */
-    public function getCreated()
+    public function getCreatedAt()
     {
-        return $this->created;
+        return $this->created_at;
     }
 
     /**
-     * @param \Datetime|null $updated
+     * @param \DateTime $updated_at
      * @return $this
      */
-    public function setUpdated(\DateTime $updated = null)
+    public function setUpdatedAt(\DateTime $updated_at)
     {
-        $this->updated = $updated;
+        $this->updated_at = $updated_at;
 
         return $this;
     }
 
     /**
-     * @return \Datetime|null
+     * @return \DateTime
      */
-    public function getUpdated()
+    public function getUpdatedAt()
     {
-        return $this->updated;
+        return $this->updated_at;
     }
 
     /**
@@ -202,6 +235,25 @@ class News
     }
 
     /**
+     * @param int $image_id
+     * @return $this
+     */
+    public function setImageId($image_id)
+    {
+        $this->image_id = $image_id;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getImageId()
+    {
+        return $this->image_id;
+    }
+
+    /**
      * @param string $title
      * @return $this
      */
@@ -264,7 +316,7 @@ class News
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = trim(str_replace('/', '', $slug));
 
         return $this;
     }
@@ -294,5 +346,13 @@ class News
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function doStuffOnPreUpdate()
+    {
+        $this->updated_at = new \DateTime();
     }
 }

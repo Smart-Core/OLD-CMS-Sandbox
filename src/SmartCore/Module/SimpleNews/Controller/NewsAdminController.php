@@ -1,10 +1,10 @@
 <?php
 
-namespace SmartCore\Module\News\Controller;
+namespace SmartCore\Module\SimpleNews\Controller;
 
-use SmartCore\Module\News\Entity\News;
-use SmartCore\Module\News\Form\Type\NewsFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Knp\RadBundle\Controller\Controller;
+use SmartCore\Module\SimpleNews\Entity\News;
+use SmartCore\Module\SimpleNews\Form\Type\NewsFormType;
 use Symfony\Component\HttpFoundation\Request;
 
 class NewsAdminController extends Controller
@@ -16,8 +16,8 @@ class NewsAdminController extends Controller
     {
         $em = $this->getDoctrine();
 
-        return $this->render('NewsModule:Admin:index.html.twig', [
-            'news' => $em->getRepository('NewsModule:News')->findBy([], ['id' => 'DESC']),
+        return $this->render('SimpleNewsModule:Admin:index.html.twig', [
+            'news' => $em->getRepository('SimpleNewsModule:News')->findBy([], ['id' => 'DESC']),
         ]);
     }
 
@@ -47,7 +47,7 @@ class NewsAdminController extends Controller
             }
         }
 
-        return $this->render('NewsModule:Admin:create.html.twig', ['form' => $form->createView()]);
+        return $this->render('SimpleNewsModule:Admin:create.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -57,7 +57,7 @@ class NewsAdminController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('NewsModule:News', $id));
+        $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('SimpleNewsModule:News', $id));
         $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
         $form->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить запись?')"]]);
         $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
@@ -74,15 +74,10 @@ class NewsAdminController extends Controller
             }
 
             if ($form->get('delete')->isClicked()) {
-                $item = $form->getData();
+                $this->remove($form->getData(), true);
+                $this->addFlash('success', 'Запись удалена');
 
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($item);
-                $em->flush($item);
-
-                $this->get('session')->getFlashBag()->add('success', 'Запись удалена');
-
-                return $this->redirect($this->generateUrl('smart_module.news_admin'));
+                return $this->redirectToRoute('smart_module.news_admin');
             }
 
             if ($form->isValid()) {
@@ -90,7 +85,7 @@ class NewsAdminController extends Controller
             }
         }
 
-        return $this->render('NewsModule:Admin:edit.html.twig', ['form' => $form->createView()]);
+        return $this->render('SimpleNewsModule:Admin:edit.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -103,9 +98,7 @@ class NewsAdminController extends Controller
      */
     protected function saveItemAndRedirect(Request $request, $item, $redirect_to, $notice = null)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($item);
-        $em->flush($item);
+        $this->persist($item, true);
 
         $this->get('session')->getFlashBag()->add('success', $notice);
 

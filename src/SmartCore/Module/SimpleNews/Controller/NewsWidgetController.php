@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Module\News\Controller;
+namespace SmartCore\Module\SimpleNews\Controller;
 
 use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
@@ -23,10 +23,8 @@ class NewsWidgetController extends Controller
         $cacheKey = md5('smart_module.news.widget_last' . $count);
 
         if (false === $news = $this->getCacheService()->get($cacheKey)) {
-            $repoNews = $this->getDoctrine()->getRepository('NewsModule:News');
-
-            $news = $this->renderView('NewsModule:Widget:last.html.twig', [
-                'news' => $repoNews->findBy([], ['created' => 'DESC'], $count)
+            $news = $this->renderView('SimpleNewsModule:Widget:last.html.twig', [
+                'news' => $this->getDoctrine()->getRepository('SimpleNewsModule:News')->findLastEnabled($count)
             ]);
 
             $this->getCacheService()->set($cacheKey, $news, ['smart_module.news', 'node_'.$this->node->getId(), 'node']);
