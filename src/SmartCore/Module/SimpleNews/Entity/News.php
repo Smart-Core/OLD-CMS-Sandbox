@@ -3,6 +3,8 @@
 namespace SmartCore\Module\SimpleNews\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
+use SmartCore\Bundle\CMSBundle\Model\UpdatedAtTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -21,6 +23,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class News
 {
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -79,15 +84,6 @@ class News
     protected $text;
 
     /**
-     * Created datetime
-     *
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
      * Дата публикации
      *
      * @var \DateTime
@@ -106,13 +102,11 @@ class News
     protected $end_publish_date;
 
     /**
-     * Last updated datetime
+     * @var NewsInstance
      *
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\ManyToOne(targetEntity="NewsInstance", inversedBy="news")
      */
-    protected $updated_at;
+    protected $instance;
 
     /**
      * Constructor.
@@ -140,33 +134,6 @@ class News
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param \DateTime $updated_at
-     * @return $this
-     */
-    public function setUpdatedAt(\DateTime $updated_at)
-    {
-        $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
     }
 
     /**
@@ -346,6 +313,25 @@ class News
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * @param NewsInstance $instance
+     * @return $this
+     */
+    public function setInstance(NewsInstance $instance)
+    {
+        $this->instance = $instance;
+
+        return $this;
+    }
+
+    /**
+     * @return NewsInstance
+     */
+    public function getInstance()
+    {
+        return $this->instance;
     }
 
     /**

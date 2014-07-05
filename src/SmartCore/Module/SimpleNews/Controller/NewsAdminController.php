@@ -4,6 +4,7 @@ namespace SmartCore\Module\SimpleNews\Controller;
 
 use Knp\RadBundle\Controller\Controller;
 use SmartCore\Module\SimpleNews\Entity\News;
+use SmartCore\Module\SimpleNews\Entity\NewsInstance;
 use SmartCore\Module\SimpleNews\Form\Type\NewsFormType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -27,7 +28,21 @@ class NewsAdminController extends Controller
      */
     public function createAction(Request $request)
     {
-        $form = $this->createForm(new NewsFormType(), new News());
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        // @todo пока временная заглушка для экземпляров новостных лент.
+        $newsInstance = $em->getRepository('SimpleNewsModule:NewsInstance')->findOneBy([]);
+
+        if (empty($newsInstance)) {
+            $newsInstance = new NewsInstance();
+            $newsInstance->setName('Default news');
+        }
+
+        $news = new News();
+        $news->setInstance($newsInstance);
+
+        $form = $this->createForm(new NewsFormType(), $news);
         $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
         $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
 
