@@ -2,7 +2,7 @@
 
 if [ -d var/cache/prod ]
 then
-    echo "Clearing var/cache/prod.."
+    echo "Clearing var/cache/prod..."
     rm -rf var/cache/prod
 fi
 
