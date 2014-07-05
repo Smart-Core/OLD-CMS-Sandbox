@@ -71,6 +71,7 @@ twig:
     form:
         resources:
             - 'UnicatBundle:Form:fields.html.twig' # @todo убрать в бандл юниката
+            - 'SimpleNewsModule:Form:fields.html.twig' # @todo убрать в модуль
 
 # Assetic Configuration
 assetic:

@@ -6,6 +6,7 @@ use Knp\RadBundle\Controller\Controller;
 use SmartCore\Module\SimpleNews\Entity\News;
 use SmartCore\Module\SimpleNews\Entity\NewsInstance;
 use SmartCore\Module\SimpleNews\Form\Type\NewsFormType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class NewsAdminController extends Controller
@@ -96,7 +97,32 @@ class NewsAdminController extends Controller
             }
 
             if ($form->isValid()) {
-                return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость сохранена.');
+                /** @var News $news */
+                $news = $form->getData();
+                $image = $news->getImage();
+
+                $mc = $this->get('smart_media')->getCollection($news->getInstance()->getMediaCollection()->getId());
+
+                // удаление файла.
+                $_delete_ = $request->request->get('_delete_');
+                if (is_array($_delete_)
+                    and empty($image)
+                    and isset($_delete_['image'])
+                    and 'on' === $_delete_['image']
+                ) {
+                    $mc->remove($news->getImageId());
+                    $news->setImageId(null);
+                }
+
+                if ($image instanceof UploadedFile) {
+                    $newImageId = $mc->upload($image);
+                    $oldImageId = $news->getImageId();
+
+                    $news->setImageId($newImageId);
+                    $mc->remove($oldImageId);
+                }
+
+                return $this->saveItemAndRedirect($request, $news, 'smart_module.news_admin', 'Новость сохранена.');
             }
         }
 
@@ -110,6 +136,8 @@ class NewsAdminController extends Controller
      * @param string        $redirect_to
      * @param string|null   $notice
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @todo переделать $request на сервис 'request_stack'
      */
     protected function saveItemAndRedirect(Request $request, $item, $redirect_to, $notice = null)
     {

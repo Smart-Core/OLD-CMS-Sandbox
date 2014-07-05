@@ -120,8 +120,12 @@ class CollectionService
 
         $file = $this->filesRepo->find($id);
 
-        $this->em->remove($file);
-        $this->em->flush($file);
+        if (!empty($file)) {
+            $this->em->remove($file);
+            $this->em->flush($file);
+        }
+
+        return true;
     }
 
     /**

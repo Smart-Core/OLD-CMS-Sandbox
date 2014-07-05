@@ -10,15 +10,25 @@ class NewsFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /** @var \SmartCore\Module\SimpleNews\Entity\NewsInstance $newsInstance */
-        $newsInstance = $options['data']->getInstance();
+        /** @var \SmartCore\Module\SimpleNews\Entity\News $news */
+        $news = $options['data'];
+        $newsInstance = $news->getInstance();
 
         $builder
             ->add('is_enabled',      null, ['required' => false])
             ->add('title',      null, ['attr' => ['class' => 'focused']])
             ->add('slug')
-            ->add('annotation', null, ['attr' => ['class' => 'wysiwyg', 'data-theme' => 'advanced']])
         ;
+
+        if ($newsInstance->isUseImage()) {
+            $builder->add('image', new ImageFormType(), [
+                'label' => 'Image',
+                'required' => false,
+                'data' => $news->getImageId(),
+            ]);
+        }
+
+        $builder->add('annotation', null, ['attr' => ['class' => 'wysiwyg', 'data-theme' => 'advanced']]);
 
         if ($newsInstance->isUseAnnotationWidget()) {
             $builder->add('annotation_widget', null, ['attr' => ['class' => 'wysiwyg', 'data-theme' => 'advanced']]);

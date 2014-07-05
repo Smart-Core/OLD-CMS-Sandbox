@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
 use SmartCore\Bundle\CMSBundle\Model\UpdatedAtTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -41,7 +42,7 @@ class News
     protected $is_enabled;
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(type="bigint", nullable=true)
      */
@@ -107,6 +108,11 @@ class News
      * @ORM\ManyToOne(targetEntity="NewsInstance", inversedBy="news")
      */
     protected $instance;
+
+    /**
+     * @var UploadedFile
+     */
+    protected $image;
 
     /**
      * Constructor.
@@ -202,7 +208,7 @@ class News
     }
 
     /**
-     * @param int $image_id
+     * @param int|null $image_id
      * @return $this
      */
     public function setImageId($image_id)
@@ -218,6 +224,25 @@ class News
     public function getImageId()
     {
         return $this->image_id;
+    }
+
+    /**
+     * @param UploadedFile $image
+     * @return $this
+     */
+    public function setImage(UploadedFile $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**

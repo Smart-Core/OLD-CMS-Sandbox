@@ -365,7 +365,8 @@ class UnicatRepositoryManager
                 $_delete_ = $request->request->get('_delete_');
                 if (is_array($_delete_)
                     and isset($_delete_['property:' . $property->getName()])
-                    and 'on' === $_delete_['property:' . $property->getName()]) {
+                    and 'on' === $_delete_['property:' . $property->getName()]
+                ) {
                     $this->mc->remove($fileId);
                     $fileId = null;
                 } else {
