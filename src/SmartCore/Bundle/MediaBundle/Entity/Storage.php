@@ -66,6 +66,14 @@ class Storage
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    /**
      * @return integer
      */
     public function getId()

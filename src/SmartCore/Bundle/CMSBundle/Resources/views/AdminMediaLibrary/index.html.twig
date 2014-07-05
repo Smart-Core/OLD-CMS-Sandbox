@@ -1,0 +1,58 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block html_head_title %}{{ 'Media Library'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block nav %}
+    {#{{ knp_menu_render('CMSBundle:AdminMenu:user', { 'currentClass': 'active', 'clear_matcher': true })}}#}
+{% endblock nav %}
+
+{% block content %}
+
+    <h1>{{ 'Media Library'|trans }}</h1>
+
+    <h3>Коллекции</h3>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th>#</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Relative path'|trans }}</th>
+            <th>{{ 'File relative path pattern'|trans }}</th>
+            <th>{{ 'Filename pattern'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for collection in collections %}
+            <tr>
+                <td>{{ collection.id }}</td>
+                <td><a href="{{ path('cms_admin_config_media_edit_collection', {'id': collection.id}) }}">{{ collection.title }}</a></td>
+                <td>{{ collection.relativePath }}</td>
+                <td>{{ collection.fileRelativePathPattern }}</td>
+                <td>{{ collection.filenamePattern }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h3>Хранилища</h3>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th>#</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Relative path'|trans }}</th>
+            <th>{{ 'Provider'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for storage in storages %}
+            <tr>
+                <td>{{ storage.id }}</td>
+                <td><a href="{{ path('cms_admin_config_media_edit_storage', {'id': storage.id}) }}">{{ storage.title }}</a></td>
+                <td>{{ storage.relativePath }}</td>
+                <td>{{ storage.provider }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

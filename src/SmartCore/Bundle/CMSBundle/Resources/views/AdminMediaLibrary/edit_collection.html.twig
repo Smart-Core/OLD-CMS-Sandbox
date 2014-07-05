@@ -1,0 +1,15 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block html_head_title %}{{ 'Media Library'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h3>Редактирование коллекци</h3>
+
+    <div class="well well-small">
+        {{ form(form, {
+        'attr': {'class': 'form-horizontal'}
+        }) }}
+    </div>
+
+{% endblock content %}

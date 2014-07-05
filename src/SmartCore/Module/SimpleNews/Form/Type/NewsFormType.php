@@ -15,7 +15,7 @@ class NewsFormType extends AbstractType
         $newsInstance = $news->getInstance();
 
         $builder
-            ->add('is_enabled',      null, ['required' => false])
+            ->add('is_enabled', null, ['required' => false])
             ->add('title',      null, ['attr' => ['class' => 'focused']])
             ->add('slug')
         ;
