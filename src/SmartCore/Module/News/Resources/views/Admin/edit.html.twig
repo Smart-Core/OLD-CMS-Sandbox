@@ -9,11 +9,6 @@
         <li class="active"><a>Редактирование новости</a></li>
     </ul>
 
-    <div class="well well-small">
-        {{ form(form) }}
-    </div>
-
-    {{ tinymce_init() }}
-    {{ elfinder_tinymce_init() }}
+    {% include '@NewsModule/Admin/_form.html.twig' with {'form': form} %}
 
 {% endblock content %}

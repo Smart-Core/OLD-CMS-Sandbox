@@ -32,7 +32,9 @@ class NewsController extends Controller
             $page = $request->query->get('page', 1);
         }
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter( $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllQuery() ));
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter(
+            $this->getDoctrine()->getRepository('NewsModule:News')->getFindAllEnablesQuery()
+        ));
         $pagerfanta->setMaxPerPage($this->node->getParam('items_per_page', 10));
 
         try {

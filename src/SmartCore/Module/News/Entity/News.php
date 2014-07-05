@@ -21,6 +21,13 @@ class News
     protected $id;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_enabled;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $title;
@@ -38,7 +45,11 @@ class News
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * -Assert\NotBlank()
+     */
+    protected $annotation_widget;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
 
@@ -48,6 +59,20 @@ class News
      * @ORM\Column(type="datetime")
      */
     protected $created;
+
+    /**
+     * Дата публикации
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $publish_date;
+
+    /**
+     * Дата окончания публикации
+     *
+     * @ORM\Column(type="datetime", nullable=TRUE)
+     */
+    protected $end_publish_date;
 
     /**
      * Last updated datetime
@@ -61,8 +86,11 @@ class News
      */
     public function __construct()
     {
-        $this->created = new \DateTime();
-        $this->updated = null;
+        $this->is_enabled       = true;
+        $this->created          = new \DateTime();
+        $this->publish_date     = new \DateTime();
+        $this->end_publish_date = null;
+        $this->updated          = null;
     }
 
     /**
@@ -90,10 +118,10 @@ class News
     }
 
     /**
-     * @param \Datetime $updated
+     * @param \Datetime|null $updated
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setUpdated(\DateTime $updated = null)
     {
         $this->updated = $updated;
 
@@ -106,6 +134,71 @@ class News
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $end_publish_date
+     * @return $this
+     */
+    public function setEndPublishDate(\DateTime $end_publish_date)
+    {
+        $this->end_publish_date = $end_publish_date;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getEndPublishDate()
+    {
+        return $this->end_publish_date;
+    }
+
+    /**
+     * @param \DateTime $publish_date
+     * @return $this
+     */
+    public function setPublishDate(\DateTime $publish_date)
+    {
+        $this->publish_date = $publish_date;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPublishDate()
+    {
+        return $this->publish_date;
+    }
+
+    /**
+     * @param bool $is_enabled
+     * @return $this
+     */
+    public function setIsEnabled($is_enabled)
+    {
+        $this->is_enabled = $is_enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsEnabled()
+    {
+        return $this->is_enabled;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDisabled()
+    {
+        return !$this->is_enabled;
     }
 
     /**
@@ -128,7 +221,7 @@ class News
     }
 
     /**
-     * @param mixed $annotation
+     * @param string $annotation
      * @return $this
      */
     public function setAnnotation($annotation)
@@ -139,7 +232,7 @@ class News
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAnnotation()
     {
@@ -147,7 +240,26 @@ class News
     }
 
     /**
-     * @param mixed $slug
+     * @param string $annotation_widget
+     * @return $this
+     */
+    public function setAnnotationWidget($annotation_widget)
+    {
+        $this->annotation_widget = $annotation_widget;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAnnotationWidget()
+    {
+        return $this->annotation_widget;
+    }
+
+    /**
+     * @param string $slug
      * @return $this
      */
     public function setSlug($slug)
@@ -158,7 +270,7 @@ class News
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSlug()
     {
@@ -166,7 +278,7 @@ class News
     }
 
     /**
-     * @param mixed $text
+     * @param string $text
      * @return $this
      */
     public function setText($text)
@@ -177,7 +289,7 @@ class News
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getText()
     {

@@ -9,11 +9,12 @@ class NewsRepository extends EntityRepository
     /**
      * @return \Doctrine\ORM\Query
      */
-    public function getFindAllQuery()
+    public function getFindAllEnablesQuery()
     {
         return $this
             ->createQueryBuilder('n')
-            ->orderBy('n.created', 'DESC')
+            ->where('n.is_enabled = 1')
+            ->orderBy('n.publish_date', 'DESC')
             ->getQuery();
     }
 }

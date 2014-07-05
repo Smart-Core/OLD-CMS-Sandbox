@@ -15,14 +15,16 @@
                     <th>id</th>
                     <th>{{ 'Title'|trans }}</th>
                     <th>{{ 'Annotation'|trans }}</th>
+                    <th>{{ 'Publish date'|trans }}</th>
                     <th>{{ 'Created'|trans }}</th>
                 </tr></thead>
                 <tbody>
                 {% for item in news %}
                     <tr>
                         <td>{{ item.id }}</td>
-                        <td><a href="{{ path('smart_module.news_admin.edit', {'id': item.id}) }}">{{ item.title }}</a></td>
+                        <td><a href="{{ path('smart_module.news_admin.edit', {'id': item.id}) }}" {% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.title }}</a></td>
                         <td>{{ item.annotation }}</td>
+                        <td>{{ item.publushDate|localizeddate('long') }}</td>
                         <td>{{ item.created|localizeddate('long') }}</td>
                     </tr>
                 {% endfor %}

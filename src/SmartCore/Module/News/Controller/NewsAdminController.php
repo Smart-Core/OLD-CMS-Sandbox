@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\News\Controller;
 
+use SmartCore\Module\News\Entity\News;
 use SmartCore\Module\News\Form\Type\NewsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,11 +27,21 @@ class NewsAdminController extends Controller
      */
     public function createAction(Request $request)
     {
-        $form = $this->createForm(new NewsFormType());
-        $form->add('create', 'submit', ['label' => 'Создать', 'attr' => ['class' => 'btn btn-success']]);
+        $form = $this->createForm(new NewsFormType(), new News());
+        $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                $url = $request->query->has('redirect_to')
+                    ? $request->query->get('redirect_to')
+                    : $this->generateUrl('smart_module.news_admin');
+
+                return $this->redirect($url);
+            }
+
             if ($form->isValid()) {
                 return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость создана.');
             }
@@ -47,13 +58,33 @@ class NewsAdminController extends Controller
     public function editAction(Request $request, $id)
     {
         $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('NewsModule:News', $id));
-        $form->add('update', 'submit', [
-            'attr'  => ['class' => 'btn btn-success'],
-            'label' => 'Сохранить',
-        ]);
+        $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
+        $form->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить запись?')"]]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                $url = $request->query->has('redirect_to')
+                    ? $request->query->get('redirect_to')
+                    : $this->generateUrl('smart_module.news_admin');
+
+                return $this->redirect($url);
+            }
+
+            if ($form->get('delete')->isClicked()) {
+                $item = $form->getData();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($item);
+                $em->flush($item);
+
+                $this->get('session')->getFlashBag()->add('success', 'Запись удалена');
+
+                return $this->redirect($this->generateUrl('smart_module.news_admin'));
+            }
+
             if ($form->isValid()) {
                 return $this->saveItemAndRedirect($request, $form->getData(), 'smart_module.news_admin', 'Новость сохранена.');
             }
