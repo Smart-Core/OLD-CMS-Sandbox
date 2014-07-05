@@ -93,8 +93,8 @@ class EngineController extends Controller
             $this->get('smart.felib')->call('bootstrap');
             $this->get('smart.felib')->call('jquery-cookie');
             $this->get('html')
-                ->css($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.css')
-                ->js($this->get('cms.context')->getGlobalAssets() . 'cmf/frontend.js')
+                ->css($this->get('templating.helper.assets')->getUrl('bundles/cms/css/frontend.css'))
+                ->js($this->get('templating.helper.assets')->getUrl('bundles/cms/js/frontend.js'))
                 ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
             ;
         }
