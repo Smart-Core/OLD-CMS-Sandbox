@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
@@ -11,8 +12,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      indexes={
  *          @ORM\Index(name="bundle", columns={"bundle"}),
  *          @ORM\Index(name="key_name", columns={"key_name"}),
+ *      },
+ *      uniqueConstraints={
+ *          @ORM\UniqueConstraint(name="bundle_key", columns={"bundle", "key_name"}),
  *      }
  * )
+ *
+ * @UniqueEntity(fields={"bundle", "key"}, message="В каждом бандле должены быть уникальные ключи")
  */
 class Setting
 {
@@ -121,7 +127,12 @@ class Setting
      */
     public function setValue($value)
     {
-        $this->value = $value;
+        if (is_array($value)) {
+            $this->serialized = true;
+            $this->value = serialize($value);
+        } else {
+            $this->value = $value;
+        }
 
         return $this;
     }
@@ -131,7 +142,7 @@ class Setting
      */
     public function getValue()
     {
-        return $this->value;
+        return $this->serialized ? unserialize($this->value) : $this->value;
     }
 
     /**

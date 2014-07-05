@@ -151,6 +151,13 @@ cms_admin_config:
     defaults:
         _controller: CMSBundle:AdminConfig:index
 
+cms_admin_config_edit_setting:
+    path: /config/setting_{id}/
+    defaults:
+        _controller: CMSBundle:AdminConfig:editSetting
+    requirements:
+        id: \d+
+
 cms_admin_config_media:
     path: /config/media/
     defaults:

@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle;
 
 use SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler\ModulesRoutingResolverPass;
 use SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler\RemoveTagcacheActionCacheListenerPass;
+use SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler\SettingsPass;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -28,7 +29,8 @@ class CMSBundle extends Bundle
         parent::build($container);
 
         //$container->addCompilerPass(new TemplateResourcesPass());
-        $container->addCompilerPass(new ModulesRoutingResolverPass()); //, PassConfig::TYPE_AFTER_REMOVING);
+        $container->addCompilerPass(new ModulesRoutingResolverPass());
         $container->addCompilerPass(new RemoveTagcacheActionCacheListenerPass()); //, PassConfig::TYPE_AFTER_REMOVING);
+        $container->addCompilerPass(new SettingsPass(), PassConfig::TYPE_AFTER_REMOVING);
     }
 }

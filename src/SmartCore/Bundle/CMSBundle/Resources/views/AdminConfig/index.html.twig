@@ -6,4 +6,25 @@
 
     <a href="{{ path('cms_admin_config_media') }}" class="btn">Медиа библиотека</a>
 
+    <h3>{{ 'Settings'|trans }}</a></h3>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th>#</th>
+            <th>{{ 'Bundle'|trans }}</th>
+            <th>{{ 'Key'|trans }}</th>
+            <th>{{ 'Value'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for setting in settings %}
+            <tr>
+                <td>{{ setting.id }}</td>
+                <td>{{ setting.bundle }}</td>
+                <td><a href="{{ path('cms_admin_config_edit_setting', {'id': setting.id}) }}">{{ setting.key }}</a></td>
+                <td>{{ setting.value }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock content %}

@@ -1,0 +1,17 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block html_head_title %}{{ 'Settings'|trans }} / {{ parent() }}{% endblock html_head_title %}
+
+{% block content %}
+
+    <h3>Редактирование настройки</h3>
+
+    <div class="well well-small">
+        <h4>{{ setting.bundle }}:{{ setting.key }}</h4>
+        <br />
+        {{ form(form, {
+            'attr': {'class': 'form-horizontal'}
+        }) }}
+    </div>
+
+{% endblock content %}
