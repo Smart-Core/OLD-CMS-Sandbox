@@ -439,7 +439,7 @@ class Folder
     }
 
     /**
-     * @param mixed $template_inheritable
+     * @param string $template_inheritable
      * @return $this
      */
     public function setTemplateInheritable($template_inheritable)
@@ -450,7 +450,7 @@ class Folder
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTemplateInheritable()
     {
@@ -458,7 +458,7 @@ class Folder
     }
 
     /**
-     * @param mixed $template_self
+     * @param string $template_self
      * @return $this
      */
     public function setTemplateSelf($template_self)
@@ -469,7 +469,7 @@ class Folder
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTemplateSelf()
     {
