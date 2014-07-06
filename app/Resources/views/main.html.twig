@@ -1,9 +1,11 @@
 {% extends '@Html/base.html.twig' %}
 
-{% block html_head_title %}{{ cms_html_title({
+{#
     'delimiter': '&ndash;',
-    'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)',
     'site_short_name': 'Smart Core CMS'
+    'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)',
+ #}
+{% block html_head_title %}{{ cms_html_title({
 }) }}{% endblock html_head_title %}
 
 {% block html_head_styles %}

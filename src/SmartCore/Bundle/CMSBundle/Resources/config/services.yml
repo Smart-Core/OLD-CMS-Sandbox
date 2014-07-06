@@ -37,6 +37,9 @@ services:
     cms.block:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineBlock
         arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
+    cms.config:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineConfig
+        arguments: [ @service_container ]
     cms.context:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineContext
         arguments: [ @service_container ]
@@ -99,7 +102,7 @@ services:
 # Twig
     cms.twig.html_title_extension:
         class: SmartCore\Bundle\CMSBundle\Twig\HtmlTitleExtension
-        arguments: [ @service_container ]
+        arguments: [ @cms.breadcrumbs, @cms.config ]
         tags:
             - { name: twig.extension }
     twig.extension.intl:

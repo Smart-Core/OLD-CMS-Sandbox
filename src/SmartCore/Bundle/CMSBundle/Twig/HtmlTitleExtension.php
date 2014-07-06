@@ -2,8 +2,8 @@
 
 namespace SmartCore\Bundle\CMSBundle\Twig;
 
+use SmartCore\Bundle\CMSBundle\Engine\EngineConfig;
 use SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class HtmlTitleExtension extends \Twig_Extension
 {
@@ -18,16 +18,17 @@ class HtmlTitleExtension extends \Twig_Extension
     protected $options;
 
     /**
-     * Constructor.
+     * @param Breadcrumbs $breadcrumbs
+     * @param EngineConfig $engineConfig
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Breadcrumbs $breadcrumbs, EngineConfig $engineConfig)
     {
-        $this->breadcrumbs = $container->get('cms.breadcrumbs');
+        $this->breadcrumbs  = $breadcrumbs;
 
         $this->options = [
-            'delimiter'       => '/',
-            'site_short_name' => 'MySite',
-            'site_full_name'  => 'Wellcome to MySite!',
+            'delimiter'       => $engineConfig->get('cms', 'html_title_delimiter'),
+            'site_short_name' => $engineConfig->get('cms', 'site_short_name'),
+            'site_full_name'  => $engineConfig->get('cms', 'site_full_name'),
         ];
     }
 
