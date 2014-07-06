@@ -4,6 +4,8 @@ Actions: Действия
 Add: Добавить
 Annotation: Аннотация
 Administration: Управление
+Add module: Добавить модуль
+All structure: Вся структура
 All users: Все пользователи
 Appearance: Оформление
 Base settings: Основные настройки
@@ -50,6 +52,7 @@ Items per page: Записей на страницу
 Last login: Последнее посещение
 Library: Библиотека
 Login: Вход
+Logout: Выход
 Lockout nodes: Блокировка нод
 Meta tags: Мета тэги
 My profile: Мой профиль
@@ -93,6 +96,7 @@ Template self: Собственный шаблон
 Text: Текст
 Title: Заголовок
 Type: Тип
+Viewing: Просмотр
 Uri part: Часть URI
 Update: Обновить
 Updated: Обновлено

@@ -11,113 +11,121 @@ class EngineToolbar extends ContainerAware
         $current_folder_id = $this->container->get('cms.context')->getCurrentFolderId();
 
         $router = $this->container->get('router');
+        $t  = $this->container->get('translator');
 
+        // @todo кеширование по языку и юзеру.
         return [
             'left' => [
                 'setings' => [
                     'title' => '',
-                    'descr' => 'Настройки',
+                    'descr' => $t->trans('Settings'),
                     'icon' => 'wrench',
                     'items' => [
                         'modules' => [
-                            'title' => 'Модули',
-                            'icon' => 'cog',
-                            'uri' => $router->generate('cms_admin_module'),
+                            'title' => $t->trans('Modules'),
+                            'icon'  => 'cog',
+                            'uri'   => $router->generate('cms_admin_module'),
                         ],
                         'files' => [
-                            'title' => 'Файлы',
-                            'icon' => 'cog',
-                            'uri' => $router->generate('cms_admin_files'),
+                            'title' => $t->trans('Files'),
+                            'icon'  => 'file',
+                            'uri'   => $router->generate('cms_admin_files'),
                         ],
                         'blocks' => [
-                            'title' => 'Блоки',
-                            'icon' => 'th',
-                            'uri' => $router->generate('cms_admin_structure_block'),
+                            'title' => $t->trans('Blocks'),
+                            'icon'  => 'th',
+                            'uri'   => $router->generate('cms_admin_structure_block'),
                         ],
+                        /*
                         'appearance' => [
-                            'title' => 'Оформление',
-                            'icon' => 'picture',
-                            'uri' => $router->generate('cms_admin_appearance'),
+                            'title' => $t->trans('Appearance'),
+                            'icon'  => 'picture',
+                            'uri'   => $router->generate('cms_admin_appearance'),
                         ],
+                        */
                         'users' => [
-                            'title' => 'Пользователи',
-                            'icon' => 'user',
-                            'uri' => $router->generate('cms_admin_user'),
+                            'title' => $t->trans('Users'),
+                            'icon'  => 'user',
+                            'uri'   => $router->generate('cms_admin_user'),
                         ],
                         'config' => [
-                            'title' => 'Конфигруация',
-                            'icon' => 'tasks',
-                            'uri' => $router->generate('cms_admin_config'),
+                            'title' => $t->trans('Configuration'),
+                            'icon'  => 'tasks',
+                            'uri'   => $router->generate('cms_admin_config'),
                         ],
+                        /*
                         'reports' => [
-                            'title' => 'Отчеты',
+                            'title' => $t->trans('Reports'),
                             'icon' => 'warning-sign',
                             'uri' => $router->generate('cms_admin_reports'),
                         ],
                         'help' => [
-                            'title' => 'Справка',
+                            'title' => $t->trans('Help'),
                             'icon' => 'question-sign',
                             'uri' => $router->generate('cms_admin_help'),
                         ],
+                        */
                     ],
                 ],
                 'structure' => [
-                    'title' => 'Структура',
+                    'title' => $t->trans('Structure'),
                     'descr' => '',
-                    'icon' => 'folder-open',
+                    'icon'  => 'folder-open',
                     'items' => [
                         'folder_edit' => [
-                            'title' => 'Редактировать папку',
-                            'icon' => 'edit',
-                            'uri' => $router->generate('cms_admin_structure_folder', ['id' => $current_folder_id]),
+                            'title' => $t->trans('Edit folder'),
+                            'icon'  => 'edit',
+                            'uri'   => $router->generate('cms_admin_structure_folder', ['id' => $current_folder_id]),
                         ],
                         'folder_new' => [
-                            'title' => 'Добавить папку',
-                            'icon' => 'plus',
-                            'uri' => $router->generate('cms_admin_structure_folder_create_in_folder', ['folder_pid' => $current_folder_id]),
+                            'title' => $t->trans('Create folder'),
+                            'icon'  => 'plus',
+                            'uri'   => $router->generate('cms_admin_structure_folder_create_in_folder', ['folder_pid' => $current_folder_id]),
                         ],
                         'folder_all' => [
-                            'title' => 'Вся структура',
-                            'icon' => 'book',
-                            'uri' => $router->generate('cms_admin_structure'),
+                            'title' => $t->trans('All structure'),
+                            'icon'  => 'book',
+                            'uri'   => $router->generate('cms_admin_structure'),
                         ],
                         'diviver_1' => 'diviver',
                         'node_new' => [
-                            'title' => 'Добавить модуль',
-                            'icon' => 'plus',
-                            'uri' => $router->generate('cms_admin_structure_node_create_in_folder', ['folder_pid' => $current_folder_id]),
+                            'title' => $t->trans('Add module'),
+                            'icon'  => 'plus',
+                            'uri'   => $router->generate('cms_admin_structure_node_create_in_folder', ['folder_pid' => $current_folder_id]),
                         ],
+                        /*
                         'node_all' => [
-                            'title' => 'Все модули на странице @todo',
+                            'title' => $t->trans('Add modules on page'), // @todo
                             'icon' => 'list-alt',
                             'uri' => $router->generate('cms_admin_structure') . '/node/in_folder/2/', // @todo
                         ],
+                        */
                     ],
                 ],
             ],
             'right' => [
-                'eip_toggle' => ["Просмотр", "Редактирование"],
+                'eip_toggle' => [$t->trans('Viewing'), $t->trans('Edit')],
                 'user' => [
                     'title' => $this->container->get('security.context')->getToken()->getUser()->getUserName(),
                     'icon' => 'user',
                     'items' => [
                         'admin' => [
-                            'title' => 'Панель управления',
-                            'uri' => $router->generate('cms_admin'),
-                            'icon' => 'cog',
+                            'title' => $t->trans('Control panel'),
+                            'uri'   => $router->generate('cms_admin'),
+                            'icon'  => 'cog',
                             'overalay' => false,
                         ],
                         'profile' => [
-                            'title' => 'Мой профиль',
-                            'uri' => $router->generate('cms_admin_user_edit', ['id' => $this->container->get('security.context')->getToken()->getUser()->getId()]),
-                            'icon' => 'user',
+                            'title' => $t->trans('My profile'),
+                            'uri'   => $router->generate('cms_admin_user_edit', ['id' => $this->container->get('security.context')->getToken()->getUser()->getId()]),
+                            'icon'  => 'user',
                             'overalay' => false,
                         ],
                         'diviver_1' => 'diviver',
                         'logout' => [
-                            'title' => "Выход",
-                            'uri' => $router->generate('cms_admin_logout'),
-                            'icon' => "off",
+                            'title' => $t->trans('Logout'),
+                            'uri'   => $router->generate('cms_admin_logout'),
+                            'icon'  => 'off',
                             'overalay' => false,
                         ],
                     ],
