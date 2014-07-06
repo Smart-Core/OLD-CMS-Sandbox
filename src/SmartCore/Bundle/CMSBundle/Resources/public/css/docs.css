@@ -1097,3 +1097,13 @@ form.bs-docs-example {
     padding-bottom: 20px;
   }
 }
+
+/* Спадающе меню на ховере */
+.navbar ul.nav li.dropdown:hover ul.dropdown-menu {
+    display: block;
+    margin: 0;
+}
+.navbar a.menu:after,
+.navbar .dropdown-toggle:after {
+    content: none;
+}
