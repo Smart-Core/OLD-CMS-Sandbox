@@ -28,7 +28,7 @@ body {
 }
 .cmf-frontadmin-node-buttons.btn-group a {
     text-decoration: none;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 14px;
 }
@@ -37,7 +37,15 @@ ul.dropdown-menu { /* Прижать меню вплотную к плашке*/
 }
 .navbar a {
     text-decoration: none;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 14px;
+}
+.navbar ul.nav li.dropdown:hover ul.dropdown-menu {
+    display: block;
+    margin: 0;
+}
+.navbar a.menu:after,
+.navbar .dropdown-toggle:after {
+    content: none;
 }
