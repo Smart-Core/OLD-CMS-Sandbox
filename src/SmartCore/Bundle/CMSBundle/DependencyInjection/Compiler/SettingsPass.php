@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler;
 
+use Doctrine\ORM\Tools\SchemaValidator;
 use SmartCore\Bundle\CMSBundle\Entity\Setting;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -14,6 +15,11 @@ class SettingsPass implements CompilerPassInterface
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $container->get('doctrine.orm.entity_manager');
+
+        $validator = new SchemaValidator($em);
+        if (false === $validator->schemaInSyncWithMetadata()) {
+            return null;
+        }
 
         $bundles = $container->getParameter('kernel.bundles');
 
