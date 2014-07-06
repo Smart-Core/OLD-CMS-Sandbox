@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 06 2014 г., 01:33
+-- Время создания: Июл 07 2014 г., 03:54
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -730,14 +730,19 @@ CREATE TABLE IF NOT EXISTS `engine_settings` (
   `value` longtext COLLATE utf8_unicode_ci,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `bundle_key` (`bundle`,`key_name`),
   KEY `bundle` (`bundle`),
   KEY `key_name` (`key_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `engine_settings`
 --
 
+INSERT INTO `engine_settings` (`id`, `bundle`, `key_name`, `value`, `serialized`) VALUES
+(1, 'cms', 'site_full_name', 'Smart Core CMS (based on Symfony2 Framework)', 0),
+(2, 'cms', 'site_short_name', 'Smart Core CMS', 0),
+(3, 'cms', 'html_title_delimiter', '&ndash;', 0);
 
 -- --------------------------------------------------------
 
@@ -1509,7 +1514,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-05 16:49:46', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-07 03:20:35', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
@@ -1755,8 +1760,8 @@ ALTER TABLE `u2_settlement_properties`
 -- Ограничения внешнего ключа таблицы `u2_settlement_properties_groups`
 --
 ALTER TABLE `u2_settlement_properties_groups`
-  ADD CONSTRAINT `FK_7306001850C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat2_repositories` (`id`),
-  ADD CONSTRAINT `FK_73060018126F525E` FOREIGN KEY (`item_id`) REFERENCES `u2_settlement_items` (`id`);
+  ADD CONSTRAINT `FK_73060018126F525E` FOREIGN KEY (`item_id`) REFERENCES `u2_settlement_items` (`id`),
+  ADD CONSTRAINT `FK_7306001850C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat2_repositories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat2_repositories`
