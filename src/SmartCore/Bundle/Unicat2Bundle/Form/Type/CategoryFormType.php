@@ -3,7 +3,7 @@
 namespace SmartCore\Bundle\Unicat2Bundle\Form\Type;
 
 use SmartCore\Bundle\CMSBundle\Container;
-use SmartCore\Bundle\SeoBundle\Form\Type\MetaFromType;
+use SmartCore\Bundle\SeoBundle\Form\Type\MetaFormType;
 use SmartCore\Bundle\Unicat2Bundle\Form\Tree\CategoryTreeType;
 use SmartCore\Bundle\Unicat2Bundle\Model\ItemModel;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +25,7 @@ class CategoryFormType extends ItemFormType
             ->add('parent')
             //->add('is_inheritance')
             ->add('parent', $categoryTreeType)
-            //->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
+            //->add('meta', new MetaFormType(), ['label' => 'Meta tags'])
         ;
     }
 }

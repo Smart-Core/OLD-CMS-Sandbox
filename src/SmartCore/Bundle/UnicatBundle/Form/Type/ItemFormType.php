@@ -3,7 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
 use SmartCore\Bundle\CMSBundle\Container;
-use SmartCore\Bundle\SeoBundle\Form\Type\MetaFromType;
+use SmartCore\Bundle\SeoBundle\Form\Type\MetaFormType;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Form\Tree\CategoryTreeType;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
@@ -45,7 +45,7 @@ class ItemFormType extends AbstractType
             ->add('slug', null, ['attr' => ['class' => 'focused']])
             ->add('is_enabled')
             ->add('position')
-            ->add('meta', new MetaFromType(), ['label' => 'Meta tags'])
+            ->add('meta', new MetaFormType(), ['label' => 'Meta tags'])
         ;
 
         foreach ($this->repository->getStructures() as $structure) {
