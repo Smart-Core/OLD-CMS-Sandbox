@@ -29,7 +29,7 @@ class Node implements \Serializable
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_active;
 
@@ -51,7 +51,7 @@ class Node implements \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=30, nullable=TRUE)
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     protected $template;
 
@@ -73,7 +73,7 @@ class Node implements \Serializable
     /**
      * @var Block
      *
-     * @ORM\ManyToOne(targetEntity="Block")
+     * @ORM\ManyToOne(targetEntity="Block", fetch="EAGER")
      * @Assert\NotBlank()
      */
     protected $block;
@@ -148,6 +148,7 @@ class Node implements \Serializable
 
     /**
      * Edit-In-Place
+     *
      * @var bool
      */
     protected $eip = false;
@@ -177,12 +178,11 @@ class Node implements \Serializable
     }
 
     /**
-     * Сериализация
+     * Сериализация.
      */
     public function serialize()
     {
         $this->getFolderId();
-        $this->getBlock()->getId();
 
         return serialize([
             //return igbinary_serialize([

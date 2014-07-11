@@ -39,7 +39,7 @@ services:
         arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
     cms.config:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineConfig
-        arguments: [ @service_container ]
+        arguments: [ @service_container, @tagcache ]
     cms.context:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineContext
         arguments: [ @service_container ]
