@@ -26,7 +26,7 @@
             <td><a href="{{ path('cms_admin_structure_block_edit', {'id': block.id}) }}">{{ block.descr }}</a></td>
             <td>{{ block.position }}</td>
             <td>{% for folder in block.folders %}<a href="{{ path('cms_admin_structure_folder', {'id': folder.id}) }}">{{ folder }}</a>, {% endfor %}</td>
-            <td>{{ block.nodesCount }}</td>
+            <td>{{ cms_nodes_count_in_block(block) }}</td>
         </tr>
         {% endfor %}
         </tbody>

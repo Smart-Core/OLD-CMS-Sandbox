@@ -32,7 +32,9 @@ class Block
     protected $id;
 
     /**
-     * @ORM\Column(type="smallint", nullable=TRUE)
+     * @var int
+     *
+     * @ORM\Column(type="smallint", nullable=true)
      * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
      *
      * -Assert\Type(type="integer", message="bad :(")
@@ -41,13 +43,17 @@ class Block
     protected $position;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=FALSE, unique=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", length=50, nullable=false, unique=true)
      * @Assert\NotBlank()
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $descr;
 
@@ -60,7 +66,8 @@ class Block
     protected $folders;
 
     /**
-     * Constructor.
+     * @param string|null $name
+     * @param string|null $descr
      */
     public function __construct($name = null, $descr = null)
     {
@@ -82,7 +89,7 @@ class Block
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -180,23 +187,5 @@ class Block
     public function getPosition()
     {
         return $this->position;
-    }
-
-    /**
-     * Получить кол-во включенных нод.
-     *
-     * @todo убрать в сервис.
-     */
-    public function getNodesCount()
-    {
-        $query = Container::get('doctrine.orm.entity_manager')->createQuery("
-            SELECT COUNT(n.id)
-            FROM CMSBundle:Node n
-            JOIN CMSBundle:Block b
-            WHERE b.id = {$this->id}
-            AND n.block = b
-        ");
-
-        return $query->getSingleScalarResult();
     }
 }

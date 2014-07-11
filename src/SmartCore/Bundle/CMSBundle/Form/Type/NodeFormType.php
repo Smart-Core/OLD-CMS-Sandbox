@@ -13,6 +13,7 @@ class NodeFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // Запрос списка блоков, чтобы в случае отсутствия, был создан дефолтный блок.
+        // @todo убрать отсюда.
         Container::get('cms.block')->all();
 
         $modules = [];

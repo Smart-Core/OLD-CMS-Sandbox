@@ -25,9 +25,30 @@ class NodeRepository extends EntityRepository
 
         return $this->_em->createQuery("
             SELECT n
-            FROM {$this->_entityName} n
+            FROM CMSBundle:Node n
             WHERE n.id IN({$list_string})
             ORDER BY n.position ASC
         ")->getResult();
+    }
+
+    /**
+     * @param Block|int $block
+     * @return int
+     */
+    public function countInBlock($block)
+    {
+        if ($block instanceof Block) {
+            $block = $block->getId();
+        }
+
+        $query = $this->_em->createQuery("
+            SELECT COUNT(n.id)
+            FROM CMSBundle:Node n
+            JOIN CMSBundle:Block b
+            WHERE b.id = {$block}
+            AND n.block = b
+        ");
+
+        return $query->getSingleScalarResult();
     }
 }

@@ -12,6 +12,8 @@ class NodeRouter extends Router
      * В случае если в текущем запросе есть аттрибут '_basePath', то считается, что выполнен
      * запрос в контексте ноды и нужно добавить '_basePath' в рараметры маршрута.
      *
+     * Сейчас приходится использовать статический Container из-за того, что в Router он приватный :(
+     *
      * {@inheritdoc}
      */
     public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
