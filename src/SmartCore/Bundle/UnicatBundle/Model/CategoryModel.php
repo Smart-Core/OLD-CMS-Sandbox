@@ -97,12 +97,12 @@ abstract class CategoryModel
     protected $structure;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categories", fetch="EXTRA_LAZY")
      */
     protected $items;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categoriesSingle")
+     * @ORM\ManyToMany(targetEntity="Item", mappedBy="categoriesSingle", fetch="EXTRA_LAZY")
      */
     protected $itemsSingle;
 

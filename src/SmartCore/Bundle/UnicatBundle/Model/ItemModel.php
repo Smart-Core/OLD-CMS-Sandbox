@@ -41,7 +41,7 @@ class ItemModel
     /**
      * @var CategoryModel[]
      *
-     * ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist", "remove"})
+     * ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      * ORM\JoinTable(name="unicat_items_categories_relations")
      */
     protected $categories;
@@ -49,7 +49,7 @@ class ItemModel
     /**
      * @var CategoryModel[]
      *
-     * ORM\ManyToMany(targetEntity="Category", inversedBy="itemsSingle", cascade={"persist", "remove"})
+     * ORM\ManyToMany(targetEntity="Category", inversedBy="itemsSingle", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      * ORM\JoinTable(name="unicat_items_categories_relations_single")
      */
     protected $categoriesSingle;

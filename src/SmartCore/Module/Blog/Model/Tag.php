@@ -37,7 +37,7 @@ abstract class Tag implements TagInterface
     protected $created_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags", fetch="EXTRA_LAZY")
      *
      * @var ArrayCollection
      */

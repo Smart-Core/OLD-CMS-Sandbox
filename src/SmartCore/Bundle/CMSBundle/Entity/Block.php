@@ -54,7 +54,7 @@ class Block
     /**
      * @var Folder[]|ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Folder")
+     * @ORM\ManyToMany(targetEntity="Folder", fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="engine_blocks_inherit",
      *      joinColumns={@ORM\JoinColumn(name="block_id", referencedColumnName="block_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")}
