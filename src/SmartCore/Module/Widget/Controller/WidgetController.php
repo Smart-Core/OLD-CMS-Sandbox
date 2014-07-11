@@ -34,6 +34,7 @@ class WidgetController extends Controller
     protected $params;
 
     /**
+     * @param Request $request
      * @return Response
      */
     public function indexAction(Request $request)
@@ -55,9 +56,9 @@ class WidgetController extends Controller
         $response = $this->forward($this->node_id . ':' .$this->controller, $path);
 
         if ($response->isServerError()) {
-            return $response; // @todo FS#402
+            //return new Response($response->getStatusCode() . ' ' . Response::$statusTexts[$response->getStatusCode()]);
 
-            return new Response($response->getStatusCode() . ' ' . Response::$statusTexts[$response->getStatusCode()]);
+            return $response; // @todo FS#402
         }
 
         if (strlen(trim($response->getContent())) > 0) {

@@ -4,6 +4,7 @@ namespace SmartCore\Module\Menu\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\CMSBundle\Entity\Folder;
 
 /**
  * @ORM\Entity(repositoryClass="ItemRepository")
@@ -17,81 +18,98 @@ class Item
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $item_id;
+    protected $id;
 
     /**
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_active;
 
     /**
+     * @var Item
+     *
      * @ORM\ManyToOne(targetEntity="Item", inversedBy="children")
-     * @ORM\JoinColumn(name="pid", referencedColumnName="item_id")
-     * -ORM\Column(nullable=TRUE)
+     * @ORM\JoinColumn(name="pid")
      */
     protected $parent_item;
 
     /**
+     * @var Item[]|ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Item", mappedBy="parent_item")
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $children;
 
     /**
-     * @ORM\Column(type="smallint", nullable=TRUE)
+     * @var int
+     *
+     * @ORM\Column(type="smallint", nullable=true)
      */
     protected $position;
 
     /**
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="items")
-     * @ORM\JoinColumn(name="group_id", referencedColumnName="group_id")
      */
     protected $group;
 
     /**
+     * @var Folder
+     *
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\CMSBundle\Entity\Folder")
-     * @ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")
      */
     protected $folder;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $descr;
 
     /**
      * Custom url.
      *
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $url;
 
     /**
-     * @ORM\Column(type="array", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $properties;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $create_by_user_id;
 
     /**
-     * Created datetime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime")
      */
     protected $created;
 
     /**
-     * Last updated datetime
+     * @var \DateTime
      *
-     * @ORM\Column(type="datetime", nullable=TRUE)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $updated;
 
@@ -119,11 +137,7 @@ class Item
     {
         $title = $this->getTitle();
         if (empty($title)) {
-            if ($this->getFolder() != null) {
-                $title = $this->getFolder()->getTitle();
-            } else {
-                $title = $this->getId();
-            }
+            $title = (null === $this->getFolder()) ? $this->getId() : $this->getFolder()->getTitle();
         }
 
         return (string) $title;
@@ -134,7 +148,7 @@ class Item
      */
     public function getId()
     {
-        return $this->item_id;
+        return $this->id;
     }
 
     /**
@@ -157,10 +171,18 @@ class Item
     }
 
     /**
-     * @param $folder
+     * @return bool
+     */
+    public function ssActive()
+    {
+        return $this->is_active;
+    }
+
+    /**
+     * @param Folder|null $folder
      * @return $this
      */
-    public function setFolder($folder = null)
+    public function setFolder(Folder $folder = null)
     {
         $this->folder = $folder;
 
@@ -168,7 +190,7 @@ class Item
     }
 
     /**
-     * @return \SmartCore\Bundle\CMSBundle\Entity\Folder|null
+     * @return Folder|null
      */
     public function getFolder()
     {
@@ -179,7 +201,7 @@ class Item
      * @param Group $group
      * @return $this
      */
-    public function setGroup($group)
+    public function setGroup(Group $group)
     {
         $this->group = $group;
 
@@ -195,7 +217,7 @@ class Item
     }
 
     /**
-     * @return Item[]
+     * @return Item[]|ArrayCollection
      */
     public function getChildren()
     {
@@ -403,7 +425,7 @@ class Item
     }
 
     /**
-     * @ORM\PreUpdate
+     * @ORM\PreUpdate()
      */
     public function onUpdated()
     {

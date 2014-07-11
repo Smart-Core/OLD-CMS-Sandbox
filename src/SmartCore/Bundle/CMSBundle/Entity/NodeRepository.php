@@ -17,7 +17,7 @@ class NodeRepository extends EntityRepository
             $list_string .= $node_id . ',';
         }
 
-        $list_string = substr($list_string, 0, strlen($list_string)-1);
+        $list_string = substr($list_string, 0, strlen($list_string) - 1); // обрезка послезней запятой.
 
         if (false == $list_string) {
             return [];
@@ -26,7 +26,7 @@ class NodeRepository extends EntityRepository
         return $this->_em->createQuery("
             SELECT n
             FROM {$this->_entityName} n
-            WHERE n.node_id IN({$list_string})
+            WHERE n.id IN({$list_string})
             ORDER BY n.position ASC
         ")->getResult();
     }

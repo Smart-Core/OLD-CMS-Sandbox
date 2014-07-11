@@ -23,40 +23,43 @@ class Node implements \Serializable
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var int
      */
-    protected $node_id;
+    protected $id;
 
     /**
-     * @ORM\Column(type="boolean", nullable=TRUE)
      * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_active;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank()
-     * @var string
      */
     protected $module;
 
     /**
-     * @ORM\Column(type="array", nullable=FALSE)
      * @var array
+     *
+     * @ORM\Column(type="array", nullable=FALSE)
      */
     protected $params;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=TRUE)
      * @var string
+     *
+     * @ORM\Column(type="string", length=30, nullable=TRUE)
      */
     protected $template;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Folder", inversedBy="nodes")
-     * @ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")
-     * @Assert\NotBlank()
      * @var Folder
+     *
+     * @ORM\ManyToOne(targetEntity="Folder", inversedBy="nodes")
+     * @Assert\NotBlank()
      */
     protected $folder;
 
@@ -68,34 +71,37 @@ class Node implements \Serializable
     protected $folder_id = null;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Block")
-     * @ORM\JoinColumn(name="block_id", referencedColumnName="block_id")
-     * @Assert\NotBlank()
      * @var Block
+     *
+     * @ORM\ManyToOne(targetEntity="Block")
+     * @Assert\NotBlank()
      */
     protected $block;
 
     /**
      * Позиция в внутри блока.
      *
-     * @ORM\Column(type="smallint", nullable=true)
      * @var int
+     *
+     * @ORM\Column(type="smallint", nullable=true)
      */
     protected $position;
 
     /**
      * Приоритет порядка выполнения.
      *
-     * @ORM\Column(type="smallint")
      * @var int
+     *
+     * @ORM\Column(type="smallint")
      */
     protected $priority;
 
     /**
      * Может ли нода кешироваться.
      *
-     * @ORM\Column(type="boolean", nullable=TRUE)
      * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_cached;
 
@@ -115,17 +121,22 @@ class Node implements \Serializable
     //protected $permissions;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
      * @var string
+     *
+     * @ORM\Column(type="string", nullable=TRUE)
      */
     protected $descr;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $create_by_user_id;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $create_datetime;
@@ -157,12 +168,12 @@ class Node implements \Serializable
     public function __construct()
     {
         $this->create_by_user_id = 0;
-        $this->create_datetime = new \DateTime();
-        $this->is_active = true;
-        $this->is_cached = false;
-        $this->params = [];
-        $this->position = 0;
-        $this->priority = 0;
+        $this->create_datetime   = new \DateTime();
+        $this->is_active         = true;
+        $this->is_cached         = false;
+        $this->params            = [];
+        $this->position          = 0;
+        $this->priority          = 0;
     }
 
     /**
@@ -175,7 +186,7 @@ class Node implements \Serializable
 
         return serialize([
             //return igbinary_serialize([
-            $this->node_id,
+            $this->id,
             $this->is_active,
             $this->is_cached,
             $this->module,
@@ -200,7 +211,7 @@ class Node implements \Serializable
     public function unserialize($serialized)
     {
         list(
-            $this->node_id,
+            $this->id,
             $this->is_active,
             $this->is_cached,
             $this->module,
@@ -240,7 +251,7 @@ class Node implements \Serializable
      */
     public function getId()
     {
-        return $this->node_id;
+        return $this->id;
     }
 
     /**
@@ -490,7 +501,7 @@ class Node implements \Serializable
     }
 
     /**
-     * @param boolean $eip
+     * @param bool $eip
      * @return $this
      */
     public function setEip($eip)
@@ -501,7 +512,7 @@ class Node implements \Serializable
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEip()
     {

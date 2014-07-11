@@ -29,7 +29,7 @@ class Block
      * @ORM\Column(type="smallint")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $block_id;
+    protected $id;
 
     /**
      * @ORM\Column(type="smallint", nullable=TRUE)
@@ -55,10 +55,7 @@ class Block
      * @var Folder[]|ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Folder", fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(name="engine_blocks_inherit",
-     *      joinColumns={@ORM\JoinColumn(name="block_id", referencedColumnName="block_id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="folder_id", referencedColumnName="folder_id")}
-     *      )
+     * @ORM\JoinTable(name="engine_blocks_inherit")
      */
     protected $folders;
 
@@ -81,7 +78,7 @@ class Block
     {
         $descr = $this->getDescr();
 
-        return (empty($descr)) ? $this->getName() : $descr . ' (' . $this->getName() . ')';
+        return empty($descr) ? $this->getName() : $descr . ' (' . $this->getName() . ')';
     }
 
     /**
@@ -89,7 +86,7 @@ class Block
      */
     public function getId()
     {
-        return $this->block_id;
+        return $this->id;
     }
 
     /**
@@ -193,10 +190,10 @@ class Block
     public function getNodesCount()
     {
         $query = Container::get('doctrine.orm.entity_manager')->createQuery("
-            SELECT COUNT(n.node_id)
+            SELECT COUNT(n.id)
             FROM CMSBundle:Node n
             JOIN CMSBundle:Block b
-            WHERE b.block_id = {$this->block_id}
+            WHERE b.id = {$this->id}
             AND n.block = b
         ");
 

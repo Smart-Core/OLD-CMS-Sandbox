@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Doctrine\ORM\EntityManager;
+use RickySu\Tagcache\Adapter\TagcacheAdapter;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeDefaultPropertiesFormType;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
@@ -81,6 +82,7 @@ class EngineNode
      * @param KernelInterface $kernel
      * @param EngineContext $engineContext
      * @param string $database_table_prefix
+     * @param TagcacheAdapter $tagcache
      */
     public function __construct(
         EntityManager $em,
@@ -88,7 +90,7 @@ class EngineNode
         KernelInterface $kernel,
         EngineContext $engineContext,
         $database_table_prefix = '',
-        $tagcache
+        TagcacheAdapter $tagcache
     ) {
         $this->context      = $engineContext;
         $this->em           = $em;
@@ -266,7 +268,7 @@ class EngineNode
                 ";
                 // исключаем ранее включенные ноды.
                 foreach ($used_nodes as $used_nodes_value) {
-                    $sql .= " AND node_id != '{$used_nodes_value}'";
+                    $sql .= " AND id != '{$used_nodes_value}'";
                 }
                 $sql .= ' ORDER BY position';
             } elseif ($folder->getHasInheritNodes()) { // в этой папке есть ноды, которые наследуются...
@@ -295,10 +297,10 @@ class EngineNode
 
                 // Создаётся список нод, которые уже в включены.
                 if ($folder->getHasInheritNodes()) {
-                    $used_nodes[] = $row->node_id;
+                    $used_nodes[] = $row->id;
                 }
 
-                $this->nodes[$row->node_id] = $row->node_id;
+                $this->nodes[$row->id] = $row->id;
             }
         }
 

@@ -17,42 +17,54 @@ class Group
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $group_id;
+    protected $id;
 
     /**
+     * @var Item[]|ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Item", mappedBy="group", cascade={"persist", "remove"})
      */
     protected $items;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="smallint", nullable=TRUE)
      * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
      */
     protected $position;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=50, nullable=FALSE, unique=TRUE)
      * @Assert\NotBlank()
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $descr;
 
     /**
-     * @ORM\Column(type="text", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $properties;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $create_by_user_id;
 
     /**
-     * Created datetime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime")
      */
@@ -83,7 +95,7 @@ class Group
      */
     public function getId()
     {
-        return $this->group_id;
+        return $this->id;
     }
 
     /**

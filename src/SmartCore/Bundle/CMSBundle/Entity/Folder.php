@@ -30,110 +30,150 @@ class Folder
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $folder_id;
+    protected $id;
 
     /**
+     * @var Folder
+     *
      * @ORM\ManyToOne(targetEntity="Folder", inversedBy="children")
-     * @ORM\JoinColumn(name="folder_pid", referencedColumnName="folder_id")
+     * @ORM\JoinColumn(name="folder_pid")
      */
     protected $parent_folder;
 
     /**
+     * @var Folder[]|ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Folder", mappedBy="parent_folder")
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $children;
 
     /**
+     * @var Node[]|ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Node", mappedBy="folder")
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $nodes;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_file;
 
     /**
-     * @ORM\Column(type="smallint", nullable=TRUE)
+     * @var int
+     *
+     * @ORM\Column(type="smallint", nullable=true)
      */
     protected $position;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $uri_part;
 
     /**
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_active;
 
     /**
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_deleted;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $descr;
 
     /**
-     * @ORM\Column(type="array", nullable=TRUE)
+     * @var array
+     *
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $meta;
 
     /**
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $redirect_to;
 
     /**
-     * @ORM\Column(type="integer", nullable=TRUE)
+     * @var string
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @todo можно сделать через связь
      */
     protected $router_node_id;
 
     /**
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $has_inherit_nodes;
 
     /**
-     * @ORM\Column(type="array", nullable=TRUE)
+     * @var array
+     *
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $permissions;
 
     /**
-     * @ORM\Column(type="array", nullable=TRUE)
+     * @var array
+     *
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $lockout_nodes;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=TRUE)
      * @var string
+     *
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     protected $template_inheritable;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=TRUE)
      * @var string
+     *
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     protected $template_self;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $create_by_user_id;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $create_datetime;
@@ -177,7 +217,15 @@ class Folder
     }
 
     /**
-     * @return Folder[]
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return Folder[]|ArrayCollection
      */
     public function getChildren()
     {
@@ -185,7 +233,7 @@ class Folder
     }
 
     /**
-     * @return Node[]
+     * @return Node[]|ArrayCollection
      */
     public function getNodes()
     {
@@ -329,14 +377,6 @@ class Folder
     public function getMeta()
     {
         return empty($this->meta) ? [] : $this->meta;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->folder_id;
     }
 
     /**

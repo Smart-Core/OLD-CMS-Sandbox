@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 07 2014 г., 03:54
+-- Время создания: Июл 12 2014 г., 05:01
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -293,7 +293,7 @@ INSERT INTO `catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `
 (2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57', 1),
 (3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
 (4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56', 0),
-(5, 0, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40', 0);
+(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40', 0);
 
 -- --------------------------------------------------------
 
@@ -524,13 +524,13 @@ CREATE TABLE IF NOT EXISTS `chat_rooms_members` (
 
 DROP TABLE IF EXISTS `engine_blocks`;
 CREATE TABLE IF NOT EXISTS `engine_blocks` (
-  `block_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `position` smallint(6) DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   `descr` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  PRIMARY KEY (`block_id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `position` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
@@ -539,7 +539,7 @@ CREATE TABLE IF NOT EXISTS `engine_blocks` (
 -- Дамп данных таблицы `engine_blocks`
 --
 
-INSERT INTO `engine_blocks` (`block_id`, `position`, `name`, `descr`, `user_id`, `created_at`) VALUES
+INSERT INTO `engine_blocks` (`id`, `position`, `name`, `descr`, `user_id`, `created_at`) VALUES
 (1, 0, 'content', 'Рабочая область', 1, '2013-03-11 01:09:17'),
 (2, 2, 'breadcrumbs', 'Хлебные крошки', 1, '2013-03-11 01:09:33'),
 (3, 1, 'main_menu', 'Навигационное меню', 1, '2013-03-11 04:00:50'),
@@ -580,7 +580,7 @@ INSERT INTO `engine_blocks_inherit` (`block_id`, `folder_id`) VALUES
 
 DROP TABLE IF EXISTS `engine_folders`;
 CREATE TABLE IF NOT EXISTS `engine_folders` (
-  `folder_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_pid` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_file` tinyint(1) DEFAULT NULL,
@@ -599,7 +599,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `create_by_user_id` int(11) NOT NULL,
   `create_datetime` datetime NOT NULL,
   `template_self` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`folder_id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `folder_pid_uri_part` (`folder_pid`,`uri_part`),
   KEY `IDX_6B4611ABA640A07B` (`folder_pid`),
   KEY `is_active` (`is_active`),
@@ -611,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
 -- Дамп данных таблицы `engine_folders`
 --
 
-INSERT INTO `engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `descr`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `create_by_user_id`, `create_datetime`, `template_self`) VALUES
+INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `descr`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `create_by_user_id`, `create_datetime`, `template_self`) VALUES
 (1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL),
 (2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'N;', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL),
 (3, 1, 'Аккаунт пользователя', 0, 999, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL),
@@ -636,7 +636,7 @@ INSERT INTO `engine_folders` (`folder_id`, `folder_pid`, `title`, `is_file`, `po
 
 DROP TABLE IF EXISTS `engine_nodes`;
 CREATE TABLE IF NOT EXISTS `engine_nodes` (
-  `node_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_id` int(11) DEFAULT NULL,
   `block_id` smallint(6) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
@@ -649,7 +649,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `create_datetime` datetime NOT NULL,
   `is_cached` tinyint(1) DEFAULT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`node_id`),
+  PRIMARY KEY (`id`),
   KEY `IDX_F4FF528B162CB942` (`folder_id`),
   KEY `IDX_F4FF528BE9ED820C` (`block_id`),
   KEY `is_active` (`is_active`),
@@ -661,12 +661,12 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
 -- Дамп данных таблицы `engine_nodes`
 --
 
-INSERT INTO `engine_nodes` (`node_id`, `folder_id`, `block_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`) VALUES
+INSERT INTO `engine_nodes` (`id`, `folder_id`, `block_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`) VALUES
 (1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL),
 (2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 0, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL),
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0, NULL),
 (4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:0;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL),
-(5, 1, 3, 1, 'Menu', 'a:4:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL),
+(5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL),
 (6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
 (7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
 (9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL),
@@ -926,7 +926,7 @@ INSERT INTO `media_storages` (`id`, `provider`, `title`, `relative_path`, `param
 
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
-  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) DEFAULT NULL,
   `folder_id` int(11) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
@@ -939,7 +939,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `updated` datetime DEFAULT NULL,
   `pid` int(11) DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
-  PRIMARY KEY (`item_id`),
+  PRIMARY KEY (`id`),
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
@@ -949,7 +949,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`item_id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `descr`, `url`, `create_by_user_id`, `created`, `updated`, `pid`, `properties`) VALUES
+INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `descr`, `url`, `create_by_user_id`, `created`, `updated`, `pid`, `properties`) VALUES
 (1, 1, 1, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 05:25:48', '2013-05-06 11:13:53', NULL, NULL),
 (2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL, NULL),
 (3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL),
@@ -974,14 +974,14 @@ INSERT INTO `menu` (`item_id`, `group_id`, `folder_id`, `is_active`, `position`,
 
 DROP TABLE IF EXISTS `menu_groups`;
 CREATE TABLE IF NOT EXISTS `menu_groups` (
-  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `position` smallint(6) DEFAULT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_by_user_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`group_id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
@@ -989,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `menu_groups` (
 -- Дамп данных таблицы `menu_groups`
 --
 
-INSERT INTO `menu_groups` (`group_id`, `position`, `name`, `descr`, `create_by_user_id`, `created`, `properties`) VALUES
+INSERT INTO `menu_groups` (`id`, `position`, `name`, `descr`, `create_by_user_id`, `created`, `properties`) VALUES
 (1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', NULL);
 
 -- --------------------------------------------------------
@@ -1514,7 +1514,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-07 03:20:35', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-11 05:09:17', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
@@ -1673,21 +1673,21 @@ ALTER TABLE `chat_rooms_members`
 -- Ограничения внешнего ключа таблицы `engine_blocks_inherit`
 --
 ALTER TABLE `engine_blocks_inherit`
-  ADD CONSTRAINT `FK_4B3EA624162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`folder_id`),
-  ADD CONSTRAINT `FK_4B3EA624E9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`block_id`);
+  ADD CONSTRAINT `FK_372DC759162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_372DC759E9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `engine_folders`
 --
 ALTER TABLE `engine_folders`
-  ADD CONSTRAINT `FK_6B4611ABA640A07B` FOREIGN KEY (`folder_pid`) REFERENCES `engine_folders` (`folder_id`);
+  ADD CONSTRAINT `FK_6B4611ABA640A07B` FOREIGN KEY (`folder_pid`) REFERENCES `engine_folders` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_nodes`
 --
 ALTER TABLE `engine_nodes`
-  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`folder_id`),
-  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`block_id`);
+  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_categories`
@@ -1721,9 +1721,9 @@ ALTER TABLE `media_files_transformed`
 -- Ограничения внешнего ключа таблицы `menu`
 --
 ALTER TABLE `menu`
-  ADD CONSTRAINT `FK_71085977162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`folder_id`),
-  ADD CONSTRAINT `FK_710859775550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu` (`item_id`),
-  ADD CONSTRAINT `FK_71085977FE54D947` FOREIGN KEY (`group_id`) REFERENCES `menu_groups` (`group_id`);
+  ADD CONSTRAINT `FK_71085977162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_710859775550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu` (`id`),
+  ADD CONSTRAINT `FK_71085977FE54D947` FOREIGN KEY (`group_id`) REFERENCES `menu_groups` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `simple_news`

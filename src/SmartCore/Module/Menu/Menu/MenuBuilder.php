@@ -93,7 +93,7 @@ class MenuBuilder extends ContainerAware
      * Рекурсивное построение дерева.
      *
      * @param ItemInterface $menu
-     * @param Item          $parent_item
+     * @param Item|null     $parent_item
      */
     protected function addChild(ItemInterface $menu, Item $parent_item = null)
     {
@@ -103,11 +103,10 @@ class MenuBuilder extends ContainerAware
 
         /** @var Item $item */
         foreach ($items as $item) {
-
             if ($this->is_admin) {
                 $uri = $this->container->get('router')->generate('smart_menu_admin_item', ['item_id' => $item->getId()]);
             } else {
-                $uri = ($folder = $item->getFolder())
+                $uri = $item->getFolder()
                     ? $this->container->get('cms.folder')->getUri($item->getFolder()->getId())
                     : $item->getUrl();
             }

@@ -100,9 +100,9 @@ class EngineFolder
             /** @var $folder Folder */
             while ($folder_id != 1) {
                 $folder = $this->repository->findOneBy([
+                    'id'         => $folder_id,
                     'is_active'  => true,
                     'is_deleted' => false,
-                    'folder_id'  => $folder_id,
                 ]);
 
                 if ($folder) {
