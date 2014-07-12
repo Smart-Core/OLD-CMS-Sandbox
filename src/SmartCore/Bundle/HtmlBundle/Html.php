@@ -11,7 +11,7 @@ namespace SmartCore\Bundle\HtmlBundle;
  */
 class Html
 {
-    protected $sorted       = array();
+    protected $sorted       = [];
 
     protected $doctype;
     public $lang            = 'ru';
@@ -19,13 +19,13 @@ class Html
     protected $html;
 
     public $title           = '';
-    public $meta            = array();
-    public $styles          = array();
-    public $scripts         = array();
-    public $links           = array();
+    public $meta            = [];
+    public $styles          = [];
+    public $scripts         = [];
+    public $links           = [];
     public $document_ready  = '';
-    public $general_data    = '';
-    public $body_attributes = array();
+    public $custom_code     = '';
+    public $body_attributes = [];
 
     protected $direction    = 'ltr';
 
@@ -115,22 +115,18 @@ class Html
     }
 
     /**
-     * Set document type.
-     *
      * @param string $doctype
      * @return $this
      */
     public function setDoctype($doctype = 'html5')
     {
         $this->doctype = $doctype;
-        $this->end     = (strpos(strtolower($doctype), 'html4')) ? '' : ' /';
+        $this->end     = strpos(strtolower($doctype), 'html4') ? '' : ' /';
 
         return $this;
     }
 
     /**
-     * Добавить Мета-тэг keywords.
-     *
      * @param string $keyword
      * @return $this
      */
@@ -146,8 +142,6 @@ class Html
     }
 
     /**
-     * Установить Мета-тэг description.
-     *
      * @param string $descr
      * @return $this
      */
@@ -192,8 +186,6 @@ class Html
     }
 
     /**
-     * Добавить мета тэг.
-     *
      * @param string $name
      * @param string $content
      * @param string $type (name, http-equiv, property)
@@ -207,8 +199,6 @@ class Html
     }
 
     /**
-     * Установить мета тэги.
-     *
      * @param array  $meta_tags
      * @return $this
      */
@@ -220,8 +210,6 @@ class Html
     }
 
     /**
-     * Добавить мета тэг http-equiv.
-     *
      * @param string $name
      * @param string $content
      * @return $this
@@ -234,8 +222,6 @@ class Html
     }
 
     /**
-     * Добавить мета тэг property.
-     *
      * @param string $name
      * @param string $content
      * @return $this
@@ -277,7 +263,7 @@ class Html
      *
      * @param string $input - src или code.
      * @param array|string $params - параметры. (_code - вставить код между тегами <script> и </script>.)
-     * @param int $priority - позиция (чем больше, чем раньше подключится)
+     * @param int $priority - чем больше, чем раньше подключится
      * @return $this
      */
     public function addScript($input, $params = null, $priority = 0)
@@ -314,7 +300,7 @@ class Html
      */
     public function addStyle($input, $params = null, $priority = 0)
     {
-        $data = array('type' => 'text/css', 'media' => 'all');
+        $data = ['type' => 'text/css', 'media' => 'all'];
 
         if (is_array($params)) {
             $data = $params + $data;
@@ -326,11 +312,11 @@ class Html
         if (substr($tmp['path'], -4) == '.css') {
             $data['href'] = $input;
         } elseif (substr($tmp['path'], -5) == '.less') {
-            $this->addLink($input, array(
+            $this->addLink($input, [
                 'rel'   => 'stylesheet/less',
                 'type'  => 'text/css',
                 'media' => $data['media'],
-            ));
+            ]);
 
             return true;
         } else {
@@ -359,8 +345,6 @@ class Html
     }
 
     /**
-     * Установить значение тэга <title>
-     *
      * @param string $title
      * @return $this
      */
@@ -416,11 +400,11 @@ class Html
     /**
      * Добавление произвольного кода в секцию <head>
      *
-     * @param string
+     * @param string $code
      */
     public function appendToHead($code)
     {
-        $this->general_data .= $code . "\n";
+        $this->custom_code .= $code . "\n";
     }
 
     // -----------------------------------------------------------------------

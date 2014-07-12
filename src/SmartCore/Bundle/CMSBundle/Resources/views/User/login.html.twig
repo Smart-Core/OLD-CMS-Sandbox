@@ -1,10 +1,10 @@
 {% extends '@CMS/Admin/_layout.html.twig' %}
 
-{% block html_head_title %}{{ 'Login'|trans }} / {{ parent() }}{% endblock html_head_title %}
+{% block title %}{{ 'Login'|trans }} / {{ parent() }}{% endblock %}
 
 {% block navbar '' %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
     <style type="text/css">
         body {
@@ -38,7 +38,7 @@
             padding: 7px 9px;
         }
     </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
 {% block content %}
 

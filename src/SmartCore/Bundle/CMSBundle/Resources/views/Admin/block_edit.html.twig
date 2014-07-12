@@ -1,6 +1,6 @@
 {% extends '@CMS/Admin/_layout.html.twig' %}
 
-{% block html_head_title %}{{ 'Block edit'|trans }} / {{ 'Structure'|trans }} / {{ parent() }}{% endblock html_head_title %}
+{% block title %}{{ 'Block edit'|trans }} / {{ 'Structure'|trans }} / {{ parent() }}{% endblock %}
 
 {% block subnav %}
     {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}

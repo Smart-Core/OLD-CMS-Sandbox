@@ -1,9 +1,9 @@
 
 {% extends '@Html/base.html.twig' %}
 
-{% block html_head_title %}{{ cms_html_title({'delimiter': '&ndash;', 'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)', 'site_short_name': 'Smart Core CMS',}) }}{% endblock html_head_title %}
+{% block title %}{{ cms_html_title({'delimiter': '&ndash;', 'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)', 'site_short_name': 'Smart Core CMS',}) }}{% endblock %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
     <style type="text/css">
         body {
@@ -11,7 +11,7 @@
             padding-bottom: 40px;
         }
     </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
 {% block body %}
     <div class="container">

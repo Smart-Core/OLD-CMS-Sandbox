@@ -1,6 +1,3 @@
-imports:
-    - { resource: "@HtmlBundle/Resources/config/config.yml" }
-
 # Пример конфигурирования
 cms:
     storage: db

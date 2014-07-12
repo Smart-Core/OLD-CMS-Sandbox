@@ -1,15 +1,15 @@
 {% extends item.editor ? '@TexterModule/Admin/_tinymce.html.twig' : '@TexterModule/Admin/_codemirror.html.twig' %}
 
-{% block html_head_title %}Редактирование id: {{ item.id }} / Текстер / {{ parent() }}{% endblock html_head_title %}
+{% block title %}Редактирование id: {{ item.id }} / Текстер / {{ parent() }}{% endblock %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
     <style media="all" type="text/css">
         body {
             margin-bottom: 0px;
         }
     </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
 {% block content %}
     <ul class="nav nav-tabs" id="myTab">

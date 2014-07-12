@@ -1,7 +1,7 @@
 {% extends '@CMS/admin.html.twig' %}
 
-{% block html_head_styles %}
-{{ parent() }}
+{% block styles %}
+    {{ parent() }}
     <style media="all" type="text/css"> @import url({{ asset('bundles/cms/css/docs.css') }}); </style>
     <style media="all" type="text/css">
         label span {
@@ -24,7 +24,7 @@
             font-weight: bold;
         }
     </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
 {% block body %}
 {% block navbar %}

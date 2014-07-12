@@ -1,6 +1,6 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block html_head_title %} {{ 'Blog'|trans }} / {{ parent() }} {% endblock html_head_title %}
+{% block title %} {{ 'Blog'|trans }} / {{ parent() }} {% endblock %}
 
 {% block nav %}
     {{ knp_menu_render('BlogModule:AdminMenu:main', {

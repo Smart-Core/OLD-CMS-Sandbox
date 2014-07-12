@@ -1,18 +1,18 @@
 {% extends '@Html/base.html.twig' %}
 
-{% block html_head_title %}{{ cms_html_title({
+{% block title %}{{ cms_html_title({
     'delimiter': '&ndash;',
     'site_full_name': 'Новый сайт',
     'site_short_name': 'Новый сайт'
-}) }}{% endblock html_head_title %}
+}) }}{% endblock %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
-{% endblock html_head_styles %}
+{% endblock %}
 
-{% block html_head_scripts %}
+{% block scripts %}
     {{ parent() }}
-{% endblock html_head_scripts %}
+{% endblock %}
 
 {% block body %}
 <div class="container">

@@ -1,27 +1,29 @@
 {% extends '@CMS/Admin/_layout.html.twig' %}
 
-{% block html_head_title %}{{ 'Files'|trans }} / {{ parent() }}{% endblock html_head_title %}
+{% block title %}{{ 'Files'|trans }} / {{ parent() }}{% endblock %}
 
-{% block html_head_scripts %}
+{% block scripts %}
     <script src="{{ asset('assets/bootstrap/2.3.2/js/bootstrap.min.js') }}" type="text/javascript"></script>
-{% endblock html_head_scripts %}
+{% endblock %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
     <style media="all" type="text/css">
         body {
             margin-bottom: 0px;
         }
     </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
 {% block content %}
     {% if includeAssets %}
-        {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" %}
+        {#{% include 'FMElfinderBundle:Elfinder:helper/assets_css.html.twig' %}#}
+        {% include '@FMElfinder/Elfinder/helper/assets_css.html.twig' %}
     {% endif %}
 
     {% if includeAssets %}
-        {% include "FMElfinderBundle:Elfinder:helper/assets_js.html.twig" %}
+        {#{% include 'FMElfinderBundle:Elfinder:helper/assets_js.html.twig' %}#}
+        {% include '@FMElfinder/Elfinder/helper/assets_js.html.twig' %}
     {% endif %}
     <script type="text/javascript" charset="utf-8">
         $().ready(function() {

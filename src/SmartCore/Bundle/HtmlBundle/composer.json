@@ -5,7 +5,7 @@
     "type": "symfony-bundle",
     "homepage": "http://smart-core.org",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4.0",
         "symfony/framework-bundle": ">=2.1",
         "symfony/twig-bundle": ">=2.1"
     },

@@ -1,6 +1,6 @@
 {% extends '@CMS/Admin/structure.html.twig' %}
 
-{% block html_head_title %}{{ 'Edit node'|trans }}: {{ node.id }} ({{ node.module }}) / {{ parent() }}{% endblock html_head_title %}
+{% block title %}{{ 'Edit node'|trans }}: {{ node.id }} ({{ node.module }}) / {{ parent() }}{% endblock %}
 
 {% block content %}
     <div class="span9">

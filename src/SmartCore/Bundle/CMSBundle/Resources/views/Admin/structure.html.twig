@@ -1,18 +1,18 @@
 {% extends '@CMS/Admin/_layout.html.twig' %}
 
-{% block html_head_title %}{{ 'Structure'|trans }} / {{ parent() }}{% endblock html_head_title %}
+{% block title %}{{ 'Structure'|trans }} / {{ parent() }}{% endblock %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
     <style media="all" type="text/css"> @import url({{ asset('bundles/felib/jquery-dynatree/1.2.5/src/skin-vista/ui.dynatree.css') }}); </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
-{% block html_head_scripts %}
+{% block scripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/felib/jquery-dynatree/1.2.5/jquery/jquery.cookie.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/felib/jquery-dynatree/1.2.5/jquery/jquery-ui.custom.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/felib/jquery-dynatree/1.2.5/src/jquery.dynatree.js') }}" type="text/javascript"></script>
-{% endblock html_head_scripts %}
+{% endblock %}
 
 {% block subnav %}
     {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
