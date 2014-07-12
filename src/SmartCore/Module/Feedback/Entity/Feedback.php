@@ -19,12 +19,16 @@ class Feedback
     protected $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
     protected $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=false)
      * @Assert\Email()
      * @Assert\NotBlank()
@@ -32,12 +36,16 @@ class Feedback
     protected $email;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      */
     protected $text;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created;
@@ -113,7 +121,7 @@ class Feedback
     }
 
     /**
-     * @param mixed $text
+     * @param string $text
      * @return $this
      */
     public function setText($text)
@@ -124,7 +132,7 @@ class Feedback
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getText()
     {

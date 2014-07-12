@@ -35,75 +35,70 @@ class Url
     protected $id;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
     protected $is_visited;
 
     /**
-     * @ORM\Column(type="string", unique=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", unique=true)
      */
     protected $loc;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $referer;
 
     /**
-     * @ORM\Column(type="string", length=32, nullable=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     protected $title_hash;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="integer")
-     *
-     * @var string
-     */
-    protected $title_dublicates;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     *
      * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $lastmod;
 
     /**
-     * @ORM\Column(type="string", length=8, nullable=true)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     protected $changefreq;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @var float
      *
-     * @var float $priority
+     * @ORM\Column(type="float", nullable=true)
      */
     protected $priority;
 
     /**
-     * @var array $images
+     * @var array
      */
     protected $images;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @var int
      *
-     * @var integer
+     * @ORM\Column(type="smallint")
      */
     protected $status;
 
@@ -118,11 +113,10 @@ class Url
         $this->priority     = null;
         $this->referer      = null;
         $this->status       = 200;
-        $this->title_dublicates = 0;
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -210,7 +204,7 @@ class Url
     }
 
     /**
-     * @param mixed $is_visited
+     * @param bool $is_visited
      * @return $this
      */
     public function setIsVisited($is_visited)
@@ -221,7 +215,7 @@ class Url
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsVisited()
     {

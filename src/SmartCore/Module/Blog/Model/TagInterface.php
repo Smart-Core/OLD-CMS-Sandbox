@@ -20,7 +20,7 @@ interface TagInterface
     public function getId();
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSlug();
 

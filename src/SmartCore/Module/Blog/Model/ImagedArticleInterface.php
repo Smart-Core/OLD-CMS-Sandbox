@@ -18,13 +18,13 @@ interface ImagedArticleInterface
     public function getImage();
 
     /**
-     * @param integer $image_id
+     * @param int $image_id
      * @return $this
      */
     public function setImageId($image_id);
 
     /**
-     * @return integer
+     * @return int
      */
     public function getImageId();
 }

@@ -23,46 +23,46 @@ class Category
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", fetch="EAGER")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
-     *
      * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", fetch="EAGER")
+     * @ORM\JoinColumn(nullable=true)
      */
     protected $parent;
 
     /**
+     * @var Category[]|ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", fetch="LAZY")
      * @ORM\OrderBy({"slug" = "ASC"})
-     *
-     * @var Category[]|ArrayCollection
      */
     protected $children;
 
     /**
-     * @ORM\Column(type="string", length=32)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=32)
      */
     protected $slug;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
      */
     protected $title;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
-     *
      * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    protected $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="File", mappedBy="category")
-     *
      * @var File[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="File", mappedBy="category", fetch="EXTRA_LAZY")
      */
     protected $files;
 
@@ -71,12 +71,12 @@ class Category
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
-        $this->files     = new ArrayCollection();
+        $this->created_at = new \DateTime();
+        $this->files      = new ArrayCollection();
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -88,7 +88,7 @@ class Category
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**

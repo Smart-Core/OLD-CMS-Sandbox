@@ -206,7 +206,7 @@ class Node implements \Serializable
 
     /**
      * @param string $serialized
-     * @return mixed|void
+     * @return void
      */
     public function unserialize($serialized)
     {

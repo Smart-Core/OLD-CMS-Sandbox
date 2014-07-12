@@ -15,5 +15,4 @@ use SmartCore\Module\Blog\Model\Tag as SmartTag;
  */
 class Tag extends SmartTag
 {
-
 }

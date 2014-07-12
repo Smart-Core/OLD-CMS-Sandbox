@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityRepository;
 
 class CategoryRepository extends EntityRepository
 {
-
     /**
      * @return \Doctrine\ORM\Query
      */

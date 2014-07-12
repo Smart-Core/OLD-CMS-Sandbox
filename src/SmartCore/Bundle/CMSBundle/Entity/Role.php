@@ -49,7 +49,7 @@ class Role
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -57,7 +57,7 @@ class Role
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      * @return $this
      */
     public function setName($name)
@@ -68,7 +68,7 @@ class Role
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -76,7 +76,7 @@ class Role
     }
 
     /**
-     * @param mixed $position
+     * @param int $position
      * @return $this
      */
     public function setPosition($position)
@@ -87,7 +87,7 @@ class Role
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getPosition()
     {

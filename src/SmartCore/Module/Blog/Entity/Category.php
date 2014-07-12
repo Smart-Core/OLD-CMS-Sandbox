@@ -11,5 +11,4 @@ use SmartCore\Module\Blog\Model\Category as SmartCategory;
  */
 class Category extends SmartCategory
 {
-
 }

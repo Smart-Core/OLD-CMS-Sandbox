@@ -20,43 +20,49 @@ abstract class Tag implements TagInterface
     protected $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=32, unique=true)
      * @Assert\NotBlank(message="Slug can't be empty.")
      */
     protected $slug;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=32, unique=true)
      * @Assert\NotBlank(message="Title can't be empty.")
      */
     protected $title;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags", fetch="EXTRA_LAZY")
+     * @var int
      *
-     * @var ArrayCollection
-     */
-    protected $articles;
-
-    /**
      * @ORM\Column(type="integer")
      */
     protected $weight;
 
     /**
-     * Constructor.
+     * @var Article[]|ArrayCollection
      *
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags", fetch="EXTRA_LAZY")
+     */
+    protected $articles;
+
+    /**
      * @param string $slug
      * @param string $title
      */
     public function __construct($slug = null, $title = null)
     {
-        if (!$title) {
+        if (empty($title)) {
             $title = $slug;
         }
 
@@ -84,19 +90,19 @@ abstract class Tag implements TagInterface
     }
 
     /**
-     * @return Article[]
-     */
-    public function getArticles()
-    {
-        return $this->articles;
-    }
-
-    /**
      * @return \Datetime
      */
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * @return Article[]
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 
     /**

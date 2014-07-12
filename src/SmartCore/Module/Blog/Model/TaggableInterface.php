@@ -6,6 +6,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface TaggableInterface
 {
+    /**
+     * @param TagInterface $tag
+     * @return $this
+     */
     public function addTag(TagInterface $tag);
 
     /**

@@ -24,6 +24,7 @@ class File
 
     /**
      * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
     protected $is_preuploaded;
@@ -52,41 +53,57 @@ class File
     protected $storage;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     protected $relative_path;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=100)
      */
     protected $filename;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $original_filename;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=8)
      */
     protected $type;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=32)
      */
     protected $mime_type;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $original_size;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $size;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $user_id;
@@ -101,7 +118,7 @@ class File
     /**
      * @var FileTransformed[]
      *
-     * @ORM\OneToMany(targetEntity="FileTransformed", mappedBy="file", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FileTransformed", mappedBy="file", cascade={"persist"}, fetch="EXTRA_LAZY")
      */
     protected $filesTransformed;
 
@@ -138,6 +155,23 @@ class File
     }
 
     /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param string|null $filter
      * @return string
      */
     public function getFullRelativePath($filter = null)
@@ -152,6 +186,7 @@ class File
     }
 
     /**
+     * @param string|null $filter
      * @return string
      */
     public function getFullRelativeUrl($filter = null)
@@ -160,15 +195,7 @@ class File
     }
 
     /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param boolean $is_preuploaded
+     * @param bool $is_preuploaded
      * @return $this
      */
     public function setIsPreuploaded($is_preuploaded)
@@ -179,7 +206,7 @@ class File
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsPreuploaded()
     {
@@ -234,7 +261,7 @@ class File
     }
 
     /**
-     * @return \SmartCore\Bundle\MediaBundle\Entity\FileTransformed[]
+     * @return FileTransformed[]|
      */
     public function getFilesTransformed()
     {
@@ -318,14 +345,6 @@ class File
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
      * @param string $type
      * @return $this
      */
@@ -383,7 +402,7 @@ class File
     }
 
     /**
-     * @param integer $size
+     * @param int $size
      * @return $this
      */
     public function setSize($size)
@@ -394,7 +413,7 @@ class File
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getSize()
     {
@@ -402,7 +421,7 @@ class File
     }
 
     /**
-     * @param integer $user_id
+     * @param int $user_id
      * @return $this
      */
     public function setUserId($user_id)
@@ -413,7 +432,7 @@ class File
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getUserId()
     {

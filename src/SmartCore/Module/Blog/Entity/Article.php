@@ -32,24 +32,28 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
     protected $author;
 
     /**
-     * @Assert\File(
-     *     maxSize="1M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-     * )
+     * @var int
      *
-     * @var UploadedFile $image
-     */
-    protected $image;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $image_id;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
     protected $is_commentable;
+
+    /**
+     * @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     *
+     * @var UploadedFile
+     */
+    protected $image;
 
     /**
      * Constructor.
@@ -73,7 +77,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
     }
 
     /**
-     * @return mixed
+     * @return UserInterface
      */
     public function getAuthor()
     {
@@ -100,7 +104,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
     }
 
     /**
-     * @param integer $image_id
+     * @param int $image_id
      * @return $this
      */
     public function setImageId($image_id)
@@ -111,7 +115,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getImageId()
     {
@@ -133,6 +137,14 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
      * @return bool
      */
     public function getIsCommentable()
+    {
+        return $this->is_commentable;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCommentable()
     {
         return $this->is_commentable;
     }

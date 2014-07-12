@@ -10,18 +10,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 trait TagTrait
 {
     /**
+     * @var TagInterface[]|ArrayCollection|null
+     *
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles", cascade={"persist"})
      * @ORM\JoinTable(name="blog_articles_tags_relations",
      *      joinColumns={@ORM\JoinColumn(name="article_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id")}
      * )
-     *
-     * @var TagInterface[]|ArrayCollection|null
      */
     protected $tags;
 
     /**
-     * @param Tag $tag
+     * @param TagInterface $tag
      * @return $this
      */
     public function addTag(TagInterface $tag)
@@ -35,7 +35,7 @@ trait TagTrait
     }
 
     /**
-     * @param Tag $tag
+     * @param TagInterface $tag
      * @return $this
      */
     public function removeTag(TagInterface $tag)

@@ -29,16 +29,22 @@ class UnicatRepository
     /**
      * Пространство имен сущностей, например: Demo\SiteBundle\Entity\Catalog\
      *
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $entities_namespace;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $title;
@@ -46,21 +52,29 @@ class UnicatRepository
     /**
      * Включает записи вложенных категорий.
      *
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
     protected $is_inheritance;
 
     /**
+     * @var Collection
+     *
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\MediaBundle\Entity\Collection")
      */
     protected $media_collection;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $user_id;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
@@ -99,7 +113,7 @@ class UnicatRepository
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -107,7 +121,7 @@ class UnicatRepository
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -221,10 +235,18 @@ class UnicatRepository
     }
 
     /**
-     * @param Collection $media_collection
+     * @return bool
+     */
+    public function isInheritance()
+    {
+        return $this->is_inheritance;
+    }
+
+    /**
+     * @param Collection|null $media_collection
      * @return $this
      */
-    public function setMediaCollection($media_collection)
+    public function setMediaCollection(Collection $media_collection = null)
     {
         $this->media_collection = $media_collection;
 
@@ -232,7 +254,7 @@ class UnicatRepository
     }
 
     /**
-     * @return Collection
+     * @return Collection|null
      */
     public function getMediaCollection()
     {
@@ -259,7 +281,7 @@ class UnicatRepository
     }
 
     /**
-     * @param ArrayCollection $structures
+     * @param UnicatStructure[]|ArrayCollection $structures
      * @return $this
      */
     public function setStructures($structures)
@@ -267,6 +289,14 @@ class UnicatRepository
         $this->structures = $structures;
 
         return $this;
+    }
+
+    /**
+     * @return UnicatStructure[]
+     */
+    public function getStructures()
+    {
+        return $this->structures;
     }
 
     /**
@@ -286,14 +316,6 @@ class UnicatRepository
     public function getDefaultStructure()
     {
         return $this->default_structure;
-    }
-
-    /**
-     * @return UnicatStructure[]
-     */
-    public function getStructures()
-    {
-        return $this->structures;
     }
 
     /**

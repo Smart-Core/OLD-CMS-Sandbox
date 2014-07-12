@@ -51,6 +51,8 @@ class Item
     protected $position;
 
     /**
+     * @var Group
+     *
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="items")
      */
     protected $group;
@@ -104,14 +106,14 @@ class Item
      *
      * @ORM\Column(type="datetime")
      */
-    protected $created;
+    protected $created_at;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $updated;
+    protected $updated_at;
 
     /**
      * Constructor.
@@ -120,14 +122,14 @@ class Item
     {
         $this->children          = new ArrayCollection();
         $this->create_by_user_id = 0;
-        $this->created           = new \DateTime();
+        $this->created_at        = new \DateTime();
         $this->is_active         = true;
         $this->parent_item       = null;
         $this->position          = 0;
         $this->properties        = null;
         $this->title             = null;
         $this->url               = null;
-        $this->updated           = null;
+        $this->updated_at        = null;
     }
 
     /**
@@ -152,6 +154,14 @@ class Item
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
      * @param bool $is_active
      * @return $this
      */
@@ -173,7 +183,7 @@ class Item
     /**
      * @return bool
      */
-    public function ssActive()
+    public function isActive()
     {
         return $this->is_active;
     }
@@ -225,14 +235,6 @@ class Item
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
      * @param string $descr
      * @return $this
      */
@@ -252,10 +254,10 @@ class Item
     }
 
     /**
-     * @param array $properties
+     * @param array|null $properties
      * @return $this
      */
-    public function setProperties($properties)
+    public function setProperties(array $properties = null)
     {
         $this->properties = $properties;
 
@@ -263,7 +265,7 @@ class Item
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getProperties()
     {
@@ -287,25 +289,6 @@ class Item
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * @param \Datetime $updated
-     * @return $this
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * @return \Datetime|null
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
     }
 
     /**
@@ -393,6 +376,14 @@ class Item
     }
 
     /**
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
      * Защита от цикличных зависимостей.
      *
      * @ORM\PrePersist()
@@ -429,6 +420,6 @@ class Item
      */
     public function onUpdated()
     {
-        $this->updated = new \DateTime();
+        $this->updated_at = new \DateTime();
     }
 }

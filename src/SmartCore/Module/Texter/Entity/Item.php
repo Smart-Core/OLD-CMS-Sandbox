@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Texter\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
 
 /**
  * @ORM\Entity
@@ -10,41 +11,46 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Item
 {
+    use CreatedAtTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $item_id;
+    protected $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=8, nullable=true)
      */
     protected $locale;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="smallint")
      */
     protected $editor;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
 
     /**
-     * @ORM\Column(type="array")
-     *
      * @var array
+     *
+     * @ORM\Column(type="array")
      */
     protected $meta;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created;
-
-    /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $user_id = 0;
@@ -54,7 +60,7 @@ class Item
      */
     public function __construct()
     {
-        $this->created  = new \DateTime();
+        $this->created_at = new \DateTime();
         $this->locale   = 'ru';
         $this->meta     = [];
         $this->text     = null;
@@ -74,12 +80,10 @@ class Item
      */
     public function getId()
     {
-        return $this->item_id;
+        return $this->id;
     }
 
     /**
-     * Получить анонс.
-     *
      * @return string
      */
     public function getAnnounce()
@@ -92,26 +96,7 @@ class Item
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * @param mixed $created
-     * @return $this
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * @param mixed $editor
+     * @param int $editor
      * @return $this
      */
     public function setEditor($editor)
@@ -122,7 +107,7 @@ class Item
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getEditor()
     {
@@ -130,7 +115,7 @@ class Item
     }
 
     /**
-     * @param mixed $locale
+     * @param string $locale
      * @return $this
      */
     public function setLocale($locale)
@@ -141,7 +126,7 @@ class Item
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLocale()
     {
@@ -172,11 +157,7 @@ class Item
      */
     public function getMeta()
     {
-        if ($this->meta) {
-            return $this->meta;
-        } else {
-            return [];
-        }
+        return empty($this->meta) ? [] : $this->meta;
     }
 
     /**

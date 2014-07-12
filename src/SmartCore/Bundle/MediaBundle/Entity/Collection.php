@@ -19,9 +19,9 @@ class Collection
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=128)
-     *
      * @var string
+     *
+     * @ORM\Column(type="string", length=128)
      */
     protected $title;
 
@@ -33,9 +33,9 @@ class Collection
     protected $default_filter;
 
     /**
-     * @ORM\Column(type="array")
-     *
      * @var array
+     *
+     * @ORM\Column(type="array")
      */
     protected $params;
 
@@ -84,7 +84,7 @@ class Collection
     /**
      * @var File[]|ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="File", mappedBy="collection")
+     * @ORM\OneToMany(targetEntity="File", mappedBy="collection", fetch="EXTRA_LAZY")
      */
     protected $files;
 
@@ -102,7 +102,7 @@ class Collection
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -175,10 +175,10 @@ class Collection
     }
 
     /**
-     * @param array $params
+     * @param array|null $params
      * @return $this
      */
-    public function setParams($params)
+    public function setParams(array $params = null)
     {
         $this->params = $params;
 
@@ -186,7 +186,7 @@ class Collection
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getParams()
     {
@@ -232,7 +232,7 @@ class Collection
     }
 
     /**
-     * @param mixed $files
+     * @param File[] $files
      * @return $this
      */
     public function setFiles($files)

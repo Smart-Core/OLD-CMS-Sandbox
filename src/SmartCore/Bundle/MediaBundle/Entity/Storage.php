@@ -27,16 +27,22 @@ class Storage
     protected $provider;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $relative_path;
 
     /**
+     * @var array
+     *
      * @ORM\Column(type="array")
      */
     protected $params;
@@ -51,7 +57,7 @@ class Storage
     /**
      * @var File[]|ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="File", mappedBy="storage")
+     * @ORM\OneToMany(targetEntity="File", mappedBy="storage", fetch="EXTRA_LAZY")
      */
     protected $files;
 
@@ -76,7 +82,7 @@ class Storage
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -84,7 +90,7 @@ class Storage
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -92,7 +98,7 @@ class Storage
     }
 
     /**
-     * @param mixed $relative_path
+     * @param string $relative_path
      * @return $this
      */
     public function setRelativePath($relative_path)
@@ -103,7 +109,7 @@ class Storage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRelativePath()
     {
@@ -111,10 +117,10 @@ class Storage
     }
 
     /**
-     * @param array $params
+     * @param array|null $params
      * @return $this
      */
-    public function setParams($params)
+    public function setParams(array $params = null)
     {
         $this->params = $params;
 

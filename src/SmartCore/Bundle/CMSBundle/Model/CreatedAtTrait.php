@@ -5,6 +5,8 @@ namespace SmartCore\Bundle\CMSBundle\Model;
 trait CreatedAtTrait
 {
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created_at;

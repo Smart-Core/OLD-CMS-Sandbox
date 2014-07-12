@@ -10,7 +10,7 @@ use SmartCore\Module\Blog\Model\TagInterface;
 class ArticleRepository extends EntityRepository implements ArticleRepositoryInterface
 {
     /**
-     * @param integer $limit
+     * @param int $limit
      * @return ArticleInterface[]|null
      */
     public function findLast($limit = 10)
@@ -43,7 +43,9 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
     }
 
     /**
-     * @param CategoryInterface[]|array $categories
+     * @param array $categories
+     * @param int|null $limit
+     * @param int|null $offset
      * @return \Doctrine\ORM\Query
      */
     public function getFindByCategoriesQuery(array $categories = [], $limit = null, $offset = null)

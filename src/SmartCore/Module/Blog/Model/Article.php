@@ -20,49 +20,67 @@ abstract class Article implements ArticleInterface
     protected $id;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
     protected $enabled;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     protected $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=128, unique=true)
      * @Assert\NotBlank()
      */
     protected $slug;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $annotation;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      */
     protected $text;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=true)
      */
     protected $keywords;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=true)
      */
     protected $description;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $updated_at;
@@ -91,11 +109,19 @@ abstract class Article implements ArticleInterface
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return \Datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 
     /**
@@ -115,14 +141,6 @@ abstract class Article implements ArticleInterface
     public function getAnnotation()
     {
         return $this->annotation;
-    }
-
-    /**
-     * @return \Datetime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**
@@ -178,6 +196,14 @@ abstract class Article implements ArticleInterface
      * @return bool
      */
     public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
     {
         return $this->enabled;
     }

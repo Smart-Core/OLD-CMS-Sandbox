@@ -202,6 +202,14 @@ class News
     /**
      * @return bool
      */
+    public function isEnabled()
+    {
+        return $this->is_enabled;
+    }
+
+    /**
+     * @return bool
+     */
     public function isDisabled()
     {
         return !$this->is_enabled;
@@ -227,7 +235,7 @@ class News
     }
 
     /**
-     * @param UploadedFile $image
+     * @param UploadedFile|null $image
      * @return $this
      */
     public function setImage(UploadedFile $image = null)
@@ -238,7 +246,7 @@ class News
     }
 
     /**
-     * @return UploadedFile
+     * @return UploadedFile|null
      */
     public function getImage()
     {
@@ -360,7 +368,7 @@ class News
     }
 
     /**
-     * @ORM\PreUpdate
+     * @ORM\PreUpdate()
      */
     public function doStuffOnPreUpdate()
     {

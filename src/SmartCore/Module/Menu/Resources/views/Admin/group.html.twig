@@ -18,8 +18,6 @@
 
     {{ knp_menu_render(menu, {'currentAsLink': true, 'currentClass': 'active', 'compressed': true }) }}
 
-    {#{{ knp_menu_render('MenuModule:MenuBuilder:full', {'currentClass': 'active'}) }}#}
-
     <div class="well well-small">
         <h4>Добавить пункт</h4>
         <form action="{{ path('smart_menu_admin_group', {'group_id': group.id }) }}" {{ form_enctype(form) }} method="post" class="form-horizontal">

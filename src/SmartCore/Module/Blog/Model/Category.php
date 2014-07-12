@@ -19,35 +19,45 @@ abstract class Category implements CategoryInterface
     protected $id;
 
     /**
+     * @var Category
+     *
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
      * @ORM\JoinColumn(name="parent")
-     *
-     * @var Category
-     **/
+     */
     protected $parent;
 
     /**
+     * @var Category[]|ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
      * ORM\OrderBy({"position" = "ASC"})
      */
     protected $children;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=32, unique=true)
      */
     protected $slug;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
+     * @var Article[]
+     *
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="category", fetch="EXTRA_LAZY")
      */
     protected $articles;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
@@ -63,19 +73,19 @@ abstract class Category implements CategoryInterface
     }
 
     /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string
      */
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * @return Category[]|ArrayCollection
-     */
-    public function getChildren()
-    {
-        return $this->children;
     }
 
     /**
@@ -87,19 +97,19 @@ abstract class Category implements CategoryInterface
     }
 
     /**
+     * @return Category[]|ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
      * @return Article[]
      */
     public function getArticles()
     {
         return $this->articles;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

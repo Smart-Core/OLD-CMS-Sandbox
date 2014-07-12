@@ -22,18 +22,24 @@ class FileTransformed
     protected $id;
 
     /**
+     * @var File
+     *
      * @ORM\ManyToOne(targetEntity="File", inversedBy="filesTransformed", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $file;
 
     /**
+     * @var Collection
+     *
      * @ORM\ManyToOne(targetEntity="Collection", inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
      */
     protected $collection;
 
     /**
+     * @var Storage
+     *
      * @ORM\ManyToOne(targetEntity="Storage", inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -47,7 +53,7 @@ class FileTransformed
     protected $filter;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer")
      */
@@ -69,14 +75,6 @@ class FileTransformed
     }
 
     /**
-     * @return string
-     */
-    public function getFullRelativeUrl()
-    {
-        return $this->getFile()->getFullRelativeUrl($this->getFilter());
-    }
-
-    /**
      * @return int
      */
     public function getId()
@@ -90,6 +88,14 @@ class FileTransformed
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullRelativeUrl()
+    {
+        return $this->getFile()->getFullRelativeUrl($this->getFilter());
     }
 
     /**

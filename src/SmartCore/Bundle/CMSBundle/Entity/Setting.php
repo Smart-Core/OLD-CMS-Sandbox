@@ -76,7 +76,7 @@ class Setting
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -146,7 +146,7 @@ class Setting
     }
 
     /**
-     * @param boolean $serialized
+     * @param bool $serialized
      * @return $this
      */
     public function setSerialized($serialized)
@@ -157,7 +157,7 @@ class Setting
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getSerialized()
     {

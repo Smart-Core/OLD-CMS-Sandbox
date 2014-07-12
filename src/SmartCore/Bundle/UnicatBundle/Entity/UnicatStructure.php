@@ -18,48 +18,68 @@ class UnicatStructure
     protected $id;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="smallint", nullable=true)
      */
     protected $position;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=32)
      */
     protected $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     protected $title_form;
 
     /**
-     * single | multi
+     * Вхождение записей в структуру: single или multi.
+     *
+     * @todo можно переделать на флажок (is_multiple_entries), если больше не предвидется вариантов.
+     *
+     * @var string
      *
      * @ORM\Column(type="string", length=16)
      */
     protected $entries;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_required;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_default_inheritance;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $user_id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $properties;
@@ -72,6 +92,8 @@ class UnicatStructure
     protected $repository;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created_at;
@@ -90,7 +112,7 @@ class UnicatStructure
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -177,6 +199,14 @@ class UnicatStructure
      * @return bool
      */
     public function getIsRequired()
+    {
+        return $this->is_required;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRequired()
     {
         return $this->is_required;
     }
@@ -296,7 +326,7 @@ class UnicatStructure
     }
 
     /**
-     * @param int $user_id
+     * @param int|object $user_id
      * @return $this
      */
     public function setUserId($user_id)
@@ -315,7 +345,7 @@ class UnicatStructure
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getUserId()
     {

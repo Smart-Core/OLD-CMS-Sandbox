@@ -22,7 +22,7 @@ class Group
     /**
      * @var Item[]|ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="group", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="group", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      */
     protected $items;
 
@@ -68,7 +68,7 @@ class Group
      *
      * @ORM\Column(type="datetime")
      */
-    protected $created;
+    protected $created_at;
 
     /**
      * Constructor.
@@ -76,10 +76,10 @@ class Group
     public function __construct()
     {
         $this->create_by_user_id = 0;
-        $this->created  = new \DateTime();
-        $this->position = 0;
-        $this->descr    = null;
-        $this->items    = new ArrayCollection();
+        $this->created_at   = new \DateTime();
+        $this->position     = 0;
+        $this->descr        = null;
+        $this->items        = new ArrayCollection();
     }
 
     /**
@@ -96,6 +96,14 @@ class Group
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 
     /**
@@ -137,7 +145,7 @@ class Group
     }
 
     /**
-     * @param mixed $properties
+     * @param string $properties
      * @return $this
      */
     public function setProperties($properties)
@@ -148,7 +156,7 @@ class Group
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getProperties()
     {
@@ -195,22 +203,6 @@ class Group
     public function getCreateByUserId()
     {
         return $this->create_by_user_id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
     }
 
     /**

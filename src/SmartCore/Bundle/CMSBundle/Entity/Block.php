@@ -35,9 +35,6 @@ class Block
      *
      * @ORM\Column(type="smallint", nullable=true)
      * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
-     *
-     * -Assert\Type(type="integer", message="bad :(")
-     * -Assert\Regex(pattern="/\d+/", match=false, message="BAD!" )
      */
     protected $position;
 
@@ -137,7 +134,7 @@ class Block
     }
 
     /**
-     * @return Folder[]
+     * @return Folder[]|ArrayCollection
      */
     public function getFolders()
     {
@@ -166,7 +163,7 @@ class Block
     }
 
     /**
-     * @param integer $pos
+     * @param int $pos
      * @return $this
      */
     public function setPosition($pos)
@@ -181,7 +178,7 @@ class Block
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getPosition()
     {
