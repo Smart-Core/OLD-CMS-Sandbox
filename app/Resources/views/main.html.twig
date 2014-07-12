@@ -1,0 +1,51 @@
+{% extends '@Html/base.html.twig' %}
+
+{% block title %}{{ cms_html_title() }}{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    {{ felib_css('syntaxhighlighter') }}
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    {{ felib_js('syntaxhighlighter') }}
+    <script type="text/javascript">
+        SyntaxHighlighter.defaults['toolbar'] = false;
+        SyntaxHighlighter.all();
+    </script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<div class="row-fluid">
+    <div class="span3">
+        {{ main_menu }}
+    </div>
+
+    <div class="span9">
+        <div id="breadcrumbs">
+            {{ breadcrumbs }}
+        </div>
+
+        {% include '@CMS/flash_messages.thml.twig' %}
+
+        <div id="content">
+            {% block content content %}
+        </div>
+    </div>
+</div>
+<div class="row-fluid" id="footer">
+    <div class="span9">
+        {{ footer }}
+    </div>
+    <div class="span3" style="text-align: right">
+        {{ footer_right }}
+    </div>
+
+    <div class="span11 text-center">
+        <p><small>{{ simple_profiler() }}</small></p>
+    </div>
+</div>
+</div>
+{% endblock body %}
