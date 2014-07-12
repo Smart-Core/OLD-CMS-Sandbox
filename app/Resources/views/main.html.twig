@@ -9,9 +9,11 @@
 
 {% block styles %}
     {{ parent() }}
-    <style media="all" type="text/css"> @import url({{ asset('theme/css/screen.css') }}); </style>
-    <style media="all" type="text/css"> @import url({{ asset('theme/css/dark_theme.css') }}); </style>
-    <style media="all" type="text/css"> @import url({{ asset('theme/css/wp-syntax.css') }}); </style>
+    <style media="all" type="text/css">
+        @import url({{ asset('theme/css/screen.css') }});
+        @import url({{ asset('theme/css/dark_theme.css') }});
+        @import url({{ asset('theme/css/wp-syntax.css') }});
+    </style>
 {% endblock %}
 
 {% block scripts %}
