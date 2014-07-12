@@ -39,7 +39,7 @@ class EngineController extends Controller
 
         if (empty($router_data['folders'])) { // Случай пустой инсталляции, когда еще ни одна папка не создана.
             $this->get('smart.felib')->call('bootstrap');
-            $this->buildBaseHtml($router_data);
+            $this->buildBaseHtml();
 
             return $this->render('CMSBundle::welcome.html.twig');
         }
@@ -72,19 +72,15 @@ class EngineController extends Controller
             return $nodesResponses;
         }
 
-        $this->buildBaseHtml($router_data);
+        $this->buildBaseHtml();
 
         return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
     }
 
     /**
      * Временный метод...
-     *
-     * @param array $router_data
-     *
-     * @todo отрефакторить!!!
      */
-    protected function buildBaseHtml(array $router_data)
+    protected function buildBaseHtml()
     {
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
@@ -100,18 +96,6 @@ class EngineController extends Controller
                 ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
             ;
         }
-
-        // @todo подумать как задавать темы оформления и убрать отсюда.
-        $theme_path = $this->get('cms.context')->getThemePath();
-        $assets = [
-            'theme_path'     => $theme_path,
-            'theme_css_path' => $theme_path . 'css/',
-            'theme_js_path'  => $theme_path . 'js/',
-            'theme_img_path' => $theme_path . 'images/',
-            'vendor'         => $this->get('cms.context')->getGlobalAssets(),
-        ];
-
-        $this->get('cms.theme')->processConfig($assets, $router_data['template']);
     }
 
     /**

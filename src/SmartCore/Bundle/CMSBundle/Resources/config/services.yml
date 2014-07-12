@@ -57,10 +57,6 @@ services:
             - @kernel
             - @cms.context
             - @tagcache
-    cms.theme:
-        class: SmartCore\Bundle\CMSBundle\Engine\Theme
-        calls:
-            - [ setContainer, [ @service_container ] ]
     cms.router:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineRouter
         calls:
