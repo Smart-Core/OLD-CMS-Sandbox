@@ -80,9 +80,11 @@ class EngineController extends Controller
     /**
      * Временный метод...
      *
+     * @param array $router_data
+     *
      * @todo отрефакторить!!!
      */
-    protected function buildBaseHtml($router_data)
+    protected function buildBaseHtml(array $router_data)
     {
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
@@ -129,15 +131,15 @@ class EngineController extends Controller
      * Сборка "блоков" из подготовленного списка нод.
      * По мере прохождения, подключаются и запускаются нужные модули с нужными параметрами.
      *
-     * @param \SmartCore\Bundle\CMSBundle\Entity\Node[] $nodes_list
-     * @return array|RedirectResponse
+     * @param Request $request
+     * @param \SmartCore\Bundle\CMSBundle\Entity\Node[] $nodes
+     * @return array|Response|RedirectResponse
      */
     protected function buildModulesData(Request $request, array $nodes)
     {
         $prioritySorted = [];
         $nodesResponses = [];
 
-        /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
         foreach ($nodes as $node) {
             if (!isset($nodesResponses[$node->getBlockName()])) {
                 $nodesResponses[$node->getBlockName()] = new BlockRenderHelper();
@@ -150,6 +152,7 @@ class EngineController extends Controller
         krsort($prioritySorted);
 
         foreach ($prioritySorted as $nodes) {
+            /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
             foreach ($nodes as $node) {
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $node->setEip(true);

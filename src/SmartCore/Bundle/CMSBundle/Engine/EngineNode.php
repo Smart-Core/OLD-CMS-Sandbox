@@ -14,19 +14,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class EngineNode
 {
     /**
-     * @var \Doctrine\DBAL\Connection
-     */
-    protected $db;
-
-    /**
      * @var EntityManager
      */
     protected $em;
-
-    /**
-     * @var EngineContext
-     */
-    protected $engine_context;
 
     /**
      * @var FormFactoryInterface
@@ -51,7 +41,7 @@ class EngineNode
     /**
      * Список всех нод, запрошенных в текущем контексте.
      *
-     * @var array
+     * @var Node[]
      */
     protected $nodes = [];
 
@@ -91,7 +81,6 @@ class EngineNode
         $this->form_factory = $form_factory;
         $this->kernel       = $kernel;
         $this->repository   = $em->getRepository('CMSBundle:Node');
-        $this->db           = $em->getConnection();
         $this->tagcache     = $tagcache;
     }
 
@@ -180,7 +169,7 @@ class EngineNode
      * параметрами запускаются модули.
      *
      * @param  array  $router_data
-     * @return Node[] $nodes
+     * @return Node[]
      */
     public function buildList(array $router_data)
     {
