@@ -18,7 +18,7 @@ class Item
     protected $item_id;
 
     /**
-     * @ORM\Column(type="string", length=8, nullable=TRUE)
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     protected $locale;
 
@@ -28,7 +28,7 @@ class Item
     protected $editor;
 
     /**
-     * @ORM\Column(type="text", nullable=TRUE)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
 

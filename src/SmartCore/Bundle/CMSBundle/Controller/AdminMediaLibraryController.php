@@ -7,7 +7,6 @@ use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\MediaBundle\Entity\Storage;
 use SmartCore\Bundle\MediaBundle\Form\Type\CollectionFormType;
 use SmartCore\Bundle\MediaBundle\Form\Type\StorageFormType;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

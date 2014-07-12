@@ -29,7 +29,7 @@ class Group
     /**
      * @var int
      *
-     * @ORM\Column(type="smallint", nullable=TRUE)
+     * @ORM\Column(type="smallint", nullable=true)
      * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
      */
     protected $position;
@@ -37,7 +37,7 @@ class Group
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=50, nullable=FALSE, unique=TRUE)
+     * @ORM\Column(type="string", length=50, nullable=false, unique=true)
      * @Assert\NotBlank()
      */
     protected $name;

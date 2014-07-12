@@ -8,7 +8,6 @@ use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
 use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use SmartCore\Bundle\CMSBundle\Container;
 
 /**
  * @ORM\Entity
@@ -38,7 +37,7 @@ class Block
      * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
      *
      * -Assert\Type(type="integer", message="bad :(")
-     * -Assert\Regex(pattern="/\d+/", match=FALSE, message="BAD!" )
+     * -Assert\Regex(pattern="/\d+/", match=false, message="BAD!" )
      */
     protected $position;
 

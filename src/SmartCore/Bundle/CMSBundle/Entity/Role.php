@@ -21,7 +21,7 @@ class Role
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=FALSE, unique=TRUE)
+     * @ORM\Column(type="string", length=50, nullable=false, unique=true)
      * @Assert\NotBlank()
      */
     protected $name;

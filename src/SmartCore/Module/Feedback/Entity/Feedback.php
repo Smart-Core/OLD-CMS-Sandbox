@@ -19,13 +19,13 @@ class Feedback
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=FALSE)
+     * @ORM\Column(type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="string", nullable=FALSE)
+     * @ORM\Column(type="string", nullable=false)
      * @Assert\Email()
      * @Assert\NotBlank()
      */

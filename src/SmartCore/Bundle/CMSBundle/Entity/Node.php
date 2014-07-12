@@ -44,7 +44,7 @@ class Node implements \Serializable
     /**
      * @var array
      *
-     * @ORM\Column(type="array", nullable=FALSE)
+     * @ORM\Column(type="array", nullable=false)
      */
     protected $params;
 
@@ -101,29 +101,29 @@ class Node implements \Serializable
      *
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_cached;
 
     /**
-     * @ORM\Column(type="text", nullable=TRUE)
+     * @ORM\Column(type="text", nullable=true)
      */
     //protected $cache_params;
 
     /**
-     * @ORM\Column(type="text", nullable=TRUE)
+     * @ORM\Column(type="text", nullable=true)
      */
     //protected $plugins;
 
     /**
-     * @ORM\Column(type="text", nullable=TRUE)
+     * @ORM\Column(type="text", nullable=true)
      */
     //protected $permissions;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=TRUE)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $descr;
 

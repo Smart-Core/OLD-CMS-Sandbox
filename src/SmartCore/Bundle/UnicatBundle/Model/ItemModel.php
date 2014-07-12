@@ -27,7 +27,7 @@ class ItemModel
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", nullable=TRUE)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_enabled;
 

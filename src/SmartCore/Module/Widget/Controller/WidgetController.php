@@ -57,7 +57,6 @@ class WidgetController extends Controller
 
         if ($response->isServerError()) {
             //return new Response($response->getStatusCode() . ' ' . Response::$statusTexts[$response->getStatusCode()]);
-
             return $response; // @todo FS#402
         }
 

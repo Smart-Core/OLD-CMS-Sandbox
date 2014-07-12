@@ -16,7 +16,7 @@ class NodeRouter extends Router
      *
      * {@inheritdoc}
      */
-    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH)
     {
         $rootHash = md5(Container::getParameter('secret'));
 
@@ -28,7 +28,7 @@ class NodeRouter extends Router
             $routeParams = $request->attributes->get('_route_params', null);
 
             if (isset($routeParams['_basePath']) and (!isset($parameters['_basePath']) or empty($parameters['_basePath']))) {
-                $parameters['_basePath'] = (empty($routeParams['_basePath'])) ? $rootHash : $routeParams['_basePath'];
+                $parameters['_basePath'] = empty($routeParams['_basePath']) ? $rootHash : $routeParams['_basePath'];
             }
         }
 
