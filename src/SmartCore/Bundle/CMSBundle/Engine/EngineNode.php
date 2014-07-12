@@ -39,11 +39,6 @@ class EngineNode
     protected $repository;
 
     /**
-     * @var string
-     */
-    protected $db_prefix;
-
-    /**
      * @var EngineContext
      */
     protected $context;
@@ -89,7 +84,6 @@ class EngineNode
         FormFactoryInterface $form_factory,
         KernelInterface $kernel,
         EngineContext $engineContext,
-        $database_table_prefix = '',
         TagcacheAdapter $tagcache
     ) {
         $this->context      = $engineContext;
@@ -98,7 +92,6 @@ class EngineNode
         $this->kernel       = $kernel;
         $this->repository   = $em->getRepository('CMSBundle:Node');
         $this->db           = $em->getConnection();
-        $this->db_prefix    = $database_table_prefix;
         $this->tagcache     = $tagcache;
     }
 
@@ -217,8 +210,8 @@ class EngineNode
 
         /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */
         foreach ($router_data['folders'] as $folder) {
-            // single каждый раз сбрасывается и устанавливается заново для каждоый папки.
             // @todo блокировку нод.
+            // Режим 'single' каждый раз сбрасывается и устанавливается заново для каждой папки.
             /*
             $lockout_nodes['single'] = [];
             if (isset($parsed_uri_value['lockout_nodes']['single']) and !empty($parsed_uri_value['lockout_nodes']['single'])) {
@@ -255,52 +248,26 @@ class EngineNode
             }
             */
 
-            // @todo сейчас список нод запрашивается плоским SQL, надо как-то на ORM перевести,
-            // а еще лучше убрать это в NodeRepository т.о. избавляемся от зависимостей $db и $db_prefix.
-            $sql = false;
-
-            // Обработка последней папки т.е. текущей.
-            if ($folder->getId() == $this->context->getCurrentFolderId()) {
-                $sql = "SELECT *
-                    FROM {$this->db_prefix}engine_nodes
-                    WHERE folder_id = '{$folder->getId()}'
-                    AND is_active = '1'
-                ";
-                // исключаем ранее включенные ноды.
-                foreach ($used_nodes as $used_nodes_value) {
-                    $sql .= " AND id != '{$used_nodes_value}'";
-                }
-                $sql .= ' ORDER BY position';
-            } elseif ($folder->getHasInheritNodes()) { // в этой папке есть ноды, которые наследуются...
-                $sql = "SELECT n.*
-                    FROM {$this->db_prefix}engine_nodes AS n,
-                        {$this->db_prefix}engine_blocks_inherit AS bi
-                    WHERE n.block_id = bi.block_id
-                        AND n.is_active = 1
-                        AND n.folder_id = '{$folder->getId()}'
-                        AND bi.folder_id = '{$folder->getId()}'
-                    ORDER BY n.position ASC
-                ";
-            }
-
-            // В папке нет нод для сборки.
-            if ($sql === false) {
+            if ($folder->getId() == $this->context->getCurrentFolderId()) { // Обработка текущей папки.
+                $result = $this->em->getRepository('CMSBundle:Node')->getInFolder($folder, $used_nodes);
+            } elseif ($folder->getHasInheritNodes()) { // В этой папке есть ноды, которые наследуются...
+                $result = $this->em->getRepository('CMSBundle:Node')->getInheritedInFolder($folder);
+            } else { // В папке нет нод для сборки.
                 continue;
             }
 
-            $result = $this->db->query($sql);
-            while ($row = $result->fetchObject()) {
-                /*
-                if ($this->Permissions->isAllowed('node', 'read', $row->permissions) == 0) {
+            while ($node_id = $result->fetchColumn(0)) {
+                // @todo права доступа к ноде.
+                /*if ($this->Permissions->isAllowed('node', 'read', $row->permissions) == 0) {
                     continue;
                 }*/
 
                 // Создаётся список нод, которые уже в включены.
                 if ($folder->getHasInheritNodes()) {
-                    $used_nodes[] = $row->id;
+                    $used_nodes[] = $node_id;
                 }
 
-                $this->nodes[$row->id] = $row->id;
+                $this->nodes[$node_id] = $node_id;
             }
         }
 

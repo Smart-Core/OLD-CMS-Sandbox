@@ -51,4 +51,58 @@ class NodeRepository extends EntityRepository
 
         return $query->getSingleScalarResult();
     }
+
+    /**
+     * @param int|Folder $folder
+     * @param array $exclude_nodes
+     * @return \Doctrine\DBAL\Driver\Statement
+     */
+    public function getInFolder($folder, array $exclude_nodes = [])
+    {
+        if ($folder instanceof Folder) {
+            $folder = $folder->getId();
+        }
+
+        $engine_nodes_table = $this->_class->getTableName();
+
+        $sql = "SELECT id
+                FROM $engine_nodes_table
+                WHERE folder_id = '$folder'
+                AND is_active = '1'
+            ";
+
+        // Исключение ранее включенных нод.
+        foreach ($exclude_nodes as $node_id) {
+            $sql .= " AND id != '{$node_id}'";
+        }
+
+        $sql .= ' ORDER BY position';
+
+        return $this->_em->getConnection()->query($sql);
+    }
+
+    /**
+     * @param int|Folder $folder
+     * @return \Doctrine\DBAL\Driver\Statement
+     */
+    public function getInheritedInFolder($folder)
+    {
+        if ($folder instanceof Folder) {
+            $folder = $folder->getId();
+        }
+
+        $engine_nodes_table          = $this->_class->getTableName();
+        $engine_blocks_inherit_table = $this->_em->getClassMetadata('CMSBundle:Block')->getAssociationMapping('folders')['joinTable']['name'];
+
+        $sql = "SELECT n.id
+                FROM $engine_nodes_table AS n,
+                    $engine_blocks_inherit_table AS bi
+                WHERE n.block_id = bi.block_id
+                    AND n.is_active = 1
+                    AND n.folder_id = '$folder'
+                    AND bi.folder_id = '$folder'
+                ORDER BY n.position ASC
+            ";
+        return $this->_em->getConnection()->query($sql);
+    }
 }

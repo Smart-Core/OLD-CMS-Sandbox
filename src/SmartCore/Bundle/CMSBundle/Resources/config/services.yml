@@ -56,7 +56,6 @@ services:
             - @form.factory
             - @kernel
             - @cms.context
-            - "%database_table_prefix%"
             - @tagcache
     cms.theme:
         class: SmartCore\Bundle\CMSBundle\Engine\Theme
