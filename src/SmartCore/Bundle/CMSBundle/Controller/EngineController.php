@@ -112,19 +112,6 @@ class EngineController extends Controller
         ];
 
         $this->get('cms.theme')->processConfig($assets, $router_data['template']);
-
-        foreach ($this->get('smart.felib')->all() as $res) {
-            if (isset($res['js']) and is_array($res['js'])) {
-                foreach ($res['js'] as $js) {
-                    $this->get('html')->js($js, 200);
-                }
-            }
-            if (isset($res['css']) and is_array($res['css'])) {
-                foreach ($res['css'] as $css) {
-                    $this->get('html')->css($css, 200);
-                }
-            }
-        }
     }
 
     /**

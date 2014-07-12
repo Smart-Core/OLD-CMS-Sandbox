@@ -1,12 +1,44 @@
 {% set html = smart_html() %}
 
+{# В шаблоне можно указать массив нужных библиотек в следующем формате:
+    {% set use_libs = {
+        'bootstrap': null,
+        'syntaxhighlighter': null,
+        'less': '1.7.0',
+    } %}
+#}
+{% if use_libs is defined %}
+    {% set felib = true %}
+    {% for name, version in use_libs %}
+        {% set felib = felib_use(name, version) %}
+    {% endfor %}
+{% endif %}
+
+{# Также можно подключить библиотеку следующим способом
+    {% set felib = felib_use('bootstrap') %}
+#}
+{% if felib is defined %}
+    {% for lib in felib_get_all() %}
+        {% if lib.js is defined %}
+            {% for js in lib.js %}
+                {% set felib = html.js(js, 200) %}
+            {% endfor %}
+        {% endif %}
+        {% if lib.css is defined %}
+            {% for css in lib.css %}
+                {% set felib = html.css(css, 200) %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 {% block doctype html.getDoctype|raw %}
 <head>
     <title>{% block title %}{% if html.title %}{{ html.title }}{% endif %}{% endblock title %}</title>
     <!-- Meta -->
 {% block meta %}
 {% if html.isHtml5 %}
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
 {% endif %}
 {% for type, vals in html.meta %}
 {% for name, content in vals %}
