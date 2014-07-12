@@ -1,6 +1,6 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block html_head_scripts %}
+{% block scripts %}
     {{ parent() }}
     <script type="text/javascript">
         //<![CDATA[
@@ -69,7 +69,7 @@
 
     {#{{ tinymce_init() }}#}
     {#{{ elfinder_tinymce_init() }}#}
-{% endblock html_head_scripts %}
+{% endblock %}
 
 {% block body_js %}
     {{ parent() }}

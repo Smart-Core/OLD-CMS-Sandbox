@@ -6,6 +6,9 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 class EngineToolbar extends ContainerAware
 {
+    /**
+     * @return array
+     */
     public function getArray()
     {
         $current_folder_id = $this->container->get('cms.context')->getCurrentFolderId();
@@ -132,5 +135,38 @@ class EngineToolbar extends ContainerAware
                 ],
             ],
         ];
+    }
+
+    /**
+     * @param array $node_front_controls
+     */
+    public function prepare(array $node_front_controls = null)
+    {
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            $cms_front_controls = [
+                'toolbar' => $this->getArray(),
+                'node'    => $node_front_controls,
+            ];
+
+            $this->get('smart.felib')->call('bootstrap');
+            $this->get('smart.felib')->call('jquery-cookie');
+            $this->get('html')
+                ->css($this->get('templating.helper.assets')->getUrl('bundles/cms/css/frontend.css'))
+                ->js($this->get('templating.helper.assets')->getUrl('bundles/cms/js/frontend.js'))
+                ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
+            ;
+        }
+    }
+
+    /**
+     * Gets a service by id.
+     *
+     * @param string $id The service id
+     *
+     * @return object The service
+     */
+    protected function get($id)
+    {
+        return $this->container->get($id);
     }
 }

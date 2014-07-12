@@ -1,3 +1,4 @@
+{% spaceless %}
 {% set html = smart_html() %}
 
 {# В шаблоне можно указать массив нужных библиотек в следующем формате:
@@ -32,6 +33,7 @@
     {% endfor %}
 {% endif %}
 
+{% endspaceless %}
 {% block doctype html.getDoctype|raw %}
 <head>
     <title>{% block title %}{% if html.title %}{{ html.title }}{% endif %}{% endblock title %}</title>

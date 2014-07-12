@@ -1,6 +1,6 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block html_head_styles %}
+{% block styles %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/lib/codemirror.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/addon/hint/show-hint.css') }}">
@@ -18,9 +18,9 @@
             z-index: 9999;
         }
     </style>
-{% endblock html_head_styles %}
+{% endblock %}
 
-{% block html_head_scripts %}
+{% block scripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/felib/codemirror/lib/codemirror.js') }}"></script>
     <script src="{{ asset('bundles/felib/codemirror/addon/display/fullscreen.js') }}"></script>
@@ -35,7 +35,7 @@
     <script src="{{ asset('bundles/felib/codemirror/mode/css/css.js') }}"></script>
     <script src="{{ asset('bundles/felib/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
     <script src="{{ asset('bundles/felib/codemirror/mode/htmlembedded/htmlembedded.js') }}"></script>
-{% endblock html_head_scripts %}
+{% endblock %}
 
 {% block body_js %}
     {{ parent() }}

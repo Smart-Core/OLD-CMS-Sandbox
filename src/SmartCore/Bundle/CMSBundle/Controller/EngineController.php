@@ -38,8 +38,7 @@ class EngineController extends Controller
         }
 
         if (empty($router_data['folders'])) { // Случай пустой инсталляции, когда еще ни одна папка не создана.
-            $this->get('smart.felib')->call('bootstrap');
-            $this->buildBaseHtml();
+            $this->get('cms.toolbar')->prepare();
 
             return $this->render('CMSBundle::welcome.html.twig');
         }
@@ -72,30 +71,9 @@ class EngineController extends Controller
             return $nodesResponses;
         }
 
-        $this->buildBaseHtml();
+        $this->get('cms.toolbar')->prepare($this->cms_front_controls['node']);
 
         return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
-    }
-
-    /**
-     * Временный метод...
-     */
-    protected function buildBaseHtml()
-    {
-        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            $cms_front_controls = [
-                'toolbar' => $this->get('cms.toolbar')->getArray(),
-                'node'    => $this->cms_front_controls['node'],
-            ];
-
-            $this->get('smart.felib')->call('bootstrap');
-            $this->get('smart.felib')->call('jquery-cookie');
-            $this->get('html')
-                ->css($this->get('templating.helper.assets')->getUrl('bundles/cms/css/frontend.css'))
-                ->js($this->get('templating.helper.assets')->getUrl('bundles/cms/js/frontend.js'))
-                ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
-            ;
-        }
     }
 
     /**
