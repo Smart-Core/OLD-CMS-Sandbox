@@ -18,7 +18,7 @@ class EngineController extends Controller
      *
      * @var array
      */
-    protected $cms_front_controls;
+    protected $front_controls;
 
     /**
      * @param Request $request
@@ -71,7 +71,7 @@ class EngineController extends Controller
             return $nodesResponses;
         }
 
-        $this->get('cms.toolbar')->prepare($this->cms_front_controls['node']);
+        $this->get('cms.toolbar')->prepare($this->front_controls['node']);
 
         return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
     }
@@ -126,8 +126,8 @@ class EngineController extends Controller
 
                 // @todo сделать отправку front_controls в ответе метода.
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                    $this->cms_front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
-                    $this->cms_front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
+                    $this->front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
+                    $this->front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
                         'title' => 'Свойства ноды', // @todo translate
                         'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
                     ];
