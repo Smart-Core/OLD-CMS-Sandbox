@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 12 2014 г., 05:01
+-- Время создания: Июл 12 2014 г., 18:07
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -935,8 +935,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_by_user_id` int(11) NOT NULL,
-  `created` datetime NOT NULL,
-  `updated` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
   `pid` int(11) DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   PRIMARY KEY (`id`),
@@ -949,7 +949,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `descr`, `url`, `create_by_user_id`, `created`, `updated`, `pid`, `properties`) VALUES
+INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `descr`, `url`, `create_by_user_id`, `created_at`, `updated_at`, `pid`, `properties`) VALUES
 (1, 1, 1, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 05:25:48', '2013-05-06 11:13:53', NULL, NULL),
 (2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL, NULL),
 (3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL),
@@ -979,7 +979,7 @@ CREATE TABLE IF NOT EXISTS `menu_groups` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_by_user_id` int(11) NOT NULL,
-  `created` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
@@ -989,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `menu_groups` (
 -- Дамп данных таблицы `menu_groups`
 --
 
-INSERT INTO `menu_groups` (`id`, `position`, `name`, `descr`, `create_by_user_id`, `created`, `properties`) VALUES
+INSERT INTO `menu_groups` (`id`, `position`, `name`, `descr`, `create_by_user_id`, `created_at`, `properties`) VALUES
 (1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', NULL);
 
 -- --------------------------------------------------------
@@ -1098,7 +1098,6 @@ CREATE TABLE IF NOT EXISTS `sitemap_urls` (
   `loc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title_hash` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `title` longtext COLLATE utf8_unicode_ci,
-  `title_dublicates` int(11) NOT NULL,
   `lastmod` datetime DEFAULT NULL,
   `changefreq` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
   `priority` double DEFAULT NULL,
@@ -1187,21 +1186,21 @@ INSERT INTO `slides` (`id`, `enabled`, `file_name`, `original_file_name`, `title
 
 DROP TABLE IF EXISTS `texter`;
 CREATE TABLE IF NOT EXISTS `texter` (
-  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `locale` varchar(8) DEFAULT NULL,
   `text` longtext,
   `meta` longtext NOT NULL COMMENT '(DC2Type:array)',
-  `created` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `editor` smallint(6) NOT NULL,
-  PRIMARY KEY (`item_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `texter`
 --
 
-INSERT INTO `texter` (`item_id`, `locale`, `text`, `meta`, `created`, `user_id`, `editor`) VALUES
+INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `editor`) VALUES
 (1, 'ru', 'Футер\r', 'a:0:{}', '2012-08-27 03:16:57', 1, 1),
 (2, 'ru', '<h1>\r\n  Главная страница!\r\n</h1>\r\n<p>\r\n  С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма,\r\n  концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией\r\n  всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов\r\n  всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.\r\n</p>\r', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1, 0),
 (3, 'ru', '<h2>Пример страницы с 2-мя колонками</h2>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>', 'a:1:{s:8:"keywords";s:3:"sdf";}', '2012-08-27 03:51:05', 1, 1),
@@ -1514,7 +1513,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `facebook_id`, `created`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-11 05:09:17', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-12 06:10:41', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '2014-01-20 00:00:00');
 
