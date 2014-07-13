@@ -35,7 +35,7 @@
 {% endblock html_head_styles %}
 {# Scripts #}    <!-- Scripts -->
 {% block html_head_scripts %}
-    <script type="text/javascript">var basePath = "{{ app.request.basePath }}/"</script>
+    <script type="text/javascript">var basePath = "{{ app.request.baseUrl }}/"</script>
 {% for name, script in html.scripts %}
 {% if script._ie %}    <!--[if {{ script._ie }}]>
 {% endif %}

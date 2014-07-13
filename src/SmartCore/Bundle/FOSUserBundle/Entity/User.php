@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\FOSUserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
 
 /**
  * @ORM\Entity
@@ -11,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    use CreatedAtTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -19,28 +22,18 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
      */
     protected $firstname = '';
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
      */
     protected $lastname = '';
-
-    /**
-     * @ORM\Column(name="facebook_id", type="string", length=255)
-     * @var string
-     */
-    protected $facebookId = '';
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @var \DateTime
-     */
-    protected $created;
 
     /**
      * Constructor.
@@ -49,32 +42,7 @@ class User extends BaseUser
     {
         parent::__construct();
 
-        $this->created = new \DateTime();
-    }
-
-    public function serialize()
-    {
-        return serialize([
-            $this->facebookId,
-            parent::serialize()
-        ]);
-    }
-
-    public function unserialize($data)
-    {
-        list(
-            $this->facebookId,
-            $parentData
-        ) = unserialize($data);
-        parent::unserialize($parentData);
-    }
-
-    /**
-     * @return \Datetime
-     */
-    public function getCreated()
-    {
-        return $this->created;
+        $this->created_at = new \DateTime();
     }
 
     /**
@@ -111,52 +79,11 @@ class User extends BaseUser
 
     /**
      * Get the full name of the user (first + last name)
+     *
      * @return string
      */
     public function getFullName()
     {
         return $this->getFirstName() . ' ' . $this->getLastname();
-    }
-
-    /**
-     * @param string $facebookId
-     * @return void
-     */
-    public function setFacebookId($facebookId)
-    {
-        $this->facebookId = $facebookId;
-        $this->setUsername($facebookId);
-        $this->salt = '';
-    }
-
-    /**
-     * @return string
-     */
-    public function getFacebookId()
-    {
-        return $this->facebookId;
-    }
-
-    /**
-     * @param Array
-     */
-    public function setFBData($fbdata)
-    {
-        if (isset($fbdata['id'])) {
-            $this->setFacebookId($fbdata['id']);
-            $this->addRole('ROLE_FACEBOOK');
-        }
-
-        if (isset($fbdata['first_name'])) {
-            $this->setFirstname($fbdata['first_name']);
-        }
-
-        if (isset($fbdata['last_name'])) {
-            $this->setLastname($fbdata['last_name']);
-        }
-
-        if (isset($fbdata['email'])) {
-            $this->setEmail($fbdata['email']);
-        }
     }
 }

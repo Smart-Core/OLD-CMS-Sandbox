@@ -12,7 +12,7 @@ class BlockRenderHelper
     public function render()
     {
         /** @var \Symfony\Component\HttpFoundation\Response $response */
-        foreach ($this as $nodeId => $response) {
+        foreach ($this as $_dummy_nodeId => $response) {
             echo $response->getContent();
         }
 

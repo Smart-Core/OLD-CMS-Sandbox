@@ -12,9 +12,6 @@ use SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler\TemplateResourcesPas
 
 class CMSBundle extends Bundle
 {
-    protected $modules_cache = [];
-    protected $modules = [];
-
     public function boot()
     {
         Container::setContainer($this->container);

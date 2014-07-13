@@ -121,7 +121,7 @@ class EngineFolder
             $this->cache->set($cache_key, $uri, ['folder']);
         }
 
-        return $this->container->get('request')->getBaseUrl() . $uri;
+        return $this->container->get('request_stack')->getMasterRequest()->getBaseUrl() . $uri;
     }
 
     /**

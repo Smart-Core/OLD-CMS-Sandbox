@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class RequestVoter implements VoterInterface
 {
     /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
+     * @var RequestStack
      */
     protected $requestStack;
 

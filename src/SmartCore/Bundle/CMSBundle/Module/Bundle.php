@@ -8,7 +8,7 @@ use SmartCore\Bundle\CMSBundle\Entity\Node;
  * Использование Knp\RadBundle для автоматического конфигурирования сервисов,
  * если у модуля существует файл config/services.yml
  */
-class Bundle extends \Knp\RadBundle\AppBundle\Bundle
+abstract class Bundle extends \Knp\RadBundle\AppBundle\Bundle
 {
     /**
      * Действие при создании ноды.

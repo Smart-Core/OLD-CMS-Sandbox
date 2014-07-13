@@ -1,38 +1,39 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{# Нужно задать именно в старом формате, иначе система подключит дефолтный шаблон от ФОС #}
+{% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block fos_user_content %}
 
-{% if allow_registration %}
-    <a href="{{ path("fos_user_registration_register") }}" xmlns="http://www.w3.org/1999/html">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</a>
-{% endif %}
-{% if allow_registration and allow_password_resetting%} | {% endif %}
-{% if allow_password_resetting %}
-    <a href="{{ path("fos_user_resetting_request") }}">Восстановление пароля</a>
-{% endif %}
-{% if allow_registration or allow_password_resetting%} <br /><br /> {% endif %}
+    {% if allow_registration %}
+        <a href="{{ path('fos_user_registration_register') }}" xmlns="http://www.w3.org/1999/html">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</a>
+    {% endif %}
+    {% if allow_registration and allow_password_resetting%} | {% endif %}
+    {% if allow_password_resetting %}
+        <a href="{{ path('fos_user_resetting_request') }}">Восстановление пароля</a>
+    {% endif %}
+    {% if allow_registration or allow_password_resetting%} <br /><br /> {% endif %}
 
-{% if error %}
-    <div class="row-fluid">
-        <div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ error|trans({}, 'FOSUserBundle') }}</div>
-    </div>
-{% endif %}
+    {% if error %}
+        <div class="row-fluid">
+            <div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ error|trans({}, 'FOSUserBundle') }}</div>
+        </div>
+    {% endif %}
 
-{#<form action="{{ path("fos_user_security_check") }}" method="post">#}
-<form action="login_check" method="post" class="form-signin">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+    <form action="login_check" method="post" class="form-signin">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <div>
-        <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" class="focused"/>
-    </div>
-    <div>
-        <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-        <input type="password" id="password" name="_password" />
-    </div>
-    <div>
-        <label class="checkbox"><input type="checkbox" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-    </div>
+        <div>
+            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="focused"/>
+        </div>
+        <div>
+            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+        <div>
+            <label class="checkbox"><input type="checkbox" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        </div>
 
-    <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-</form>
+        <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    </form>
 {% endblock fos_user_content %}

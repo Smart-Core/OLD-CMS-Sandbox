@@ -4,10 +4,13 @@ namespace SmartCore\Bundle\CMSBundle\Tools;
 
 class Breadcrumbs implements \Iterator, \Countable
 {
+    /**
+     * @var int
+     */
     protected $_position = 0;
 
     /**
-     * Массив с хлебными крошками.
+     * @var array
      */
     protected $_breadcrumbs = [];
 
@@ -48,7 +51,7 @@ class Breadcrumbs implements \Iterator, \Countable
      */
     public function getLast()
     {
-        return (isset($this->_breadcrumbs[$this->count() - 1]))
+        return isset($this->_breadcrumbs[$this->count() - 1])
             ? $this->_breadcrumbs[$this->count() - 1]
             : null;
     }
@@ -56,8 +59,8 @@ class Breadcrumbs implements \Iterator, \Countable
     /**
      * Обновление последнего пункта.
      *
-     * @param $uri
-     * @param $title
+     * @param string $uri
+     * @param string $title
      * @param bool $descr
      */
     public function updateLast($uri, $title, $descr = false)
@@ -74,9 +77,9 @@ class Breadcrumbs implements \Iterator, \Countable
     /**
      * Установить данные.
      *
-     * @param $data
+     * @param array $data
      */
-    public function assign($data)
+    public function assign(array $data)
     {
         $this->_breadcrumbs = $data;
     }
@@ -100,9 +103,10 @@ class Breadcrumbs implements \Iterator, \Countable
     /**
      * Получиить хлебные крошки.
      *
+     * @param int $num
      * @return array
      */
-    public function get($num = false)
+    public function get($num = null)
     {
         // @todo если $num отрицательный, то вернуть указанный номер с конца, например -1 это последний, а -2 предпослений и т.д...
 
@@ -119,13 +123,13 @@ class Breadcrumbs implements \Iterator, \Countable
             }
         }
 
-        return ($num === false) ? $data : $data[$num];
+        return ($num === null) ? $data : $data[$num];
     }
 
     /**
      * Получить всю цепочку.
      *
-     * @param
+     * @return array
      */
     public function all()
     {
@@ -134,6 +138,8 @@ class Breadcrumbs implements \Iterator, \Countable
 
     /**
      * Получение ссылки на последнюю крошку.
+     *
+     * @return string
      */
     public function getLastUri()
     {

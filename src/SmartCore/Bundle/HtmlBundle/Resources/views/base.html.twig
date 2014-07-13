@@ -70,7 +70,7 @@
 
     <!-- Scripts -->
 {% block scripts %}
-    <script type="text/javascript">var basePath = "{{ app.request.basePath }}/"</script>
+    <script type="text/javascript">var basePath = "{{ app.request.baseUrl }}/"</script>
 {% for name, script in html.scripts %}
     <script{% for attr, value in script %}{% if attr == '_code' %}{% else %} {{ attr }}="{{ value | raw }}"{% endif %}{% endfor %}>{% if script._code %}{{ script._code | raw }}{% endif %}</script>
 {% endfor %}

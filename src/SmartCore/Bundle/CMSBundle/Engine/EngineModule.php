@@ -19,12 +19,12 @@ class EngineModule extends ContainerAware
     protected $kernel;
 
     /**
-     * @var \SmartCore\Bundle\CMSBundle\Module\Bundle
+     * @var \SmartCore\Bundle\CMSBundle\Module\Bundle[]
      */
     protected $modules = [];
 
     /**
-     * Constructor.
+     * @param KernelInterface $kernel
      */
     public function __construct(KernelInterface $kernel)
     {
@@ -53,7 +53,7 @@ class EngineModule extends ContainerAware
      */
     public function get($name)
     {
-        return (isset($this->modules[$name])) ? $this->modules[$name] : null;
+        return isset($this->modules[$name]) ? $this->modules[$name] : null;
     }
 
     /**

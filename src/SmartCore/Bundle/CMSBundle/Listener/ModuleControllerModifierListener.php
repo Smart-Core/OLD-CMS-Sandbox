@@ -31,6 +31,7 @@ class ModuleControllerModifierListener
 
     /**
      * @param EngineContext $engineContext
+     * @param EngineFolder $engineFolder
      * @param EngineNode $engineNodeManager
      */
     public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineNode $engineNodeManager)

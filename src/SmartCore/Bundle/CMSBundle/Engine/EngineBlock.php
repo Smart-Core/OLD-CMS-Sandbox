@@ -52,7 +52,8 @@ class EngineBlock
     }
 
     /**
-     * @param null $name
+     * @param string|null $name
+     * @param string|null $descr
      * @return Block
      */
     public function create($name = null, $descr = null)
