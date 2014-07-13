@@ -42,7 +42,7 @@ class AdminController extends Controller
         $parameters = $this->container->getParameter('fm_elfinder');
 
         return $this->render('CMSBundle:Admin:elfinder.html.twig', [
-            'locale' => $parameters['locale'] ?: $request->getLocale(),
+            'locale' => $parameters['locale'] ? $parameters['locale'] : $request->getLocale(),
             'fullscreen' => true,
             'includeAssets' => $parameters['include_assets'],
         ]);
@@ -296,15 +296,15 @@ class AdminController extends Controller
             if ($request->request->has('create')) {
                 $form->handleRequest($request);
                 if ($form->isValid()) {
-                    /** @var $created_node \SmartCore\Bundle\CMSBundle\Entity\Node */
-                    $created_node = $form->getData();
+                    /** @var $createdNode \SmartCore\Bundle\CMSBundle\Entity\Node */
+                    $createdNode = $form->getData();
 
-                    $engineNode->update($created_node);
+                    $engineNode->update($createdNode);
 
                     // Если у модуля есть роутинги, тогда нода подключается к папке как роутер.
-                    if ($this->container->has('cms.router_module.' . $created_node->getModule())) {
-                        $folder = $created_node->getFolder();
-                        $folder->setRouterNodeId($created_node->getId());
+                    if ($this->container->has('cms.router_module.' . $createdNode->getModule())) {
+                        $folder = $createdNode->getFolder();
+                        $folder->setRouterNodeId($createdNode->getId());
                         $this->get('cms.folder')->update($folder);
                     }
 
@@ -312,10 +312,10 @@ class AdminController extends Controller
                     $this->get('session')->getFlashBag()->add('success', 'Нода создана.');
 
                     if ('front' === $request->query->get('redirect_to')) {
-                        return $this->get('cms.router')->redirect($created_node);
+                        return $this->get('cms.router')->redirect($createdNode);
                     }
 
-                    return $this->redirect($this->generateUrl('cms_admin_structure_node_properties', ['id' => $created_node->getId()]));
+                    return $this->redirect($this->generateUrl('cms_admin_structure_node_properties', ['id' => $createdNode->getId()]));
                 }
             } elseif ($request->request->has('delete')) {
                 die('@todo');
@@ -353,16 +353,16 @@ class AdminController extends Controller
                 $form->handleRequest($request);
                 $form_properties->handleRequest($request);
                 if ($form->isValid() and $form_properties->isValid()) {
-                    /** @var $updated_node \SmartCore\Bundle\CMSBundle\Entity\Node */
-                    $updated_node = $form->getData();
-                    $updated_node->setParams($form_properties->getData());
-                    $engineNode->update($updated_node);
+                    /** @var $updatedNode \SmartCore\Bundle\CMSBundle\Entity\Node */
+                    $updatedNode = $form->getData();
+                    $updatedNode->setParams($form_properties->getData());
+                    $engineNode->update($updatedNode);
 
                     $this->get('tagcache')->deleteTag('node');
                     $this->get('session')->getFlashBag()->add('success', 'Нода обновлена.');
 
                     if ($request->query->has('redirect_to')) {
-                        return $this->get('cms.router')->redirect($updated_node);
+                        return $this->get('cms.router')->redirect($updatedNode);
                     }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
