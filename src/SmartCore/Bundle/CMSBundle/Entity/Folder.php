@@ -298,6 +298,14 @@ class Folder
     }
 
     /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->is_active;
+    }
+
+    /**
      * @param bool $has_inherit_nodes
      * @return $this
      */
