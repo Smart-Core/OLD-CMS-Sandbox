@@ -9,6 +9,8 @@
 {% block content %}
     {{ parent() }}
 
+<div class="row-fluid">
+<div class="span8">
     <table class="table table-bordered table-hover">
         <thead><tr>
             <th>#</th>
@@ -31,16 +33,21 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
+<div class="span4">
     <div class="well well-small">
-        <form action="" {{ form_enctype(form) }} method="post" class="form-horizontal">
+        <h4>{{ 'Create'|trans }} {{ 'Block'|trans }}</h4>
+        <form action="" {{ form_enctype(form) }} method="post" class="_form-horizontal">
             {{ form_widget(form) }}
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Create'|trans }}</button>
                 </div>
             </div>
         </form>
     </div>
+</div>
+</div>
 
 {% endblock content %}

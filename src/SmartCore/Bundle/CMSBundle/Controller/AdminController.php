@@ -2,9 +2,9 @@
 
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
+use Knp\RadBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Finder\Finder;
@@ -78,7 +78,7 @@ class AdminController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $engineBlock->update($form->getData());
-                $this->get('session')->getFlashBag()->add('success', 'Блок создан.'); // @todo перевод
+                $this->addFlash('success', 'Блок создан.'); // @todo перевод
 
                 return $this->redirect($this->generateUrl('cms_admin_structure_block'));
             }
@@ -109,20 +109,29 @@ class AdminController extends Controller
         $form = $engineBlock->createForm($block);
 
         if ($request->isMethod('POST')) {
-            $sessionFlashBag = $this->get('session')->getFlashBag();
+            $form->handleRequest($request);
+
             if ($request->request->has('update')) {
-                $form->handleRequest($request);
                 if ($form->isValid()) {
                     $engineBlock->update($form->getData());
-                    $sessionFlashBag->add('success', 'Блок обновлён.'); // @todo перевод
+                    $this->addFlash('success', 'Блок обновлён.'); // @todo перевод
 
                     return $this->redirect($this->generateUrl('cms_admin_structure_block'));
                 }
             } elseif ($request->request->has('delete')) {
-                $engineBlock->remove($form->getData());
-                $sessionFlashBag->add('success', 'Блок удалён.'); // @todo перевод
+                /** @var \SmartCore\Bundle\CMSBundle\Entity\Block $block */
+                $block = $form->getData();
 
-                return $this->redirect($this->generateUrl('cms_admin_structure_block'));
+                if ('content' == $block->getName()) {
+                    $this->addFlash('error', 'Нельзя удалить блок content'); // @todo перевод
+                } elseif (0 < $this->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Node')->countInBlock($block)) {
+                    $this->addFlash('error', 'Нельзя удалить блок пока в него включены ноды'); // @todo перевод
+                } else {
+                    $engineBlock->remove($block);
+                    $this->addFlash('success', 'Блок удалён.'); // @todo перевод
+
+                    return $this->redirect($this->generateUrl('cms_admin_structure_block'));
+                }
             }
         }
 
@@ -175,7 +184,7 @@ class AdminController extends Controller
                     $engineFolder->update($form->getData());
 
                     $this->get('tagcache')->deleteTag('folder');
-                    $this->get('session')->getFlashBag()->add('success', 'Папка создана.');
+                    $this->addFlash('success', 'Папка создана.');
 
                     if ($request->query->has('redirect_to')) {
                         return $this->get('cms.router')->redirect($folder);
@@ -230,7 +239,7 @@ class AdminController extends Controller
                     $engineFolder->update($form->getData());
 
                     $this->get('tagcache')->deleteTag('folder');
-                    $this->get('session')->getFlashBag()->add('success', 'Папка обновлена.');
+                    $this->addFlash('success', 'Папка обновлена.');
 
                     if ($request->query->has('redirect_to')) {
                         return $this->get('cms.router')->redirect($folder);
@@ -302,19 +311,20 @@ class AdminController extends Controller
                     $engineNode->update($createdNode);
 
                     // Если у модуля есть роутинги, тогда нода подключается к папке как роутер.
-                    if ($this->container->has('cms.router_module.' . $createdNode->getModule())) {
-                        $folder = $createdNode->getFolder();
+                    $folder = $createdNode->getFolder();
+                    if ($this->container->has('cms.router_module.' . $createdNode->getModule()) and !$folder->getRouterNodeId()) {
                         $folder->setRouterNodeId($createdNode->getId());
                         $this->get('cms.folder')->update($folder);
                     }
 
                     $this->get('tagcache')->deleteTag('node');
-                    $this->get('session')->getFlashBag()->add('success', 'Нода создана.');
+                    $this->addFlash('success', 'Нода создана.');
 
                     if ('front' === $request->query->get('redirect_to')) {
                         return $this->get('cms.router')->redirect($createdNode);
                     }
 
+                    return $this->redirectToRoute('cms_admin_structure_node_properties', ['id' => $createdNode->getId()]);
                     return $this->redirect($this->generateUrl('cms_admin_structure_node_properties', ['id' => $createdNode->getId()]));
                 }
             } elseif ($request->request->has('delete')) {
@@ -359,7 +369,7 @@ class AdminController extends Controller
                     $engineNode->update($updatedNode);
 
                     $this->get('tagcache')->deleteTag('node');
-                    $this->get('session')->getFlashBag()->add('success', 'Нода обновлена.');
+                    $this->addFlash('success', 'Нода обновлена.');
 
                     if ($request->query->has('redirect_to')) {
                         return $this->get('cms.router')->redirect($updatedNode);

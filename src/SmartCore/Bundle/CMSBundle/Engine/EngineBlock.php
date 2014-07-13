@@ -88,6 +88,10 @@ class EngineBlock
      */
     public function remove(Block $entity)
     {
+        if ('content' == $entity->getName()) {
+            return;
+        }
+
         $this->em->remove($entity);
         $this->em->flush($entity);
     }

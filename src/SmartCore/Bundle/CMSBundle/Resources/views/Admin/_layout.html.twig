@@ -45,8 +45,6 @@
             <!-- Everything you want hidden at 940px or less, place within here -->
             <div class="nav-collapse collapse">
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
-                {#{% set admin_main_menu = knp_menu_get('CMSBundle:AdminMenu:main' , [], {'class': 'nav'}) %}#}
-                {#{{ knp_menu_render('admin_main_menu', {'currentClass': 'active'})  }}#}
                 {{ knp_menu_render('CMSBundle:AdminMenu:main', { 'currentClass': 'active', 'clear_matcher': false })}}
 
                 <ul class="nav pull-right">
