@@ -1,4 +1,4 @@
-{% extends '@CMS/Admin/structure.html.twig' %}
+{% extends '@CMS/AdminStructure/structure.html.twig' %}
 
 {% block title %}{{ 'Create node'|trans }} / {{ parent() }}{% endblock %}
 
@@ -40,7 +40,7 @@
 
 {% block bottom_nav %}
     <div class="span3">
-        {{ include('@CMS/Admin/_tree.html.twig') }}
+        {{ include('@CMS/AdminStructure/_tree.html.twig') }}
     </div>
 {% endblock bottom_nav %}
 

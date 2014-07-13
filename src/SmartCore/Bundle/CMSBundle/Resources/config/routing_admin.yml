@@ -20,18 +20,18 @@ cms_admin_logout:
 cms_admin_structure:
     path: /structure/
     defaults:
-        _controller: CMSBundle:Admin:structure
+        _controller: CMSBundle:AdminStructure:structure
 
 # Block
 cms_admin_structure_block:
     path: /structure/block/
     defaults:
-        _controller: CMSBundle:Admin:blockIndex
+        _controller: CMSBundle:AdminStructure:blockIndex
 
 cms_admin_structure_block_edit:
     path: /structure/block/{id}/
     defaults:
-        _controller: CMSBundle:Admin:blockEdit
+        _controller: CMSBundle:AdminStructure:blockEdit
     requirements:
         id: \d+
 
@@ -39,17 +39,17 @@ cms_admin_structure_block_edit:
 cms_admin_structure_folder_create:
     path: /structure/folder/create/
     defaults:
-        _controller: CMSBundle:Admin:folderCreate
+        _controller: CMSBundle:AdminStructure:folderCreate
 
 cms_admin_structure_folder_create_in_folder:
     path: /structure/folder/create/{folder_pid}/
     defaults:
-        _controller: CMSBundle:Admin:folderCreate
+        _controller: CMSBundle:AdminStructure:folderCreate
 
 cms_admin_structure_folder:
     path: /structure/folder/{id}/
     defaults:
-        _controller: CMSBundle:Admin:folderEdit
+        _controller: CMSBundle:AdminStructure:folderEdit
     requirements:
         id: \d+
 
@@ -57,21 +57,22 @@ cms_admin_structure_folder:
 cms_admin_structure_node_create:
     path: /structure/node/create/
     defaults:
-        _controller: CMSBundle:Admin:nodeCreate
+        _controller: CMSBundle:AdminStructure:nodeCreate
+
 cms_admin_structure_node_create_in_folder:
     path: /structure/node/create/{folder_pid}/
     defaults:
-        _controller: CMSBundle:Admin:nodeCreate
+        _controller: CMSBundle:AdminStructure:nodeCreate
 
 #cms_admin_structure_node_all:
 #    path: /structure/node/
 #    defaults:
-#        _controller: CMSBundle:Admin:node
+#        _controller: CMSBundle:AdminStructure:node
 
 cms_admin_structure_node_properties:
     path: /structure/node/{id}/
     defaults:
-        _controller: CMSBundle:Admin:nodeEdit
+        _controller: CMSBundle:AdminStructure:nodeEdit
     requirements:
         id: \d+
 
