@@ -24,12 +24,31 @@ class FolderFormType extends AbstractType
             $templates[$name] = $name;
         }
 
+        $routedNodes = ['' => ''];
+        /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
+        foreach (Container::get('cms.node')->findInFolder($options['data']) as $node) {
+            if (!Container::has('cms.router_module.' . $node->getModule())) {
+                continue;
+            }
+
+            $nodeTitle = $node->getId() . ': ' . $node->getModule();
+
+            if ($node->getDescr()) {
+                $nodeTitle .= ' (' . $node->getDescr() . ')';
+            }
+
+            $routedNodes[$node->getId()] = $nodeTitle;
+        }
+
         $builder
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('uri_part')
             ->add('descr')
             ->add('parent_folder', 'cms_folder_tree')
-            ->add('router_node_id')
+            ->add('router_node_id', 'choice', [
+                'choices'  => $routedNodes,
+                'required' => false,
+            ])
             ->add('position')
             ->add('is_active')
             ->add('is_file')

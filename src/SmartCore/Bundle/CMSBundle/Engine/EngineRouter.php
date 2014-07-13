@@ -161,7 +161,7 @@ class EngineRouter
     /**
      * @param  string $module
      * @param  string $path
-     * @return array
+     * @return array|null
      *
      * @throw ResourceNotFoundException
      */

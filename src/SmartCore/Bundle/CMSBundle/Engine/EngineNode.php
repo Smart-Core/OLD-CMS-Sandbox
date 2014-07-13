@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Doctrine\ORM\EntityManager;
 use RickySu\Tagcache\Adapter\TagcacheAdapter;
+use SmartCore\Bundle\CMSBundle\Entity\Folder;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeDefaultPropertiesFormType;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
@@ -124,6 +125,15 @@ class EngineNode
         return $this->repository->find($id);
     }
 
+    /**
+     * @param Folder $folder
+     * @return array|\SmartCore\Bundle\CMSBundle\Entity\Node[]
+     */
+    public function findInFolder(Folder $folder)
+    {
+        return $this->repository->findBy(['folder' => $folder]);
+    }
+    
     /**
      * @param Node $node
      */

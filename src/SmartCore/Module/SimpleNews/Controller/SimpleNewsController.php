@@ -9,7 +9,7 @@ use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class NewsController extends Controller
+class SimpleNewsController extends Controller
 {
     use NodeTrait;
 

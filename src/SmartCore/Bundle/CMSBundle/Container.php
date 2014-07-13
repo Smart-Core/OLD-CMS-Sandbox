@@ -21,6 +21,15 @@ class Container
     }
 
     /**
+     * @param  string $name
+     * @return ContainerInterface
+     */
+    public static function has($name)
+    {
+        return self::$container->has($name);
+    }
+
+    /**
      * @param ContainerInterface $container
      */
     public static function setContainer(ContainerInterface $container)
@@ -43,5 +52,14 @@ class Container
     public static function getParameter($name)
     {
         return self::$container->getParameter($name);
+    }
+
+    /**
+     * @param  string $name
+     * @return mixed
+     */
+    public static function hasParameter($name)
+    {
+        return self::$container->hasParameter($name);
     }
 }
