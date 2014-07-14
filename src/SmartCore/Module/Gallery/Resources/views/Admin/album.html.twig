@@ -1,0 +1,47 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ album.title }} / {{ 'Gallery'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <a href="{{ path('smart_module.gallery.admin_gallery', {'id': album.gallery.id }) }}" style="float: right; margin-top: 14px;"> &laquo; Назад в галерею: {{ album.gallery }}</a>
+
+    <h2>{{ 'Photos'|trans }} ({{ album.title }})</h2>
+
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th style="width: 1%;">{{ 'Photo'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th style="width: 130px;">{{ 'Created at'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for photo in photos %}
+            <tr id="photo_tr_{{ photo.id }}">
+                <td>{{ photo.id }}</td>
+                <td>
+
+                    <a href="{{ path('smart_module.gallery.admin_photo', {'id': photo.id, 'album_id': photo.album.id, 'gallery_id': photo.album.gallery.id }) }}">
+                        {{ smart_media_img(photo.imageId, '200-200') }}
+                    </a>
+                </td>
+                <td>
+                    {{ photo.descr }}
+
+                    {#
+                    <a href="{{ path('smart_module.gallery.admin_gallery_edit', {'id': album.gallery.id }) }}" style="float: right;" onclick="return confirm('Вы уверены, что хотите удалить фотографию?')">
+                        <i class="icon-remove" title="{{ 'Delete'|trans }}"></i>
+                    </a>
+                    #}
+                </td>
+                <td>{{ photo.createdAt|localizeddate }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

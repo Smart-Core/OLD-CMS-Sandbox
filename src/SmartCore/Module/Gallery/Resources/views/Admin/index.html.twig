@@ -1,0 +1,39 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'Galleries'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Galleries'|trans }}</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Albums'|trans }}</th>
+            <th>{{ 'Media collection'|trans }}</th>
+            <th>{{ 'Create datetime'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for gallery in galleries %}
+            <tr>
+                <td>{{ gallery.id }}</td>
+                <td><a href="{{ path('smart_module.gallery.admin_gallery', {'id': gallery.id }) }}">{{ gallery.title }}</a>
+
+                    <a href="{{ path('smart_module.gallery.admin_gallery_edit', {'id': gallery.id }) }}" style="float: right;">
+                        <i class="icon-edit" title="{{ 'Edit'|trans }}"></i>
+                    </a>
+                </td>
+                <td>{{ gallery.albums|length }}</td>
+                <td>{{ gallery.mediaCollection }}</td>
+                <td>{{ gallery.createdAt|localizeddate }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
+    </div>
+
+{% endblock content %}

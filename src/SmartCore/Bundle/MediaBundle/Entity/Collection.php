@@ -102,6 +102,14 @@ class Collection
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    /**
      * @return int
      */
     public function getId()

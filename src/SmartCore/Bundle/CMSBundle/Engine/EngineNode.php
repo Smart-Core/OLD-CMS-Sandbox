@@ -133,7 +133,7 @@ class EngineNode
     {
         return $this->repository->findBy(['folder' => $folder]);
     }
-    
+
     /**
      * @param Node $node
      */

@@ -1,0 +1,9 @@
+{
+    "name": "smart-core/gallery-module",
+    "autoload": {
+        "psr-0": {
+            "SmartCore\\Module\\Gallery": ""
+        }
+    },                
+    "target-dir": "SmartCore/Module/Gallery"
+}

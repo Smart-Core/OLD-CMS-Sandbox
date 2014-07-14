@@ -103,6 +103,7 @@ class NodeRepository extends EntityRepository
                     AND bi.folder_id = '$folder'
                 ORDER BY n.position ASC
             ";
+
         return $this->_em->getConnection()->query($sql);
     }
 }

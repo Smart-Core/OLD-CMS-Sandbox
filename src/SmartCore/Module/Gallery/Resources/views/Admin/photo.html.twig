@@ -1,0 +1,15 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'Edit'|trans }}: {{ gallery.title }} / {{ 'Gallery'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Photo'|trans }}</h2>
+
+    {{ smart_media_img(photo.imageId, '200-200') }}
+
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
+    </div>
+
+{% endblock content %}

@@ -35,7 +35,7 @@ class HtmlExtension extends \Twig_Extension
     {
         return $this->html;
     }
-    
+
     /**
      * @return string
      */

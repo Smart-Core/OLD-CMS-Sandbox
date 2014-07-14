@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 13 2014 г., 14:53
+-- Время создания: Июл 15 2014 г., 06:06
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -605,7 +605,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   KEY `is_active` (`is_active`),
   KEY `is_deleted` (`is_deleted`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
 -- Дамп данных таблицы `engine_folders`
@@ -619,14 +619,15 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50', NULL),
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL),
 (7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL),
-(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'N;', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
+(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'a:0:{}', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
 (9, 1, 'Обратная связь', 0, 0, 'feedback', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-21 13:35:11', NULL),
 (11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
 (12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL),
 (13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL),
 (14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
-(16, 1, 'Каталог 2', 0, 0, 'catalog2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL);
+(16, 1, 'Каталог 2', 0, 0, 'catalog2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
+(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -655,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
 
 --
 -- Дамп данных таблицы `engine_nodes`
@@ -665,7 +666,7 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `block_id`, `is_active`, `module`
 (1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL),
 (2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 0, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL),
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0, NULL),
-(4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:0;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL),
+(4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:1;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL),
 (5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL),
 (6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
 (7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
@@ -683,14 +684,15 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `block_id`, `is_active`, `module`
 (20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL),
 (21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL),
 (22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL),
-(23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, NULL, 1, '2014-02-07 22:55:10', 0, NULL),
+(23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, 'Тэги блога', 1, '2014-02-07 22:55:10', 0, NULL),
 (24, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:15;s:6:"editor";b:1;}', 19, 0, NULL, 1, '2014-02-08 21:01:35', 0, NULL),
 (25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL),
-(26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, NULL, 1, '2014-02-08 21:04:50', 0, NULL),
+(26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL),
 (27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, NULL, 1, '2014-02-10 08:13:18', 0, NULL),
 (28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL),
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL),
-(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL);
+(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL),
+(31, 17, 1, 1, 'Gallery', 'a:0:{}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -733,7 +735,7 @@ CREATE TABLE IF NOT EXISTS `engine_settings` (
   UNIQUE KEY `bundle_key` (`bundle`,`key_name`),
   KEY `bundle` (`bundle`),
   KEY `key_name` (`key_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `engine_settings`
@@ -742,7 +744,11 @@ CREATE TABLE IF NOT EXISTS `engine_settings` (
 INSERT INTO `engine_settings` (`id`, `bundle`, `key_name`, `value`, `serialized`) VALUES
 (1, 'cms', 'site_full_name', 'Smart Core CMS (based on Symfony2 Framework)', 0),
 (2, 'cms', 'site_short_name', 'Smart Core CMS', 0),
-(3, 'cms', 'html_title_delimiter', '&ndash;', 0);
+(3, 'cms', 'html_title_delimiter', '&ndash;', 0),
+(4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0),
+(5, 'cms', 'appearance_editor', 'ace', 0),
+(6, 'cms', 'appearance_scripts_path', '/theme/js/', 0),
+(7, 'cms', 'appearance_styles_path', '/theme/css/', 0);
 
 -- --------------------------------------------------------
 
@@ -762,6 +768,80 @@ CREATE TABLE IF NOT EXISTS `feedbacks` (
 
 --
 -- Дамп данных таблицы `feedbacks`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `galleries`
+--
+
+DROP TABLE IF EXISTS `galleries`;
+CREATE TABLE IF NOT EXISTS `galleries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `media_collection_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_F70E6EB7B52E685C` (`media_collection_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `title`, `created_at`, `user_id`, `media_collection_id`) VALUES
+(1, 'Тестовая фотогалерея', '2014-07-15 03:59:43', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `gallery_albums`
+--
+
+DROP TABLE IF EXISTS `gallery_albums`;
+CREATE TABLE IF NOT EXISTS `gallery_albums` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gallery_id` int(11) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `descr` longtext COLLATE utf8_unicode_ci,
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `gallery_albums`
+--
+
+INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`, `user_id`) VALUES
+(1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1),
+(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `gallery_photos`
+--
+
+DROP TABLE IF EXISTS `gallery_photos`;
+CREATE TABLE IF NOT EXISTS `gallery_photos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_id` int(11) NOT NULL,
+  `album_id` int(11) DEFAULT NULL,
+  `descr` longtext COLLATE utf8_unicode_ci,
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `position` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_AAF50C7B1137ABCF` (`album_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `gallery_photos`
 --
 
 
@@ -807,14 +887,15 @@ CREATE TABLE IF NOT EXISTS `media_collections` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_C40927D314E68FF3` (`default_storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `media_collections`
 --
 
 INSERT INTO `media_collections` (`id`, `default_storage_id`, `title`, `default_filter`, `params`, `relative_path`, `filename_pattern`, `file_relative_path_pattern`, `created_at`) VALUES
-(1, 1, 'Каталог товаров', NULL, 'N;', '/catalog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-02-14 13:43:18');
+(1, 1, 'Каталог товаров', NULL, 'N;', '/catalog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-02-14 13:43:18'),
+(2, 1, 'Фотогалерея', NULL, 'N;', '/gallery', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-07-15 04:46:03');
 
 -- --------------------------------------------------------
 
@@ -943,7 +1024,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
 -- Дамп данных таблицы `menu`
@@ -964,7 +1045,8 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 (13, 1, 14, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 07:56:17', NULL, 11, 'N;'),
 (14, 1, 4, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 11:28:48', NULL, 8, 'N;'),
 (15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;'),
-(16, 1, 16, 1, 6, NULL, NULL, NULL, 1, '2014-07-01 13:35:20', NULL, NULL, 'N;');
+(16, 1, 16, 1, 6, NULL, NULL, NULL, 1, '2014-07-01 13:35:20', NULL, NULL, 'N;'),
+(17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1284,7 @@ CREATE TABLE IF NOT EXISTS `texter` (
 
 INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `editor`) VALUES
 (1, 'ru', 'Футер\r', 'a:0:{}', '2012-08-27 03:16:57', 1, 1),
-(2, 'ru', '<h1>\r\n  Главная страница!\r\n</h1>\r\n<p>\r\n  С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма,\r\n  концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией\r\n  всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов\r\n  всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.\r\n</p>\r', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1, 0),
+(2, 'ru', '<h1>\r\n  Главная страница!\r\n</h1>\r\n<p>\r\n  С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма,\r\n  концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией\r\n  всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов\r\n  всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.\r\n</p>\r', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1, 1),
 (3, 'ru', '<h2>Пример страницы с 2-мя колонками</h2>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>', 'a:1:{s:8:"keywords";s:3:"sdf";}', '2012-08-27 03:51:05', 1, 1),
 (4, 'ru', '<p><img src="/uploads/images/bscap0001.jpg" alt="" width="300" height="124" /><br />Сервисная стратегия деятельно искажает продвигаемый медиаплан, опираясь на опыт западных коллег. Внутрифирменная реклама, согласно Ф.Котлеру, откровенно цинична. Торговая марка исключительно уравновешивает презентационный материал, полагаясь на инсайдерскую информацию. Наряду с этим, узнавание бренда вполне выполнимо. Организация слубы маркетинга, согласно Ф.Котлеру, усиливает фактор коммуникации, осознавая социальную ответственность бизнеса. Экспертиза выполненного проекта восстанавливает потребительский презентационный материал, полагаясь на инсайдерскую информацию.</p>', 'a:0:{}', '2012-08-27 03:51:27', 1, 1),
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1, 0),
@@ -1512,7 +1594,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-13 14:30:17', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-14 21:14:09', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1686,6 +1768,24 @@ ALTER TABLE `engine_folders`
 ALTER TABLE `engine_nodes`
   ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
   ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `galleries`
+--
+ALTER TABLE `galleries`
+  ADD CONSTRAINT `FK_F70E6EB7B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `gallery_albums`
+--
+ALTER TABLE `gallery_albums`
+  ADD CONSTRAINT `FK_5661ABED4E7AF8F` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `gallery_photos`
+--
+ALTER TABLE `gallery_photos`
+  ADD CONSTRAINT `FK_AAF50C7B1137ABCF` FOREIGN KEY (`album_id`) REFERENCES `gallery_albums` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_categories`

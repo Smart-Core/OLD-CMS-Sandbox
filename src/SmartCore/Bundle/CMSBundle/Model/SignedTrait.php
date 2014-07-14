@@ -5,6 +5,8 @@ namespace SmartCore\Bundle\CMSBundle\Model;
 trait SignedTrait
 {
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $user_id = 0;

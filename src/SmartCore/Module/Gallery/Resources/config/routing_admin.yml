@@ -1,0 +1,25 @@
+
+smart_module.gallery.admin:
+    path: /
+    defaults:
+        _controller: GalleryModule:AdminGallery:index
+
+smart_module.gallery.admin_gallery:
+    path: /gallery_{id}/
+    defaults:
+        _controller: GalleryModule:AdminGallery:gallery
+
+smart_module.gallery.admin_gallery_edit:
+    path: /gallery_{id}/edit/
+    defaults:
+        _controller: GalleryModule:AdminGallery:galleryEdit
+
+smart_module.gallery.admin_album:
+    path: /gallery_{gallery_id}/album_{id}/
+    defaults:
+        _controller: GalleryModule:AdminGallery:album
+
+smart_module.gallery.admin_photo:
+    path: /gallery_{gallery_id}/album_{album_id}/photo_{id}/
+    defaults:
+        _controller: GalleryModule:AdminGallery:photo

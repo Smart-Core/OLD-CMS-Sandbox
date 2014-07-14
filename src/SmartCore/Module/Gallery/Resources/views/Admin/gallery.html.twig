@@ -1,0 +1,36 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ gallery.title }} / {{ 'Gallery'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <a href="{{ path('smart_module.gallery.admin') }}" style="float: right; margin-top: 14px;"> &laquo; Назад к списку галерей</a>
+
+    <h2>{{ 'Albums'|trans }}</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th>{{ 'Photos'|trans }}</th>
+            <th>{{ 'Create datetime'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for album in albums %}
+            <tr>
+                <td>{{ album.id }}</td>
+                <td><a href="{{ path('smart_module.gallery.admin_album', {'id': album.id, 'gallery_id': album.gallery.id }) }}">{{ album.title }}</a></td>
+                <td>{{ album.description }}</td>
+                <td>{{ album.photos|length }}</td> {# @todo более оптимальный #}
+                <td>{{ album.createdAt|localizeddate }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
+    </div>
+
+{% endblock content %}
