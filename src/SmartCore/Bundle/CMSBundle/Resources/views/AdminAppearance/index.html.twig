@@ -4,9 +4,17 @@
 
 {% block content %}
 
-    <ul class="nav nav-pills" id="myTab">
+    <h3>{{ 'Templates'|trans }}</h3>
+    <ul class="nav nav-pills">
         {% for template in templates %}
             <li><a href="{{ path('cms_admin_appearance_template', {'name': template}) }}">{{ template }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h3>{{ 'Styles'|trans }}</h3>
+    <ul class="nav nav-pills">
+        {% for style in styles %}
+            <li><a href="{{ path('cms_admin_appearance_style', {'name': style}) }}">{{ style }}</a></li>
         {% endfor %}
     </ul>
 

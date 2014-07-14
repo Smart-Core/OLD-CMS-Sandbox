@@ -98,9 +98,14 @@ cms_admin_appearance:
         _controller: CMSBundle:AdminAppearance:index
 
 cms_admin_appearance_template:
-    path: /appearance/{name}/
+    path: /appearance/{name}.twig
     defaults:
         _controller: CMSBundle:AdminAppearance:templateEdit
+
+cms_admin_appearance_style:
+    path: /appearance/{name}
+    defaults:
+        _controller: CMSBundle:AdminAppearance:styleEdit
 
 cms_admin_files:
     path: /files/

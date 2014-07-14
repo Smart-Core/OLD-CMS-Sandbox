@@ -30,6 +30,7 @@ Delete: Удалить
 Dimension: Размер
 Edit folder: Редактировать папку
 Edit node: Редактировать ноду
+Edit style: Редактировать стиль
 Edit template: Редактировать шаблон
 Editor: Редактор
 Exit: Выход
@@ -91,9 +92,11 @@ Slug: Часть URI
 Status: Статус
 String: Строка
 Structure: Структура
+Styles: Стили
 Template: Шаблон
 Template inheritable: Наследуемый шаблон
 Template self: Собственный шаблон
+Templates: Шаблоны
 Text: Текст
 Title: Заголовок
 Type: Тип
