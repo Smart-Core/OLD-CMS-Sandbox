@@ -15,8 +15,6 @@
             <th style="width: 1%;">#</th>
             <th>{{ 'Name'|trans }}</th>
             <th>{{ 'Namespace'|trans }}</th>
-            <th>{{ 'Description'|trans }}</th>
-            <th>{{ 'Actions'|trans }}</th>
         </tr></thead>
         <tbody>
         {% set modules_count = 1 %}
@@ -31,12 +29,6 @@
                     {% endif %}
                 </td>
                 <td>{{ module.namespace }}</td>
-                <td>@todo</td>
-                <td>
-                    {% if module.hasAdmin %}
-                        <a href="#">{{ 'Manage'|trans }}</a>
-                    {% endif %}
-                </td>
             </tr>
         {% endfor %}
         </tbody>
