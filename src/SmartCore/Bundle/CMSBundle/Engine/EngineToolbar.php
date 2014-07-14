@@ -39,13 +39,6 @@ class EngineToolbar extends ContainerAware
                             'icon'  => 'th',
                             'uri'   => $router->generate('cms_admin_structure_block'),
                         ],
-                        /*
-                        'appearance' => [
-                            'title' => $t->trans('Appearance'),
-                            'icon'  => 'picture',
-                            'uri'   => $router->generate('cms_admin_appearance'),
-                        ],
-                        */
                         'users' => [
                             'title' => $t->trans('Users'),
                             'icon'  => 'user',
@@ -55,6 +48,11 @@ class EngineToolbar extends ContainerAware
                             'title' => $t->trans('Configuration'),
                             'icon'  => 'tasks',
                             'uri'   => $router->generate('cms_admin_config'),
+                        ],
+                        'appearance' => [
+                            'title' => $t->trans('Appearance'),
+                            'icon'  => 'picture',
+                            'uri'   => $router->generate('cms_admin_appearance'),
                         ],
                         /*
                         'reports' => [

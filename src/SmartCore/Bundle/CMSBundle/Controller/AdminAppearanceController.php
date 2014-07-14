@@ -27,15 +27,35 @@ class AdminAppearanceController extends Controller
      */
     public function templateEditAction(Request $request, $name)
     {
+        $template_file_path = $this->container->getParameter('kernel.root_dir') . '/Resources/views/' . $name . '.html.twig';
+
+        if (!file_exists($template_file_path)) {
+            return $this->redirectToRoute('cms_admin_appearance');
+        }
+
+        $template_code = file_get_contents($template_file_path);
+
         if ($request->isMethod('POST')) {
+            $twig = $this->get('twig');
+
+            $template_code = $request->request->get('template_code');
+
+            try {
+                $twig->parse($twig->tokenize($template_code));
+
+                $this->addFlash('success', 'Twig шаблон валиден.');
+            } catch (\Twig_Error_Syntax $e) {
+                $this->addFlash('error', $e->getMessage());
+            }
+
             $this->addFlash('error', '<b>@todo</b> пока не рабоатет сохранение');
-            $this->redirectToRoute('cms_admin_appearance_template', ['name' => $name]);
+            //return $this->redirectToRoute('cms_admin_appearance_template', ['name' => $name]);
         }
 
         return $this->render('CMSBundle:AdminAppearance:template_edit.html.twig', [
             'name'          => $name,
             'templates'     => $this->getTemplates(),
-            'template_code' => file_get_contents($this->container->getParameter('kernel.root_dir') . '/Resources/views/' . $name . '.html.twig'),
+            'template_code' => $template_code,
         ]);
     }
 
