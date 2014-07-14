@@ -2,11 +2,6 @@ smart_chat:
     resource: "@SmartChatBundle/Resources/config/routing.yml"
     prefix:   /
 
-# @todo убрать в dev.
-_knp_rad_assistant:
-    resource: "@KnpRadBundle/Resources/config/routing/assistant.xml"
-    prefix:   /_assistant
-
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
     prefix: /
@@ -18,10 +13,6 @@ genemu_image:
     resource: "@GenemuFormBundle/Resources/config/routing/image.xml"
 genemu_upload:
     resource: "@GenemuFormBundle/Resources/config/routing/upload.xml"
-
-smart_media: # @todo убрать
-    resource: "@SmartMediaBundle/Resources/config/routing.yml"
-    prefix: /
 
 smart_core_cms:
     resource: "@CMSBundle/Resources/config/routing.yml"
