@@ -24,8 +24,9 @@ class AdminMenu extends ContainerAware
         $menu->addChild('Files',         ['route' => 'cms_admin_files']);
         $menu->addChild('Users',         ['route' => 'cms_admin_user']);
         $menu->addChild('Configuration', ['route' => 'cms_admin_config']);
-        /*
         $menu->addChild('Appearance',    ['route' => 'cms_admin_appearance']);
+
+        /*
         $menu->addChild('Reports',       ['route' => 'cms_admin_reports']);
         $menu->addChild('Help',          ['route' => 'cms_admin_help']);
         */

@@ -1,3 +1,5 @@
 site_full_name: Smart Core CMS (based on Symfony2 Framework)
 site_short_name: Smart Core CMS
 html_title_delimiter: '&ndash;'
+appearance_editor: ace
+appearance_editor_theme: idle_fingers

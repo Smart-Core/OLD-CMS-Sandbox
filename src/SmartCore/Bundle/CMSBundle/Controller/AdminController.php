@@ -3,7 +3,6 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Knp\RadBundle\Controller\Controller;
-use SmartCore\Bundle\CMSBundle\Entity\Folder;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -11,7 +10,6 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class AdminController extends Controller
 {

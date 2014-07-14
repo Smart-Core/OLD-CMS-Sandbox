@@ -1,0 +1,158 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block title %} {{ 'Edit template' }} / {{ 'Appearance'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <form id="template_code_wrapper" action="" method="post">
+        <ul class="nav nav-pills" id="myTab" style="float: left;" >
+            {% for template in templates %}
+                <li{% if template == name %} class="active"{% endif %}><a href="{{ path('cms_admin_appearance_template', {'name': template}) }}">{{ template }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <button style="float: right; margin-top: 4px;" class="btn btn-success" type="submit" name="submit" value="save">{{ 'Save'|trans }}</button>
+
+        <div style="clear: both;"></div>
+
+        <textarea id="template_code" name="template_code" data-editor="twig" class=" input-block-level">{{ template_code }}</textarea>
+    </form>
+
+    {% if is_cms_setting('cms', 'appearance_editor', 'ace') %}
+    <style type="text/css" media="screen">
+        body {
+            margin-bottom: 0px;
+        }
+        .ace_editor * {
+            font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+            font-size: 16px;
+        }
+        #template_code, #ace_template_twig {
+            font-family: consolas, Courier, monospace;
+            font-size: 16px;
+            width: 100%;
+            height: 500px;
+            top: -10px;
+        }
+    </style>
+
+    <script src="{{ asset('bundles/felib/ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $('#template_code_wrapper').append('<div id="ace_template_twig" />');
+
+        var editor = ace.edit('ace_template_twig');
+        var textarea = $('#template_code').hide();
+        //editor.setTheme('ace/theme/idle_fingers');
+        editor.setTheme('ace/theme/{{ cms_setting('cms', 'appearance_editor_theme') }}');
+        editor.focus();
+        editor.getSession().setMode('ace/mode/twig');
+        editor.getSession().setValue(textarea.val());
+        editor.getSession().on('change', function(){
+            textarea.val(editor.getSession().getValue());
+        });
+        editor.commands.addCommand({
+            name: 'insetAsset',
+            bindKey: {win: 'Alt-A',  mac: 'Command-A'},
+            exec: function(editor) {
+                editor.insert("{{ '{{' }} asset('') {{ '}}' }}");
+            }
+        });
+
+        function setHeight(){
+            $('#ace_template_twig').css('height', $(window).height() - 125 + 'px');
+        };
+
+        $(window).resize(function(){
+            setHeight();
+        });
+
+        setHeight();
+    </script>
+    {% endif %}
+{% endblock content %}
+
+{% block styles %}
+    {{ parent() }}
+    {% if is_cms_setting('cms', 'appearance_editor', 'codemirror') %}
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/addon/hint/show-hint.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/addon/display/fullscreen.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/felib/codemirror/theme/cobalt.css') }}">
+    <style media="all" type="text/css">
+        body {
+            margin-bottom: 0px;
+        }
+        .CodeMirror {
+            height: 530px;
+        }
+        .CodeMirror * {
+            font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+            font-size: 16px;
+        }
+        .CodeMirror-fullscreen {
+            z-index: 9999;
+        }
+    </style>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    {% if is_cms_setting('cms', 'appearance_editor', 'codemirror') %}
+    <script src="{{ asset('bundles/felib/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/display/fullscreen.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/edit/closetag.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/fold/xml-fold.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/hint/show-hint.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/hint/xml-hint.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/hint/html-hint.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/addon/selection/active-line.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/xml/xml.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/jinja2/jinja2.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/css/css.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset('bundles/felib/codemirror/mode/htmlembedded/htmlembedded.js') }}"></script>
+    {% endif %}
+{% endblock %}
+
+{% block body_js %}
+    {{ parent() }}
+    {% if is_cms_setting('cms', 'appearance_editor', 'codemirror') %}
+    <script type="text/javascript">
+        window.onload = function() {
+            editor = CodeMirror.fromTextArea(document.getElementById('template_code'), {
+                autoCloseTags: true,
+                lineNumbers: true,
+                styleActiveLine: true,
+                matchBrackets: true,
+                //mode: "text/html",
+                mode: 'jinja2',
+                tabSize: 4,
+                theme: 'cobalt',
+                //extraKeys: {"Ctrl-Space": "autocomplete"},
+                extraKeys: {
+                    "F11": function(cm) {
+                        cm.setOption('fullScreen', !cm.getOption('fullScreen'));
+                    },
+                    "Esc": function(cm) {
+                        if (cm.getOption('fullScreen')) cm.setOption('fullScreen', false);
+                    }
+                }
+            });
+        };
+
+        function setHeight(){
+            $('.CodeMirror').css('height', $(window).height() - 125 + 'px');
+        };
+
+        $(window).resize(function(){
+            setHeight();
+        });
+
+        $(document).ready(function () {
+            setHeight();
+        });
+    </script>
+    {% endif %}
+{% endblock body_js %}

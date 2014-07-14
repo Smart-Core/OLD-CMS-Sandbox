@@ -1,0 +1,13 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block title %}{{ 'Appearance'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <ul class="nav nav-pills" id="myTab">
+        {% for template in templates %}
+            <li><a href="{{ path('cms_admin_appearance_template', {'name': template}) }}">{{ template }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

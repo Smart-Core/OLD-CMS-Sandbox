@@ -79,14 +79,14 @@ cms_admin_structure_node_properties:
 cms_admin_node:
     path: /node/{id}/
     defaults:
-        _controller: CMSBundle:Admin:node
+        _controller: CMSBundle:AdminStructure:node
     requirements:
         id: \d+
 
 cms_admin_node_w_slug:
     path: /node/{id}/{slug}
     defaults:
-        _controller: CMSBundle:Admin:node
+        _controller: CMSBundle:AdminStructure:node
     requirements:
         id: \d+
         slug: ".+"
@@ -95,7 +95,12 @@ cms_admin_node_w_slug:
 cms_admin_appearance:
     path: /appearance/
     defaults:
-        _controller: CMSBundle:Admin:notFound
+        _controller: CMSBundle:AdminAppearance:index
+
+cms_admin_appearance_template:
+    path: /appearance/{name}/
+    defaults:
+        _controller: CMSBundle:AdminAppearance:templateEdit
 
 cms_admin_files:
     path: /files/
@@ -168,7 +173,6 @@ cms_admin_config_media_create_storage:
     path: /config/media/storage_create/
     defaults:
         _controller: CMSBundle:AdminMediaLibrary:createStorage
-
 
 cms_admin_config_media_edit_storage:
     path: /config/media/storage_{id}/
