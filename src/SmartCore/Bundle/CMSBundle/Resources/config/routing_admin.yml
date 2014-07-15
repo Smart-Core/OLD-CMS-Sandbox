@@ -102,6 +102,21 @@ cms_admin_appearance_template:
     defaults:
         _controller: CMSBundle:AdminAppearance:templateEdit
 
+cms_admin_appearance_template_history:
+    path: /appearance/{name}.twig/history/
+    defaults:
+        _controller: CMSBundle:AdminAppearance:templateHistory
+
+cms_admin_appearance_history_code:
+    path: /appearance/history/{id}/
+    defaults:
+        _controller: CMSBundle:AdminAppearance:historyCode
+
+cms_admin_appearance_history_rollback:
+    path: /appearance/history/rollback/{id}/
+    defaults:
+        _controller: CMSBundle:AdminAppearance:historyRollback
+
 cms_admin_appearance_style:
     path: /appearance/{name}/
     defaults:

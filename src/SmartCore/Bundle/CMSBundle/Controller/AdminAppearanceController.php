@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Knp\RadBundle\Controller\Controller;
+use SmartCore\Bundle\CMSBundle\Entity\AppearanceHistory;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,13 +45,26 @@ class AdminAppearanceController extends Controller
             try {
                 $twig->parse($twig->tokenize($template_code));
 
-                $this->addFlash('success', 'Twig шаблон валиден.');
+                $twig->clearCacheFiles();
+
+                $history = new AppearanceHistory();
+                $history
+                    ->setPath('/Resources/views/')
+                    ->setFilename($name . '.html.twig')
+                    ->setCode($template_code)
+                    ->setUserId($this->getUser())
+                ;
+
+                $this->persist($history, true);
+
+                file_put_contents($template_file_path, $template_code);
+
+                $this->addFlash('success', 'Шаблон обновлён.');
+
+                return $this->redirectToRoute('cms_admin_appearance_template', ['name' => $name]);
             } catch (\Twig_Error_Syntax $e) {
                 $this->addFlash('error', $e->getMessage());
             }
-
-            $this->addFlash('error', '<b>@todo</b> пока не рабоатет сохранение');
-            //return $this->redirectToRoute('cms_admin_appearance_template', ['name' => $name]);
         }
 
         return $this->render('CMSBundle:AdminAppearance:template_edit.html.twig', [
@@ -58,6 +72,76 @@ class AdminAppearanceController extends Controller
             'templates'     => $this->getTemplates(),
             'template_code' => $template_code,
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param string $name
+     * @return Response|RedirectResponse
+     */
+    public function templateHistoryAction(Request $request, $name)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $histories = $em->getRepository('CMSBundle:AppearanceHistory')->findBy([
+            'path' => '/Resources/views/',
+            'filename' => $name . '.html.twig',
+        ], ['created_at' => 'DESC']);
+
+        return $this->render('CMSBundle:AdminAppearance:template_history.html.twig', [
+            'name' => $name,
+            'histories' => $histories,
+        ]);
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     */
+    public function historyCodeAction($id)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $history = $em->getRepository('CMSBundle:AppearanceHistory')->find($id);
+
+        if (empty($history)) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('CMSBundle:AdminAppearance:history_code.html.twig', [
+            'history' => $history,
+        ]);
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     */
+    public function historyRollbackAction($id)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $history = $em->getRepository('CMSBundle:AppearanceHistory')->find($id);
+
+        if (empty($history)) {
+            throw $this->createNotFoundException();
+        }
+
+        $template_file_path = $this->container->getParameter('kernel.root_dir') . $history->getPath() . $history->getFilename();
+
+        if (file_exists($template_file_path)) {
+            file_put_contents($template_file_path, $history->getCode());
+
+            $this->get('twig')->clearCacheFiles();
+            $this->addFlash('success', 'Файл <b>' . $history->getPath() . $history->getFilename() . '</b> восстановлен на дату: ' . $history->getCreatedAt()->format('Y-m-d H:i:s'));
+        } else {
+            $this->addFlash('error', 'Файл <b>' . $history->getPath() . $history->getFilename() . '</b> не найден.');
+        }
+
+        return $this->redirectToRoute('cms_admin_appearance');
     }
 
     /**

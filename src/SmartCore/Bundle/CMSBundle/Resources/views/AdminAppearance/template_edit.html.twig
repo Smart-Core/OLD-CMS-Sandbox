@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <form id="template_code_wrapper" action="" method="post">
+    <form id="template_code_wrapper" action="" method="post" style="margin-bottom: 0px;">
         <ul class="nav nav-pills" id="myTab" style="float: left;" >
             {% for template in templates %}
                 <li{% if template == name %} class="active"{% endif %}><a href="{{ path('cms_admin_appearance_template', {'name': template}) }}">{{ template }}</a></li>
@@ -17,6 +17,8 @@
 
         <textarea id="template_code" name="template_code" data-editor="twig" class=" input-block-level">{{ template_code }}</textarea>
     </form>
+
+    <a href="{{ path('cms_admin_appearance_template_history', {'name': name}) }}" style="float: right;">История изменений шаблона <b>{{ name }}.html.twig</b></a>
 
     {% if is_cms_setting('cms', 'appearance_editor', 'ace') %}
     <style type="text/css" media="screen">

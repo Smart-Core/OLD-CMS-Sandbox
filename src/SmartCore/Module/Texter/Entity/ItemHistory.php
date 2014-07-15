@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="texter_history",
- *         indexes={
- *             @ORM\Index(name="item_id", columns={"item_id"}),
- *             @ORM\Index(name="is_deleted", columns={"is_deleted"}),
- *         }
+ *      indexes={
+ *          @ORM\Index(name="item_id", columns={"item_id"}),
+ *          @ORM\Index(name="is_deleted", columns={"is_deleted"}),
+ *      }
  * )
  */
 class ItemHistory
@@ -23,41 +23,57 @@ class ItemHistory
     protected $id;
 
     /**
+     * @var bool
+     *
      * @ORM\Column(type="boolean")
      */
-    protected $is_deleted = 0;
+    protected $is_deleted = false;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $item_id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=8)
      */
     protected $locale;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="smallint")
      */
     protected $editor;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
      */
     protected $text;
 
     /**
+     * @var array
+     *
      * @ORM\Column(type="array")
      */
     protected $meta;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      */
     protected $created;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $user_id = 0;
@@ -80,7 +96,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -88,7 +104,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -110,7 +126,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $editor
+     * @param int $editor
      * @return $this
      */
     public function setEditor($editor)
@@ -121,7 +137,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getEditor()
     {
@@ -129,7 +145,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $is_deleted
+     * @param bool $is_deleted
      * @return $this
      */
     public function setIsDeleted($is_deleted)
@@ -140,7 +156,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsDeleted()
     {
@@ -148,7 +164,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $item_id
+     * @param int $item_id
      * @return $this
      */
     public function setItemId($item_id)
@@ -159,7 +175,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getItemId()
     {
@@ -167,7 +183,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $locale
+     * @param string $locale
      * @return $this
      */
     public function setLocale($locale)
@@ -178,7 +194,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLocale()
     {
@@ -186,7 +202,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $meta
+     * @param array $meta
      * @return $this
      */
     public function setMeta($meta)
@@ -197,7 +213,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getMeta()
     {
@@ -205,7 +221,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $text
+     * @param string $text
      * @return $this
      */
     public function setText($text)
@@ -216,7 +232,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getText()
     {
@@ -224,7 +240,7 @@ class ItemHistory
     }
 
     /**
-     * @param mixed $user_id
+     * @param int $user_id
      * @return $this
      */
     public function setUserId($user_id)
@@ -235,7 +251,7 @@ class ItemHistory
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getUserId()
     {

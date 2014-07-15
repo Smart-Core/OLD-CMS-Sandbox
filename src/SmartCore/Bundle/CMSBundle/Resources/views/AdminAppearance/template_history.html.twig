@@ -1,0 +1,60 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block title %} {{ 'Template history'|trans }}: {{ name }} / {{ 'Appearance'|trans }} / {{ parent() }}{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    <style media="all" type="text/css">
+        .modal {
+            width: 960px;
+            margin-left: -450px;
+        }
+        .modal-body > iframe {
+            width: 100%;
+            height: 390px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h3>{{ 'Template history'|trans }}: <a href="{{ path('cms_admin_appearance_template', {'name': name}) }}">{{ name }}.html.twig</a></h3>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">#</th>
+            <th>{{ 'Date'|trans }}</th>
+            <th>{{ 'Source code'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% set count = 1 %}
+        {% for history in histories %}
+            <tr>
+                <td>{{ count }}{% set count = count + 1 %}</td>
+                <td>{{ history.createdAt|localizeddate() }}</td>
+                <td>
+                    <a href="#code{{ history.id }}" role="button" class="btn" data-toggle="modal">{{ 'View source'|trans }}</a>
+
+                    <div id="code{{ history.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">{{ name }}.html.twig</h3>
+                        </div>
+                        <div class="modal-body">
+                            <iframe src="{{ path('cms_admin_appearance_history_code', {'id': history.id}) }}?height=390px&disable_autho_height=1"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary"
+                               href="{{ path('cms_admin_appearance_history_rollback', {'id': history.id}) }}"
+                               onclick="return confirm('Вы уверены, что хотите откатить файл {{ name }}.html.twig до даты: {{ history.createdAt|localizeddate('full') }}?')"
+                            >{{ 'Rollback'|trans }}</a>
+
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">{{ 'Close'|trans }}</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

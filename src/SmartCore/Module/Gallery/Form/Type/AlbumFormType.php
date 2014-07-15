@@ -28,4 +28,3 @@ class AlbumFormType extends AbstractType
         return 'smart_module_gallery_album';
     }
 }
- 

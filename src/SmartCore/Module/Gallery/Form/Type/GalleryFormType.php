@@ -28,4 +28,3 @@ class GalleryFormType extends AbstractType
         return 'smart_module_gallery';
     }
 }
- 

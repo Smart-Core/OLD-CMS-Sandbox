@@ -28,4 +28,3 @@ class PhotoFormType extends AbstractType
         return 'smart_module_gallery_photo';
     }
 }
- 

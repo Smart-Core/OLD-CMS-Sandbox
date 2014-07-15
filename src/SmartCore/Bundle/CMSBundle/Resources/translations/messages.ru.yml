@@ -13,6 +13,7 @@ Block: Блок
 Block edit: Редактирование блока
 Blocks: Блоки
 Cancel: Отменить
+Close: Закрыть
 Configuration: Конфигурация
 Connect module: Подключить модуль
 Control panel: Панель управления
@@ -83,6 +84,7 @@ Role: Роль
 Role name: Название роли
 Roles: Роли
 Role edit: Редактирование роли
+Rollback: Откатить
 Save: Сохранить
 Send: Отправить
 Settings: Настройки

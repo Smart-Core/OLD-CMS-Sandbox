@@ -74,6 +74,7 @@ class Photo
     public function setAlbum($album)
     {
         $this->album = $album;
+
         return $this;
     }
 
@@ -92,6 +93,7 @@ class Photo
     public function setDescr($descr)
     {
         $this->descr = $descr;
+
         return $this;
     }
 
@@ -110,6 +112,7 @@ class Photo
     public function setFile($file)
     {
         $this->file = $file;
+
         return $this;
     }
 
@@ -128,6 +131,7 @@ class Photo
     public function setImageId($image_id)
     {
         $this->image_id = $image_id;
+
         return $this;
     }
 

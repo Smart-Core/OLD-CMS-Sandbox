@@ -116,6 +116,7 @@ class Gallery
     public function setMediaCollection(Collection $media_collection)
     {
         $this->media_collection = $media_collection;
+
         return $this;
     }
 
