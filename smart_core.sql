@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 15 2014 г., 17:35
+-- Время создания: Июл 15 2014 г., 23:57
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -653,7 +653,7 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
 (16, 1, 'Каталог 2', 0, 0, 'catalog2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
-(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
+(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -718,7 +718,7 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `block_id`, `is_active`, `module`
 (28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL),
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL),
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL),
-(31, 17, 1, 1, 'Gallery', 'a:0:{}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL);
+(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -835,6 +835,10 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `descr` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
+  `cover_image_id` int(11) DEFAULT NULL,
+  `photos_count` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `is_enabled` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
@@ -843,9 +847,9 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
 -- Дамп данных таблицы `gallery_albums`
 --
 
-INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`, `user_id`) VALUES
-(1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1),
-(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1);
+INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`, `user_id`, `cover_image_id`, `photos_count`, `updated_at`, `is_enabled`) VALUES
+(1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1, 8, 2, '2014-07-15 23:54:05', 1),
+(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1, NULL, 0, '2014-07-15 23:49:22', 0);
 
 -- --------------------------------------------------------
 
@@ -864,12 +868,15 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_AAF50C7B1137ABCF` (`album_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `gallery_photos`
 --
 
+INSERT INTO `gallery_photos` (`id`, `image_id`, `album_id`, `descr`, `created_at`, `user_id`, `position`) VALUES
+(1, 7, 1, NULL, '2014-07-15 23:49:51', 1, 0),
+(2, 8, 1, NULL, '2014-07-15 23:54:05', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -950,7 +957,7 @@ CREATE TABLE IF NOT EXISTS `media_files` (
   KEY `IDX_D2E5001112469DE2` (`category_id`),
   KEY `IDX_D2E500115CC5DB90` (`storage_id`),
   KEY `type` (`type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `media_files`
@@ -961,7 +968,9 @@ INSERT INTO `media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `
 (3, 1, NULL, 1, 0, '/2014/02/17', '01_19_53bd2543df.jpeg', '154655_0.1362072510.jpg', 'image', 'image/jpeg', 29693, 29693, 0, '2014-02-17 01:19:23'),
 (4, 1, NULL, 1, 0, '/2014/02/17', '01_41_ec3e194bc1.jpeg', 'pic_18468_1.jpg', 'image', 'image/jpeg', 364655, 364655, 0, '2014-02-17 01:41:47'),
 (5, 1, NULL, 1, 0, '/2014/02/17', '22_11_083fd66af8.jpeg', 'EOS_650D.jpg', 'image', 'image/jpeg', 1695916, 1695916, 0, '2014-02-17 22:11:20'),
-(6, 1, NULL, 1, 1, '/2014/03/06', '16_38_725b3ca498.jpg', '3.jpg', 'image', 'image/jpeg', 897389, 897389, 0, '2014-03-06 16:38:36');
+(6, 1, NULL, 1, 1, '/2014/03/06', '16_38_725b3ca498.jpg', '3.jpg', 'image', 'image/jpeg', 897389, 897389, 0, '2014-03-06 16:38:36'),
+(7, 2, NULL, 1, 1, '/2014/07/15', '23_49_f6f9679959.jpg', 'patanjali.jpg', 'image', 'image/jpeg', 18412, 18412, 0, '2014-07-15 23:49:51'),
+(8, 2, NULL, 1, 1, '/2014/07/15', '23_54_519f730985.jpg', 'Code Complete.jpg', 'image', 'image/jpeg', 45971, 45971, 0, '2014-07-15 23:54:05');
 
 -- --------------------------------------------------------
 
@@ -983,7 +992,7 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
@@ -999,7 +1008,9 @@ INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storag
 (9, 5, 1, 1, '300-300', 9631, '2014-02-17 22:11:27'),
 (10, 5, 1, 1, '100-100', 2219, '2014-02-17 22:38:10'),
 (11, 6, 1, 1, '300-300', 12833, '2014-03-06 16:38:41'),
-(12, 6, 1, 1, '100-100', 2934, '2014-06-26 00:10:52');
+(12, 6, 1, 1, '100-100', 2934, '2014-06-26 00:10:52'),
+(13, 7, 2, 1, '200-200', 6675, '2014-07-15 23:49:51'),
+(14, 8, 2, 1, '200-200', 6419, '2014-07-15 23:54:05');
 
 -- --------------------------------------------------------
 

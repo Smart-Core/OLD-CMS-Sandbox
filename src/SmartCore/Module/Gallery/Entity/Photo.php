@@ -9,7 +9,7 @@ use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="PhotoRepository")
  * @ORM\Table(name="gallery_photos")
  */
 class Photo

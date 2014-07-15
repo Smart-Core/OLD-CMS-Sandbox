@@ -10,6 +10,7 @@ use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 
 /**
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="gallery_albums")
  */
 class Album
@@ -40,6 +41,27 @@ class Album
     protected $descr;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $cover_image_id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $photos_count;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $updated_at;
+
+    /**
      * @var Gallery
      *
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="albums")
@@ -58,7 +80,9 @@ class Album
      */
     public function __construct()
     {
-        $this->created_at = new \DateTime();
+        $this->created_at   = new \DateTime();
+        $this->updated_at   = new \DateTime();
+        $this->photos_count = 0;
     }
 
     /**
@@ -75,6 +99,25 @@ class Album
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $cover_image_id
+     * @return $this
+     */
+    public function setCoverImageId($cover_image_id)
+    {
+        $this->cover_image_id = $cover_image_id;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCoverImageId()
+    {
+        return $this->cover_image_id;
     }
 
     /**
@@ -151,5 +194,51 @@ class Album
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * @param int $photos_count
+     * @return $this
+     */
+    public function setPhotosCount($photos_count)
+    {
+        $this->photos_count = $photos_count;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPhotosCount()
+    {
+        return $this->photos_count;
+    }
+
+    /**
+     * @param \DateTime $updated_at
+     * @return $this
+     */
+    public function setUpdatedAt(\DateTime $updated_at)
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function lastUpdatedAt()
+    {
+        $this->updated_at = new \DateTime();
     }
 }

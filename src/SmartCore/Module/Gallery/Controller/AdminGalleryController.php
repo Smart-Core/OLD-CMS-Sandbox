@@ -80,7 +80,7 @@ class AdminGalleryController extends Controller
 
         return $this->render('GalleryModule:Admin:gallery.html.twig', [
             'form'      => $form->createView(),
-            'albums'    => $em->getRepository('GalleryModule:Album')->findAll(),
+            'albums'    => $em->getRepository('GalleryModule:Album')->findBy([], ['id' => 'DESC']),
             'gallery'   => $gallery,
         ]);
     }
@@ -161,8 +161,13 @@ class AdminGalleryController extends Controller
                 $this->persist($photo, true);
                 $this->addFlash('success', 'Photo updated successfully.');
 
+                $album
+                    ->setPhotosCount($em->getRepository('GalleryModule:Photo')->countInAlbum($photo->getAlbum()))
+                    ->setCoverImageId($photo->getImageId());
+                $this->persist($album, true);
+
                 return $this->redirectToRoute('smart_module.gallery.admin_album', [
-                    'id' => $album->getId(),
+                    'id'         => $album->getId(),
                     'gallery_id' => $album->getGallery()->getId(),
                 ]);
             }
@@ -206,8 +211,8 @@ class AdminGalleryController extends Controller
         }
 
         return $this->render('GalleryModule:Admin:album_edit.html.twig', [
-            'form'      => $form->createView(),
-            'album'     => $album,
+            'form'  => $form->createView(),
+            'album' => $album,
         ]);
     }
 
@@ -230,6 +235,8 @@ class AdminGalleryController extends Controller
             throw $this->createNotFoundException();
         }
 
+        $album = $photo->getAlbum();
+
         $form = $this->createForm(new PhotoFormType(), $photo);
         $form
             ->remove('file')
@@ -249,11 +256,16 @@ class AdminGalleryController extends Controller
                 }
 
                 if ($form->get('delete')->isClicked()) {
-                    $mc = $this->get('smart_media')->getCollection($photo->getAlbum()->getGallery()->getMediaCollection()->getId());
+                    $mc = $this->get('smart_media')->getCollection($album->getGallery()->getMediaCollection()->getId());
                     $mc->remove($photo->getImageId());
 
                     $this->remove($photo, true);
                     $this->addFlash('success', 'Photo deleted successfully.');
+
+                    $album->setPhotosCount($em->getRepository('GalleryModule:Photo')->countInAlbum($album));
+                    $lastPhoto = $em->getRepository('GalleryModule:Photo')->findOneBy(['album' => $album], ['id' => 'DESC']);
+                    $album->setCoverImageId(empty($lastPhoto) ? null : $lastPhoto->getImageId());
+                    $this->persist($album, true);
 
                     return $this->redirectToRoute('smart_module.gallery.admin_album', ['id' => $album_id, 'gallery_id' => $gallery_id]);
                 }
@@ -262,7 +274,7 @@ class AdminGalleryController extends Controller
                 $this->addFlash('success', 'Photo updated successfully.');
 
                 return $this->redirectToRoute('smart_module.gallery.admin_album', [
-                    'id' => $album_id,
+                    'id'         => $album_id,
                     'gallery_id' => $gallery_id,
                 ]);
             }

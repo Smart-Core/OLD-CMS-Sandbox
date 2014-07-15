@@ -1,19 +1,12 @@
 
-smart_module.news:
+smart_module.gallery:
     path: /
     defaults:
-        _controller: SimpleNewsModule:SimpleNews:index
+        _controller: GalleryModule:Gallery:index
 
-smart_module.news.page:
-    path: /page_{page}/
+smart_module.gallery.album:
+    path: /{id}/
     defaults:
-        _controller: SimpleNewsModule:SimpleNews:index
+        _controller: GalleryModule:Gallery:album
     requirements:
-        page: \d+
-
-smart_module.news.item:
-    path: /{slug}.html
-    defaults:
-        _controller: SimpleNewsModule:SimpleNews:item
-    requirements:
-        slug: '.+'
+        id: \d+
