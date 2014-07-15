@@ -37,7 +37,7 @@
                     <div id="code{{ history.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3 id="myModalLabel">{{ name }}.html.twig</h3>
+                            <h3 id="myModalLabel">{{ name }}</h3>
                         </div>
                         <div class="modal-body">
                             <iframe src="{{ path('cms_admin_appearance_history_code', {'id': history.id}) }}?height=390px&disable_autho_height=1&mode=css"></iframe>
