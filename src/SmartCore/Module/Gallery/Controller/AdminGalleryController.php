@@ -64,7 +64,9 @@ class AdminGalleryController extends Controller
         ;
 
         $form = $this->createForm(new AlbumFormType(), $album);
-        $form->add('create', 'submit');
+        $form
+            ->remove('is_enabled')
+            ->add('create', 'submit');
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -169,6 +171,42 @@ class AdminGalleryController extends Controller
         return $this->render('GalleryModule:Admin:album.html.twig', [
             'form'      => $form->createView(),
             'photos'    => $em->getRepository('GalleryModule:Photo')->findBy(['album' => $album], ['position' => 'DESC', 'id' => 'DESC']),
+            'album'     => $album,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @param int $gallery_id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function albumEditAction(Request $request, $id, $gallery_id)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $album = $em->find('GalleryModule:Album', $id);
+
+        if (empty($album) or $album->getGallery()->getId() != $gallery_id) {
+            throw $this->createNotFoundException();
+        }
+
+        $form = $this->createForm(new AlbumFormType(), $album);
+        $form->add('update', 'submit');
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $this->persist($form->getData(), true);
+                $this->addFlash('success', 'Album updated successfully.');
+
+                return $this->redirectToRoute('smart_module.gallery.admin_gallery', ['id' => $gallery_id]);
+            }
+        }
+
+        return $this->render('GalleryModule:Admin:album_edit.html.twig', [
+            'form'      => $form->createView(),
             'album'     => $album,
         ]);
     }

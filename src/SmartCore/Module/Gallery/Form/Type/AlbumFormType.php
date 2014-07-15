@@ -11,7 +11,8 @@ class AlbumFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('is_enabled', null, ['required' => false])
+            ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('descr')
         ;
     }

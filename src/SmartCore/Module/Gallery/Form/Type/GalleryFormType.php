@@ -11,7 +11,7 @@ class GalleryFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('media_collection')
         ;
     }

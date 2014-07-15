@@ -19,6 +19,11 @@ smart_module.gallery.admin_album:
     defaults:
         _controller: GalleryModule:AdminGallery:album
 
+smart_module.gallery.admin_album_edit:
+    path: /gallery_{gallery_id}/album_{id}/edit/
+    defaults:
+        _controller: GalleryModule:AdminGallery:albumEdit
+
 smart_module.gallery.admin_photo:
     path: /gallery_{gallery_id}/album_{album_id}/photo_{id}/
     defaults:
