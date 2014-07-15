@@ -5,6 +5,7 @@ namespace SmartCore\Module\Gallery\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
+use SmartCore\Bundle\CMSBundle\Model\IsEnabledTrait;
 use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 
 /**
@@ -14,6 +15,7 @@ use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 class Album
 {
     use CreatedAtTrait;
+    use IsEnabledTrait;
     use SignedTrait;
 
     /**

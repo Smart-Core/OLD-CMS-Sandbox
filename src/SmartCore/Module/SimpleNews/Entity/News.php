@@ -4,6 +4,7 @@ namespace SmartCore\Module\SimpleNews\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
+use SmartCore\Bundle\CMSBundle\Model\IsEnabledTrait;
 use SmartCore\Bundle\CMSBundle\Model\UpdatedAtTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -25,6 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class News
 {
     use CreatedAtTrait;
+    use IsEnabledTrait;
     use UpdatedAtTrait;
 
     /**
@@ -33,13 +35,6 @@ class News
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $is_enabled;
 
     /**
      * @var int|null
@@ -178,41 +173,6 @@ class News
     public function getPublishDate()
     {
         return $this->publish_date;
-    }
-
-    /**
-     * @param bool $is_enabled
-     * @return $this
-     */
-    public function setIsEnabled($is_enabled)
-    {
-        $this->is_enabled = $is_enabled;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsEnabled()
-    {
-        return $this->is_enabled;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled()
-    {
-        return $this->is_enabled;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isDisabled()
-    {
-        return !$this->is_enabled;
     }
 
     /**
