@@ -30,11 +30,13 @@ find app/Resources -type d -exec chmod 777 {} \;
 find app/usr -type d -exec chmod 777 {} \;
 find web/images -type d -exec chmod 777 {} \;
 find web/_media -type d -exec chmod 777 {} \;
+find web/theme/css -type d -exec chmod 777 {} \;
 find web/uploads -type d -exec chmod 777 {} \;
 
 # update files permissions
-find app/Resources -type f -exec chmod 644 {} \;
-find app/usr -type f -exec chmod 644 {} \;
-find web/images -type f -exec chmod 644 {} \;
-find web/_media -type f -exec chmod 644 {} \;
-find web/uploads -type f -exec chmod 644 {} \;
+find app/Resources -type f -exec chmod 666 {} \;
+find app/usr -type f -exec chmod 666 {} \;
+find web/images -type f -exec chmod 666 {} \;
+find web/_media -type f -exec chmod 666 {} \;
+find web/theme/css -type f -exec chmod 666 {} \;
+find web/uploads -type f -exec chmod 666 {} \;
