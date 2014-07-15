@@ -75,21 +75,40 @@ class AdminAppearanceController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param string $name
      * @return Response|RedirectResponse
      */
-    public function templateHistoryAction(Request $request, $name)
+    public function templateHistoryAction($name)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
         $histories = $em->getRepository('CMSBundle:AppearanceHistory')->findBy([
-            'path' => '/Resources/views/',
-            'filename' => $name . '.html.twig',
+            'path'       => '/Resources/views/',
+            'filename'   => $name . '.html.twig',
         ], ['created_at' => 'DESC']);
 
         return $this->render('CMSBundle:AdminAppearance:template_history.html.twig', [
+            'name' => $name,
+            'histories' => $histories,
+        ]);
+    }
+
+    /**
+     * @param string $name
+     * @return Response|RedirectResponse
+     */
+    public function styleHistoryAction($name)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $histories = $em->getRepository('CMSBundle:AppearanceHistory')->findBy([
+            'path'       => '/../web' . $this->get('cms.config')->get('cms', 'appearance_styles_path'),
+            'filename'   => $name,
+        ], ['created_at' => 'DESC']);
+
+        return $this->render('CMSBundle:AdminAppearance:style_history.html.twig', [
             'name' => $name,
             'histories' => $histories,
         ]);
@@ -162,8 +181,21 @@ class AdminAppearanceController extends Controller
         if ($request->isMethod('POST')) {
             $style_code = $request->request->get('style_code');
 
-            $this->addFlash('error', '<b>@todo</b> пока не рабоатет сохранение');
-            //return $this->redirectToRoute('cms_admin_appearance_template', ['name' => $name]);
+            $history = new AppearanceHistory();
+            $history
+                ->setPath('/../web' . $this->get('cms.config')->get('cms', 'appearance_styles_path'))
+                ->setFilename($name)
+                ->setCode($style_code)
+                ->setUserId($this->getUser())
+            ;
+
+            $this->persist($history, true);
+
+            file_put_contents($style_file_path, $style_code);
+
+            $this->addFlash('success', 'Стиль обновлён.');
+
+            return $this->redirectToRoute('cms_admin_appearance_style', ['name' => $name]);
         }
 
         return $this->render('CMSBundle:AdminAppearance:style_edit.html.twig', [

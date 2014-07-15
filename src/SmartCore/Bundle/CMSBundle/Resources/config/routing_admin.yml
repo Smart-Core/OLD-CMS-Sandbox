@@ -107,6 +107,11 @@ cms_admin_appearance_template_history:
     defaults:
         _controller: CMSBundle:AdminAppearance:templateHistory
 
+cms_admin_appearance_style_history:
+    path: /appearance/{name}/history/
+    defaults:
+        _controller: CMSBundle:AdminAppearance:styleHistory
+
 cms_admin_appearance_history_code:
     path: /appearance/history/{id}/
     defaults:

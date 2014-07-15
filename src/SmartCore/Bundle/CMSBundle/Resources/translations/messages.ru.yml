@@ -23,6 +23,7 @@ Create folder: Добавить папку
 Create node: Подключить модуль
 Create user: Создать пользователя
 Created: Создано
+Created at: Дата создания
 Date: Дата
 Datetime: Дата и время
 Descr: Описание
@@ -52,6 +53,7 @@ Is enabled: Включено
 Is file: Является файлом?
 Items count: Кол-во записей
 Items per page: Записей на страницу
+Keywords: Ключевые слова
 Last login: Последнее посещение
 Library: Библиотека
 Login: Вход
@@ -95,6 +97,8 @@ Status: Статус
 String: Строка
 Structure: Структура
 Styles: Стили
+Tag: Тэг
+Tags: Тэги
 Template: Шаблон
 Template inheritable: Наследуемый шаблон
 Template self: Собственный шаблон

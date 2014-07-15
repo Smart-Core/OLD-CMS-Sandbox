@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <form id="style_code_wrapper" action="" method="post">
+    <form id="style_code_wrapper" action="" method="post" style="margin-bottom: 0px;">
         <ul class="nav nav-pills" id="myTab" style="float: left;" >
             {% for style in styles %}
                 <li{% if style == name %} class="active"{% endif %}><a href="{{ path('cms_admin_appearance_style', {'name': style}) }}">{{ style }}</a></li>
@@ -17,6 +17,8 @@
 
         <textarea id="style_code" name="style_code" data-editor="twig" class=" input-block-level">{{ style_code }}</textarea>
     </form>
+
+    <a href="{{ path('cms_admin_appearance_style_history', {'name': name}) }}" style="float: right;">История изменений стиля <b>{{ name }}</b></a>
 
     {% if is_cms_setting('cms', 'appearance_editor', 'ace') %}
     <style type="text/css" media="screen">

@@ -1,48 +1,21 @@
-Actions: Действия
-Add: Добавить
 Add article: Добавить статью
-Administration: Управление
 All tags: Все тэги
 Annotation: Аннотация
 Article: Статья
 Articles: Статьи
 Blog: Блог
-Cancel: Отменить
-Configuration: Конфигруация
 Category: Категория
 Categories: Категории
-Create: Создать
 Create article: Создание статьи
-Create datetime: Дата создания
-Created at: Дата создания
-Description: Описание
-Delete: Удалить
-Edit: Редактировать
 Edit article: Редактирование статьи
 Edit tag: Редактирование тега
 Edit category: Редактирование категории
-Exit: Выход
-Is active: Включено
 Items count: Кол-во записей
-Keywords: Ключевые слова
-Modules: Модули
-Module: Модуль
-Name: Имя
-Permissions: Права доступа
-Position: Позиция
-Reports: Отчеты
 Smart blog article create: Создать статью
 Smart blog article edit: Редактирование статьи
 Smart blog tag create: Создать тэг
 Smart blog tag edit: Редактировать тэг
 Smart blog category create: Создать категорию
-Save: Сохранить
-Slug: Часть URI
-Tag: Тэг
-Tags: Тэги
-Text: Текст
-Title: Заголовок
 Total articles: Всего статей
 Total tags: Всего тэгов
-Users: Пользователи
 Weight: Вес

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 15 2014 г., 06:06
+-- Время создания: Июл 15 2014 г., 17:35
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.5.11
 
@@ -513,6 +513,32 @@ CREATE TABLE IF NOT EXISTS `chat_rooms_members` (
 
 --
 -- Дамп данных таблицы `chat_rooms_members`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `engine_appearance_history`
+--
+
+DROP TABLE IF EXISTS `engine_appearance_history`;
+CREATE TABLE IF NOT EXISTS `engine_appearance_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `code` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hash` (`hash`),
+  KEY `path` (`path`),
+  KEY `filename` (`filename`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `engine_appearance_history`
 --
 
 

@@ -1,6 +1,6 @@
 {% extends '@CMS/Admin/_layout.html.twig' %}
 
-{% block title %} {{ 'Template history'|trans }}: {{ name }} / {{ 'Appearance'|trans }} / {{ parent() }}{% endblock %}
+{% block title %} {{ 'Style history'|trans }}: {{ name }} / {{ 'Appearance'|trans }} / {{ parent() }}{% endblock %}
 
 {% block styles %}
     {{ parent() }}
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-    <h3>{{ 'Template history'|trans }}: <a href="{{ path('cms_admin_appearance_template', {'name': name}) }}">{{ name }}.html.twig</a></h3>
+    <h3>{{ 'Style history'|trans }}: <a href="{{ path('cms_admin_appearance_style', {'name': name}) }}">{{ name }}</a></h3>
 
     <table class="table table-bordered table-hover">
         <thead><tr>
@@ -40,7 +40,7 @@
                             <h3 id="myModalLabel">{{ name }}.html.twig</h3>
                         </div>
                         <div class="modal-body">
-                            <iframe src="{{ path('cms_admin_appearance_history_code', {'id': history.id}) }}?height=390px&disable_autho_height=1&mode=twig"></iframe>
+                            <iframe src="{{ path('cms_admin_appearance_history_code', {'id': history.id}) }}?height=390px&disable_autho_height=1&mode=css"></iframe>
                         </div>
                         <div class="modal-footer">
                             <a class="btn btn-primary"

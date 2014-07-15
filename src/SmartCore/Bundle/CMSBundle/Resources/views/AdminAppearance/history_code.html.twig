@@ -25,7 +25,7 @@
                 font-family: consolas, Courier, monospace;
                 font-size: 16px;
                 width: 100%;
-                height: {% if app.request.query.get('height') %}{{ app.request.query.get('height') }}{% else %}500px{% endif %};
+                height: {% if app.request.query.get('height') %}{{ app.request.query.get('height') }}{% else %}530px{% endif %};
             }
         </style>
 
@@ -38,17 +38,10 @@
             //editor.setTheme('ace/theme/idle_fingers');
             editor.setTheme('ace/theme/{{ cms_setting('cms', 'appearance_editor_theme') }}');
             editor.focus();
-            editor.getSession().setMode('ace/mode/twig');
+            editor.getSession().setMode('ace/mode/{% if app.request.query.get('mode') %}{{ app.request.query.get('mode') }}{% else %}twig{% endif %}');
             editor.getSession().setValue(textarea.val());
             editor.getSession().on('change', function(){
                 textarea.val(editor.getSession().getValue());
-            });
-            editor.commands.addCommand({
-                name: 'insetAsset',
-                bindKey: {win: 'Alt-A',  mac: 'Command-A'},
-                exec: function(editor) {
-                    editor.insert("{{ '{{' }} asset('') {{ '}}' }}");
-                }
             });
 
             {% if not app.request.query.get('disable_autho_height') %}
@@ -78,7 +71,7 @@
                 margin-bottom: 0px;
             }
             .CodeMirror {
-                height: 530px;
+                height: {% if app.request.query.get('height') %}{{ app.request.query.get('height') }}{% else %}530px{% endif %};
             }
             .CodeMirror * {
                 font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
