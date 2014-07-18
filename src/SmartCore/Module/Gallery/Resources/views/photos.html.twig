@@ -23,6 +23,9 @@
     </a>
 {% endfor %}
 
+{% if photos|length == 0 %}
+    В альбоме еще нет фотографий
+{% else %}
 <script>
     $(document).ready(function(){
         $('.smart_gallery').colorbox({
@@ -37,3 +40,6 @@
         });
     });
 </script>
+{% endif %}
+
+<div style="clear: both;"></div>

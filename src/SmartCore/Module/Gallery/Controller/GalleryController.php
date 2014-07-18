@@ -31,7 +31,7 @@ class GalleryController extends Controller
 
         $this->node->addFrontControl('manage_gallery', [
             'default' => true,
-            'title'   => 'Управление фотогарелеей',
+            'title'   => 'Управление фотогалереей',
             'uri'     => $this->generateUrl('smart_module.gallery.admin_gallery', ['id' => $this->gallery_id]),
         ]);
 

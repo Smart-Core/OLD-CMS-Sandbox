@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use RickySu\Tagcache\Adapter\TagcacheAdapter;
+use SmartCore\Bundle\CMSBundle\Entity\Setting;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -65,5 +66,22 @@ class EngineConfig
         }
 
         return $setting->getValue();
+    }
+
+    /**
+     * @param Setting $setting
+     * @return bool
+     */
+    public function updateEntity(Setting $setting)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->container->get('doctrine.orm.entity_manager');
+
+        $em->persist($setting);
+        $em->flush($setting);
+
+        $this->tagcache->deleteTag('cms.settings');
+
+        return true;
     }
 }

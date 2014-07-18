@@ -50,7 +50,7 @@ class AdminConfigController extends Controller
             }
 
             if ($form->isValid()) {
-                $this->persist($form->getData(), true);
+                $this->get('cms.config')->updateEntity($form->getData());
                 $this->addFlash('success', 'Настройка обновлена');
 
                 return $this->redirectToRoute('cms_admin_config');

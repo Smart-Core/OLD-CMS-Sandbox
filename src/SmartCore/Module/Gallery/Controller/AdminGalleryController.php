@@ -66,7 +66,7 @@ class AdminGalleryController extends Controller
         $form = $this->createForm(new AlbumFormType(), $album);
         $form
             ->remove('is_enabled')
-            ->add('create', 'submit');
+            ->add('create album', 'submit');
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
