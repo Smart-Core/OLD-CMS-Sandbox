@@ -25,7 +25,7 @@ class NodeRepository extends EntityRepository
 
         return $this->_em->createQuery("
             SELECT n
-            FROM CMSBundle:Node n
+            FROM CMSBundle:Node AS n
             WHERE n.id IN({$list_string})
             ORDER BY n.position ASC
         ")->getResult();
@@ -37,17 +37,13 @@ class NodeRepository extends EntityRepository
      */
     public function countInBlock($block)
     {
-        if ($block instanceof Block) {
-            $block = $block->getId();
-        }
-
         $query = $this->_em->createQuery("
             SELECT COUNT(n.id)
-            FROM CMSBundle:Node n
-            JOIN CMSBundle:Block b
-            WHERE b.id = {$block}
+            FROM CMSBundle:Node AS n
+            JOIN CMSBundle:Block AS b
+            WHERE b.id = :block
             AND n.block = b
-        ");
+        ")->setParameter('block', $block);
 
         return $query->getSingleScalarResult();
     }
@@ -65,11 +61,12 @@ class NodeRepository extends EntityRepository
 
         $engine_nodes_table = $this->_class->getTableName();
 
-        $sql = "SELECT id
-                FROM $engine_nodes_table
-                WHERE folder_id = '$folder'
-                AND is_active = '1'
-            ";
+        $sql = "
+            SELECT id
+            FROM $engine_nodes_table
+            WHERE folder_id = '$folder'
+            AND is_active = '1'
+        ";
 
         // Исключение ранее включенных нод.
         foreach ($exclude_nodes as $node_id) {
@@ -94,15 +91,16 @@ class NodeRepository extends EntityRepository
         $engine_nodes_table          = $this->_class->getTableName();
         $engine_blocks_inherit_table = $this->_em->getClassMetadata('CMSBundle:Block')->getAssociationMapping('folders')['joinTable']['name'];
 
-        $sql = "SELECT n.id
-                FROM $engine_nodes_table AS n,
-                    $engine_blocks_inherit_table AS bi
-                WHERE n.block_id = bi.block_id
-                    AND n.is_active = 1
-                    AND n.folder_id = '$folder'
-                    AND bi.folder_id = '$folder'
-                ORDER BY n.position ASC
-            ";
+        $sql = "
+            SELECT n.id
+            FROM $engine_nodes_table AS n,
+                $engine_blocks_inherit_table AS bi
+            WHERE n.block_id = bi.block_id
+                AND n.is_active = 1
+                AND n.folder_id = '$folder'
+                AND bi.folder_id = '$folder'
+            ORDER BY n.position ASC
+        ";
 
         return $this->_em->getConnection()->query($sql);
     }
