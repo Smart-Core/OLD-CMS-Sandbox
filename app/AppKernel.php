@@ -83,6 +83,7 @@ class AppKernel extends Kernel
             $bundles[] = new Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle();
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
             $bundles[] = new SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle();
+            $bundles[] = new SmartCore\Bundle\CMSGeneratorBundle\CMSGeneratorBundle();
             // $bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }
 

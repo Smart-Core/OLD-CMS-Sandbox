@@ -1,0 +1,15 @@
+{% raw %}
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ '{% endraw %}{{ bundle_basename_camelize }}{% raw %}'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ '{% endraw %}{{ bundle_basename_camelize }}{% raw %}'|trans }}</h2>
+
+    {#<div class="well">#}
+        {#{{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}#}
+    {#</div>#}
+
+{% endblock content %}
+{% endraw %}
