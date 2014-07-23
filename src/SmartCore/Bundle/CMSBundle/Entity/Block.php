@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\Table(name="engine_blocks",
  *      indexes={
- *          @ORM\Index(name="position", columns={"position"}),
+ *          @ORM\Index(name="position_engine_blocks", columns={"position"}),
  *      }
  * )
  * @UniqueEntity(fields="name", message="Блок с таким именем уже используется")

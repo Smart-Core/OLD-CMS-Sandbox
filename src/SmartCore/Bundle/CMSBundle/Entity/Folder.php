@@ -13,12 +13,12 @@ use SmartCore\Bundle\CMSBundle\Container;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="engine_folders",
  *      indexes={
- *          @ORM\Index(name="is_active",  columns={"is_active"}),
- *          @ORM\Index(name="is_deleted", columns={"is_deleted"}),
- *          @ORM\Index(name="position",   columns={"position"})
+ *          @ORM\Index(name="is_active_engine_folders",  columns={"is_active"}),
+ *          @ORM\Index(name="is_deleted_engine_folders", columns={"is_deleted"}),
+ *          @ORM\Index(name="position_engine_folders",   columns={"position"})
  *      },
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(name="folder_pid_uri_part", columns={"folder_pid", "uri_part"}),
+ *          @ORM\UniqueConstraint(name="folder_pid_uri_part_engine_folders", columns={"folder_pid", "uri_part"}),
  *      }
  * )
  * @UniqueEntity(fields={"uri_part", "parent_folder"}, message="в каждой подпапке должен быть уникальный сегмент URI")

@@ -10,10 +10,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="engine_nodes",
  *      indexes={
- *          @ORM\Index(name="is_active", columns={"is_active"}),
- *          @ORM\Index(name="position",  columns={"position"}),
- *          @ORM\Index(name="block_id",  columns={"block_id"}),
- *          @ORM\Index(name="module",    columns={"module"})
+ *          @ORM\Index(name="is_active_engine_nodes", columns={"is_active"}),
+ *          @ORM\Index(name="position_engine_nodes",  columns={"position"}),
+ *          @ORM\Index(name="block_id_engine_nodes",  columns={"block_id"}),
+ *          @ORM\Index(name="module_engine_nodes",    columns={"module"})
  *      }
  * )
  */

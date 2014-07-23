@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(
  *      name="chat_rooms",
  *      indexes={
- *          @ORM\Index(name="is_dialog", columns={"is_dialog"}),
- *          @ORM\Index(name="creator_user_id", columns={"creator_user_id"}),
- *          @ORM\Index(name="created_at", columns={"created_at"}),
+ *          @ORM\Index(name="is_dialog_chat_rooms", columns={"is_dialog"}),
+ *          @ORM\Index(name="creator_user_id_chat_rooms", columns={"creator_user_id"}),
+ *          @ORM\Index(name="created_at_chat_rooms", columns={"created_at"}),
  *      }
  * )
  */

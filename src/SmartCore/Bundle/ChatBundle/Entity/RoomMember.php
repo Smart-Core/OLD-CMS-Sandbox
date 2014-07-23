@@ -10,11 +10,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(
  *      name="chat_rooms_members",
  *      indexes={
- *          @ORM\Index(name="status", columns={"status"}),
- *          @ORM\Index(name="created_at", columns={"created_at"}),
+ *          @ORM\Index(name="status_chat_rooms_members", columns={"status"}),
+ *          @ORM\Index(name="created_at_chat_rooms_members", columns={"created_at"}),
  *      },
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(name="user_in_room", columns={"user_id", "room_id"}),
+ *          @ORM\UniqueConstraint(name="user_in_room_chat_rooms_members", columns={"user_id", "room_id"}),
  *      }
  * )
  * @UniqueEntity(fields={"user_id", "room"}, message="Пользователь уже добавлен в беседу.")

@@ -8,7 +8,7 @@ use SmartCore\Bundle\CMSBundle\Entity\Folder;
 
 /**
  * @ORM\Entity(repositoryClass="ItemRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="menu")
  */
 class Item

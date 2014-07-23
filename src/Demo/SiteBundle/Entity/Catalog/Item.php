@@ -9,7 +9,7 @@ use SmartCore\Bundle\UnicatBundle\Model\ItemModel;
  * @ORM\Entity
  * @ORM\Table(name="catalog_items",
  *      indexes={
- *          @ORM\Index(name="position", columns={"position"}),
+ *          @ORM\Index(name="position__catalog_items", columns={"position"}),
  *      }
  * )
  */

@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @ORM\Table(name="sitemap_urls",
  *      indexes={
- *          @ORM\Index(name="title_hash", columns={"title_hash"})
+ *          @ORM\Index(name="title_hash_sitemap_urls", columns={"title_hash"})
  *      }
  * )
  * @UniqueEntity(fields={"loc"}, message="Ссылка должна быть уникальной.")

@@ -10,11 +10,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @ORM\Table(name="engine_settings",
  *      indexes={
- *          @ORM\Index(name="bundle", columns={"bundle"}),
- *          @ORM\Index(name="key_name", columns={"key_name"}),
+ *          @ORM\Index(name="bundle_engine_settings", columns={"bundle"}),
+ *          @ORM\Index(name="key_name_engine_settings", columns={"key_name"}),
  *      },
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(name="bundle_key", columns={"bundle", "key_name"}),
+ *          @ORM\UniqueConstraint(name="bundle_key_engine_settings", columns={"bundle", "key_name"}),
  *      }
  * )
  *

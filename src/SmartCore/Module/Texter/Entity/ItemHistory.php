@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="texter_history",
  *      indexes={
- *          @ORM\Index(name="item_id", columns={"item_id"}),
- *          @ORM\Index(name="is_deleted", columns={"is_deleted"}),
+ *          @ORM\Index(name="item_id_texter_history", columns={"item_id"}),
+ *          @ORM\Index(name="is_deleted_texter_history", columns={"is_deleted"}),
  *      }
  * )
  */

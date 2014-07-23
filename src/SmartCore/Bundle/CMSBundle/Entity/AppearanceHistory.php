@@ -10,9 +10,9 @@ use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
  * @ORM\Entity()
  * @ORM\Table(name="engine_appearance_history",
  *      indexes={
- *          @ORM\Index(name="hash", columns={"hash"}),
- *          @ORM\Index(name="path", columns={"path"}),
- *          @ORM\Index(name="filename", columns={"filename"}),
+ *          @ORM\Index(name="hash_appearance_history", columns={"hash"}),
+ *          @ORM\Index(name="path_appearance_history", columns={"path"}),
+ *          @ORM\Index(name="filename_appearance_history", columns={"filename"}),
  *      }
  * )
  */

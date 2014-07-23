@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="media_files_transformed",
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(name="filter_file_id", columns={"filter", "file_id"}),
+ *          @ORM\UniqueConstraint(name="filter_file_id_media_files_transformed", columns={"filter", "file_id"}),
  *      }
  * )
  */

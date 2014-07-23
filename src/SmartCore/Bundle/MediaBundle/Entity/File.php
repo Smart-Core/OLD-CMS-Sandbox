@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @ORM\Entity
  * @ORM\Table(name="media_files",
  *      indexes={
- *          @ORM\Index(name="type", columns={"type"})
+ *          @ORM\Index(name="type_media_files", columns={"type"})
  *      }
  * )
  */
