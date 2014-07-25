@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Form\DataTransformer\HtmlEntitiesViewTransformer;
+use SmartCore\Bundle\CMSBundle\Form\DataTransformer\HtmlTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -12,7 +12,10 @@ class SettingFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($builder->create('value', 'text', ['attr' => ['class' => 'focused']])->addViewTransformer(new HtmlEntitiesViewTransformer()))
+            ->add($builder
+                ->create('value', 'text', ['attr' => ['class' => 'focused']])
+                ->addViewTransformer(new HtmlTransformer(false))
+            )
         ;
     }
 

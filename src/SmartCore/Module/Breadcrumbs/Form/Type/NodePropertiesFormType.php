@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Breadcrumbs\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Form\DataTransformer\HtmlEntitiesViewTransformer;
+use SmartCore\Bundle\CMSBundle\Form\DataTransformer\HtmlTransformer;
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -11,7 +11,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($builder->create('delimiter', 'text', ['attr' => ['class' => 'focused']])->addViewTransformer(new HtmlEntitiesViewTransformer()))
+            ->add($builder->create('delimiter', 'text', ['attr' => ['class' => 'focused']])->addViewTransformer(new HtmlTransformer(true)))
             ->add('hide_if_only_home', 'checkbox', ['required' => false])  // Скрыть, если выбрана корневая папка
             ->add('css_class', 'text', ['required' => false])              // CSS class div блока
         ;
