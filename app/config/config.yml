@@ -35,16 +35,16 @@ avalanche_imagine:
             options: { size: [300, 300], mode: inset, quality: 100, format: jpeg }
 
 fm_elfinder:
-    locale: %locale% # defaults to current request locale
-    editor: tinymce # other choices are ckeditor, tinymce or simple
+    locale: %locale%    # defaults to current request locale
+    editor: tinymce     # other choices are ckeditor, tinymce or simple
     tinymce_popup_path: "asset[bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce_popup.js]"
-    showhidden: false # defaults to false
-    fullscreen: true # defaults true, applies to simple and ckeditor editors
+    showhidden: false   # defaults to false
+    fullscreen: true    # defaults true, applies to simple and ckeditor editors
     include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
-    compression: false # enable if you configured the uglifycss and uglifyjs2 assetic filters and want compression
+    compression: false  # enable if you configured the uglifycss and uglifyjs2 assetic filters and want compression
     connector:
-        debug: true # defaults to false
-        roots:       # at least one root must be defined
+        debug: true     # defaults to false
+        roots:          # at least one root must be defined
             images:
                 driver: LocalFileSystem
                 path: images
@@ -56,7 +56,7 @@ fm_elfinder:
                 path: uploads
                 upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                 upload_deny: ['all']
-                upload_max_size: 10M
+                upload_max_size: 50M
 
 genemu_form:
     image: ~
@@ -77,7 +77,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [FMElfinderBundle]
+    bundles:        ['FMElfinderBundle']
     # java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -104,23 +104,24 @@ doctrine:
         default_connection: default
         connections:
             default:
+                charset:  UTF8
                 driver:   %database_driver%
                 host:     %database_host%
                 port:     %database_port%
                 dbname:   %database_name%
                 user:     %database_user%
                 password: %database_password%
-                charset:  UTF8
+                unix_socket: %database_socket%
                 logging:  %kernel.debug%
-                unix_socket: /var/run/mysqld/mysqld.sock
                 mapping_types:
                     enum: string                
-            #db1:
-                #driver:   %database_driver_db1%
-                #port:     %database_port_db1%
-                #dbname:   %database_name_db1%
-                #user:     %database_user_db1%
-                #password: %database_password_db1%
+            #db2:
+                #driver:   %database2_driver%
+                #port:     %database2_port%
+                #dbname:   %database2_name%
+                #user:     %database2_user%
+                #password: %database2_password%
+                #unix_socket: %database2_socket%
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
