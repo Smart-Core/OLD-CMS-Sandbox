@@ -5,7 +5,6 @@ namespace SmartCore\Bundle\CMSGeneratorBundle\Generator;
 use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\HttpKernel\Tests\Controller;
 
 class ModuleGenerator extends Generator
 {

@@ -15,11 +15,11 @@ class GenerateModuleCommand extends GeneratorCommand
     protected function configure()
     {
         $this
-            ->setDefinition(array(
+            ->setDefinition([
                 new InputOption('namespace', '', InputOption::VALUE_REQUIRED, 'The namespace of the module to create'),
                 new InputOption('dir', '', InputOption::VALUE_REQUIRED, 'The directory where to create the module'),
                 new InputOption('bundle-name', '', InputOption::VALUE_REQUIRED, 'The optional module name'),
-            ))
+            ])
             ->setDescription('Generates a module')
             ->setName('cms:generate:module')
         ;
@@ -43,7 +43,7 @@ class GenerateModuleCommand extends GeneratorCommand
             }
         }
 
-        foreach (array('namespace', 'dir') as $option) {
+        foreach (['namespace', 'dir'] as $option) {
             if (null === $input->getOption($option)) {
                 throw new \RuntimeException(sprintf('The "%s" option must be provided.', $option));
             }
@@ -51,7 +51,7 @@ class GenerateModuleCommand extends GeneratorCommand
 
         $namespace = Validators::validateBundleNamespace($input->getOption('namespace'));
         if (!$bundle = $input->getOption('bundle-name')) {
-            $bundle = strtr($namespace, array('\\' => ''));
+            $bundle = strtr($namespace, ['\\' => '']);
         }
         $bundle = Validators::validateBundleName($bundle);
         $dir = Validators::validateTargetDir($input->getOption('dir'), $bundle, $namespace);
@@ -90,7 +90,7 @@ class GenerateModuleCommand extends GeneratorCommand
         }
 
         if (null === $namespace) {
-            $output->writeln(array(
+            $output->writeln([
                 '',
                 'Each module is hosted under a namespace (like <comment>MySite/BlogModule</comment>).',
                 'The namespace should begin with a "vendor" name like your company name, your',
@@ -100,9 +100,9 @@ class GenerateModuleCommand extends GeneratorCommand
                 '',
                 'Use <comment>/</comment> instead of <comment>\\ </comment> for the namespace delimiter to avoid any problem.',
                 '',
-            ));
+            ]);
 
-            $namespace = $dialog->askAndValidate($output, $dialog->getQuestion('Module namespace', $input->getOption('namespace')), array('SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleNamespace'), false, $input->getOption('namespace'));
+            $namespace = $dialog->askAndValidate($output, $dialog->getQuestion('Module namespace', $input->getOption('namespace')), ['SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleNamespace'], false, $input->getOption('namespace'));
             $input->setOption('namespace', $namespace);
         }
 
@@ -115,17 +115,17 @@ class GenerateModuleCommand extends GeneratorCommand
         }
 
         if (null === $bundle) {
-            $bundle = strtr(preg_match('/Module$/', $namespace) ? $namespace : $namespace . 'Module', array('\\Module\\' => '', '\\' => ''));
+            $bundle = strtr(preg_match('/Module$/', $namespace) ? $namespace : $namespace . 'Module', ['\\Module\\' => '', '\\' => '']);
 
-            $output->writeln(array(
+            $output->writeln([
                 '',
                 'In your code, a module is often referenced by its name. It can be the',
                 'concatenation of all namespace parts but it\'s really up to you to come',
                 'up with a unique name (a good practice is to start with the vendor name).',
                 'Based on the namespace, we suggest <comment>'.$bundle.'</comment>.',
                 '',
-            ));
-            $bundle = $dialog->askAndValidate($output, $dialog->getQuestion('Module name', $bundle), array('SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleName'), false, $bundle);
+            ]);
+            $bundle = $dialog->askAndValidate($output, $dialog->getQuestion('Module name', $bundle), ['SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleName'], false, $bundle);
             $input->setOption('bundle-name', $bundle);
         }
 
@@ -140,12 +140,12 @@ class GenerateModuleCommand extends GeneratorCommand
         if (null === $dir) {
             $dir = dirname($this->getContainer()->getParameter('kernel.root_dir')).'/src';
 
-            $output->writeln(array(
+            $output->writeln([
                 '',
                 'The module can be generated anywhere. The suggested default directory uses',
                 'the standard conventions.',
                 '',
-            ));
+            ]);
             $dir = $dialog->askAndValidate($output, $dialog->getQuestion('Target directory', $dir), function ($dir) use ($bundle, $namespace) { return Validators::validateTargetDir($dir, $bundle, $namespace); }, false, $dir);
             $input->setOption('dir', $dir);
         }
@@ -154,13 +154,13 @@ class GenerateModuleCommand extends GeneratorCommand
         $format = 'yml';
 
         // summary
-        $output->writeln(array(
+        $output->writeln([
             '',
             $this->getHelper('formatter')->formatBlock('Summary before generation', 'bg=blue;fg=white', true),
             '',
             sprintf("You are going to generate a \"<info>%s\\%s</info>\" bundle\nin \"<info>%s</info>\" using the \"<info>%s</info>\" format.", $namespace, $bundle, $dir, $format),
             '',
-        ));
+        ]);
     }
 
     /**
@@ -174,11 +174,11 @@ class GenerateModuleCommand extends GeneratorCommand
     {
         $output->write('Checking that the bundle is autoloaded: ');
         if (!class_exists($namespace.'\\'.$bundle)) {
-            return array(
+            return [
                 '- Edit the <comment>composer.json</comment> file and register the bundle',
                 '  namespace in the "autoload" section:',
                 '',
-            );
+            ];
         }
     }
 
