@@ -106,7 +106,7 @@ class MenuBuilder extends ContainerAware
             if ($this->is_admin) {
                 $uri = $this->container->get('router')->generate('smart_menu_admin_item', ['item_id' => $item->getId()]);
             } else {
-                if (!$item->getFolder()->isActive()) {
+                if (null === $item->getFolder() or !$item->getFolder()->isActive()) {
                     continue;
                 }
 
@@ -125,7 +125,7 @@ class MenuBuilder extends ContainerAware
                     'title' => $item->getDescr(),
                 ])->setExtras($item->getProperties());
 
-                if ($this->is_admin and (!$item->getIsActive() or !$item->getFolder()->isActive())) {
+                if ($this->is_admin and (!$item->getIsActive() or null === $item->getFolder() or !$item->getFolder()->isActive())) {
                     $new_item->setAttribute('style', 'text-decoration: line-through;');
                 }
             } else {

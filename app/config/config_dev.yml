@@ -30,14 +30,3 @@ web_profiler_extra:
     container:  true
     assetic:    true
     twig:       true
-
-#sf2gen_console:
-#    new_process: false  # use a new shell process to launch the command
-#    toolbar: true  # display the toolbar in the current application ; to be disabled to use it in a third application.
-#    local: false   # add the current application to list of available apps ; if false, the current application is excluded.
-#    all: false   # will add all apps with a console available without using `apps` in configuration.
-    #env: %kernel.environment% #the env used for the kernel setup
-#    env: dev
-#    apps: #  use this to have a well defined list.
-#        - app
-        #- symfony-standard
