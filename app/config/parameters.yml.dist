@@ -39,4 +39,4 @@ parameters:
 
     secret: SmartCoreThisTokenIsNotSoSecretChangeIt
 
-    session_handler: smart_core_session.handler
+    session_handler: session.handler.native_file # smart_core_session.handler
