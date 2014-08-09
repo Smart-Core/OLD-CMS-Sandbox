@@ -74,6 +74,6 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
      */
     public function supports($resource, $type = null)
     {
-        return 'intalled_modules' === $type;
+        return 'installed_modules' === $type;
     }
 }

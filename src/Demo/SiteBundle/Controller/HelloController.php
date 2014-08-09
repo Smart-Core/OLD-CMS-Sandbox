@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\Controller;
+namespace Demo\SiteBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
@@ -30,7 +30,7 @@ class HelloController extends Controller
 //        ld($router);
 
         /** @var Router $moduleRouter */
-        $moduleRouter = $this->get('cms.router_module.news');
+        $moduleRouter = $this->get('cms.router_module.blog');
 
         /*
         ld($moduleRouter->match('/123.html'));

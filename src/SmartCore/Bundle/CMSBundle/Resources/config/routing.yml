@@ -1,19 +1,14 @@
 
-cms_hello:
-    path: /hi/
-    defaults:
-        _controller: CMSBundle:Hello:index
-
 cms_admin_module_routes:
     resource: .
     type: module_admin
 
 cms_admin:
-    resource: "routing_admin.yml"
+    resource: 'routing_admin.yml'
     prefix: /admin/
 
 cms_api:
-    resource: "routing_api.yml"
+    resource: 'routing_api.yml'
     prefix: /api/
 
 cms_node_mapper:
@@ -21,20 +16,20 @@ cms_node_mapper:
     methods: GET
     defaults:
         _controller: CMSBundle:Engine:run
-        slug: ""
+        slug: ''
     requirements:
-        slug: ".+"
+        slug: '.+'
 
 cms_node_postprocessor:
     path: /{slug}
     methods: POST
     defaults:
         _controller: CMSBundle:Engine:post
-        slug: ""
+        slug: ''
     requirements:
-        slug: ".+"
+        slug: '.+'
 
 # Эти маршруты нужны для генерации ссылок к модулям с учетом пути, куда подключена нода.
 cms_modules:
     resource: .
-    type: intalled_modules
+    type: installed_modules

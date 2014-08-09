@@ -68,7 +68,7 @@ services:
             - [ setResolver,  [ @routing.resolver ] ]
         tags:
             - { name: routing.loader }
-    cms.routes.intalled_modules.loader:
+    cms.routes.installed_modules.loader:
         class: SmartCore\Bundle\CMSBundle\Router\ModuleRoutesLoader
         calls:
             - [ setContainer, [ @service_container ] ]

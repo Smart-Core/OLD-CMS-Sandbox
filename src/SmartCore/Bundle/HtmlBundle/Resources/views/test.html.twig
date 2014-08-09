@@ -1,5 +1,7 @@
 {% extends '@Html/base.html.twig' %}
 
 {% block body %}
-    {{ hello }}
+    {% if hello is defined %}
+        {{ hello }}
+    {% endif %}
 {% endblock body %}
