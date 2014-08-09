@@ -5,25 +5,30 @@ DIR="var"
 if [ -d "$DIR" ]
 then
     echo "$DIR directory exists!"
-    chmod -R 0777 $DIR
 else
     mkdir $DIR
     mkdir $DIR/cache
     mkdir $DIR/logs
     mkdir $DIR/mailspool
-    mkdir $DIR/sessions
-
-    chmod -R 0777 $DIR
-
     echo "$DIR directory created!"
 fi
+
+if [ -d "$DIR/sessions" ];
+then
+    echo "Sessions directory exists!"
+else
+    mkdir $DIR/sessions
+    echo "Sessions directory created!"
+fi
+
+chmod -R 0777 $DIR
 
 if [ -d "web/uploads" ]
 then
     echo "web/uploads exists!"
 else
-    echo "web/uploads created"
     mkdir web/uploads
+    echo "web/uploads created"
 fi
 
 # update directories permissions
