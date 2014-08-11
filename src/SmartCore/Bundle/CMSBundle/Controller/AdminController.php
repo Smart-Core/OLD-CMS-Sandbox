@@ -40,7 +40,6 @@ class AdminController extends Controller
         $parameters = $this->container->getParameter('fm_elfinder');
 
         return $this->render('CMSBundle:Admin:elfinder.html.twig', [
-            'locale' => $parameters['locale'] ? $parameters['locale'] : $request->getLocale(),
             'fullscreen' => true,
             'includeAssets' => $parameters['include_assets'],
         ]);
