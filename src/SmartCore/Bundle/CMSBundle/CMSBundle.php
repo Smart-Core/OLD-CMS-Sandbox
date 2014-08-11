@@ -19,6 +19,10 @@ class CMSBundle extends Bundle
         if ($this->container->get('kernel')->getEnvironment() == 'prod' and $this->container->has('db.logger')) {
             $this->container->get('database_connection')->getConfiguration()->setSQLLogger($this->container->get('db.logger'));
         }
+
+        if (function_exists('ladybug_set')) {
+            ladybug_set('general.show_backtrace', false);
+        }
     }
 
     public function build(ContainerBuilder $container)
