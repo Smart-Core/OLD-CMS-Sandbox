@@ -50,9 +50,9 @@ class FolderFormType extends AbstractType
                 'required' => false,
             ])
             ->add('position')
-            ->add('is_active')
-            ->add('is_file')
-            ->add('has_inherit_nodes')
+            ->add('is_active', null, ['required' => false])
+            ->add('is_file',   null, ['required' => false])
+            ->add('has_inherit_nodes', null, ['required' => false])
             ->add('template_inheritable', 'choice', [
                 'choices'  => $templates,
                 'required' => false,

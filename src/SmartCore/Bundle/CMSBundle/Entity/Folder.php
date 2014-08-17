@@ -65,13 +65,6 @@ class Folder
     protected $title;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $is_file;
-
-    /**
      * @var int
      *
      * @ORM\Column(type="smallint", nullable=true)
@@ -88,16 +81,23 @@ class Folder
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     protected $is_active;
 
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     protected $is_deleted;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_file;
 
     /**
      * @var string
@@ -132,7 +132,7 @@ class Folder
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     protected $has_inherit_nodes;
 

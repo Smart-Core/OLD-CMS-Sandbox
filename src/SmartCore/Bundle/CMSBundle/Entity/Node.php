@@ -29,7 +29,7 @@ class Node implements \Serializable
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     protected $is_active;
 
@@ -101,7 +101,7 @@ class Node implements \Serializable
      *
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     protected $is_cached;
 
