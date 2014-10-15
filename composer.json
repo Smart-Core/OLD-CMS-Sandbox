@@ -22,7 +22,6 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
 
-        "abmundi/database-commands-bundle": "dev-master",
         "asm89/twig-cache-extension": "*",
         "avalanche123/imagine-bundle": "*",
         "dizda/cloud-backup-bundle": "dev-master",
@@ -30,7 +29,7 @@
         "elao/web-profiler-extra-bundle": "dev-master",
         "fabpot/goutte": "dev-master",
         "facebook/php-sdk": "*",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "friendsofsymfony/user-bundle": "~2.0",
         "genemu/form-bundle": "dev-master",
         "helios-ag/fm-elfinder-bundle": "1.4.1",
         "incenteev/composer-parameter-handler": "~2.0",

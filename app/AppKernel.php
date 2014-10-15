@@ -36,7 +36,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
 
-            new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(),
+            //new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(), // "abmundi/database-commands-bundle": "dev-master",
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             //new FOS\FacebookBundle\FOSFacebookBundle(),
