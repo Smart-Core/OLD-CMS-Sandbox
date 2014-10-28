@@ -11,7 +11,7 @@ security:
             id: fos_user.user_provider.username_email
 
     firewalls:
-         admin_login:
+         admin:
             anonymous: ~
             context: smart_core_cms
             pattern: ^/admin
@@ -22,9 +22,9 @@ security:
             logout:
                 path: /admin/logout
             remember_me:
-                key: "%secret%"
+                key: '%secret%'
                 name: SMART_CORE_REMEMBER_ME
-                lifetime: 36000
+                lifetime: 31536000 # 365 days in seconds
                 path: /
                 domain: ~
          main:
@@ -39,9 +39,9 @@ security:
             logout:
                 path: /user/logout
             remember_me:
-                key: "%secret%"
+                key: '%secret%'
                 name: SMART_CORE_REMEMBER_ME
-                lifetime: 36000
+                lifetime: 31536000 # 365 days in seconds
                 path: /
                 domain: ~
 

@@ -52,7 +52,7 @@
                         <ul class="dropdown-menu">
                             <li class=""><a href="{{ path('cms_admin_user_edit', {'id': app.user.id}) }}"><i class="icon-cog"></i> {{ 'My profile'|trans }}</a></li>
                             <li class="divider"></li>
-                            <li class=""><a href="{{ path('cms_admin_logout') }}"><i class="icon-off"></i> {{ 'Exit'|trans }}</a></li>
+                            <li class=""><a href="{{ logout_path('admin') }}"><i class="icon-off"></i> {{ 'Exit'|trans }}</a></li>
                         </ul>
                     </li>
                 </ul>
