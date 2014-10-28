@@ -9,7 +9,6 @@
 /web/upload/
 /web/uploads/
 /web/sitemap.xml
-composer.lock
 composer.phar
 /var/
 *.quarantine
