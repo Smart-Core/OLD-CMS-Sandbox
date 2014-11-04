@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ade34978805e5fe2759849e1c439c82",
+    "hash": "8e91ee01c1d8b45a08cb2acf2f408595",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1447,16 +1447,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "5.0.1",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9e806208d9b418a58ec86c49078aa94385e64bbd"
+                "reference": "6c72627de1d66832e4270e36e56acdb0d1d8f282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9e806208d9b418a58ec86c49078aa94385e64bbd",
-                "reference": "9e806208d9b418a58ec86c49078aa94385e64bbd",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/6c72627de1d66832e4270e36e56acdb0d1d8f282",
+                "reference": "6c72627de1d66832e4270e36e56acdb0d1d8f282",
                 "shasum": ""
             },
             "require": {
@@ -1471,7 +1471,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-ring": "5.0-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
@@ -1501,20 +1501,20 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-10-16 18:00:41"
+            "time": "2014-11-04 07:09:15"
         },
         {
             "name": "guzzlehttp/ringphp",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "86df4c0ea5459b292ff8c519f8db1513ea41ca9b"
+                "reference": "e7c28f96c5ac12ab0e63412cfc15989756fcb964"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/86df4c0ea5459b292ff8c519f8db1513ea41ca9b",
-                "reference": "86df4c0ea5459b292ff8c519f8db1513ea41ca9b",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/e7c28f96c5ac12ab0e63412cfc15989756fcb964",
+                "reference": "e7c28f96c5ac12ab0e63412cfc15989756fcb964",
                 "shasum": ""
             },
             "require": {
@@ -1551,7 +1551,7 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "time": "2014-10-29 02:00:14"
+            "time": "2014-11-04 07:01:14"
         },
         {
             "name": "guzzlehttp/streams",
@@ -2566,12 +2566,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "2574c9d319067b122ec783e5be9408e306b62673"
+                "reference": "eb42b04f27d4dcf350a40274a67c9807e2b11a85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/2574c9d319067b122ec783e5be9408e306b62673",
-                "reference": "2574c9d319067b122ec783e5be9408e306b62673",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/eb42b04f27d4dcf350a40274a67c9807e2b11a85",
+                "reference": "eb42b04f27d4dcf350a40274a67c9807e2b11a85",
                 "shasum": ""
             },
             "require": {
@@ -2614,7 +2614,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2014-08-13 18:37:00"
+            "time": "2014-11-04 21:08:17"
         },
         {
             "name": "liip/theme-bundle",
