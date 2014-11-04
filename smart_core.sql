@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июл 15 2014 г., 23:57
+-- Время создания: Ноя 05 2014 г., 04:25
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.5.11
+-- Версия PHP: 5.6.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -545,62 +545,6 @@ CREATE TABLE IF NOT EXISTS `engine_appearance_history` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `engine_blocks`
---
-
-DROP TABLE IF EXISTS `engine_blocks`;
-CREATE TABLE IF NOT EXISTS `engine_blocks` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `position` smallint(6) DEFAULT NULL,
-  `name` varchar(50) NOT NULL,
-  `descr` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
-  KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Дамп данных таблицы `engine_blocks`
---
-
-INSERT INTO `engine_blocks` (`id`, `position`, `name`, `descr`, `user_id`, `created_at`) VALUES
-(1, 0, 'content', 'Рабочая область', 1, '2013-03-11 01:09:17'),
-(2, 2, 'breadcrumbs', 'Хлебные крошки', 1, '2013-03-11 01:09:33'),
-(3, 1, 'main_menu', 'Навигационное меню', 1, '2013-03-11 04:00:50'),
-(4, 3, 'footer', 'Футер', 1, '2013-03-11 04:01:30'),
-(5, 5, 'right_column', 'Правая колонка', 1, '2013-03-23 23:46:01'),
-(6, 3, 'footer_right', 'Футер справа', 1, '2014-01-20 04:04:24');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `engine_blocks_inherit`
---
-
-DROP TABLE IF EXISTS `engine_blocks_inherit`;
-CREATE TABLE IF NOT EXISTS `engine_blocks_inherit` (
-  `block_id` smallint(6) NOT NULL,
-  `folder_id` int(11) NOT NULL,
-  PRIMARY KEY (`block_id`,`folder_id`),
-  KEY `IDX_4B3EA624E9ED820C` (`block_id`),
-  KEY `IDX_4B3EA624162CB942` (`folder_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Дамп данных таблицы `engine_blocks_inherit`
---
-
-INSERT INTO `engine_blocks_inherit` (`block_id`, `folder_id`) VALUES
-(2, 1),
-(3, 1),
-(4, 1),
-(6, 1);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `engine_folders`
 --
 
@@ -609,16 +553,16 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_pid` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `is_file` tinyint(1) DEFAULT NULL,
+  `is_file` tinyint(1) NOT NULL,
   `position` smallint(6) DEFAULT NULL,
   `uri_part` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT NULL,
-  `is_deleted` tinyint(1) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL,
   `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `redirect_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `router_node_id` int(11) DEFAULT NULL,
-  `has_inherit_nodes` tinyint(1) DEFAULT NULL,
+  `has_inherit_nodes` tinyint(1) NOT NULL,
   `permissions` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `lockout_nodes` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `template_inheritable` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -665,8 +609,8 @@ DROP TABLE IF EXISTS `engine_nodes`;
 CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_id` int(11) DEFAULT NULL,
-  `block_id` smallint(6) DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT NULL,
+  `region_id` smallint(6) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL,
   `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `position` smallint(6) DEFAULT NULL,
@@ -674,11 +618,11 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_by_user_id` int(11) NOT NULL,
   `create_datetime` datetime NOT NULL,
-  `is_cached` tinyint(1) DEFAULT NULL,
+  `is_cached` tinyint(1) NOT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F4FF528B162CB942` (`folder_id`),
-  KEY `IDX_F4FF528BE9ED820C` (`block_id`),
+  KEY `IDX_F4FF528BE9ED820C` (`region_id`),
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
   KEY `module` (`module`)
@@ -688,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
 -- Дамп данных таблицы `engine_nodes`
 --
 
-INSERT INTO `engine_nodes` (`id`, `folder_id`, `block_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`) VALUES
+INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`) VALUES
 (1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL),
 (2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 0, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL),
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0, NULL),
@@ -719,6 +663,62 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `block_id`, `is_active`, `module`
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL),
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL),
 (31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `engine_regions`
+--
+
+DROP TABLE IF EXISTS `engine_regions`;
+CREATE TABLE IF NOT EXISTS `engine_regions` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `position` smallint(6) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `descr` varchar(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
+  KEY `position` (`position`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Дамп данных таблицы `engine_regions`
+--
+
+INSERT INTO `engine_regions` (`id`, `position`, `name`, `descr`, `user_id`, `created_at`) VALUES
+(1, 0, 'content', 'Рабочая область', 1, '2013-03-11 01:09:17'),
+(2, 2, 'breadcrumbs', 'Хлебные крошки', 1, '2013-03-11 01:09:33'),
+(3, 1, 'main_menu', 'Навигационное меню', 1, '2013-03-11 04:00:50'),
+(4, 3, 'footer', 'Футер', 1, '2013-03-11 04:01:30'),
+(5, 5, 'right_column', 'Правая колонка', 1, '2013-03-23 23:46:01'),
+(6, 3, 'footer_right', 'Футер справа', 1, '2014-01-20 04:04:24');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `engine_regions_inherit`
+--
+
+DROP TABLE IF EXISTS `engine_regions_inherit`;
+CREATE TABLE IF NOT EXISTS `engine_regions_inherit` (
+  `region_id` smallint(6) NOT NULL,
+  `folder_id` int(11) NOT NULL,
+  PRIMARY KEY (`region_id`,`folder_id`),
+  KEY `IDX_4B3EA624E9ED820C` (`region_id`),
+  KEY `IDX_4B3EA624162CB942` (`folder_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `engine_regions_inherit`
+--
+
+INSERT INTO `engine_regions_inherit` (`region_id`, `folder_id`) VALUES
+(2, 1),
+(3, 1),
+(4, 1),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -812,7 +812,7 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `media_collection_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F70E6EB7B52E685C` (`media_collection_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `galleries`
@@ -841,7 +841,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `is_enabled` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `gallery_albums`
@@ -1121,7 +1121,7 @@ DROP TABLE IF EXISTS `session`;
 CREATE TABLE IF NOT EXISTS `session` (
   `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
-  `data` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `data` longblob NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
@@ -1631,7 +1631,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-07-14 21:14:09', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-11-05 02:57:25', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1787,13 +1787,6 @@ ALTER TABLE `chat_rooms_members`
   ADD CONSTRAINT `FK_5E04104754177093` FOREIGN KEY (`room_id`) REFERENCES `chat_rooms` (`id`) ON DELETE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `engine_blocks_inherit`
---
-ALTER TABLE `engine_blocks_inherit`
-  ADD CONSTRAINT `FK_372DC759162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_372DC759E9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`id`) ON DELETE CASCADE;
-
---
 -- Ограничения внешнего ключа таблицы `engine_folders`
 --
 ALTER TABLE `engine_folders`
@@ -1804,7 +1797,14 @@ ALTER TABLE `engine_folders`
 --
 ALTER TABLE `engine_nodes`
   ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `engine_blocks` (`id`);
+  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `engine_regions_inherit`
+--
+ALTER TABLE `engine_regions_inherit`
+  ADD CONSTRAINT `FK_372DC759162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_372DC759E9ED820C` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `galleries`

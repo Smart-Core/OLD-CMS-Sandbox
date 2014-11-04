@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      indexes={
  *          @ORM\Index(name="is_active_engine_nodes", columns={"is_active"}),
  *          @ORM\Index(name="position_engine_nodes",  columns={"position"}),
- *          @ORM\Index(name="block_id_engine_nodes",  columns={"block_id"}),
+ *          @ORM\Index(name="region_id_engine_nodes", columns={"region_id"}),
  *          @ORM\Index(name="module_engine_nodes",    columns={"module"})
  *      }
  * )
@@ -71,15 +71,15 @@ class Node implements \Serializable
     protected $folder_id = null;
 
     /**
-     * @var Block
+     * @var Region
      *
-     * @ORM\ManyToOne(targetEntity="Block", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Region", fetch="EAGER")
      * @Assert\NotBlank()
      */
-    protected $block;
+    protected $region;
 
     /**
-     * Позиция в внутри блока.
+     * Позиция в внутри области.
      *
      * @var int
      *
@@ -161,7 +161,7 @@ class Node implements \Serializable
     /**
      * @var string
      */
-    protected $block_name = null;
+    protected $region_name = null;
 
     /**
      * Constructor
@@ -193,8 +193,8 @@ class Node implements \Serializable
             $this->params,
             $this->folder,
             $this->folder_id,
-            $this->block,
-            $this->block_name,
+            $this->region,
+            $this->region_name,
             $this->position,
             $this->priority,
             $this->descr,
@@ -218,8 +218,8 @@ class Node implements \Serializable
             $this->params,
             $this->folder,
             $this->folder_id,
-            $this->block,
-            $this->block_name,
+            $this->region,
+            $this->region_name,
             $this->position,
             $this->priority,
             $this->descr,
@@ -354,34 +354,34 @@ class Node implements \Serializable
     }
 
     /**
-     * @param Block $block
+     * @param Region $region
      * @return $this
      */
-    public function setBlock(Block $block)
+    public function setRegion(Region $region)
     {
-        $this->block = $block;
+        $this->region = $region;
 
         return $this;
     }
 
     /**
-     * @return Block
+     * @return Region
      */
-    public function getBlock()
+    public function getRegion()
     {
-        return $this->block;
+        return $this->region;
     }
 
     /**
      * @return string
      */
-    public function getBlockName()
+    public function getRegionName()
     {
-        if (null === $this->block_name) {
-            $this->block_name = $this->getBlock()->getName();
+        if (null === $this->region_name) {
+            $this->region_name = $this->getRegion()->getName();
         }
 
-        return $this->block_name;
+        return $this->region_name;
     }
 
     /**

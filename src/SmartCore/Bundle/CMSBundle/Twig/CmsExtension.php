@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Twig;
 
-use SmartCore\Bundle\CMSBundle\Entity\Block;
+use SmartCore\Bundle\CMSBundle\Entity\Region;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -26,22 +26,22 @@ class CmsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'cms_nodes_count_in_block' => new \Twig_Function_Method($this, 'nodesCountInBlock'),
+            'cms_nodes_count_in_region' => new \Twig_Function_Method($this, 'nodesCountInRegion'),
             'cms_setting' => new \Twig_Function_Method($this, 'getSetting'),
             'is_cms_setting' => new \Twig_Function_Method($this, 'isSetting'),
         ];
     }
 
     /**
-     * @param  Block|int $block
+     * @param  Region|int $region
      * @return int
      */
-    public function nodesCountInBlock($block)
+    public function nodesCountInRegion($region)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->container->get('doctrine.orm.entity_manager');
 
-        return $em->getRepository('CMSBundle:Node')->countInBlock($block);
+        return $em->getRepository('CMSBundle:Node')->countInRegion($region);
     }
 
     /**

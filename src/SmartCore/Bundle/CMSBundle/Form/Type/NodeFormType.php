@@ -12,9 +12,9 @@ class NodeFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // Запрос списка блоков, чтобы в случае отсутствия, был создан дефолтный блок.
+        // Запрос списка областей, чтобы в случае отсутствия, был создан дефолтная область.
         // @todo убрать отсюда.
-        Container::get('cms.block')->all();
+        Container::get('cms.region')->all();
 
         $modules = [];
         foreach (Container::get('cms.module')->all() as $module_name => $_dummy) {
@@ -27,8 +27,8 @@ class NodeFormType extends AbstractType
                 'data' => 'Texter', // @todo настройку модуля по умолчанию.
             ])
             ->add('folder', 'cms_folder_tree')
-            ->add('block', 'entity', [
-                'class' => 'CMSBundle:Block',
+            ->add('region', 'entity', [
+                'class' => 'CMSBundle:Region',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('b')->orderBy('b.position', 'ASC');
                 },

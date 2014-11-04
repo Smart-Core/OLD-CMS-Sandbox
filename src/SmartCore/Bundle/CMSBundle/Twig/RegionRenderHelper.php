@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Twig;
 
-class BlockRenderHelper
+class RegionRenderHelper
 {
     public function __toString()
     {

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BlockFormType extends AbstractType
+class RegionFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -27,12 +27,12 @@ class BlockFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Bundle\CMSBundle\Entity\Block',
+            'data_class' => 'SmartCore\Bundle\CMSBundle\Entity\Region',
         ]);
     }
 
     public function getName()
     {
-        return 'smart_core_block';
+        return 'smart_core_region';
     }
 }

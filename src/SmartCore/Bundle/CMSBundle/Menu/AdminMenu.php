@@ -62,7 +62,7 @@ class AdminMenu extends ContainerAware
         $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'nav nav-pills');
         $menu->addChild('Create folder',  ['route' => 'cms_admin_structure_folder_create']);
         $menu->addChild('Connect module', ['route' => 'cms_admin_structure_node_create']);
-        $menu->addChild('Blocks',         ['route' => 'cms_admin_structure_block']);
+        $menu->addChild('Regions',        ['route' => 'cms_admin_structure_region']);
 
         return $menu;
     }

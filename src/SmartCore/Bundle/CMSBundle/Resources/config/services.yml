@@ -34,8 +34,8 @@ services:
 # Core
     cms.breadcrumbs:
         class: SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs
-    cms.block:
-        class: SmartCore\Bundle\CMSBundle\Engine\EngineBlock
+    cms.region:
+        class: SmartCore\Bundle\CMSBundle\Engine\EngineRegion
         arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
     cms.config:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineConfig

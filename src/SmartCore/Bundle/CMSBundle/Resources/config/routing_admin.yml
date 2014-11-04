@@ -22,16 +22,16 @@ cms_admin_structure:
     defaults:
         _controller: CMSBundle:AdminStructure:structure
 
-# Block
-cms_admin_structure_block:
-    path: /structure/block/
+# Region
+cms_admin_structure_region:
+    path: /structure/region/
     defaults:
-        _controller: CMSBundle:AdminStructure:blockIndex
+        _controller: CMSBundle:AdminStructure:regionIndex
 
-cms_admin_structure_block_edit:
-    path: /structure/block/{id}/
+cms_admin_structure_region_edit:
+    path: /structure/region/{id}/
     defaults:
-        _controller: CMSBundle:AdminStructure:blockEdit
+        _controller: CMSBundle:AdminStructure:regionEdit
     requirements:
         id: \d+
 

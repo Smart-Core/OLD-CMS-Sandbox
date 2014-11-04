@@ -24,81 +24,81 @@ class AdminStructureController extends Controller
     }
 
     /**
-     * Отображение списка всех блоков, а также форма добавления нового.
+     * Отображение списка всех регионов, а также форма добавления нового.
      *
      * @param Request $request
      * @return Response
      */
-    public function blockIndexAction(Request $request)
+    public function regionIndexAction(Request $request)
     {
-        $engineBlock = $this->get('cms.block');
-        $block = $engineBlock->create();
-        $block->setUserId($this->getUser());
+        $engineRegion = $this->get('cms.region');
+        $region = $engineRegion->create();
+        $region->setUserId($this->getUser());
 
-        $form = $engineBlock->createForm($block);
+        $form = $engineRegion->createForm($region);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $engineBlock->update($form->getData());
-                $this->addFlash('success', 'Блок создан.'); // @todo перевод
+                $engineRegion->update($form->getData());
+                $this->addFlash('success', 'Область создана.'); // @todo перевод
 
-                return $this->redirect($this->generateUrl('cms_admin_structure_block'));
+                return $this->redirect($this->generateUrl('cms_admin_structure_region'));
             }
         }
 
-        return $this->render('CMSBundle:AdminStructure:block_index.html.twig', [
-            'all_blocks' => $engineBlock->all(),
-            'form'       => $form->createView(),
+        return $this->render('CMSBundle:AdminStructure:region_index.html.twig', [
+            'all_regions' => $engineRegion->all(),
+            'form'        => $form->createView(),
         ]);
     }
 
     /**
-     * Редактирование блока.
+     * Редактирование области.
      *
      * @param Request $request
      * @param int $id
      * @return Response|RedirectResponse
      */
-    public function blockEditAction(Request $request, $id = 0)
+    public function regionEditAction(Request $request, $id = 0)
     {
-        $engineBlock = $this->get('cms.block');
-        $block = $engineBlock->get($id);
+        $engineRegion = $this->get('cms.region');
+        $region = $engineRegion->get($id);
 
-        if (empty($block)) {
-            return $this->redirect($this->generateUrl('cms_admin_structure_block'));
+        if (empty($region)) {
+            return $this->redirect($this->generateUrl('cms_admin_structure_region'));
         }
 
-        $form = $engineBlock->createForm($block);
+        $form = $engineRegion->createForm($region);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($request->request->has('update')) {
                 if ($form->isValid()) {
-                    $engineBlock->update($form->getData());
-                    $this->addFlash('success', 'Блок обновлён.'); // @todo перевод
+                    $engineRegion->update($form->getData());
+                    $this->addFlash('success', 'Область обновлена.'); // @todo перевод
 
-                    return $this->redirect($this->generateUrl('cms_admin_structure_block'));
+                    return $this->redirect($this->generateUrl('cms_admin_structure_region'));
                 }
             } elseif ($request->request->has('delete')) {
-                /** @var \SmartCore\Bundle\CMSBundle\Entity\Block $block */
-                $block = $form->getData();
+                /** @var \SmartCore\Bundle\CMSBundle\Entity\Region $region */
+                $region = $form->getData();
 
-                if ('content' == $block->getName()) {
-                    $this->addFlash('error', 'Нельзя удалить блок content'); // @todo перевод
-                } elseif (0 < $this->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Node')->countInBlock($block)) {
-                    $this->addFlash('error', 'Нельзя удалить блок пока в него включены ноды'); // @todo перевод
+                if ('content' == $region->getName()) {
+                    $this->addFlash('error', 'Нельзя удалить область content'); // @todo перевод
+                } elseif (0 < $this->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Node')->countInRegion($region)) {
+                    $this->addFlash('error', 'Нельзя удалить область пока в неё включены модули'); // @todo перевод
                 } else {
-                    $engineBlock->remove($block);
-                    $this->addFlash('success', 'Блок удалён.'); // @todo перевод
+                    $engineRegion->remove($region);
+                    $this->addFlash('success', 'Область удалена.'); // @todo перевод
 
-                    return $this->redirect($this->generateUrl('cms_admin_structure_block'));
+                    return $this->redirect($this->generateUrl('cms_admin_structure_region'));
                 }
             }
         }
 
-        return $this->render('CMSBundle:AdminStructure:block_edit.html.twig', [
+        return $this->render('CMSBundle:AdminStructure:region_edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }

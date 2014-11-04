@@ -11,14 +11,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="engine_blocks",
+ * @ORM\Table(name="engine_regions",
  *      indexes={
- *          @ORM\Index(name="position_engine_blocks", columns={"position"}),
+ *          @ORM\Index(name="position_engine_regions", columns={"position"}),
  *      }
  * )
- * @UniqueEntity(fields="name", message="Блок с таким именем уже используется")
+ * @UniqueEntity(fields="name", message="Регион с таким именем уже используется")
  */
-class Block
+class Region
 {
     use SignedTrait;
     use CreatedAtTrait;
@@ -57,7 +57,7 @@ class Block
      * @var Folder[]|ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Folder", fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(name="engine_blocks_inherit")
+     * @ORM\JoinTable(name="engine_regions_inherit")
      */
     protected $folders;
 

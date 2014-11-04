@@ -3,7 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
-use SmartCore\Bundle\CMSBundle\Twig\BlockRenderHelper;
+use SmartCore\Bundle\CMSBundle\Twig\RegionRenderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,12 +90,12 @@ class EngineController extends Controller
         $nodesResponses = [];
 
         foreach ($nodes as $node) {
-            if (!isset($nodesResponses[$node->getBlockName()])) {
-                $nodesResponses[$node->getBlockName()] = new BlockRenderHelper();
+            if (!isset($nodesResponses[$node->getRegionName()])) {
+                $nodesResponses[$node->getRegionName()] = new RegionRenderHelper();
             }
 
             $prioritySorted[$node->getPriority()][$node->getId()] = $node;
-            $nodesResponses[$node->getBlockName()]->{$node->getId()} = new Response();
+            $nodesResponses[$node->getRegionName()]->{$node->getId()} = new Response();
         }
 
         krsort($prioritySorted);
@@ -128,7 +128,7 @@ class EngineController extends Controller
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $this->front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
                     $this->front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
-                        'title' => 'Свойства ноды', // @todo translate
+                        'title' => 'Параметры модуля', // @todo translate
                         'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
                     ];
                 }
@@ -139,7 +139,7 @@ class EngineController extends Controller
                     );
                 }
 
-                $nodesResponses[$node->getBlockName()]->{$node->getId()} = $moduleResponse;
+                $nodesResponses[$node->getRegionName()]->{$node->getId()} = $moduleResponse;
             }
         }
 

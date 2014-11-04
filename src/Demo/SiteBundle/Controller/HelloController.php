@@ -62,7 +62,7 @@ class HelloController extends Controller
 
 //        $nodes = $em->getRepository('CMSBundle:Node')->findInInheritanceFolder($folder_id);
 
-//        $b = $em->getRepository('CMSBundle:Block')->find(2);
+//        $b = $em->getRepository('CMSBundle:Region')->find(2);
 //        $folder = $em->find('CMSBundle:Folder', 1);
 //        $b->setFolders($folder);
 //        ld($b->getFolders());

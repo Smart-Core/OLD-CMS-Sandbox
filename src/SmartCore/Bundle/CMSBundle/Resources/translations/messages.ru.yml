@@ -83,6 +83,8 @@ Properties: Свойства
 Properties group: Группа свойств
 Provider: Провайдер
 Records: Записи
+Region: Область
+Regions: Области
 Reports: Отчеты
 Priority: Приоритет
 Role: Роль
@@ -110,7 +112,7 @@ Text: Текст
 Title: Заголовок
 Type: Тип
 Viewing: Просмотр
-Uri part: Часть URI
+Uri part: Часть адреса
 Update: Обновить
 Updated: Обновлено
 Upload: Загрузить

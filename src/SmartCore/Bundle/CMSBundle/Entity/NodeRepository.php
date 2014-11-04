@@ -32,18 +32,18 @@ class NodeRepository extends EntityRepository
     }
 
     /**
-     * @param Block|int $block
+     * @param Region|int $region
      * @return int
      */
-    public function countInBlock($block)
+    public function countInRegion($region)
     {
         $query = $this->_em->createQuery("
             SELECT COUNT(n.id)
             FROM CMSBundle:Node AS n
-            JOIN CMSBundle:Block AS b
-            WHERE b.id = :block
-            AND n.block = b
-        ")->setParameter('block', $block);
+            JOIN CMSBundle:Region AS r
+            WHERE r.id = :region
+            AND n.region = r
+        ")->setParameter('region', $region);
 
         return $query->getSingleScalarResult();
     }
@@ -88,17 +88,17 @@ class NodeRepository extends EntityRepository
             $folder = $folder->getId();
         }
 
-        $engine_nodes_table          = $this->_class->getTableName();
-        $engine_blocks_inherit_table = $this->_em->getClassMetadata('CMSBundle:Block')->getAssociationMapping('folders')['joinTable']['name'];
+        $engine_nodes_table           = $this->_class->getTableName();
+        $engine_regions_inherit_table = $this->_em->getClassMetadata('CMSBundle:Region')->getAssociationMapping('folders')['joinTable']['name'];
 
         $sql = "
             SELECT n.id
             FROM $engine_nodes_table AS n,
-                $engine_blocks_inherit_table AS bi
-            WHERE n.block_id = bi.block_id
+                $engine_regions_inherit_table AS ri
+            WHERE n.region_id = ri.region_id
                 AND n.is_active = 1
                 AND n.folder_id = '$folder'
-                AND bi.folder_id = '$folder'
+                AND ri.folder_id = '$folder'
             ORDER BY n.position ASC
         ";
 

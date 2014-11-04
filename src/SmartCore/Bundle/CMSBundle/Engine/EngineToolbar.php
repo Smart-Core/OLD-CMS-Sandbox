@@ -34,10 +34,10 @@ class EngineToolbar extends ContainerAware
                             'icon'  => 'file',
                             'uri'   => $router->generate('cms_admin_files'),
                         ],
-                        'blocks' => [
-                            'title' => $t->trans('Blocks'),
+                        'regions' => [
+                            'title' => $t->trans('Regions'),
                             'icon'  => 'th',
-                            'uri'   => $router->generate('cms_admin_structure_block'),
+                            'uri'   => $router->generate('cms_admin_structure_region'),
                         ],
                         'users' => [
                             'title' => $t->trans('Users'),

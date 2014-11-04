@@ -7,7 +7,6 @@ use SmartCore\Bundle\CMSBundle\Entity\Node;
 trait NodeTrait
 {
     /**
-     * Свойства ноды.
      * @var Node
      */
     protected $node;

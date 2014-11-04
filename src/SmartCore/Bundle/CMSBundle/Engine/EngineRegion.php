@@ -3,11 +3,11 @@
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Doctrine\ORM\EntityManager;
-use SmartCore\Bundle\CMSBundle\Entity\Block;
-use SmartCore\Bundle\CMSBundle\Form\Type\BlockFormType;
+use SmartCore\Bundle\CMSBundle\Entity\Region;
+use SmartCore\Bundle\CMSBundle\Form\Type\RegionFormType;
 use Symfony\Component\Form\FormFactoryInterface;
 
-class EngineBlock
+class EngineRegion
 {
     /**
      * @var EntityManager
@@ -32,33 +32,33 @@ class EngineBlock
     {
         $this->em = $em;
         $this->formFactory = $formFactory;
-        $this->repository  = $em->getRepository('CMSBundle:Block');
+        $this->repository  = $em->getRepository('CMSBundle:Region');
     }
 
     /**
-     * @return Block[]
+     * @return Region[]
      */
     public function all()
     {
-        $blocks = $this->repository->findBy([], ['position' => 'ASC']);
+        $regions = $this->repository->findBy([], ['position' => 'ASC']);
 
-        if (empty($blocks)) {
-            $this->update(new Block('content', 'Content workspace'));
+        if (empty($regions)) {
+            $this->update(new Region('content', 'Content workspace'));
 
             return $this->all();
         }
 
-        return $blocks;
+        return $regions;
     }
 
     /**
      * @param string|null $name
      * @param string|null $descr
-     * @return Block
+     * @return Region
      */
     public function create($name = null, $descr = null)
     {
-        return new Block($name, $descr);
+        return new Region($name, $descr);
     }
 
     /**
@@ -71,12 +71,12 @@ class EngineBlock
      */
     public function createForm($data = null, array $options = [])
     {
-        return $this->formFactory->create(new BlockFormType(), $data, $options);
+        return $this->formFactory->create(new RegionFormType(), $data, $options);
     }
 
     /**
      * @param integer $id
-     * @return Block|null
+     * @return Region|null
      */
     public function get($id)
     {
@@ -84,9 +84,9 @@ class EngineBlock
     }
 
     /**
-     * @param Block $entity
+     * @param Region $entity
      */
-    public function remove(Block $entity)
+    public function remove(Region $entity)
     {
         if ('content' == $entity->getName()) {
             return;
@@ -97,9 +97,9 @@ class EngineBlock
     }
 
     /**
-     * @param Block $entity
+     * @param Region $entity
      */
-    public function update(Block $entity)
+    public function update(Region $entity)
     {
         $this->em->persist($entity);
         $this->em->flush($entity);
