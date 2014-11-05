@@ -44,7 +44,7 @@ class MenuController extends Controller
     protected function setFrontControls()
     {
         $this->node->addFrontControl('edit', [
-            'title'    => 'Редактировать',
+            'title'    => 'Редактировать меню',
             'default'  => true,
             'descr'    => 'Пункты меню',
             'uri'      => $this->generateUrl('cms_admin_node_w_slug', [

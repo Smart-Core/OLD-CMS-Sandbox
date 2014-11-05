@@ -5,6 +5,7 @@ namespace SmartCore\Module\Blog\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Blog\Model\CategoryInterface;
 use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
 {
+    use NodeTrait;
+
     /**
      * @param Request $request
      * @param string $slug
@@ -19,6 +22,10 @@ class CategoryController extends Controller
      */
     public function articlesAction(Request $requst, $slug = null)
     {
+        if (empty($slug)) {
+            return $this->redirect($this->generateUrl('smart_blog.article.index'));
+        }
+
         $requestedCategories = [];
         $parent = null;
         foreach (explode('/', $slug) as $categoryName) {
@@ -58,8 +65,14 @@ class CategoryController extends Controller
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
         } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl('smart_blog.category.articles'));
+            return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
+
+        $this->node->addFrontControl('edit', [
+            'title'   => 'Редактировать категории',
+            'uri'     => $this->generateUrl('smart_blog_admin_category'),
+            'default' => true,
+        ]);
 
         return $this->render('BlogModule:Category:articles.html.twig', [
             'categories'    => $requestedCategories,

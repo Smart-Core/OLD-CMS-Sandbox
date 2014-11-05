@@ -4,12 +4,15 @@ namespace SmartCore\Module\Blog\Controller;
 
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class ArticleController extends Controller
 {
+    use NodeTrait;
+
     /**
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response
@@ -32,6 +35,12 @@ class ArticleController extends Controller
             $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]) . '/', $article->getCategory());
         }
         $breadchumbs->add($article->getTitle(), $article->getTitle());
+
+        $this->node->addFrontControl('edit', [
+            'title'   => 'Редактировать статью',
+            'uri'     => $this->generateUrl('smart_blog_admin_article_edit', ['id' => $article->getId()]),
+            'default' => true,
+        ]);
 
         return $this->render('BlogModule:Article:show.html.twig', [
             'article' => $article,
@@ -59,6 +68,12 @@ class ArticleController extends Controller
         } catch (NotValidCurrentPageException $e) {
             return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
+
+        $this->node->addFrontControl('create', [
+            'title'   => 'Добавить статью',
+            'uri'     => $this->generateUrl('smart_blog_admin_article_create'),
+            'default' => true,
+        ]);
 
         return $this->render('BlogModule:Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,

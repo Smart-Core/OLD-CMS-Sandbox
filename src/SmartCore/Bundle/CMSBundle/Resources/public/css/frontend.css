@@ -30,7 +30,8 @@ body {
     text-decoration: none;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
+    text-align: left;
 }
 ul.dropdown-menu { /* Прижать меню вплотную к плашке*/
     margin: 0;

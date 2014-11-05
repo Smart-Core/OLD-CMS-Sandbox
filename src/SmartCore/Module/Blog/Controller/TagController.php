@@ -4,17 +4,26 @@ namespace SmartCore\Module\Blog\Controller;
 
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
+use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Bundle\CMSBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class TagController extends Controller
 {
+    use NodeTrait;
+
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
+        $this->node->addFrontControl('edit', [
+            'title'   => 'Редактировать тэги',
+            'uri'     => $this->generateUrl('smart_blog_admin_tag'),
+            'default' => true,
+        ]);
+
         return $this->render('BlogModule:Tag:index.html.twig', [
             'cloud' => $this->getTagService()->getCloud('smart_blog_tag'),
         ]);
@@ -42,6 +51,12 @@ class TagController extends Controller
         } catch (NotValidCurrentPageException $e) {
             return $this->redirect($this->generateUrl('smart_blog_tag_index'));
         }
+
+        $this->node->addFrontControl('edit', [
+            'title'   => 'Редактировать тэги',
+            'uri'     => $this->generateUrl('smart_blog_admin_tag'),
+            'default' => true,
+        ]);
 
         return $this->render('BlogModule:Tag:show_articles.html.twig', [
             'pagerfanta' => $pagerfanta,

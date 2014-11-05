@@ -22,8 +22,8 @@ class SimpleNewsController extends Controller
     public function indexAction(Request $request, $page = null)
     {
         $this->node->addFrontControl('create', [
-            'title'   => 'Добавить',
-            'descr'   => 'Добавить новость',
+            'title'   => 'Добавить новость',
+            //'descr'   => 'Добавить новость',
             'uri'     => $this->generateUrl('smart_module.news_admin.create'),
             'default' => true,
         ]);
@@ -68,14 +68,14 @@ class SimpleNewsController extends Controller
 
         $this->node->setFrontControls([
             'edit' => [
-                'title'   => 'Редактировать',
-                'descr'   => 'Редактировать новость',
+                'title'   => 'Редактировать новость',
+                //'descr'   => 'Редактировать новость',
                 'uri'     => $this->generateUrl('smart_module.news_admin.edit', ['id' => $item->getId() ]),
                 'default' => true,
             ],
             'create' => [
-                'title'   => 'Добавить',
-                'descr'   => 'Добавить новость',
+                'title'   => 'Добавить новость',
+                //'descr'   => 'Добавить новость',
                 'uri'     => $this->generateUrl('smart_module.news_admin.create'),
             ],
         ]);

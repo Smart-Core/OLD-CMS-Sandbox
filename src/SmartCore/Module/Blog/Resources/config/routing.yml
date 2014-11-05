@@ -30,9 +30,14 @@ smart_blog.category.articles:
     path: /category/{slug}
     defaults:
         _controller: BlogModule:Category:articles
-        slug: ""
+        slug: ''
     requirements:
-        slug: ".+"
+        slug: '.+'
+
+smart_blog.root_category:
+    path: /category/
+    defaults:
+        _controller: BlogModule:Category:articles
 
 smart_blog_tag_index:
     path: /tag/

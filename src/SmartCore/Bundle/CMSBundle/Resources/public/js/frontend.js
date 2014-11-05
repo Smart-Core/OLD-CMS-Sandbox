@@ -36,20 +36,32 @@ $(document).ready(function() {
 
                                 // сначала поиск действия по умолчанию.
                                 $.each(node, function(index, value) {
+                                    if (value.descr != undefined) {
+                                        var button_title = value.descr;
+                                    } else {
+                                        var button_title = '';
+                                    }
+
                                     if (value.default == true) {
                                         node_buttons += '<button OnClick="window.location=\'' + value.uri
                                             + '?redirect_to=' + window.location.pathname + window.location.search
-                                            + '\'" title="' + value.descr
-                                            + '" class="btn btn-small popup-trigger">' + value.title + '</button>';
+                                            + '\'" title="' + button_title
+                                            + '" class="btn btn-mini popup-trigger">' + value.title + '</button>';
                                     }
                                 });
 
-                                node_buttons += '<button data-toggle="dropdown" class="btn btn-small dropdown-toggle"><span class="caret"></span></button>';
+                                node_buttons += '<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle"><span class="caret"></span></button>';
                                 node_buttons += '<ul class="dropdown-menu">';
 
                                 // затем отрисовка пунктов меню.
                                 $.each(node, function(index, value) {
-                                    node_buttons += '<li><a class="popup-trigger" title="' + value.descr
+                                    if (value.descr != undefined) {
+                                        var item_title = value.descr;
+                                    } else {
+                                        var item_title = '';
+                                    }
+
+                                    node_buttons += '<li><a class="popup-trigger" title="' + item_title
                                         + '" href="' + value.uri + '?redirect_to=' + window.location.pathname + window.location.search + '">' ;
 
                                     if (value.default == true) {

@@ -128,7 +128,7 @@ class EngineController extends Controller
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $this->front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
                     $this->front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
-                        'title' => 'Параметры модуля', // @todo translate
+                        'title' => 'Параметры модуля ' . $node->getModule(), // @todo translate
                         'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
                     ];
                 }
