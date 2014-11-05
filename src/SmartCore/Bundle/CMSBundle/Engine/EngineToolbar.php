@@ -105,7 +105,7 @@ class EngineToolbar extends ContainerAware
                 ],
             ],
             'right' => [
-                'eip_toggle' => [$t->trans('Viewing'), $t->trans('Edit')],
+                'eip_toggle' => ["Режим правки: ОТКЛ.", "Режим правки: ВКЛ."], // @todo перевод // [$t->trans('Viewing'), $t->trans('Edit')],
                 'user' => [
                     'title' => $this->container->get('security.context')->getToken()->getUser()->getUserName(),
                     'icon' => 'user',
@@ -136,14 +136,14 @@ class EngineToolbar extends ContainerAware
     }
 
     /**
-     * @param array $node_front_controls
+     * @param array $nodes_front_controls
      */
-    public function prepare(array $node_front_controls = null)
+    public function prepare(array $nodes_front_controls = null)
     {
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
                 'toolbar' => $this->getArray(),
-                'node'    => $node_front_controls,
+                'nodes'   => $nodes_front_controls,
             ];
 
             $this->get('smart.felib')->call('bootstrap');

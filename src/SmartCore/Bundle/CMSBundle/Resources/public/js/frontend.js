@@ -29,8 +29,8 @@ $(document).ready(function() {
                         function(){
                             var elem = this;
 
-                            if (typeof cms_front_controls.node[$(elem).attr('id')] === 'object') {
-                                var node = cms_front_controls.node[$(elem).attr('id')];
+                            if (typeof cms_front_controls.nodes[$(elem).attr('id')] === 'object') {
+                                var node = cms_front_controls.nodes[$(elem).attr('id')];
 
                                 var node_buttons = '<div class="cmf-frontadmin-node-buttons btn-group">';
 
@@ -88,7 +88,6 @@ $(document).ready(function() {
     }
 });
 
-
 function renderToolbar() {
     $('body')
         .css('padding-top', '40px')
@@ -109,7 +108,7 @@ function renderToolbar() {
         $.each(cms_front_controls.toolbar.right, function(index, value) {
             if (index === 'eip_toggle') {
                 $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right')
-                    .prepend('<button type="button" class="btn btn-primary span2" data-toggle="button" class-toggle="btn-danger">Просмотр</button>');
+                    .prepend('<button type="button" class="btn btn-primary span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
             } else {
                 var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
 
