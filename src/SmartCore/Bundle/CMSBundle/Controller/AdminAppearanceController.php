@@ -17,8 +17,10 @@ class AdminAppearanceController extends Controller
     public function indexAction()
     {
         return $this->render('CMSBundle:AdminAppearance:index.html.twig', [
-            'styles'    => $this->getStyles(),
-            'templates' => $this->getTemplates(),
+            'styles'         => $this->getStyles(),
+            'styles_path'    => 'web' . $this->get('cms.config')->get('cms', 'appearance_styles_path'),
+            'templates'      => $this->getTemplates(),
+            'templates_path' => 'app/Resources/views/',
         ]);
     }
 
