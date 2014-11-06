@@ -178,7 +178,7 @@ function renderToolbar() {
     // Кнопки
     if (typeof cms_front_controls.toolbar.buttons === 'object') {
         $.each(cms_front_controls.toolbar.buttons, function(index, value) {
-            var item = '<li><a class="btn-inverse" href="' + value.uri + '" title="' + value.descr + '">' + value.title + '</a></li>';
+            var item = '<li><a class="btn-inverse" href="' + value.uri + '?redirect_to=' + window.location.pathname + window.location.search + '" title="' + value.descr + '">' + value.title + '</a></li>';
 
             $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item);
         });
