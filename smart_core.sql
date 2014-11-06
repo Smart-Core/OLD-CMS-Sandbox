@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 05 2014 г., 04:25
+-- Время создания: Ноя 07 2014 г., 01:29
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.2
 
@@ -68,7 +68,7 @@ INSERT INTO `blog_articles` (`id`, `author_id`, `category_id`, `image_id`, `is_c
 (15, 1, 14, NULL, 1, 1, 'NotePad++', 'notepad_plus_plus', 'Часто возникает необходимость быстрой перекодировки файла (например, из ansi в utf8, или наоборот). Есть замечательный (и притом бесплатный) редактор - NotePad++. С помощью него можно легко перекодировать файл из одной кодировки в другую. В этом редакторе есть даже подсветка кода. Конечно, я предпочитаю работать где-нибудь в Adobe Dreamweaver, NuSphere PHPED или в NetBeans. Но эти монстры подолгу грузятся, а иногда хочется быстро подправить код и тут же закрыть файл. Для этого как раз подойдёт NotePad++', '<p></p>\n<hr id="readmore" />\n<p>\n	Есть одна особенность перекодирования в utf8. Для преобразования кодировки&nbsp; файла выбираем в меню &laquo;Кодировки&raquo;-&gt; &laquo;Преобразовать в utf8&nbsp; без BOM&raquo;. Если выбрать просто &laquo;Преобразовать в utf8&raquo;, тогда случиться трагедия &ndash; страница перестанет правильно отображаться в браузере. Преобразование в ANSI таких проблем не имеет &ndash; есть только одно действие.<br />\n	Программа качается <a href="http://notepad-plus-plus.org/download/" target="_blank">отсюда</a>.<br />\n	&nbsp;</p>\n', 'редактор, кодировка', 'Как перекодировать файл с помощью NotePad++', '2012-02-25 15:34:43', NULL),
 (16, 1, 15, NULL, 1, 1, 'Что выбрать: фреймворк или CMS', 'framework_vs_cms', 'Свое знакомство с сайтостроением я начал с написания простейшего кода на HTML. Сайт получился, естественно, статическим. Следующий проект делал уже на PHP. Времени на написание ушло много, в результате у меня начала создаваться собственная CMS. К сожалению, данный факт осмыслил не сразу. А как только понял, что приду к CMS, решил не изобретать велосипед, освоил Joomla и WordPress.', '<p></p>\n<hr id="readmore" />\n<p>\n	&nbsp;Разработка стандартных сайтов (блогов, форумов и т.д.) пошла на ура. Но вся проблема оказалась в том, что многим заказчикам нужна некая особая, нестандартная функциональность. Реализовать которую в рамках данной CMS оказывается совсем непросто. Приходиться писать новые расширения или модифицировать существующий код. Времени такая работа занимает много, к тому же из-за взаимодействия с ядром CMS код не оптимальный. В общем, встал вопрос &ndash; что же проще &ndash; писать свою CMS или мучиться с существующими.</p>\n<p>\n	И тут я вспомнил о фреймворках. &nbsp;Фреймворк &ndash; это каркас для веб-приложения, а CMS &ndash; готовая система управления контентом. Наверное, можно фреймворк можно сравнить с кирпичами, из которых можно построить самые причудливые строения, а CMS &ndash; это стандартный дом.</p>\n<p>\n	После обзора самых популярных фреймворков я остановил свой выбор на Yii. Понравился достаточно строгий подход, относительная простота изучения (конечно, CodeIgniter осваивается легче, но возможности Yii богаче).</p>\n<p>\n	Теперь написать собственную, уникальную CMS стало гораздо проще. Конечно, стандартные проекты быстрее реализовать на готовой CMS, но многие проекты имею тенденцию превращаться из стандартных в нестандартные.</p>\n<p>\n	Этот блог я написал на Yii. А вот другой мой блог &ndash; netopus.ru написан CMS WordPress. Использовалась одна из бесплатных тем для WordPress.</p>\n<p><b>UPD</b> В сентябре 2013 года блог перешел на Symfony2 (движок SmartCore)</p>\n', 'фреймворк, CMS, выбор', 'Преимущества и недостатки фреймворка над CMS', '2011-11-23 13:15:19', NULL),
 (17, 1, 6, NULL, 1, 1, 'Twig в Symfony2: работа с датой и временем.', 'twig_in_symfony2_work_with_date_and_time', 'Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.', '<p>&nbsp;</p>\r\n<hr id="readmore" />\r\n<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>', 'Symfony2, Twig, дата и время', 'Symfony2 работа с датой и временем из Twig', '2013-09-05 18:19:56', '2014-02-09 09:36:49'),
-(18, NULL, NULL, NULL, 1, 1, 'Проверка на изменение сущности', 'entity_change', NULL, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* @var $em EntityManager */<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uow = $em-&gt;getUnitOfWork();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uow-&gt;computeChangeSets();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $r = $uow-&gt;getEntityChangeSet($entity);<br /><br />', NULL, NULL, '2014-03-05 19:35:31', NULL);
+(18, NULL, NULL, NULL, 1, 1, 'Проверка на изменение сущности', 'entity_change', NULL, '/* @var $em EntityManager */<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uow = $em-&gt;getUnitOfWork();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uow-&gt;computeChangeSets();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $r = $uow-&gt;getEntityChangeSet($entity);<br /><br />', NULL, NULL, '2014-03-05 19:35:31', '2014-11-07 01:25:37');
 
 -- --------------------------------------------------------
 
@@ -585,7 +585,7 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL),
 (2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL),
 (3, 1, 'Аккаунт пользователя', 0, 999, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL),
-(4, 8, 'Вложенная', 0, 0, 'unser_news', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27', NULL),
+(4, 8, 'Вложенная', 0, 0, 'under_news', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27', NULL),
 (5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50', NULL),
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL),
 (7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL),
@@ -620,6 +620,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `create_datetime` datetime NOT NULL,
   `is_cached` tinyint(1) NOT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `controls_in_toolbar` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F4FF528B162CB942` (`folder_id`),
   KEY `IDX_F4FF528BE9ED820C` (`region_id`),
@@ -632,37 +633,37 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
 -- Дамп данных таблицы `engine_nodes`
 --
 
-INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`) VALUES
-(1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL),
-(2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 0, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL),
-(3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0, NULL),
-(4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:1;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL),
-(5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL),
-(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
-(7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL),
-(9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL),
-(10, 7, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:7;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0, NULL),
-(11, 5, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:8;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0, NULL),
-(12, 8, 1, 1, 'SimpleNews', 'a:1:{s:14:"items_per_page";i:3;}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0, NULL),
-(13, 1, 6, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:9;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0, NULL),
-(14, 9, 1, 1, 'Feedback', 'a:0:{}', 0, 0, NULL, 1, '2014-01-21 19:32:26', 0, NULL),
-(15, 8, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:10;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-22 19:02:27', 0, NULL),
-(16, 6, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:11;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 10:01:55', 0, NULL),
-(17, 1, 1, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"12";s:10:"controller";s:15:"NewsWidget:last";s:6:"params";s:8:"count: 3";s:8:"open_tag";s:48:"<hr /><h3>Последние новости</h3>";s:9:"close_tag";N;}', 10, 0, NULL, 1, '2014-01-29 18:27:59', 0, NULL),
-(18, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL),
-(19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL),
-(20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL),
-(21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL),
-(22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL),
-(23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, 'Тэги блога', 1, '2014-02-07 22:55:10', 0, NULL),
-(24, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:15;s:6:"editor";b:1;}', 19, 0, NULL, 1, '2014-02-08 21:01:35', 0, NULL),
-(25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL),
-(26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL),
-(27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, NULL, 1, '2014-02-10 08:13:18', 0, NULL),
-(28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL),
-(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL),
-(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL),
-(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL);
+INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`, `controls_in_toolbar`) VALUES
+(1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL, 0),
+(2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 0, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL, 1),
+(3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 0, 'Хедер', 1, '2013-03-21 06:03:37', 0, NULL, 1),
+(4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:1;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL, 1),
+(5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL, 0),
+(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0),
+(7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0),
+(9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL, 0),
+(10, 7, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:7;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0, NULL, 0),
+(11, 5, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:8;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0, NULL, 1),
+(12, 8, 1, 1, 'SimpleNews', 'a:1:{s:14:"items_per_page";i:3;}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0, NULL, 1),
+(13, 1, 6, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:9;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0, NULL, 0),
+(14, 9, 1, 1, 'Feedback', 'a:0:{}', 0, 0, NULL, 1, '2014-01-21 19:32:26', 0, NULL, 0),
+(15, 8, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:10;s:6:"editor";b:1;}', 0, 0, 'Текст над новостями', 1, '2014-01-22 19:02:27', 0, NULL, 0),
+(16, 6, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:11;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 10:01:55', 0, NULL, 1),
+(17, 1, 1, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"12";s:10:"controller";s:15:"NewsWidget:last";s:6:"params";s:8:"count: 3";s:8:"open_tag";s:48:"<hr /><h3>Последние новости</h3>";s:9:"close_tag";N;}', 10, 0, NULL, 1, '2014-01-29 18:27:59', 0, NULL, 0),
+(18, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL, 0),
+(19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL, 0),
+(20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL, 1),
+(21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL, 1),
+(22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL, 1),
+(23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, 'Тэги блога', 1, '2014-02-07 22:55:10', 0, NULL, 0),
+(24, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:15;s:6:"editor";b:1;}', 19, 0, NULL, 1, '2014-02-08 21:01:35', 0, NULL, 0),
+(25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL, 1),
+(26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL, 0),
+(27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, NULL, 1, '2014-02-10 08:13:18', 0, NULL, 1),
+(28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL, 1),
+(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0),
+(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL, 0),
+(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1357,7 +1358,7 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   KEY `is_deleted` (`is_deleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `texter_history`
@@ -1366,7 +1367,8 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
 INSERT INTO `texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `editor`, `text`, `meta`, `created`, `user_id`) VALUES
 (1, 0, 2, 'ru', 1, '<h1>Главная страница!</h1>\r\n<p>С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма, концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.</p>\r\n<img src="/uploads/Advanced%20C%20Asana.jpg" alt="" width="891" height="666" />', 'a:1:{s:8:"keywords";s:3:"123";}', '2014-02-10 07:49:39', 1),
 (2, 0, 16, 'ru', 1, '<hr />\r\n<h4>\r\n  Тэги блога\r\n</h4>\r', 'a:0:{}', '2014-02-10 11:30:25', 1),
-(3, 0, 16, 'ru', 1, 'Проверка вложенных папок при улсовии, что в родительскую подключен модуль с роутингом.\r', 'a:0:{}', '2014-02-10 11:31:39', 1);
+(3, 0, 16, 'ru', 1, 'Проверка вложенных папок при улсовии, что в родительскую подключен модуль с роутингом.\r', 'a:0:{}', '2014-02-10 11:31:39', 1),
+(4, 0, 8, 'ru', 1, '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;)<br />\r\n  <br />\r\n  <img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" />\r\n</p>\r', 'a:0:{}', '2014-11-07 01:25:51', 1);
 
 -- --------------------------------------------------------
 
@@ -1631,7 +1633,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-11-05 02:57:25', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-11-06 23:36:40', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
