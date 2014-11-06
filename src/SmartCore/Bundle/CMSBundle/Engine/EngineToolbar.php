@@ -3,23 +3,21 @@
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class EngineToolbar extends ContainerAware
+class EngineToolbar extends Controller
 {
     /**
      * @return array
      */
     public function getArray()
     {
-        $current_folder_id = $this->container->get('cms.context')->getCurrentFolderId();
+        $current_folder_id  = $this->get('cms.context')->getCurrentFolderId();
+        $router             = $this->get('router');
+        $t                  = $this->get('translator');
+        $buttons            = [];
 
-        $router = $this->container->get('router');
-        $t = $this->container->get('translator');
-
-        $buttons = [];
-
-        foreach ($this->container->get('cms.node')->getNodes() as $node) {
+        foreach ($this->get('cms.node')->getNodes() as $node) {
             if ($node->getControlsInToolbar() == Node::TOOLBAR_ONLY_IN_SELF_FOLDER) {
                 foreach ($node->getFrontControls() as $controls) {
                     if (isset($controls['default']) and $controls['default'] == true) {
@@ -174,17 +172,5 @@ class EngineToolbar extends ContainerAware
                 ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
             ;
         }
-    }
-
-    /**
-     * Gets a service by id.
-     *
-     * @param string $id The service id
-     *
-     * @return object The service
-     */
-    protected function get($id)
-    {
-        return $this->container->get($id);
     }
 }
