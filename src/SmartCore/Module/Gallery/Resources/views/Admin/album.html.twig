@@ -4,9 +4,15 @@
 
 {% block content %}
 
-    <a href="{{ path('smart_module.gallery.admin_gallery', {'id': album.gallery.id }) }}" style="float: right; margin-top: 14px;"> &laquo; Назад в галерею: {{ album.gallery }}</a>
+    {% if albumPath %}
+        <a class="btn btn-small" href="{{ albumPath }}" title="{{ app.request.host ~ albumPath }}" style="float: right; margin-top: 14px;">
+            <i class="icon-home"></i> Перейти на страницу альбома на сайте
+        </a>
+    {% endif %}
 
     <h2>{{ 'Photos'|trans }} ({{ album.title }})</h2>
+
+    <a href="{{ path('smart_module.gallery.admin_gallery', {'id': album.gallery.id }) }}"> &laquo; Назад в галерею: {{ album.gallery }}</a>
 
     <h4>Загрузить фото</h4>
 

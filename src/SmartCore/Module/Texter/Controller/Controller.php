@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Texter\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+use \Knp\RadBundle\Controller\Controller as BaseController;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 
 class Controller extends BaseController

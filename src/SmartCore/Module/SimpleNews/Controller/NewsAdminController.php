@@ -19,7 +19,8 @@ class NewsAdminController extends Controller
         $em = $this->getDoctrine();
 
         return $this->render('SimpleNewsModule:Admin:index.html.twig', [
-            'news' => $em->getRepository('SimpleNewsModule:News')->findBy([], ['id' => 'DESC']),
+            'folderPath' => $this->getFilderPath(),
+            'news'       => $em->getRepository('SimpleNewsModule:News')->findBy([], ['id' => 'DESC']),
         ]);
     }
 
@@ -63,7 +64,10 @@ class NewsAdminController extends Controller
             }
         }
 
-        return $this->render('SimpleNewsModule:Admin:create.html.twig', ['form' => $form->createView()]);
+        return $this->render('SimpleNewsModule:Admin:create.html.twig', [
+            'form'       => $form->createView(),
+            'folderPath' => $this->getFilderPath(),
+        ]);
     }
 
     /**
@@ -126,7 +130,31 @@ class NewsAdminController extends Controller
             }
         }
 
-        return $this->render('SimpleNewsModule:Admin:edit.html.twig', ['form' => $form->createView()]);
+        $itemPath = null;
+
+        if ($this->getFilderPath()) {
+            $_basePath = $this->getFilderPath();
+
+            // Удаление последнего слеша
+            if (mb_substr($_basePath, - 1) == '/') {
+                $_basePath = mb_substr($_basePath, 0, mb_strlen($_basePath) - 1);
+            }
+
+            // Удаление первого слеша
+            if (mb_substr($_basePath, 0, 1) == '/') {
+                $_basePath = mb_substr($_basePath, 1);
+            }
+
+            $itemPath = $this->generateUrl('smart_module.news.item', [
+                '_basePath' => $_basePath,
+                'slug' => $form->getData()->getSlug(),
+            ]);
+        }
+
+        return $this->render('SimpleNewsModule:Admin:edit.html.twig', [
+            'form'     => $form->createView(),
+            'itemPath' => $itemPath,
+        ]);
     }
 
     /**
@@ -150,5 +178,20 @@ class NewsAdminController extends Controller
             : $this->generateUrl($redirect_to);
 
         return $this->redirect($url);
+    }
+
+    /**
+     * Получить путь к папке на сайте, куда подключен модуль.
+     *
+     * @return null|string
+     */
+    protected function getFilderPath()
+    {
+        $folderPath = null;
+        foreach ($this->get('cms.node')->findByModule('SimpleNews') as $node) {
+            $folderPath = $this->get('cms.folder')->getUri($node->getFolderId());
+        }
+
+        return $folderPath;
     }
 }

@@ -3,6 +3,13 @@
 {% block title %}Редактирование / {{ parent() }}{% endblock %}
 
 {% block content %}
+
+    {% if itemPath %}
+        <a class="btn btn-small" href="{{ itemPath }}" title="{{ app.request.host ~ itemPath }}" style="float: right;">
+            <i class="icon-home"></i> Перейти на страницу новости на сайте
+        </a>
+    {% endif %}
+
     <ul class="nav nav-tabs" id="myTab">
         <li><a href="{{ path('smart_module.news_admin') }}">Список всех новостей</a></li>
         <li><a href="{{ path('smart_module.news_admin.create') }}">Написать новость</a></li>

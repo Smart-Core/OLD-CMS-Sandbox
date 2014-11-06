@@ -30,7 +30,13 @@
                         {% if allow_delete %}
                             {#<button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить папку?')"><i class="icon-trash icon-white"></i> {{ 'Delete'|trans }}</button>#}
                         {% endif %}
-                        <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+
+                        {% if app.request.query.has('redirect_to') and folderPath %}
+                            <a class="btn cmf-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
+                        {% else %}
+                            <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                        {% endif %}
+
                     </div>
                 </div>
             </fieldset>

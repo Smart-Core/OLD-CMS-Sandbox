@@ -26,10 +26,22 @@ class CmsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
+            'cms_folder_path' => new \Twig_Function_Method($this, 'generateFolderPath'),
             'cms_nodes_count_in_region' => new \Twig_Function_Method($this, 'nodesCountInRegion'),
             'cms_setting' => new \Twig_Function_Method($this, 'getSetting'),
             'is_cms_setting' => new \Twig_Function_Method($this, 'isSetting'),
         ];
+    }
+
+    /**
+     * Получение полной ссылки на папку, указав её id. Если не указать ид папки, то вернётся текущий путь.
+     *
+     * @param mixed|null $data
+     * @return string
+     */
+    public function generateFolderPath($data = null)
+    {
+        return $this->container->get('cms.folder')->getUri($data);
     }
 
     /**

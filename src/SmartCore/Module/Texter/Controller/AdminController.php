@@ -21,8 +21,24 @@ class AdminController extends Controller
             return $this->itemAction($request, $this->text_item_id);
         }
 
+        $items = $this->getDoctrine()->getRepository('TexterModule:Item')->findAll();
+
+        /** @var $item Item */
+        foreach ($items as $item) {
+            $folderPath = null;
+            foreach ($this->get('cms.node')->findByModule('Texter') as $node) {
+                if ($node->getParam('text_item_id') === (int) $item->getId()) {
+                    $folderPath = $this->get('cms.folder')->getUri($node);
+
+                    break;
+                }
+            }
+
+            $item->_folderPath = $folderPath;
+        }
+
         return $this->render('TexterModule:Admin:index.html.twig', [
-            'items' => $this->getDoctrine()->getRepository('TexterModule:Item')->findAll(),
+            'items' => $items,
         ]);
     }
 
@@ -35,6 +51,15 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $item = $em->find('TexterModule:Item', $id);
+
+        $folderPath = null;
+        foreach ($this->get('cms.node')->findByModule('Texter') as $node) {
+            if ($node->getParam('text_item_id') === (int) $item->getId()) {
+                $folderPath = $this->get('cms.folder')->getUri($node);
+
+                break;
+            }
+        }
 
         if ($request->isMethod('POST')) {
             $oldItem = clone $item;
@@ -58,15 +83,21 @@ class AdminController extends Controller
                 $em->persist($history);
                 $em->flush($history);
 
-                $this->get('session')->getFlashBag()->add('success', 'Текст обновлён'); // @todo перевод.
+                $this->get('session')->getFlashBag()->add('success', 'Текст обновлён (id: <b>'.$item->getId().'</b>)'); // @todo перевод.
 
-                return $this->redirect($this->generateUrl('smart_module.texter.admin'));
+                if ($request->request->has('update_and_redirect_to_site') and $folderPath) {
+                    return $this->redirect($folderPath);
+                } else {
+                    return $this->redirect($this->generateUrl('smart_module.texter.admin'));
+                }
             } catch (\Exception $e) {
                 $this->get('session')->getFlashBag()->add('errors', ['sql_debug' => $e->getMessage()]);
 
                 return $this->redirect($this->generateUrl('smart_module.texter.admin.edit', ['id' => $id]));
             }
         }
+
+        $item->_folderPath = $folderPath;
 
         return $this->render('TexterModule:Admin:edit.html.twig', [
             '_node_id' => empty($this->node) ?: $this->node->getId(),
@@ -122,7 +153,7 @@ class AdminController extends Controller
 
             $this->get('session')->getFlashBag()->add('success', 'Откат успешно выполнен.'); // @todo перевод.
         } else {
-            $this->get('session')->getFlashBag()->add('error', 'Непредвиженная ошибка при выполнении отката'); // @todo перевод.
+            $this->get('session')->getFlashBag()->add('error', 'Непредвиденная ошибка при выполнении отката'); // @todo перевод.
         }
 
         return $this->redirect($this->generateUrl('smart_module.texter.admin'));

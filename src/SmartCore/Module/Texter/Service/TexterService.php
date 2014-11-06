@@ -28,7 +28,7 @@ class TexterService
     }
 
     /**
-     * @param $item_id
+     * @param int $item_id
      * @param null $node_id
      * @return mixed|\SmartCore\Module\Texter\Entity\Item
      */

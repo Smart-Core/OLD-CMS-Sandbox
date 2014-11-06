@@ -3,6 +3,13 @@
 {% block title %}Написать новость / {{ parent() }}{% endblock %}
 
 {% block content %}
+
+    {% if folderPath %}
+        <a class="btn btn-small" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right;">
+            <i class="icon-home"></i> Перейти на страницу новостей на сайте
+        </a>
+    {% endif %}
+
     <ul class="nav nav-tabs" id="myTab">
         <li><a href="{{ path('smart_module.news_admin') }}">Список всех новостей</a></li>
         <li class="active"><a>Написать новость</a></li>

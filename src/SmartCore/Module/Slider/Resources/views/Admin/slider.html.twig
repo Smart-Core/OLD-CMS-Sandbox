@@ -4,6 +4,12 @@
 
 {% block content %}
 
+    {% if folderPath %}
+        <a class="btn btn-small" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right;">
+            <i class="icon-home"></i> Перейти на страницу альбома на сайте
+        </a>
+    {% endif %}
+
     <ul class="nav nav-pills" id="myTab">
         <li><a href="{{ path('smart_module.slider.admin') }}">Список всех слайдеров</a></li>
         <li class="active"><a href="{{ path('smart_module.slider.admin_slider', {'id': slider.id }) }}">Редактирование слайдера <b>&laquo;{{ slider.title }}&raquo;</b></a></li>

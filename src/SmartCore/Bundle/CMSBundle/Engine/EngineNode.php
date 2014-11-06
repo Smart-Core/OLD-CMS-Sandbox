@@ -127,11 +127,20 @@ class EngineNode
 
     /**
      * @param Folder $folder
-     * @return array|\SmartCore\Bundle\CMSBundle\Entity\Node[]
+     * @return array|Node[]
      */
     public function findInFolder(Folder $folder)
     {
         return $this->repository->findBy(['folder' => $folder]);
+    }
+
+    /**
+     * @param string $name
+     * @return array|Node[]
+     */
+    public function findByModule($name)
+    {
+        return $this->repository->findBy(['module' => $name]);
     }
 
     /**

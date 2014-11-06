@@ -90,9 +90,9 @@ class Item
     {
         $a = strip_tags($this->text);
 
-        $dotted = (mb_strlen($a, 'utf-8') > 120) ? '...' : '';
+        $dotted = (mb_strlen($a, 'utf-8') > 100) ? '...' : '';
 
-        return mb_substr($a, 0, 120, 'utf-8') . $dotted;
+        return mb_substr($a, 0, 100, 'utf-8') . $dotted;
     }
 
     /**

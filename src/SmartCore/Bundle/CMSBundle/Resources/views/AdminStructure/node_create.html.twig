@@ -29,7 +29,12 @@
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
-                    <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+
+                    {% if app.request.query.has('redirect_to') and folderPath %}
+                        <a class="btn cmf-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
+                    {% else %}
+                        <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                    {% endif %}
                 </div>
             </div>
         </form>

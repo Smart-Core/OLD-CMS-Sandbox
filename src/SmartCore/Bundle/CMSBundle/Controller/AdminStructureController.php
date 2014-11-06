@@ -161,7 +161,8 @@ class AdminStructureController extends Controller
         }
 
         return $this->renderView('CMSBundle:AdminStructure:folder_create.html.twig', [
-            'form' => $form->createView(),
+            'form'       => $form->createView(),
+            'folderPath' => $this->get('cms.folder')->getUri($folder_pid),
         ]);
     }
 
@@ -217,6 +218,7 @@ class AdminStructureController extends Controller
 
         return $this->renderView('CMSBundle:AdminStructure:folder_edit.html.twig', [
             'allow_delete'  => $id != 1 ? true : false,
+            'folderPath'    => $this->get('cms.folder')->getUri($id),
             'form'          => $form->createView(),
         ]);
     }
@@ -295,7 +297,8 @@ class AdminStructureController extends Controller
         }
 
         return $this->render('CMSBundle:AdminStructure:node_create.html.twig', [
-            'form' => $form->createView(),
+            'form'       => $form->createView(),
+            'folderPath' => $this->get('cms.folder')->getUri($folder_pid),
         ]);
     }
 

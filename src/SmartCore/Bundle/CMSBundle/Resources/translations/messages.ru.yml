@@ -69,6 +69,7 @@ Modules: Модули
 Modules count: Кол-во модулей
 Name: Имя
 New user: Новый пользователь
+No: Нет
 Node edit: Редактирование ноды
 Nodes count: Кол-во нод
 Node properties: Кол-во нод
@@ -77,6 +78,7 @@ Page: Страница
 Parent folder: Родительская папка
 Parent item: Родительский пункт
 Permissions: Права доступа
+Path: Путь
 Sign in: Вход на сайт
 Pos: Позиция
 Position: Позиция
@@ -119,4 +121,5 @@ Updated: Обновлено
 Upload: Загрузить
 Username: Имя пользователя
 Users: Пользователи
+Yes: Да
 Width: Ширина

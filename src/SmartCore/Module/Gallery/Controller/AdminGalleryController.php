@@ -14,13 +14,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminGalleryController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction(Request $request)
     {
         $gallery = new Gallery();
         $gallery->setUserId($this->getUser());
 
         $form = $this->createForm(new GalleryFormType(), $gallery);
-        $form->add('create', 'submit');
+        $form->add('create', 'submit', ['attr' => ['class' => 'btn-success']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -43,7 +47,7 @@ class AdminGalleryController extends Controller
 
     /**
      * @param Request $request
-     * @param $id
+     * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function galleryAction(Request $request, $id)
@@ -66,7 +70,7 @@ class AdminGalleryController extends Controller
         $form = $this->createForm(new AlbumFormType(), $album);
         $form
             ->remove('is_enabled')
-            ->add('create album', 'submit');
+            ->add('create album', 'submit', ['attr' => ['class' => 'btn-success']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -78,10 +82,20 @@ class AdminGalleryController extends Controller
             }
         }
 
+        $folderPath = null;
+        foreach ($this->get('cms.node')->findByModule('Gallery') as $node) {
+            if ($node->getParam('gallery_id') === (int) $id) {
+                $folderPath = $this->get('cms.folder')->getUri($node);
+
+                break;
+            }
+        }
+
         return $this->render('GalleryModule:Admin:gallery.html.twig', [
-            'form'      => $form->createView(),
-            'albums'    => $em->getRepository('GalleryModule:Album')->findBy([], ['id' => 'DESC']),
-            'gallery'   => $gallery,
+            'form'       => $form->createView(),
+            'folderPath' => $folderPath,
+            'albums'     => $em->getRepository('GalleryModule:Album')->findBy([], ['id' => 'DESC']),
+            'gallery'    => $gallery,
         ]);
     }
 
@@ -102,10 +116,16 @@ class AdminGalleryController extends Controller
         }
 
         $form = $this->createForm(new GalleryFormType(), $gallery);
-        $form->add('update', 'submit');
+        $form->add('update', 'submit', ['attr' => ['class' => 'btn-success']])
+             ->add('cancel', 'submit');
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirectToRoute('smart_module.gallery.admin');
+            }
+
             if ($form->isValid()) {
                 $this->persist($form->getData(), true);
                 $this->addFlash('success', 'Gallery updated successfully.');
@@ -173,10 +193,38 @@ class AdminGalleryController extends Controller
             }
         }
 
+        $albumPath  = null;
+        $_basePath = null;
+        foreach ($this->get('cms.node')->findByModule('Gallery') as $node) {
+            if ($node->getParam('gallery_id') === (int) $id) {
+                $_basePath = $this->get('cms.folder')->getUri($node);
+
+                break;
+            }
+        }
+
+        if ($_basePath) {
+            // Удаление последнего слеша
+            if (mb_substr($_basePath, - 1) == '/') {
+                $_basePath = mb_substr($_basePath, 0, mb_strlen($_basePath) - 1);
+            }
+
+            // Удаление первого слеша
+            if (mb_substr($_basePath, 0, 1) == '/') {
+                $_basePath = mb_substr($_basePath, 1);
+            }
+
+            $albumPath = $this->generateUrl('smart_module.gallery.album', [
+                '_basePath' => $_basePath,
+                'id' => $id,
+            ]);
+        }
+
         return $this->render('GalleryModule:Admin:album.html.twig', [
             'form'      => $form->createView(),
             'photos'    => $em->getRepository('GalleryModule:Photo')->findBy(['album' => $album], ['position' => 'DESC', 'id' => 'DESC']),
             'album'     => $album,
+            'albumPath' => $albumPath,
         ]);
     }
 
@@ -198,10 +246,16 @@ class AdminGalleryController extends Controller
         }
 
         $form = $this->createForm(new AlbumFormType(), $album);
-        $form->add('update', 'submit');
+        $form->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+             ->add('cancel', 'submit');
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
+
+            if ($form->get('cancel')->isClicked()) {
+                return $this->redirectToRoute('smart_module.gallery.admin_gallery', ['id' => $gallery_id]);
+            }
+
             if ($form->isValid()) {
                 $this->persist($form->getData(), true);
                 $this->addFlash('success', 'Album updated successfully.');

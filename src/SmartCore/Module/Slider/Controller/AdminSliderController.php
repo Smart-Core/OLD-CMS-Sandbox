@@ -37,7 +37,7 @@ class AdminSliderController extends Controller
 
     /**
      * @param  Request $request
-     * @param  int $slider_id
+     * @param  int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \RuntimeException
      */
@@ -76,10 +76,20 @@ class AdminSliderController extends Controller
             }
         }
 
+        $folderPath = null;
+        foreach ($this->get('cms.node')->findByModule('Slider') as $node) {
+            if ($node->getParam('slider_id') === (int) $id) {
+                $folderPath = $this->get('cms.folder')->getUri($node);
+
+                break;
+            }
+        }
+
         return $this->render('SliderModule:Admin:slider.html.twig', [
-            'form'    => $form->createView(),
-            'slider'  => $slider,
-            'webPath' => $sliderService->getWebPath(),
+            'form'       => $form->createView(),
+            'slider'     => $slider,
+            'folderPath' => $folderPath,
+            'webPath'    => $sliderService->getWebPath(),
         ]);
     }
 

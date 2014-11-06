@@ -77,6 +77,8 @@ class EngineFolder
      *
      * @param  mixed|null $data - Node, Folder, $folderId or NULL for current folder Id form cms.context.
      * @return string $uri
+     *
+     * @todo абсолютный урл с портом и схемой.
      */
     public function getUri($data = null)
     {
