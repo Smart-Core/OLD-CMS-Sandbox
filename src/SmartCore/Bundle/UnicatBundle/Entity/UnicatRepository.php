@@ -169,7 +169,7 @@ class UnicatRepository
     {
         $class = $this->getCategoryClass();
 
-        return new $class;
+        return new $class();
     }
 
     /**
@@ -181,7 +181,7 @@ class UnicatRepository
     {
         $class = $this->getPropertyClass();
 
-        return new $class;
+        return new $class();
     }
 
     /**
@@ -193,7 +193,7 @@ class UnicatRepository
     {
         $class = $this->getPropertiesGroupClass();
 
-        return new $class;
+        return new $class();
     }
 
     /**

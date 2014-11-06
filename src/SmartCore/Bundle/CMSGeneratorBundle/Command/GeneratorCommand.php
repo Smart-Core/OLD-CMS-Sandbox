@@ -16,7 +16,7 @@ abstract class GeneratorCommand extends ContainerAwareCommand
 {
     private $generator;
 
-    protected abstract function createGenerator();
+    abstract protected function createGenerator();
 
     /**
      * @param BundleInterface $bundle

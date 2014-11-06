@@ -279,7 +279,7 @@ class UnicatRepositoryManager
     {
         $class = $this->repository->getItemClass();
 
-        return new $class;
+        return new $class();
     }
 
     /**

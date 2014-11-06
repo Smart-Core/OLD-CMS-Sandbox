@@ -137,6 +137,7 @@ class AppearanceHistory
     public function setHash($hash)
     {
         $this->hash = $hash;
+
         return $this;
     }
 

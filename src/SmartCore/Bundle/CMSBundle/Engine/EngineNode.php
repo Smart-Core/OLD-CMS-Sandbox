@@ -167,7 +167,7 @@ class EngineNode
         $form_class_name = '\\' . $reflector->getNamespaceName() . '\Form\Type\NodePropertiesFormType';
 
         if (class_exists($form_class_name)) {
-            return new $form_class_name;
+            return new $form_class_name();
         } else {
             // @todo может быть гибче настраивать форму параметров по умолчанию?.
             return new NodeDefaultPropertiesFormType();

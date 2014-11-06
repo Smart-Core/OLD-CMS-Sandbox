@@ -156,7 +156,7 @@ class UnicatRepository
     public function createCategory()
     {
         $class = $this->getItemClass();
-        $obj = new $class;
+        $obj = new $class();
 
         /** @var ItemModel $obj */
         $obj->setType(ItemModel::TYPE_CATEGORY);
@@ -173,7 +173,7 @@ class UnicatRepository
     {
         $class = $this->getPropertyClass();
 
-        return new $class;
+        return new $class();
     }
 
     /**
@@ -185,7 +185,7 @@ class UnicatRepository
     {
         $class = $this->getPropertiesGroupClass();
 
-        return new $class;
+        return new $class();
     }
 
     /**

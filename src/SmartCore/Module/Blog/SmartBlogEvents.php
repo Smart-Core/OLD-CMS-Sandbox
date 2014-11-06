@@ -7,5 +7,5 @@ namespace SmartCore\Module\Blog;
  */
 final class SmartBlogEvents extends Events
 {
-    static $REFIX = 'test_blog.';
+    public static $REFIX = 'test_blog.';
 }
