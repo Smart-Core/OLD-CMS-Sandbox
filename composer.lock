@@ -1112,16 +1112,15 @@
         {
             "name": "elao/web-profiler-extra-bundle",
             "version": "dev-master",
-            "target-dir": "Elao/WebProfilerExtraBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
-                "reference": "82061e8b00060db91bd6b76e405184f417f56c09"
+                "reference": "082755c2af114ead713259ec7472782917605aaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/82061e8b00060db91bd6b76e405184f417f56c09",
-                "reference": "82061e8b00060db91bd6b76e405184f417f56c09",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/082755c2af114ead713259ec7472782917605aaf",
+                "reference": "082755c2af114ead713259ec7472782917605aaf",
                 "shasum": ""
             },
             "require": {
@@ -1136,8 +1135,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Elao\\WebProfilerExtraBundle": "."
+                "psr-4": {
+                    "Elao\\WebProfilerExtraBundle\\": "."
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1162,7 +1161,7 @@
                 "extra",
                 "profiler"
             ],
-            "time": "2013-11-06 19:40:03"
+            "time": "2014-11-06 09:36:21"
         },
         {
             "name": "fabpot/goutte",
@@ -4130,12 +4129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "ac70d7dbb8bb1f193fd5c37d57506a46744911e8"
+                "reference": "81a939828228465e7a2bf38dbb1227640cfd5392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/ac70d7dbb8bb1f193fd5c37d57506a46744911e8",
-                "reference": "ac70d7dbb8bb1f193fd5c37d57506a46744911e8",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/81a939828228465e7a2bf38dbb1227640cfd5392",
+                "reference": "81a939828228465e7a2bf38dbb1227640cfd5392",
                 "shasum": ""
             },
             "require": {
@@ -4174,7 +4173,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2014-09-17 11:12:29"
+            "time": "2014-11-06 20:05:47"
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
