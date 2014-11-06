@@ -105,7 +105,7 @@ class EngineToolbar extends ContainerAware
                 ],
             ],
             'right' => [
-                'eip_toggle' => ["Режим правки: ОТКЛ.", "Режим правки: ВКЛ."], // @todo перевод // [$t->trans('Viewing'), $t->trans('Edit')],
+                'eip_toggle' => ["Режим правки: ОТКЛ", "Режим правки: ВКЛ."], // @todo перевод // [$t->trans('Viewing'), $t->trans('Edit')],
                 'user' => [
                     'title' => $this->container->get('security.context')->getToken()->getUser()->getUserName(),
                     'icon' => 'user',
