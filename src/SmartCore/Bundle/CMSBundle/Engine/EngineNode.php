@@ -352,6 +352,14 @@ class EngineNode
     }
 
     /**
+     * @return Node[]
+     */
+    public function getNodes()
+    {
+        return $this->nodes;
+    }
+
+    /**
      * @param Node $entity
      */
     public function remove(Node $entity)

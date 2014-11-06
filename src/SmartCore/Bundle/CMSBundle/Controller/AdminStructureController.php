@@ -315,8 +315,10 @@ class AdminStructureController extends Controller
             return $this->redirect($this->generateUrl('cms_admin_structure'));
         }
 
+        $nodeParams = $node->getParams();
+
         $form = $engineNode->createForm($node);
-        $form_properties = $this->createForm($engineNode->getPropertiesFormType($node->getModule()), $node->getParams());
+        $form_properties = $this->createForm($engineNode->getPropertiesFormType($node->getModule()), $nodeParams);
 
         $form->remove('module');
 
@@ -324,22 +326,27 @@ class AdminStructureController extends Controller
             if ($request->request->has('update')) {
                 $form->handleRequest($request);
                 $form_properties->handleRequest($request);
-                if ($form->isValid() and $form_properties->isValid()) {
+
+                if ($form->isValid()
+                    and (
+                        (empty($nodeParams) and !$form_properties->isValid())
+                        or (!empty($nodeParams) and $form_properties->isValid())
+                    )
+                ) {
                     /** @var $updatedNode \SmartCore\Bundle\CMSBundle\Entity\Node */
                     $updatedNode = $form->getData();
                     $updatedNode->setParams($form_properties->getData());
                     $engineNode->update($updatedNode);
 
                     $this->get('tagcache')->deleteTag('node');
-                    $this->addFlash('success', 'Нода обновлена.');
+                    $this->addFlash('success', 'Параметры модуля <b>'.$node->getModule().'</b> ('.$node->getId().') обновлены.'); // @todo перевод.
 
                     if ($request->query->has('redirect_to')) {
                         return $this->get('cms.router')->redirect($updatedNode);
                     }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
-                }
-            } elseif ($request->request->has('delete')) {
+                }            } elseif ($request->request->has('delete')) {
                 die('@todo');
             }
         }

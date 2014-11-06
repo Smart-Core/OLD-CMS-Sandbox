@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 class EngineToolbar extends ContainerAware
@@ -16,10 +17,27 @@ class EngineToolbar extends ContainerAware
         $router = $this->container->get('router');
         $t  = $this->container->get('translator');
 
+        $buttons = [];
+
+        foreach ($this->container->get('cms.node')->getNodes() as $node) {
+            if ($node->getControlsInToolbar() == Node::TOOLBAR_ONLY_IN_SELF_FOLDER) {
+                foreach ($node->getFrontControls() as $controls) {
+                    if (isset($controls['default']) and $controls['default'] == true) {
+                        $buttons[$node->getId()] = [
+                            'title' => $controls['title'],
+                            'descr' => isset($controls['descr']) ? $controls['descr'] : '',
+                            'uri'   => $controls['uri']
+                        ];
+                    }
+                }
+            }
+        }
+
         // @todo кеширование по языку и юзеру.
         return [
+            'buttons' => $buttons,
             'left' => [
-                'setings' => [
+                'settings' => [
                     'title' => '',
                     'descr' => $t->trans('Settings'),
                     'icon' => 'wrench',
@@ -69,8 +87,8 @@ class EngineToolbar extends ContainerAware
                     ],
                 ],
                 'structure' => [
-                    'title' => $t->trans('Structure'),
-                    'descr' => '',
+                    'title' => '',
+                    'descr' => $t->trans('Structure'),
                     'icon'  => 'folder-open',
                     'items' => [
                         'folder_edit' => [
@@ -131,7 +149,7 @@ class EngineToolbar extends ContainerAware
                         ],
                     ],
                 ],
-            ],
+            ]
         ];
     }
 
@@ -146,11 +164,13 @@ class EngineToolbar extends ContainerAware
                 'nodes'   => $nodes_front_controls,
             ];
 
-            $this->get('smart.felib')->call('bootstrap');
-            $this->get('smart.felib')->call('jquery-cookie');
+            $this->get('smart.felib')
+                ->call('bootstrap')
+                ->call('jquery-cookie');
+
             $this->get('html')
                 ->css($this->get('templating.helper.assets')->getUrl('bundles/cms/css/frontend.css'))
-                ->js($this->get('templating.helper.assets')->getUrl('bundles/cms/js/frontend.js'))
+                ->js($this->get('templating.helper.assets')->getUrl('bundles/cms/js/frontend.js?'.time()))
                 ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
             ;
         }

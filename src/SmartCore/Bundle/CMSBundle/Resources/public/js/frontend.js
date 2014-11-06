@@ -124,7 +124,7 @@ function renderToolbar() {
             } else {
                 var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
 
-                // есть итемы.
+                // есть итемы. btn-inverse
                 if (typeof value.items === 'object') {
                     item += '<ul class="dropdown-menu">';
                     $.each(value.items, function(index2, value2) {
@@ -148,7 +148,7 @@ function renderToolbar() {
         $.each(cms_front_controls.toolbar.left, function(index, value) {
             if (index === 'eip_toggle') {
                 $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse')
-                    .append('<button type="button" class="btn btn-primary span2" data-toggle="button" class-toggle="btn-danger">Просмотр</button>');
+                    .append('<button type="button" class="btn btn-inverse span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
             } else {
 
                 var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' +
@@ -171,6 +171,16 @@ function renderToolbar() {
 
                 $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item + '</li>');
             }
+        });
+
+    }
+
+    // Кнопки
+    if (typeof cms_front_controls.toolbar.buttons === 'object') {
+        $.each(cms_front_controls.toolbar.buttons, function(index, value) {
+            var item = '<li><a class="btn-inverse" href="' + value.uri + '" title="' + value.descr + '">' + value.title + '</a></li>';
+
+            $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item);
         });
     }
 }

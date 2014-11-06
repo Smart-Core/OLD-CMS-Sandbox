@@ -19,6 +19,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Node implements \Serializable
 {
+    // Получать элементы управления для тулбара.
+    const TOOLBAR_NO                    = 0; // Никогда
+    const TOOLBAR_ONLY_IN_SELF_FOLDER   = 1; // Только в собственной папке
+    const TOOLBAR_ALWAYS                = 2; // Всегда
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -32,6 +37,13 @@ class Node implements \Serializable
      * @ORM\Column(type="boolean")
      */
     protected $is_active;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $controls_in_toolbar;
 
     /**
      * @var string
@@ -168,6 +180,7 @@ class Node implements \Serializable
      */
     public function __construct()
     {
+        $this->controls_in_toolbar = self::TOOLBAR_ONLY_IN_SELF_FOLDER;
         $this->create_by_user_id = 0;
         $this->create_datetime   = new \DateTime();
         $this->is_active         = true;
@@ -252,6 +265,25 @@ class Node implements \Serializable
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $controls_in_toolbar
+     * @return $this
+     */
+    public function setControlsInToolbar($controls_in_toolbar)
+    {
+        $this->controls_in_toolbar = $controls_in_toolbar;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getControlsInToolbar()
+    {
+        return $this->controls_in_toolbar;
     }
 
     /**

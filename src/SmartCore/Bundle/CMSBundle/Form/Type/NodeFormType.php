@@ -3,10 +3,11 @@
 namespace SmartCore\Bundle\CMSBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
+use SmartCore\Bundle\CMSBundle\Container;
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use SmartCore\Bundle\CMSBundle\Container;
 
 class NodeFormType extends AbstractType
 {
@@ -33,6 +34,13 @@ class NodeFormType extends AbstractType
                     return $er->createQueryBuilder('b')->orderBy('b.position', 'ASC');
                 },
                 'required' => true,
+            ])
+            ->add('controls_in_toolbar', 'choice', [
+                'choices' => [
+                    Node::TOOLBAR_NO => 'Никогда',
+                    Node::TOOLBAR_ONLY_IN_SELF_FOLDER => 'Только в собственной папке',
+                    //Node::TOOLBAR_ALWAYS => 'Всегда', // @todo
+                ]
             ])
             ->add('template')
             ->add('descr')
