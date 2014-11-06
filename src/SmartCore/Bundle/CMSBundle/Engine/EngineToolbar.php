@@ -15,7 +15,7 @@ class EngineToolbar extends ContainerAware
         $current_folder_id = $this->container->get('cms.context')->getCurrentFolderId();
 
         $router = $this->container->get('router');
-        $t  = $this->container->get('translator');
+        $t = $this->container->get('translator');
 
         $buttons = [];
 
