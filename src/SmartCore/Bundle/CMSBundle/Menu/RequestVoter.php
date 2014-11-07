@@ -42,6 +42,7 @@ class RequestVoter implements VoterInterface
             return true;
         } elseif (
             $item->getUri() !== $request->getBaseUrl().'/' and
+            $item->getUri() !== $request->getBaseUrl().'/admin/' and
             $item->getUri() === substr($request->getRequestUri(), 0, strlen($item->getUri())) and
             $request->attributes->get('__selected_inheritance', true) and
             $parent->getExtra('select_intehitance', true)

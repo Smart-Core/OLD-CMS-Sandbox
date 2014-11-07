@@ -64,17 +64,14 @@
 {% endblock navbar %}
 
 <div class="container">
+    {% block nav '' %}
 
-    <div class="row-fluid">
-        {% block nav '' %}
+    {% include '@CMS/flash_messages.thml.twig' %}
 
-        {% include '@CMS/flash_messages.thml.twig' %}
+    {% block content %}
+        {% block subnav '' %}
+    {% endblock content %}
 
-        {% block content %}
-            {% block subnav '' %}
-        {% endblock content %}
-
-        {% block bottom_nav '' %}
-    </div>
+    {% block bottom_nav '' %}
 </div>
 {% endblock body %}

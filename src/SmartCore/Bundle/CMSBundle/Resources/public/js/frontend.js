@@ -107,7 +107,7 @@ function renderToolbar() {
         '<div class="navbar-inner">' +
         '<div class="container">' +
         '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
-        '<a class="brand" href="' + basePath +'" title="На главную"> <i class="icon-home icon-white"></i></a>' + // @todo бренд Smart Core CMS
+        '<a class="brand" href="' + basePath +'" title="На главную сайта"> <i class="icon-home icon-white"></i></a>' + // @todo бренд Smart Core CMS
         '<div class="nav-collapse collapse">' +
         '<ul class="nav"></ul>' +
         '<div class="pull-right">' +
@@ -151,12 +151,13 @@ function renderToolbar() {
                     .append('<button type="button" class="btn btn-inverse span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
             } else {
 
-                var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' +
-                    value.descr + '"><i class="icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
-
                 // есть итемы.
                 if (typeof value.items === 'object') {
+                    var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' +
+                        value.descr + '"><i class="icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
+
                     item += '<ul class="dropdown-menu">';
+
                     $.each(value.items, function(index2, value2) {
                         if (value2 === 'diviver') {
                             item += '<li class="divider"></li>';
@@ -167,20 +168,14 @@ function renderToolbar() {
                         }
                     });
                     item += '</ul>';
+                } else {
+                    var item = '<li><a class="btn-inverse" href="' + value.uri + '?redirect_to=' + window.location.pathname + window.location.search
+                        + '" title="' + value.descr + '">' + value.title + '</a>';
                 }
 
                 $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item + '</li>');
             }
         });
 
-    }
-
-    // Кнопки
-    if (typeof cms_front_controls.toolbar.buttons === 'object') {
-        $.each(cms_front_controls.toolbar.buttons, function(index, value) {
-            var item = '<li><a class="btn-inverse" href="' + value.uri + '?redirect_to=' + window.location.pathname + window.location.search + '" title="' + value.descr + '">' + value.title + '</a></li>';
-
-            $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item);
-        });
     }
 }

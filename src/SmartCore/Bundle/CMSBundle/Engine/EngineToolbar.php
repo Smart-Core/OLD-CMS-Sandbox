@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class EngineToolbar extends Controller
 {
     /**
+     * Получить массив с данными для генерации тулбара.
+     *
      * @return array
      */
     public function getArray()
@@ -15,29 +17,18 @@ class EngineToolbar extends Controller
         $current_folder_id  = $this->get('cms.context')->getCurrentFolderId();
         $router             = $this->get('router');
         $t                  = $this->get('translator');
-        $buttons            = [];
-
-        foreach ($this->get('cms.node')->getNodes() as $node) {
-            if ($node->getControlsInToolbar() == Node::TOOLBAR_ONLY_IN_SELF_FOLDER) {
-                foreach ($node->getFrontControls() as $controls) {
-                    if (isset($controls['default']) and $controls['default'] == true) {
-                        $buttons[$node->getId()] = [
-                            'title' => $controls['title'],
-                            'descr' => isset($controls['descr']) ? $controls['descr'] : '',
-                            'uri'   => $controls['uri']
-                        ];
-                    }
-                }
-            }
-        }
 
         // @todo кеширование по языку и юзеру.
-        return [
-            'buttons' => $buttons,
+        $data = [
             'left' => [
-                'settings' => [
-                    'title' => '',
-                    'descr' => $t->trans('Settings'),
+                'administration' => [
+                    'title' => $t->trans('Administration'),
+                    'descr' => '',
+                    'uri'   => $router->generate('cms_admin_index'),
+                ],
+                'menu' => [
+                    'title' => $t->trans('Menu'),
+                    'descr' => '',
                     'icon' => 'wrench',
                     'items' => [
                         'modules' => [
@@ -105,33 +96,28 @@ class EngineToolbar extends Controller
                             'uri'   => $router->generate('cms_admin_structure'),
                         ],
                         'diviver_1' => 'diviver',
-                        'node_new' => [
+                        'add_module' => [
                             'title' => $t->trans('Add module'),
                             'icon'  => 'plus',
                             'uri'   => $router->generate('cms_admin_structure_node_create_in_folder', ['folder_pid' => $current_folder_id]),
                         ],
-                        /*
-                        'node_all' => [
-                            'title' => $t->trans('Add modules on page'), // @todo
-                            'icon' => 'list-alt',
-                            'uri' => $router->generate('cms_admin_structure') . '/node/in_folder/2/', // @todo
-                        ],
-                        */
                     ],
                 ],
             ],
             'right' => [
-                'eip_toggle' => ["Режим правки: ОТКЛ", "Режим правки: ВКЛ."], // @todo перевод // [$t->trans('Viewing'), $t->trans('Edit')],
+                'eip_toggle' => ['Режим правки: ОТКЛ', 'Режим правки: ВКЛ.'], // @todo перевод // [$t->trans('Viewing'), $t->trans('Edit')],
                 'user' => [
                     'title' => $this->container->get('security.context')->getToken()->getUser()->getUserName(),
                     'icon' => 'user',
                     'items' => [
+                        /*
                         'admin' => [
                             'title' => $t->trans('Control panel'),
-                            'uri'   => $router->generate('cms_admin'),
+                            'uri'   => $router->generate('cms_admin_index'),
                             'icon'  => 'cog',
                             'overalay' => false,
                         ],
+                        */
                         'profile' => [
                             'title' => $t->trans('My profile'),
                             'uri'   => $router->generate('cms_admin_user_edit', ['id' => $this->container->get('security.context')->getToken()->getUser()->getId()]),
@@ -149,6 +135,22 @@ class EngineToolbar extends Controller
                 ],
             ]
         ];
+
+        foreach ($this->get('cms.node')->getNodes() as $node) {
+            if ($node->getControlsInToolbar() == Node::TOOLBAR_ONLY_IN_SELF_FOLDER) {
+                foreach ($node->getFrontControls() as $controls) {
+                    if (isset($controls['default']) and $controls['default'] == true) {
+                        $data['left']['node_'.$node->getId()] = [
+                            'title' => $controls['title'],
+                            'descr' => isset($controls['descr']) ? $controls['descr'] : '',
+                            'uri'   => $controls['uri']
+                        ];
+                    }
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**

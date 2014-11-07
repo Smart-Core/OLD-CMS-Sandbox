@@ -35,6 +35,16 @@ abstract class Bundle extends \Knp\RadBundle\AppBundle\Bundle
     }
 
     /**
+     * Получить виджеты для рабочего стола.
+     *
+     * @return array
+     */
+    public function getDashboard()
+    {
+        return [];
+    }
+
+    /**
      * Получить короткое имя (без суффикса Module).
      * Сейчас используется только в админке для получения списка
      *

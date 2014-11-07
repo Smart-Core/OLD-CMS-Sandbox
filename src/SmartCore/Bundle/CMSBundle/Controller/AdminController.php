@@ -18,7 +18,19 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        return $this->redirect($this->generateUrl('cms_admin_structure'));
+        $dashboard = [];
+
+        foreach ($this->get('cms.module')->all() as $module) {
+            $data = $module->getDashboard();
+
+            if (!empty($data)) {
+                $dashboard[$module->getShortName()] = $data;
+            }
+        }
+
+        return $this->render('CMSBundle:Admin:index.html.twig', [
+            'dashboard' => $dashboard,
+        ]);
     }
 
     /**

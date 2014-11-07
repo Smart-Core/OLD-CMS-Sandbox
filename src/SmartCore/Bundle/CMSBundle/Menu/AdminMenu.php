@@ -19,6 +19,7 @@ class AdminMenu extends ContainerAware
         $menu = $factory->createItem('admin_main');
 
         $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'nav');
+        $menu->addChild('Dashboard',     ['route' => 'cms_admin_index']);
         $menu->addChild('Structure',     ['route' => 'cms_admin_structure']);
         $menu->addChild('Modules',       ['route' => 'cms_admin_module']);
         $menu->addChild('Files',         ['route' => 'cms_admin_files']);

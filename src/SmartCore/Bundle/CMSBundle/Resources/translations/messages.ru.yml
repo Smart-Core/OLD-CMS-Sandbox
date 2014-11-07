@@ -3,7 +3,7 @@ Action: Действие
 Actions: Действия
 Add: Добавить
 Annotation: Аннотация
-Administration: Управление
+Administration: Администрирование
 Add module: Добавить модуль
 All structure: Вся структура
 All users: Все пользователи
@@ -25,6 +25,7 @@ Create user: Создать пользователя
 Created: Создано
 Created at: Дата создания
 Date: Дата
+Dashboard: Рабочий стол
 Datetime: Дата и время
 Descr: Описание
 Description: Описание
@@ -62,6 +63,7 @@ Library: Библиотека
 Login: Вход
 Logout: Выход
 Lockout nodes: Блокировка нод
+Menu: Меню
 Meta tags: Мета тэги
 My profile: Мой профиль
 Module: Модуль

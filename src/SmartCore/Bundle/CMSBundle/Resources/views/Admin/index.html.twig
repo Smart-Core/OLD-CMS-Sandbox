@@ -1,0 +1,33 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{#{% block title %}{{ 'Administration'|trans }} / {{ parent() }}{% endblock %}#}
+
+{% block content %}
+
+    <div class="row-fluid">
+        <div class="span4">
+            {% set count = 0 %}
+            {% set max_in_column = (dashboard|length / 3)|round %}
+
+            {% for widget in dashboard %}
+                {% if count >= max_in_column %}
+                    </div>
+                    <div class="span4">
+                    {% set count = 1 %}
+                {% else %}
+                    {% set count = count + 1 %}
+                {% endif %}
+
+                <br />
+                <h4>{{ widget.title }}</h4>
+                <ul>
+                    {% for item in widget.items %}
+                    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
