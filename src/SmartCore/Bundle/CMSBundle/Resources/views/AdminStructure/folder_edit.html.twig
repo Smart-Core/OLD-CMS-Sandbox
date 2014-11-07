@@ -3,6 +3,7 @@
 {% block title %}{{ 'Edit folder'|trans }} / {{ parent() }}{% endblock %}
 
 {% block content %}
+<div class="row-fluid">
     <div class="span9">
     {{ knp_menu_render('CMSBundle:AdminMenu:structureOnFolderEdit', {'currentClass': 'active'}) }}
 
@@ -50,4 +51,5 @@
     <div class="span3">
         {{ include('@CMS/AdminStructure/_tree.html.twig') }}
     </div>
+</div>
 {% endblock bottom_nav %}

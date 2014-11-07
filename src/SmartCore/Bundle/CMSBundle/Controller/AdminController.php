@@ -23,7 +23,7 @@ class AdminController extends Controller
         foreach ($this->get('cms.module')->all() as $module) {
             $data = $module->getDashboard();
 
-            if (!empty($data)) {
+            if (!empty($data['items'])) {
                 $dashboard[$module->getShortName()] = $data;
             }
         }

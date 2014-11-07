@@ -3,6 +3,7 @@
 {% block title %}{{ 'Edit node'|trans }}: {{ node.id }} ({{ node.module }}) / {{ parent() }}{% endblock %}
 
 {% block content %}
+<div class="row-fluid">
     <div class="span9">
     {{ knp_menu_render('CMSBundle:AdminMenu:structureOnNodeEdit', {'currentClass': 'active'})  }}
 
@@ -52,6 +53,7 @@
     <div class="span3">
         {{ include('@CMS/AdminStructure/_tree.html.twig') }}
     </div>
+</div>
 {% endblock bottom_nav %}
 
 {% block body_js %}

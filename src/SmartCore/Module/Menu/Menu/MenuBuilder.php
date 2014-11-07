@@ -115,7 +115,7 @@ class MenuBuilder extends ContainerAware
                     : $item->getUrl();
             }
 
-            $item_title = (string) $item;
+            $item_title = $this->is_admin ? (string) $item . ' (position: ' . $item->getPosition() . ')' : (string) $item;
             $item_title = isset($menu[$item_title]) ? $item_title . ' (' . $item->getId() . ')' : $item_title;
 
             if ($this->is_admin or $item->getIsActive()) {
