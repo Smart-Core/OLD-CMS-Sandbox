@@ -40,6 +40,9 @@ find web/theme/css -type d -exec chmod 777 {} \;
 find web/uploads -type d -exec chmod 777 {} \;
 
 # update files permissions
+chmod 777 app/console
+find bin -type f -exec chmod 777 {} \;
+
 find app/Resources -type f -exec chmod 666 {} \;
 find app/usr -type f -exec chmod 666 {} \;
 find web/images -type f -exec chmod 666 {} \;
