@@ -2,36 +2,44 @@ body {
     /* @todo отступ сверху нужен для размещения тулбара, НО при узком окне (мобильная версия), тулбар тоже отступает сверху :( надо как-то починить ;) */
     /* padding-top: 60px;*/
 }
-.cmf-frontadmin-node {
+.cms-frontadmin-node {
     position: relative;
 }
-.cmf-frontadmin-node:hover {
+.cms-frontadmin-node:hover {
 
 }
-.cmf-frontadmin-node-mode-edit {
+.cms-frontadmin-node-mode-edit {
     outline: 1px dashed gray;
 }
-.cmf-frontadmin-node-mode-edit:hover {
+.cms-frontadmin-node-mode-edit:hover {
     outline: 2px dashed red;
 }
-.cmf-empty-node {
+.cms-empty-node {
     height: 8px;
     width: 8px;
     background-color: red;
 }
-.cmf-frontadmin-node-buttons.btn-group {
+.cms-frontadmin-node-buttons.btn-group {
     float: left;
     position: absolute;
     /*top: -6px;*/
     left: 0;
     z-index: 999;
 }
-.cmf-frontadmin-node-buttons.btn-group a {
+.cms-frontadmin-node-buttons.btn-group a {
     text-decoration: none;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 12px;
     text-align: left;
+}
+.cms-frontadmin-node-buttons.btn-group li {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.cms-toolbar li {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 ul.dropdown-menu { /* Прижать меню вплотную к плашке*/
     margin: 0;

@@ -14,25 +14,25 @@ $(document).ready(function() {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass($(this).attr('class-toggle'));
                     $(this).text(cms_front_controls.toolbar.right.eip_toggle[0]);
-                    $('.cmf-frontadmin-node').removeClass('cmf-frontadmin-node-mode-edit');
-                    $('.cmf-frontadmin-node').unbind('mouseenter mouseleave dblclick');
+                    $('.cms-frontadmin-node').removeClass('cms-frontadmin-node-mode-edit');
+                    $('.cms-frontadmin-node').unbind('mouseenter mouseleave dblclick');
 
-                    $('.cmf-empty-node').remove();
-                    $.removeCookie('cmf-frontadmin-mode', { path: '/' });
+                    $('.cms-empty-node').remove();
+                    $.removeCookie('cms-frontadmin-mode', { path: '/' });
                 } else {
                     $(this).addClass($(this).attr('class-toggle'));
                     $(this).text(cms_front_controls.toolbar.right.eip_toggle[1]);
-                    $('.cmf-frontadmin-node').addClass('cmf-frontadmin-node-mode-edit');
+                    $('.cms-frontadmin-node').addClass('cms-frontadmin-node-mode-edit');
 
                     // Включить отрисовку панелей управления нодами.
-                    $('.cmf-frontadmin-node-mode-edit').hover(
+                    $('.cms-frontadmin-node-mode-edit').hover(
                         function(){
                             var elem = this;
 
                             if (typeof cms_front_controls.nodes[$(elem).attr('id')] === 'object') {
                                 var node = cms_front_controls.nodes[$(elem).attr('id')];
 
-                                var node_buttons = '<div class="cmf-frontadmin-node-buttons btn-group">';
+                                var node_buttons = '<div class="cms-frontadmin-node-buttons btn-group">';
 
                                 // сначала поиск действия по умолчанию.
                                 $.each(node, function(index, value) {
@@ -78,24 +78,24 @@ $(document).ready(function() {
                         },
                         function(){
                             var elem = this;
-                            $(elem).find('.cmf-frontadmin-node-buttons.btn-group').hide().remove();
+                            $(elem).find('.cms-frontadmin-node-buttons.btn-group').hide().remove();
                         }
                     );
 
                     // заглушки для пустых нод.
-                    $('.cmf-frontadmin-node').each(function() {
+                    $('.cms-frontadmin-node').each(function() {
                         if( $.trim($(this).text()) == "" ){
-                            $(this).append('<div class="cmf-empty-node"></div>');
+                            $(this).append('<div class="cms-empty-node"></div>');
                         }
                     });
 
-                    $.cookie('cmf-frontadmin-mode', 'edit', { path: '/' }); // @todo настройку path в корень сайта.
+                    $.cookie('cms-frontadmin-mode', 'edit', { path: '/' }); // @todo настройку path в корень сайта.
                 }
             }
         }
     });
 
-    if(typeof $.cookie('cmf-frontadmin-mode') === 'string' && $.cookie('cmf-frontadmin-mode').toString() === 'edit') {
+    if(typeof $.cookie('cms-frontadmin-mode') === 'string' && $.cookie('cms-frontadmin-mode').toString() === 'edit') {
         $('.navbar .btn[data-toggle="button"]').click();
     }
 });
@@ -105,7 +105,7 @@ function renderToolbar() {
         .css('padding-top', '40px')
         .prepend('<div class="navbar navbar-inverse navbar-fixed-top">' +
         '<div class="navbar-inner">' +
-        '<div class="container">' +
+        '<div class="container cms-toolbar">' +
         '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
         '<a class="brand" href="' + basePath +'" title="На главную сайта"> <i class="icon-home icon-white"></i></a>' + // @todo бренд Smart Core CMS
         '<div class="nav-collapse collapse">' +

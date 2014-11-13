@@ -37,9 +37,9 @@
                     {% endif %}
 
                     {% if app.request.query.has('redirect_to') %}
-                        <a class="btn cmf-cancel" href="{{ app.request.query.get('redirect_to') }}">{{ 'Cancel'|trans }}</a>
+                        <a class="btn cms-cancel" href="{{ app.request.query.get('redirect_to') }}">{{ 'Cancel'|trans }}</a>
                     {% else %}
-                        <a class="btn cmf-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                        <a class="btn cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
                     {% endif %}
                 </div>
             </div>

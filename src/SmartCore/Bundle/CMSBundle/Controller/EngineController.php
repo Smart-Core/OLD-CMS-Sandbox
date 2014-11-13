@@ -135,7 +135,7 @@ class EngineController extends Controller
 
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $moduleResponse->setContent(
-                        "\n<div class=\"cmf-frontadmin-node\" id=\"__node_{$node->getId()}\">\n" . $moduleResponse->getContent() . "\n</div>\n"
+                        "\n<div class=\"cms-frontadmin-node\" id=\"__node_{$node->getId()}\">\n" . $moduleResponse->getContent() . "\n</div>\n"
                     );
                 }
 
