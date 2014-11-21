@@ -27,24 +27,24 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-
-            //new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(), // "sensio/framework-extra-bundle": "2.2.*",
-            //new JMS\JMSAopBundle\JMSAopBundle(),
-            //new JMS\DiExtraBundle\JMSDiExtraBundle($this), // "jms/di-extra-bundle": "1.3.*",
-            //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(), // "jms/security-extra-bundle": "1.4.*",
-
-            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
+            //new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             //new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(), // "abmundi/database-commands-bundle": "dev-master",
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
-            //new FOS\FacebookBundle\FOSFacebookBundle(),
-            //new FOS\RestBundle\FOSRestBundle(), // "friendsofsymfony/rest-bundle": "*",
+            new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
-            //new JMS\SerializerBundle\JMSSerializerBundle(), // "jms/serializer-bundle": "*",
-            //new HWI\Bundle\OAuthBundle\HWIOAuthBundle(), // "hwi/oauth-bundle": "0.3.*@dev",
+            //new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            //new JMS\AopBundle\JMSAopBundle(),
+            //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            //new Happyr\GoogleSiteAuthenticatorBundle\HappyrGoogleSiteAuthenticatorBundle(),
+            new HappyR\SlugifyBundle\HappyRSlugifyBundle(),
+            //new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Knp\Bundle\DisqusBundle\KnpDisqusBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\RadBundle\KnpRadBundle(),
@@ -79,7 +79,7 @@ class AppKernel extends Kernel
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
             // $bundles[] = new Leek\GitDebugBundle\LeekGitDebugBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-            //$bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
+            $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle();
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
             $bundles[] = new SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle();
