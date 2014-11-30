@@ -86,6 +86,12 @@ class LocalProvider implements ProviderInterface
                 $imagine = $this->container->get('imagine');
                 $imagineFilterManager = $this->container->get('imagine.filter.manager');
 
+                if (strpos($file->getMimeType(), 'jpeg') == false or strpos($file->getMimeType(), 'png') == false) {
+                    echo 'Unsupported image format';
+
+                    return null;
+                }
+
                 $originalImage = $imagine->open(dirname($this->request->server->get('SCRIPT_FILENAME')) . $file->getFullRelativeUrl());
 
                 $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')) . $this->generator->generateRelativePath($file, $filter);
