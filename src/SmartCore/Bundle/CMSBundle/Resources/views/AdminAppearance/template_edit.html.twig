@@ -17,7 +17,7 @@
 
         <div style="display: none;" id="template_code_cache">{{ template_code }}</div>
 
-        <textarea id="template_code" name="template_code" data-editor="twig" class=" input-block-level"></textarea>
+        <textarea name="template_code" data-editor="twig" class=" input-block-level"></textarea>
     </form>
 
     <a href="{{ path('cms_admin_appearance_template_history', {'name': name}) }}" style="float: right;">История изменений шаблона <b>{{ name }}.html.twig</b></a>
@@ -31,7 +31,7 @@
             font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
             font-size: 16px;
         }
-        #template_code, #ace_template_twig {
+        #ace_template_twig {
             font-family: consolas, Courier, monospace;
             font-size: 16px;
             width: 100%;
@@ -45,7 +45,7 @@
         $('#template_code_wrapper').append('<div id="ace_template_twig" />');
 
         var editor = ace.edit('ace_template_twig');
-        var textarea = $('#template_code').hide();
+        var textarea = $('textarea[name="template_code"]').hide();
         //editor.setTheme('ace/theme/idle_fingers');
         editor.setTheme('ace/theme/{{ cms_setting('cms', 'appearance_editor_theme') }}');
         editor.focus();
