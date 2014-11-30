@@ -135,7 +135,8 @@ class LocalProvider implements ProviderInterface
         $newFile = $file->getUploadedFile()->move($webDir, $file->getFilename());
 
         // @todo настройка качества сжатия и условное уменьшение т.е. если картинка больше заданных размеров.
-        // @todo возможность использовать Imagic, если доступен.
+        // @todo возможность использовать Imagick, если доступен.
+        // @todo поддерку PNG
         if (strpos($newFile->getMimeType(), 'jpeg') !== false) {
             $img = imagecreatefromjpeg($newFile->getPathname());
             imagejpeg($img, $newFile->getPathname(), 90);
