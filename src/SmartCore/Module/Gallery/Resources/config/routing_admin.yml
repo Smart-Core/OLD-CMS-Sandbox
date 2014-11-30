@@ -24,6 +24,12 @@ smart_module.gallery.admin_album_edit:
     defaults:
         _controller: GalleryModule:AdminGallery:albumEdit
 
+smart_module.gallery.admin_photo_make_cover:
+    path: /gallery_{gallery_id}/album_{album_id}/photo_{id}/make_cover/
+    defaults:
+        _controller: GalleryModule:AdminGallery:photo
+        set_as_cover: true
+
 smart_module.gallery.admin_photo:
     path: /gallery_{gallery_id}/album_{album_id}/photo_{id}/
     defaults:

@@ -94,7 +94,7 @@ class AdminGalleryController extends Controller
         return $this->render('GalleryModule:Admin:gallery.html.twig', [
             'form'       => $form->createView(),
             'folderPath' => $folderPath,
-            'albums'     => $em->getRepository('GalleryModule:Album')->findBy([], ['id' => 'DESC']),
+            'albums'     => $em->getRepository('GalleryModule:Album')->findBy(['gallery' => $id], ['id' => 'DESC']),
             'gallery'    => $gallery,
         ]);
     }
@@ -146,6 +146,8 @@ class AdminGalleryController extends Controller
      * @param int $gallery_id
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @todo pagination
      */
     public function albumAction(Request $request, $id, $gallery_id)
     {
@@ -179,11 +181,17 @@ class AdminGalleryController extends Controller
                 }
 
                 $this->persist($photo, true);
-                $this->addFlash('success', 'Photo updated successfully.');
+                $this->addFlash('success', 'Photo uploaded successfully.');
+
+                if ($album->getCoverImageId() == $album->getLastImageId()) {
+                    $album->setCoverImageId($photo->getImageId());
+                }
 
                 $album
                     ->setPhotosCount($em->getRepository('GalleryModule:Photo')->countInAlbum($photo->getAlbum()))
-                    ->setCoverImageId($photo->getImageId());
+                    ->setLastImageId($photo->getImageId())
+                ;
+
                 $this->persist($album, true);
 
                 return $this->redirectToRoute('smart_module.gallery.admin_album', [
@@ -247,10 +255,24 @@ class AdminGalleryController extends Controller
 
         $form = $this->createForm(new AlbumFormType(), $album);
         $form->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+             ->add('delete', 'submit', ['attr' => [ 'class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить альбом?')" ]])
              ->add('cancel', 'submit');
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
+
+            if ($form->get('delete')->isClicked()) {
+                if ($album->getPhotosCount() > 0) {
+                    $this->addFlash('error', 'Удалить можно только пустой альбом.');
+
+                    return $this->redirectToRoute('smart_module.gallery.admin_album_edit', ['id' => $album->getId(), 'gallery_id' => $gallery_id]);
+                } else {
+                    $this->addFlash('success', 'Album <b>'.$album.'</b> deleted successfully.');
+                    $this->remove($album, true);
+                }
+
+                return $this->redirectToRoute('smart_module.gallery.admin_gallery', ['id' => $gallery_id]);
+            }
 
             if ($form->get('cancel')->isClicked()) {
                 return $this->redirectToRoute('smart_module.gallery.admin_gallery', ['id' => $gallery_id]);
@@ -275,10 +297,11 @@ class AdminGalleryController extends Controller
      * @param int $id
      * @param int $gallery_id
      * @param int $album_id
+     * @param bool $set_as_cover
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function photoAction(Request $request, $id, $gallery_id, $album_id)
+    public function photoAction(Request $request, $id, $gallery_id, $album_id, $set_as_cover = false)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
@@ -290,6 +313,14 @@ class AdminGalleryController extends Controller
         }
 
         $album = $photo->getAlbum();
+
+        if ($set_as_cover) {
+            $album->setCoverImageId($photo->getImageId());
+            $this->persist($album, true);
+            $this->addFlash('success', 'Photo set as cover successfully.');
+
+            return $this->redirectToRoute('smart_module.gallery.admin_photo', ['album_id' => $album_id, 'gallery_id' => $gallery_id, 'id' => $id]);
+        }
 
         $form = $this->createForm(new PhotoFormType(), $photo);
         $form
@@ -317,8 +348,12 @@ class AdminGalleryController extends Controller
                     $this->addFlash('success', 'Photo deleted successfully.');
 
                     $album->setPhotosCount($em->getRepository('GalleryModule:Photo')->countInAlbum($album));
-                    $lastPhoto = $em->getRepository('GalleryModule:Photo')->findOneBy(['album' => $album], ['id' => 'DESC']);
-                    $album->setCoverImageId(empty($lastPhoto) ? null : $lastPhoto->getImageId());
+
+                    if ($album->getCoverImageId() == $id) {
+                        $lastPhoto = $em->getRepository('GalleryModule:Photo')->findOneBy(['album' => $album], ['id' => 'DESC']);
+                        $album->setCoverImageId(empty($lastPhoto) ? null : $lastPhoto->getImageId());
+                    }
+
                     $this->persist($album, true);
 
                     return $this->redirectToRoute('smart_module.gallery.admin_album', ['id' => $album_id, 'gallery_id' => $gallery_id]);

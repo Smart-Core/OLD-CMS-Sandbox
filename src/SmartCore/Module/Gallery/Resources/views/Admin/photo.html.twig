@@ -8,6 +8,12 @@
 
     {{ smart_media_img(photo.imageId, '200-200') }}
 
+    <p>
+        <a href="{{ path('smart_module.gallery.admin_photo_make_cover', {'id': photo.id, 'album_id': photo.album.id, 'gallery_id': photo.album.gallery.id}) }}">
+            Сделать обложкой альбома
+        </a>
+    </p>
+
     <div class="well">
         {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
     </div>

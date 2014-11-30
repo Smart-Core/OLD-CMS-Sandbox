@@ -126,7 +126,21 @@ class LocalProvider implements ProviderInterface
             throw new \RuntimeException(sprintf("Unable to create the %s directory.\n", $webDir));
         }
 
-        return $file->getUploadedFile()->move($webDir, $file->getFilename());
+        $newFile = $file->getUploadedFile()->move($webDir, $file->getFilename());
+
+        // @todo настройка качества сжатия и условное уменьшение т.е. если картинка больше заданных размеров.
+        // @todo возможность использовать Imagic, если доступен.
+        if (strpos($newFile->getMimeType(), 'jpeg') !== false) {
+            $img = imagecreatefromjpeg($newFile->getPathname());
+            imagejpeg($img, $newFile->getPathname(), 90);
+            imagedestroy($img);
+
+            clearstatcache();
+
+            $file->setSize($newFile->getSize());
+        }
+
+        return $newFile;
     }
 
     /**

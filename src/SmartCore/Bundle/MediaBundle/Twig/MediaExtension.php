@@ -34,6 +34,7 @@ class MediaExtension extends \Twig_Extension
 
     /**
      * @param  int $id
+     * @param  string $filer
      * @return string
      */
     public function generateFileUrl($id, $filer = null)

@@ -50,6 +50,13 @@ class Album
     /**
      * @var int
      *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $last_image_id;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      */
     protected $photos_count;
@@ -240,5 +247,24 @@ class Album
     public function lastUpdatedAt()
     {
         $this->updated_at = new \DateTime();
+    }
+
+    /**
+     * @param int $last_image_id
+     * @return $this
+     */
+    public function setLastImageId($last_image_id)
+    {
+        $this->last_image_id = $last_image_id;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLastImageId()
+    {
+        return $this->last_image_id;
     }
 }

@@ -331,9 +331,10 @@ class AdminStructureController extends Controller
                 $form_properties->handleRequest($request);
 
                 if ($form->isValid()
-                    and (
+                    and ( // @todo отрефакторить!!!
                         (empty($nodeParams) and !$form_properties->isValid())
                         or (!empty($nodeParams) and $form_properties->isValid())
+                        or (empty($nodeParams) and $form_properties->isValid())
                     )
                 ) {
                     /** @var $updatedNode \SmartCore\Bundle\CMSBundle\Entity\Node */
@@ -349,7 +350,12 @@ class AdminStructureController extends Controller
                     }
 
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
-                }            } elseif ($request->request->has('delete')) {
+                } else {
+                    ld('Ошибка валидации формы');
+                    ld($nodeParams);
+                    ld($form_properties->isValid());
+                }
+            } elseif ($request->request->has('delete')) {
                 die('@todo');
             }
         }
