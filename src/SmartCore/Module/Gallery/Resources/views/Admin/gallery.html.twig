@@ -22,6 +22,7 @@
             <th>{{ 'Description'|trans }}</th>
             <th style="width: 1%;">{{ 'Photos'|trans }}</th>
             <th style="width: 1%;">{{ 'Status'|trans }}</th>
+            <th style="width: 1%;">{{ 'Position'|trans }}</th>
             <th>{{ 'Create datetime'|trans }}</th>
         </tr></thead>
         <tbody>
@@ -51,6 +52,7 @@
                     {% endif %}
                     </a>
                 </td>
+                <td>{{ album.position }}</td>
                 <td>{{ album.createdAt|localizeddate }}</td>
             </tr>
         {% endfor %}

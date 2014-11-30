@@ -17,6 +17,10 @@ class Gallery
     use CreatedAtTrait;
     use SignedTrait;
 
+    const ORDER_BY_CREATED    = 0;
+    const ORDER_BY_POSITION   = 1;
+    const ORDER_BY_LAST_PHOTO = 2; // @todo
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -30,6 +34,13 @@ class Gallery
      * @ORM\Column(type="string", nullable=false)
      */
     protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    protected $order_albums_by;
 
     /**
      * @var Album[]|ArrayCollection
@@ -51,8 +62,9 @@ class Gallery
      */
     public function __construct()
     {
-        $this->albums       = new ArrayCollection();
-        $this->created_at   = new \DateTime();
+        $this->albums           = new ArrayCollection();
+        $this->created_at       = new \DateTime();
+        $this->order_albums_by  = self::ORDER_BY_CREATED;
     }
 
     /**
@@ -126,5 +138,24 @@ class Gallery
     public function getMediaCollection()
     {
         return $this->media_collection;
+    }
+
+    /**
+     * @param string $order_albums_by
+     * @return $this
+     */
+    public function setOrderAlbumsBy($order_albums_by)
+    {
+        $this->order_albums_by = $order_albums_by;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderAlbumsBy()
+    {
+        return $this->order_albums_by;
     }
 }

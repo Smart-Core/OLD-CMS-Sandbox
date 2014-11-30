@@ -27,7 +27,15 @@ class GalleryController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $albums = $em->getRepository('GalleryModule:Album')->findBy(['is_enabled' => true, 'gallery' => $this->gallery_id], ['id' => 'DESC']);
+        switch ($em->find('GalleryModule:Gallery', $this->gallery_id)->getOrderAlbumsBy()) {
+            case 1:
+                $albumsOrderBy = ['position' => 'ASC'];
+                break;
+            default:
+                $albumsOrderBy = ['id' => 'DESC'];
+        }
+
+        $albums = $em->getRepository('GalleryModule:Album')->findBy(['is_enabled' => true, 'gallery' => $this->gallery_id], $albumsOrderBy);
 
         $this->node->addFrontControl('manage_gallery', [
             'default' => true,

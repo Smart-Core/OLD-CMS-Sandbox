@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 30 2014 г., 16:07
+-- Время создания: Ноя 30 2014 г., 21:12
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.3
 
@@ -811,6 +811,7 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `created_at` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `media_collection_id` int(11) NOT NULL,
+  `order_albums_by` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F70E6EB7B52E685C` (`media_collection_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -819,8 +820,8 @@ CREATE TABLE IF NOT EXISTS `galleries` (
 -- Дамп данных таблицы `galleries`
 --
 
-INSERT INTO `galleries` (`id`, `title`, `created_at`, `user_id`, `media_collection_id`) VALUES
-(1, 'Тестовая фотогалерея', '2014-07-15 03:59:43', 1, 2);
+INSERT INTO `galleries` (`id`, `title`, `created_at`, `user_id`, `media_collection_id`, `order_albums_by`) VALUES
+(1, 'Тестовая фотогалерея', '2014-07-15 03:59:43', 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -841,6 +842,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `updated_at` datetime NOT NULL,
   `is_enabled` tinyint(1) NOT NULL,
   `last_image_id` int(11) DEFAULT NULL,
+  `position` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -849,9 +851,9 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
 -- Дамп данных таблицы `gallery_albums`
 --
 
-INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`, `user_id`, `cover_image_id`, `photos_count`, `updated_at`, `is_enabled`, `last_image_id`) VALUES
-(1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1, 8, 2, '2014-07-15 23:54:05', 1, 8),
-(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1, NULL, 0, '2014-07-15 23:49:22', 0, NULL);
+INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`, `user_id`, `cover_image_id`, `photos_count`, `updated_at`, `is_enabled`, `last_image_id`, `position`) VALUES
+(1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1, 8, 2, '2014-07-15 23:54:05', 1, 8, 0),
+(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1, NULL, 0, '2014-07-15 23:49:22', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1635,7 +1637,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-11-30 06:58:15', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-11-30 17:39:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 

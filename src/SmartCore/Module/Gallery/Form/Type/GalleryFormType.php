@@ -12,6 +12,13 @@ class GalleryFormType extends AbstractType
     {
         $builder
             ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('order_albums_by', 'choice', [
+                'choices' => [
+                    0 => 'По дате создания',
+                    1 => 'По заданной позиции',
+                    //2 => 'По дате последнего обновления',
+                ]
+            ])
             ->add('media_collection')
         ;
     }

@@ -62,6 +62,13 @@ class Album
     protected $photos_count;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $position;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -90,6 +97,7 @@ class Album
         $this->created_at   = new \DateTime();
         $this->updated_at   = new \DateTime();
         $this->photos_count = 0;
+        $this->position     = 0;
     }
 
     /**
@@ -266,5 +274,24 @@ class Album
     public function getLastImageId()
     {
         return $this->last_image_id;
+    }
+
+    /**
+     * @param int $position
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }
