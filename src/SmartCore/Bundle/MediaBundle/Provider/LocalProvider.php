@@ -86,7 +86,9 @@ class LocalProvider implements ProviderInterface
                 $imagine = $this->container->get('imagine');
                 $imagineFilterManager = $this->container->get('imagine.filter.manager');
 
-                if (strpos($file->getMimeType(), 'jpeg') == false or strpos($file->getMimeType(), 'png') == false) {
+                if ($file->isMimeType('image/jpeg') or $file->isMimeType('image/png') or $file->isMimeType('image/gif')) {
+                    // dummy
+                } else {
                     echo 'Unsupported image format';
 
                     return null;

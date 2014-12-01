@@ -438,4 +438,17 @@ class File
     {
         return $this->user_id;
     }
+
+    /**
+     * @param string $type
+     * @return bool
+     */
+    public function isMimeType($type)
+    {
+        if (strpos($this->getMimeType(), $type) !== false) {
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -7,6 +7,7 @@ use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
 use SmartCore\Bundle\CMSBundle\Model\PositionTrait;
 use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="PhotoRepository")
@@ -48,6 +49,11 @@ class Photo
 
     /**
      * @var UploadedFile
+     *
+     * @Assert\File(
+     *      maxSize = "5M",
+     *      mimeTypes = {"image/jpeg", "image/png", "image/gif"}
+     * )
      */
     protected $file;
 

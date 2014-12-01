@@ -12,7 +12,7 @@ class AlbumFormType extends AbstractType
     {
         $builder
             ->add('is_enabled', null, ['required' => false])
-            ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('title')
             ->add('position')
             ->add('descr')
         ;
