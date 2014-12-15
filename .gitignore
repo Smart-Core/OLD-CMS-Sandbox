@@ -4,6 +4,7 @@
 /bin/doctrine*
 /bin/phpspec*
 /vendor/
+/public_html
 /web/_media/
 /web/bundles/
 /web/upload/
