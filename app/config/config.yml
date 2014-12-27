@@ -63,6 +63,7 @@ genemu_form:
     image: ~
     file:
         swf: /assets/uploadify/uploadify.swf
+        folder: /uploads
 
 # Twig Configuration
 twig:
