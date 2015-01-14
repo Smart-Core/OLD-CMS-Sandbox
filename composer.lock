@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "90a2409acefb4c9a36f81bdcdd268b5f",
+    "hash": "1c8e393f719b75f6bafac31d30990fa9",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -115,12 +115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "f0b7f57ad3726a3c09b84906945be530d2489ce5"
+                "reference": "2f346327c75e801e818deec7feb13773f63fbf7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/f0b7f57ad3726a3c09b84906945be530d2489ce5",
-                "reference": "f0b7f57ad3726a3c09b84906945be530d2489ce5",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/2f346327c75e801e818deec7feb13773f63fbf7d",
+                "reference": "2f346327c75e801e818deec7feb13773f63fbf7d",
                 "shasum": ""
             },
             "require": {
@@ -175,7 +175,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2014-12-12 18:45:26"
+            "time": "2015-01-09 23:56:30"
         },
         {
             "name": "doctrine/annotations",
@@ -518,16 +518,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "0368bc031976126e5d36d37d2c56155092b6575b"
+                "reference": "a370e5b95e509a7809d11f3d280acfc9310d464b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0368bc031976126e5d36d37d2c56155092b6575b",
-                "reference": "0368bc031976126e5d36d37d2c56155092b6575b",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a370e5b95e509a7809d11f3d280acfc9310d464b",
+                "reference": "a370e5b95e509a7809d11f3d280acfc9310d464b",
                 "shasum": ""
             },
             "require": {
@@ -577,7 +577,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-10-16 11:56:49"
+            "time": "2015-01-12 21:57:01"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1354,17 +1354,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.0-RC2",
+            "version": "1.5.0-RC3",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "6bae13c309ea474041ae868f3648f0e2c5452a14"
+                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/6bae13c309ea474041ae868f3648f0e2c5452a14",
-                "reference": "6bae13c309ea474041ae868f3648f0e2c5452a14",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/6c8b756d5b1cc1194d0989ba67adebe347ed9443",
+                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443",
                 "shasum": ""
             },
             "require": {
@@ -1428,7 +1428,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2014-12-02 14:12:56"
+            "time": "2015-01-05 14:29:22"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3563,12 +3563,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "82523811144266910868d51f5396d110338d7fea"
+                "reference": "a71200d932d9b3c4ab9ecbeb0ba52b367d9596e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/82523811144266910868d51f5396d110338d7fea",
-                "reference": "82523811144266910868d51f5396d110338d7fea",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/a71200d932d9b3c4ab9ecbeb0ba52b367d9596e9",
+                "reference": "a71200d932d9b3c4ab9ecbeb0ba52b367d9596e9",
                 "shasum": ""
             },
             "require": {
@@ -3616,7 +3616,7 @@
                 "form",
                 "template"
             ],
-            "time": "2014-08-26 22:53:53"
+            "time": "2015-01-12 09:44:26"
         },
         {
             "name": "mopa/composer-bridge",
@@ -4300,17 +4300,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "0225fcd08e94de2165ffa85de50c3c9d9592e96b"
+                "reference": "9e23fc3de265ae013690d84aab98e7a84f46edcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/0225fcd08e94de2165ffa85de50c3c9d9592e96b",
-                "reference": "0225fcd08e94de2165ffa85de50c3c9d9592e96b",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/9e23fc3de265ae013690d84aab98e7a84f46edcd",
+                "reference": "9e23fc3de265ae013690d84aab98e7a84f46edcd",
                 "shasum": ""
             },
             "require": {
@@ -4344,7 +4344,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2014-12-07 18:30:52"
+            "time": "2015-01-13 07:33:46"
         },
         {
             "name": "sensiolabs/doctrine-query-statistics-bundle",
@@ -4815,23 +4815,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.9",
+            "version": "v2.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e082a9f28edfd5a081b60e009889b30c04979924"
+                "reference": "00da57005c9c76773670f4d958dd95e9f4ae72f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e082a9f28edfd5a081b60e009889b30c04979924",
-                "reference": "e082a9f28edfd5a081b60e009889b30c04979924",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/00da57005c9c76773670f4d958dd95e9f4ae72f6",
+                "reference": "00da57005c9c76773670f4d958dd95e9f4ae72f6",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.3",
+                "doctrine/common": "~2.2",
                 "php": ">=5.3.3",
                 "psr/log": "~1.0",
-                "twig/twig": "~1.12,>=1.12.3"
+                "twig/twig": "~1.12"
             },
             "replace": {
                 "symfony/browser-kit": "self.version",
@@ -4884,7 +4884,7 @@
                 "egulias/email-validator": "~1.2",
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.3",
-                "ocramius/proxy-manager": "~0.4|~1.0",
+                "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
                 "propel/propel1": "~1.6"
             },
             "type": "library",
@@ -4924,7 +4924,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-07 12:32:08"
+            "time": "2014-12-03 14:18:17"
         },
         {
             "name": "twig/extensions",
@@ -4980,16 +4980,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.16.3",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af"
+                "reference": "2493970fa4d587eca73f77e6d8bd48a8bdd4c608"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
-                "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2493970fa4d587eca73f77e6d8bd48a8bdd4c608",
+                "reference": "2493970fa4d587eca73f77e6d8bd48a8bdd4c608",
                 "shasum": ""
             },
             "require": {
@@ -4998,7 +4998,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -5033,7 +5033,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-12-25 19:58:19"
+            "time": "2015-01-14 10:15:49"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -5042,12 +5042,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "81a939828228465e7a2bf38dbb1227640cfd5392"
+                "reference": "d2d36d84cf4b8b730831f0acbbb90de717110dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/81a939828228465e7a2bf38dbb1227640cfd5392",
-                "reference": "81a939828228465e7a2bf38dbb1227640cfd5392",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/d2d36d84cf4b8b730831f0acbbb90de717110dcc",
+                "reference": "d2d36d84cf4b8b730831f0acbbb90de717110dcc",
                 "shasum": ""
             },
             "require": {
@@ -5086,7 +5086,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2014-11-06 20:05:47"
+            "time": "2015-01-14 11:58:16"
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
