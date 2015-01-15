@@ -50,7 +50,7 @@
         editor.setTheme('ace/theme/{{ cms_setting('cms', 'appearance_editor_theme') }}');
         editor.focus();
         editor.getSession().setMode('ace/mode/twig');
-        editor.getSession().setValue($('#template_code_cache').text());
+        editor.getSession().setValue($('#template_code_cache').html());
         editor.getSession().on('change', function(){
             textarea.val(editor.getSession().getValue());
         });
