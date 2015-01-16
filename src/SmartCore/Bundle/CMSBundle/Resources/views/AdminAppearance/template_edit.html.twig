@@ -53,9 +53,9 @@
         //editor.getSession().setValue($('#template_code_cache').text());
         editor.getSession().setValue(textarea.val());
         {# @todo запоминание позиции курсора через куки #}
-//        editor.gotoLine(60, 15, true);
-//        editor.moveCursorTo(60, 15);
-        editor.scrollToLine(60);
+        //editor.gotoLine(60, 15, true);
+        //editor.moveCursorTo(60, 15);
+        //editor.scrollToLine(60);
         editor.getSession().on('change', function(){
             textarea.val(editor.getSession().getValue());
         });
