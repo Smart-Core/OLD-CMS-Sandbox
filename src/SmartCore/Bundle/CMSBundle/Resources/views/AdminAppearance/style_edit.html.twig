@@ -15,9 +15,9 @@
 
         <div style="clear: both;"></div>
 
-        <div style="display: none;" id="style_code_cache">{{ style_code }}</div>
+        {#<div style="display: none;" id="style_code_cache">{{ style_code|e }}</div>#}
 
-        <textarea name="style_code" data-editor="css" class=" input-block-level"></textarea>
+        <textarea name="style_code" data-editor="css" class=" input-block-level">{{ style_code|e }}</textarea>
     </form>
 
     <a href="{{ path('cms_admin_appearance_style_history', {'name': name}) }}" style="float: right;">История изменений стиля <b>{{ name }}</b></a>
@@ -50,7 +50,8 @@
         editor.setTheme('ace/theme/{{ cms_setting('cms', 'appearance_editor_theme') }}');
         editor.focus();
         editor.getSession().setMode('ace/mode/css');
-        editor.getSession().setValue($('#style_code_cache').text());
+        //editor.getSession().setValue($('#style_code_cache').text());
+        editor.getSession().setValue(textarea.val());
         editor.getSession().on('change', function(){
             textarea.val(editor.getSession().getValue());
         });

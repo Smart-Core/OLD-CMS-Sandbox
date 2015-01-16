@@ -4,12 +4,18 @@
     'jquery': null,
 } %}
 
+{% if app.request.query.get('mode') %}
+    {% set mode = app.request.query.get('mode') %}
+{% else %}
+    {% set mode = 'twig' %}
+{% endif %}
+
 {% block title %} {{ 'Source code'|trans }} / {{ 'Appearance'|trans }} {% endblock %}
 
 {% block body %}
 
     <div id="template_code_wrapper">
-        <textarea id="template_code" name="template_code" data-editor="twig" class=" input-block-level">{{ history.code }}</textarea>
+        <textarea id="template_code" name="template_code" data-editor="{{ mode }}" class=" input-block-level">{{ history.code|e }}</textarea>
     </div>
 
     {% if is_cms_setting('cms', 'appearance_editor', 'ace') %}
@@ -38,7 +44,7 @@
             //editor.setTheme('ace/theme/idle_fingers');
             editor.setTheme('ace/theme/{{ cms_setting('cms', 'appearance_editor_theme') }}');
             editor.focus();
-            editor.getSession().setMode('ace/mode/{% if app.request.query.get('mode') %}{{ app.request.query.get('mode') }}{% else %}twig{% endif %}');
+            editor.getSession().setMode('ace/mode/{{ mode }}');
             editor.getSession().setValue(textarea.val());
             editor.getSession().on('change', function(){
                 textarea.val(editor.getSession().getValue());
