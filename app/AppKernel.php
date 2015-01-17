@@ -8,7 +8,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 class AppKernel extends Kernel
 {
     /**
-     * Подключенные модули.
+     * Подключенные модули CMS.
      *
      * @var array
      */
@@ -120,6 +120,8 @@ class AppKernel extends Kernel
     }
 
     /**
+     * Получить список подключенных модулей CMS.
+     *
      * @return array
      */
     public function getModules()
@@ -138,7 +140,7 @@ class AppKernel extends Kernel
 
     protected function getContainerBaseClass()
     {
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        if (in_array($this->getEnvironment(), ['dev', 'test'])) {
             return '\JMS\DebuggingBundle\DependencyInjection\TraceableContainer';
         }
 
@@ -146,6 +148,8 @@ class AppKernel extends Kernel
     }
 
     /**
+     * Размещение кеша в /var/
+     *
      * @return string
      */
     public function getCacheDir()
@@ -154,6 +158,8 @@ class AppKernel extends Kernel
     }
 
     /**
+     * Размещение логов в /var/
+     *
      * @return string
      */
     public function getLogDir()

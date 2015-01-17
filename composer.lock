@@ -4380,17 +4380,17 @@
         },
         {
             "name": "smart-core/ladybug-bundle",
-            "version": "v0.7.1",
+            "version": "v0.7.2",
             "target-dir": "RaulFraile/Bundle/LadybugBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/LadybugBundle.git",
-                "reference": "d416ab6d58c9847e16c295f2a79bf5f6ec6f4379"
+                "reference": "f504de8e16c1f354c5c754435189892bc993cb10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/LadybugBundle/zipball/d416ab6d58c9847e16c295f2a79bf5f6ec6f4379",
-                "reference": "d416ab6d58c9847e16c295f2a79bf5f6ec6f4379",
+                "url": "https://api.github.com/repos/Smart-Core/LadybugBundle/zipball/f504de8e16c1f354c5c754435189892bc993cb10",
+                "reference": "f504de8e16c1f354c5c754435189892bc993cb10",
                 "shasum": ""
             },
             "require": {
@@ -4426,7 +4426,7 @@
                 "tree",
                 "twig"
             ],
-            "time": "2015-01-16 22:46:15"
+            "time": "2015-01-17 00:07:02"
         },
         {
             "name": "smart-core/session-bundle",
