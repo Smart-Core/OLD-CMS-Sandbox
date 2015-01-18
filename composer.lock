@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "54e0510d660f684efff32e391f458e41",
+    "hash": "80973dd379967cbe51fb5f6ad3552eeb",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -3771,6 +3771,58 @@
             "time": "2014-10-10 13:07:37"
         },
         {
+            "name": "ornicar/apc-bundle",
+            "version": "1.0.4",
+            "target-dir": "Ornicar/ApcBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ornicar/ApcBundle.git",
+                "reference": "d7119284726d14d23d2a2345871689fd2437612b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ornicar/ApcBundle/zipball/d7119284726d14d23d2a2345871689fd2437612b",
+                "reference": "d7119284726d14d23d2a2345871689fd2437612b",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": ">=2.1,<3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.0": "1.0.x-dev",
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Ornicar\\ApcBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thibault Duplessis",
+                    "homepage": "https://github.com/ornicar"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/ornicar/ApcBundle/contributors"
+                }
+            ],
+            "description": "Provides a command line task to clear APC cache from the console",
+            "homepage": "https://github.com/ornicar/ApcBundle",
+            "keywords": [
+                "apc",
+                "task"
+            ],
+            "time": "2014-11-03 12:21:20"
+        },
+        {
             "name": "pagerfanta/pagerfanta",
             "version": "v1.0.1",
             "source": {
@@ -5440,9 +5492,9 @@
         "mopa/bootstrap-bundle": 20,
         "mremi/templating-extra-bundle": 20,
         "rickysu/tagcache-bundle": 20,
-        "sonata-project/intl-bundle": 20,
         "smart-core/felib-bundle": 20,
         "smart-core/session-bundle": 20,
+        "sonata-project/intl-bundle": 20,
         "whiteoctober/breadcrumbs-bundle": 20,
         "white-october/pagerfanta-bundle": 20
     },
@@ -5450,7 +5502,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.4.1",
-        "ext-intl": "*"
+        "ext-intl": "*",
+        "ext-curl": "*"
     },
     "platform-dev": []
 }
