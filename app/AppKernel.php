@@ -51,7 +51,6 @@ class AppKernel extends Kernel
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ThemeBundle\LiipThemeBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Ornicar\ApcBundle\OrnicarApcBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new RickySu\TagcacheBundle\TagcacheBundle(),
             new SmartCore\Bundle\ChatBundle\SmartChatBundle(),
@@ -83,6 +82,7 @@ class AppKernel extends Kernel
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle();
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
+            $bundles[] = new Ornicar\ApcBundle\OrnicarApcBundle();
             $bundles[] = new SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle();
             $bundles[] = new SmartCore\Bundle\CMSGeneratorBundle\CMSGeneratorBundle();
             // $bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
