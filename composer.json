@@ -52,9 +52,9 @@
         "liip/theme-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "~2.3@dev",
         "mremi/templating-extra-bundle": "dev-master",
-        "ornicar/apc-bundle": "1.0.*",
         "pagerfanta/pagerfanta": "v1.0.1",
         "rickysu/tagcache-bundle": "dev-master",
+        "smart-core/accelerator-cache-bundle": "1.0.x",
         "smart-core/felib-bundle": "dev-master",
         "smart-core/ladybug-bundle": "~0.7",
         "smart-core/session-bundle": "dev-master",
@@ -73,7 +73,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "php app/console apc:clear",
+            "SmartCore\\Bundle\\AcceleratorCacheBundle\\Composer\\ScriptHandler::clearCache",
             "php app/console doctrine:schema:update"
         ],
         "post-update-cmd": [
@@ -83,7 +83,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "php app/console apc:clear",
+            "SmartCore\\Bundle\\AcceleratorCacheBundle\\Composer\\ScriptHandler::clearCache",
             "php app/console doctrine:schema:update"
         ]
     },

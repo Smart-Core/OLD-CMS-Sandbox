@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2c6fad8f134323cffa82a34ed8cb3759",
+    "hash": "97e86f999e02b43bcbf6207178cbab0f",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -115,12 +115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "2f346327c75e801e818deec7feb13773f63fbf7d"
+                "reference": "66470dd040e1c94041fb9f54ac80bf90263f8d67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/2f346327c75e801e818deec7feb13773f63fbf7d",
-                "reference": "2f346327c75e801e818deec7feb13773f63fbf7d",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/66470dd040e1c94041fb9f54ac80bf90263f8d67",
+                "reference": "66470dd040e1c94041fb9f54ac80bf90263f8d67",
                 "shasum": ""
             },
             "require": {
@@ -175,7 +175,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-01-09 23:56:30"
+            "time": "2015-01-20 14:18:23"
         },
         {
             "name": "doctrine/annotations",
@@ -741,12 +741,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "9a5b5289eb22079ec139ba1eb06043d4b89c6677"
+                "reference": "c5ff0542772102ddd4e2fbe173e9ad40ad67c22f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/9a5b5289eb22079ec139ba1eb06043d4b89c6677",
-                "reference": "9a5b5289eb22079ec139ba1eb06043d4b89c6677",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c5ff0542772102ddd4e2fbe173e9ad40ad67c22f",
+                "reference": "c5ff0542772102ddd4e2fbe173e9ad40ad67c22f",
                 "shasum": ""
             },
             "require": {
@@ -790,7 +790,7 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2014-09-16 05:03:04"
+            "time": "2015-01-19 02:21:37"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -978,12 +978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "96f838b4fa93693d19196c8e24ed5f1c3972ba87"
+                "reference": "1ac14fac3ced533047d8feae8edc7c283d5b8a67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/96f838b4fa93693d19196c8e24ed5f1c3972ba87",
-                "reference": "96f838b4fa93693d19196c8e24ed5f1c3972ba87",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/1ac14fac3ced533047d8feae8edc7c283d5b8a67",
+                "reference": "1ac14fac3ced533047d8feae8edc7c283d5b8a67",
                 "shasum": ""
             },
             "require": {
@@ -1010,7 +1010,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL"
+                "LGPL-2.1"
             ],
             "authors": [
                 {
@@ -1028,7 +1028,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2014-12-19 17:14:47"
+            "time": "2015-01-19 02:26:02"
         },
         {
             "name": "doctrine/orm",
@@ -1355,17 +1355,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.0-RC3",
+            "version": "1.5.0-RC4",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443"
+                "reference": "07af90e5a71157227610884a68ff4b6ff2d39d77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/6c8b756d5b1cc1194d0989ba67adebe347ed9443",
-                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/07af90e5a71157227610884a68ff4b6ff2d39d77",
+                "reference": "07af90e5a71157227610884a68ff4b6ff2d39d77",
                 "shasum": ""
             },
             "require": {
@@ -1429,7 +1429,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-01-05 14:29:22"
+            "time": "2015-01-19 15:59:03"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3095,12 +3095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "9f56a1a5e4596af636f1c278afe2b75e5a668e4c"
+                "reference": "9f38090b49c3e32d216c14bd974f0ffa441a0a3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/9f56a1a5e4596af636f1c278afe2b75e5a668e4c",
-                "reference": "9f56a1a5e4596af636f1c278afe2b75e5a668e4c",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/9f38090b49c3e32d216c14bd974f0ffa441a0a3a",
+                "reference": "9f38090b49c3e32d216c14bd974f0ffa441a0a3a",
                 "shasum": ""
             },
             "require": {
@@ -3143,7 +3143,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-01-09 11:13:44"
+            "time": "2015-01-21 14:23:27"
         },
         {
             "name": "knplabs/rad-bundle",
@@ -3438,12 +3438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "3a4dbf2da9c9e3edd8c1d858ba2c7b22e6123334"
+                "reference": "7e7756f8d40d19d690f73354a132d86f6a14a372"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/3a4dbf2da9c9e3edd8c1d858ba2c7b22e6123334",
-                "reference": "3a4dbf2da9c9e3edd8c1d858ba2c7b22e6123334",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/7e7756f8d40d19d690f73354a132d86f6a14a372",
+                "reference": "7e7756f8d40d19d690f73354a132d86f6a14a372",
                 "shasum": ""
             },
             "require": {
@@ -3451,7 +3451,8 @@
                 "symfony/framework-bundle": "~2.0"
             },
             "require-dev": {
-                "symfony/console": "~2.0"
+                "symfony/console": "~2.0",
+                "symfony/expression-language": "~2.6"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -3483,7 +3484,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2014-09-26 13:32:08"
+            "time": "2015-01-21 08:46:21"
         },
         {
             "name": "monolog/monolog",
@@ -3769,58 +3770,6 @@
                 "test"
             ],
             "time": "2014-10-10 13:07:37"
-        },
-        {
-            "name": "ornicar/apc-bundle",
-            "version": "1.0.4",
-            "target-dir": "Ornicar/ApcBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ornicar/ApcBundle.git",
-                "reference": "d7119284726d14d23d2a2345871689fd2437612b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ornicar/ApcBundle/zipball/d7119284726d14d23d2a2345871689fd2437612b",
-                "reference": "d7119284726d14d23d2a2345871689fd2437612b",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/framework-bundle": ">=2.1,<3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.0": "1.0.x-dev",
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Ornicar\\ApcBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Thibault Duplessis",
-                    "homepage": "https://github.com/ornicar"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/ornicar/ApcBundle/contributors"
-                }
-            ],
-            "description": "Provides a command line task to clear APC cache from the console",
-            "homepage": "https://github.com/ornicar/ApcBundle",
-            "keywords": [
-                "apc",
-                "task"
-            ],
-            "time": "2014-11-03 12:21:20"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -4395,6 +4344,60 @@
                 "profiler"
             ],
             "time": "2013-06-05 09:38:14"
+        },
+        {
+            "name": "smart-core/accelerator-cache-bundle",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/AcceleratorCacheBundle.git",
+                "reference": "8664ac12da10faab76a3b3cdd861997f88530f01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/8664ac12da10faab76a3b3cdd861997f88530f01",
+                "reference": "8664ac12da10faab76a3b3cdd861997f88530f01",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1",
+                "symfony/framework-bundle": ">=2.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.0": "1.0.x-dev",
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\AcceleratorCacheBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thibault Duplessis",
+                    "homepage": "https://github.com/ornicar"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/Smart-Core/AcceleratorCacheBundle/contributors"
+                }
+            ],
+            "description": "Provides a command line task to clear PHP Accelerators cache from the console",
+            "homepage": "https://github.com/Smart-Core/AcceleratorCacheBundle",
+            "keywords": [
+                "Opcache",
+                "apc",
+                "task",
+                "wincache"
+            ],
+            "time": "2015-01-21 15:47:44"
         },
         {
             "name": "smart-core/felib-bundle",

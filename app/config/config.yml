@@ -198,7 +198,7 @@ liip_theme:
     autodetect_theme: false
     load_controllers: false
 
-ornicar_apc:
+accelerator_cache:
     host: %base_url%
     web_dir: %kernel.root_dir%/../web
     mode: curl
