@@ -1,0 +1,6 @@
+{
+    "name": "cms-bundle",
+    "dependencies": {
+        "bootstrap": "2.3.x"
+    }
+}

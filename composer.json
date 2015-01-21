@@ -59,6 +59,7 @@
         "smart-core/ladybug-bundle": "~0.7",
         "smart-core/session-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
+        "sp/bower-bundle": "dev-master",
         "stfalcon/tinymce-bundle": "v0.2.1",
         "whiteoctober/breadcrumbs-bundle": "dev-master",
         "white-october/pagerfanta-bundle": "dev-master",

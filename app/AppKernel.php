@@ -67,6 +67,7 @@ class AppKernel extends Kernel
             new SmartCore\Bundle\UnicatBundle\UnicatBundle(),
             new SmartCore\Bundle\Unicat2Bundle\Unicat2Bundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
+            new Sp\BowerBundle\SpBowerBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(), // "stfalcon/tinymce-bundle": "v0.2.1",
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
