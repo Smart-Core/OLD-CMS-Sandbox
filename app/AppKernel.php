@@ -50,6 +50,7 @@ class AppKernel extends Kernel
             new Knp\RadBundle\KnpRadBundle(),
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ThemeBundle\LiipThemeBundle(),
+            new Misd\GuzzleBundle\MisdGuzzleBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new RickySu\TagcacheBundle\TagcacheBundle(),
