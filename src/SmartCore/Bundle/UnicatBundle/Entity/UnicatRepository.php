@@ -13,7 +13,7 @@ use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
  * @ORM\Entity()
  * @ORM\Table(name="unicat_repositories",
  *      indexes={
- *          @ORM\Index(name="name_unicat_repositories", columns={"name"}),
+ *          @ORM\Index(columns={"name"}),
  *      }
  * )
  */

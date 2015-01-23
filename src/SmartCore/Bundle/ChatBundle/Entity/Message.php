@@ -10,8 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(
  *      name="chat_messages",
  *      indexes={
- *          @ORM\Index(name="date_chat_messages", columns={"date"}),
- *          @ORM\Index(name="user_id_chat_messages", columns={"user_id"}),
+ *          @ORM\Index(columns={"date"}),
+ *          @ORM\Index(columns={"user_id"}),
  *      }
  * )
  */

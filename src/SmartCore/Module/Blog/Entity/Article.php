@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="SmartCore\Module\Blog\Repository\ArticleRepository")
  * @ORM\Table(name="blog_articles",
  *      indexes={
- *          @ORM\Index(name="created_at_blog_articles", columns={"created_at"})
+ *          @ORM\Index(columns={"created_at"})
  *      }
  * )
  */

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="media_categories",
  *      indexes={
- *          @ORM\Index(name="slug_media_categories", columns={"slug"})
+ *          @ORM\Index(columns={"slug"})
  *      }
  * )
  */

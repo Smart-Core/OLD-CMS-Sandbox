@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\Table(name="engine_regions",
  *      indexes={
- *          @ORM\Index(name="position_engine_regions", columns={"position"}),
+ *          @ORM\Index(columns={"position"}),
  *      }
  * )
  * @UniqueEntity(fields="name", message="Регион с таким именем уже используется")

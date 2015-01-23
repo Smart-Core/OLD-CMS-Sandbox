@@ -9,7 +9,7 @@ use SmartCore\Bundle\UnicatBundle\Model\TypeStringModel;
  * @ORM\Entity
  * @ORM\Table(name="catalog_items_title",
  *      indexes={
- *          @ORM\Index(name="value__catalog_items_title", columns={"value"})
+ *          @ORM\Index(columns={"value"})
  *      }
  * )
  */

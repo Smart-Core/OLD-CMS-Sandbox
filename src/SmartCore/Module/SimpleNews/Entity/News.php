@@ -15,10 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="simple_news",
  *      indexes={
- *          @ORM\Index(name="is_enabled_simple_news", columns={"is_enabled"}),
- *          @ORM\Index(name="created_at_simple_news", columns={"created_at"}),
- *          @ORM\Index(name="publish_date_simple_news", columns={"publish_date"}),
- *          @ORM\Index(name="end_publish_date_simple_news", columns={"end_publish_date"}),
+ *          @ORM\Index(columns={"is_enabled"}),
+ *          @ORM\Index(columns={"created_at"}),
+ *          @ORM\Index(columns={"publish_date"}),
+ *          @ORM\Index(columns={"end_publish_date"}),
  *      }
  * )
  * @UniqueEntity(fields={"slug"}, message="URL должно быть уникальным, оно используется в строке запроса.")

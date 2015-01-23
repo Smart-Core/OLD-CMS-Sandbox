@@ -9,8 +9,8 @@ use SmartCore\Bundle\Unicat2Bundle\Model\ItemModel;
  * @ORM\Entity
  * @ORM\Table(name="u2_settlement_items",
  *      indexes={
- *          @ORM\Index(name="position__u2_settlement_items", columns={"position"}),
- *          @ORM\Index(name="type__u2_settlement_items", columns={"type"}),
+ *          @ORM\Index(columns={"position"}),
+ *          @ORM\Index(columns={"type"}),
  *      }
  * )
  */

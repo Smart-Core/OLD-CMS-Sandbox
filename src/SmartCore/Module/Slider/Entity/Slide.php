@@ -10,8 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="slides",
  *      indexes={
- *          @ORM\Index(name="position_slides", columns={"position"}),
- *          @ORM\Index(name="user_id_slides",  columns={"user_id"}),
+ *          @ORM\Index(columns={"position"}),
+ *          @ORM\Index(columns={"user_id"}),
  *      }
  * )
  */
