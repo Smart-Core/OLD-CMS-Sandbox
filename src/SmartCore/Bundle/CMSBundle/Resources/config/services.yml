@@ -28,9 +28,17 @@ services:
             - { name: kernel.event_listener, event: kernel.view, method: onView }
     cms.db.table_prefix_subscriber:
         class: SmartCore\Bundle\CMSBundle\Listener\TablePrefixSubscriber
-        arguments: [%database_table_prefix%]
+        arguments: [ %database_table_prefix% ]
+        public: false
         tags:
             - { name: doctrine.event_subscriber }
+    cms.folder.doctrine_subscriber:
+        class: SmartCore\Bundle\CMSBundle\Listener\FolderDoctrineSubscriber
+        arguments: [ @service_container ]
+        public: false
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
 # Core
     cms.breadcrumbs:
         class: SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs

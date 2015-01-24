@@ -10,7 +10,6 @@ use SmartCore\Bundle\CMSBundle\Container;
 
 /**
  * @ORM\Entity(repositoryClass="FolderRepository")
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="engine_folders",
  *      indexes={
  *          @ORM\Index(columns={"is_active"}),
@@ -522,40 +521,5 @@ class Folder
     public function getTemplateSelf()
     {
         return $this->template_self;
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function checkRelations()
-    {
-        if (empty($this->uri_part) and $this->getId() != 1) {
-            $this->setUriPart($this->getId());
-        }
-
-        // Защита от цикличных зависимостей.
-        $parent = $this->getParentFolder();
-
-        if (null == $parent) {
-            return;
-        }
-
-        $cnt = 30;
-        $ok = false;
-        while ($cnt--) {
-            if ($parent->getId() == 1) {
-                $ok = true;
-                break;
-            } else {
-                $parent = $parent->getParentFolder();
-                continue;
-            }
-        }
-
-        // Если обнаружена циклическая зависимость, тогда родитель выставляется корневая папка, которая имеет id = 1.
-        if (!$ok) {
-            $this->setParentFolder(Container::get('cms.folder')->get(1));
-        }
     }
 }
