@@ -34,12 +34,16 @@ class FolderDoctrineSubscriber implements EventSubscriber
 
     public function prePersist(LifecycleEventArgs $args)
     {
-        $this->checkRelations($args->getEntity());
+        $entity = $args->getEntity();
+
+        if ($entity instanceof Folder) {
+            $this->checkRelations($entity);
+        }
     }
 
     public function preUpdate(PreUpdateEventArgs $args)
     {
-        $this->checkRelations($args->getEntity());
+        $this->prePersist($args);
     }
 
     protected function checkRelations(Folder $folder)

@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\SeoBundle\Form\Type\MetaFormType;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
@@ -15,6 +16,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ItemFormType extends AbstractType
 {
     /**
+     * @var ManagerRegistry
+     */
+    protected $doctrine;
+
+    /**
      * @var UnicatRepository
      */
     protected $repository;
@@ -22,8 +28,9 @@ class ItemFormType extends AbstractType
     /**
      * @param UnicatRepository $repository
      */
-    public function __construct(UnicatRepository $repository)
+    public function __construct(UnicatRepository $repository, ManagerRegistry $doctrine)
     {
+        $this->doctrine   = $doctrine;
         $this->repository = $repository;
     }
 
@@ -52,8 +59,8 @@ class ItemFormType extends AbstractType
             $optionsCat = [
                 'label'     => $structure->getTitleForm(),
                 'required'  => $structure->getIsRequired(),
-                'expanded'  => ('multi' === $structure->getEntries()) ? true : false,
-                'multiple'  => ('multi' === $structure->getEntries()) ? true : false,
+                'expanded'  => $structure->isMultipleEntries() ? true : false,
+                'multiple'  => $structure->isMultipleEntries() ? true : false,
                 'class'     => $this->repository->getCategoryClass(),
             ];
 
@@ -66,7 +73,7 @@ class ItemFormType extends AbstractType
                 }
             }
 
-            $categoryTreeType = (new CategoryTreeType(Container::get('doctrine')))->setStructure($structure);
+            $categoryTreeType = (new CategoryTreeType($this->doctrine))->setStructure($structure);
             $builder->add('structure:' . $structure->getName(), $categoryTreeType, $optionsCat);
         }
 

@@ -3,8 +3,9 @@
 namespace SmartCore\Bundle\CMSBundle\Form\Type;
 
 //use SmartCore\Bundle\CMSBundle\Form\EventListener\FolderSubscriber;
-use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\SeoBundle\Form\Type\MetaFormType;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,10 +13,20 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FolderFormType extends AbstractType
 {
+    use ContainerAwareTrait;
+
+    /**
+     * @param ContainerInterface $container
+     */
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.html.twig')->in(Container::getParameter('kernel.root_dir') . '/Resources/views');
+        $finder->files()->sortByName()->name('*.html.twig')->in($this->container->getParameter('kernel.root_dir') . '/Resources/views');
 
         $templates = ['' => ''];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */
@@ -26,8 +37,8 @@ class FolderFormType extends AbstractType
 
         $routedNodes = ['' => ''];
         /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
-        foreach (Container::get('cms.node')->findInFolder($options['data']) as $node) {
-            if (!Container::has('cms.router_module.' . $node->getModule())) {
+        foreach ($this->container->get('cms.node')->findInFolder($options['data']) as $node) {
+            if (!$this->container->has('cms.router_module.' . $node->getModule())) {
                 continue;
             }
 
@@ -77,6 +88,6 @@ class FolderFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_folder';
+        return 'smart_core_cms_folder';
     }
 }

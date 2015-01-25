@@ -22,7 +22,7 @@ class EngineNode
     /**
      * @var FormFactoryInterface
      */
-    protected $form_factory;
+    protected $formFactory;
 
     /**
      * @var \SmartCore\Bundle\CMSBundle\Entity\NodeRepository
@@ -43,6 +43,8 @@ class EngineNode
      * Список всех нод, запрошенных в текущем контексте.
      *
      * @var Node[]
+     *
+     * @todo переименовать с $contextNodes
      */
     protected $nodes = [];
 
@@ -64,7 +66,7 @@ class EngineNode
 
     /**
      * @param EntityManager $em
-     * @param FormFactoryInterface $form_factory
+     * @param FormFactoryInterface $formFactory
      * @param KernelInterface $kernel
      * @param EngineContext $engineContext
      * @param string $database_table_prefix
@@ -72,14 +74,14 @@ class EngineNode
      */
     public function __construct(
         EntityManager $em,
-        FormFactoryInterface $form_factory,
+        FormFactoryInterface $formFactory,
         KernelInterface $kernel,
         EngineContext $engineContext,
         TagcacheAdapter $tagcache
     ) {
         $this->context      = $engineContext;
         $this->em           = $em;
-        $this->form_factory = $form_factory;
+        $this->formFactory  = $formFactory;
         $this->kernel       = $kernel;
         $this->repository   = $em->getRepository('CMSBundle:Node');
         $this->tagcache     = $tagcache;
@@ -105,7 +107,7 @@ class EngineNode
      */
     public function createForm($data = null, array $options = [])
     {
-        return $this->form_factory->create(new NodeFormType(), $data, $options);
+        return $this->formFactory->create(new NodeFormType(), $data, $options);
     }
 
     /**
@@ -172,15 +174,19 @@ class EngineNode
      */
     public function getPropertiesFormType($module_name)
     {
-        $reflector = new \ReflectionClass(get_class($this->kernel->getBundle($module_name . 'Module')));
-        $form_class_name = '\\' . $reflector->getNamespaceName() . '\Form\Type\NodePropertiesFormType';
+        try {
+            $reflector = new \ReflectionClass(get_class($this->kernel->getBundle($module_name . 'Module')));
+            $form_class_name = '\\' . $reflector->getNamespaceName() . '\Form\Type\NodePropertiesFormType';
 
-        if (class_exists($form_class_name)) {
-            return new $form_class_name();
-        } else {
-            // @todo может быть гибче настраивать форму параметров по умолчанию?.
-            return new NodeDefaultPropertiesFormType();
+            if (class_exists($form_class_name)) {
+                return new $form_class_name($this->em);
+            }
+        } catch (\InvalidArgumentException $e) {
+            // Случай, когда запрашивается не подключенный модуль.
         }
+
+        // @todo может быть гибче настраивать форму параметров по умолчанию?.
+        return new NodeDefaultPropertiesFormType();
     }
 
     /**

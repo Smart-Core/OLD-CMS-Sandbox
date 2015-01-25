@@ -2,20 +2,30 @@
 
 namespace SmartCore\Bundle\CMSBundle\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Container;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class UserFormType extends AbstractType
 {
+    /**
+     * @var EntityManager
+     */
+    protected $em;
+
+    /**
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = Container::get('doctrine.orm.default_entity_manager');
-
         $roles = [];
-        foreach ($em->getRepository('CMSBundle:Role')->findAll() as $role) {
+        foreach ($this->em->getRepository('CMSBundle:Role')->findAll() as $role) {
             $roles[$role->getName()] = $role->getName();
         }
 
@@ -48,6 +58,6 @@ class UserFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_user';
+        return 'smart_core_cms_user';
     }
 }

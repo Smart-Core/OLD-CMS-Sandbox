@@ -16,6 +16,8 @@ use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
  *          @ORM\Index(columns={"name"}),
  *      }
  * )
+ *
+ * @todo есть смысл переименовать UnicatBase т.к. по суффиксу "Repository" можно спутать с Doctrine\ORM\EntityRepository
  */
 class UnicatRepository
 {

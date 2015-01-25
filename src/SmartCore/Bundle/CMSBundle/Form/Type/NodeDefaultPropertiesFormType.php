@@ -16,6 +16,6 @@ class NodeDefaultPropertiesFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_default_node_properties';
+        return 'smart_core_cms_default_node_properties';
     }
 }

@@ -5,13 +5,12 @@ namespace SmartCore\Bundle\CMSBundle\Engine;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\KernelInterface;
 
-class EngineModule extends ContainerAware
+class EngineModule
 {
     /**
      * @var \AppKernel
@@ -54,6 +53,17 @@ class EngineModule extends ContainerAware
     public function get($name)
     {
         return isset($this->modules[$name]) ? $this->modules[$name] : null;
+    }
+
+    /**
+     * Проверить, подключен ли модуль.
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function has($name)
+    {
+        return isset($this->modules[$name]) ? true : false;
     }
 
     /**

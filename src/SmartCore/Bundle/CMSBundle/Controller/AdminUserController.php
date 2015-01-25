@@ -94,7 +94,7 @@ class AdminUserController extends Controller
             return $this->redirect($this->generateUrl('cms_admin_user'));
         }
 
-        $form = $this->createForm(new UserFormType(), $user);
+        $form = $this->createForm(new UserFormType($this->get('doctrine.orm.default_entity_manager')), $user);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

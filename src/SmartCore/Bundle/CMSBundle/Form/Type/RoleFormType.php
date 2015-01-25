@@ -28,6 +28,6 @@ class RoleFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_role';
+        return 'smart_core_cms_role';
     }
 }

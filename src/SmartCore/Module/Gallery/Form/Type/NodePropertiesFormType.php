@@ -10,11 +10,8 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = Container::get('doctrine.orm.default_entity_manager');
-
         $galleries = [];
-        foreach ($em->getRepository('GalleryModule:Gallery')->findAll() as $gallery) {
+        foreach ($this->em->getRepository('GalleryModule:Gallery')->findAll() as $gallery) {
             $galleries[$gallery->getId()] = $gallery;
         }
 

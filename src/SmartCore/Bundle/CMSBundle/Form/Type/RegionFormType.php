@@ -33,6 +33,6 @@ class RegionFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_region';
+        return 'smart_core_cms_region';
     }
 }

@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
@@ -21,6 +22,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UnicatRepositoryManager
 {
+    /**
+     * @var ManagerRegistry
+     */
+    protected $doctrine;
+
     /**
      * @var EntityManager
      */
@@ -42,18 +48,19 @@ class UnicatRepositoryManager
     protected $repository;
 
     /**
-     * @param EntityManager $em
+     * @param ManagerRegistry $doctrine
      * @param FormFactoryInterface $formFactory
      * @param UnicatRepository $repository
      * @param CollectionService $mc
      */
     public function __construct(
-        EntityManager $em,
+        ManagerRegistry $doctrine,
         FormFactoryInterface $formFactory,
         UnicatRepository $repository,
         CollectionService $mc
     ) {
-        $this->em          = $em;
+        $this->doctrine    = $doctrine;
+        $this->em          = $doctrine->getManager();
         $this->formFactory = $formFactory;
         $this->mc          = $mc;
         $this->repository  = $repository;
@@ -188,7 +195,7 @@ class UnicatRepositoryManager
      */
     public function getItemForm($data = null, array $options = [])
     {
-        return $this->formFactory->create(new ItemFormType($this->repository), $data, $options);
+        return $this->formFactory->create(new ItemFormType($this->repository, $this->doctrine), $data, $options);
     }
 
     /**

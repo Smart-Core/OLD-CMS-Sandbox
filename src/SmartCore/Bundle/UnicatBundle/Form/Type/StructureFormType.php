@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
+use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -15,7 +16,7 @@ class StructureFormType extends AbstractType
             ->add('title_form', null, ['label' => 'Title in forms'])
             ->add('name')
             ->add('entries', 'choice', [
-                'choices' => ['single' => 'single', 'multi' => 'multi']
+                'choices' => UnicatStructure::getEntriesChoices(),
             ])
             ->add('is_required')
             ->add('is_default_inheritance')

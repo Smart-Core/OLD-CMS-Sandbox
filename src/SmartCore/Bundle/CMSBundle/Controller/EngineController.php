@@ -110,16 +110,20 @@ class EngineController extends Controller
                 // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
                 \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
 
-                $moduleResponse = $this->forward($node->getId(), [
-                    '_route' => 'cms_node_mapper',
-                    '_route_params' => $request->attributes->get('_route_params'),
-                ], $request->query->all());
+                if ($this->get('cms.module')->has($node->getModule())) {
+                    $moduleResponse = $this->forward($node->getId(), [
+                        '_route' => 'cms_node_mapper',
+                        '_route_params' => $request->attributes->get('_route_params'),
+                    ], $request->query->all());
+                } else {
+                    $moduleResponse = new Response('Module "'.$node->getModule().'" is unavailable.');
+                }
 
                 \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
 
                 if ($moduleResponse instanceof RedirectResponse
                     or ($moduleResponse instanceof Response and $moduleResponse->isNotFound())
-                    or 0 === strpos($moduleResponse->getContent(), '<!DOCTYPE ') // Пока так определяются ошибки от симфони.
+                    or 0 === strpos($moduleResponse->getContent(), '<!DOCTYPE ') // @todo Пока так определяются ошибки от симфони.
                 ) {
                     return $moduleResponse;
                 }

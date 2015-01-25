@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 30 2014 г., 21:12
+-- Время создания: Янв 25 2015 г., 07:02
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.6.3
+-- Версия PHP: 5.6.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -591,12 +591,12 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL),
 (8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'a:0:{}', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
 (9, 1, 'Обратная связь', 0, 0, 'feedback', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-21 13:35:11', NULL),
-(11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
+(11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
 (12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL),
 (13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL),
 (14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
-(16, 1, 'Каталог 2', 0, 0, 'catalog2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
+(16, 1, 'Каталог 2', 0, 0, 'catalog2', 0, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
 (17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
 
 -- --------------------------------------------------------
@@ -653,13 +653,13 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (18, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL, 0),
 (19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL, 0),
 (20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL, 1),
-(21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, NULL, 1, '2014-01-30 20:38:27', 0, NULL, 1),
+(21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, 'Цветочки!', 1, '2014-01-30 20:38:27', 0, NULL, 1),
 (22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL, 1),
 (23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, 'Тэги блога', 1, '2014-02-07 22:55:10', 0, NULL, 0),
 (24, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:15;s:6:"editor";b:1;}', 19, 0, NULL, 1, '2014-02-08 21:01:35', 0, NULL, 0),
 (25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL, 1),
 (26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL, 0),
-(27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, NULL, 1, '2014-02-10 08:13:18', 0, NULL, 1),
+(27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, 'Nivo', 1, '2014-02-10 08:13:18', 0, NULL, 1),
 (28, 15, 1, 1, 'Catalog', 'a:1:{s:13:"repository_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL, 1),
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:26:"CatalogWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0),
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, NULL, 1, '2014-07-01 13:42:20', 0, NULL, 0),
@@ -1086,7 +1086,6 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 (13, 1, 14, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 07:56:17', NULL, 11, 'N;'),
 (14, 1, 4, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 11:28:48', NULL, 8, 'N;'),
 (15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;'),
-(16, 1, 16, 1, 6, NULL, NULL, NULL, 1, '2014-07-01 13:35:20', NULL, NULL, 'N;'),
 (17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
@@ -1377,169 +1376,6 @@ INSERT INTO `texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `editor`,
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `u2_settlement_items`
---
-
-DROP TABLE IF EXISTS `u2_settlement_items`;
-CREATE TABLE IF NOT EXISTS `u2_settlement_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
-  `structure_id` int(11) DEFAULT NULL,
-  `is_enabled` tinyint(1) DEFAULT NULL,
-  `position` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `type` tinyint(1) NOT NULL,
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `is_inheritance` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_51E5C1C0989D9B62` (`slug`),
-  KEY `IDX_51E5C1C0727ACA70` (`parent_id`),
-  KEY `IDX_51E5C1C02534008B` (`structure_id`),
-  KEY `position` (`position`),
-  KEY `type` (`type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
-
---
--- Дамп данных таблицы `u2_settlement_items`
---
-
-INSERT INTO `u2_settlement_items` (`id`, `parent_id`, `structure_id`, `is_enabled`, `position`, `title`, `type`, `slug`, `meta`, `properties`, `user_id`, `created_at`, `is_inheritance`) VALUES
-(1, NULL, 2, 1, 0, 'Новосибирск', 0, 'nsk', 'N;', 'N;', 1, '2014-07-01 18:21:17', 0),
-(2, 1, 2, 1, 0, 'Томск', 0, 'tomsk', 'N;', 'N;', 1, '2014-07-01 18:29:27', 0),
-(3, NULL, 2, 1, 0, 'Омск', 0, 'omsk', 'N;', 'N;', 1, '2014-07-01 18:29:42', 0);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `u2_settlement_properties`
---
-
-DROP TABLE IF EXISTS `u2_settlement_properties`;
-CREATE TABLE IF NOT EXISTS `u2_settlement_properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) DEFAULT NULL,
-  `is_enabled` tinyint(1) NOT NULL,
-  `is_dedicated_table` tinyint(1) NOT NULL,
-  `is_required` tinyint(1) NOT NULL,
-  `position` int(11) DEFAULT NULL,
-  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `show_in_admin` tinyint(1) NOT NULL,
-  `show_in_list` tinyint(1) NOT NULL,
-  `show_in_view` tinyint(1) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `params_yaml` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_F667F0BC5E237E06` (`name`),
-  KEY `IDX_F667F0BCFE54D947` (`group_id`),
-  KEY `is_enabled` (`is_enabled`),
-  KEY `show_in_admin` (`show_in_admin`),
-  KEY `show_in_list` (`show_in_list`),
-  KEY `show_in_view` (`show_in_view`),
-  KEY `position` (`position`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Дамп данных таблицы `u2_settlement_properties`
---
-
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `u2_settlement_properties_groups`
---
-
-DROP TABLE IF EXISTS `u2_settlement_properties_groups`;
-CREATE TABLE IF NOT EXISTS `u2_settlement_properties_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_id` int(11) DEFAULT NULL,
-  `repository_id` int(11) DEFAULT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_73060018126F525E` (`item_id`),
-  KEY `IDX_7306001850C9D4F7` (`repository_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Дамп данных таблицы `u2_settlement_properties_groups`
---
-
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `unicat2_repositories`
---
-
-DROP TABLE IF EXISTS `unicat2_repositories`;
-CREATE TABLE IF NOT EXISTS `unicat2_repositories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `media_collection_id` int(11) DEFAULT NULL,
-  `default_structure_id` int(11) DEFAULT NULL,
-  `entities_namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `is_inheritance` tinyint(1) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_2867789DB52E685C` (`media_collection_id`),
-  KEY `IDX_2867789D7E2E521` (`default_structure_id`),
-  KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
-
---
--- Дамп данных таблицы `unicat2_repositories`
---
-
-INSERT INTO `unicat2_repositories` (`id`, `media_collection_id`, `default_structure_id`, `entities_namespace`, `name`, `title`, `is_inheritance`, `user_id`, `created_at`) VALUES
-(3, NULL, NULL, 'Demo\\SiteBundle\\Entity\\Settlement\\', 'settlements', 'Каталог поселений', 1, 1, '2014-07-01 13:54:11');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `unicat2_structures`
---
-
-DROP TABLE IF EXISTS `unicat2_structures`;
-CREATE TABLE IF NOT EXISTS `unicat2_structures` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `repository_id` int(11) DEFAULT NULL,
-  `position` smallint(6) DEFAULT NULL,
-  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title_form` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `is_required` tinyint(1) DEFAULT NULL,
-  `is_default_inheritance` tinyint(1) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `properties` longtext COLLATE utf8_unicode_ci,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_FCE6DA150C9D4F7` (`repository_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
-
---
--- Дамп данных таблицы `unicat2_structures`
---
-
-INSERT INTO `unicat2_structures` (`id`, `repository_id`, `position`, `name`, `title`, `title_form`, `entries`, `is_required`, `is_default_inheritance`, `user_id`, `properties`, `created_at`) VALUES
-(2, 3, 0, 'regions', 'Регионы', 'Регион', 'single', 1, 0, 0, NULL, '2014-07-01 14:15:15'),
-(3, 3, 0, 'settlement', 'Поселения', 'Поселение', 'single', 1, 0, 0, NULL, '2014-07-01 16:53:26');
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `unicat_repositories`
 --
 
@@ -1637,7 +1473,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2014-11-30 17:39:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-01-25 05:51:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1883,39 +1719,6 @@ ALTER TABLE `simple_news_instances`
 --
 ALTER TABLE `slides`
   ADD CONSTRAINT `FK_56692A962CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `sliders` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `u2_settlement_items`
---
-ALTER TABLE `u2_settlement_items`
-  ADD CONSTRAINT `FK_51E5C1C02534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat2_structures` (`id`),
-  ADD CONSTRAINT `FK_51E5C1C0727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `u2_settlement_items` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `u2_settlement_properties`
---
-ALTER TABLE `u2_settlement_properties`
-  ADD CONSTRAINT `FK_F667F0BCFE54D947` FOREIGN KEY (`group_id`) REFERENCES `u2_settlement_properties_groups` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `u2_settlement_properties_groups`
---
-ALTER TABLE `u2_settlement_properties_groups`
-  ADD CONSTRAINT `FK_73060018126F525E` FOREIGN KEY (`item_id`) REFERENCES `u2_settlement_items` (`id`),
-  ADD CONSTRAINT `FK_7306001850C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat2_repositories` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `unicat2_repositories`
---
-ALTER TABLE `unicat2_repositories`
-  ADD CONSTRAINT `FK_2867789D7E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat2_structures` (`id`),
-  ADD CONSTRAINT `FK_2867789DB52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `unicat2_structures`
---
-ALTER TABLE `unicat2_structures`
-  ADD CONSTRAINT `FK_FCE6DA150C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat2_repositories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_repositories`

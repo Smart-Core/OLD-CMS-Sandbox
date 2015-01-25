@@ -1,5 +1,0 @@
-
-services:
-    unicat2:
-        class: SmartCore\Bundle\Unicat2Bundle\Service\UnicatService
-        arguments: [ @doctrine.orm.default_entity_manager, @form.factory, @smart_media, @security.context ]

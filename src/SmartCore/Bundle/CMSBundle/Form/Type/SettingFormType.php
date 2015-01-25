@@ -28,6 +28,6 @@ class SettingFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_setting';
+        return 'smart_core_cms_setting';
     }
 }

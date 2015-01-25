@@ -351,4 +351,23 @@ class UnicatStructure
     {
         return $this->user_id;
     }
+
+    /**
+     * @return bool
+     */
+    public function isMultipleEntries()
+    {
+        return $this->entries === 'multi' ? true : false;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getEntriesChoices()
+    {
+        return [
+            'single' => 'single',
+            'multi'  => 'multi',
+        ];
+    }
 }

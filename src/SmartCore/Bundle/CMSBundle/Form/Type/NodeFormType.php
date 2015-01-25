@@ -60,6 +60,6 @@ class NodeFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_core_node';
+        return 'smart_core_cms_node';
     }
 }

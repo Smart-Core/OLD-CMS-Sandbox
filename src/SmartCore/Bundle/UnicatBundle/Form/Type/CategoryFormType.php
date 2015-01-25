@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Container;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use SmartCore\Bundle\SeoBundle\Form\Type\MetaFormType;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
@@ -16,6 +16,11 @@ use Symfony\Component\Yaml\Yaml;
 class CategoryFormType extends AbstractType
 {
     /**
+     * @var ManagerRegistry
+     */
+    protected $doctrine;
+
+    /**
      * @var UnicatRepository
      */
     protected $repository;
@@ -23,8 +28,9 @@ class CategoryFormType extends AbstractType
     /**
      * @param UnicatRepository $repository
      */
-    public function __construct(UnicatRepository $repository)
+    public function __construct(UnicatRepository $repository, ManagerRegistry $doctrine)
     {
+        $this->doctrine   = $doctrine;
         $this->repository = $repository;
     }
 
@@ -33,7 +39,7 @@ class CategoryFormType extends AbstractType
         /** @var CategoryModel $category */
         $category = $options['data'];
 
-        $categoryTreeType = (new CategoryTreeType(Container::get('doctrine')))->setStructure($category->getStructure());
+        $categoryTreeType = (new CategoryTreeType($this->doctrine))->setStructure($category->getStructure());
 
         $builder
             ->add('is_enabled',     null, ['required' => false])

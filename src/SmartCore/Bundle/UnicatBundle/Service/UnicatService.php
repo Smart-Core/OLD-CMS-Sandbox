@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\UnicatBundle\Service;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
@@ -19,6 +20,11 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class UnicatService
 {
+    /**
+     * @var ManagerRegistry
+     */
+    protected $doctrine;
+
     /**
      * @var EntityManager
      */
@@ -51,12 +57,13 @@ class UnicatService
      * @param SecurityContextInterface $securityContext
      */
     public function __construct(
-        EntityManager $em,
+        ManagerRegistry $doctrine,
         FormFactoryInterface $formFactory,
         MediaCloudService $mediaCloud,
         SecurityContextInterface $securityContext
     ) {
-        $this->em          = $em;
+        $this->doctrine    = $doctrine;
+        $this->em          = $doctrine->getManager();
         $this->formFactory = $formFactory;
         $this->mc          = $mediaCloud->getCollection(1); // @todo настройку медиаколлекции. @important
         $this->securityContext = $securityContext;
@@ -75,7 +82,7 @@ class UnicatService
         $repository = $this->getRepository($repository_id);
 
         if (!isset($this->urms[$repository->getId()])) {
-            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->em, $this->formFactory, $repository, $this->mc);
+            $this->urms[$repository->getId()] = new UnicatRepositoryManager($this->doctrine, $this->formFactory, $repository, $this->mc);
         }
 
         return $this->urms[$repository->getId()];
@@ -105,7 +112,7 @@ class UnicatService
      */
     public function getCategoryForm(UnicatRepository $repository, $data = null, array $options = [])
     {
-        return $this->formFactory->create(new CategoryFormType($repository), $data, $options);
+        return $this->formFactory->create(new CategoryFormType($repository, $this->doctrine), $data, $options);
     }
 
     /**
@@ -130,7 +137,7 @@ class UnicatService
             $category->setParent($parent_category);
         }
 
-        return $this->formFactory->create(new CategoryCreateFormType($structure->getRepository()), $category, $options)
+        return $this->formFactory->create(new CategoryCreateFormType($structure->getRepository(), $this->doctrine), $category, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
     }
 

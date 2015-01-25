@@ -2,7 +2,6 @@
 
 namespace SmartCore\Module\Catalog\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -11,7 +10,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $repositories = [];
-        foreach (Container::get('unicat')->allRepositories() as $repo) {
+        foreach ($this->em->getRepository('UnicatBundle:UnicatRepository')->findAll() as $repo) {
             $repositories[$repo->getId()] = $repo;
         }
 
