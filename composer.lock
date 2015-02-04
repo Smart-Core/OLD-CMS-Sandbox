@@ -1262,12 +1262,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
-                "reference": "082755c2af114ead713259ec7472782917605aaf"
+                "reference": "8090ced6d6621cefcc468a23e01b02a3f6bcfdb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/082755c2af114ead713259ec7472782917605aaf",
-                "reference": "082755c2af114ead713259ec7472782917605aaf",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/8090ced6d6621cefcc468a23e01b02a3f6bcfdb7",
+                "reference": "8090ced6d6621cefcc468a23e01b02a3f6bcfdb7",
                 "shasum": ""
             },
             "require": {
@@ -1308,7 +1308,7 @@
                 "extra",
                 "profiler"
             ],
-            "time": "2014-11-06 09:36:21"
+            "time": "2015-01-30 08:28:07"
         },
         {
             "name": "fabpot/goutte",
@@ -1407,17 +1407,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.0-RC5",
+            "version": "1.5.0",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "2437a4fafb232bccac0dff71f9d2ada97e19155c"
+                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/2437a4fafb232bccac0dff71f9d2ada97e19155c",
-                "reference": "2437a4fafb232bccac0dff71f9d2ada97e19155c",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/a9377f6a05fb516423d6adf9079c6e5fb41e4799",
+                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1481,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-01-23 08:35:25"
+            "time": "2015-01-27 09:39:58"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1805,16 +1805,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f1085bb4e023766a66b7b051914ec73bdf7202b5"
+                "reference": "475b29ccd411f2fa8a408e64576418728c032cfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f1085bb4e023766a66b7b051914ec73bdf7202b5",
-                "reference": "f1085bb4e023766a66b7b051914ec73bdf7202b5",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/475b29ccd411f2fa8a408e64576418728c032cfa",
+                "reference": "475b29ccd411f2fa8a408e64576418728c032cfa",
                 "shasum": ""
             },
             "require": {
@@ -1859,7 +1859,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-12-19 20:27:15"
+            "time": "2015-01-28 01:03:29"
         },
         {
             "name": "guzzlehttp/ringphp",
@@ -2612,12 +2612,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSDebuggingBundle.git",
-                "reference": "d0fd593ee27c68c823ac3d89de122eaa2a585e85"
+                "reference": "430daab75b88d78ee9e06ed2ae7811ea3da947af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDebuggingBundle/zipball/d0fd593ee27c68c823ac3d89de122eaa2a585e85",
-                "reference": "d0fd593ee27c68c823ac3d89de122eaa2a585e85",
+                "url": "https://api.github.com/repos/schmittjoh/JMSDebuggingBundle/zipball/430daab75b88d78ee9e06ed2ae7811ea3da947af",
+                "reference": "430daab75b88d78ee9e06ed2ae7811ea3da947af",
                 "shasum": ""
             },
             "require": {
@@ -2645,7 +2645,7 @@
             "keywords": [
                 "debugging"
             ],
-            "time": "2014-11-27 06:45:27"
+            "time": "2015-01-25 19:32:21"
         },
         {
             "name": "jms/di-extra-bundle",
@@ -3278,17 +3278,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "9f38090b49c3e32d216c14bd974f0ffa441a0a3a"
+                "reference": "dc2c5b9702369f952fd7268a9a8a24473705b3a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/9f38090b49c3e32d216c14bd974f0ffa441a0a3a",
-                "reference": "9f38090b49c3e32d216c14bd974f0ffa441a0a3a",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/dc2c5b9702369f952fd7268a9a8a24473705b3a7",
+                "reference": "dc2c5b9702369f952fd7268a9a8a24473705b3a7",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-menu": "~2.0",
-                "symfony/framework-bundle": "~2.0"
+                "symfony/framework-bundle": "~2.3"
             },
             "require-dev": {
                 "symfony/expression-language": "~2.4"
@@ -3326,7 +3326,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-01-21 14:23:27"
+            "time": "2015-01-28 10:37:00"
         },
         {
             "name": "knplabs/rad-bundle",
@@ -3564,12 +3564,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "3313028ab6dcffc699b46932ba89e177c8d9f2b8"
+                "reference": "8844cb97371d366883eb2cfe2b8bf944f701e7ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/3313028ab6dcffc699b46932ba89e177c8d9f2b8",
-                "reference": "3313028ab6dcffc699b46932ba89e177c8d9f2b8",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/8844cb97371d366883eb2cfe2b8bf944f701e7ae",
+                "reference": "8844cb97371d366883eb2cfe2b8bf944f701e7ae",
                 "shasum": ""
             },
             "require": {
@@ -3612,7 +3612,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2015-01-22 09:50:35"
+            "time": "2015-01-26 15:21:27"
         },
         {
             "name": "liip/theme-bundle",
@@ -3621,12 +3621,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "7e7756f8d40d19d690f73354a132d86f6a14a372"
+                "reference": "a594cc6deda293034b8fd7795c9950f02fc8251b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/7e7756f8d40d19d690f73354a132d86f6a14a372",
-                "reference": "7e7756f8d40d19d690f73354a132d86f6a14a372",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/a594cc6deda293034b8fd7795c9950f02fc8251b",
+                "reference": "a594cc6deda293034b8fd7795c9950f02fc8251b",
                 "shasum": ""
             },
             "require": {
@@ -3667,7 +3667,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2015-01-21 08:46:21"
+            "time": "2015-02-02 15:55:54"
         },
         {
             "name": "misd/guzzle-bundle",
@@ -3932,12 +3932,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mremi/TemplatingExtraBundle.git",
-                "reference": "c985fcc7c41f072d691404f1a344918eca24365d"
+                "reference": "9638212a16342c601fbcb0e0285678754d0668c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mremi/TemplatingExtraBundle/zipball/c985fcc7c41f072d691404f1a344918eca24365d",
-                "reference": "c985fcc7c41f072d691404f1a344918eca24365d",
+                "url": "https://api.github.com/repos/mremi/TemplatingExtraBundle/zipball/9638212a16342c601fbcb0e0285678754d0668c1",
+                "reference": "9638212a16342c601fbcb0e0285678754d0668c1",
                 "shasum": ""
             },
             "require": {
@@ -3967,7 +3967,7 @@
                 "profiler",
                 "templating"
             ],
-            "time": "2015-01-08 21:43:16"
+            "time": "2015-01-28 08:31:34"
         },
         {
             "name": "nelmio/alice",
@@ -4405,17 +4405,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.3.8",
+            "version": "v2.3.9",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "9a72f821957141ee3d9703da3fa8266d59ef4b1c"
+                "reference": "ac4893621b30faf8f970758afea7640122767817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/9a72f821957141ee3d9703da3fa8266d59ef4b1c",
-                "reference": "9a72f821957141ee3d9703da3fa8266d59ef4b1c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ac4893621b30faf8f970758afea7640122767817",
+                "reference": "ac4893621b30faf8f970758afea7640122767817",
                 "shasum": ""
             },
             "require": {
@@ -4447,7 +4447,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-01-07 07:11:03"
+            "time": "2015-02-01 05:39:51"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -5010,28 +5010,29 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "ab3d73839939a77592f4c56fb1f6ce6b6d0eef1e"
+                "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/ab3d73839939a77592f4c56fb1f6ce6b6d0eef1e",
-                "reference": "ab3d73839939a77592f4c56fb1f6ce6b6d0eef1e",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/422b0add2110f0cf9bc7a873a386ea053f4a89f0",
+                "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0",
                 "shasum": ""
             },
             "require": {
                 "kriswallsmith/assetic": "~1.2",
                 "php": ">=5.3.0",
-                "symfony/console": "~2.1",
-                "symfony/framework-bundle": "~2.1",
-                "symfony/yaml": "~2.1"
+                "symfony/console": "~2.3",
+                "symfony/dependency-injection": "~2.3",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/yaml": "~2.3"
             },
             "require-dev": {
                 "kriswallsmith/spork": "~0.2",
                 "patchwork/jsqueeze": "~1.0",
-                "symfony/class-loader": "~2.1",
-                "symfony/css-selector": "~2.1",
-                "symfony/dom-crawler": "~2.1",
-                "symfony/twig-bundle": "~2.1"
+                "symfony/class-loader": "~2.3",
+                "symfony/css-selector": "~2.3",
+                "symfony/dom-crawler": "~2.3",
+                "symfony/twig-bundle": "~2.3"
             },
             "suggest": {
                 "kriswallsmith/spork": "to be able to dump assets in parallel",
@@ -5066,7 +5067,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2015-01-02 21:26:11"
+            "time": "2015-01-27 12:45:16"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -5186,16 +5187,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c34ef418015793a4653f2670afb69dd167ebf578"
+                "reference": "23b647f1e4eeb24a457d3c47f5f5046377d5a3bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c34ef418015793a4653f2670afb69dd167ebf578",
-                "reference": "c34ef418015793a4653f2670afb69dd167ebf578",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/23b647f1e4eeb24a457d3c47f5f5046377d5a3bf",
+                "reference": "23b647f1e4eeb24a457d3c47f5f5046377d5a3bf",
                 "shasum": ""
             },
             "require": {
@@ -5298,7 +5299,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-07 14:47:29"
+            "time": "2015-02-02 18:02:30"
         },
         {
             "name": "twig/extensions",
@@ -5354,16 +5355,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.17.0",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "2493970fa4d587eca73f77e6d8bd48a8bdd4c608"
+                "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2493970fa4d587eca73f77e6d8bd48a8bdd4c608",
-                "reference": "2493970fa4d587eca73f77e6d8bd48a8bdd4c608",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4cf7464348e7f9893a93f7096a90b73722be99cf",
+                "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf",
                 "shasum": ""
             },
             "require": {
@@ -5372,7 +5373,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 }
             },
             "autoload": {
@@ -5407,7 +5408,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-01-14 10:15:49"
+            "time": "2015-01-25 17:32:08"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -5416,12 +5417,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "e650f49a502a37675573ad3eb781bbde6a9a9511"
+                "reference": "89c8c4fbb071d6d55023b3c9bdbec5d6b70acaef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/e650f49a502a37675573ad3eb781bbde6a9a9511",
-                "reference": "e650f49a502a37675573ad3eb781bbde6a9a9511",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/89c8c4fbb071d6d55023b3c9bdbec5d6b70acaef",
+                "reference": "89c8c4fbb071d6d55023b3c9bdbec5d6b70acaef",
                 "shasum": ""
             },
             "require": {
@@ -5460,7 +5461,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2015-01-23 13:42:18"
+            "time": "2015-01-31 09:28:42"
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
