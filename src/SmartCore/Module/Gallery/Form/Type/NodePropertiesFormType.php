@@ -2,7 +2,6 @@
 
 namespace SmartCore\Module\Gallery\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Container;
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormBuilderInterface;
 
