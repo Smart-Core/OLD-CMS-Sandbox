@@ -34,7 +34,7 @@ class ApiEngineController extends Controller
             return $this->notFoundAction();
         }
 
-        $controller = $this->get('cms.router')->matchModuleApi($node->getModule(), '/' . $slug);
+        $controller = $this->get('cms.router')->matchModuleApi($node->getModule(), '/'.$slug);
 
         if (null === $controller) {
             return $this->notFoundAction();
@@ -62,7 +62,7 @@ class ApiEngineController extends Controller
         return new JsonResponse([
             'status'  => 'error',
             'message' => 'Некорректный запрос.',
-            'data'    => []
+            'data'    => [],
         ], 404);
     }
 }

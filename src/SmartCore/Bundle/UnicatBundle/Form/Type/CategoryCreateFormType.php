@@ -20,6 +20,6 @@ class CategoryCreateFormType extends CategoryFormType
 
     public function getName()
     {
-        return 'smart_unicat_repository_' . $this->repository->getName() . '_category_create';
+        return 'smart_unicat_repository_'.$this->repository->getName().'_category_create';
     }
 }

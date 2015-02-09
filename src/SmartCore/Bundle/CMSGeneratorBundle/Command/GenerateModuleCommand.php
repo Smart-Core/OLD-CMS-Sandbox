@@ -115,7 +115,7 @@ class GenerateModuleCommand extends GeneratorCommand
         }
 
         if (null === $bundle) {
-            $bundle = strtr(preg_match('/Module$/', $namespace) ? $namespace : $namespace . 'Module', ['\\Module\\' => '', '\\' => '']);
+            $bundle = strtr(preg_match('/Module$/', $namespace) ? $namespace : $namespace.'Module', ['\\Module\\' => '', '\\' => '']);
 
             $output->writeln([
                 '',

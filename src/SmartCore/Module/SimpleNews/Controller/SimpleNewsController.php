@@ -44,7 +44,7 @@ class SimpleNewsController extends Controller
         }
 
         if ($page > 1) {
-            $this->get('cms.breadcrumbs')->add(null, $this->get('translator')->trans('Page') . ': ' . $page);
+            $this->get('cms.breadcrumbs')->add(null, $this->get('translator')->trans('Page').': '.$page);
         }
 
         return $this->render('SimpleNewsModule::news.html.twig', ['news' => $pagerfanta ]);

@@ -176,13 +176,13 @@ class File
      */
     public function getFullRelativePath($filter = null)
     {
-        $relativePath = $this->getStorage()->getRelativePath() . $this->getCollection()->getRelativePath();
+        $relativePath = $this->getStorage()->getRelativePath().$this->getCollection()->getRelativePath();
 
         if (empty($filter)) {
             $filter = 'orig';
         }
 
-        return $relativePath . '/' . $filter . $this->relative_path;
+        return $relativePath.'/'.$filter.$this->relative_path;
     }
 
     /**
@@ -191,7 +191,7 @@ class File
      */
     public function getFullRelativeUrl($filter = null)
     {
-        return $this->getFullRelativePath($filter) . '/' . $this->getFilename();
+        return $this->getFullRelativePath($filter).'/'.$this->getFilename();
     }
 
     /**

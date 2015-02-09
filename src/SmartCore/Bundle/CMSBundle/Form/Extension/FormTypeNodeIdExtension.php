@@ -4,7 +4,6 @@ namespace SmartCore\Bundle\CMSBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 

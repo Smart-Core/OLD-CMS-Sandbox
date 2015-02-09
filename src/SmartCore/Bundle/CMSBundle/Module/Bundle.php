@@ -62,6 +62,6 @@ abstract class Bundle extends \Knp\RadBundle\AppBundle\Bundle
      */
     final public function hasAdmin()
     {
-        return $this->container->has('cms.router_module.' . $this->getShortName() . '.admin') ? true : false;
+        return $this->container->has('cms.router_module.'.$this->getShortName().'.admin') ? true : false;
     }
 }

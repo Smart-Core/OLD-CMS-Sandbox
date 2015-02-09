@@ -632,13 +632,13 @@ class Node implements \Serializable
             $className = (null === $controllerName) ? $this->module : $controllerName;
 
             return [
-                '_controller' => $this->module . 'Module:' . $className . ':' . $actionName,
+                '_controller' => $this->module.'Module:'.$className.':'.$actionName,
             ];
         }
 
         if (empty($this->controller)) {
             $className = (null === $controllerName) ? $this->module : $controllerName;
-            $this->controller['_controller'] = $this->module . 'Module:' . $className . ':' . $actionName;
+            $this->controller['_controller'] = $this->module.'Module:'.$className.':'.$actionName;
         }
 
         return $this->controller;

@@ -39,6 +39,6 @@ class PropertiesGroupFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_repository_' . $this->repository->getName() . '_properties_group';
+        return 'smart_unicat_repository_'.$this->repository->getName().'_properties_group';
     }
 }

@@ -33,7 +33,7 @@ class CatalogWidgetController extends Controller
         $structure = null
     ) {
         if (null === $this->repository_id) {
-            return new Response('Module Catalog not yet configured. Node: ' . $this->node->getId() . '<br />');
+            return new Response('Module Catalog not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);

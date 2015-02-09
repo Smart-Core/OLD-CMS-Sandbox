@@ -62,6 +62,6 @@ class PropertyFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_repository_' . $this->repository->getName() . '_property';
+        return 'smart_unicat_repository_'.$this->repository->getName().'_property';
     }
 }

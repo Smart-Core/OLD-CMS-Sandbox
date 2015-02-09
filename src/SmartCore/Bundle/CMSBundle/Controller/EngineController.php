@@ -31,7 +31,7 @@ class EngineController extends Controller
         $tagcache = $this->get('tagcache');
 
         // Кеширование роутера.
-        $cache_key = md5('cms_router' . $request->getBaseUrl() . $slug);
+        $cache_key = md5('cms_router'.$request->getBaseUrl().$slug);
         if (false == $router_data = $tagcache->get($cache_key)) {
             $router_data = $this->get('cms.router')->match($request->getBaseUrl(), $slug);
             $tagcache->set($cache_key, $router_data, ['folder', 'node']);
@@ -108,7 +108,7 @@ class EngineController extends Controller
                 }
 
                 // Выполняется модуль, все параметры ноды берутся в \SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-                \Profiler::start($node->getId() . ' ' . $node->getModule(), 'node');
+                \Profiler::start($node->getId().' '.$node->getModule(), 'node');
 
                 if ($this->get('cms.module')->has($node->getModule())) {
                     $moduleResponse = $this->forward($node->getId(), [
@@ -119,7 +119,7 @@ class EngineController extends Controller
                     $moduleResponse = new Response('Module "'.$node->getModule().'" is unavailable.');
                 }
 
-                \Profiler::end($node->getId() . ' ' . $node->getModule(), 'node');
+                \Profiler::end($node->getId().' '.$node->getModule(), 'node');
 
                 if ($moduleResponse instanceof RedirectResponse
                     or ($moduleResponse instanceof Response and $moduleResponse->isNotFound())
@@ -130,16 +130,16 @@ class EngineController extends Controller
 
                 // @todo сделать отправку front_controls в ответе метода.
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-                    $this->front_controls['node']['__node_' . $node->getId()] = $node->getFrontControls();
-                    $this->front_controls['node']['__node_' . $node->getId()]['cms_node_properties'] = [
-                        'title' => 'Параметры модуля ' . $node->getModule(), // @todo translate
-                        'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()])
+                    $this->front_controls['node']['__node_'.$node->getId()] = $node->getFrontControls();
+                    $this->front_controls['node']['__node_'.$node->getId()]['cms_node_properties'] = [
+                        'title' => 'Параметры модуля '.$node->getModule(), // @todo translate
+                        'uri'   => $this->generateUrl('cms_admin_structure_node_properties', ['id' => $node->getId()]),
                     ];
                 }
 
                 if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
                     $moduleResponse->setContent(
-                        "\n<div class=\"cms-frontadmin-node\" id=\"__node_{$node->getId()}\">\n" . $moduleResponse->getContent() . "\n</div>\n"
+                        "\n<div class=\"cms-frontadmin-node\" id=\"__node_{$node->getId()}\">\n".$moduleResponse->getContent()."\n</div>\n"
                     );
                 }
 

@@ -58,11 +58,11 @@ class Category extends ContainerAware
 
         /** @var CategoryInterface $category */
         foreach ($categories as $category) {
-            $uri = $this->container->get('router')->generate('smart_blog.category.articles', ['slug' => $category->getSlugFull()]) . '/';
+            $uri = $this->container->get('router')->generate('smart_blog.category.articles', ['slug' => $category->getSlugFull()]).'/';
             $menu->addChild($category->getTitle(), ['uri' => $uri])
                 ->setAttributes([
                     'class' => 'folder',
-                    'id'    => 'category_id_' . $category->getId(),
+                    'id'    => 'category_id_'.$category->getId(),
                 ]);
 
             /** @var ItemInterface $sub_menu */
@@ -109,7 +109,7 @@ class Category extends ContainerAware
             $menu->addChild($category->getTitle(), ['uri' => $uri])
                 ->setAttributes([
                     'class' => 'folder',
-                    'id'    => 'category_id_' . $category->getId(),
+                    'id'    => 'category_id_'.$category->getId(),
                 ]);
 
             /** @var ItemInterface $sub_menu */

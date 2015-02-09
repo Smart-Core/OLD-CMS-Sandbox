@@ -92,7 +92,7 @@ class Item
 
         $dotted = (mb_strlen($a, 'utf-8') > 100) ? '...' : '';
 
-        return mb_substr($a, 0, 100, 'utf-8') . $dotted;
+        return mb_substr($a, 0, 100, 'utf-8').$dotted;
     }
 
     /**

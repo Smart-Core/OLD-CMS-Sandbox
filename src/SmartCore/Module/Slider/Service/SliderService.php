@@ -42,7 +42,7 @@ class SliderService
     {
         $file = $slide->getFile();
 
-        $filename = md5(uniqid(mt_rand(), true) . $file->getFilename()).'.'.$file->guessExtension();
+        $filename = md5(uniqid(mt_rand(), true).$file->getFilename()).'.'.$file->guessExtension();
         $file->move($this->webDir, $filename);
 
         $slide
@@ -115,7 +115,7 @@ class SliderService
      */
     public function deleteSlide(Slide $slide)
     {
-        unlink($this->webDir . '/' . $slide->getFileName());
+        unlink($this->webDir.'/'.$slide->getFileName());
 
         $this->em->remove($slide);
         $this->em->flush($slide);
@@ -160,7 +160,7 @@ class SliderService
     {
         $webDir = '/images/slider'; // @todo настройку пути хранения слайдов, для разных "групп" свой путь.
 
-        $dir = $this->container->getParameter('imagine.web_root') . $webDir;
+        $dir = $this->container->getParameter('imagine.web_root').$webDir;
 
         if (!is_dir($dir) and false === @mkdir($dir, 0777, true)) {
             throw new \RuntimeException(sprintf("Unable to create the %s directory (%s)\n", $webDir, $dir));

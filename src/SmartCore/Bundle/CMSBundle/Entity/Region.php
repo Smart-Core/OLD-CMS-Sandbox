@@ -81,7 +81,7 @@ class Region
     {
         $descr = $this->getDescr();
 
-        return empty($descr) ? $this->getName() : $descr . ' (' . $this->getName() . ')';
+        return empty($descr) ? $this->getName() : $descr.' ('.$this->getName().')';
     }
 
     /**

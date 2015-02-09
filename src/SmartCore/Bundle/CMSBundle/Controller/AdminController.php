@@ -76,18 +76,18 @@ class AdminController extends Controller
     {
         $finder = new Finder();
 
-        if (is_dir($this->get('kernel')->getRootDir() . '/../dist')) {
+        if (is_dir($this->get('kernel')->getRootDir().'/../dist')) {
             $finder
                 ->ignoreDotFiles(false)
                 ->ignoreVCS(true)
                 ->name('*.zip')
-                ->in($this->get('kernel')->getRootDir() . '/../dist');
+                ->in($this->get('kernel')->getRootDir().'/../dist');
         } else {
             $finder = [];
         }
 
         // @todo убрать в сервис.
-        if ( ! empty($filename)) {
+        if (! empty($filename)) {
             $this->get('cms.module')->install($filename);
         }
 
@@ -113,7 +113,7 @@ class AdminController extends Controller
 
             $retval = $application->run($input, $output);
 
-            return new Response('БД успешно обновлена.<p>' . $output->fetch() . '</p>' );
+            return new Response('БД успешно обновлена.<p>'.$output->fetch().'</p>');
         } else {
             return new Response('Обновление БД возможно только через AJAX.');
         }

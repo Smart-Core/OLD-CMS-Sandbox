@@ -61,7 +61,7 @@ class HtmlTitleExtension extends \Twig_Extension
                 continue;
             }
 
-            $response = $value['title'] . ' ' . $options['delimiter'] . ' ' . $response;
+            $response = $value['title'].' '.$options['delimiter'].' '.$response;
         }
 
         return $response;

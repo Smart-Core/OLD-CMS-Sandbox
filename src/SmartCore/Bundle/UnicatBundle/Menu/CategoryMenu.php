@@ -69,7 +69,7 @@ class CategoryMenu extends ContainerAware
 
         /** @var CategoryModel $category */
         foreach ($categories as $category) {
-            $uri = $this->container->get('router')->generate($options['routeName'], ['slug' => $category->getSlugFull()]) . '/';
+            $uri = $this->container->get('router')->generate($options['routeName'], ['slug' => $category->getSlugFull()]).'/';
             $menu->addChild($category->getTitle(), ['uri' => $uri]);
 
             /** @var ItemInterface $sub_menu */

@@ -59,12 +59,12 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
             $id = $category->getId();
 
             if (0 == $key) {
-                $qb->where('a.category = :id' . $id);
+                $qb->where('a.category = :id'.$id);
             } else {
-                $qb->orWhere('a.category = :id' . $id);
+                $qb->orWhere('a.category = :id'.$id);
             }
 
-            $qb->setParameter('id' . $id, $category);
+            $qb->setParameter('id'.$id, $category);
         }
 
         return $qb->getQuery()
@@ -159,10 +159,10 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
         return $this->_em->getConnection()->fetchAll('
             SELECT date_format(created_at, "%Y-%m-01 00:00:00" ) AS date,
                 COUNT(1) AS count
-            FROM ' . $this->getClassMetadata()->getTableName() . '
+            FROM '.$this->getClassMetadata()->getTableName().'
             GROUP BY date_format(created_at, "%Y-%m" ) DESC
             ORDER BY date DESC
-            LIMIT 0, ' . $limit
+            LIMIT 0, '.$limit
         );
     }
 }

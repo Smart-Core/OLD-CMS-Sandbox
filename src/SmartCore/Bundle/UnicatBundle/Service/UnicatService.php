@@ -76,7 +76,7 @@ class UnicatService
     public function getRepositoryManager($repository_id)
     {
         if (empty($repository_id)) {
-            return null;
+            return;
         }
 
         $repository = $this->getRepository($repository_id);

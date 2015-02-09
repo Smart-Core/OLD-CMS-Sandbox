@@ -71,13 +71,13 @@ class EngineRouter
             'template'      => 'index',
             'node_routing'  => null,
             'current_folder_id'   => 1,
-            'current_folder_path' => $baseUrl . '/',
+            'current_folder_path' => $baseUrl.'/',
         ];
 
         $folder          = null;
         $parent_folder   = null;
         $router_node_id  = null;
-        $slug            = '/' . $slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привести к виду, как $this->container->get('request')->getPathInfo()
+        $slug            = '/'.$slug; // @todo сделать проверку на наличие слеша перед путём, чтобы привести к виду, как $this->container->get('request')->getPathInfo()
         $path_parts      = explode('/', $slug);
 
         foreach ($path_parts as $key => $segment) {
@@ -98,13 +98,13 @@ class EngineRouter
                 'is_active'     => true,
                 'is_deleted'    => false,
                 'uri_part'      => empty($segment) ? null : $segment,
-                'parent_folder' => $parent_folder
+                'parent_folder' => $parent_folder,
             ]);
 
             if ($folder) {
                 if (true) { // @todo if ($this->Permissions->isAllowed('folder', 'read', $folder->permissions)) {
                     if ($folder->getUriPart()) {
-                        $data['current_folder_path'] .= $folder->getUriPart() . '/';
+                        $data['current_folder_path'] .= $folder->getUriPart().'/';
                     }
 
                     if ($folder->getTemplateInheritable()) {
@@ -131,7 +131,7 @@ class EngineRouter
                                 'node_id'    => $router_node_id,
                                 'controller' => $this->matchModule(
                                         $node->getModule(),
-                                        str_replace($data['current_folder_path'], '', substr('/' . $baseUrl . '/', 0, -1) . $slug)
+                                        str_replace($data['current_folder_path'], '', substr('/'.$baseUrl.'/', 0, -1).$slug)
                                     ),
                             ];
                         } catch (ResourceNotFoundException $e) {
@@ -168,14 +168,14 @@ class EngineRouter
     public function matchModule($module, $path)
     {
         if (false === strpos($path, '/')) {
-            $path = '/' . $path;
+            $path = '/'.$path;
         }
 
-        if ($this->container->has('cms.router_module.' . $module)) {
-            return $this->container->get('cms.router_module.' . $module)->match($path);
+        if ($this->container->has('cms.router_module.'.$module)) {
+            return $this->container->get('cms.router_module.'.$module)->match($path);
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -185,7 +185,7 @@ class EngineRouter
      */
     public function matchModuleAdmin($module, $path)
     {
-        return $this->container->get('cms.router_module.' . $module . '.admin')->match($path);
+        return $this->container->get('cms.router_module.'.$module.'.admin')->match($path);
     }
 
     /**
@@ -195,11 +195,11 @@ class EngineRouter
      */
     public function matchModuleApi($module, $path)
     {
-        if ($this->container->has('cms.router_module_api.' . $module)) {
-            return $this->container->get('cms.router_module_api.' . $module)->match($path);
+        if ($this->container->has('cms.router_module_api.'.$module)) {
+            return $this->container->get('cms.router_module_api.'.$module)->match($path);
         }
 
-        return null;
+        return;
     }
 
     /**

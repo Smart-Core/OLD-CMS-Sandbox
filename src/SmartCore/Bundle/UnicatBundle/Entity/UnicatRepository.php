@@ -111,7 +111,7 @@ class UnicatRepository
      */
     public function __toString()
     {
-        return $this->title . ' (' . $this->entities_namespace . ')';
+        return $this->title.' ('.$this->entities_namespace.')';
     }
 
     /**
@@ -135,7 +135,7 @@ class UnicatRepository
      */
     public function getCategoryClass()
     {
-        return $this->entities_namespace . 'Category';
+        return $this->entities_namespace.'Category';
     }
 
     /**
@@ -143,7 +143,7 @@ class UnicatRepository
      */
     public function getItemClass()
     {
-        return $this->entities_namespace . 'Item';
+        return $this->entities_namespace.'Item';
     }
 
     /**
@@ -151,7 +151,7 @@ class UnicatRepository
      */
     public function getPropertyClass()
     {
-        return $this->entities_namespace . 'Property';
+        return $this->entities_namespace.'Property';
     }
 
     /**
@@ -159,7 +159,7 @@ class UnicatRepository
      */
     public function getPropertiesGroupClass()
     {
-        return $this->entities_namespace . 'PropertiesGroup';
+        return $this->entities_namespace.'PropertiesGroup';
     }
 
     /**

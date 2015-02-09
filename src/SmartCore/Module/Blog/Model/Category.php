@@ -210,7 +210,7 @@ abstract class Category implements CategoryInterface
         $slug = $this->getSlug();
 
         if ($this->getParent()) {
-            $slug  = $this->getParent()->getSlugFull() . '/' . $slug;
+            $slug  = $this->getParent()->getSlugFull().'/'.$slug;
         }
 
         return $slug;

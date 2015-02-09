@@ -27,7 +27,7 @@ class SmartSitemapExtension extends Extension
 
         $container->setParameter('smart_sitemap.base_url',  $config['base_url']);
         $container->setParameter('smart_sitemap.limit',     $config['limit']);
-        $container->setParameter('smart_sitemap.target',    $config['target'] ? $config['target'] : $container->getParameter('kernel.root_dir') . '/../web');
+        $container->setParameter('smart_sitemap.target',    $config['target'] ? $config['target'] : $container->getParameter('kernel.root_dir').'/../web');
         $container->setParameter('smart_sitemap.ignores',   $config['ignores']);
     }
 }

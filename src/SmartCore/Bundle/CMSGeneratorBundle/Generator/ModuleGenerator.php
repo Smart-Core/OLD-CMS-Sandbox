@@ -42,8 +42,8 @@ class ModuleGenerator extends Generator
         );
 
         $this->renderFile('module/Bundle.php.twig', $dir.'/'.$bundle.'.php', $parameters);
-        $this->renderFile('module/Controller.php.twig', $dir.'/Controller/' . Container::camelize($basename) . 'Controller.php', $parameters);
-        $this->renderFile('module/ControllerAdmin.php.twig', $dir.'/Controller/Admin' . Container::camelize($basename) . 'Controller.php', $parameters);
+        $this->renderFile('module/Controller.php.twig', $dir.'/Controller/'.Container::camelize($basename).'Controller.php', $parameters);
+        $this->renderFile('module/ControllerAdmin.php.twig', $dir.'/Controller/Admin'.Container::camelize($basename).'Controller.php', $parameters);
         $this->renderFile('module/NodePropertiesFormType.php.twig', $dir.'/Form/Type/NodePropertiesFormType.php', $parameters);
         $this->renderFile('module/index.html.twig.twig', $dir.'/Resources/views/index.html.twig', $parameters);
         $this->renderFile('module/index_admin.html.twig.twig', $dir.'/Resources/views/Admin/index.html.twig', $parameters);

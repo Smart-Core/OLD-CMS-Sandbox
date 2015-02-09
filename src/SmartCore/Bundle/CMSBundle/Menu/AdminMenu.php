@@ -139,7 +139,7 @@ class AdminMenu extends ContainerAware
             $menu->addChild($folder->getTitle(), ['uri' => $uri])->setAttributes([
                 'class' => 'folder',
                 'title' => $folder->getDescr(),
-                'id'    => 'folder_id_' . $folder->getId(),
+                'id'    => 'folder_id_'.$folder->getId(),
             ]);
 
             /** @var $sub_menu ItemInterface */
@@ -150,9 +150,9 @@ class AdminMenu extends ContainerAware
             /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
             foreach ($folder->getNodes() as $node) {
                 $uri = $this->container->get('router')->generate('cms_admin_structure_node_properties', ['id' => $node->getId()]);
-                $sub_menu->addChild($node->getDescr() . ' (' . $node->getModule() . ':' . $node->getId() . ')', ['uri' => $uri])->setAttributes([
+                $sub_menu->addChild($node->getDescr().' ('.$node->getModule().':'.$node->getId().')', ['uri' => $uri])->setAttributes([
                     'title' => $node->getDescr(),
-                    'id'    => 'node_id_' . $node->getId(),
+                    'id'    => 'node_id_'.$node->getId(),
                 ]);
             }
         }

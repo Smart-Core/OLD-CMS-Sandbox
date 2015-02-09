@@ -1,7 +1,7 @@
 <?php
 $cnt = count($items);
 
-$class = empty($css_class) ? '' : ' class="' . $css_class . '"';
+$class = empty($css_class) ? '' : ' class="'.$css_class.'"';
 
 if ($cnt > 1 or $hide_if_only_home == false) {
     echo "<div{$class}>";

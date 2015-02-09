@@ -74,7 +74,7 @@ class SitemapService
      */
     public function getTarget()
     {
-        return $this->target . '/sitemap.xml';
+        return $this->target.'/sitemap.xml';
     }
 
     /**
@@ -82,7 +82,7 @@ class SitemapService
      */
     public function start()
     {
-        $this->em->getConnection()->exec('TRUNCATE TABLE ' . $this->em->getClassMetadata('SmartSitemapBundle:Url')->getTableName());
+        $this->em->getConnection()->exec('TRUNCATE TABLE '.$this->em->getClassMetadata('SmartSitemapBundle:Url')->getTableName());
 
         $url = new Url();
         $url->setLoc('/');
@@ -101,9 +101,9 @@ class SitemapService
         $client = new Client();
         /** @var Url $url */
         foreach ($urls as $url) {
-            $crawler = $client->request('GET', $this->baseUrl . $url->getLoc());
+            $crawler = $client->request('GET', $this->baseUrl.$url->getLoc());
 
-            echo $this->baseUrl . $url->getLoc() . PHP_EOL;
+            echo $this->baseUrl.$url->getLoc().PHP_EOL;
 
             if ($url->getStatus() != 200) {
                 continue;
@@ -123,7 +123,7 @@ class SitemapService
                 $links = $crawler->filter('a')->extract('href');
                 $this->parseLinks($links, $url);
             } catch (\InvalidArgumentException $e) {
-                echo "Bad location: " . $this->baseUrl . $url->getLoc() . PHP_EOL;
+                echo "Bad location: ".$this->baseUrl.$url->getLoc().PHP_EOL;
 
                 $url->setStatus(500)
                     ->setIsVisited(true);
@@ -143,13 +143,13 @@ class SitemapService
         $ignoresPreg = '#';
 
         foreach ($this->ignores as $ignore) {
-            $ignoresPreg .= '|^' . str_replace('/', '\/', $ignore);
+            $ignoresPreg .= '|^'.str_replace('/', '\/', $ignore);
         }
 
         $ignoreFiles = ['zip', 'rar', 'mp3', 'png', 'jpg', 'jpeg']; // @todo исключения файлов.
 
         foreach ($ignoreFiles as $ignore) {
-            $ignoresPreg .= '|' . '.' . $ignore;
+            $ignoresPreg .= '|'.'.'.$ignore;
         }
 
         $links = preg_grep("/{$ignoresPreg}/i", $links, PREG_GREP_INVERT);
@@ -161,11 +161,11 @@ class SitemapService
 
             // Линк не начинается со слеша.
             if (false === strpos($link, '/') or 0 !== strpos($link, '/')) {
-                if (in_array($referer->getLoc() . $link, $links)) {
+                if (in_array($referer->getLoc().$link, $links)) {
                     continue;
                 }
 
-                $link = $referer->getLoc() . $link;
+                $link = $referer->getLoc().$link;
             }
 
             $url = $this->urlRepo->findOneBy(['loc' => $link]);

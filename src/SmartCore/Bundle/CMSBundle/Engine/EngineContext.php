@@ -15,7 +15,7 @@ class EngineContext
      */
     public function __construct(RequestStack $requestStack)
     {
-        $this->setCurrentFolderPath($requestStack->getMasterRequest()->getBasePath() . '/');
+        $this->setCurrentFolderPath($requestStack->getMasterRequest()->getBasePath().'/');
     }
 
     /**

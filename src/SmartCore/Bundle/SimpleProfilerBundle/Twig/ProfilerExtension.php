@@ -13,7 +13,7 @@ class ProfilerExtension extends \Twig_Extension
             'simple_profiler' => new \Twig_Function_Method(
                 $this,
                 'simpleProfiler',
-                ['is_safe' => ['html']
+                ['is_safe' => ['html'],
             ]),
         ];
     }

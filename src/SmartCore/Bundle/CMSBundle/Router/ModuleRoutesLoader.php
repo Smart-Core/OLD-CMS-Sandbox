@@ -34,10 +34,10 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
             throw new \RuntimeException('Do not add this loader twice');
         }
 
-        $modulesIni = $this->container->getParameter('kernel.root_dir') . '/usr/modules.ini';
+        $modulesIni = $this->container->getParameter('kernel.root_dir').'/usr/modules.ini';
 
         if (!file_exists($modulesIni)) {
-            return null;
+            return;
         }
 
         $collection = new RouteCollection();
@@ -46,10 +46,10 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
             if (class_exists($moduleClass)) {
                 $reflector = new \ReflectionClass($moduleClass);
 
-                $resource = dirname($reflector->getFileName()) . '/Resources/config/routing.yml';
+                $resource = dirname($reflector->getFileName()).'/Resources/config/routing.yml';
                 if (file_exists($resource)) {
                     /** @var \Symfony\Component\Routing\RouteCollection $importedRoutes */
-                    $importedRoutes = $this->import('@' . $moduleName . 'Module/Resources/config/routing.yml', 'yaml');
+                    $importedRoutes = $this->import('@'.$moduleName.'Module/Resources/config/routing.yml', 'yaml');
                     $importedRoutes->addPrefix(
                         '/{_basePath}/',
                         ['_basePath' => ''],

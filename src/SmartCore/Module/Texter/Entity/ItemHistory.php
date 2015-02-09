@@ -122,7 +122,7 @@ class ItemHistory
 
         $dotted = (mb_strlen($a, 'utf-8') > 120) ? '...' : '';
 
-        return mb_substr($a, 0, 120, 'utf-8') . $dotted;
+        return mb_substr($a, 0, 120, 'utf-8').$dotted;
     }
 
     /**

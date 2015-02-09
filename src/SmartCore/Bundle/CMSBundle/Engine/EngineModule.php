@@ -30,7 +30,7 @@ class EngineModule
         $this->kernel = $kernel;
 
         foreach ($this->kernel->getModules() as $module_name => $_dummy) {
-            $this->modules[$module_name] = $this->kernel->getBundle($module_name . 'Module');
+            $this->modules[$module_name] = $this->kernel->getBundle($module_name.'Module');
         }
     }
 
@@ -76,12 +76,12 @@ class EngineModule
     public function install($filename)
     {
         $rootDir = $this->kernel->getRootDir();
-        $distDir = $rootDir . '/../dist';
+        $distDir = $rootDir.'/../dist';
 
         // 1) Распаковка архива.
         $zip = new \ZipArchive();
-        $zip->open($distDir . '/' . $filename);
-        $zip->extractTo($rootDir . '/../src');
+        $zip->open($distDir.'/'.$filename);
+        $zip->extractTo($rootDir.'/../src');
 
         // 2) Подключение модуля.
         $modulesList = $this->kernel->getModules();
@@ -100,7 +100,7 @@ class EngineModule
         $finderCache->ignoreDotFiles(false)
             ->ignoreVCS(true)
             ->depth('== 0')
-            ->in($this->kernel->getCacheDir() . '/../');
+            ->in($this->kernel->getCacheDir().'/../');
 
         $fs = new Filesystem();
         /** @var \Symfony\Component\Finder\SplFileInfo $file*/
@@ -115,7 +115,7 @@ class EngineModule
         // 4) Установка ресурсов (Resources/public).
         $application = new Application($this->kernel);
         $application->setAutoExit(false);
-        $input = new ArrayInput(['command' => 'assets:install', 'target' => $rootDir . '/../web']);
+        $input = new ArrayInput(['command' => 'assets:install', 'target' => $rootDir.'/../web']);
         $output = new BufferedOutput();
         $retval = $application->run($input, $output);
     }

@@ -14,7 +14,7 @@ class NodeRepository extends EntityRepository
     {
         $list_string = '';
         foreach ($list as $node_id) {
-            $list_string .= $node_id . ',';
+            $list_string .= $node_id.',';
         }
 
         $list_string = substr($list_string, 0, strlen($list_string) - 1); // обрезка послезней запятой.

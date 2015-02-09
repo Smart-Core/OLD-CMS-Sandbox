@@ -48,7 +48,7 @@ class EngineConfig
      */
     public function get($bundle, $key)
     {
-        $cache_key = md5('cms_setting_' . $bundle . $key);
+        $cache_key = md5('cms_setting_'.$bundle.$key);
 
         if (false == $setting = $this->tagcache->get($cache_key)) {
             $this->initRepo();

@@ -117,7 +117,7 @@ class EngineNode
     public function get($id)
     {
         if (null === $id) {
-            return null;
+            return;
         }
 
         if (isset($this->nodes[$id])) {
@@ -151,7 +151,7 @@ class EngineNode
     public function update(Node $node)
     {
         /** @var \SmartCore\Bundle\CMSBundle\Module\Bundle $module */
-        $module = $this->kernel->getBundle($node->getModule() . 'Module');
+        $module = $this->kernel->getBundle($node->getModule().'Module');
 
         // Свежесозданная нода выполняет свои действия, а также устанавливает параметры по умолчанию.
         if ($this->is_just_created) {
@@ -175,8 +175,8 @@ class EngineNode
     public function getPropertiesFormType($module_name)
     {
         try {
-            $reflector = new \ReflectionClass(get_class($this->kernel->getBundle($module_name . 'Module')));
-            $form_class_name = '\\' . $reflector->getNamespaceName() . '\Form\Type\NodePropertiesFormType';
+            $reflector = new \ReflectionClass(get_class($this->kernel->getBundle($module_name.'Module')));
+            $form_class_name = '\\'.$reflector->getNamespaceName().'\Form\Type\NodePropertiesFormType';
 
             if (class_exists($form_class_name)) {
                 return new $form_class_name($this->em);
@@ -205,7 +205,7 @@ class EngineNode
         $this->nodes = [];
 
         if ($router_data['http_method'] == 'GET') {
-            $cache_key = md5('cms_node_list' . serialize($router_data));
+            $cache_key = md5('cms_node_list'.serialize($router_data));
             if (false == $this->nodes = $this->tagcache->get($cache_key)) {
                 $this->nodes = [];
             } else {
@@ -219,7 +219,7 @@ class EngineNode
         $lockout_nodes = [ // @todo блокировку нод.
             'single'  => [], // Блокировка нод в папке, без наследования.
             'inherit' => [], // Блокировка нод в папке, с наследованием.
-            'except'  => [], // Блокировка всех нод в папке, кроме заданных.
+            'except'  => []// Блокировка всех нод в папке, кроме заданных.
         ];
 
         /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */

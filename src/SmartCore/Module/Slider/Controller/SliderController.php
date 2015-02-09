@@ -38,7 +38,7 @@ class SliderController extends Controller
         return $this->render('SliderModule::'.$slider->getLibrary().'.html.twig', [
             'slider'  => $slider,
             // @todo настройку места хранения картинок, лучше в медиалибе!.
-            'imgPath' => $request->getBasePath() . '/' . $this->get('smart_module.slider')->getWebPath(),
+            'imgPath' => $request->getBasePath().'/'.$this->get('smart_module.slider')->getWebPath(),
         ]);
     }
 }

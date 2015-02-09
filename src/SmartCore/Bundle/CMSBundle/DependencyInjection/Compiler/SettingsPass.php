@@ -18,14 +18,14 @@ class SettingsPass implements CompilerPassInterface
 
         $validator = new SchemaValidator($em);
         if (false === $validator->schemaInSyncWithMetadata()) {
-            return null;
+            return;
         }
 
         $bundles = $container->getParameter('kernel.bundles');
 
         foreach ($bundles as $_bundleName => $bundleClass) {
             $reflector = new \ReflectionClass($bundleClass);
-            $settingsConfig = dirname($reflector->getFileName()) . '/Resources/config/settings.yml';
+            $settingsConfig = dirname($reflector->getFileName()).'/Resources/config/settings.yml';
 
             if (file_exists($settingsConfig)) {
                 /** @var Bundle $bundle */

@@ -40,7 +40,7 @@ class NodeFormType extends AbstractType
                     Node::TOOLBAR_NO => 'Никогда',
                     Node::TOOLBAR_ONLY_IN_SELF_FOLDER => 'Только в собственной папке',
                     //Node::TOOLBAR_ALWAYS => 'Всегда', // @todo
-                ]
+                ],
             ])
             ->add('template')
             ->add('descr')

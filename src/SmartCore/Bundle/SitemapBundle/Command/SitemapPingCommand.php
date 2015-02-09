@@ -18,6 +18,5 @@ class SitemapPingCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
     }
 }

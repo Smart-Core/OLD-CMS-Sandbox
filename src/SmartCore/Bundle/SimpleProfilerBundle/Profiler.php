@@ -83,7 +83,7 @@ class Profiler
 
         self::$globalStartTime   = defined('START_TIME')   ? START_TIME   : microtime(true);
         self::$globalStartMemory = defined('START_MEMORY') ? START_MEMORY : memory_get_usage();
-        self::$profilerKey       = md5(rand(1, 1000) . time());
+        self::$profilerKey       = md5(rand(1, 1000).time());
         self::$init              = true;
     }
 
@@ -192,7 +192,9 @@ class Profiler
      */
     public static function end($name, $tag = 'all')
     {
-        if (!self::isEnabled()) return;
+        if (!self::isEnabled()) {
+            return;
+        }
 
         if (isset(self::$p[$tag][$name]['start_memory'])) {
             self::$p[$tag][$name]['memory'] = memory_get_usage() - self::$p[$tag][$name]['start_memory'];
@@ -221,7 +223,7 @@ class Profiler
     public static function render($isDetailed = false)
     {
         if (!self::isEnabled()) {
-            return null;
+            return;
         }
 
         $precision = 3;
@@ -235,7 +237,7 @@ class Profiler
         //echo ' Files: <b>' . count(get_included_files()) . "</b>.\n";
 
         if (!is_null(self::$dbLogger) and is_object(self::$dbLogger)) {
-            echo ' DB: <b>' . self::$dbLogger->currentQuery . '</b>';
+            echo ' DB: <b>'.self::$dbLogger->currentQuery.'</b>';
 
             $queries_time = 0;
             foreach (self::$dbLogger->queries as $value) {
@@ -243,7 +245,7 @@ class Profiler
             }
 
             $delta = round($queries_time * 100 / $exec_time, 2);
-            echo ' (<b>' . round($queries_time, $precision) * 1000 . "</b> ms, $delta %)." . "\n";
+            echo ' (<b>'.round($queries_time, $precision) * 1000 ."</b> ms, $delta %)."."\n";
         }
 
         if (!empty(self::$p) and $isDetailed) {
@@ -257,8 +259,8 @@ class Profiler
             }
 
             echo "<br />Checkpoints summary time: <b>$summary_time</b>, memory: <b>"
-                . round((memory_get_usage() - $summary_memory) / 1024 / 1024, 2)
-                . " MB.</b>, DB: <b>$summary_db</b>. \n";
+                .round((memory_get_usage() - $summary_memory) / 1024 / 1024, 2)
+                ." MB.</b>, DB: <b>$summary_db</b>. \n";
 
             self::dump(self::$p);
         }
@@ -268,7 +270,7 @@ class Profiler
             and self::$kernel->getContainer()->get('ladybug')->getVars() !== null
         ) {
             foreach (self::$kernel->getContainer()->get('ladybug')->getVars() as $key => $value) {
-                echo '<br />' . $value['file'] . ' : <b>' . $value['line'] . '</b>' . $value['content'] . "<hr />\n\n";
+                echo '<br />'.$value['file'].' : <b>'.$value['line'].'</b>'.$value['content']."<hr />\n\n";
             }
         }
     }
@@ -302,7 +304,7 @@ class Profiler
         }
 
         if (!empty($highlight)) {
-            $output = str_ireplace($highlight, '<b>' . $highlight . '</b>', $output);
+            $output = str_ireplace($highlight, '<b>'.$highlight.'</b>', $output);
         }
 
         echo($output);

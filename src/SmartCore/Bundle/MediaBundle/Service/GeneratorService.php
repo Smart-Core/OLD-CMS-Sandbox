@@ -25,7 +25,7 @@ class GeneratorService
     {
         $filename = $file->getCollection()->getFilenamePattern();
 
-        return $this->generatePattern($filename . '.' . $file->getUploadedFile()->getClientOriginalExtension());
+        return $this->generatePattern($filename.'.'.$file->getUploadedFile()->getClientOriginalExtension());
     }
 
     /**
@@ -34,7 +34,7 @@ class GeneratorService
      */
     public function generateRelativePath(File $file, $filter = null)
     {
-        $relativePath = $file->getStorage()->getRelativePath() . $file->getCollection()->getRelativePath();
+        $relativePath = $file->getStorage()->getRelativePath().$file->getCollection()->getRelativePath();
 
         if (!$filter) {
             $filter = $file->getCollection()->getDefaultFilter();
@@ -44,7 +44,7 @@ class GeneratorService
             $filter = 'orig';
         }
 
-        return $relativePath . '/' . $filter . $file->getRelativePath();
+        return $relativePath.'/'.$filter.$file->getRelativePath();
     }
 
     /**
@@ -58,7 +58,7 @@ class GeneratorService
         $pattern = str_replace('{day}',      date('d'), $pattern);
         $pattern = str_replace('{hour}',     date('H'), $pattern);
         $pattern = str_replace('{minutes}',  date('i'), $pattern);
-        $pattern = str_replace('{rand(10)}', substr(md5(microtime(true) . uniqid()), 0, 10), $pattern);
+        $pattern = str_replace('{rand(10)}', substr(md5(microtime(true).uniqid()), 0, 10), $pattern);
 
         return $pattern;
     }
@@ -88,7 +88,7 @@ class GeneratorService
             "м" => "m", "н" => "n", "о" => "o", "п" => "p", "р" => "r",
             "с" => "s", "т" => "t", "у" => "u", "ф" => "f", "х" => "h",
             "ц" => "c", "ч" => "ch", "ш" => "sh", "щ" => "shh", "ъ" => "",
-            "ы" => "y", "ь" => "", "э" => "e", "ю" => "yu", "я" => "ya", "«" => "", "»" => "", "—" => "-"
+            "ы" => "y", "ь" => "", "э" => "e", "ю" => "yu", "я" => "ya", "«" => "", "»" => "", "—" => "-",
         ];
 
         $name = strtr($name, $iso);

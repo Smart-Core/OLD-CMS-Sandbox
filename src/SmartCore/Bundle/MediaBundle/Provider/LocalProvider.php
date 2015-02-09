@@ -69,14 +69,14 @@ class LocalProvider implements ProviderInterface
     public function get($id, $filter = null)
     {
         if (null === $id) {
-            return null;
+            return;
         }
 
         /** @var File $file */
         $file = $this->filesRepo->find($id);
 
         if (null === $file) {
-            return null;
+            return;
         }
 
         if ($filter) {
@@ -91,17 +91,17 @@ class LocalProvider implements ProviderInterface
                 } else {
                     echo 'Unsupported image format';
 
-                    return null;
+                    return;
                 }
 
-                $originalImage = $imagine->open(dirname($this->request->server->get('SCRIPT_FILENAME')) . $file->getFullRelativeUrl());
+                $originalImage = $imagine->open(dirname($this->request->server->get('SCRIPT_FILENAME')).$file->getFullRelativeUrl());
 
-                $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')) . $this->generator->generateRelativePath($file, $filter);
+                $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')).$this->generator->generateRelativePath($file, $filter);
                 if (!is_dir($webDir) and false === @mkdir($webDir, 0777, true)) {
                     throw new \RuntimeException(sprintf("Unable to create the %s directory.\n", $webDir));
                 }
 
-                $transformedImagePath = $webDir . '/' . $file->getFilename();
+                $transformedImagePath = $webDir.'/'.$file->getFilename();
 
                 $transformedImage = $imagineFilterManager->getFilter($filter)->apply($originalImage);
                 $transformedImage->save($transformedImagePath);
@@ -118,7 +118,7 @@ class LocalProvider implements ProviderInterface
             }
         }
 
-        return $this->request->getBasePath() . $file->getFullRelativeUrl($filter);
+        return $this->request->getBasePath().$file->getFullRelativeUrl($filter);
     }
 
     /**
@@ -128,7 +128,7 @@ class LocalProvider implements ProviderInterface
      */
     public function upload(File $file)
     {
-        $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')) . $file->getFullRelativePath();
+        $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')).$file->getFullRelativePath();
 
         if (!is_dir($webDir) and false === @mkdir($webDir, 0777, true)) {
             throw new \RuntimeException(sprintf("Unable to create the %s directory.\n", $webDir));
@@ -164,7 +164,7 @@ class LocalProvider implements ProviderInterface
 
         /** @var FileTransformed $fileTransformed */
         foreach ($filesTransformed as $fileTransformed) {
-            $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')) . $fileTransformed->getFullRelativeUrl();
+            $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')).$fileTransformed->getFullRelativeUrl();
 
             if (file_exists($fullPath)) {
                 @unlink($fullPath);
@@ -173,7 +173,7 @@ class LocalProvider implements ProviderInterface
 
         // Удаление оригинала.
         if (!empty($fileTransformed) and $fileTransformed instanceof FileTransformed) {
-            $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')) . $fileTransformed->getFile()->getFullRelativeUrl();
+            $fullPath = dirname($this->request->server->get('SCRIPT_FILENAME')).$fileTransformed->getFile()->getFullRelativeUrl();
 
             return @unlink($fullPath);
         }

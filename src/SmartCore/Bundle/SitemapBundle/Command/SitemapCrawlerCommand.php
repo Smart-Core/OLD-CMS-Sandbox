@@ -21,7 +21,7 @@ class SitemapCrawlerCommand extends ContainerAwareCommand
     {
         $sitemapService = $this->getContainer()->get('smart_sitemap');
 
-        $output->writeln('Start grabbing ' . $sitemapService->getBaseUrl());
+        $output->writeln('Start grabbing '.$sitemapService->getBaseUrl());
         $urls = $sitemapService->start();
 
         $startTime = microtime(true);
@@ -45,6 +45,6 @@ class SitemapCrawlerCommand extends ContainerAwareCommand
         file_put_contents($filename, $sitemapXML);
 
         $time = round(microtime(true) - $startTime, 2);
-        $output->writeln("Done in {$time} seconds. Size " . strlen($sitemapXML) . " bytes.");
+        $output->writeln("Done in {$time} seconds. Size ".strlen($sitemapXML)." bytes.");
     }
 }

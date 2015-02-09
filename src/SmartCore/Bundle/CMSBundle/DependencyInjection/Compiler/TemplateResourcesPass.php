@@ -5,7 +5,6 @@ namespace SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Bundle\AsseticBundle\DependencyInjection\DirectoryResourceDefinition;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
-
 use Liip\ThemeBundle\DependencyInjection\Compiler\TemplateResourcesPass as BaseTemplateResourcesPass;
 
 /**
@@ -52,8 +51,8 @@ class TemplateResourcesPass extends BaseTemplateResourcesPass
                 $bundleName,
                 $engine,
                 array(
-                    $container->getParameter('kernel.root_dir') . '/Resources/'.$bundleName.'/themes/'.$theme,
-                    $bundleDirName . '/Resources/themes/'.$theme,
+                    $container->getParameter('kernel.root_dir').'/Resources/'.$bundleName.'/themes/'.$theme,
+                    $bundleDirName.'/Resources/themes/'.$theme,
                 )
             );
         }
@@ -70,9 +69,9 @@ class TemplateResourcesPass extends BaseTemplateResourcesPass
         $themes = $container->getParameter('liip_theme.themes');
 
         foreach ($themes as $key => $theme) {
-            $themes[$key] = $container->getParameter('kernel.root_dir') . '/Resources/themes/'.$theme;
+            $themes[$key] = $container->getParameter('kernel.root_dir').'/Resources/themes/'.$theme;
         }
-        $themes[] = $container->getParameter('kernel.root_dir') . '/Resources/views';
+        $themes[] = $container->getParameter('kernel.root_dir').'/Resources/views';
 
         $container->setDefinition(
             'assetic.'.$engine.'_directory_resource.kernel',

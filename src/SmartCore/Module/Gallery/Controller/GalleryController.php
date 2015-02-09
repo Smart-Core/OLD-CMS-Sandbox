@@ -21,7 +21,7 @@ class GalleryController extends Controller
     public function indexAction()
     {
         if (null === $this->gallery_id) {
-            return new Response('Module Gallery not yet configured. Node: ' . $this->node->getId() . '<br />');
+            return new Response('Module Gallery not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
         /** @var \Doctrine\ORM\EntityManager $em */

@@ -113,7 +113,7 @@ class CollectionService
     public function remove($id)
     {
         if (empty($id)) {
-            return null;
+            return;
         }
 
         $this->provider->remove($id);

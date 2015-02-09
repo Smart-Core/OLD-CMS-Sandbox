@@ -133,7 +133,7 @@ class EngineToolbar extends Controller
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
 
         foreach ($this->get('cms.node')->getNodes() as $node) {
@@ -143,7 +143,7 @@ class EngineToolbar extends Controller
                         $data['left']['node_'.$node->getId()] = [
                             'title' => $controls['title'],
                             'descr' => isset($controls['descr']) ? $controls['descr'] : '',
-                            'uri'   => $controls['uri']
+                            'uri'   => $controls['uri'],
                         ];
                     }
                 }
@@ -171,8 +171,7 @@ class EngineToolbar extends Controller
             $this->get('html')
                 ->css($this->get('templating.helper.assets')->getUrl('bundles/cms/css/frontend.css'))
                 ->js($this->get('templating.helper.assets')->getUrl('bundles/cms/js/frontend.js'))
-                ->appendToHead('<script type="text/javascript">var cms_front_controls = ' . json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';</script>');
-            ;
+                ->appendToHead('<script type="text/javascript">var cms_front_controls = '.json_encode($cms_front_controls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT).';</script>');
         }
     }
 }

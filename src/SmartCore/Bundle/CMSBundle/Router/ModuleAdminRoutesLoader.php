@@ -34,10 +34,10 @@ class ModuleAdminRoutesLoader extends Loader implements LoaderInterface
             throw new \RuntimeException('Do not add this loader twice');
         }
 
-        $modulesIni = $this->container->getParameter('kernel.root_dir') . '/usr/modules.ini';
+        $modulesIni = $this->container->getParameter('kernel.root_dir').'/usr/modules.ini';
 
         if (!file_exists($modulesIni)) {
-            return null;
+            return;
         }
 
         $collection = new RouteCollection();
@@ -46,10 +46,10 @@ class ModuleAdminRoutesLoader extends Loader implements LoaderInterface
             if (class_exists($moduleClass)) {
                 $reflector = new \ReflectionClass($moduleClass);
 
-                $resource = dirname($reflector->getFileName()) . '/Resources/config/routing_admin.yml';
+                $resource = dirname($reflector->getFileName()).'/Resources/config/routing_admin.yml';
                 if (file_exists($resource)) {
-                    $importedRoutes = $this->import('@' . $moduleName . 'Module/Resources/config/routing_admin.yml', 'yaml');
-                    $importedRoutes->addPrefix('/admin/module/'. $moduleName);
+                    $importedRoutes = $this->import('@'.$moduleName.'Module/Resources/config/routing_admin.yml', 'yaml');
+                    $importedRoutes->addPrefix('/admin/module/'.$moduleName);
 
                     $collection->addCollection($importedRoutes);
                 }

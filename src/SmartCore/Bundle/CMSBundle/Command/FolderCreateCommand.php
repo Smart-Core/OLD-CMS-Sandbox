@@ -24,6 +24,5 @@ class FolderCreateCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
     }
 }

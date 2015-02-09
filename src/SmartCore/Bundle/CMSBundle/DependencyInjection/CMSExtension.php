@@ -24,7 +24,7 @@ class CMSExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter($this->getAlias() . '.storage', $config['storage']);
+        $container->setParameter($this->getAlias().'.storage', $config['storage']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

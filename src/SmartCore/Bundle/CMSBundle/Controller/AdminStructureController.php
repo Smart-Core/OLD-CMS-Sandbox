@@ -232,7 +232,7 @@ class AdminStructureController extends Controller
     {
         $node = $this->get('cms.node')->get($id);
 
-        $controller = $this->get('cms.router')->matchModuleAdmin($node->getModule(), '/' . $slug);
+        $controller = $this->get('cms.router')->matchModuleAdmin($node->getModule(), '/'.$slug);
         $controller['_node'] = $node;
 
         $subRequest = $this->container->get('request')->duplicate($request->query->all(), null, $controller);
@@ -277,7 +277,7 @@ class AdminStructureController extends Controller
 
                     // Если у модуля есть роутинги, тогда нода подключается к папке как роутер.
                     $folder = $createdNode->getFolder();
-                    if ($this->container->has('cms.router_module.' . $createdNode->getModule()) and !$folder->getRouterNodeId()) {
+                    if ($this->container->has('cms.router_module.'.$createdNode->getModule()) and !$folder->getRouterNodeId()) {
                         $folder->setRouterNodeId($createdNode->getId());
                         $this->get('cms.folder')->update($folder);
                     }
@@ -331,7 +331,7 @@ class AdminStructureController extends Controller
                 $form_properties->handleRequest($request);
 
                 if ($form->isValid()
-                    and ( // @todo отрефакторить!!!
+                    and (// @todo отрефакторить!!!
                         (empty($nodeParams) and !$form_properties->isValid())
                         or (!empty($nodeParams) and $form_properties->isValid())
                         or (empty($nodeParams) and $form_properties->isValid())

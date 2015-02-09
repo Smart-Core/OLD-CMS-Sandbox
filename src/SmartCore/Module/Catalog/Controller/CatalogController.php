@@ -31,7 +31,7 @@ class CatalogController extends Controller
     public function categoryAction($slug = null)
     {
         if (null === $this->repository_id) {
-            return new Response('Module Catalog not yet configured. Node: ' . $this->node->getId() . '<br />');
+            return new Response('Module Catalog not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
@@ -39,7 +39,7 @@ class CatalogController extends Controller
         $requestedCategories = $urm->findCategoriesBySlug($slug);
 
         foreach ($requestedCategories as $category) {
-            $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.catalog.category', ['slug' => $category->getSlugFull()]) . '/', $category->getTitle());
+            $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.catalog.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
         }
 
         $lastCategory = end($requestedCategories);
@@ -107,7 +107,7 @@ class CatalogController extends Controller
     public function itemAction($slug, $itemSlug)
     {
         if (null === $this->repository_id) {
-            return new Response('Module Catalog not yet configured. Node: ' . $this->node->getId() . '<br />');
+            return new Response('Module Catalog not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
         $urm = $this->get('unicat')->getRepositoryManager($this->repository_id);
@@ -115,7 +115,7 @@ class CatalogController extends Controller
         $requestedCategories = $urm->findCategoriesBySlug($slug);
 
         foreach ($requestedCategories as $category) {
-            $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.catalog.category', ['slug' => $category->getSlugFull()]) . '/', $category->getTitle());
+            $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.catalog.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
         }
 
         $lastCategory = end($requestedCategories);
@@ -145,7 +145,7 @@ class CatalogController extends Controller
         $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.catalog.item', [
                 'slug' => $lastCategory->getSlugFull(),
                 'itemSlug' => $item->getSlug(),
-            ]) . '/', $item->getProperty('title'));
+            ]).'/', $item->getProperty('title'));
 
         $this->node->setFrontControls([
             'edit' => [

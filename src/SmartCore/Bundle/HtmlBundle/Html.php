@@ -103,7 +103,7 @@ class Html
             default:
         }
 
-        return $doctype . "\n";
+        return $doctype."\n";
     }
 
     /**
@@ -133,7 +133,7 @@ class Html
     public function addMetaKeyword($keyword)
     {
         if (isset($this->meta['name']['keywords']) and ! empty($this->meta['name']['keywords'])) {
-            $this->meta['name']['keywords'] .= ', ' . $keyword;
+            $this->meta['name']['keywords'] .= ', '.$keyword;
         } else {
             $this->setMeta('keywords', $keyword);
         }
@@ -363,7 +363,7 @@ class Html
      */
     public function titlePrepend($title)
     {
-        $this->title = $title . $this->title;
+        $this->title = $title.$this->title;
 
         return $this;
     }
@@ -404,7 +404,7 @@ class Html
      */
     public function appendToHead($code)
     {
-        $this->custom_code .= $code . "\n";
+        $this->custom_code .= $code."\n";
     }
 
     // -----------------------------------------------------------------------

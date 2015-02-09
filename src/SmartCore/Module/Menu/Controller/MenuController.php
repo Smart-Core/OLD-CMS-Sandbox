@@ -9,19 +9,19 @@ class MenuController extends Controller
     public function indexAction()
     {
         if (null === $this->group_id) {
-            return new Response('Module Menu not yet configured. Node: ' . $this->node->getId() . '<br />');
+            return new Response('Module Menu not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
         $current_folder_path = $this->get('cms.context')->getCurrentFolderPath();
 
-        $cache_key = md5('smart_module.menu' . $current_folder_path . $this->node->getId());
+        $cache_key = md5('smart_module.menu'.$current_folder_path.$this->node->getId());
 
         if (false == $menu = $this->getCacheService()->get($cache_key)) {
             // Хак для Menu\RequestVoter
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
             $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
 
-            $menu = $this->renderView('MenuModule::' . $this->node->getTemplate('menu') . '.html.twig', [
+            $menu = $this->renderView('MenuModule::'.$this->node->getTemplate('menu').'.html.twig', [
                 'css_class'     => $this->css_class,
                 'current_class' => $this->current_class,
                 'depth'         => $this->depth,

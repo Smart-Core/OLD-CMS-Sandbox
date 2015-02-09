@@ -65,7 +65,7 @@ class FolderLoader implements EntityLoaderInterface
 
         /** @var $folder Folder */
         foreach ($folders as $folder) {
-            $folder->setFormTitle($ident . $folder->getTitle());
+            $folder->setFormTitle($ident.$folder->getTitle());
             $this->result[] = $folder;
             $this->addChild($folder);
         }

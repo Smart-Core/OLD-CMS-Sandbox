@@ -30,9 +30,9 @@ class ArticleController extends Controller
         $breadchumbs = $this->get('cms.breadcrumbs');
         if ($article->getCategory()) {
             foreach ($article->getCategory()->getParents() as $category) {
-                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]) . '/', $category->getTitle());
+                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
             }
-            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]) . '/', $article->getCategory());
+            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug' => $article->getCategory()->getSlugFull()]).'/', $article->getCategory());
         }
         $breadchumbs->add($article->getTitle(), $article->getTitle());
 
@@ -88,7 +88,7 @@ class ArticleController extends Controller
      */
     public function archiveMonthlyAction(Request $requst, $year = 1970, $month = 1)
     {
-        $firstDate = new \Datetime($year . '-' . $month . '-1');
+        $firstDate = new \Datetime($year.'-'.$month.'-1');
         $lastDate  = clone $firstDate;
         $lastDate->modify('+1 month');
 
@@ -134,18 +134,18 @@ class ArticleController extends Controller
                 $article = $form->getData();
                 $articleService->update($article);
 
-                return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
+                return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()]));
             }
         }
 
         $breadchumbs = $this->get('cms.breadcrumbs');
         if ($article->getCategory()) {
             foreach ($article->getCategory()->getParents() as $category) {
-                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $category->getSlugFull()]), $category->getTitle());
+                $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug' => $category->getSlugFull()]), $category->getTitle());
             }
-            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug'=> $article->getCategory()->getSlugFull()]), $article->getCategory());
+            $breadchumbs->add($this->generateUrl('smart_blog.category.articles', ['slug' => $article->getCategory()->getSlugFull()]), $article->getCategory());
         }
-        $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug'=> $article->getSlug()]), $article->getTitle());
+        $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()]), $article->getTitle());
         $breadchumbs->add('Редактирование', 'Редактирование');
 
         return $this->render('BlogModule:Article:edit.html.twig', [
@@ -170,7 +170,7 @@ class ArticleController extends Controller
             if ($form->isValid()) {
                 $articleService->update($article, false);
 
-                return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()] ));
+                return $this->redirect($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()]));
             }
         }
 

@@ -9,6 +9,6 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        return new Response('@todo ' . __METHOD__);
+        return new Response('@todo '.__METHOD__);
     }
 }

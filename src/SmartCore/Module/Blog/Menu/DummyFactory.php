@@ -9,16 +9,13 @@ class DummyFactory implements FactoryInterface
 {
     public function createItem($name, array $options = [])
     {
-
     }
 
     public function createFromNode(NodeInterface $node)
     {
-
     }
 
     public function createFromArray(array $data)
     {
-
     }
 }

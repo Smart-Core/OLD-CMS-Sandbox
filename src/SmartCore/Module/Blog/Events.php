@@ -6,7 +6,7 @@ abstract class Events
 {
     public static function articleCreate()
     {
-        return static::$REFIX . self::ARTICLE_CREATE;
+        return static::$REFIX.self::ARTICLE_CREATE;
     }
 
     /**

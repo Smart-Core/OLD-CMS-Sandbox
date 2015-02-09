@@ -32,6 +32,6 @@ class NodeRouter extends Router
             }
         }
 
-        return str_replace($rootHash . '/' , '', $this->getGenerator()->generate($name, $parameters, $referenceType));
+        return str_replace($rootHash.'/', '', $this->getGenerator()->generate($name, $parameters, $referenceType));
     }
 }

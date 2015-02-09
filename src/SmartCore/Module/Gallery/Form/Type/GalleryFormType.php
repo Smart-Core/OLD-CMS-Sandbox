@@ -17,7 +17,7 @@ class GalleryFormType extends AbstractType
                     0 => 'По дате создания',
                     1 => 'По заданной позиции',
                     //2 => 'По дате последнего обновления',
-                ]
+                ],
             ])
             ->add('media_collection')
         ;

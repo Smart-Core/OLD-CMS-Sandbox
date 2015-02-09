@@ -322,7 +322,7 @@ class UnicatRepositoryManager
     public function removeItem(ItemModel $item)
     {
         foreach ($this->getProperties() as $property) {
-            if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
+            if ($property->isType('image') and $item->hasProperty($property->getName())) {
                 // @todo сделать кеширование при первом же вытаскивании данных о записи. тоже самое в saveItem(), а еще лучше выделить этот код в отельный защищенный метод.
                 $tableItems = $this->em->getClassMetadata($this->repository->getItemClass())->getTableName();
                 $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
@@ -356,7 +356,7 @@ class UnicatRepositoryManager
 
         // Проверка и модификация свойств. В частности загрука картинок и валидация.
         foreach ($this->getProperties() as $property) {
-            if ($property->isType('image') and $item->hasProperty($property->getName()) ) {
+            if ($property->isType('image') and $item->hasProperty($property->getName())) {
                 $tableItems = $this->em->getClassMetadata($this->repository->getItemClass())->getTableName();
                 $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
                 $res = $this->em->getConnection()->query($sql)->fetch();
@@ -371,8 +371,8 @@ class UnicatRepositoryManager
                 // удаление файла.
                 $_delete_ = $request->request->get('_delete_');
                 if (is_array($_delete_)
-                    and isset($_delete_['property:' . $property->getName()])
-                    and 'on' === $_delete_['property:' . $property->getName()]
+                    and isset($_delete_['property:'.$property->getName()])
+                    and 'on' === $_delete_['property:'.$property->getName()]
                 ) {
                     $this->mc->remove($fileId);
                     $fileId = null;
@@ -414,7 +414,7 @@ class UnicatRepositoryManager
         // @todo убрать выборку структур в StructureRepository (Entity)
         $list_string = '';
         foreach ($structures as $node_id) {
-            $list_string .= $node_id . ',';
+            $list_string .= $node_id.',';
         }
 
         $list_string = substr($list_string, 0, strlen($list_string)-1);

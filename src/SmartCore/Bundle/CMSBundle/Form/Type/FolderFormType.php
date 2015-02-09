@@ -26,7 +26,7 @@ class FolderFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.html.twig')->in($this->container->getParameter('kernel.root_dir') . '/Resources/views');
+        $finder->files()->sortByName()->name('*.html.twig')->in($this->container->getParameter('kernel.root_dir').'/Resources/views');
 
         $templates = ['' => ''];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */
@@ -38,14 +38,14 @@ class FolderFormType extends AbstractType
         $routedNodes = ['' => ''];
         /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
         foreach ($this->container->get('cms.node')->findInFolder($options['data']) as $node) {
-            if (!$this->container->has('cms.router_module.' . $node->getModule())) {
+            if (!$this->container->has('cms.router_module.'.$node->getModule())) {
                 continue;
             }
 
-            $nodeTitle = $node->getId() . ': ' . $node->getModule();
+            $nodeTitle = $node->getId().': '.$node->getModule();
 
             if ($node->getDescr()) {
-                $nodeTitle .= ' (' . $node->getDescr() . ')';
+                $nodeTitle .= ' ('.$node->getDescr().')';
             }
 
             $routedNodes[$node->getId()] = $nodeTitle;

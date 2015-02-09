@@ -94,7 +94,7 @@ class EngineFolder
             throw new \Exception('Unknown input type.');
         }
 
-        $cache_key = md5('cms_folder.full_path.' . $folder_id);
+        $cache_key = md5('cms_folder.full_path.'.$folder_id);
         if (false == $uri = $this->cache->get($cache_key)) {
             $uri = '/';
             $uri_parts = [];
@@ -117,13 +117,13 @@ class EngineFolder
 
             $uri_parts = array_reverse($uri_parts);
             foreach ($uri_parts as $value) {
-                $uri .= $value . '/';
+                $uri .= $value.'/';
             }
 
             $this->cache->set($cache_key, $uri, ['folder']);
         }
 
-        return $this->container->get('request_stack')->getMasterRequest()->getBaseUrl() . $uri;
+        return $this->container->get('request_stack')->getMasterRequest()->getBaseUrl().$uri;
     }
 
     /**

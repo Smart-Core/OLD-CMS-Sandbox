@@ -42,7 +42,7 @@ class CategoryController extends Controller
                 $requestedCategories[] = $category;
                 $parent = $category;
 
-                $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_blog.category.articles', ['slug' => $category->getSlugFull()]) . '/', $category->getTitle());
+                $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_blog.category.articles', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
             } else {
                 throw $this->createNotFoundException();
             }

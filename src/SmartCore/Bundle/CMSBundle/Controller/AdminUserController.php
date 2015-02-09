@@ -69,7 +69,7 @@ class AdminUserController extends Controller
                     $response = new RedirectResponse($url);
                 }
 
-                $this->get('session')->getFlashBag()->set('success', 'Новый пользователь <b>' . $user->getUsername() . '</b> создан.');
+                $this->get('session')->getFlashBag()->set('success', 'Новый пользователь <b>'.$user->getUsername().'</b> создан.');
 
                 return $response;
             }
@@ -101,7 +101,7 @@ class AdminUserController extends Controller
 
             if ($form->isValid()) {
                 $this->container->get('fos_user.user_manager')->updateUser($user);
-                $this->get('session')->getFlashBag()->set('success', 'Данные пользовалеля <b>' . $user->getUsername() . '</b> обновлены.');
+                $this->get('session')->getFlashBag()->set('success', 'Данные пользовалеля <b>'.$user->getUsername().'</b> обновлены.');
 
                 return $this->redirect($this->generateUrl('cms_admin_user'));
             }
@@ -138,7 +138,7 @@ class AdminUserController extends Controller
 
         return $this->render('CMSBundle:AdminUser:roles.html.twig', [
             'form'  => $form->createView(),
-            'roles' => $em->getRepository('CMSBundle:Role')->findAll()
+            'roles' => $em->getRepository('CMSBundle:Role')->findAll(),
         ]);
     }
 

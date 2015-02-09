@@ -182,7 +182,7 @@ class TagService extends AbstractBlogService
                 'title'  => $tag->getTitle(),
                 'weight' => $this->getArticlesCountByTag($tag),
                 'params' => [
-                    'url' => $this->router->generate($route, ['slug' => $tag->getSlug()])
+                    'url' => $this->router->generate($route, ['slug' => $tag->getSlug()]),
                 ],
             ];
         }
@@ -202,17 +202,17 @@ class TagService extends AbstractBlogService
                 'decorator' => 'HtmlCloud',
                 'options' => [
                     'htmlTags' => [
-                        'div' => ['id' => 'tags']
+                        'div' => ['id' => 'tags'],
                     ],
                     'separator' => ' ',
-                ]
+                ],
             ],
             'tagDecorator' => [
                 'decorator' => 'HtmlTag',
                 'options' => [
                     'htmlTags' => ['span'],
                 ],
-            ]
+            ],
         ]);
     }
 }

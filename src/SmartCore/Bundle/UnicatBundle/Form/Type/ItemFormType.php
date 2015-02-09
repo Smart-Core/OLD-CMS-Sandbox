@@ -74,7 +74,7 @@ class ItemFormType extends AbstractType
             }
 
             $categoryTreeType = (new CategoryTreeType($this->doctrine))->setStructure($structure);
-            $builder->add('structure:' . $structure->getName(), $categoryTreeType, $optionsCat);
+            $builder->add('structure:'.$structure->getName(), $categoryTreeType, $optionsCat);
         }
 
         /** @var $property PropertyModel */
@@ -112,7 +112,7 @@ class ItemFormType extends AbstractType
 
                 foreach ($propertyOptions['constraints'] as $constraintsList) {
                     foreach ($constraintsList as $constraintClass => $constraintParams) {
-                        $_class = '\Symfony\Component\Validator\Constraints\\' . $constraintClass;
+                        $_class = '\Symfony\Component\Validator\Constraints\\'.$constraintClass;
 
                         $constraintsObjects[] = new $_class($constraintParams);
                     }
@@ -121,7 +121,7 @@ class ItemFormType extends AbstractType
                 $propertyOptions['constraints'] = $constraintsObjects;
             }
 
-            $builder->add('property:' . $property->getName(), $type, $propertyOptions);
+            $builder->add('property:'.$property->getName(), $type, $propertyOptions);
         }
     }
 
@@ -140,6 +140,6 @@ class ItemFormType extends AbstractType
      */
     public function getName()
     {
-        return 'smart_unicat_repository_' . $this->repository->getName() . '_item';
+        return 'smart_unicat_repository_'.$this->repository->getName().'_item';
     }
 }
