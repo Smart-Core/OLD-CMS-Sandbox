@@ -115,12 +115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "b1ae087d3fe48c38bb10f62c301e52d79a4807ac"
+                "reference": "b504a7d682f098b5d6ad66a609b163cbfc0bb33c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/b1ae087d3fe48c38bb10f62c301e52d79a4807ac",
-                "reference": "b1ae087d3fe48c38bb10f62c301e52d79a4807ac",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/b504a7d682f098b5d6ad66a609b163cbfc0bb33c",
+                "reference": "b504a7d682f098b5d6ad66a609b163cbfc0bb33c",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-01-23 13:16:23"
+            "time": "2015-02-08 23:56:31"
         },
         {
             "name": "doctrine/annotations",
@@ -1407,17 +1407,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799"
+                "reference": "4f9526ddec7fd951433586c45a78a5001d4a6997"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/a9377f6a05fb516423d6adf9079c6e5fb41e4799",
-                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/4f9526ddec7fd951433586c45a78a5001d4a6997",
+                "reference": "4f9526ddec7fd951433586c45a78a5001d4a6997",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1481,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-01-27 09:39:58"
+            "time": "2015-02-09 12:18:56"
         },
         {
             "name": "friendsofsymfony/user-bundle",
