@@ -115,12 +115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "b504a7d682f098b5d6ad66a609b163cbfc0bb33c"
+                "reference": "c47e1664516c0da84345e9f0f696056f9f67b56b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/b504a7d682f098b5d6ad66a609b163cbfc0bb33c",
-                "reference": "b504a7d682f098b5d6ad66a609b163cbfc0bb33c",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/c47e1664516c0da84345e9f0f696056f9f67b56b",
+                "reference": "c47e1664516c0da84345e9f0f696056f9f67b56b",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-02-08 23:56:31"
+            "time": "2015-02-12 17:59:59"
         },
         {
             "name": "doctrine/annotations",
@@ -1407,17 +1407,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "4f9526ddec7fd951433586c45a78a5001d4a6997"
+                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/4f9526ddec7fd951433586c45a78a5001d4a6997",
-                "reference": "4f9526ddec7fd951433586c45a78a5001d4a6997",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d72f3a41409997ebd91ca34561075c615d2ddcc0",
+                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1481,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-02-09 12:18:56"
+            "time": "2015-02-09 12:22:33"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -4506,17 +4506,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "9e23fc3de265ae013690d84aab98e7a84f46edcd"
+                "reference": "4b09746520a826a7bf34a466ba31c7d8740fef7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/9e23fc3de265ae013690d84aab98e7a84f46edcd",
-                "reference": "9e23fc3de265ae013690d84aab98e7a84f46edcd",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/4b09746520a826a7bf34a466ba31c7d8740fef7e",
+                "reference": "4b09746520a826a7bf34a466ba31c7d8740fef7e",
                 "shasum": ""
             },
             "require": {
@@ -4550,7 +4550,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2015-01-13 07:33:46"
+            "time": "2015-02-11 07:21:23"
         },
         {
             "name": "sensiolabs/doctrine-query-statistics-bundle",
@@ -4657,16 +4657,15 @@
         {
             "name": "smart-core/felib-bundle",
             "version": "dev-master",
-            "target-dir": "SmartCore/Bundle/FelibBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "fe28304428547fbb6ca728969ad8d0d15a7207ce"
+                "reference": "d244d1c2fedd2a727175be1d449624ee32ae1edc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/fe28304428547fbb6ca728969ad8d0d15a7207ce",
-                "reference": "fe28304428547fbb6ca728969ad8d0d15a7207ce",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/d244d1c2fedd2a727175be1d449624ee32ae1edc",
+                "reference": "d244d1c2fedd2a727175be1d449624ee32ae1edc",
                 "shasum": ""
             },
             "require": {
@@ -4676,8 +4675,8 @@
             },
             "type": "symfony-bundle",
             "autoload": {
-                "psr-0": {
-                    "SmartCore\\Bundle\\FelibBundle": ""
+                "psr-4": {
+                    "SmartCore\\Bundle\\FelibBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4686,7 +4685,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-01-15 22:53:42"
+            "time": "2015-02-13 21:11:16"
         },
         {
             "name": "smart-core/ladybug-bundle",
@@ -4777,12 +4776,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "292fad908cd6a02d48bdd8ac9ac76d4cbffd0e59"
+                "reference": "b21649813cca9196089d5d00455556fbfe93e7e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/292fad908cd6a02d48bdd8ac9ac76d4cbffd0e59",
-                "reference": "292fad908cd6a02d48bdd8ac9ac76d4cbffd0e59",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/b21649813cca9196089d5d00455556fbfe93e7e3",
+                "reference": "b21649813cca9196089d5d00455556fbfe93e7e3",
                 "shasum": ""
             },
             "require": {
@@ -4813,13 +4812,12 @@
             ],
             "authors": [
                 {
-                    "name": "Thomas Rabaix",
-                    "email": "thomas.rabaix@sonata-project.org",
-                    "homepage": "http://sonata-project.org"
-                },
-                {
                     "name": "Sonata Community",
                     "homepage": "https://github.com/sonata-project/SonataIntlBundle/contributors"
+                },
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org"
                 }
             ],
             "description": "Symfony SonataIntlBundle",
@@ -4831,7 +4829,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2014-03-19 11:44:49"
+            "time": "2015-02-10 17:04:33"
         },
         {
             "name": "sp/bower-bundle",
@@ -5470,12 +5468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/BreadcrumbsBundle.git",
-                "reference": "d330a5907855fea7cfabb96fbc0b64813d6c9cbe"
+                "reference": "b6c781810f0a8e2e4f0948139a8b3bde4ad14320"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/BreadcrumbsBundle/zipball/d330a5907855fea7cfabb96fbc0b64813d6c9cbe",
-                "reference": "d330a5907855fea7cfabb96fbc0b64813d6c9cbe",
+                "url": "https://api.github.com/repos/whiteoctober/BreadcrumbsBundle/zipball/b6c781810f0a8e2e4f0948139a8b3bde4ad14320",
+                "reference": "b6c781810f0a8e2e4f0948139a8b3bde4ad14320",
                 "shasum": ""
             },
             "require": {
@@ -5504,7 +5502,7 @@
                 "breadcrumbs",
                 "symfony"
             ],
-            "time": "2014-10-27 22:40:10"
+            "time": "2015-02-10 23:19:14"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
