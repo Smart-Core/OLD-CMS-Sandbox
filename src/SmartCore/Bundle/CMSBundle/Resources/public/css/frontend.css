@@ -19,6 +19,9 @@ body {
     width: 8px;
     background-color: red;
 }
+.cms-frontadmin-node-buttons {
+    color: #000000;
+}
 .cms-frontadmin-node-buttons.btn-group {
     float: left;
     position: absolute;
@@ -57,4 +60,19 @@ ul.dropdown-menu { /* Прижать меню вплотную к плашке*/
 .navbar a.menu:after,
 .navbar .dropdown-toggle:after {
     content: none;
+}
+
+.navbar-nav > li > a {
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+}
+.navbar {
+    min-height:30px !important
+}
+.navbar-brand {
+    float: left;
+    height: 30px;
+    padding: 5px 15px;
+    font-size: 18px;
+    line-height: 20px;
 }

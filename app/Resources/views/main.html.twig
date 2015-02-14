@@ -1,7 +1,7 @@
 {% extends '@Html/base.html.twig' %}
 
 {% set use_libs = {
-    'bootstrap': null,
+    'bootstrap': '3.3.2',
     'syntaxhighlighter': null,
 } %}
 
@@ -10,6 +10,8 @@
 {% block styles %}
     {{ parent() }}
     <style media="all" type="text/css">
+        @import url({{ asset('bundles/cms/css/bootstrap-theme-smart-core.css') }});
+        {#@import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});#}
         @import url({{ asset('theme/css/screen.css') }});
         @import url({{ asset('theme/css/dark_theme.css') }});
         @import url({{ asset('theme/css/wp-syntax.css') }});
@@ -26,12 +28,12 @@
 
 {% block body %}
 <div class="container">
-<div class="row-fluid">
-    <div class="span3">
+<div class="row">
+    <div class="span3 col-md-3 col-sm-3 col-xs-12">
         {{ main_menu }}
     </div>
 
-    <div class="span9">
+    <div class="span9 col-md-9 col-sm-9 col-xs-12">
         <div id="breadcrumbs">
             {{ breadcrumbs }}
         </div>
@@ -43,11 +45,11 @@
         </div>
     </div>
 </div>
-<div class="row-fluid" id="footer">
-    <div class="span9">
+<div class="row row-fluid" id="footer">
+    <div class="span9 col-md-9 col-sm-9 col-xs-9">
         {{ footer }}
     </div>
-    <div class="span3" style="text-align: right">
+    <div class="span3 col-md-3 col-sm-3 col-xs-3" style="text-align: right">
         {{ footer_right }}
     </div>
 

@@ -4,6 +4,9 @@ body {
 body > .container {
     color: white;
 }
+input {
+    color: #000000;
+}
 body > .container label {
     color: white;
 }

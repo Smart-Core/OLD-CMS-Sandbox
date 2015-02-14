@@ -4660,12 +4660,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "d244d1c2fedd2a727175be1d449624ee32ae1edc"
+                "reference": "532665e2219240e5d5d7ff86ff7a06cd28dc7539"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/d244d1c2fedd2a727175be1d449624ee32ae1edc",
-                "reference": "d244d1c2fedd2a727175be1d449624ee32ae1edc",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/532665e2219240e5d5d7ff86ff7a06cd28dc7539",
+                "reference": "532665e2219240e5d5d7ff86ff7a06cd28dc7539",
                 "shasum": ""
             },
             "require": {
@@ -4685,7 +4685,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-02-13 21:11:16"
+            "time": "2015-02-14 22:38:31"
         },
         {
             "name": "smart-core/ladybug-bundle",

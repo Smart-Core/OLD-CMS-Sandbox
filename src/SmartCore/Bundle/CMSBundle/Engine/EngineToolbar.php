@@ -160,6 +160,7 @@ class EngineToolbar extends Controller
     {
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $cms_front_controls = [
+                'twitterBootstrapVersion' => $this->get('cms.config')->get('cms', 'twitter_bootstrap_version'),
                 'toolbar' => $this->getArray(),
                 'nodes'   => $nodes_front_controls,
             ];

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    twitterBootstrapVersion = cms_front_controls.twitterBootstrapVersion;
+
     // Отрисовка тулбара
     if (typeof cms_front_controls === 'object') {
         // Отрисовать тулбар.
@@ -46,11 +48,11 @@ $(document).ready(function() {
                                         node_buttons += '<button OnClick="window.location=\'' + value.uri
                                             + '?redirect_to=' + window.location.pathname + window.location.search
                                             + '\'" title="' + button_title
-                                            + '" class="btn btn-mini popup-trigger">' + value.title + '</button>';
+                                            + '" class="btn btn-mini btn-xs popup-trigger">' + value.title + '</button>';
                                     }
                                 });
 
-                                node_buttons += '<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle"><span class="caret"></span></button>';
+                                node_buttons += '<button data-toggle="dropdown" class="btn btn-mini btn-xs dropdown-toggle"><span class="caret"></span></button>';
                                 node_buttons += '<ul class="dropdown-menu">';
 
                                 // затем отрисовка пунктов меню.
@@ -101,28 +103,50 @@ $(document).ready(function() {
 });
 
 function renderToolbar() {
-    $('body')
-        .css('padding-top', '40px')
-        .prepend('<div class="navbar navbar-inverse navbar-fixed-top">' +
-        '<div class="navbar-inner">' +
-        '<div class="container cms-toolbar">' +
-        '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
-        '<a class="brand" href="' + basePath +'" title="На главную сайта"> <i class="icon-home icon-white"></i></a>' + // @todo бренд Smart Core CMS
-        '<div class="nav-collapse collapse">' +
-        '<ul class="nav"></ul>' +
-        '<div class="pull-right">' +
-        '<ul class="nav pull-right"></ul>' +
-        '</div></div></div></div></div>')
-    ;
+    if (twitterBootstrapVersion == 2) {
+        $('body') // Bootstrap 2
+            .css('padding-top', '40px')
+            .prepend('<div class="navbar navbar-inverse navbar-fixed-top">' +
+                '<div class="navbar-inner">' +
+                '<div class="container cms-toolbar">' +
+                '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
+                '<a class="brand" href="' + basePath +'" title="На главную сайта"> <i class="icon-home icon-white"></i></a>' + // @todo бренд Smart Core CMS
+                '<div class="nav-collapse collapse">' +
+                '<ul class="nav"></ul>' +
+                '<div class="pull-right">' +
+                '<ul class="nav pull-right"></ul>' +
+                '</div></div></div></div></div>')
+        ;
+    } else {
+        $('body') // Bootstrap 3
+            .css('padding-top', '30px')
+            .prepend('<nav class="navbar navbar-inverse navbar-fixed-top">' +
+                '<div class="container cms-toolbar">' +
+                '<div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>' +
+                '<a class="navbar-brand" href="' + basePath +'" title="На главную сайта"> <i class="glyphicon glyphicon-home glyphicon-white"></i></a>' + // @todo бренд Smart Core CMS
+                '</div>' +
+                '<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">' +
+                '<ul class="nav navbar-nav cms-navbar-left"></ul>' +
+                '<div class="pull-right">' +
+                '<ul class="nav navbar-nav navbar-right"></ul>' +
+                '</div></div></div></nav>')
+        ;
+    }
 
     // Элементы справа
     if (typeof cms_front_controls.toolbar.right === 'object') {
         $.each(cms_front_controls.toolbar.right, function(index, value) {
             if (index === 'eip_toggle') {
-                $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right')
-                    .prepend('<button type="button" class="btn btn-primary span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
+                if (twitterBootstrapVersion == 2) {
+                    var div_pull_right = $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right');
+                } else {
+                    var div_pull_right = $('body > nav.navbar > div.container > div.navbar-collapse > div.pull-right');
+                }
+
+                div_pull_right.prepend('<button type="button" class="btn btn-primary btn-sm span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
             } else {
-                var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
+
+                var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-' + value.icon + ' icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
 
                 // есть итемы. btn-inverse
                 if (typeof value.items === 'object') {
@@ -131,13 +155,17 @@ function renderToolbar() {
                         if (value2 === 'diviver') {
                             item += '<li class="divider"></li>';
                         } else {
-                            item += '<li><a href="' + value2.uri + '" class="popup-trigger"><i class="icon-' + value2.icon + '"></i>&nbsp;' + value2.title +'</a></li>';
+                            item += '<li><a href="' + value2.uri + '" class="popup-trigger"><i class="glyphicon glyphicon-' + value2.icon + ' icon-' + value2.icon + '"></i>&nbsp;' + value2.title +'</a></li>';
                         }
                     });
                     item += '</ul>';
                 }
 
-                $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right > ul.nav').prepend(item + '</li>');
+                if (twitterBootstrapVersion == 2) {
+                    $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right > ul.nav').prepend(item + '</li>');
+                } else {
+                    $('body > nav.navbar > div.container > div.navbar-collapse > div.pull-right > ul.navbar-right').prepend(item + '</li>');
+                }
             }
         });
     }
@@ -147,14 +175,18 @@ function renderToolbar() {
     if (typeof cms_front_controls.toolbar.left === 'object') {
         $.each(cms_front_controls.toolbar.left, function(index, value) {
             if (index === 'eip_toggle') {
-                $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse')
-                    .append('<button type="button" class="btn btn-inverse span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
-            } else {
+                if (twitterBootstrapVersion == 2) {
+                    var div_pull_left = $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse');
+                } else {
+                    var div_pull_left = $('body > nav.navbar > div.container > div.navbar-collapse');
+                }
 
+                div_pull_left.append('<button type="button" class="btn btn-inverse span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
+            } else {
                 // есть итемы.
                 if (typeof value.items === 'object') {
                     var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' +
-                        value.descr + '"><i class="icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
+                        value.descr + '"><i class="glyphicon glyphicon-' + value.icon + ' icon-' + value.icon + ' icon-white glyphicon -white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
 
                     item += '<ul class="dropdown-menu">';
 
@@ -163,7 +195,7 @@ function renderToolbar() {
                             item += '<li class="divider"></li>';
                         } else {
                             item += '<li><a href="' + value2.uri + '?redirect_to=front'
-                                + '" class="popup-trigger"><i class="icon-'
+                                + '" class="popup-trigger"><i class="glyphicon glyphicon-' + value2.icon + ' icon-'
                                 + value2.icon + '"></i>&nbsp;' + value2.title +'</a></li>';
                         }
                     });
@@ -173,7 +205,11 @@ function renderToolbar() {
                         + '" title="' + value.descr + '">' + value.title + '</a>';
                 }
 
-                $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item + '</li>');
+                if (twitterBootstrapVersion == 2) {
+                    $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > ul.nav').append(item + '</li>');
+                } else {
+                    $('body > nav.navbar > div.container > div.navbar-collapse > ul.cms-navbar-left').append(item + '</li>');
+                }
             }
         });
 
