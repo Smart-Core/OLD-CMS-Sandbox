@@ -1,9 +1,8 @@
 {
     "name": "smart-core/module-user",
     "autoload": {
-        "psr-0": {
-            "SmartCore\\Module\\User": ""
+        "psr-4": {
+            "SmartCore\\Module\\User\\": ""
         }
-    },                
-    "target-dir": "SmartCore/Module/User"
+    }
 }

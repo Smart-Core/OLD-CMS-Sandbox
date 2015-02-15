@@ -4,39 +4,25 @@ namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ORM\Entity()
  * ORM\Table(name="unicat_items",
  *      indexes={
- *          ORM\Index(name="pos", columns={"pos"}),
+ *          ORM\Index(name="position", columns={"position"}),
  *      }
  * )
  * @UniqueEntity(fields={"slug", "slug"}, message="Запись с таким сегментом URI уже существует.")
  */
 class ItemModel
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $is_enabled;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     */
-    protected $position;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Position;
+    use ColumnTrait\UserId;
 
     /**
      * @var CategoryModel[]
@@ -74,16 +60,6 @@ class ItemModel
      * @ORM\Column(type="array")
      */
     protected $properties;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * Constructor.
@@ -145,22 +121,6 @@ class ItemModel
     }
 
     /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
      * @param mixed $categories
      * @return $this
      */
@@ -196,60 +156,6 @@ class ItemModel
     public function getCategoriesSingle()
     {
         return $this->categoriesSingle;
-    }
-
-    /**
-     * @param boolean $is_enabled
-     * @return $this
-     */
-    public function setIsEnabled($is_enabled)
-    {
-        $this->is_enabled = $is_enabled;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getIsEnabled()
-    {
-        return $this->is_enabled;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isEnabled()
-    {
-        return $this->is_enabled;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isDisabled()
-    {
-        return !$this->is_enabled;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**
@@ -348,32 +254,5 @@ class ItemModel
     public function getMeta()
     {
         return empty($this->meta) ? [] : $this->meta;
-    }
-
-    /**
-     * @param int $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        if (is_object($user_id) and method_exists($user_id, 'getId')) {
-            $user_id = $user_id->getId();
-        }
-
-        if (null === $user_id) {
-            $user_id = 0;
-        }
-
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 }

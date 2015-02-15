@@ -1,9 +1,11 @@
 {
     "name": "smart-core/gallery-module",
+    "require": {
+        "smart-core/cms-bundle": "dev-master"
+    },
     "autoload": {
-        "psr-0": {
-            "SmartCore\\Module\\Gallery": ""
+        "psr-4": {
+            "SmartCore\\Module\\Gallery\\": ""
         }
-    },                
-    "target-dir": "SmartCore/Module/Gallery"
+    }
 }

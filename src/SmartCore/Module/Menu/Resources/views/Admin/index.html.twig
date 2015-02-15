@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ group.id }}</td>
                         <td><a href="{{ path('smart_menu_admin_group', {'group_id': group.id}) }}">{{ group.name }}</a></td>
-                        <td>{{ group.descr }}</td>
+                        <td>{{ group.description }}</td>
                         <td>{{ group.position}}</td>
                         <td>{{ group.items.count }}</td>
                         <td><a href="{{ path('smart_menu_admin_group_edit', {'group_id': group.id}) }}">Свойства группы</a></td>

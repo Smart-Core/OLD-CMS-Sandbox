@@ -1,9 +1,11 @@
 {
     "name": "smart-core/module-menu",
+    "require": {
+        "smart-core/cms-bundle": "dev-master"
+    },
     "autoload": {
-        "psr-0": {
-            "SmartCore\\Module\\Menu": ""
+        "psr-4": {
+            "SmartCore\\Module\\Menu\\": ""
         }
-    },                
-    "target-dir": "SmartCore/Module/Menu"
+    }
 }

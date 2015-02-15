@@ -1,9 +1,8 @@
 {
     "name": "smart-core/module-breadcrumbs",
     "autoload": {
-        "psr-0": {
-            "SmartCore\\Module\\Breadcrumbs": ""
+        "psr-4": {
+            "SmartCore\\Module\\Breadcrumbs\\": ""
         }
-    },                
-    "target-dir": "SmartCore/Module/Breadcrumbs"
+    }
 }

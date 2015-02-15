@@ -118,7 +118,7 @@ class AdminController extends Controller
 
         $items = $em->getRepository('TexterModule:ItemHistory')->findBy(
             ['item_id' => $id],
-            ['created' => 'DESC']
+            ['created_at' => 'DESC']
         );
 
         return $this->render('TexterModule:Admin:history.html.twig', [

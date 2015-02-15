@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\MediaBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -15,12 +16,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Title;
 
     /**
      * @var Category
@@ -46,20 +44,6 @@ class Category
     protected $slug;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $title;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
      * @var File[]|ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="File", mappedBy="category", fetch="EXTRA_LAZY")
@@ -73,22 +57,6 @@ class Category
     {
         $this->created_at = new \DateTime();
         $this->files      = new ArrayCollection();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**
@@ -108,24 +76,5 @@ class Category
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 }

@@ -4,8 +4,7 @@ namespace SmartCore\Module\Gallery\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
-use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 
 /**
@@ -14,26 +13,14 @@ use SmartCore\Bundle\MediaBundle\Entity\Collection;
  */
 class Gallery
 {
-    use CreatedAtTrait;
-    use SignedTrait;
-
     const ORDER_BY_CREATED    = 0;
     const ORDER_BY_POSITION   = 1;
     const ORDER_BY_LAST_PHOTO = 2; // @todo
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     */
-    protected $title;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * @var string
@@ -71,33 +58,6 @@ class Gallery
      * @return string
      */
     public function __toString()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
     {
         return $this->title;
     }

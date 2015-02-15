@@ -37,7 +37,7 @@
 
                     <a href="{{ path('smart_module.gallery.admin_album', {'id': album.id, 'gallery_id': album.gallery.id }) }}">{{ album.title }}</a>
                 </td>
-                <td>{{ album.descr }}</td>
+                <td>{{ album.description }}</td>
                 <td>
                     <a href="{{ path('smart_module.gallery.admin_album', {'id': album.id, 'gallery_id': album.gallery.id }) }}">
                         {{ album.photos|length }} {# @todo более оптимальный #}

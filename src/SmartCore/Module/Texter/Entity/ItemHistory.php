@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Texter\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -15,19 +16,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ItemHistory
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $is_deleted = false;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsDeleted;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Text;
+    use ColumnTrait\UserId;
 
     /**
      * @var int
@@ -51,32 +44,11 @@ class ItemHistory
     protected $editor;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text")
-     */
-    protected $text;
-
-    /**
      * @var array
      *
      * @ORM\Column(type="array")
      */
     protected $meta;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id = 0;
 
     /**
      * Constructor.
@@ -92,23 +64,7 @@ class ItemHistory
             $this->user_id  = $item->getUserId();
         }
 
-        $this->created  = new \DateTime();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
+        $this->created_at   = new \DateTime();
     }
 
     /**
@@ -142,25 +98,6 @@ class ItemHistory
     public function getEditor()
     {
         return $this->editor;
-    }
-
-    /**
-     * @param bool $is_deleted
-     * @return $this
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        $this->is_deleted = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsDeleted()
-    {
-        return $this->is_deleted;
     }
 
     /**
@@ -218,43 +155,5 @@ class ItemHistory
     public function getMeta()
     {
         return $this->meta;
-    }
-
-    /**
-     * @param string $text
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
-     * @param int $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 }

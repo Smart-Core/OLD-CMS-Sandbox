@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -14,12 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FileTransformed
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
 
     /**
      * @var File
@@ -60,34 +57,11 @@ class FileTransformed
     protected $size;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->created_at = new \DateTime();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**

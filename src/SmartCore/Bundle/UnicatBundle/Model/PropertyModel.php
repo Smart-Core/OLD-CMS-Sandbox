@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Yaml\Yaml;
 
@@ -14,19 +15,13 @@ use Symfony\Component\Yaml\Yaml;
  */
 class PropertyModel
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $is_enabled;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Position;
+    use ColumnTrait\NameUnique;
+    use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * @var boolean
@@ -43,28 +38,11 @@ class PropertyModel
     protected $is_required;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $position;
-
-    /**
      * enum('string','text','date','datetime','img','file','select','multiselect','int','double','checkbox','password')
      *
      * @ORM\Column(type="string", length=12)
      */
     protected $type;
-
-    /**
-     * @ORM\Column(type="string", length=32, unique=true)
-     */
-    protected $name;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $title;
 
     /**
      * Отображать в списке администратора.
@@ -92,16 +70,6 @@ class PropertyModel
      * @ORM\Column(type="boolean")
      */
     protected $show_in_view;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * @var array
@@ -138,22 +106,6 @@ class PropertyModel
     }
 
     /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
      * @param bool $is_dedicated_table
      * @return $this
      */
@@ -170,25 +122,6 @@ class PropertyModel
     public function getIsDedicatedTable()
     {
         return $this->is_dedicated_table;
-    }
-
-    /**
-     * @param bool $is_enabled
-     * @return $this
-     */
-    public function setIsEnabled($is_enabled)
-    {
-        $this->is_enabled = $is_enabled;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsEnabled()
-    {
-        return $this->is_enabled;
     }
 
     /**
@@ -227,25 +160,6 @@ class PropertyModel
     public function getGroup()
     {
         return $this->group;
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -292,29 +206,6 @@ class PropertyModel
     public function getParamsYaml()
     {
         return $this->params_yaml;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        if (null === $position) {
-            $position = 0;
-        }
-
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**
@@ -375,25 +266,6 @@ class PropertyModel
     }
 
     /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
      * @param string $type
      * @return $this
      */
@@ -419,24 +291,5 @@ class PropertyModel
     public function isType($type)
     {
         return ($type === $this->type) ? true : false;
-    }
-
-    /**
-     * @param int $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 }

@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Slider\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -17,19 +18,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Slide
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $enabled;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Position;
+    use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * @Assert\File(maxSize="2000000")
@@ -51,37 +45,9 @@ class Slide
     private $original_file_name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $title;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     */
-    private $position;
-
-    /**
      * @ORM\Column(type="array", nullable=true)
      */
     private $properties;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $user_id;
 
     /**
      * @var Slider
@@ -104,15 +70,7 @@ class Slide
     }
 
     /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $file_name
+     * @param string $file_name
      * @return $this
      */
     public function setFileName($file_name)
@@ -123,7 +81,7 @@ class Slide
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFileName()
     {
@@ -169,86 +127,6 @@ class Slide
     }
 
     /**
-     * @param string $title
-     * @return Slide
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $createdAt
-     * @return Slide
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param boolean $enabled
-     * @return Slide
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        if (null == $position) {
-            $position = 0;
-        }
-
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
      * @param mixed $properties
      * @return $this
      */
@@ -265,25 +143,6 @@ class Slide
     public function getProperties()
     {
         return $this->properties;
-    }
-
-    /**
-     * @param  int $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 
     /**

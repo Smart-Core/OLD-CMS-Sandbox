@@ -4,6 +4,7 @@ namespace SmartCore\Module\Blog\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -11,12 +12,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 abstract class Category implements CategoryInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Title;
 
     /**
      * @var Category
@@ -42,25 +40,11 @@ abstract class Category implements CategoryInterface
     protected $slug;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $title;
-
-    /**
      * @var Article[]
      *
      * @ORM\OneToMany(targetEntity="Article", mappedBy="category", fetch="EXTRA_LAZY")
      */
     protected $articles;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * Constructor.
@@ -73,27 +57,11 @@ abstract class Category implements CategoryInterface
     }
 
     /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @return string
      */
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * @return \Datetime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**
@@ -160,25 +128,6 @@ abstract class Category implements CategoryInterface
             $parents->add($category->getParent());
             $this->buildParents($parents);
         }
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**

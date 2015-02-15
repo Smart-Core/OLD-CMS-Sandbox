@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;
 use SmartCore\Bundle\UnicatBundle\Model\PropertiesGroupModel;
@@ -21,12 +22,11 @@ use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
  */
 class UnicatRepository
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Name;
+    use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * Пространство имен сущностей, например: Demo\SiteBundle\Entity\Catalog\
@@ -36,20 +36,6 @@ class UnicatRepository
      * @ORM\Column(type="string")
      */
     protected $entities_namespace;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $title;
 
     /**
      * Включает записи вложенных категорий.
@@ -66,20 +52,6 @@ class UnicatRepository
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\MediaBundle\Entity\Collection")
      */
     protected $media_collection;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * @var UnicatStructure
@@ -112,22 +84,6 @@ class UnicatRepository
     public function __toString()
     {
         return $this->title.' ('.$this->entities_namespace.')';
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**
@@ -264,25 +220,6 @@ class UnicatRepository
     }
 
     /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @param UnicatStructure[]|ArrayCollection $structures
      * @return $this
      */
@@ -318,43 +255,5 @@ class UnicatRepository
     public function getDefaultStructure()
     {
         return $this->default_structure;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param int $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 }

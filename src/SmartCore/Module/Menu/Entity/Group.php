@@ -4,6 +4,7 @@ namespace SmartCore\Module\Menu\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -12,12 +13,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Group
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
 
     /**
      * @var Item[]|ArrayCollection
@@ -25,14 +24,6 @@ class Group
      * @ORM\OneToMany(targetEntity="Item", mappedBy="group", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      */
     protected $items;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
-     */
-    protected $position;
 
     /**
      * @var string
@@ -45,13 +36,6 @@ class Group
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $descr;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $properties;
@@ -60,15 +44,10 @@ class Group
      * @var int
      *
      * @ORM\Column(type="integer")
+     *
+     * @deprecated use UserId
      */
     protected $create_by_user_id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * Constructor.
@@ -78,7 +57,7 @@ class Group
         $this->create_by_user_id = 0;
         $this->created_at   = new \DateTime();
         $this->position     = 0;
-        $this->descr        = null;
+        $this->description  = null;
         $this->items        = new ArrayCollection();
     }
 
@@ -88,41 +67,6 @@ class Group
     public function __toString()
     {
         return (string) $this->getName();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescr()
-    {
-        return $this->descr;
     }
 
     /**
@@ -164,31 +108,9 @@ class Group
     }
 
     /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        if (empty($position)) {
-            $position = 0;
-        }
-
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
      * @param int $create_by_user_id
      * @return $this
+     * @deprecated use UserId
      */
     public function setCreateByUserId($create_by_user_id)
     {
@@ -199,6 +121,7 @@ class Group
 
     /**
      * @return int
+     * @deprecated use UserId
      */
     public function getCreateByUserId()
     {

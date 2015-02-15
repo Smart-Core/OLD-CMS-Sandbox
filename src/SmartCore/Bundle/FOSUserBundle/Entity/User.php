@@ -4,7 +4,7 @@ namespace SmartCore\Bundle\FOSUserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -12,7 +12,7 @@ use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
  */
 class User extends BaseUser
 {
-    use CreatedAtTrait;
+    use ColumnTrait\CreatedAt;
 
     /**
      * @ORM\Id

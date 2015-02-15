@@ -16,7 +16,6 @@
         "fabpot/goutte": "dev-master"
     },
     "autoload": {
-        "psr-0": { "SmartCore\\Bundle\\SitemapBundle": "" }
-    },
-    "target-dir": "SmartCore/Bundle/SitemapBundle"
+        "psr-4": { "SmartCore\\Bundle\\SitemapBundle\\": "" }
+    }
 }

@@ -148,15 +148,4 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
     {
         return $this->is_commentable;
     }
-
-    /**
-     * @param \DateTime $createdAt
-     * @return $this
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->created_at = $createdAt;
-
-        return $this;
-    }
 }

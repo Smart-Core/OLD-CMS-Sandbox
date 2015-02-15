@@ -46,7 +46,7 @@ class MenuController extends Controller
         $this->node->addFrontControl('edit', [
             'title'    => 'Редактировать меню',
             'default'  => true,
-            'descr'    => $this->node->getDescr(),
+            'descr'    => $this->node->getDescription(),
             'uri'      => $this->generateUrl('cms_admin_node_w_slug', [
                 'id'   => $this->node->getId(),
                 'slug' => $this->group_id,

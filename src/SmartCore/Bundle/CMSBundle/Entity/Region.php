@@ -4,8 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
-use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,23 +19,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Region
 {
-    use SignedTrait;
-    use CreatedAtTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="smallint")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     * @Assert\Range(min = "0", minMessage = "Минимальное значение 0.", max = "255", maxMessage = "Максимальное значение 255.")
-     */
-    protected $position;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
+    use ColumnTrait\UserId;
 
     /**
      * @var string
@@ -45,14 +32,6 @@ class Region
      * @Assert\NotBlank()
      */
     protected $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $descr;
-
     /**
      * @var Folder[]|ArrayCollection
      *
@@ -63,13 +42,13 @@ class Region
 
     /**
      * @param string|null $name
-     * @param string|null $descr
+     * @param string|null $description
      */
-    public function __construct($name = null, $descr = null)
+    public function __construct($name = null, $description = null)
     {
         $this->created_at   = new \DateTime();
         $this->folders      = new ArrayCollection();
-        $this->descr        = $descr;
+        $this->description  = $description;
         $this->name         = $name;
         $this->position     = 0;
     }
@@ -79,36 +58,9 @@ class Region
      */
     public function __toString()
     {
-        $descr = $this->getDescr();
+        $descr = $this->getDescription();
 
         return empty($descr) ? $this->getName() : $descr.' ('.$this->getName().')';
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescr()
-    {
-        return $this->descr;
     }
 
     /**
@@ -160,28 +112,5 @@ class Region
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param int $pos
-     * @return $this
-     */
-    public function setPosition($pos)
-    {
-        if (empty($pos)) {
-            $pos = 0;
-        }
-
-        $this->position = $pos;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 }

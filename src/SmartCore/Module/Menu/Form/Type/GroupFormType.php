@@ -12,7 +12,7 @@ class GroupFormType extends AbstractType
     {
         $builder
             ->add('name', null, ['attr' => ['class' => 'focused']])
-            ->add('descr')
+            ->add('description')
             ->add('position')
             ->add('properties')
         ;

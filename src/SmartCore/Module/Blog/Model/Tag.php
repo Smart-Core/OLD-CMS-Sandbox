@@ -4,6 +4,7 @@ namespace SmartCore\Module\Blog\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -12,12 +13,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 abstract class Tag implements TagInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
 
     /**
      * @var string
@@ -34,13 +31,6 @@ abstract class Tag implements TagInterface
      * @Assert\NotBlank(message="Title can't be empty.")
      */
     protected $title;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * @var int
@@ -79,22 +69,6 @@ abstract class Tag implements TagInterface
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \Datetime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**

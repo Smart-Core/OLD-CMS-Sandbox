@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity()
@@ -10,33 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UnicatStructure
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     */
-    protected $position;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=32)
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $title;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Name;
+    use ColumnTrait\Position;
+    use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * @var string
@@ -71,13 +51,6 @@ class UnicatStructure
     protected $is_default_inheritance;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id;
-
-    /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
@@ -92,13 +65,6 @@ class UnicatStructure
     protected $repository;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
      * Constructor.
      */
     public function __construct()
@@ -109,33 +75,6 @@ class UnicatStructure
         $this->user_id    = 0;
         $this->is_default_inheritance = false;
         $this->is_required = true;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param string $description
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -212,44 +151,6 @@ class UnicatStructure
     }
 
     /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
      * @param string $properties
      * @return $this
      */
@@ -288,25 +189,6 @@ class UnicatStructure
     }
 
     /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
      * @param string $title_form
      * @return $this
      */
@@ -323,33 +205,6 @@ class UnicatStructure
     public function getTitleForm()
     {
         return $this->title_form;
-    }
-
-    /**
-     * @param int|object $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        if (is_object($user_id) and method_exists($user_id, 'getId')) {
-            $user_id = $user_id->getId();
-        }
-
-        if (null === $user_id) {
-            $user_id = 0;
-        }
-
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 
     /**

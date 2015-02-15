@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -24,19 +25,10 @@ class Node implements \Serializable
     const TOOLBAR_ONLY_IN_SELF_FOLDER   = 1; // Только в собственной папке
     const TOOLBAR_ALWAYS                = 2; // Всегда
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $is_active;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsActive;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
 
     /**
      * @var int
@@ -91,15 +83,6 @@ class Node implements \Serializable
     protected $region;
 
     /**
-     * Позиция в внутри области.
-     *
-     * @var int
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     */
-    protected $position;
-
-    /**
      * Приоритет порядка выполнения.
      *
      * @var int
@@ -133,16 +116,11 @@ class Node implements \Serializable
     //protected $permissions;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $descr;
-
-    /**
      * @var int
      *
      * @ORM\Column(type="integer")
+     *
+     * @deprecated use UserId
      */
     protected $create_by_user_id;
 
@@ -210,7 +188,7 @@ class Node implements \Serializable
             $this->region_name,
             $this->position,
             $this->priority,
-            $this->descr,
+            $this->description,
             $this->controls_in_toolbar,
             $this->create_by_user_id,
             $this->create_datetime,
@@ -236,7 +214,7 @@ class Node implements \Serializable
             $this->region_name,
             $this->position,
             $this->priority,
-            $this->descr,
+            $this->description,
             $this->controls_in_toolbar,
             $this->create_by_user_id,
             $this->create_datetime,
@@ -308,25 +286,6 @@ class Node implements \Serializable
     }
 
     /**
-     * @param bool $is_active
-     * @return $this
-     */
-    public function setIsActive($is_active)
-    {
-        $this->is_active = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsActive()
-    {
-        return $this->is_active;
-    }
-
-    /**
      * @param bool $is_cached
      * @return $this
      */
@@ -343,48 +302,6 @@ class Node implements \Serializable
     public function getIsCached()
     {
         return $this->is_cached;
-    }
-
-    /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescr()
-    {
-        return $this->descr;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        if (empty($position)) {
-            $position = 0;
-        }
-
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**

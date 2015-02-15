@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,12 +24,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Folder
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsActive;
+    use ColumnTrait\IsDeleted;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
 
     /**
      * @var Folder
@@ -63,13 +63,6 @@ class Folder
     protected $title;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     */
-    protected $position;
-
-    /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
@@ -81,28 +74,7 @@ class Folder
      *
      * @ORM\Column(type="boolean")
      */
-    protected $is_active;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $is_deleted;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
     protected $is_file;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $descr;
 
     /**
      * @var array
@@ -215,14 +187,6 @@ class Folder
     }
 
     /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @return Folder[]|ArrayCollection
      */
     public function getChildren()
@@ -277,33 +241,6 @@ class Folder
     }
 
     /**
-     * @param bool $is_active
-     * @return $this
-     */
-    public function setIsActive($is_active)
-    {
-        $this->is_active = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsActive()
-    {
-        return $this->is_active;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive()
-    {
-        return $this->is_active;
-    }
-
-    /**
      * @param bool $has_inherit_nodes
      * @return $this
      */
@@ -320,25 +257,6 @@ class Folder
     public function getHasInheritNodes()
     {
         return $this->has_inherit_nodes;
-    }
-
-    /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescr()
-    {
-        return $this->descr;
     }
 
     /**
@@ -421,29 +339,6 @@ class Folder
     public function getParentFolder()
     {
         return $this->parent_folder;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        if (empty($position)) {
-            $position = 0;
-        }
-
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**

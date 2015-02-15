@@ -4,9 +4,7 @@ namespace SmartCore\Module\Gallery\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
-use SmartCore\Bundle\CMSBundle\Model\IsEnabledTrait;
-use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity()
@@ -15,30 +13,14 @@ use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
  */
 class Album
 {
-    use CreatedAtTrait;
-    use IsEnabledTrait;
-    use SignedTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $descr;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
+    use ColumnTrait\Title;
+    use ColumnTrait\UpdatedAt;
+    use ColumnTrait\UserId;
 
     /**
      * @var int
@@ -60,20 +42,6 @@ class Album
      * @ORM\Column(type="integer")
      */
     protected $photos_count;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $position;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $updated_at;
 
     /**
      * @var Gallery
@@ -109,14 +77,6 @@ class Album
     }
 
     /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param int $cover_image_id
      * @return $this
      */
@@ -133,44 +93,6 @@ class Album
     public function getCoverImageId()
     {
         return $this->cover_image_id;
-    }
-
-    /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescr()
-    {
-        return $this->descr;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**
@@ -231,25 +153,6 @@ class Album
     }
 
     /**
-     * @param \DateTime $updated_at
-     * @return $this
-     */
-    public function setUpdatedAt(\DateTime $updated_at)
-    {
-        $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-
-    /**
      * @ORM\PreUpdate()
      */
     public function lastUpdatedAt()
@@ -274,24 +177,5 @@ class Album
     public function getLastImageId()
     {
         return $this->last_image_id;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 }

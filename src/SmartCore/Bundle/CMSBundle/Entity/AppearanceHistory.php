@@ -3,8 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
-use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity()
@@ -18,15 +17,9 @@ use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
  */
 class AppearanceHistory
 {
-    use CreatedAtTrait;
-    use SignedTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\UserId;
 
     /**
      * @var string
@@ -62,14 +55,6 @@ class AppearanceHistory
     public function __construct()
     {
         $this->created_at = new \DateTime();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

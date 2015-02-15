@@ -122,7 +122,7 @@ class MenuBuilder extends ContainerAware
                 $new_item = $menu->addChild($item_title, ['uri' => $uri]);
                 $new_item->setAttributes([
                     //'class' => 'my_item', // @todo аттрибуты для пунктов меню.
-                    'title' => $item->getDescr(),
+                    'title' => $item->getDescription(),
                 ])->setExtras($item->getProperties());
 
                 if ($this->is_admin and (!$item->getIsActive() or (null != $item->getFolder() and !$item->getFolder()->isActive()))) {

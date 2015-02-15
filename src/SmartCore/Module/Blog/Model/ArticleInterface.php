@@ -88,7 +88,7 @@ interface ArticleInterface
     /**
      * @return $this
      */
-    public function setUpdated();
+    public function setUpdatedAt();
 
     /**
      * @param string $slug

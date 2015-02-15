@@ -13,10 +13,10 @@
     ],
     "require": {
         "php": ">=5.4.1",
-        "avalanche123/imagine-bundle": "*"
+        "avalanche123/imagine-bundle": "*",
+        "smart-core/core-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": { "SmartCore\\Bundle\\MediaBundle": "" }
-    },
-    "target-dir": "SmartCore/Bundle/MediaBundle"
+        "psr-4": { "SmartCore\\Bundle\\MediaBundle\\": "" }
+    }
 }

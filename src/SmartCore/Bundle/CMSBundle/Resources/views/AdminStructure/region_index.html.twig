@@ -25,7 +25,7 @@
         <tr>
             <td>{{ region.id }}</td>
             <td><a href="{{ path('cms_admin_structure_region_edit', {'id': region.id}) }}">{{ region.name }}</a></td>
-            <td><a href="{{ path('cms_admin_structure_region_edit', {'id': region.id}) }}">{{ region.descr }}</a></td>
+            <td><a href="{{ path('cms_admin_structure_region_edit', {'id': region.id}) }}">{{ region.description }}</a></td>
             <td>{{ region.position }}</td>
             <td>{% for folder in region.folders %}<a href="{{ path('cms_admin_structure_folder', {'id': folder.id}) }}">{{ folder }}</a>, {% endfor %}</td>
             <td>{{ cms_nodes_count_in_region(region) }}</td>

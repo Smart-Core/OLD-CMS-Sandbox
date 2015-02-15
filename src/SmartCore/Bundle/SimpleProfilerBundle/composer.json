@@ -15,8 +15,8 @@
     },
     "autoload": {
         "files": ["Profiler.php"],
-        "psr-0": {
-            "SmartCore\\Bundle\\SimpleProfilerBundle": ""
+        "psr-4": {
+            "SmartCore\\Bundle\\SimpleProfilerBundle\\": ""
         }
     }
 }

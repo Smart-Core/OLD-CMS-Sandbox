@@ -12,7 +12,7 @@ class RegionFormType extends AbstractType
     {
         $builder
             ->add('name', null, ['attr' => ['class' => 'focused']])
-            ->add('descr')
+            ->add('description')
             ->add('position')
             ->add('folders', 'cms_folder_tree', [
                 //'attr'        => ['style' => 'height: 300px;'],

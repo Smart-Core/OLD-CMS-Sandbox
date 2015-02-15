@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Feedback\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -11,12 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Feedback
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
 
     /**
      * @var string
@@ -44,13 +41,6 @@ class Feedback
     protected $text;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created;
-
-    /**
      * Constructor.
      */
     public function __construct()
@@ -64,22 +54,6 @@ class Feedback
     public function __toString()
     {
         return (string) $this->getTitle();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
     }
 
     /**

@@ -56,7 +56,7 @@
         <td>
             <a class="smart_gallery_album_title" href="{{ path('smart_module.gallery.album', {'id': album.id}) }}">{{ album.title }}</a>
             <p class="smart_gallery_album_count_photos">{{ album.photosCount }} {{ 'Photos'|trans }}</p>
-            <p class="smart_gallery_album_descr">{{ album.descr }}</p>
+            <p class="smart_gallery_album_descr">{{ album.description }}</p>
             {#<p class="smart_gallery_album_updated">{{ 'Updated'|trans }} {{ album.updatedAt|date('Y-m-d') }}</p>#}
             <p class="smart_gallery_album_updated">{{ 'Updated'|trans }} {{ album.updatedAt|localizeddate }}</p>
         </td>

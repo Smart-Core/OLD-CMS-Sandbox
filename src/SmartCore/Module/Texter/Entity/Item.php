@@ -3,7 +3,7 @@
 namespace SmartCore\Module\Texter\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -11,14 +11,11 @@ use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
  */
 class Item
 {
-    use CreatedAtTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\UpdatedAt;
+    use ColumnTrait\Text;
+    use ColumnTrait\UserId;
 
     /**
      * @var string
@@ -35,25 +32,11 @@ class Item
     protected $editor;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $text;
-
-    /**
      * @var array
      *
      * @ORM\Column(type="array")
      */
     protected $meta;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id = 0;
 
     /**
      * Constructor.
@@ -73,14 +56,6 @@ class Item
     public function __toString()
     {
         return $this->getText();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -134,25 +109,6 @@ class Item
     }
 
     /**
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
-     * @param string $text
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getMeta()
@@ -179,24 +135,5 @@ class Item
         $this->meta = $meta;
 
         return $this;
-    }
-
-    /**
-     * @param int $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 }

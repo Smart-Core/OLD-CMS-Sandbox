@@ -3,9 +3,7 @@
 namespace SmartCore\Module\Gallery\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
-use SmartCore\Bundle\CMSBundle\Model\PositionTrait;
-use SmartCore\Bundle\CMSBundle\Model\SignedTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,23 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Photo
 {
-    use CreatedAtTrait;
-    use SignedTrait;
-    use PositionTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $descr;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
+    use ColumnTrait\UserId;
 
     /**
      * @var int
@@ -66,14 +52,6 @@ class Photo
     }
 
     /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param \SmartCore\Module\Gallery\Entity\Album $album
      * @return $this
      */
@@ -90,25 +68,6 @@ class Photo
     public function getAlbum()
     {
         return $this->album;
-    }
-
-    /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescr()
-    {
-        return $this->descr;
     }
 
     /**

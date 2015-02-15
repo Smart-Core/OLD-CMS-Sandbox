@@ -3,9 +3,7 @@
 namespace SmartCore\Module\SimpleNews\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\CMSBundle\Model\CreatedAtTrait;
-use SmartCore\Bundle\CMSBundle\Model\IsEnabledTrait;
-use SmartCore\Bundle\CMSBundle\Model\UpdatedAtTrait;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -25,16 +23,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class News
 {
-    use CreatedAtTrait;
-    use IsEnabledTrait;
-    use UpdatedAtTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\UpdatedAt;
+    use ColumnTrait\Title;
+    use ColumnTrait\Text;
 
     /**
      * @var int|null
@@ -42,13 +36,6 @@ class News
      * @ORM\Column(type="bigint", nullable=true)
      */
     protected $image_id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $title;
 
     /**
      * @var string
@@ -71,13 +58,6 @@ class News
      * @ORM\Column(type="text", nullable=true)
      */
     protected $annotation_widget;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $text;
 
     /**
      * Дата публикации
@@ -127,14 +107,6 @@ class News
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -214,25 +186,6 @@ class News
     }
 
     /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
      * @param string $annotation
      * @return $this
      */
@@ -287,25 +240,6 @@ class News
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * @param string $text
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
     }
 
     /**

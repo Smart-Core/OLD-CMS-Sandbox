@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Янв 25 2015 г., 07:02
+-- Время создания: Фев 16 2015 г., 05:54
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.6.5
+-- Версия PHP: 5.4.35
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -27,9 +27,9 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 DROP TABLE IF EXISTS `blog_articles`;
 CREATE TABLE IF NOT EXISTS `blog_articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
+  `category_id` int(10) unsigned DEFAULT NULL,
   `image_id` int(11) DEFAULT NULL,
   `is_commentable` tinyint(1) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
@@ -78,8 +78,8 @@ INSERT INTO `blog_articles` (`id`, `author_id`, `category_id`, `image_id`, `is_c
 
 DROP TABLE IF EXISTS `blog_articles_tags_relations`;
 CREATE TABLE IF NOT EXISTS `blog_articles_tags_relations` (
-  `article_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL,
+  `article_id` int(11) unsigned NOT NULL,
+  `tag_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`article_id`,`tag_id`),
   KEY `IDX_1994F0217294869C` (`article_id`),
   KEY `IDX_1994F021BAD26311` (`tag_id`)
@@ -133,10 +133,10 @@ INSERT INTO `blog_articles_tags_relations` (`article_id`, `tag_id`) VALUES
 
 DROP TABLE IF EXISTS `blog_categories`;
 CREATE TABLE IF NOT EXISTS `blog_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent` int(11) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `parent` int(10) unsigned DEFAULT NULL,
   `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_D7E9F9CF989D9B62` (`slug`),
@@ -170,7 +170,7 @@ INSERT INTO `blog_categories` (`id`, `parent`, `slug`, `title`, `created_at`) VA
 
 DROP TABLE IF EXISTS `blog_tags`;
 CREATE TABLE IF NOT EXISTS `blog_tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
@@ -219,17 +219,17 @@ INSERT INTO `blog_tags` (`id`, `slug`, `title`, `created_at`, `weight`) VALUES
 
 DROP TABLE IF EXISTS `catalog_categories`;
 CREATE TABLE IF NOT EXISTS `catalog_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) unsigned DEFAULT NULL,
   `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_inheritance` tinyint(1) NOT NULL,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `is_enabled` tinyint(1) NOT NULL,
-  `position` smallint(6) NOT NULL,
-  `structure_id` int(11) DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `is_enabled` tinyint(1) DEFAULT '1',
+  `position` smallint(6) NOT NULL DEFAULT '0',
+  `structure_id` int(10) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug_parent` (`slug`,`parent_id`,`structure_id`),
@@ -271,14 +271,14 @@ INSERT INTO `catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheri
 
 DROP TABLE IF EXISTS `catalog_items`;
 CREATE TABLE IF NOT EXISTS `catalog_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_enabled` tinyint(1) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) DEFAULT '1',
   `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
-  `position` int(11) NOT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`),
   KEY `position` (`position`)
@@ -303,8 +303,8 @@ INSERT INTO `catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `
 
 DROP TABLE IF EXISTS `catalog_items_categories_relations`;
 CREATE TABLE IF NOT EXISTS `catalog_items_categories_relations` (
-  `item_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `item_id` int(11) unsigned NOT NULL,
+  `category_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`item_id`,`category_id`),
   KEY `IDX_29C9DBA5126F525E` (`item_id`),
   KEY `IDX_29C9DBA512469DE2` (`category_id`)
@@ -332,8 +332,8 @@ INSERT INTO `catalog_items_categories_relations` (`item_id`, `category_id`) VALU
 
 DROP TABLE IF EXISTS `catalog_items_categories_relations_single`;
 CREATE TABLE IF NOT EXISTS `catalog_items_categories_relations_single` (
-  `item_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `item_id` int(11) unsigned NOT NULL,
+  `category_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`item_id`,`category_id`),
   KEY `IDX_67C1BAA1126F525E` (`item_id`),
   KEY `IDX_67C1BAA112469DE2` (`category_id`)
@@ -361,7 +361,7 @@ INSERT INTO `catalog_items_categories_relations_single` (`item_id`, `category_id
 
 DROP TABLE IF EXISTS `catalog_items_title`;
 CREATE TABLE IF NOT EXISTS `catalog_items_title` (
-  `item_id` int(11) NOT NULL,
+  `item_id` int(11) unsigned NOT NULL,
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`item_id`),
   KEY `value` (`value`)
@@ -380,21 +380,21 @@ CREATE TABLE IF NOT EXISTS `catalog_items_title` (
 
 DROP TABLE IF EXISTS `catalog_properties`;
 CREATE TABLE IF NOT EXISTS `catalog_properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_enabled` tinyint(1) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) DEFAULT '1',
   `is_dedicated_table` tinyint(1) NOT NULL,
   `is_required` tinyint(1) NOT NULL,
-  `position` int(11) DEFAULT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `show_in_admin` tinyint(1) NOT NULL,
   `show_in_list` tinyint(1) NOT NULL,
   `show_in_view` tinyint(1) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `group_id` int(11) DEFAULT NULL,
+  `group_id` int(10) unsigned DEFAULT NULL,
   `params_yaml` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
@@ -425,12 +425,12 @@ INSERT INTO `catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_
 
 DROP TABLE IF EXISTS `catalog_properties_groups`;
 CREATE TABLE IF NOT EXISTS `catalog_properties_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `repository_id` int(11) DEFAULT NULL,
+  `category_id` int(10) unsigned DEFAULT NULL,
+  `repository_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A9A6740412469DE2` (`category_id`),
   KEY `IDX_A9A6740450C9D4F7` (`repository_id`)
@@ -446,90 +446,17 @@ INSERT INTO `catalog_properties_groups` (`id`, `name`, `title`, `created_at`, `c
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `chat_messages`
---
-
-DROP TABLE IF EXISTS `chat_messages`;
-CREATE TABLE IF NOT EXISTS `chat_messages` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `room_id` bigint(20) DEFAULT NULL,
-  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `date` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_C08B1FA254177093` (`room_id`),
-  KEY `date` (`date`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Дамп данных таблицы `chat_messages`
---
-
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `chat_rooms`
---
-
-DROP TABLE IF EXISTS `chat_rooms`;
-CREATE TABLE IF NOT EXISTS `chat_rooms` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `is_dialog` tinyint(1) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `creator_user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `is_dialog` (`is_dialog`),
-  KEY `creator_user_id` (`creator_user_id`),
-  KEY `created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Дамп данных таблицы `chat_rooms`
---
-
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `chat_rooms_members`
---
-
-DROP TABLE IF EXISTS `chat_rooms_members`;
-CREATE TABLE IF NOT EXISTS `chat_rooms_members` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `room_id` bigint(20) DEFAULT NULL,
-  `status` smallint(6) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_in_room` (`user_id`,`room_id`),
-  KEY `IDX_5E04104754177093` (`room_id`),
-  KEY `status` (`status`),
-  KEY `created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Дамп данных таблицы `chat_rooms_members`
---
-
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `engine_appearance_history`
 --
 
 DROP TABLE IF EXISTS `engine_appearance_history`;
 CREATE TABLE IF NOT EXISTS `engine_appearance_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `code` longtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `hash` (`hash`),
@@ -550,15 +477,15 @@ CREATE TABLE IF NOT EXISTS `engine_appearance_history` (
 
 DROP TABLE IF EXISTS `engine_folders`;
 CREATE TABLE IF NOT EXISTS `engine_folders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `folder_pid` int(11) DEFAULT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `folder_pid` int(10) unsigned DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_file` tinyint(1) NOT NULL,
-  `position` smallint(6) DEFAULT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `uri_part` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL,
-  `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `description` longtext COLLATE utf8_unicode_ci,
   `meta` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `redirect_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `router_node_id` int(11) DEFAULT NULL,
@@ -581,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
 -- Дамп данных таблицы `engine_folders`
 --
 
-INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `descr`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `create_by_user_id`, `create_datetime`, `template_self`) VALUES
+INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `description`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `create_by_user_id`, `create_datetime`, `template_self`) VALUES
 (1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL),
 (2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL),
 (3, 1, 'Аккаунт пользователя', 0, 999, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL),
@@ -607,15 +534,15 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 
 DROP TABLE IF EXISTS `engine_nodes`;
 CREATE TABLE IF NOT EXISTS `engine_nodes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `folder_id` int(11) DEFAULT NULL,
-  `region_id` smallint(6) DEFAULT NULL,
-  `is_active` tinyint(1) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `folder_id` int(10) unsigned DEFAULT NULL,
+  `region_id` int(10) unsigned DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
   `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `position` smallint(6) DEFAULT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `priority` smallint(6) NOT NULL,
-  `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   `create_by_user_id` int(11) NOT NULL,
   `create_datetime` datetime NOT NULL,
   `is_cached` tinyint(1) NOT NULL,
@@ -633,7 +560,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
 -- Дамп данных таблицы `engine_nodes`
 --
 
-INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `descr`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`, `controls_in_toolbar`) VALUES
+INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `description`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`, `controls_in_toolbar`) VALUES
 (1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL, 0),
 (2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 1, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL, 1),
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 2, 'Левая колонка', 1, '2013-03-21 06:03:37', 0, NULL, 1),
@@ -673,11 +600,11 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 
 DROP TABLE IF EXISTS `engine_regions`;
 CREATE TABLE IF NOT EXISTS `engine_regions` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `position` smallint(6) DEFAULT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL,
-  `descr` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `description` longtext,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
@@ -688,7 +615,7 @@ CREATE TABLE IF NOT EXISTS `engine_regions` (
 -- Дамп данных таблицы `engine_regions`
 --
 
-INSERT INTO `engine_regions` (`id`, `position`, `name`, `descr`, `user_id`, `created_at`) VALUES
+INSERT INTO `engine_regions` (`id`, `position`, `name`, `description`, `user_id`, `created_at`) VALUES
 (1, 0, 'content', 'Рабочая область', 1, '2013-03-11 01:09:17'),
 (2, 2, 'breadcrumbs', 'Хлебные крошки', 1, '2013-03-11 01:09:33'),
 (3, 1, 'main_menu', 'Навигационное меню', 1, '2013-03-11 04:00:50'),
@@ -704,8 +631,8 @@ INSERT INTO `engine_regions` (`id`, `position`, `name`, `descr`, `user_id`, `cre
 
 DROP TABLE IF EXISTS `engine_regions_inherit`;
 CREATE TABLE IF NOT EXISTS `engine_regions_inherit` (
-  `region_id` smallint(6) NOT NULL,
-  `folder_id` int(11) NOT NULL,
+  `region_id` int(10) unsigned NOT NULL,
+  `folder_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`region_id`,`folder_id`),
   KEY `IDX_4B3EA624E9ED820C` (`region_id`),
   KEY `IDX_4B3EA624162CB942` (`folder_id`)
@@ -729,9 +656,9 @@ INSERT INTO `engine_regions_inherit` (`region_id`, `folder_id`) VALUES
 
 DROP TABLE IF EXISTS `engine_roles`;
 CREATE TABLE IF NOT EXISTS `engine_roles` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `position` smallint(6) NOT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_5FFC79B05E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
@@ -748,48 +675,16 @@ INSERT INTO `engine_roles` (`id`, `name`, `position`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `engine_settings`
---
-
-DROP TABLE IF EXISTS `engine_settings`;
-CREATE TABLE IF NOT EXISTS `engine_settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `bundle` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `key_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `value` longtext COLLATE utf8_unicode_ci,
-  `serialized` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `bundle_key` (`bundle`,`key_name`),
-  KEY `bundle` (`bundle`),
-  KEY `key_name` (`key_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
-
---
--- Дамп данных таблицы `engine_settings`
---
-
-INSERT INTO `engine_settings` (`id`, `bundle`, `key_name`, `value`, `serialized`) VALUES
-(1, 'cms', 'site_full_name', 'Smart Core CMS (based on Symfony2 Framework)', 0),
-(2, 'cms', 'site_short_name', 'Smart Core CMS', 0),
-(3, 'cms', 'html_title_delimiter', '&ndash;', 0),
-(4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0),
-(5, 'cms', 'appearance_editor', 'ace', 0),
-(6, 'cms', 'appearance_scripts_path', '/theme/js/', 0),
-(7, 'cms', 'appearance_styles_path', '/theme/css/', 0);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `feedbacks`
 --
 
 DROP TABLE IF EXISTS `feedbacks`;
 CREATE TABLE IF NOT EXISTS `feedbacks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `text` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `created` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -806,11 +701,11 @@ CREATE TABLE IF NOT EXISTS `feedbacks` (
 
 DROP TABLE IF EXISTS `galleries`;
 CREATE TABLE IF NOT EXISTS `galleries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `media_collection_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `media_collection_id` int(11) unsigned NOT NULL,
   `order_albums_by` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F70E6EB7B52E685C` (`media_collection_id`)
@@ -831,18 +726,18 @@ INSERT INTO `galleries` (`id`, `title`, `created_at`, `user_id`, `media_collecti
 
 DROP TABLE IF EXISTS `gallery_albums`;
 CREATE TABLE IF NOT EXISTS `gallery_albums` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gallery_id` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `descr` longtext COLLATE utf8_unicode_ci,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `gallery_id` int(11) unsigned DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `cover_image_id` int(11) DEFAULT NULL,
   `photos_count` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `is_enabled` tinyint(1) NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `is_enabled` tinyint(1) DEFAULT '1',
   `last_image_id` int(11) DEFAULT NULL,
-  `position` int(11) NOT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -851,7 +746,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
 -- Дамп данных таблицы `gallery_albums`
 --
 
-INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`, `user_id`, `cover_image_id`, `photos_count`, `updated_at`, `is_enabled`, `last_image_id`, `position`) VALUES
+INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `description`, `created_at`, `user_id`, `cover_image_id`, `photos_count`, `updated_at`, `is_enabled`, `last_image_id`, `position`) VALUES
 (1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1, 8, 2, '2014-07-15 23:54:05', 1, 8, 0),
 (2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1, NULL, 0, '2014-07-15 23:49:22', 0, NULL, 0);
 
@@ -863,13 +758,13 @@ INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `descr`, `created_at`
 
 DROP TABLE IF EXISTS `gallery_photos`;
 CREATE TABLE IF NOT EXISTS `gallery_photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `image_id` int(11) NOT NULL,
-  `album_id` int(11) DEFAULT NULL,
-  `descr` longtext COLLATE utf8_unicode_ci,
+  `album_id` int(11) unsigned DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `position` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_AAF50C7B1137ABCF` (`album_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -878,7 +773,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
 -- Дамп данных таблицы `gallery_photos`
 --
 
-INSERT INTO `gallery_photos` (`id`, `image_id`, `album_id`, `descr`, `created_at`, `user_id`, `position`) VALUES
+INSERT INTO `gallery_photos` (`id`, `image_id`, `album_id`, `description`, `created_at`, `user_id`, `position`) VALUES
 (1, 7, 1, NULL, '2014-07-15 23:49:51', 1, 0),
 (2, 8, 1, NULL, '2014-07-15 23:54:05', 1, 0);
 
@@ -890,10 +785,10 @@ INSERT INTO `gallery_photos` (`id`, `image_id`, `album_id`, `descr`, `created_at
 
 DROP TABLE IF EXISTS `media_categories`;
 CREATE TABLE IF NOT EXISTS `media_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) unsigned DEFAULT NULL,
   `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A1B938F6727ACA70` (`parent_id`),
@@ -913,9 +808,9 @@ CREATE TABLE IF NOT EXISTS `media_categories` (
 
 DROP TABLE IF EXISTS `media_collections`;
 CREATE TABLE IF NOT EXISTS `media_collections` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `default_storage_id` int(11) NOT NULL,
-  `title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `default_storage_id` int(10) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `default_filter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `relative_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -942,10 +837,10 @@ INSERT INTO `media_collections` (`id`, `default_storage_id`, `title`, `default_f
 
 DROP TABLE IF EXISTS `media_files`;
 CREATE TABLE IF NOT EXISTS `media_files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `collection_id` int(11) NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `storage_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `collection_id` int(11) unsigned NOT NULL,
+  `category_id` int(11) unsigned DEFAULT NULL,
+  `storage_id` int(11) unsigned NOT NULL,
   `is_preuploaded` tinyint(1) NOT NULL,
   `relative_path` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `filename` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -984,10 +879,10 @@ INSERT INTO `media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `
 
 DROP TABLE IF EXISTS `media_files_transformed`;
 CREATE TABLE IF NOT EXISTS `media_files_transformed` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `file_id` int(11) NOT NULL,
-  `collection_id` int(11) NOT NULL,
-  `storage_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `file_id` int(11) unsigned NOT NULL,
+  `collection_id` int(11) unsigned NOT NULL,
+  `storage_id` int(11) unsigned NOT NULL,
   `filter` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `size` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -1024,9 +919,9 @@ INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storag
 
 DROP TABLE IF EXISTS `media_storages`;
 CREATE TABLE IF NOT EXISTS `media_storages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `provider` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `relative_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
@@ -1048,30 +943,30 @@ INSERT INTO `media_storages` (`id`, `provider`, `title`, `relative_path`, `param
 
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) DEFAULT NULL,
-  `folder_id` int(11) DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT NULL,
-  `position` smallint(6) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) unsigned DEFAULT NULL,
+  `folder_id` int(10) unsigned DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_by_user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `pid` int(11) DEFAULT NULL,
+  `pid` int(11) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   PRIMARY KEY (`id`),
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `descr`, `url`, `create_by_user_id`, `created_at`, `updated_at`, `pid`, `properties`) VALUES
+INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `create_by_user_id`, `created_at`, `updated_at`, `pid`, `properties`) VALUES
 (1, 1, 1, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 05:25:48', '2013-05-06 11:13:53', NULL, NULL),
 (2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL, NULL),
 (3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL),
@@ -1086,7 +981,9 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 (13, 1, 14, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 07:56:17', NULL, 11, 'N;'),
 (14, 1, 4, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 11:28:48', NULL, 8, 'N;'),
 (15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;'),
-(17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;');
+(17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;'),
+(18, 2, 7, 1, 0, NULL, NULL, NULL, 1, '2015-02-15 21:41:46', NULL, NULL, 'N;'),
+(19, 1, NULL, 1, 0, NULL, NULL, 'ya.ru', 1, '2015-02-15 23:07:04', NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -1096,23 +993,24 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 
 DROP TABLE IF EXISTS `menu_groups`;
 CREATE TABLE IF NOT EXISTS `menu_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `position` smallint(6) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `descr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   `create_by_user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `menu_groups`
 --
 
-INSERT INTO `menu_groups` (`id`, `position`, `name`, `descr`, `create_by_user_id`, `created_at`, `properties`) VALUES
-(1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', NULL);
+INSERT INTO `menu_groups` (`id`, `position`, `name`, `description`, `create_by_user_id`, `created_at`, `properties`) VALUES
+(1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', NULL),
+(2, 0, 'Второе', NULL, 1, '2015-02-15 20:24:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -1139,24 +1037,57 @@ CREATE TABLE IF NOT EXISTS `session` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bundle` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `value` longtext COLLATE utf8_unicode_ci,
+  `serialized` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
+  KEY `bundle` (`bundle`),
+  KEY `IDX_E545A0C55E237E06` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+
+--
+-- Дамп данных таблицы `settings`
+--
+
+INSERT INTO `settings` (`id`, `bundle`, `name`, `value`, `serialized`) VALUES
+(1, 'cms', 'site_full_name', 'Smart Core CMS (based on Symfony2 Framework)', 0),
+(2, 'cms', 'site_short_name', 'Smart Core CMS', 0),
+(3, 'cms', 'html_title_delimiter', '&ndash;', 0),
+(4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0),
+(5, 'cms', 'appearance_editor', 'ace', 0),
+(6, 'cms', 'appearance_scripts_path', '/theme/js/', 0),
+(7, 'cms', 'appearance_styles_path', '/theme/css/', 0),
+(8, 'cms', 'twitter_bootstrap_version', '3', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `simple_news`
 --
 
 DROP TABLE IF EXISTS `simple_news`;
 CREATE TABLE IF NOT EXISTS `simple_news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slug` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `annotation` longtext COLLATE utf8_unicode_ci,
   `text` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `end_publish_date` datetime DEFAULT NULL,
-  `is_enabled` tinyint(1) NOT NULL,
+  `is_enabled` tinyint(1) DEFAULT '1',
   `image_id` bigint(20) DEFAULT NULL,
   `annotation_widget` longtext COLLATE utf8_unicode_ci,
   `publish_date` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `instance_id` int(11) DEFAULT NULL,
+  `instance_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_33961BA3989D9B62` (`slug`),
   KEY `is_enabled` (`is_enabled`),
@@ -1188,12 +1119,12 @@ INSERT INTO `simple_news` (`id`, `title`, `slug`, `annotation`, `text`, `created
 
 DROP TABLE IF EXISTS `simple_news_instances`;
 CREATE TABLE IF NOT EXISTS `simple_news_instances` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `use_image` tinyint(1) NOT NULL,
   `use_annotation_widget` tinyint(1) NOT NULL,
-  `media_collection_id` int(11) DEFAULT NULL,
+  `media_collection_id` int(11) unsigned DEFAULT NULL,
   `use_end_publish_date` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_98EDD0015E237E06` (`name`),
@@ -1243,8 +1174,8 @@ CREATE TABLE IF NOT EXISTS `sitemap_urls` (
 
 DROP TABLE IF EXISTS `sliders`;
 CREATE TABLE IF NOT EXISTS `sliders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `width` smallint(6) DEFAULT NULL,
   `height` smallint(6) DEFAULT NULL,
   `mode` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1270,16 +1201,16 @@ INSERT INTO `sliders` (`id`, `title`, `width`, `height`, `mode`, `library`, `sli
 
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE IF NOT EXISTS `slides` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `enabled` tinyint(1) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) DEFAULT '1',
   `file_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `original_file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `position` smallint(6) DEFAULT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
-  `slider_id` int(11) NOT NULL,
+  `slider_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_56692A96D7DF1668` (`file_name`),
   KEY `position` (`position`),
@@ -1291,7 +1222,7 @@ CREATE TABLE IF NOT EXISTS `slides` (
 -- Дамп данных таблицы `slides`
 --
 
-INSERT INTO `slides` (`id`, `enabled`, `file_name`, `original_file_name`, `title`, `position`, `created_at`, `user_id`, `properties`, `slider_id`) VALUES
+INSERT INTO `slides` (`id`, `is_enabled`, `file_name`, `original_file_name`, `title`, `position`, `created_at`, `user_id`, `properties`, `slider_id`) VALUES
 (10, 1, 'e711d4c91a7deebfb9a1eabf1b6d012d.jpeg', 'img1.jpg', NULL, 0, '2014-02-09 21:53:37', 1, 'a:0:{}', 1),
 (11, 1, '0722a36552cca4701498791b82992b89.jpeg', 'img2.jpg', 'На фоне реки', 0, '2014-02-09 21:53:42', 1, 'a:0:{}', 1),
 (12, 1, '1268a90a72e1c513ecfd59adf20ccf22.jpeg', 'img3.jpg', 'В поле', 0, '2014-02-09 21:53:46', 1, 'a:0:{}', 1),
@@ -1308,13 +1239,14 @@ INSERT INTO `slides` (`id`, `enabled`, `file_name`, `original_file_name`, `title
 
 DROP TABLE IF EXISTS `texter`;
 CREATE TABLE IF NOT EXISTS `texter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `locale` varchar(8) DEFAULT NULL,
   `text` longtext,
   `meta` longtext NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `editor` smallint(6) NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -1322,23 +1254,23 @@ CREATE TABLE IF NOT EXISTS `texter` (
 -- Дамп данных таблицы `texter`
 --
 
-INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `editor`) VALUES
-(1, 'ru', 'Футер\r', 'a:0:{}', '2012-08-27 03:16:57', 1, 1),
-(2, 'ru', '<h1>\r\n  Главная страница!\r\n</h1>\r\n<p>\r\n  С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма,\r\n  концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией\r\n  всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов\r\n  всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.\r\n</p>\r', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1, 1),
-(3, 'ru', '<h2>Пример страницы с 2-мя колонками</h2>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>', 'a:1:{s:8:"keywords";s:3:"sdf";}', '2012-08-27 03:51:05', 1, 1),
-(4, 'ru', '<p><img src="/uploads/images/bscap0001.jpg" alt="" width="300" height="124" /><br />Сервисная стратегия деятельно искажает продвигаемый медиаплан, опираясь на опыт западных коллег. Внутрифирменная реклама, согласно Ф.Котлеру, откровенно цинична. Торговая марка исключительно уравновешивает презентационный материал, полагаясь на инсайдерскую информацию. Наряду с этим, узнавание бренда вполне выполнимо. Организация слубы маркетинга, согласно Ф.Котлеру, усиливает фактор коммуникации, осознавая социальную ответственность бизнеса. Экспертиза выполненного проекта восстанавливает потребительский презентационный материал, полагаясь на инсайдерскую информацию.</p>', 'a:0:{}', '2012-08-27 03:51:27', 1, 1),
-(5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1, 0),
-(6, 'ru', 'Text under menu in <strong>User</strong> folder.\r', 'a:0:{}', '2013-03-25 21:53:12', 1, 1),
-(7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g\r', 'a:0:{}', '2013-08-10 11:14:55', 1, 1),
-(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;)<br />\r\n  <br />\r\n  <img src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1),
-(9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>\r', 'a:0:{}', '2014-01-20 03:47:18', 1, 1),
-(10, 'ru', 'Очень интересные новости ;)', 'a:0:{}', '2014-01-22 19:02:28', 1, 1),
-(11, 'ru', 'Для жаждущих с Сущностью Вечной слиянья<br />\r\nЕсть йога познанья и йога деянья,<br />\r\n<br />\r\nВ бездействии мы не обрящем блаженства;<br />\r\nКто дела не начал, тот чужд совершенства.<br />\r\n<br />\r\nОднако без действий никто не пребудет:<br />\r\nТы хочешь того иль не хочешь — принудит<br />\r\n<br />\r\nПрирода тебя: нет иного удела,<br />\r\nИ, ей повинуясь, ты делаешь дело.<br />\r\n<br />\r\nКто, чувства поправ, все же помнит впечали<br />\r\nПредметы, что чувства его услаждали,—<br />\r\n<br />\r\nТот, связанный, следует ложной дорогой;<br />\r\nА тот, о сын Кунти, кто, волею строгой<br />\r\n<br />\r\nВсе чувства поправ, йогу действия начал,—<br />\r\nНа правой дороге себя обозначил.<br />\r\n<br />\r\nПоэтому действуй; бездействию дело<br />\r\nВсегда предпочти; отравления тела —<br />\r\n<br />\r\nИ то без усилий свершить невозможно:<br />\r\nДеянье — надежно, бездействие — ложно. &nbsp;\r', 'a:0:{}', '2014-01-29 10:01:55', 1, 1),
-(12, 'ru', '<hr />\r\n<h4>\r\n  Последние новости\r\n</h4>\r', 'a:0:{}', '2014-01-29 19:43:16', 1, 1),
-(13, 'ru', '<h4>\r\n  Меню\r\n</h4>\r\n<hr />\r', 'a:0:{}', '2014-01-29 19:45:52', 1, 1),
-(14, 'ru', 'Где чувства господствуют – там вожделенье,<br />\r\nА где вожделенье – там гнев, ослепленье,<br />\r\n<br />\r\nА где ослепленье – ума угасанье,<br />\r\nГде ум угасает – там гибнет познанье,<br />\r\n<br />\r\nГде гибнет познанье, – да ведает всякий, –<br />\r\nТам гибнет дитя человечье во мраке.<br />\r\n<br />\r\nА тот, кто добился над чувствами власти,<br />\r\nПопрал отвращенье, не знает пристрастий,<br />\r\n<br />\r\nКто их навсегда подчинил своей воле, –<br />\r\nДостиг просветленья, избавясь от боли,<br />\r\n<br />\r\nИ сердце с тех пор у него беспорочно,<br />\r\nИ разум его утверждается прочно.<br />\r\n<br />\r\nВне йоги к разумным себя не причисли:<br />\r\nВ неясности нет созидающей мысли;<br />\r\n<br />\r\nВне творческой мысли нет мира, покоя,<br />\r\nА где вне покоя и счастье людское?\r', 'a:0:{}', '2014-01-29 20:16:33', 1, 1),
-(15, 'ru', '<hr />\r\n<h4>\r\n  Категории блога\r\n</h4>\r', 'a:0:{}', '2014-02-08 21:01:35', 1, 1),
-(16, 'ru', 'Проверка вложенных папок при условии, что в родительскую подключен модуль с роутингом.\r', 'a:0:{}', '2014-02-08 21:04:03', 1, 1);
+INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `editor`, `updated_at`) VALUES
+(1, 'ru', 'Футер\r', 'a:0:{}', '2012-08-27 03:16:57', 1, 1, NULL),
+(2, 'ru', '<h1>\r\n  Главная страница!\r\n</h1>\r\n<p>\r\n  С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма,\r\n  концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией\r\n  всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов\r\n  всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.\r\n</p>\r', 'a:1:{s:8:"keywords";s:3:"123";}', '2012-08-27 03:17:27', 1, 1, NULL),
+(3, 'ru', '<h2>Пример страницы с 2-мя колонками</h2>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>\r\n<p>Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.</p>', 'a:1:{s:8:"keywords";s:3:"sdf";}', '2012-08-27 03:51:05', 1, 1, NULL),
+(4, 'ru', '<p><img src="/uploads/images/bscap0001.jpg" alt="" width="300" height="124" /><br />Сервисная стратегия деятельно искажает продвигаемый медиаплан, опираясь на опыт западных коллег. Внутрифирменная реклама, согласно Ф.Котлеру, откровенно цинична. Торговая марка исключительно уравновешивает презентационный материал, полагаясь на инсайдерскую информацию. Наряду с этим, узнавание бренда вполне выполнимо. Организация слубы маркетинга, согласно Ф.Котлеру, усиливает фактор коммуникации, осознавая социальную ответственность бизнеса. Экспертиза выполненного проекта восстанавливает потребительский презентационный материал, полагаясь на инсайдерскую информацию.</p>', 'a:0:{}', '2012-08-27 03:51:27', 1, 1, NULL),
+(5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1, 0, NULL),
+(6, 'ru', 'Text under menu in <strong>User</strong> folder.\r', 'a:0:{}', '2013-03-25 21:53:12', 1, 1, NULL),
+(7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g\r', 'a:0:{}', '2013-08-10 11:14:55', 1, 1, NULL),
+(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;)<br />\r\n  <br />\r\n  <img style="width: 100%; height: auto;" src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /><br />\r\n  <br />\r\n  <br />\r\n  <br />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1, NULL),
+(9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>\r', 'a:0:{}', '2014-01-20 03:47:18', 1, 1, NULL),
+(10, 'ru', 'Очень интересные новости ;)', 'a:0:{}', '2014-01-22 19:02:28', 1, 1, NULL),
+(11, 'ru', 'Для жаждущих с Сущностью Вечной слиянья<br />\r\nЕсть йога познанья и йога деянья,<br />\r\n<br />\r\nВ бездействии мы не обрящем блаженства;<br />\r\nКто дела не начал, тот чужд совершенства.<br />\r\n<br />\r\nОднако без действий никто не пребудет:<br />\r\nТы хочешь того иль не хочешь — принудит<br />\r\n<br />\r\nПрирода тебя: нет иного удела,<br />\r\nИ, ей повинуясь, ты делаешь дело.<br />\r\n<br />\r\nКто, чувства поправ, все же помнит впечали<br />\r\nПредметы, что чувства его услаждали,—<br />\r\n<br />\r\nТот, связанный, следует ложной дорогой;<br />\r\nА тот, о сын Кунти, кто, волею строгой<br />\r\n<br />\r\nВсе чувства поправ, йогу действия начал,—<br />\r\nНа правой дороге себя обозначил.<br />\r\n<br />\r\nПоэтому действуй; бездействию дело<br />\r\nВсегда предпочти; отравления тела —<br />\r\n<br />\r\nИ то без усилий свершить невозможно:<br />\r\nДеянье — надежно, бездействие — ложно. &nbsp;\r', 'a:0:{}', '2014-01-29 10:01:55', 1, 1, NULL),
+(12, 'ru', '<hr />\r\n<h4>\r\n  Последние новости\r\n</h4>\r', 'a:0:{}', '2014-01-29 19:43:16', 1, 1, NULL),
+(13, 'ru', '<h4>\r\n  Меню\r\n</h4>\r\n<hr />\r', 'a:0:{}', '2014-01-29 19:45:52', 1, 1, NULL),
+(14, 'ru', 'Где чувства господствуют – там вожделенье,<br />\r\nА где вожделенье – там гнев, ослепленье,<br />\r\n<br />\r\nА где ослепленье – ума угасанье,<br />\r\nГде ум угасает – там гибнет познанье,<br />\r\n<br />\r\nГде гибнет познанье, – да ведает всякий, –<br />\r\nТам гибнет дитя человечье во мраке.<br />\r\n<br />\r\nА тот, кто добился над чувствами власти,<br />\r\nПопрал отвращенье, не знает пристрастий,<br />\r\n<br />\r\nКто их навсегда подчинил своей воле, –<br />\r\nДостиг просветленья, избавясь от боли,<br />\r\n<br />\r\nИ сердце с тех пор у него беспорочно,<br />\r\nИ разум его утверждается прочно.<br />\r\n<br />\r\nВне йоги к разумным себя не причисли:<br />\r\nВ неясности нет созидающей мысли;<br />\r\n<br />\r\nВне творческой мысли нет мира, покоя,<br />\r\nА где вне покоя и счастье людское?\r', 'a:0:{}', '2014-01-29 20:16:33', 1, 1, NULL),
+(15, 'ru', '<hr />\r\n<h4>\r\n  Категории блога\r\n</h4>\r', 'a:0:{}', '2014-02-08 21:01:35', 1, 1, NULL),
+(16, 'ru', 'Проверка вложенных папок при условии, что в родительскую подключен модуль с роутингом.\r', 'a:0:{}', '2014-02-08 21:04:03', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1348,25 +1280,25 @@ INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `
 
 DROP TABLE IF EXISTS `texter_history`;
 CREATE TABLE IF NOT EXISTS `texter_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_deleted` tinyint(1) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `is_deleted` tinyint(1) DEFAULT '0',
   `item_id` int(11) NOT NULL,
   `locale` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
   `editor` smallint(6) NOT NULL,
-  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `text` longtext COLLATE utf8_unicode_ci,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `created` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   KEY `is_deleted` (`is_deleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
 
 --
 -- Дамп данных таблицы `texter_history`
 --
 
-INSERT INTO `texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `editor`, `text`, `meta`, `created`, `user_id`) VALUES
+INSERT INTO `texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `editor`, `text`, `meta`, `created_at`, `user_id`) VALUES
 (1, 0, 2, 'ru', 1, '<h1>Главная страница!</h1>\r\n<p>С точки зрения банальной эрудиции каждый индивидуум, критически мотивирующий абстракцию, не может игнорировать критерии утопического субъективизма, концептуально интерпретируя общепринятые дефанизирующие поляризаторы, поэтому консенсус, достигнутый диалектической материальной классификацией всеобщих мотиваций в парадогматических связях предикатов, решает проблему усовершенствования формирующих геотрансплантационных квазипузлистатов всех кинетически коррелирующих аспектов. Исходя из этого, мы пришли к выводу, что каждый произвольно выбранный предикативно абсорбирующий объект.</p>\r\n<img src="/uploads/Advanced%20C%20Asana.jpg" alt="" width="891" height="666" />', 'a:1:{s:8:"keywords";s:3:"123";}', '2014-02-10 07:49:39', 1),
 (2, 0, 16, 'ru', 1, '<hr />\r\n<h4>\r\n  Тэги блога\r\n</h4>\r', 'a:0:{}', '2014-02-10 11:30:25', 1),
 (3, 0, 16, 'ru', 1, 'Проверка вложенных папок при улсовии, что в родительскую подключен модуль с роутингом.\r', 'a:0:{}', '2014-02-10 11:31:39', 1),
@@ -1381,15 +1313,15 @@ INSERT INTO `texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `editor`,
 
 DROP TABLE IF EXISTS `unicat_repositories`;
 CREATE TABLE IF NOT EXISTS `unicat_repositories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_inheritance` tinyint(1) NOT NULL,
-  `media_collection_id` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `media_collection_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `entities_namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `default_structure_id` int(11) DEFAULT NULL,
+  `default_structure_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `IDX_E243B95B52E685C` (`media_collection_id`),
@@ -1411,15 +1343,15 @@ INSERT INTO `unicat_repositories` (`id`, `name`, `title`, `is_inheritance`, `med
 
 DROP TABLE IF EXISTS `unicat_structures`;
 CREATE TABLE IF NOT EXISTS `unicat_structures` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `repository_id` int(11) DEFAULT NULL,
-  `position` smallint(6) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `repository_id` int(11) unsigned DEFAULT NULL,
+  `position` smallint(6) NOT NULL DEFAULT '0',
   `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_required` tinyint(1) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
-  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title_form` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_default_inheritance` tinyint(1) DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
@@ -1473,7 +1405,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-01-25 05:51:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-15 04:33:59', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1560,93 +1492,81 @@ INSERT INTO `_engine_permissions_groups` (`group_id`, `descr`) VALUES
 -- Ограничения внешнего ключа таблицы `blog_articles`
 --
 ALTER TABLE `blog_articles`
-  ADD CONSTRAINT `FK_E42BC34B12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`),
+  ADD CONSTRAINT `FK_CB80154F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`),
   ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_articles_tags_relations`
 --
 ALTER TABLE `blog_articles_tags_relations`
-  ADD CONSTRAINT `FK_1994F0217294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`),
-  ADD CONSTRAINT `FK_1994F021BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`);
+  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`),
+  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_categories`
 --
 ALTER TABLE `blog_categories`
-  ADD CONSTRAINT `FK_D7E9F9CF3D8E604F` FOREIGN KEY (`parent`) REFERENCES `blog_categories` (`id`);
+  ADD CONSTRAINT `FK_DC3564813D8E604F` FOREIGN KEY (`parent`) REFERENCES `blog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_categories`
 --
 ALTER TABLE `catalog_categories`
-  ADD CONSTRAINT `FK_BE577EDA2534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat_structures` (`id`),
-  ADD CONSTRAINT `FK_BE577EDA727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `catalog_categories` (`id`);
+  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat_structures` (`id`),
+  ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `catalog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_items_categories_relations`
 --
 ALTER TABLE `catalog_items_categories_relations`
-  ADD CONSTRAINT `FK_29C9DBA512469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_29C9DBA5126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_BC8720E412469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_BC8720E4126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_items_categories_relations_single`
 --
 ALTER TABLE `catalog_items_categories_relations_single`
-  ADD CONSTRAINT `FK_67C1BAA112469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_67C1BAA1126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_97B5DA0812469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_97B5DA08126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_items_title`
 --
 ALTER TABLE `catalog_items_title`
-  ADD CONSTRAINT `FK_A01C448126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`);
+  ADD CONSTRAINT `FK_3E5E937E126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_properties`
 --
 ALTER TABLE `catalog_properties`
-  ADD CONSTRAINT `FK_3670975FE54D947` FOREIGN KEY (`group_id`) REFERENCES `catalog_properties_groups` (`id`);
+  ADD CONSTRAINT `FK_32E9C31CFE54D947` FOREIGN KEY (`group_id`) REFERENCES `catalog_properties_groups` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `catalog_properties_groups`
 --
 ALTER TABLE `catalog_properties_groups`
-  ADD CONSTRAINT `FK_A9A6740412469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`),
-  ADD CONSTRAINT `FK_A9A6740450C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_repositories` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `chat_messages`
---
-ALTER TABLE `chat_messages`
-  ADD CONSTRAINT `FK_C08B1FA254177093` FOREIGN KEY (`room_id`) REFERENCES `chat_rooms` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `chat_rooms_members`
---
-ALTER TABLE `chat_rooms_members`
-  ADD CONSTRAINT `FK_5E04104754177093` FOREIGN KEY (`room_id`) REFERENCES `chat_rooms` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_41BAD1D712469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`),
+  ADD CONSTRAINT `FK_41BAD1D750C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_repositories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_folders`
 --
 ALTER TABLE `engine_folders`
-  ADD CONSTRAINT `FK_6B4611ABA640A07B` FOREIGN KEY (`folder_pid`) REFERENCES `engine_folders` (`id`);
+  ADD CONSTRAINT `FK_6C047E64A640A07B` FOREIGN KEY (`folder_pid`) REFERENCES `engine_folders` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_nodes`
 --
 ALTER TABLE `engine_nodes`
-  ADD CONSTRAINT `FK_F4FF528B162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_F4FF528BE9ED820C` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`);
+  ADD CONSTRAINT `FK_3055D1B7162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_regions_inherit`
 --
 ALTER TABLE `engine_regions_inherit`
-  ADD CONSTRAINT `FK_372DC759162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_372DC759E9ED820C` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `galleries`
@@ -1670,37 +1590,37 @@ ALTER TABLE `gallery_photos`
 -- Ограничения внешнего ключа таблицы `media_categories`
 --
 ALTER TABLE `media_categories`
-  ADD CONSTRAINT `FK_A1B938F6727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `media_categories` (`id`);
+  ADD CONSTRAINT `FK_30D688FC727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `media_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_collections`
 --
 ALTER TABLE `media_collections`
-  ADD CONSTRAINT `FK_C40927D314E68FF3` FOREIGN KEY (`default_storage_id`) REFERENCES `media_storages` (`id`);
+  ADD CONSTRAINT `FK_244DA17D14E68FF3` FOREIGN KEY (`default_storage_id`) REFERENCES `media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_files`
 --
 ALTER TABLE `media_files`
-  ADD CONSTRAINT `FK_D2E5001112469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
-  ADD CONSTRAINT `FK_D2E50011514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_D2E500115CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
+  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
+  ADD CONSTRAINT `FK_192C84E812469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
+  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_files_transformed`
 --
 ALTER TABLE `media_files_transformed`
-  ADD CONSTRAINT `FK_B0A0921B514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
-  ADD CONSTRAINT `FK_B0A0921B93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
+  ADD CONSTRAINT `FK_1084B87D514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
+  ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `menu`
 --
 ALTER TABLE `menu`
-  ADD CONSTRAINT `FK_71085977162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_710859775550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `FK_71085977FE54D947` FOREIGN KEY (`group_id`) REFERENCES `menu_groups` (`id`);
+  ADD CONSTRAINT `FK_7D053A93162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu` (`id`),
+  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`group_id`) REFERENCES `menu_groups` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `simple_news`
@@ -1718,17 +1638,17 @@ ALTER TABLE `simple_news_instances`
 -- Ограничения внешнего ключа таблицы `slides`
 --
 ALTER TABLE `slides`
-  ADD CONSTRAINT `FK_56692A962CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `sliders` (`id`);
+  ADD CONSTRAINT `FK_B8C020912CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `sliders` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_repositories`
 --
 ALTER TABLE `unicat_repositories`
-  ADD CONSTRAINT `FK_E243B957E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat_structures` (`id`),
-  ADD CONSTRAINT `FK_E243B95B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
+  ADD CONSTRAINT `FK_3A7B6CA37E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat_structures` (`id`),
+  ADD CONSTRAINT `FK_3A7B6CA3B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_structures`
 --
 ALTER TABLE `unicat_structures`
-  ADD CONSTRAINT `FK_C3D9EB2050C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_repositories` (`id`);
+  ADD CONSTRAINT `FK_239D6D8E50C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_repositories` (`id`);

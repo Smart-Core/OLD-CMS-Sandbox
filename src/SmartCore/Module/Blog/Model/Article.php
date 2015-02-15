@@ -4,6 +4,7 @@ namespace SmartCore\Module\Blog\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -12,12 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 abstract class Article implements ArticleInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\UpdatedAt;
 
     /**
      * @var bool
@@ -72,20 +70,6 @@ abstract class Article implements ArticleInterface
     protected $description;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $updated_at;
-
-    /**
      * Constructor.
      */
     public function __construct()
@@ -106,22 +90,6 @@ abstract class Article implements ArticleInterface
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \Datetime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
     }
 
     /**
@@ -244,24 +212,6 @@ abstract class Article implements ArticleInterface
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setUpdated()
-    {
-        $this->updated_at = new \DateTime();
-
-        return $this;
     }
 
     /**

@@ -5,12 +5,12 @@
     "type": "symfony-bundle",
     "homepage": "http://smart-core.org",
     "require": {
-        "php": ">=5.4.1"
+        "php": ">=5.4.11",
+        "smart-core/core-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "SmartCore\\Bundle\\CMSBundle": ""
+        "psr-4": {
+            "SmartCore\\Bundle\\CMSBundle\\": ""
         }
-    },                
-    "target-dir": "SmartCore/Bundle/CMSBundle"
+    }
 }

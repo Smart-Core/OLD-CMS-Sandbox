@@ -43,7 +43,7 @@ class NodeFormType extends AbstractType
                 ],
             ])
             ->add('template')
-            ->add('descr')
+            ->add('description')
             ->add('position')
             ->add('priority')
             ->add('is_active', null, ['required' => false])

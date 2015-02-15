@@ -4,6 +4,7 @@ namespace SmartCore\Module\Menu\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 
 /**
@@ -13,19 +14,13 @@ use SmartCore\Bundle\CMSBundle\Entity\Folder;
  */
 class Item
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $is_active;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\UpdatedAt;
+    use ColumnTrait\IsActive;
+    use ColumnTrait\Description;
+    use ColumnTrait\Position;
+    use ColumnTrait\Title;
 
     /**
      * @var Item
@@ -44,13 +39,6 @@ class Item
     protected $children;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="smallint", nullable=true)
-     */
-    protected $position;
-
-    /**
      * @var Group
      *
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="items")
@@ -63,20 +51,6 @@ class Item
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\CMSBundle\Entity\Folder")
      */
     protected $folder;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $descr;
 
     /**
      * Custom url.
@@ -98,22 +72,10 @@ class Item
      * @var int
      *
      * @ORM\Column(type="integer")
+     *
+     * @deprecated use UserId
      */
     protected $create_by_user_id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $updated_at;
 
     /**
      * Для отображения в формах. Не маппится в БД.
@@ -148,49 +110,6 @@ class Item
         }
 
         return (string) $title;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param bool $is_active
-     * @return $this
-     */
-    public function setIsActive($is_active)
-    {
-        $this->is_active = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsActive()
-    {
-        return $this->is_active;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive()
-    {
-        return $this->is_active;
     }
 
     /**
@@ -259,25 +178,6 @@ class Item
     }
 
     /**
-     * @param string $descr
-     * @return $this
-     */
-    public function setDescr($descr)
-    {
-        $this->descr = $descr;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescr()
-    {
-        return $this->descr;
-    }
-
-    /**
      * @param array|null $properties
      * @return $this
      */
@@ -313,48 +213,6 @@ class Item
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param int $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        if (empty($position)) {
-            $position = 0;
-        }
-
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**
@@ -397,14 +255,6 @@ class Item
     public function getCreateByUserId()
     {
         return $this->create_by_user_id;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace SmartCore\Module\Slider\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -11,19 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Slider
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+    use ColumnTrait\Id;
+    use ColumnTrait\Title;
 
     /**
      * @var integer
@@ -93,14 +83,6 @@ class Slider
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -234,24 +216,5 @@ class Slider
     public function getSlides()
     {
         return $this->slides;
-    }
-
-    /**
-     * @param string $title
-     * @return Slider
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 }

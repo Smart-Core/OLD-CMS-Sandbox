@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\MediaBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -11,19 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Collection
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=128)
-     */
-    protected $title;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Title;
 
     /**
      * @var string
@@ -75,13 +66,6 @@ class Collection
     protected $filename_pattern;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    protected $created_at;
-
-    /**
      * @var File[]|ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="File", mappedBy="collection", fetch="EXTRA_LAZY")
@@ -110,22 +94,6 @@ class Collection
     }
 
     /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
      * @param Storage $default_storage
      * @return $this
      */
@@ -142,25 +110,6 @@ class Collection
     public function getDefaultStorage()
     {
         return $this->default_storage;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**

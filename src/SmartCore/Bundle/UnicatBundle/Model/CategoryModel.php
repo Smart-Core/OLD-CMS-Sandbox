@@ -3,6 +3,7 @@
 namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatStructure;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -22,34 +23,17 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 abstract class CategoryModel
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $is_enabled;
-
-    /**
-     * @ORM\Column(type="smallint")
-     */
-    protected $position;
+    use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Position;
+    use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * @ORM\Column(type="string", length=32)
      */
     protected $slug;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $title;
 
     /**
      * @ORM\Column(type="boolean")
@@ -65,16 +49,6 @@ abstract class CategoryModel
      * @ORM\Column(type="array", nullable=true)
      */
     protected $properties;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $user_id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
 
     /**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
@@ -134,41 +108,6 @@ abstract class CategoryModel
     }
 
     /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param bool $is_enabled
-     * @return $this
-     */
-    public function setIsEnabled($is_enabled)
-    {
-        $this->is_enabled = $is_enabled;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsEnabled()
-    {
-        return $this->is_enabled;
-    }
-
-    /**
      * @param mixed $is_inheritance
      * @return $this
      */
@@ -207,25 +146,6 @@ abstract class CategoryModel
     }
 
     /**
-     * @param mixed $position
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
      * @param mixed $slug
      * @return $this
      */
@@ -245,25 +165,6 @@ abstract class CategoryModel
     }
 
     /**
-     * @param mixed $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
      * @param UnicatStructure $structure
      * @return $this
      */
@@ -280,25 +181,6 @@ abstract class CategoryModel
     public function getStructure()
     {
         return $this->structure;
-    }
-
-    /**
-     * @param mixed $user_id
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 
     /**

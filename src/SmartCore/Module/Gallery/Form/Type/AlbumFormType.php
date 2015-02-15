@@ -14,7 +14,7 @@ class AlbumFormType extends AbstractType
             ->add('is_enabled', null, ['required' => false])
             ->add('title')
             ->add('position')
-            ->add('descr')
+            ->add('description')
         ;
     }
 

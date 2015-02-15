@@ -44,8 +44,8 @@ class FolderFormType extends AbstractType
 
             $nodeTitle = $node->getId().': '.$node->getModule();
 
-            if ($node->getDescr()) {
-                $nodeTitle .= ' ('.$node->getDescr().')';
+            if ($node->getDescription()) {
+                $nodeTitle .= ' ('.$node->getDescription().')';
             }
 
             $routedNodes[$node->getId()] = $nodeTitle;
@@ -54,7 +54,7 @@ class FolderFormType extends AbstractType
         $builder
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('uri_part')
-            ->add('descr')
+            ->add('description')
             ->add('parent_folder', 'cms_folder_tree')
             ->add('router_node_id', 'choice', [
                 'choices'  => $routedNodes,

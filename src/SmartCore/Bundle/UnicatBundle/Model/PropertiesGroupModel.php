@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\UnicatBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
 
 /**
@@ -12,31 +13,10 @@ use SmartCore\Bundle\UnicatBundle\Entity\UnicatRepository;
  */
 class PropertiesGroupModel
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $title;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
+    use ColumnTrait\Id;
+    use ColumnTrait\CreatedAt;
+    use ColumnTrait\Name;
+    use ColumnTrait\Title;
 
     /**
      * @var PropertyModel[]
@@ -66,41 +46,6 @@ class PropertiesGroupModel
     {
         $this->created_at = new \DateTime();
         $this->properties = new ArrayCollection();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -158,24 +103,5 @@ class PropertiesGroupModel
     public function getRepository()
     {
         return $this->repository;
-    }
-
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 }

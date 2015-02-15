@@ -52,7 +52,7 @@ class EngineController extends Controller
         $this->get('html')->setMetas($router_data['meta']);
 
         foreach ($router_data['folders'] as $folder) {
-            $this->get('cms.breadcrumbs')->add($this->get('cms.folder')->getUri($folder), $folder->getTitle(), $folder->getDescr());
+            $this->get('cms.breadcrumbs')->add($this->get('cms.folder')->getUri($folder), $folder->getTitle(), $folder->getDescription());
         }
 
         $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
