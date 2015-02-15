@@ -4,6 +4,8 @@ namespace SmartCore\Module\SimpleNews;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Module\SimpleNews\DependencyInjection\Compiler\FormPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class SimpleNewsModule extends Bundle
 {
@@ -39,5 +41,12 @@ class SimpleNewsModule extends Bundle
         ];
 
         return $data;
+    }
+
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new FormPass());
     }
 }
