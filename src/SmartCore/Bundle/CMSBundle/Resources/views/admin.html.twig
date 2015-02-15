@@ -15,6 +15,8 @@
     {{ parent() }}
     {#<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />#}
     <style media="all" type="text/css">
+        @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});
+
         .form-button {
             margin: 3px 0px 5px 20px;
             float: left;
