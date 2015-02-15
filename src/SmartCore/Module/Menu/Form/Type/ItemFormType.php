@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Menu\Form\Type;
 
 use SmartCore\Module\Menu\Entity\Group;
+use SmartCore\Module\Menu\Entity\Item;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -25,9 +26,16 @@ class ItemFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if (empty($this->group) and $options['data'] instanceof Item) {
+            $this->group = $options['data']->getGroup();
+        }
+
         $builder
             ->add('is_active')
-            ->add('parent_item', 'smart_module_menu_item_tree', ['required'  => false])
+            ->add('parent_item', 'smart_module_menu_item_tree', [
+                'group' => $this->group,
+                'required'  => false,
+            ])
             ->add('folder', 'cms_folder_tree', ['required' => false])
             ->add('title',  null, ['attr' => ['class' => 'focused']])
             ->add('url')

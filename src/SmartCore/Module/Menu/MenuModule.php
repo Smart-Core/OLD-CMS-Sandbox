@@ -3,6 +3,8 @@
 namespace SmartCore\Module\Menu;
 
 use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Module\Menu\DependencyInjection\Compiler\FormPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class MenuModule extends Bundle
 {
@@ -31,5 +33,12 @@ class MenuModule extends Bundle
         }
 
         return $data;
+    }
+
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new FormPass());
     }
 }

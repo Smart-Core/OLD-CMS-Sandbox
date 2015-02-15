@@ -4,6 +4,7 @@ namespace SmartCore\Module\Menu\Form\Tree;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
+use SmartCore\Module\Menu\Entity\Group;
 use SmartCore\Module\Menu\Entity\Item;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
 
@@ -25,13 +26,29 @@ class ItemLoader implements EntityLoaderInterface
     protected $level;
 
     /**
+     * @var Group
+     */
+    protected $group;
+
+    /**
      * @param ObjectManager $em
      * @param null $manager
      * @param null $class
      */
     public function __construct(ObjectManager $em, $manager = null, $class = null)
     {
-        $this->repo = $em->getRepository($class);
+        $this->repo  = $em->getRepository($class);
+    }
+
+    /**
+     * @param Group $group
+     * @return $this
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+
+        return $this;
     }
 
     /**
@@ -59,14 +76,21 @@ class ItemLoader implements EntityLoaderInterface
 
         $this->level++;
 
-        $items = $this->repo->findBy(
-            ['parent_item' => $parent],
+        $items = $this->repo->findBy([
+                'parent_item' => $parent,
+                'group' => $this->group,
+            ],
             ['position' => 'ASC']
         );
 
         /** @var $item Item */
         foreach ($items as $item) {
-            $item->setFormTitle($ident.$item);
+            if (null === $item->getFolder() or !$item->getFolder()->isActive()) {
+//                $item->setFormTitle($ident.'<span style="text-decoration: line-through;">'.$item.'</span>');
+                $item->setFormTitle($ident.'<b>'.$item.'</b>');
+            } else {
+                $item->setFormTitle($ident.$item);
+            }
             $this->result[] = $item;
             $this->addChild($item);
         }
