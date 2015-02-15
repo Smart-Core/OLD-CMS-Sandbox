@@ -1,0 +1,40 @@
+
+{% block cms_folder_tree_widget %}
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple -%}
+        {% set required = false %}
+    {%- endif -%}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %} style="width: 100%;">
+        {%- if placeholder is not none -%}
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder|trans({}, translation_domain) }}</option>
+        {%- endif -%}
+        {%- if preferred_choices|length > 0 -%}
+            {% set options = preferred_choices %}
+            {{- block('cms_folder_tree_options') -}}
+            {%- if choices|length > 0 and separator is not none -%}
+                <option disabled="disabled">{{ separator }}</option>
+            {%- endif -%}
+        {%- endif -%}
+        {%- set options = choices -%}
+        {{- block('cms_folder_tree_options') -}}
+    </select>
+{% endblock %}
+
+{%- block cms_folder_tree_options -%}
+    {% for group_label, choice in options %}
+        {%- if choice is iterable -%}
+            <optgroup label="{{ group_label|trans({}, translation_domain) }}">
+                {% set options = choice %}
+                {{- block('cms_folder_tree_options') -}}
+            </optgroup>
+        {%- else -%}
+            <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}
+                    {% if choice.data.isActive == false %} style="
+                        text-decoration: line-through;
+                        font-style: italic;
+                        color: #b0b0af;
+                    "{% endif %}>
+                {{ choice.label|trans({}, translation_domain) }}
+            </option>
+        {%- endif -%}
+    {% endfor %}
+{%- endblock cms_folder_tree_options -%}
