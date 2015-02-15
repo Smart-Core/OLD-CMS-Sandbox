@@ -2,16 +2,16 @@
 {% extends '@Html/base.html.twig' %}
 
 {% block title %}{{ cms_html_title({
-    'delimiter': '&ndash;',
-    'site_full_name': 'Smart Core CMS (based on Symfony2 Framework)',
-    'site_short_name': 'Smart Core CMS',})
+    'site_full_name': 'Welcome to Smart Core CMS (based on Symfony2 Framework)',
+})
 }}{% endblock %}
 
-{% set felib = felib_use('bootstrap') %}
+{% set felib = felib_use('bootstrap', '2.3.2') %}
 
 {% block styles %}
     {{ parent() }}
     <style type="text/css">
+        @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});
         body {
             margin-top: 40px;
             margin-bottom: 40px;
