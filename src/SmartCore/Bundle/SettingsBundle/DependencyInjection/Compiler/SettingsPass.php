@@ -1,9 +1,9 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\DependencyInjection\Compiler;
+namespace SmartCore\Bundle\SettingsBundle\DependencyInjection\Compiler;
 
 use Doctrine\ORM\Tools\SchemaValidator;
-use SmartCore\Bundle\CMSBundle\Entity\Setting;
+use SmartCore\Bundle\SettingsBundle\Entity\Setting;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -33,11 +33,11 @@ class SettingsPass implements CompilerPassInterface
 
                 $settingsConfig = Yaml::parse(file_get_contents($settingsConfig));
 
-                foreach ($settingsConfig as $key => $val) {
+                foreach ($settingsConfig as $name => $val) {
                     $setting = new Setting();
                     $setting
                         ->setBundle($bundle->getContainerExtension()->getAlias())
-                        ->setKey($key)
+                        ->setName($name)
                         ->setValue($val)
                     ;
 

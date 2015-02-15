@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\Entity;
+namespace SmartCore\Bundle\SettingsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,17 +8,17 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="engine_settings",
+ * @ORM\Table(name="settings",
  *      indexes={
  *          @ORM\Index(columns={"bundle"}),
- *          @ORM\Index(columns={"key_name"}),
+ *          @ORM\Index(columns={"name"}),
  *      },
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(columns={"bundle", "key_name"}),
+ *          @ORM\UniqueConstraint(columns={"bundle", "name"}),
  *      }
  * )
  *
- * @UniqueEntity(fields={"bundle", "key"}, message="В каждом бандле должены быть уникальные ключи")
+ * @UniqueEntity(fields={"bundle", "name"}, message="В каждом бандле должены быть уникальные ключи")
  */
 class Setting
 {
@@ -40,10 +40,10 @@ class Setting
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="key_name", length=64, nullable=false)
+     * @ORM\Column(type="string", name="name", length=64, nullable=false)
      * @Assert\NotBlank()
      */
-    protected $key;
+    protected $name;
 
     /**
      * @var string
@@ -103,12 +103,12 @@ class Setting
     }
 
     /**
-     * @param string $key
+     * @param string $name
      * @return $this
      */
-    public function setKey($key)
+    public function setName($name)
     {
-        $this->key = $key;
+        $this->name = $name;
 
         return $this;
     }
@@ -116,9 +116,9 @@ class Setting
     /**
      * @return string
      */
-    public function getKey()
+    public function getName()
     {
-        return $this->key;
+        return $this->name;
     }
 
     /**

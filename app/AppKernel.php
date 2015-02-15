@@ -65,6 +65,7 @@ class AppKernel extends Kernel
             new SmartCore\Bundle\SitemapBundle\SmartSitemapBundle(),
             new SmartCore\Bundle\SeoBundle\SmartSeoBundle(),
             new SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle(),
+            new SmartCore\Bundle\SettingsBundle\SmartCoreSettingsBundle(),
             new SmartCore\Bundle\UnicatBundle\UnicatBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sp\BowerBundle\SpBowerBundle(),

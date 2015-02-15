@@ -2,8 +2,8 @@
 
 namespace SmartCore\Bundle\CMSBundle\Twig;
 
-use SmartCore\Bundle\CMSBundle\Engine\EngineConfig;
 use SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs;
+use SmartCore\Bundle\SettingsBundle\Manager\SettingsManager;
 
 class HtmlTitleExtension extends \Twig_Extension
 {
@@ -21,14 +21,14 @@ class HtmlTitleExtension extends \Twig_Extension
      * @param Breadcrumbs $breadcrumbs
      * @param EngineConfig $engineConfig
      */
-    public function __construct(Breadcrumbs $breadcrumbs, EngineConfig $engineConfig)
+    public function __construct(Breadcrumbs $breadcrumbs, SettingsManager $engineManager)
     {
         $this->breadcrumbs  = $breadcrumbs;
 
         $this->options = [
-            'delimiter'       => $engineConfig->get('cms', 'html_title_delimiter'),
-            'site_short_name' => $engineConfig->get('cms', 'site_short_name'),
-            'site_full_name'  => $engineConfig->get('cms', 'site_full_name'),
+            'delimiter'       => $engineManager->get('cms', 'html_title_delimiter'),
+            'site_short_name' => $engineManager->get('cms', 'site_short_name'),
+            'site_full_name'  => $engineManager->get('cms', 'site_full_name'),
         ];
     }
 

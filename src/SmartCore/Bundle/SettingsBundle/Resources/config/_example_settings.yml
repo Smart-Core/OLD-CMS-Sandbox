@@ -1,0 +1,21 @@
+# Shortest string format
+option1: value 1
+
+# Full specs
+option2:
+    title: Если указан заголовок, то будет отображаться вместо имени.
+    description: Подробное описание настройки
+    group: main # @todo Додумать группы
+    type: bool # string (default), text, int (integer), float, choice, multiplechoice, date, datetime, time, email, service (произвольный сервис)
+    value: true # Значение по умолчанию
+    value: |
+        Многострочный
+        Текст.
+    choices:
+        ru: Россия
+        de: Германия
+    validation: # http://symfony.com/doc/current/book/validation.html
+        - NotBlank: ~
+        - Range:
+            min: 120
+            max: 180

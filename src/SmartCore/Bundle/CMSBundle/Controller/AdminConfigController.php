@@ -3,7 +3,7 @@
 namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Knp\RadBundle\Controller\Controller;
-use SmartCore\Bundle\CMSBundle\Form\Type\SettingFormType;
+use SmartCore\Bundle\SettingsBundle\Form\Type\SettingFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,11 +14,8 @@ class AdminConfigController extends Controller
      */
     public function indexAction()
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = $this->getDoctrine()->getManager();
-
         return $this->render('CMSBundle:AdminConfig:index.html.twig', [
-            'settings' => $em->getRepository('CMSBundle:Setting')->findBy([], ['bundle' => 'ASC', 'key' => 'ASC']),
+            'settings' => $this->get('settings')->all(),
         ]);
     }
 
@@ -29,10 +26,7 @@ class AdminConfigController extends Controller
      */
     public function editSettingAction(Request $request, $id)
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = $this->getDoctrine()->getManager();
-
-        $setting = $em->find('CMSBundle:Setting', $id);
+        $setting = $this->get('settings')->findById($id);
 
         if (empty($setting)) {
             return $this->redirectToRoute('cms_admin_config_media');
@@ -50,7 +44,7 @@ class AdminConfigController extends Controller
             }
 
             if ($form->isValid()) {
-                $this->get('cms.config')->updateEntity($form->getData());
+                $this->get('settings')->updateEntity($form->getData());
                 $this->addFlash('success', 'Настройка обновлена');
 
                 return $this->redirectToRoute('cms_admin_config');

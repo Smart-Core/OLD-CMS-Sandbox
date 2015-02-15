@@ -18,7 +18,7 @@ class AdminAppearanceController extends Controller
     {
         return $this->render('CMSBundle:AdminAppearance:index.html.twig', [
             'styles'         => $this->getStyles(),
-            'styles_path'    => 'web'.$this->get('cms.config')->get('cms', 'appearance_styles_path'),
+            'styles_path'    => 'web'.$this->get('settings')->get('cms', 'appearance_styles_path'),
             'templates'      => $this->getTemplates(),
             'templates_path' => 'app/Resources/views/',
         ]);
@@ -106,7 +106,7 @@ class AdminAppearanceController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $histories = $em->getRepository('CMSBundle:AppearanceHistory')->findBy([
-            'path'       => '/../web'.$this->get('cms.config')->get('cms', 'appearance_styles_path'),
+            'path'       => '/../web'.$this->get('settings')->get('cms', 'appearance_styles_path'),
             'filename'   => $name,
         ], ['created_at' => 'DESC']);
 
@@ -172,7 +172,7 @@ class AdminAppearanceController extends Controller
      */
     public function styleEditAction(Request $request, $name)
     {
-        $style_file_path = $this->container->getParameter('kernel.root_dir').'/../web'.$this->get('cms.config')->get('cms', 'appearance_styles_path').$name;
+        $style_file_path = $this->container->getParameter('kernel.root_dir').'/../web'.$this->get('settings')->get('cms', 'appearance_styles_path').$name;
 
         if (!file_exists($style_file_path)) {
             return $this->redirectToRoute('cms_admin_appearance');
@@ -185,7 +185,7 @@ class AdminAppearanceController extends Controller
 
             $history = new AppearanceHistory();
             $history
-                ->setPath('/../web'.$this->get('cms.config')->get('cms', 'appearance_styles_path'))
+                ->setPath('/../web'.$this->get('settings')->get('cms', 'appearance_styles_path'))
                 ->setFilename($name)
                 ->setCode($style_code)
                 ->setUserId($this->getUser())
@@ -230,7 +230,7 @@ class AdminAppearanceController extends Controller
     protected function getStyles()
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.css')->name('*.less')->in($this->container->getParameter('kernel.root_dir').'/../web'.$this->get('cms.config')->get('cms', 'appearance_styles_path'));
+        $finder->files()->sortByName()->name('*.css')->name('*.less')->in($this->container->getParameter('kernel.root_dir').'/../web'.$this->get('settings')->get('cms', 'appearance_styles_path'));
 
         $styles = [];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */

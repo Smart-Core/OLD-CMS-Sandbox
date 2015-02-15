@@ -45,9 +45,6 @@ services:
     cms.region:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineRegion
         arguments: [ @doctrine.orm.default_entity_manager, @form.factory ]
-    cms.config:
-        class: SmartCore\Bundle\CMSBundle\Engine\EngineConfig
-        arguments: [ @service_container, @tagcache ]
     cms.context:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineContext
         arguments: [ @request_stack ]
@@ -110,7 +107,7 @@ services:
             - { name: twig.extension }
     cms.twig.html_title_extension:
         class: SmartCore\Bundle\CMSBundle\Twig\HtmlTitleExtension
-        arguments: [ @cms.breadcrumbs, @cms.config ]
+        arguments: [ @cms.breadcrumbs, @settings ]
         tags:
             - { name: twig.extension }
     twig.extension.intl:

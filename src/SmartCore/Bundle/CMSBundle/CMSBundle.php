@@ -28,6 +28,5 @@ class CMSBundle extends Bundle
         //$container->addCompilerPass(new TemplateResourcesPass());
         $container->addCompilerPass(new ModulesRoutingResolverPass());
         $container->addCompilerPass(new RemoveTagcacheActionCacheListenerPass()); //, PassConfig::TYPE_AFTER_REMOVING);
-        $container->addCompilerPass(new SettingsPass(), PassConfig::TYPE_AFTER_REMOVING);
     }
 }

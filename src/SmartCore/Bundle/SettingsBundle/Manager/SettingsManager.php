@@ -1,13 +1,13 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\Engine;
+namespace SmartCore\Bundle\SettingsBundle\Manager;
 
 use RickySu\Tagcache\Adapter\TagcacheAdapter;
-use SmartCore\Bundle\CMSBundle\Entity\Setting;
+use SmartCore\Bundle\SettingsBundle\Entity\Setting;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class EngineConfig
+class SettingsManager
 {
     use ContainerAwareTrait;
 
@@ -25,7 +25,7 @@ class EngineConfig
      * @param ContainerInterface $container
      * @param TagcacheAdapter $tagcache
      */
-    public function __construct(ContainerInterface $container, TagcacheAdapter $tagcache = null)
+    public function __construct(ContainerInterface $container, TagcacheAdapter $tagcache)
     {
         $this->container = $container;
         $this->tagcache  = $tagcache;
@@ -37,32 +37,58 @@ class EngineConfig
     protected function initRepo()
     {
         if (null === $this->settingsRepo) {
-            $this->settingsRepo = $this->container->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Setting');
+            $this->settingsRepo = $this->container->get('doctrine.orm.entity_manager')->getRepository('SmartCoreSettingsBundle:Setting');
         }
     }
 
     /**
+     * @param string|null $bundle
+     * @return array
+     */
+    public function all($bundle = null)
+    {
+        $this->initRepo();
+
+        if ($bundle) {
+            return $this->settingsRepo->findBy(['bundle' => $bundle], ['name' => 'ASC']);
+        }
+
+        return $this->settingsRepo->findBy([], ['bundle' => 'ASC', 'name' => 'ASC']);
+    }
+
+    /**
+     * @param int $id
+     * @return Setting|null
+     */
+    public function findById($id)
+    {
+        $this->initRepo();
+
+        return $this->settingsRepo->find($id);
+    }
+
+    /**
      * @param string $bundle
-     * @param string $key
+     * @param string $name
      * @return mixed
      */
-    public function get($bundle, $key)
+    public function get($bundle, $name)
     {
-        $cache_key = md5('cms_setting_'.$bundle.$key);
+        $cache_key = md5('smart_setting_'.$bundle.$name);
 
         if (false == $setting = $this->tagcache->get($cache_key)) {
             $this->initRepo();
 
             $setting = $this->settingsRepo->findOneBy([
                 'bundle' => $bundle,
-                'key' => $key,
+                'name' => $name,
             ]);
 
             if (empty($setting)) {
-                throw new \Exception('Wrong bundle-key pair in setting.');
+                throw new \Exception('Wrong bundle-name pair in setting.');
             }
 
-            $this->tagcache->set($cache_key, $setting, ['cms.settings']);
+            $this->tagcache->set($cache_key, $setting, ['smart.settings']);
         }
 
         return $setting->getValue();
@@ -80,7 +106,7 @@ class EngineConfig
         $em->persist($setting);
         $em->flush($setting);
 
-        $this->tagcache->deleteTag('cms.settings');
+        $this->tagcache->deleteTag('smart.settings');
 
         return true;
     }

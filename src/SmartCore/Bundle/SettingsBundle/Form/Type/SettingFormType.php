@@ -1,8 +1,8 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\Form\Type;
+namespace SmartCore\Bundle\SettingsBundle\Form\Type;
 
-use SmartCore\Bundle\CMSBundle\Form\DataTransformer\HtmlTransformer;
+use Smart\CoreBundle\Form\DataTransformer\HtmlTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -22,12 +22,12 @@ class SettingFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Bundle\CMSBundle\Entity\Setting',
+            'data_class' => 'SmartCore\Bundle\SettingsBundle\Entity\Setting',
         ]);
     }
 
     public function getName()
     {
-        return 'smart_core_cms_setting';
+        return 'smart_core_settings';
     }
 }

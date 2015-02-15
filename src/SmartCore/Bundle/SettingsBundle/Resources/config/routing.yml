@@ -1,0 +1,9 @@
+smart_core_settings:
+    path:     /
+    defaults:
+        _controller: SmartCoreSettingsBundle:Settings:index
+
+smart_core_setting_edit:
+    path:     /{id}/
+    defaults:
+        _controller: SmartCoreSettingsBundle:Settings:edit

@@ -1,0 +1,19 @@
+
+<h3>{{ 'Settings'|trans }}</a></h3>
+
+<table class="table table-bordered table-hover">
+    <thead><tr>
+        <th>{{ 'Bundle'|trans }}</th>
+        <th>{{ 'Name'|trans }}</th>
+        <th>{{ 'Value'|trans }}</th>
+    </tr></thead>
+    <tbody>
+    {% for setting in settings %}
+        <tr>
+            <td>{{ setting.bundle }}</td>
+            <td><a href="{{ path('smart_core_setting_edit', {'id': setting.id}) }}">{{ setting.name }}</a></td>
+            <td>{{ setting.value }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

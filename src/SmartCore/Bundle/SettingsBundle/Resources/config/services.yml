@@ -1,0 +1,18 @@
+services:
+
+    settings:
+        class: SmartCore\Bundle\SettingsBundle\Manager\SettingsManager
+        arguments: [ @service_container, @tagcache ]
+
+    smart_core.settings.table_prefix_subscriber:
+        class: SmartCore\Bundle\SettingsBundle\Subscriber\TablePrefixSubscriber
+        arguments: [ %smart_core.settings.table_prefix% ]
+        public: false
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    smart_core.settings.twig_extension:
+        class: SmartCore\Bundle\SettingsBundle\Twig\SettingsExtension
+        arguments: [ @settings ]
+        tags:
+            - { name: twig.extension }
