@@ -6,7 +6,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.4.1",
+        "php": ">=5.4.11",
         "ext-intl": "*",
         "ext-curl": "*",
         "symfony/symfony": "~2.6",
@@ -58,6 +58,7 @@
         "pagerfanta/pagerfanta": "v1.0.1",
         "rickysu/tagcache-bundle": "dev-master",
         "smart-core/accelerator-cache-bundle": "1.0.x",
+        "smart-core/core-bundle": "dev-master",
         "smart-core/felib-bundle": "dev-master",
         "smart-core/ladybug-bundle": "~0.7",
         "smart-core/session-bundle": "dev-master",

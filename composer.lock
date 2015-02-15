@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b6c5e1fefc30c9e3f09ed6e2643e48da",
+    "hash": "ae7ed1807cddf78eb63adc8badde9cd1",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -4655,6 +4655,40 @@
             "time": "2015-01-21 15:47:44"
         },
         {
+            "name": "smart-core/core-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/CoreBundle.git",
+                "reference": "83573b9f711288f920344fe81b97c0e9912046c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/83573b9f711288f920344fe81b97c0e9912046c0",
+                "reference": "83573b9f711288f920344fe81b97c0e9912046c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1",
+                "symfony/framework-bundle": ">=2.1"
+            },
+            "suggest": {
+                "knplabs/rad-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Smart\\CoreBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "https://github.com/Smart-Core/CoreBundle",
+            "time": "2015-02-15 20:53:52"
+        },
+        {
             "name": "smart-core/felib-bundle",
             "version": "dev-master",
             "source": {
@@ -5809,6 +5843,7 @@
         "mopa/bootstrap-bundle": 20,
         "mremi/templating-extra-bundle": 20,
         "rickysu/tagcache-bundle": 20,
+        "smart-core/core-bundle": 20,
         "smart-core/felib-bundle": 20,
         "smart-core/session-bundle": 20,
         "sonata-project/intl-bundle": 20,
@@ -5819,7 +5854,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.1",
+        "php": ">=5.4.11",
         "ext-intl": "*",
         "ext-curl": "*"
     },
