@@ -1,5 +1,29 @@
 
-{% block cms_folder_tree_widget %}
+{%- block cms_folder_tree_widget -%}
+    {% if expanded %}
+        {{- block('cms_folder_tree_widget_expanded') -}}
+    {% else %}
+        {{- block('cms_folder_tree_widget_collapsed') -}}
+    {% endif %}
+{%- endblock cms_folder_tree_widget -%}
+
+{%- block cms_folder_tree_widget_expanded -%}
+    {% spaceless %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' ' ~ (multiple ? 'checkbox' : 'radio'))}) %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class ~ ' ' ~ (widget_type ? widget_type : ''))}) %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class ~ ' ' ~ (inline is defined and inline ? 'inline' : ''))|trim}) %}
+        <div {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+                {{ form_widget(child, {'attr': {'class': attr.widget_class|default('')}}) }}
+                {{ child.vars.label|trans({}, translation_domain) }}
+                </label>
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{%- endblock cms_folder_tree_widget_expanded -%}
+
+{% block cms_folder_tree_widget_collapsed %}
     {%- if required and placeholder is none and not placeholder_in_choices and not multiple -%}
         {% set required = false %}
     {%- endif -%}
@@ -17,7 +41,7 @@
         {%- set options = choices -%}
         {{- block('cms_folder_tree_options') -}}
     </select>
-{% endblock %}
+{% endblock cms_folder_tree_widget_collapsed %}
 
 {%- block cms_folder_tree_options -%}
     {% for group_label, choice in options %}

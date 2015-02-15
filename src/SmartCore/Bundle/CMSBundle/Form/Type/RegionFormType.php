@@ -15,11 +15,12 @@ class RegionFormType extends AbstractType
             ->add('descr')
             ->add('position')
             ->add('folders', 'cms_folder_tree', [
-                //'attr' => ['style' => 'height: 300px;'],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => 'Inherit in folders',
-                'required' => false,
+                //'attr'        => ['style' => 'height: 300px;'],
+                'only_active' => true,
+                'expanded'    => true,
+                'multiple'    => true,
+                'label'       => 'Inherit in folders',
+                'required'    => false,
             ])
         ;
     }

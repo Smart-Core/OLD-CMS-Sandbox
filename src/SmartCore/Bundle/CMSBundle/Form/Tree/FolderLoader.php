@@ -2,35 +2,42 @@
 namespace SmartCore\Bundle\CMSBundle\Form\Tree;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 
 class FolderLoader implements EntityLoaderInterface
 {
-    /**
-     * @var EntityRepository
-     */
+    /** @var \Doctrine\ORM\EntityRepository */
     private $repo;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $result;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $level;
+
+    /** @var bool */
+    protected $only_active = false;
 
     /**
      * @param ObjectManager $em
      * @param null $manager
-     * @param null $class
+     * @param string|null $class
      */
     public function __construct(ObjectManager $em, $manager = null, $class = null)
     {
         $this->repo = $em->getRepository($class);
+    }
+
+    /**
+     * @param bool|null $only_active
+     * @return $this
+     */
+    public function setOnlyActive($only_active)
+    {
+        $this->only_active = $only_active;
+
+        return $this;
     }
 
     /**
@@ -48,6 +55,9 @@ class FolderLoader implements EntityLoaderInterface
         return $this->result;
     }
 
+    /**
+     * @param Folder|null $parent_folder
+     */
     protected function addChild($parent_folder = null)
     {
         $level = $this->level;
@@ -58,10 +68,13 @@ class FolderLoader implements EntityLoaderInterface
 
         $this->level++;
 
-        $folders = $this->repo->findBy(
-            ['parent_folder' => $parent_folder],
-            ['position' => 'ASC']
-        );
+        $criteria = ['parent_folder' => $parent_folder];
+
+        if ($this->only_active) {
+            $criteria['is_active'] = true;
+        }
+
+        $folders = $this->repo->findBy($criteria, ['position' => 'ASC']);
 
         /** @var $folder Folder */
         foreach ($folders as $folder) {

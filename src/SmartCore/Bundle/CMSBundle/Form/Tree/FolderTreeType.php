@@ -14,13 +14,16 @@ class FolderTreeType extends DoctrineType
         parent::setDefaultOptions($resolver);
 
         $loader = function (Options $options) {
-            return $this->getLoader($options['em'], $options['query_builder'], $options['class']);
+            $loader = $this->getLoader($options['em'], $options['query_builder'], $options['class']);
+            $loader->setOnlyActive($options['only_active']);
+            return $loader;
         };
 
         $resolver->setDefaults([
-            'property'  => 'form_title',
-            'loader'    => $loader,
-            'class'     => 'CMSBundle:Folder',
+            'only_active' => false,
+            'property'    => 'form_title',
+            'loader'      => $loader,
+            'class'       => 'CMSBundle:Folder',
         ]);
     }
 
