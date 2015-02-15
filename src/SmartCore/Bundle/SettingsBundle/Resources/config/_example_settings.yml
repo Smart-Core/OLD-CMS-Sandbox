@@ -6,6 +6,7 @@ option2:
     title: Если указан заголовок, то будет отображаться вместо имени.
     description: Подробное описание настройки
     group: main # @todo Додумать группы
+    callback: \My\Setting\Callback::option2 # Вызов стататического метода либо сервиса при обновлении параметра.
     type: bool # string (default), text, int (integer), float, choice, multiplechoice, date, datetime, time, email, service (произвольный сервис)
     value: true # Значение по умолчанию
     value: |
