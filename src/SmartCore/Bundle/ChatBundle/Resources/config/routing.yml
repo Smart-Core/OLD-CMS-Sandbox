@@ -1,3 +1,0 @@
-#smart_chat_homepage:
-#    pattern:  /hello/{name}
-#    defaults: { _controller: SmartChatBundle:Default:index }

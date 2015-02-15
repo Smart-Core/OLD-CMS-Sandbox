@@ -1,7 +1,3 @@
-smart_chat:
-    resource: "@SmartChatBundle/Resources/config/routing.yml"
-    prefix:   /
-
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
     prefix: /
