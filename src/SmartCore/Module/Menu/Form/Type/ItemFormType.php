@@ -27,10 +27,7 @@ class ItemFormType extends AbstractType
     {
         $builder
             ->add('is_active')
-            ->add('parent_item', 'entity', [
-                'class'     => 'MenuModule:Item',
-                'required'  => false,
-            ])
+            ->add('parent_item', 'smart_module_menu_item_tree', ['required'  => false])
             ->add('folder', 'cms_folder_tree', ['required' => false])
             ->add('title',  null, ['attr' => ['class' => 'focused']])
             ->add('url')

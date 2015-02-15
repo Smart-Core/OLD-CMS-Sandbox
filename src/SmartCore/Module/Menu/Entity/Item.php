@@ -116,6 +116,11 @@ class Item
     protected $updated_at;
 
     /**
+     * Для отображения в формах. Не маппится в БД.
+     */
+    protected $form_title = '';
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -205,6 +210,25 @@ class Item
     public function getFolder()
     {
         return $this->folder;
+    }
+
+    /**
+     * @param string $form_title
+     * @return $this
+     */
+    public function setFormTitle($form_title)
+    {
+        $this->form_title = $form_title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFormTitle()
+    {
+        return $this->form_title;
     }
 
     /**
