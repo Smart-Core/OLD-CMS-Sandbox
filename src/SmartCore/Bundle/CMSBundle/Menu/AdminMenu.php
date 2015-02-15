@@ -136,11 +136,18 @@ class AdminMenu extends ContainerAware
         /** @var $folder Folder */
         foreach ($folders as $folder) {
             $uri = $this->container->get('router')->generate('cms_admin_structure_folder', ['id' => $folder->getId()]);
+
+            if ($folder->isActive()) {
+                $title = $folder->getTitle();
+            } else {
+                $title = '<span style="text-decoration: line-through;">'.$folder->getTitle().'</span>';
+            }
+
             $menu->addChild($folder->getTitle(), ['uri' => $uri])->setAttributes([
                 'class' => 'folder',
                 'title' => $folder->getDescr(),
                 'id'    => 'folder_id_'.$folder->getId(),
-            ]);
+            ])->setLabel($title);
 
             /** @var $sub_menu ItemInterface */
             $sub_menu = $menu[$folder->getTitle()];
