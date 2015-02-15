@@ -19,7 +19,7 @@ class HtmlTitleExtension extends \Twig_Extension
 
     /**
      * @param Breadcrumbs $breadcrumbs
-     * @param EngineConfig $engineConfig
+     * @param SettingsManager $engineManager
      */
     public function __construct(Breadcrumbs $breadcrumbs, SettingsManager $engineManager)
     {
