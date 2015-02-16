@@ -3,6 +3,4 @@ site_short_name: Smart Core CMS
 html_title_delimiter: '&ndash;'
 appearance_editor: ace
 appearance_editor_theme: idle_fingers
-appearance_scripts_path: /theme/js/
-appearance_styles_path: /theme/css/
 twitter_bootstrap_version: 2

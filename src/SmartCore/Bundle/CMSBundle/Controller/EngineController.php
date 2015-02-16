@@ -73,7 +73,7 @@ class EngineController extends Controller
 
         $this->get('cms.toolbar')->prepare($this->front_controls['node']);
 
-        return new Response($this->renderView("::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
+        return new Response($this->renderView("SiteBundle::{$router_data['template']}.html.twig", $nodesResponses), $router_data['status']);
     }
 
     /**

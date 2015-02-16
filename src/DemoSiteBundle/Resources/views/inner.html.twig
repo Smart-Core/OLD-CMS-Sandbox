@@ -1,11 +1,11 @@
-{% extends 'main.html.twig' %}
+{% extends '@Site/main.html.twig' %}
 
 {% set felib = felib_use('less') %}
 
 {% block styles %}
     {{ parent() }}
-    <link href="{{ asset('theme/images/favicon_aviao.ico') }}" rel="icon" type="image/vnd.microsoft.icon" />
-    <link href="{{ asset('theme/css/styles.less') }}" media="all" rel="stylesheet/less" type="text/css" />
+    <link href="{{ asset('bundles/site/images/favicon_aviao.ico') }}" rel="icon" type="image/vnd.microsoft.icon" />
+    <link href="{{ asset('bundles/site/css/styles.less') }}" media="all" rel="stylesheet/less" type="text/css" />
 {% endblock %}
 
 {% block content %}

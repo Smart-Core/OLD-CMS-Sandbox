@@ -18,9 +18,9 @@ class AdminAppearanceController extends Controller
     {
         return $this->render('CMSBundle:AdminAppearance:index.html.twig', [
             'styles'         => $this->getStyles(),
-            'styles_path'    => 'web'.$this->get('settings')->get('cms', 'appearance_styles_path'),
+            'styles_path'    => '/Resources/public/css/',
             'templates'      => $this->getTemplates(),
-            'templates_path' => 'app/Resources/views/',
+            'templates_path' => '/Resources/views/',
         ]);
     }
 
@@ -31,7 +31,7 @@ class AdminAppearanceController extends Controller
      */
     public function templateEditAction(Request $request, $name)
     {
-        $template_file_path = $this->container->getParameter('kernel.root_dir').'/Resources/views/'.$name.'.html.twig';
+        $template_file_path = $this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/views/'.$name.'.html.twig';
 
         if (!file_exists($template_file_path)) {
             return $this->redirectToRoute('cms_admin_appearance');
@@ -106,7 +106,7 @@ class AdminAppearanceController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $histories = $em->getRepository('CMSBundle:AppearanceHistory')->findBy([
-            'path'       => '/../web'.$this->get('settings')->get('cms', 'appearance_styles_path'),
+            'path'       => '/Resources/public/css/',
             'filename'   => $name,
         ], ['created_at' => 'DESC']);
 
@@ -151,7 +151,7 @@ class AdminAppearanceController extends Controller
             throw $this->createNotFoundException();
         }
 
-        $template_file_path = $this->container->getParameter('kernel.root_dir').$history->getPath().$history->getFilename();
+        $template_file_path = $history->getPath().$history->getFilename();
 
         if (file_exists($template_file_path)) {
             file_put_contents($template_file_path, $history->getCode());
@@ -172,7 +172,7 @@ class AdminAppearanceController extends Controller
      */
     public function styleEditAction(Request $request, $name)
     {
-        $style_file_path = $this->container->getParameter('kernel.root_dir').'/../web'.$this->get('settings')->get('cms', 'appearance_styles_path').$name;
+        $style_file_path = $this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/public/css/'.$name;
 
         if (!file_exists($style_file_path)) {
             return $this->redirectToRoute('cms_admin_appearance');
@@ -185,7 +185,7 @@ class AdminAppearanceController extends Controller
 
             $history = new AppearanceHistory();
             $history
-                ->setPath('/../web'.$this->get('settings')->get('cms', 'appearance_styles_path'))
+                ->setPath('/Resources/public/css/')
                 ->setFilename($name)
                 ->setCode($style_code)
                 ->setUserId($this->getUser())
@@ -213,7 +213,7 @@ class AdminAppearanceController extends Controller
     protected function getTemplates()
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.html.twig')->in($this->container->getParameter('kernel.root_dir').'/Resources/views');
+        $finder->files()->sortByName()->name('*.html.twig')->in($this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/views/');
 
         $templates = [];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */
@@ -230,7 +230,7 @@ class AdminAppearanceController extends Controller
     protected function getStyles()
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.css')->name('*.less')->in($this->container->getParameter('kernel.root_dir').'/../web'.$this->get('settings')->get('cms', 'appearance_styles_path'));
+        $finder->files()->sortByName()->name('*.css')->name('*.less')->in($this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/public/css/');
 
         $styles = [];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */
