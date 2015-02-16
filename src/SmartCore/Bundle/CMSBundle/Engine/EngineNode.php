@@ -175,9 +175,7 @@ class EngineNode
     public function getPropertiesFormType($module_name)
     {
         try {
-            $reflector = new \ReflectionClass(get_class($this->kernel->getBundle($module_name.'Module')));
-            $form_class_name = '\\'.$reflector->getNamespaceName().'\Form\Type\NodePropertiesFormType';
-
+            $form_class_name = '\\'.$this->kernel->getModule($module_name)['namespace'].'\Form\Type\NodePropertiesFormType';
             if (class_exists($form_class_name)) {
                 return new $form_class_name($this->em);
             }

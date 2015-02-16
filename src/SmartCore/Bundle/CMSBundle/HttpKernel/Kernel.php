@@ -2,41 +2,103 @@
 
 namespace SmartCore\Bundle\CMSBundle\HttpKernel;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 
 abstract class Kernel extends BaseKernel
 {
-    /**
-     * Подключенные модули CMS.
-     *
-     * @var array
-     */
+    /** @var string  */
+    protected $siteName = null;
+
+    /** @var array */
     protected $modules = [];
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
-     */
-    protected function registerSmartCoreCmsBundles(&$bundles)
+    public function boot()
     {
-        $this->registerCmsDependencyBundles($bundles);
-        $this->registerCmsModules($bundles);
-        $this->autoRegisterSiteBundle($bundles);
+        parent::boot();
+        \Profiler::setKernel($this);
+    }
+
+    protected function prepareContainer(ContainerBuilder $container)
+    {
+        parent::prepareContainer($container);
+        $container->setParameter('smart_core_cms.modules', $this->modules);
+        $container->setParameter('smart_core_cms.site_name', $this->siteName);
+    }
+
+    /**
+     * Получить список подключенных модулей CMS.
+     *
+     * @return array
+     */
+    public function getModules()
+    {
+        return $this->modules;
+    }
+
+    public function getModule($name)
+    {
+        if (isset($this->modules[$name])) {
+            return $this->modules[$name];
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiteName()
+    {
+        return $this->siteName;
     }
 
     /**
      * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
      */
-    protected function registerCmsModules(&$bundles)
+    protected function registerSmartCoreCmsBundles(& $bundles)
     {
+        $this->registerCmsDependencyBundles($bundles);
+        $this->autoRegisterSiteBundle($bundles);
+        $this->registerCmsModules($bundles);
+    }
+
+    /**
+     * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
+     */
+    protected function registerCmsModules(& $bundles)
+    {
+        $cacheModules = $this->getCacheDir().'/smart_core_cms_modules_enabled.meta';
+
+        if (!$this->debug and file_exists($cacheModules)) {
+            $this->modules = unserialize(file_get_contents($cacheModules));
+            foreach ($this->modules as $module) {
+                $module_class = $module['class'];
+                $bundles[] = new $module_class();
+            }
+
+            return;
+        }
+
+        $reflector = new \ReflectionClass(end($bundles));
+        $modulesConfig = dirname($reflector->getFileName()).'/Resources/config/modules.ini';
+
         // Чтение списка модулей. Т.е. модули подключаются почти динамически.
-        if (file_exists($this->rootDir . '/usr/modules.ini')) {
-            foreach (parse_ini_file($this->rootDir . '/usr/modules.ini') as $module_name => $module_class) {
+        if (file_exists($modulesConfig)) {
+            foreach (parse_ini_file($modulesConfig) as $module_name => $module_class) {
                 if (class_exists($module_class)) {
-                    $bundles[] = new $module_class;
-                    $this->modules[$module_name] = $module_class;
+                    $bundles[] = new $module_class();
+                    $reflector = new \ReflectionClass($module_class);
+                    $this->modules[$module_name] = [
+                        'class'     => $module_class,
+                        'path'      => end($bundles)->getPath(),
+                        'namespace' => $reflector->getNamespaceName(),
+                    ];
                 } else {
                     // @todo сообщение об отсутсвии класса.
+                }
+
+                if (is_dir(dirname($cacheModules))) {
+                    file_put_contents($cacheModules, serialize($this->modules), LOCK_EX);
                 }
             }
         }
@@ -45,7 +107,7 @@ abstract class Kernel extends BaseKernel
     /**
      * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
      */
-    protected function registerCmsDependencyBundles(&$bundles)
+    protected function registerCmsDependencyBundles(& $bundles)
     {
         $bundles[] = new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle();
         $bundles[] = new \Symfony\Bundle\FrameworkBundle\FrameworkBundle();
@@ -109,7 +171,7 @@ abstract class Kernel extends BaseKernel
     {
         // Сначала производится попытка подключить указанный вручную сайт.
         if (!empty($this->siteName)) {
-            $siteBundleClass = $this->siteName.'SiteBundle\SiteBundle';
+            $siteBundleClass = '\\'.$this->siteName.'SiteBundle\SiteBundle';
 
             if (class_exists($siteBundleClass)) {
                 $bundles[] = new $siteBundleClass();
@@ -118,7 +180,18 @@ abstract class Kernel extends BaseKernel
             }
         }
 
-        $finder = (new Finder())->directories()->name('*SiteBundle')->name('SiteBundle')->in($this->rootDir.'/../src');
+        $cacheSiteName = $this->getCacheDir().'/smart_core_cms_site_name.meta';
+        if (file_exists($cacheSiteName)) {
+            $this->siteName = file_get_contents($cacheSiteName);
+            $siteBundleClass = '\\'.$this->siteName.'SiteBundle\\SiteBundle';
+            if (class_exists($siteBundleClass)) {
+                $bundles[] = new $siteBundleClass();
+
+                return;
+            }
+        }
+
+        $finder = (new Finder())->directories()->depth('== 0')->name('*SiteBundle')->name('SiteBundle')->in($this->rootDir.'/../src');
 
         // Такой подсчет работает быстрее, чем $finder->count();
         $count = 0;
@@ -146,9 +219,14 @@ abstract class Kernel extends BaseKernel
                 throw new \LogicException(str_replace('</br>', "\n", $response));
             }
         } else {
-            $className = '\\' . $dirName.'\\SiteBundle';
+            $className = '\\'.$dirName.'\\SiteBundle';
             if (class_exists($className)) {
                 $bundles[] = new $className();
+                $this->siteName = str_replace('SiteBundle', '', $dirName);
+
+                if (is_dir(dirname($cacheSiteName))) {
+                    file_put_contents($cacheSiteName, $this->siteName, LOCK_EX);
+                }
             }
         }
     }
@@ -162,19 +240,23 @@ abstract class Kernel extends BaseKernel
         return parent::getContainerBaseClass();
     }
 
-    public function boot()
+    /**
+     * Размещение кеша в /var/
+     *
+     * @return string
+     */
+    public function getCacheDir()
     {
-        parent::boot();
-        \Profiler::setKernel($this);
+        return $this->rootDir.'/../var/cache/'.$this->environment;
     }
 
     /**
-     * Получить список подключенных модулей CMS.
+     * Размещение логов в /var/
      *
-     * @return array
+     * @return string
      */
-    public function getModules()
+    public function getLogDir()
     {
-        return $this->modules;
+        return $this->rootDir.'/../var/logs';
     }
 }

@@ -213,7 +213,7 @@ class AdminAppearanceController extends Controller
     protected function getTemplates()
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.html.twig')->in($this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/views/');
+        $finder->files()->sortByName()->depth('== 0')->name('*.html.twig')->in($this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/views/');
 
         $templates = [];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */
@@ -230,7 +230,7 @@ class AdminAppearanceController extends Controller
     protected function getStyles()
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.css')->name('*.less')->in($this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/public/css/');
+        $finder->files()->sortByName()->depth('== 0')->name('*.css')->name('*.less')->in($this->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/public/css/');
 
         $styles = [];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */

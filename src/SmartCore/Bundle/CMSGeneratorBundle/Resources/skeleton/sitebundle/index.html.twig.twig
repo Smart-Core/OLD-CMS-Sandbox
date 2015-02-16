@@ -1,1 +1,32 @@
-{% raw %}{{ 'Welcome to new site'|trans }}.{% endraw %}
+{% raw %}{% extends '@Html/base.html.twig' %}
+
+{% set use_libs = {
+    'bootstrap': '2.3.2',
+} %}
+
+{% block title %}{{ cms_html_title() }}{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    <style media="all" type="text/css">
+        {#@import url({{ asset('bundles/cms/css/bootstrap-theme-smart-core.css') }});#}
+        @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});
+        {#@import url({{ asset('bundles/site/css/screen.css') }});#}
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {% include '@CMS/flash_messages.thml.twig' %}
+
+    <div id="content">
+        {% block content content %}
+    </div>
+
+</div>
+{% endblock body %}{% endraw %}

@@ -34,25 +34,15 @@ class ModuleAdminRoutesLoader extends Loader implements LoaderInterface
             throw new \RuntimeException('Do not add this loader twice');
         }
 
-        $modulesIni = $this->container->getParameter('kernel.root_dir').'/usr/modules.ini';
-
-        if (!file_exists($modulesIni)) {
-            return;
-        }
-
         $collection = new RouteCollection();
 
-        foreach (parse_ini_file($modulesIni) as $moduleName => $moduleClass) {
-            if (class_exists($moduleClass)) {
-                $reflector = new \ReflectionClass($moduleClass);
+        foreach ($this->container->getParameter('smart_core_cms.modules') as $moduleName => $module) {
+            $resource = $module['path'].'/Resources/config/routing_admin.yml';
+            if (file_exists($resource)) {
+                $importedRoutes = $this->import('@'.$moduleName.'Module/Resources/config/routing_admin.yml', 'yaml');
+                $importedRoutes->addPrefix('/admin/module/'.$moduleName);
 
-                $resource = dirname($reflector->getFileName()).'/Resources/config/routing_admin.yml';
-                if (file_exists($resource)) {
-                    $importedRoutes = $this->import('@'.$moduleName.'Module/Resources/config/routing_admin.yml', 'yaml');
-                    $importedRoutes->addPrefix('/admin/module/'.$moduleName);
-
-                    $collection->addCollection($importedRoutes);
-                }
+                $collection->addCollection($importedRoutes);
             }
         }
 

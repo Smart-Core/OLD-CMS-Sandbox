@@ -7,8 +7,11 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    // Для повышения производительности, лучше вручную указывать SiteName, т.к. autoRegisterSiteBundle работает медленно.
-    protected $siteName = 'Demo';
+    /**
+     * Если в папке /src/ находится более одного сайт бандла, то необходимо явно указать какой будет использоваться.
+     * Также явное указание, слегка увеличивает производительность.
+     */
+    //protected $siteName = 'My';
 
     /**
      * @return \Symfony\Component\HttpKernel\Bundle\BundleInterface[]
@@ -44,25 +47,5 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
-    }
-
-    /**
-     * Размещение кеша в /var/
-     *
-     * @return string
-     */
-    public function getCacheDir()
-    {
-        return $this->rootDir.'/../var/cache/'.$this->environment;
-    }
-
-    /**
-     * Размещение логов в /var/
-     *
-     * @return string
-     */
-    public function getLogDir()
-    {
-        return $this->rootDir.'/../var/logs';
     }
 }

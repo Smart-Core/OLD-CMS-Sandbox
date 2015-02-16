@@ -33,7 +33,6 @@ fi
 
 # update directories permissions
 #find app/Resources -type d -exec chmod 777 {} \;
-find app/usr -type d -exec chmod 777 {} \;
 find web/images -type d -exec chmod 777 {} \;
 find web/_media -type d -exec chmod 777 {} \;
 find bundles/site/css -type d -exec chmod 777 {} \;
@@ -44,7 +43,6 @@ chmod 777 app/console
 find bin -type f -exec chmod 777 {} \;
 
 #find app/Resources -type f -exec chmod 666 {} \;
-find app/usr -type f -exec chmod 666 {} \;
 find web/images -type f -exec chmod 666 {} \;
 find web/_media -type f -exec chmod 666 {} \;
 find bundles/site/css -type f -exec chmod 666 {} \;

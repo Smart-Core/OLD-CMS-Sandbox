@@ -85,7 +85,7 @@ class EngineModule
 
         // 2) Подключение модуля.
         $modulesList = $this->kernel->getModules();
-        $modulesList['Example'] = '\SmartCore\Module\Example\ExampleModule';
+        $modulesList['Example'] = '\SmartCore\Module\Example\ExampleModule'; // @todo ['class'] and ['path']
         ksort($modulesList);
 
         $modulesIni = '';
@@ -113,7 +113,7 @@ class EngineModule
         }
 
         // 4) Установка ресурсов (Resources/public).
-        $application = new Application($this->kernel);
+        $application = new Application($this->kernel); // Symfony\Bundle\FrameworkBundle\Console\Application
         $application->setAutoExit(false);
         $input = new ArrayInput(['command' => 'assets:install', 'target' => $rootDir.'/../web']);
         $output = new BufferedOutput();

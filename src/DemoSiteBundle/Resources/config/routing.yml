@@ -1,7 +1,4 @@
-#site_homepage:
-#    pattern:  /hello/{name}
-#    defaults: { _controller: SiteBundle:Default:index }
 
 site_hi:
-    pattern:  /hi/
+    path:  /hi/
     defaults: { _controller: SiteBundle:Hello:index }
