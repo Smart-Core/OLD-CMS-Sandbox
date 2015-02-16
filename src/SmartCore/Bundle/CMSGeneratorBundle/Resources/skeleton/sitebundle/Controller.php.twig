@@ -4,23 +4,19 @@ namespace {{ namespace }}\Controller;
 
 {% block use_statements %}
 use Knp\RadBundle\Controller\Controller;
-use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 {% endblock use_statements %}
 
 {% block class_definition %}
-class {{ bundle_basename_camelize }}Controller extends Controller
+class DefaultController extends Controller
 {% endblock class_definition %}
 {
 {% block class_body %}
-    use NodeTrait;
-
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function welcomeAction()
     {
-
-        return $this->render('{{ bundle }}::index.html.twig', []);
+        return $this->render('{{ bundle }}:Default:welcome.html.twig', []);
     }
 {% endblock class_body %}
 }

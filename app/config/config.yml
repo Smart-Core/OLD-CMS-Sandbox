@@ -188,11 +188,11 @@ liip_doctrine_cache:
             type: file_system
             directory: "%kernel.cache_dir%/smart_blog"
 
-liip_theme:
-    themes: ['web', 'tablet', 'phone']
-    active_theme: ~
-    autodetect_theme: false
-    load_controllers: false
+#liip_theme:
+#    themes: ['web', 'tablet', 'phone']
+#    active_theme: ~
+#    autodetect_theme: false
+#    load_controllers: false
 
 accelerator_cache:
     host: %base_url%

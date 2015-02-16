@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\SiteBundle\Entity\Catalog;
+namespace DemoSiteBundle\Entity\Catalog;
 
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\UnicatBundle\Model\CategoryModel;

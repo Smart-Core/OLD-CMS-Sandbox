@@ -29,7 +29,7 @@ class UnicatRepository
     use ColumnTrait\UserId;
 
     /**
-     * Пространство имен сущностей, например: Demo\SiteBundle\Entity\Catalog\
+     * Пространство имен сущностей, например: DemoSiteBundle\Entity\Catalog\
      *
      * @var string
      *

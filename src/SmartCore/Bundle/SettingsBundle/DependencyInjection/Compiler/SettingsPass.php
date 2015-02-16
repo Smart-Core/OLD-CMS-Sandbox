@@ -33,24 +33,26 @@ class SettingsPass implements CompilerPassInterface
 
                 $settingsConfig = Yaml::parse(file_get_contents($settingsConfig));
 
-                foreach ($settingsConfig as $name => $val) {
-                    $setting = new Setting();
-                    $setting
-                        ->setBundle($bundle->getContainerExtension()->getAlias())
-                        ->setName($name)
-                        ->setValue($val)
-                    ;
+                if (!empty($settingsConfig)) {
+                    foreach ($settingsConfig as $name => $val) {
+                        $setting = new Setting();
+                        $setting
+                            ->setBundle($bundle->getContainerExtension()->getAlias())
+                            ->setName($name)
+                            ->setValue($val)
+                        ;
 
-                    $errors = $container->get('validator')->validate($setting);
+                        $errors = $container->get('validator')->validate($setting);
 
-                    if (count($errors) > 0) {
-                        $em->detach($setting);
-                    } else {
-                        $em->persist($setting);
+                        if (count($errors) > 0) {
+                            $em->detach($setting);
+                        } else {
+                            $em->persist($setting);
+                        }
                     }
-                }
 
-                $em->flush();
+                    $em->flush();
+                }
             } // _end file_exists($settingsConfig)
         }
     }
