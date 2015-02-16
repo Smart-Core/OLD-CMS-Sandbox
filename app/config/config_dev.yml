@@ -1,5 +1,6 @@
 imports:
     - { resource: config.yml }
+    - { resource: '@SiteBundle/Resources/config/config.yml', ignore_errors: true }
 
 framework:
     router:   { resource: "%kernel.root_dir%/config/routing_dev.yml" }

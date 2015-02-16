@@ -47,6 +47,7 @@ class SiteBundleGenerator extends Generator
 
         $this->renderFile('sitebundle/routing.'.$format.'.twig', $dir.'/Resources/config/routing.'.$format, $parameters);
         $this->renderFile('module/services.'.$format.'.twig', $dir.'/Resources/config/services.'.$format, $parameters);
+        $this->renderFile('module/config.yml.twig', $dir.'/Resources/config/config.yml', $parameters);
         $this->renderFile('module/settings.yml.twig', $dir.'/Resources/config/settings.yml', $parameters);
 
         $this->renderFile('sitebundle/messages.ru.yml', $dir.'/Resources/translations/messages.ru.yml', $parameters);

@@ -1,0 +1,8 @@
+parameters:
+#    param: value
+
+avalanche_imagine:
+    filters:
+        demo-site-thumb:
+            type:    thumbnail
+            options: { size: [207, 177], mode: inset, quality: 100, format: jpeg }

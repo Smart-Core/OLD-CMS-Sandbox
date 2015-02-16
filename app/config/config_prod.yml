@@ -1,5 +1,6 @@
 imports:
     - { resource: config.yml }
+    - { resource: '@SiteBundle/Resources/config/config.yml', ignore_errors: true }
 
 #framework:
 #    validation:
