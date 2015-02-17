@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "41284a0e56085e9681245608514a1250",
+    "hash": "3682a70e312fe31358919335a94f14e0",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1103,6 +1103,66 @@
                 "orm"
             ],
             "time": "2014-12-16 13:45:01"
+        },
+        {
+            "name": "dropbox-php/dropbox-php",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dropbox-PHP/dropbox-php.git",
+                "reference": "81977a8b021dd5a32b34d84721712f1284029667"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dropbox-PHP/dropbox-php/zipball/81977a8b021dd5a32b34d84721712f1284029667",
+                "reference": "81977a8b021dd5a32b34d84721712f1284029667",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "http_oauth": ">=1.1.18",
+                "oauth": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Dropbox": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evert Pot",
+                    "email": "evert@rooftopsolutions.nl",
+                    "homepage": "http://www.rooftopsolutions.nl/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Joe Constant",
+                    "email": "lazyguru@jofee.com",
+                    "homepage": "http://www.joeconstant.me/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Evan Kaufman",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Naoki Sawada",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dropbox PHP library",
+            "homepage": "http://dropbox-php.com/",
+            "keywords": [
+                "dropbox"
+            ],
+            "time": "2012-09-10 06:07:54"
         },
         {
             "name": "egeloen/ordered-form",

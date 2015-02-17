@@ -39,6 +39,22 @@ fm_elfinder:
             include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
             connector:
                 debug: false    # defaults to false
+                bind:
+                    mkfile.pre:
+                        - Plugin.Normalizer.cmdPreprocess
+                        - Plugin.Sanitizer.cmdPreprocess
+                    upload.presave:
+                        - Plugin.Normalizer.onUpLoadPreSave
+                        - Plugin.Sanitizer.onUpLoadPreSave
+                plugin:
+                    Normalizer:
+                        enable: true
+                        nfc: true
+                        nfkc: true
+                    Sanitizer:
+                        enable: true
+                        targets: ['\\','/',':','*','?','"','<','>','|',' ']
+                        replace: '_'
                 roots:          # at least one root must be defined
                     images:
                         driver: LocalFileSystem
