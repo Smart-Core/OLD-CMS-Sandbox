@@ -1,8 +1,4 @@
-
-{% set felib = felib_use('jquery') %}
-
-<style media="all" type="text/css"> @import url({{ asset('assets/nivo-slider/themes/default/default.css')}}); </style>
-<style media="all" type="text/css"> @import url({{ asset('assets/nivo-slider/nivo-slider.css')}}); </style>
+{% set felib = felib_use('nivo-slider') %}
 
 <div class="slider-wrapper theme-default">
     <div id="slider" class="nivoSlider">
@@ -14,7 +10,6 @@
     </div>
 </div>
 
-<script src="{{ asset('assets/nivo-slider/jquery.nivo.slider.pack.js') }}"></script>
 <script type="text/javascript">
     $(window).load(function() {
         $('#slider').nivoSlider({

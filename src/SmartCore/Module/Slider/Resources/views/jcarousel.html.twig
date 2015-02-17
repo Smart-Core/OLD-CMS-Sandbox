@@ -1,7 +1,5 @@
+{% set felib = felib_use('jcarousel') %}
 
-{% set felib = felib_use('jquery') %}
-
-<style media="all" type="text/css"> @import url({{ asset('assets/jcarousel/jquery.jcarousel.css')}}); </style>
 <style type="text/css">
     .jcarousel-wrapper {
         max-width: {{ slider.width }}px;
@@ -29,8 +27,6 @@
     <p class="jcarousel-pagination"></p>
 </div>
 
-<script src="{{ asset('assets/jcarousel/jquery.jcarousel.min.js') }}"></script>
-<script src="{{ asset('assets/jcarousel/modernizr.js') }}"></script>
 <script>
     $(function () {
         var jcarousel = $('.jcarousel');

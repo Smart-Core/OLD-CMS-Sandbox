@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3682a70e312fe31358919335a94f14e0",
+    "hash": "fbf75d9e1bda7bf6443b8cf22bbb5851",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -4763,12 +4763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "532665e2219240e5d5d7ff86ff7a06cd28dc7539"
+                "reference": "2a578df8a5ee322d0fc6ca17fbace09393a3dc47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/532665e2219240e5d5d7ff86ff7a06cd28dc7539",
-                "reference": "532665e2219240e5d5d7ff86ff7a06cd28dc7539",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/2a578df8a5ee322d0fc6ca17fbace09393a3dc47",
+                "reference": "2a578df8a5ee322d0fc6ca17fbace09393a3dc47",
                 "shasum": ""
             },
             "require": {
@@ -4788,7 +4788,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-02-14 22:38:31"
+            "time": "2015-02-17 02:38:01"
         },
         {
             "name": "smart-core/ladybug-bundle",
