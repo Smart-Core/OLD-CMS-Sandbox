@@ -3,15 +3,15 @@
 /app/SymfonyRequirements.php
 /bin/doctrine*
 /bin/phpspec*
-/vendor/
 /public_html
+/var/
+/vendor/
 /web/_media/
 /web/bundles/
 /web/upload/
 /web/uploads/
 /web/sitemap.xml
 composer.phar
-/var/
 *.quarantine
 *.tmb
 *.php~
