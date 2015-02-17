@@ -51,6 +51,7 @@ class Region
         $this->description  = $description;
         $this->name         = $name;
         $this->position     = 0;
+        $this->user_id      = 1;
     }
 
     /**
