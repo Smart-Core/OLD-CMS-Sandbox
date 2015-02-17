@@ -800,12 +800,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "81575a4316951125ce408c70f30547c77d98f78a"
+                "reference": "6a1bd731dbdd4ad952a3b246a8f38c9c12f52e62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/81575a4316951125ce408c70f30547c77d98f78a",
-                "reference": "81575a4316951125ce408c70f30547c77d98f78a",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/6a1bd731dbdd4ad952a3b246a8f38c9c12f52e62",
+                "reference": "6a1bd731dbdd4ad952a3b246a8f38c9c12f52e62",
                 "shasum": ""
             },
             "require": {
@@ -850,7 +850,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2014-08-17 07:53:47"
+            "time": "2015-02-16 13:24:46"
         },
         {
             "name": "doctrine/inflector",
@@ -4729,12 +4729,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "3bbfb460aeda48b260f94714c56e0b3ce4d1181b"
+                "reference": "5673af6dbba6ec6f71889ceb74d9cd92b1582e86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/3bbfb460aeda48b260f94714c56e0b3ce4d1181b",
-                "reference": "3bbfb460aeda48b260f94714c56e0b3ce4d1181b",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/5673af6dbba6ec6f71889ceb74d9cd92b1582e86",
+                "reference": "5673af6dbba6ec6f71889ceb74d9cd92b1582e86",
                 "shasum": ""
             },
             "require": {
@@ -4755,7 +4755,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-02-15 23:51:05"
+            "time": "2015-02-17 13:23:23"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -4763,12 +4763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "2a578df8a5ee322d0fc6ca17fbace09393a3dc47"
+                "reference": "83f83201c20633233250e500eb81ff0a96c61862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/2a578df8a5ee322d0fc6ca17fbace09393a3dc47",
-                "reference": "2a578df8a5ee322d0fc6ca17fbace09393a3dc47",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/83f83201c20633233250e500eb81ff0a96c61862",
+                "reference": "83f83201c20633233250e500eb81ff0a96c61862",
                 "shasum": ""
             },
             "require": {
@@ -4788,7 +4788,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-02-17 02:38:01"
+            "time": "2015-02-17 13:25:38"
         },
         {
             "name": "smart-core/ladybug-bundle",
