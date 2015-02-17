@@ -1,5 +1,5 @@
 parameters:
-#    param: value
+    #admin_path: control_panel
 
 avalanche_imagine:
     filters:

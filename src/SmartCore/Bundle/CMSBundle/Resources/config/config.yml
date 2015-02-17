@@ -1,11 +1,11 @@
 # Пример конфигурирования
 parameters:
-    # путь для хранения данных (структура сайтов, данные модулей и т.д.)
-    smart_core_cms_data_dir: %kernel.root_dir%/usr/site
+    admin_path: admin
+    user_path: user
 
 cms:
     # database (db), filesystem (fs)
-    storage: db
+    #storage: db
         # настройки для 'database'
         #connection: @database_connection
         # настройки для 'filesystem'

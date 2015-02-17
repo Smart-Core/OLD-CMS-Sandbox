@@ -8,16 +8,18 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class RequestVoter implements VoterInterface
 {
-    /**
-     * @var RequestStack
-     */
+    /** @var string */
+    protected $adminPath;
+
+    /** @var RequestStack */
     protected $requestStack;
 
     /**
      * @param RequestStack $requestStack
      */
-    public function __construct(RequestStack $requestStack)
+    public function __construct(RequestStack $requestStack, $adminPath)
     {
+        $this->adminPath    = $adminPath;
         $this->requestStack = $requestStack;
     }
 

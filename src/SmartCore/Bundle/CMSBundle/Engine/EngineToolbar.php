@@ -31,6 +31,11 @@ class EngineToolbar extends Controller
                     'descr' => '',
                     'icon' => 'wrench',
                     'items' => [
+                        'structure' => [
+                            'title' => $t->trans('Structure'),
+                            'icon'  => 'book',
+                            'uri'   => $router->generate('cms_admin_structure'),
+                        ],
                         'modules' => [
                             'title' => $t->trans('Modules'),
                             'icon'  => 'cog',
@@ -89,11 +94,6 @@ class EngineToolbar extends Controller
                             'title' => $t->trans('Create folder'),
                             'icon'  => 'plus',
                             'uri'   => $router->generate('cms_admin_structure_folder_create_in_folder', ['folder_pid' => $current_folder_id]),
-                        ],
-                        'folder_all' => [
-                            'title' => $t->trans('All structure'),
-                            'icon'  => 'book',
-                            'uri'   => $router->generate('cms_admin_structure'),
                         ],
                         'diviver_1' => 'diviver',
                         'add_module' => [

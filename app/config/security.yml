@@ -14,13 +14,13 @@ security:
          admin:
             anonymous: ~
             context: smart_core_cms
-            pattern: ^/admin
+            pattern: ^/%admin_path%
             form_login:
-                check_path: /admin/login_check
-                login_path: /admin/login
-                default_target_path: /admin/
+                check_path: /%admin_path%/login_check
+                login_path: /%admin_path%/login
+                default_target_path: /%admin_path%/
             logout:
-                path: /admin/logout
+                path: /%admin_path%/logout
             remember_me:
                 key: '%secret%'
                 name: SMART_CORE_REMEMBER_ME
@@ -33,11 +33,11 @@ security:
             pattern: ^/
             form_login:
                 csrf_provider: form.csrf_provider
-                check_path: /user/login_check
-                login_path: /user/login
-                default_target_path: /user/
+                check_path: /%user_path%/login_check
+                login_path: /%user_path%/login
+                default_target_path: /%user_path%/
             logout:
-                path: /user/logout
+                path: /%user_path%/logout
             remember_me:
                 key: '%secret%'
                 name: SMART_CORE_REMEMBER_ME
@@ -47,9 +47,9 @@ security:
 
     access_control:
         - { path: ^/_assistant/, roles: ROLE_ADMIN }
-        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/resetting$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/%admin_path%/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%admin_path%/resetting$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%admin_path%, roles: ROLE_ADMIN }
         - { path: ^/efconnect, role: ROLE_ADMIN }
         - { path: ^/elfinder, role: ROLE_ADMIN }
         #- { path: ^/user, roles: ROLE_USER }

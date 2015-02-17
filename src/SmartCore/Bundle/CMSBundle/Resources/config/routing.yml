@@ -5,7 +5,7 @@ cms_admin_module_routes:
 
 cms_admin:
     resource: 'routing_admin.yml'
-    prefix: /admin/
+    prefix: /%admin_path%/
 
 cms_api:
     resource: 'routing_api.yml'
@@ -32,4 +32,4 @@ cms_node_postprocessor:
 # Эти маршруты нужны для генерации ссылок к модулям с учетом пути, куда они подключены.
 cms_modules:
     resource: .
-    type: installed_modules
+    type: modules_enabled

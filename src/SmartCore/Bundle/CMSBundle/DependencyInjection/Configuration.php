@@ -20,12 +20,14 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('cms');
 
+        /*
         $rootNode
             ->children()
                 ->scalarNode('storage')->defaultValue('database')->end() // cannotBeEmpty()->
                 ->scalarNode('serialiser')->defaultValue('php')->info('Valid values: php, igbinary')->end() // @todo
             ->end()
         ;
+        */
 
         return $treeBuilder;
     }
