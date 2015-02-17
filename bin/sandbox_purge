@@ -2,31 +2,32 @@
 
 read -r -p "Are you sure? [y/N] " response
 
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    if [ -d "src/SandboxSiteBundle" ]
-    then
-        echo "Start purging..."
-        app/console doctrine:schema:drop --force
+case $response in
+    [yY][eE][sS]|[yY])
+        if [ -d "src/SandboxSiteBundle" ]
+        then
+            echo "Start purging..."
+            app/console doctrine:schema:drop --force
 
-        rm -rf dist src/SandboxSiteBundle smart_core.sql;
-        find web/_media/* -type d -exec rm -rf {} \;
-        find web/images/* -type d -exec rm -rf {} \;
+            rm -rf dist src/SandboxSiteBundle smart_core.sql;
+            find web/_media/* -type d -exec rm -rf {} \;
+            find web/images/* -type d -exec rm -rf {} \;
 
-        app/console cms:generate:sitebundle
+            app/console cms:generate:sitebundle
 
-        bin/init_var;
-        bin/clear_cache;
+            bin/init_var;
+            bin/clear_cache;
 
-        app/console doctrine:schema:update --force --complete
+            app/console doctrine:schema:update --force --complete
 
-        app/console assets:install web --symlink
+            app/console assets:install web --symlink
 
-        echo "Create super admin user:"
-        app/console fos:user:create --super-admin
-    else
-        echo "This is not CMS Sandbox"
-    fi
-else
-    # do_something_else
-fi
+            echo "Create super admin user:"
+            app/console fos:user:create --super-admin
+        else
+            echo "This is not CMS Sandbox"
+        fi
+        ;;
+    *)
+        ;;
+esac
