@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 16 2015 г., 05:54
+-- Время создания: Фев 17 2015 г., 22:28
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.4.35
 
@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `catalog_categories` (
   `created_at` datetime NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `is_enabled` tinyint(1) DEFAULT '1',
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `structure_id` int(10) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   PRIMARY KEY (`id`),
@@ -278,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `catalog_items` (
   `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`),
   KEY `position` (`position`)
@@ -384,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `catalog_properties` (
   `is_enabled` tinyint(1) DEFAULT '1',
   `is_dedicated_table` tinyint(1) NOT NULL,
   `is_required` tinyint(1) NOT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -446,6 +446,37 @@ INSERT INTO `catalog_properties_groups` (`id`, `name`, `title`, `created_at`, `c
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `elfinder_file`
+--
+
+DROP TABLE IF EXISTS `elfinder_file`;
+CREATE TABLE IF NOT EXISTS `elfinder_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longblob NOT NULL,
+  `size` int(11) NOT NULL,
+  `mtime` int(11) NOT NULL,
+  `mime` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `read` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `write` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `locked` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `hidden` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `width` int(11) NOT NULL,
+  `height` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `parent_name` (`parent_id`,`name`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `elfinder_file`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `engine_appearance_history`
 --
 
@@ -481,7 +512,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `folder_pid` int(10) unsigned DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_file` tinyint(1) NOT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `uri_part` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
   `is_deleted` tinyint(1) DEFAULT '0',
@@ -540,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `is_active` tinyint(1) DEFAULT '1',
   `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `priority` smallint(6) NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `create_by_user_id` int(11) NOT NULL,
@@ -601,7 +632,7 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 DROP TABLE IF EXISTS `engine_regions`;
 CREATE TABLE IF NOT EXISTS `engine_regions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `name` varchar(50) NOT NULL,
   `description` longtext,
   `user_id` int(10) unsigned NOT NULL,
@@ -658,7 +689,7 @@ DROP TABLE IF EXISTS `engine_roles`;
 CREATE TABLE IF NOT EXISTS `engine_roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_5FFC79B05E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
@@ -737,7 +768,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `updated_at` datetime DEFAULT NULL,
   `is_enabled` tinyint(1) DEFAULT '1',
   `last_image_id` int(11) DEFAULT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -764,7 +795,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `description` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_AAF50C7B1137ABCF` (`album_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -947,7 +978,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `group_id` int(11) unsigned DEFAULT NULL,
   `folder_id` int(10) unsigned DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -994,7 +1025,7 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 DROP TABLE IF EXISTS `menu_groups`;
 CREATE TABLE IF NOT EXISTS `menu_groups` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `create_by_user_id` int(11) NOT NULL,
@@ -1002,7 +1033,7 @@ CREATE TABLE IF NOT EXISTS `menu_groups` (
   `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `menu_groups`
@@ -1063,8 +1094,6 @@ INSERT INTO `settings` (`id`, `bundle`, `name`, `value`, `serialized`) VALUES
 (3, 'cms', 'html_title_delimiter', '&ndash;', 0),
 (4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0),
 (5, 'cms', 'appearance_editor', 'ace', 0),
-(6, 'cms', 'appearance_scripts_path', '/theme/js/', 0),
-(7, 'cms', 'appearance_styles_path', '/theme/css/', 0),
 (8, 'cms', 'twitter_bootstrap_version', '3', 0);
 
 -- --------------------------------------------------------
@@ -1206,7 +1235,7 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `file_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `original_file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `created_at` datetime NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
@@ -1333,7 +1362,7 @@ CREATE TABLE IF NOT EXISTS `unicat_repositories` (
 --
 
 INSERT INTO `unicat_repositories` (`id`, `name`, `title`, `is_inheritance`, `media_collection_id`, `user_id`, `created_at`, `entities_namespace`, `default_structure_id`) VALUES
-(1, 'catalog', 'Каталог товаров', 1, 1, 1, '2014-02-11 23:32:04', 'Demo\\SiteBundle\\Entity\\Catalog\\', 1);
+(1, 'catalog', 'Каталог товаров', 1, 1, 1, '2014-02-11 23:32:04', 'SandboxSiteBundle\\Entity\\Catalog\\', 1);
 
 -- --------------------------------------------------------
 
@@ -1345,7 +1374,7 @@ DROP TABLE IF EXISTS `unicat_structures`;
 CREATE TABLE IF NOT EXISTS `unicat_structures` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `repository_id` int(11) unsigned DEFAULT NULL,
-  `position` smallint(6) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
   `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_required` tinyint(1) DEFAULT NULL,
@@ -1405,7 +1434,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-15 04:33:59', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-16 06:26:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
