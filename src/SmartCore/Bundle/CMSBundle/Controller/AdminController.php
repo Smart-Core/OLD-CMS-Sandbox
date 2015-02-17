@@ -49,11 +49,9 @@ class AdminController extends Controller
      */
     public function elfinderAction(Request $request)
     {
-        $parameters = $this->container->getParameter('fm_elfinder');
-
         return $this->render('CMSBundle:Admin:elfinder.html.twig', [
             'fullscreen' => true,
-            'includeAssets' => $parameters['include_assets'],
+            'includeAssets' => $this->container->getParameter('fm_elfinder')['instances']['default']['include_assets'],
         ]);
     }
 

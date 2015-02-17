@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae7ed1807cddf78eb63adc8badde9cd1",
+    "hash": "41284a0e56085e9681245608514a1250",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1407,17 +1407,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0"
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d72f3a41409997ebd91ca34561075c615d2ddcc0",
-                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1481,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-02-09 12:22:33"
+            "time": "2015-02-16 15:26:12"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -2097,34 +2097,39 @@
         },
         {
             "name": "helios-ag/fm-elfinder-bundle",
-            "version": "1.4.1",
-            "target-dir": "FM/ElfinderBundle",
+            "version": "3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/FMElfinderBundle.git",
-                "reference": "613f11d45c942c4fe63a5df0ca2ea4d285f58473"
+                "reference": "d62b4b17d3efea72239f0a56d5b4c9c557292c09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/613f11d45c942c4fe63a5df0ca2ea4d285f58473",
-                "reference": "613f11d45c942c4fe63a5df0ca2ea4d285f58473",
+                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/d62b4b17d3efea72239f0a56d5b4c9c557292c09",
+                "reference": "d62b4b17d3efea72239f0a56d5b4c9c557292c09",
                 "shasum": ""
             },
             "require": {
-                "helios-ag/fm-elfinder-php-connector": "1.1.1",
+                "helios-ag/fm-elfinder-php-connector": "~2.0",
                 "php": ">=5.3.3",
-                "sensio/framework-extra-bundle": "*@dev",
-                "symfony/symfony": "*@stable",
-                "symfony/twig-bundle": "~2.0"
+                "symfony/framework-bundle": "~2.4",
+                "symfony/twig-bundle": "~2.4"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.0",
+                "matthiasnoback/symfony-config-test": "0.*",
+                "matthiasnoback/symfony-dependency-injection-test": "0.*",
+                "symfony/form": "~2.1"
             },
             "suggest": {
-                "Trsteel/ckeditor-bundle": "CKEditor WYSIWYG Editor Bundlefor Symfony2 Project by Trsteel",
-                "stfalcon/tinymce-bundle": "TinyMCE WYSIWYG Editor Bundle by Stfalcon"
+                "egeloen/ckeditor-bundle": "CKEditor Bundle by Egeloen",
+                "stfalcon/tinymce-bundle": "TinyMCE Bundle by Stfalcon",
+                "trsteel/ckeditor-bundle": "CKEditor Bundle by trsteel"
             },
             "type": "symfony-bundle",
             "autoload": {
-                "psr-0": {
-                    "FM\\ElfinderBundle": ""
+                "psr-4": {
+                    "FM\\ElfinderBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2141,35 +2146,39 @@
                     "homepage": "https://github.com/helios-ag/FMElfinderBundle/contributors"
                 }
             ],
-            "description": "ElFinder bundle, add ElFinder file manager to your Symfony2 project",
+            "description": "ElFinder bundle, adds ElFinder file manager to your Symfony2 project",
             "homepage": "https://github.com/helios-ag/FMElfinderBundle",
             "keywords": [
                 "elfinder",
                 "file manager"
             ],
-            "time": "2013-11-13 08:24:44"
+            "time": "2015-01-20 02:53:32"
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
-            "version": "1.1.1",
+            "version": "2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/ElFinderPHP.git",
-                "reference": "fa24c5ce710ec2c9eab899786c93dfac1a232386"
+                "reference": "fbce0034f07b8f681cccfb10f68d4e9592b8751b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/fa24c5ce710ec2c9eab899786c93dfac1a232386",
-                "reference": "fa24c5ce710ec2c9eab899786c93dfac1a232386",
+                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/fbce0034f07b8f681cccfb10f68d4e9592b8751b",
+                "reference": "fbce0034f07b8f681cccfb10f68d4e9592b8751b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allows you to use AWS S3 storage",
+                "dropbox-php/dropbox-php": "Allows you to use Dropbox storage"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "FM\\ElFinderPHP": "src/"
+                "psr-4": {
+                    "FM\\ElFinderPHP\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2196,7 +2205,7 @@
                 "elfinder",
                 "filemanager"
             ],
-            "time": "2013-08-06 17:02:04"
+            "time": "2015-02-14 13:46:26"
         },
         {
             "name": "hwi/oauth-bundle",

@@ -35,7 +35,7 @@
         "friendsofsymfony/rest-bundle": "*",
         "friendsofsymfony/user-bundle": "~2.0",
         "genemu/form-bundle": "v2.2.2",
-        "helios-ag/fm-elfinder-bundle": "1.4.1",
+        "helios-ag/fm-elfinder-bundle": "*",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/debugging-bundle": "dev-master",
         "jms/di-extra-bundle": "*",
