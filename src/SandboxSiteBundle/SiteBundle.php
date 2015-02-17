@@ -1,6 +1,6 @@
 <?php
 
-namespace DemoSiteBundle;
+namespace SandboxSiteBundle;
 
 use Knp\RadBundle\AppBundle\Bundle;
 

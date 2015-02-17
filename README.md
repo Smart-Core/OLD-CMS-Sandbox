@@ -7,74 +7,11 @@ The modern system for creating and managing web projects with open source, based
 Очищение песочницы для запуска пустого проекта
 ----------------------------------------------
 
-Удалить следующие файлы и папки:
-```
-/app/Resources/views/*.twig
-/dist/
-/src/Demo/SiteBundle/Entity/*
-/web/_media/* (кроме .htaccess)
-/web/images/* (кроме .htaccess)
-/web/theme/css/*
-/web/theme/images/*
-/web/theme/js/*
-/smart_core.sql
-```
-
-Создать базовый шаблон
-```
-/app/Resources/views/index.html.twig
-```
-
-Со следующим содержимым:
-
-``` twig
-{% extends '@Html/base.html.twig' %}
-
-{% set use_libs = {
-    'bootstrap': null,
-} %}
-
-{% block title %}{{ cms_html_title() }}{% endblock %}
-
-{% block styles %}
-    {{ parent() }}
-{% endblock %}
-
-{% block scripts %}
-    {{ parent() }}
-{% endblock %}
-
-{% block body %}
-<div class="container">
-
-    {% include '@CMS/flash_messages.thml.twig' %}
-
-    <div id="content">
-        {% block content content %}
-    </div>
-
-</div>
-{% endblock body %}
-
-```
-
-Создание схемы БД
-
 ``` bash
-$ app/console doctrine:schema:update --force
+bin/sandbox_purge
 ```
 
-Создание нового пользователя
-
-``` bash
-$ app/console fos:user:create
-```
-
-Назначить роль ROLE_ADMIN
-
-``` bash
-$ app/console fos:user:promote
-```
+Login as new user into http://my-projeсt/admin/.
 
 Пройти в раздел "Структура", по адресу http://my-projeсt/admin/structure/ и создать главную папку.
 

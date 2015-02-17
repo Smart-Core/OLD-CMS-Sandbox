@@ -1,5 +1,5 @@
 parameters:
-#    site.example.class: DemoSiteBundle\Example
+#    site.example.class: SandboxSiteBundle\Example
 
 services:
     site.example:

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ -d "src/SandboxSiteBundle" ]
+then
+    echo "Start purging..."
+    app/console doctrine:schema:drop --force
+
+    rm -rf dist src/SandboxSiteBundle smart_core.sql;
+    find web/_media/* -type d -exec rm -rf {} \;
+    find web/images/* -type d -exec rm -rf {} \;
+
+    app/console cms:generate:sitebundle
+
+    bin/init_var;
+    bin/clear_cache;
+
+    app/console doctrine:schema:update --force --complete
+
+    app/console assets:install web --symlink
+
+    echo "Create super admin user:"
+    app/console fos:user:create --super-admin
+else
+    echo "This is not CMS Sandbox"
+fi
