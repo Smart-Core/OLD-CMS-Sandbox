@@ -26,7 +26,7 @@ class FolderFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $finder = new Finder();
-        $finder->files()->sortByName()->name('*.html.twig')->in($this->container->getParameter('kernel.root_dir').'/Resources/views');
+        $finder->files()->sortByName()->depth('== 0')->name('*.html.twig')->in($this->container->get('kernel')->getBundle('SiteBundle')->getPath().'/Resources/views/');
 
         $templates = ['' => ''];
         /** @var \Symfony\Component\Finder\SplFileInfo $file */
