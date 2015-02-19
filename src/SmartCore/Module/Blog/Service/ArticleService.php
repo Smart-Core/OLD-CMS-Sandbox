@@ -74,7 +74,7 @@ class ArticleService extends AbstractBlogService
         $this->eventDispatcher->dispatch(SmartBlogEvents::ARTICLE_PRE_UPDATE, $event);
 
         if ($setUpdatedAt) {
-            $article->setUpdated();
+            $article->setUpdatedAt();
         }
 
         $this->em->persist($article);
