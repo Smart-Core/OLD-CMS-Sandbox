@@ -26,9 +26,31 @@ class CmsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'cms_folder_path' => new \Twig_Function_Method($this, 'generateFolderPath'),
+            'cms_current_folder'        => new \Twig_Function_Method($this, 'getCurrentFolder'),
+            'cms_folder_path'           => new \Twig_Function_Method($this, 'generateFolderPath'),
             'cms_nodes_count_in_region' => new \Twig_Function_Method($this, 'nodesCountInRegion'),
         ];
+    }
+
+    /**
+     * Получение текущей папки.
+     *
+     * @param string|null $field
+     * @return null|\SmartCore\Bundle\CMSBundle\Entity\Folder
+     */
+    public function getCurrentFolder($field = null)
+    {
+        $folder = $this->container->get('cms.folder')->get($this->container->get('cms.context')->getCurrentFolderId());
+
+        if (!empty($field)) {
+            $method = 'get'.ucfirst($field);
+
+            if (method_exists($folder, $method)) {
+                return $folder->$method();
+            }
+        }
+
+        return $folder;
     }
 
     /**
