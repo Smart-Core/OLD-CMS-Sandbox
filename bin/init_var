@@ -28,6 +28,7 @@ then
     echo "web/uploads exists!"
 else
     mkdir web/uploads
+    echo "Options -Indexes" > web/uploads/.htaccess
     echo "web/uploads created"
 fi
 
@@ -36,7 +37,17 @@ then
     echo "web/images exists!"
 else
     mkdir web/images
+    echo "Options -Indexes" > web/images/.htaccess
     echo "web/images created"
+fi
+
+if [ -d "web/_media" ]
+then
+    echo "web/_media exists!"
+else
+    mkdir web/_media
+    echo "Options -Indexes" > web/_media/.htaccess
+    echo "web/_media created"
 fi
 
 # update directories permissions
