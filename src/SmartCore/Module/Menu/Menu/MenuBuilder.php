@@ -106,13 +106,15 @@ class MenuBuilder extends ContainerAware
             if ($this->is_admin) {
                 $uri = $this->container->get('router')->generate('smart_menu_admin_item', ['item_id' => $item->getId()]);
             } else {
-                if (null === $item->getFolder() or !$item->getFolder()->isActive()) {
+                $itemUrl = $item->getUrl();
+
+                if ((null === $item->getFolder() or !$item->getFolder()->isActive()) and empty($itemUrl)) {
                     continue;
                 }
 
                 $uri = $item->getFolder()
-                    ? $this->container->get('cms.folder')->getUri($item->getFolder()->getId())
-                    : $item->getUrl();
+                    ? $this->container->get('cms.folder')->getUri($item->getFolder())
+                    : $itemUrl;
             }
 
             $item_title = $this->is_admin ? (string) $item.' (position: '.$item->getPosition().')' : (string) $item;
