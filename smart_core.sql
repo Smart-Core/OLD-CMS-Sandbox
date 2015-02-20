@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 21 2015 г., 01:06
+-- Время создания: Фев 21 2015 г., 01:38
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.5
 
@@ -1014,6 +1014,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `updated_at` datetime DEFAULT NULL,
   `pid` int(11) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `open_in_new_window` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
@@ -1024,24 +1025,24 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `user_id`, `created_at`, `updated_at`, `pid`, `properties`) VALUES
-(1, 1, 1, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 05:25:48', '2013-05-06 11:13:53', NULL, NULL),
-(2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL, NULL),
-(3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL),
-(5, 1, 6, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 08:45:04', NULL, 2, NULL),
-(6, 1, 5, 1, 2, NULL, NULL, NULL, 1, '2013-05-06 09:38:51', '2014-01-21 15:52:24', NULL, NULL),
-(7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2014-01-20 06:36:00', NULL, NULL),
-(8, 1, 8, 1, 1, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2014-01-21 15:52:18', NULL, NULL),
-(9, 1, 9, 1, 4, NULL, NULL, NULL, 1, '2014-01-21 15:51:46', '2014-01-21 15:53:27', NULL, NULL),
-(10, 1, 11, 1, 0, NULL, NULL, NULL, 1, '2014-01-29 10:31:12', '2014-01-29 10:34:31', 5, 'N;'),
-(11, 1, 12, 1, 2, NULL, NULL, NULL, 1, '2014-01-30 20:42:06', NULL, NULL, 'N;'),
-(12, 1, 13, 1, 2, NULL, NULL, NULL, 1, '2014-02-07 18:02:12', '2014-02-07 18:02:22', NULL, 'N;'),
-(13, 1, 14, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 07:56:17', NULL, 11, 'N;'),
-(14, 1, 4, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 11:28:48', NULL, 8, 'N;'),
-(15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;'),
-(17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;'),
-(18, 2, 7, 1, 0, NULL, NULL, NULL, 1, '2015-02-15 21:41:46', NULL, NULL, 'N;'),
-(19, 1, NULL, 1, 0, NULL, NULL, 'ya.ru', 1, '2015-02-15 23:07:04', NULL, NULL, 'N;');
+INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `user_id`, `created_at`, `updated_at`, `pid`, `properties`, `open_in_new_window`) VALUES
+(1, 1, 1, 1, 0, NULL, 'Перейти на главную страницу', NULL, 1, '2013-05-06 05:25:48', '2015-02-21 01:37:06', NULL, NULL, 0),
+(2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL, NULL, 0),
+(3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL, 0),
+(5, 1, 6, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 08:45:04', NULL, 2, NULL, 0),
+(6, 1, 5, 1, 2, NULL, NULL, NULL, 1, '2013-05-06 09:38:51', '2014-01-21 15:52:24', NULL, NULL, 0),
+(7, 1, 7, 0, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2014-01-20 06:36:00', NULL, NULL, 0),
+(8, 1, 8, 1, 1, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2014-01-21 15:52:18', NULL, NULL, 0),
+(9, 1, 9, 1, 4, NULL, NULL, NULL, 1, '2014-01-21 15:51:46', '2014-01-21 15:53:27', NULL, NULL, 0),
+(10, 1, 11, 1, 0, NULL, NULL, NULL, 1, '2014-01-29 10:31:12', '2014-01-29 10:34:31', 5, 'N;', 0),
+(11, 1, 12, 1, 2, NULL, NULL, NULL, 1, '2014-01-30 20:42:06', NULL, NULL, 'N;', 0),
+(12, 1, 13, 1, 2, NULL, NULL, NULL, 1, '2014-02-07 18:02:12', '2014-02-07 18:02:22', NULL, 'N;', 0),
+(13, 1, 14, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 07:56:17', NULL, 11, 'N;', 0),
+(14, 1, 4, 1, 0, NULL, NULL, NULL, 1, '2014-02-10 11:28:48', NULL, 8, 'N;', 0),
+(15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;', 0),
+(17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;', 0),
+(18, 2, 7, 1, 0, NULL, NULL, NULL, 1, '2015-02-15 21:41:46', NULL, NULL, 'N;', 0),
+(19, 1, NULL, 1, 255, 'Ссылка на яндекс', 'Откроется в новом окне', 'http://ya.ru', 1, '2015-02-15 23:07:04', '2015-02-21 01:29:55', NULL, 'N;', 1);
 
 -- --------------------------------------------------------
 
@@ -1348,7 +1349,7 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   KEY `is_deleted` (`is_deleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
 
 --
 -- Дамп данных таблицы `texter_history`
