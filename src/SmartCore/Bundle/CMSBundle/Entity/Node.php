@@ -27,8 +27,10 @@ class Node implements \Serializable
 
     use ColumnTrait\Id;
     use ColumnTrait\IsActive;
+    use ColumnTrait\CreatedAt;
     use ColumnTrait\Description;
     use ColumnTrait\Position;
+    use ColumnTrait\UserId;
 
     /**
      * @var int
@@ -115,21 +117,7 @@ class Node implements \Serializable
      */
     //protected $permissions;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     *
-     * @deprecated use UserId
-     */
-    protected $create_by_user_id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $create_datetime;
+    // ================================= Unmapped properties =================================
 
     /**
      * @var array
@@ -149,6 +137,13 @@ class Node implements \Serializable
     protected $front_controls = [];
 
     /**
+     * Исопльзуется для "текучих интерфейсов".
+     *
+     * @var string
+     */
+    protected $current_front_control_name = null;
+
+    /**
      * @var string
      */
     protected $region_name = null;
@@ -159,13 +154,13 @@ class Node implements \Serializable
     public function __construct()
     {
         $this->controls_in_toolbar = self::TOOLBAR_ONLY_IN_SELF_FOLDER;
-        $this->create_by_user_id = 0;
-        $this->create_datetime   = new \DateTime();
-        $this->is_active         = true;
-        $this->is_cached         = false;
-        $this->params            = [];
-        $this->position          = 0;
-        $this->priority          = 0;
+        $this->created_at   = new \DateTime();
+        $this->is_active    = true;
+        $this->is_cached    = false;
+        $this->params       = [];
+        $this->position     = 0;
+        $this->priority     = 0;
+        $this->user_id      = 1;
     }
 
     /**
@@ -190,8 +185,8 @@ class Node implements \Serializable
             $this->priority,
             $this->description,
             $this->controls_in_toolbar,
-            $this->create_by_user_id,
-            $this->create_datetime,
+            $this->user_id,
+            $this->created_at,
             $this->controller,
         ]);
     }
@@ -216,35 +211,11 @@ class Node implements \Serializable
             $this->priority,
             $this->description,
             $this->controls_in_toolbar,
-            $this->create_by_user_id,
-            $this->create_datetime,
+            $this->user_id,
+            $this->created_at,
             $this->controller,
             ) = unserialize($serialized);
         //) = igbinary_unserialize($serialized);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled()
-    {
-        return $this->is_active;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isDisabled()
-    {
-        return $this->is_active ? false : true;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -264,25 +235,6 @@ class Node implements \Serializable
     public function getControlsInToolbar()
     {
         return $this->controls_in_toolbar;
-    }
-
-    /**
-     * @param int $create_by_user_id
-     * @return $this
-     */
-    public function setCreateByUserId($create_by_user_id)
-    {
-        $this->create_by_user_id = $create_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCreateByUserId()
-    {
-        return $this->create_by_user_id;
     }
 
     /**
@@ -485,6 +437,10 @@ class Node implements \Serializable
     public function addFrontControl($name, $controls)
     {
         if ($this->isEip()) {
+            if (isset($this->front_controls[$name])) {
+                throw new \Exception("From control: {$name} already exists.");
+            }
+
             $this->front_controls[$name] = $controls;
         }
 

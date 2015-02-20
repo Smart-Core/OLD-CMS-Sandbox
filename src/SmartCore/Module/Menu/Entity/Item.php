@@ -21,6 +21,7 @@ class Item
     use ColumnTrait\Description;
     use ColumnTrait\Position;
     use ColumnTrait\Title;
+    use ColumnTrait\UserId;
 
     /**
      * @var Item
@@ -69,15 +70,6 @@ class Item
     protected $properties;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     *
-     * @deprecated use UserId
-     */
-    protected $create_by_user_id;
-
-    /**
      * Для отображения в формах. Не маппится в БД.
      */
     protected $form_title = '';
@@ -88,7 +80,6 @@ class Item
     public function __construct()
     {
         $this->children          = new ArrayCollection();
-        $this->create_by_user_id = 0;
         $this->created_at        = new \DateTime();
         $this->is_active         = true;
         $this->parent_item       = null;
@@ -97,6 +88,7 @@ class Item
         $this->title             = null;
         $this->url               = null;
         $this->updated_at        = null;
+        $this->user_id           = 1;
     }
 
     /**
@@ -236,25 +228,6 @@ class Item
     public function getParentItem()
     {
         return $this->parent_item;
-    }
-
-    /**
-     * @param int $create_by_user_id
-     * @return $this
-     */
-    public function setCreateByUserId($create_by_user_id)
-    {
-        $this->create_by_user_id = $create_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCreateByUserId()
-    {
-        return $this->create_by_user_id;
     }
 
     /**

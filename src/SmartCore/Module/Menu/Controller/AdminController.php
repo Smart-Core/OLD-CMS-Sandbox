@@ -22,7 +22,7 @@ class AdminController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $group = $form->getData();
-                $group->setCreateByUserId($this->getUser()->getId());
+                $group->setUserId($this->getUser()->getId());
                 $em->persist($group);
                 $em->flush();
 
@@ -158,7 +158,7 @@ class AdminController extends Controller
                 if ($form->isValid()) {
                     /** @var Item $item */
                     $item = $form->getData();
-                    $item->setCreateByUserId($this->getUser()->getId());
+                    $item->setUserId($this->getUser()->getId());
                     $item->setGroup($group);
 
                     $em->persist($item);

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 17 2015 г., 22:28
+-- Время создания: Фев 21 2015 г., 01:06
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.4.35
+-- Версия PHP: 5.6.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -524,8 +524,8 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `permissions` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `lockout_nodes` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `template_inheritable` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `create_by_user_id` int(11) NOT NULL,
-  `create_datetime` datetime NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
   `template_self` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `folder_pid_uri_part` (`folder_pid`,`uri_part`),
@@ -539,10 +539,10 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
 -- Дамп данных таблицы `engine_folders`
 --
 
-INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `description`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `create_by_user_id`, `create_datetime`, `template_self`) VALUES
+INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `description`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `user_id`, `created_at`, `template_self`) VALUES
 (1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL),
 (2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL),
-(3, 1, 'Аккаунт пользователя', 0, 999, 'user', 1, 0, NULL, 'N;', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL),
+(3, 1, 'Аккаунт пользователя', 0, 255, 'user', 1, 0, NULL, 'a:0:{}', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL),
 (4, 8, 'Вложенная', 0, 0, 'under_news', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27', NULL),
 (5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50', NULL),
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL),
@@ -556,6 +556,33 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
 (16, 1, 'Каталог 2', 0, 0, 'catalog2', 0, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
 (17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `engine_modules`
+--
+
+DROP TABLE IF EXISTS `engine_modules`;
+CREATE TABLE IF NOT EXISTS `engine_modules` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
+  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BC84EEBC46C53D4C` (`is_enabled`),
+  KEY `IDX_BC84EEBC8B8E8428` (`created_at`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `engine_modules`
+--
+
+INSERT INTO `engine_modules` (`id`, `is_enabled`, `created_at`, `name`, `title`, `description`, `class`) VALUES
+(1, 1, '2015-02-18 05:20:34', 'Blog', 'Блог', NULL, '\\SmartCore\\Module\\Blog\\BlogModule');
 
 -- --------------------------------------------------------
 
@@ -574,8 +601,8 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `position` smallint(6) DEFAULT '0',
   `priority` smallint(6) NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
-  `create_by_user_id` int(11) NOT NULL,
-  `create_datetime` datetime NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
   `is_cached` tinyint(1) NOT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `controls_in_toolbar` int(11) NOT NULL,
@@ -591,7 +618,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
 -- Дамп данных таблицы `engine_nodes`
 --
 
-INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `description`, `create_by_user_id`, `create_datetime`, `is_cached`, `template`, `controls_in_toolbar`) VALUES
+INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `description`, `user_id`, `created_at`, `is_cached`, `template`, `controls_in_toolbar`) VALUES
 (1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL, 0),
 (2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 1, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL, 1),
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 2, 'Левая колонка', 1, '2013-03-21 06:03:37', 0, NULL, 1),
@@ -982,7 +1009,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `create_by_user_id` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `pid` int(11) unsigned DEFAULT NULL,
@@ -997,7 +1024,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `create_by_user_id`, `created_at`, `updated_at`, `pid`, `properties`) VALUES
+INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `user_id`, `created_at`, `updated_at`, `pid`, `properties`) VALUES
 (1, 1, 1, 1, 0, NULL, NULL, NULL, 1, '2013-05-06 05:25:48', '2013-05-06 11:13:53', NULL, NULL),
 (2, 1, 2, 1, 3, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2014-01-21 15:53:20', NULL, NULL),
 (3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL),
@@ -1028,18 +1055,18 @@ CREATE TABLE IF NOT EXISTS `menu_groups` (
   `position` smallint(6) DEFAULT '0',
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
-  `create_by_user_id` int(11) NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `menu_groups`
 --
 
-INSERT INTO `menu_groups` (`id`, `position`, `name`, `description`, `create_by_user_id`, `created_at`, `properties`) VALUES
+INSERT INTO `menu_groups` (`id`, `position`, `name`, `description`, `user_id`, `created_at`, `properties`) VALUES
 (1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', NULL),
 (2, 0, 'Второе', NULL, 1, '2015-02-15 20:24:38', NULL);
 
@@ -1321,7 +1348,7 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   KEY `is_deleted` (`is_deleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Дамп данных таблицы `texter_history`
@@ -1434,7 +1461,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-16 06:26:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-21 00:35:08', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1528,8 +1555,8 @@ ALTER TABLE `blog_articles`
 -- Ограничения внешнего ключа таблицы `blog_articles_tags_relations`
 --
 ALTER TABLE `blog_articles_tags_relations`
-  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`),
-  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`);
+  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`),
+  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_categories`
@@ -1594,8 +1621,8 @@ ALTER TABLE `engine_nodes`
 -- Ограничения внешнего ключа таблицы `engine_regions_inherit`
 --
 ALTER TABLE `engine_regions_inherit`
-  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `galleries`
@@ -1631,16 +1658,16 @@ ALTER TABLE `media_collections`
 -- Ограничения внешнего ключа таблицы `media_files`
 --
 ALTER TABLE `media_files`
-  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   ADD CONSTRAINT `FK_192C84E812469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
-  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`);
+  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
+  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_files_transformed`
 --
 ALTER TABLE `media_files_transformed`
-  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   ADD CONSTRAINT `FK_1084B87D514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
+  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
 
 --

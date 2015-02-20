@@ -187,8 +187,8 @@ class EngineController extends Controller
 
         $node = $this->get('cms.node')->get($node_id);
 
-        if (!$node instanceof Node or $node->isDisabled()) {
-            throw new AccessDeniedHttpException('Node is disabled.');
+        if (!$node instanceof Node or !$node->isActive()) {
+            throw new AccessDeniedHttpException('Node is not active.');
         }
 
         // @todo сделать здесь проверку на права доступа, а также доступность ноды в запрошенной папке.

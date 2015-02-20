@@ -27,8 +27,10 @@ class Folder
     use ColumnTrait\Id;
     use ColumnTrait\IsActive;
     use ColumnTrait\IsDeleted;
+    use ColumnTrait\CreatedAt;
     use ColumnTrait\Description;
     use ColumnTrait\Position;
+    use ColumnTrait\UserId;
 
     /**
      * @var Folder
@@ -135,20 +137,6 @@ class Folder
     protected $template_self;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $create_by_user_id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    protected $create_datetime;
-
-    /**
      * Для отображения в формах. Не маппится в БД.
      */
     protected $form_title = '';
@@ -159,8 +147,7 @@ class Folder
     public function __construct()
     {
         $this->children             = new ArrayCollection();
-        $this->create_by_user_id    = 0;
-        $this->create_datetime      = new \DateTime();
+        $this->created_at           = new \DateTime();
         $this->is_active            = true;
         $this->is_deleted           = false;
         $this->is_file              = false;
@@ -176,6 +163,7 @@ class Folder
         $this->template_inheritable = null;
         $this->template_self        = null;
         $this->uri_part             = null;
+        $this->user_id              = 1;
     }
 
     /**
@@ -301,25 +289,6 @@ class Folder
     public function getMeta()
     {
         return empty($this->meta) ? [] : $this->meta;
-    }
-
-    /**
-     * @param int $create_by_user_id
-     * @return $this
-     */
-    public function setCreateByUserId($create_by_user_id)
-    {
-        $this->create_by_user_id = $create_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCreateByUserId()
-    {
-        return $this->create_by_user_id;
     }
 
     /**

@@ -17,6 +17,7 @@ class Group
     use ColumnTrait\CreatedAt;
     use ColumnTrait\Description;
     use ColumnTrait\Position;
+    use ColumnTrait\UserId;
 
     /**
      * @var Item[]|ArrayCollection
@@ -41,24 +42,15 @@ class Group
     protected $properties;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     *
-     * @deprecated use UserId
-     */
-    protected $create_by_user_id;
-
-    /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->create_by_user_id = 0;
         $this->created_at   = new \DateTime();
         $this->position     = 0;
         $this->description  = null;
         $this->items        = new ArrayCollection();
+        $this->user_id      = 1;
     }
 
     /**
@@ -105,27 +97,6 @@ class Group
     public function getProperties()
     {
         return $this->properties;
-    }
-
-    /**
-     * @param int $create_by_user_id
-     * @return $this
-     * @deprecated use UserId
-     */
-    public function setCreateByUserId($create_by_user_id)
-    {
-        $this->create_by_user_id = $create_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     * @deprecated use UserId
-     */
-    public function getCreateByUserId()
-    {
-        return $this->create_by_user_id;
     }
 
     /**

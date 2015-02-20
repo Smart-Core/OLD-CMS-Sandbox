@@ -116,7 +116,7 @@ class AdminStructureController extends Controller
 
         /** @var Folder $folder */
         $folder = $engineFolder->create();
-        $folder->setCreateByUserId($this->getUser()->getId());
+        $folder->setUserId($this->getUser());
 
         $parent = $engineFolder->get($folder_pid);
 
@@ -261,7 +261,7 @@ class AdminStructureController extends Controller
 
         $engineNode = $this->get('cms.node');
         $node = $engineNode->create();
-        $node->setCreateByUserId($this->getUser()->getId())
+        $node->setUserId($this->getUser())
             ->setFolder($folder);
 
         $form = $engineNode->createForm($node);
