@@ -16,7 +16,7 @@ class UserController extends Controller
             return $this->forward('FOSUserBundle:Profile:show');
         }
 
-        return $this->forward('SmartCoreFOSUserBundle:Security:login', [
+        return $this->forward('CMSBundle:Security:login', [
             'data' => [
                 'allow_password_resetting' => $this->node->getParam('allow_password_resetting'),
                 'allow_registration'       => $this->node->getParam('allow_registration'),

@@ -69,6 +69,22 @@ fm_elfinder:
                         upload_deny: ['all']
                         upload_max_size: 50M
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: SmartCore\Bundle\CMSBundle\Entity\User
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address: %registration_email_confirmation%
+                sender_name: Email confirmation
+    resetting:
+        email:
+            from_email:
+                address: %email_resetting%
+                sender_name: Password resetting
+
 knp_menu:
     twig:
         template: CMSBundle:Menu:knp_menu.html.twig

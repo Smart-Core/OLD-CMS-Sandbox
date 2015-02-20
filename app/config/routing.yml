@@ -17,7 +17,7 @@ smart_core_cms:
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix: /%user_path%
-    
+
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /%user_path%
@@ -27,7 +27,7 @@ fos_user_register:
     prefix: /%user_path%/register
 
 fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    resource: "@CMSBundle/Resources/config/routing/fosuser_resetting.xml"
     prefix: /%user_path%/resetting
 
 fos_user_change_password:

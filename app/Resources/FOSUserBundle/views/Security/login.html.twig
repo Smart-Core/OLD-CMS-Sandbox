@@ -1,5 +1,4 @@
-{# Нужно задать именно в старом формате, иначе система подключит дефолтный шаблон от ФОС #}
-{% extends 'FOSUserBundle::layout.html.twig' %}
+{% extends '@FOSUser/layout.html.twig' %}
 
 {% block fos_user_content %}
 
@@ -8,17 +7,20 @@
     {% endif %}
     {% if allow_registration and allow_password_resetting%} | {% endif %}
     {% if allow_password_resetting %}
-        <a href="{{ path('fos_user_resetting_request') }}">Восстановление пароля</a>
+        <a href="{{ path('fos_user_resetting_request') }}">{{ 'Password Resetting'|trans }}</a>
     {% endif %}
     {% if allow_registration or allow_password_resetting%} <br /><br /> {% endif %}
 
     {% if error %}
         <div class="row-fluid">
-            <div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ error|trans({}, 'FOSUserBundle') }}</div>
+            <div class="alert alert-error alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ error.messageKey|trans({}, 'FOSUserBundle') }}
+            </div>
         </div>
     {% endif %}
 
-    {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+    {# Относительный путь login_check для обработки разными файрволами #}
     <form action="login_check" method="post" class="form-signin">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 

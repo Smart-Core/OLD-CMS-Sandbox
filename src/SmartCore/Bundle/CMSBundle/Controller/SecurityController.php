@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\FOSUserBundle\Controller;
+namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use FOS\UserBundle\Controller\SecurityController as BaseSecurityController;
 use Symfony\Component\HttpFoundation\Request;

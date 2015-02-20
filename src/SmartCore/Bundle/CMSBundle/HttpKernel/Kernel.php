@@ -139,7 +139,6 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \SmartCore\Bundle\AcceleratorCacheBundle\AcceleratorCacheBundle();
         $bundles[] = new \SmartCore\Bundle\CMSBundle\CMSBundle();
         $bundles[] = new \SmartCore\Bundle\FelibBundle\FelibBundle();
-        $bundles[] = new \SmartCore\Bundle\FOSUserBundle\SmartCoreFOSUserBundle();
         $bundles[] = new \SmartCore\Bundle\HtmlBundle\HtmlBundle();
         $bundles[] = new \SmartCore\Bundle\MediaBundle\SmartMediaBundle();
         $bundles[] = new \SmartCore\Bundle\SimpleProfilerBundle\SmartSimpleProfilerBundle();

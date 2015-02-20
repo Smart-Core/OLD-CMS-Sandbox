@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\FOSUserBundle\Entity;
+namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
