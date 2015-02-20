@@ -2,7 +2,7 @@ parameters:
     base_url:           http://smart-core.org
 
     database_driver:    pdo_mysql
-    database_host:      localhost
+    database_host:      127.0.0.1
     database_port:      ~
     database_name:      smart_core
     database_user:      root
@@ -11,7 +11,7 @@ parameters:
     database_table_prefix: ~
 
     #database2_driver:   pdo_mysql
-    #database2_host:     localhost
+    #database2_host:     127.0.0.1
     #database2_port:     ~
     #database2_name:     smart_core_db2
     #database2_user:     root
@@ -23,7 +23,7 @@ parameters:
     dizda_cloud_dropbox_remote_path: ''
 
     mailer_transport:   mail
-    mailer_host:        localhost
+    mailer_host:        127.0.0.1
     mailer_user:        ~
     mailer_password:    ~
 

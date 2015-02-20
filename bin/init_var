@@ -4,50 +4,50 @@ DIR="var"
 
 if [ -d "$DIR" ]
 then
-    echo "$DIR directory exists!"
+    echo "  $DIR directory exists!"
 else
     mkdir $DIR
     mkdir $DIR/cache
     mkdir $DIR/logs
     mkdir $DIR/mailspool
-    echo "$DIR directory created!"
+    echo "  $DIR directory created!"
 fi
 
 if [ -d "$DIR/sessions" ];
 then
-    echo "Sessions directory exists!"
+    echo "  Sessions directory exists!"
 else
     mkdir $DIR/sessions
-    echo "Sessions directory created!"
+    echo "  Sessions directory created!"
 fi
 
 chmod -R 0777 $DIR
 
 if [ -d "web/uploads" ]
 then
-    echo "web/uploads exists!"
+    echo "  web/uploads exists!"
 else
     mkdir web/uploads
     echo "Options -Indexes" > web/uploads/.htaccess
-    echo "web/uploads created"
+    echo "  web/uploads created"
 fi
 
 if [ -d "web/images" ]
 then
-    echo "web/images exists!"
+    echo "  web/images exists!"
 else
     mkdir web/images
     echo "Options -Indexes" > web/images/.htaccess
-    echo "web/images created"
+    echo "  web/images created"
 fi
 
 if [ -d "web/_media" ]
 then
-    echo "web/_media exists!"
+    echo "  web/_media exists!"
 else
     mkdir web/_media
     echo "Options -Indexes" > web/_media/.htaccess
-    echo "web/_media created"
+    echo "  web/_media created"
 fi
 
 # update directories permissions
