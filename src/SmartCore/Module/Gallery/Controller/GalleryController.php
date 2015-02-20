@@ -37,11 +37,9 @@ class GalleryController extends Controller
 
         $albums = $em->getRepository('GalleryModule:Album')->findBy(['is_enabled' => true, 'gallery' => $this->gallery_id], $albumsOrderBy);
 
-        $this->node->addFrontControl('manage_gallery', [
-            'default' => true,
-            'title'   => 'Управление фотогалереей',
-            'uri'     => $this->generateUrl('smart_module.gallery.admin_gallery', ['id' => $this->gallery_id]),
-        ]);
+        $this->node->addFrontControl('manage_gallery')
+            ->setTitle('Управление фотогалереей')
+            ->setUri($this->generateUrl('smart_module.gallery.admin_gallery', ['id' => $this->gallery_id]));
 
         return $this->render('GalleryModule::index.html.twig', [
             'albums'  => $albums,
@@ -64,11 +62,9 @@ class GalleryController extends Controller
             throw $this->createNotFoundException();
         }
 
-        $this->node->addFrontControl('manage_album', [
-            'default' => true,
-            'title'   => 'Редактировать фотографии',
-            'uri'     => $this->generateUrl('smart_module.gallery.admin_album', ['id' => $album->getId(), 'gallery_id' => $this->gallery_id]),
-        ]);
+        $this->node->addFrontControl('manage_album')
+            ->setTitle('Редактировать фотографии')
+            ->setUri($this->generateUrl('smart_module.gallery.admin_album', ['id' => $album->getId(), 'gallery_id' => $this->gallery_id]));
 
         $this->get('cms.breadcrumbs')->add($album->getId(), $album->getTitle());
 

@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Smart\CoreBundle\Doctrine\ColumnTrait;
+use SmartCore\Bundle\CMSBundle\Tools\FrontControl;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -135,13 +136,6 @@ class Node implements \Serializable
      * @var array
      */
     protected $front_controls = [];
-
-    /**
-     * Исопльзуется для "текучих интерфейсов".
-     *
-     * @var string
-     */
-    protected $current_front_control_name = null;
 
     /**
      * @var string
@@ -431,17 +425,26 @@ class Node implements \Serializable
     }
 
     /**
-     * @param array $front_controls
-     * @return $this
+     * @param string $name
+     * @param array|null $controls
+     * @return FrontControl
+     * @throws \Exception
      */
-    public function addFrontControl($name, $controls)
+    public function addFrontControl($name, $controls = null)
     {
         if ($this->isEip()) {
             if (isset($this->front_controls[$name])) {
-                throw new \Exception("From control: {$name} already exists.");
+                throw new \Exception("From control: '{$name}' already exists.");
             }
 
-            $this->front_controls[$name] = $controls;
+            if (empty($controls)) {
+                $this->front_controls[$name] = new FrontControl();
+                $this->front_controls[$name]->setDescription($this->getDescription());
+
+                return $this->front_controls[$name];
+            } else {
+                $this->front_controls[$name] = $controls;
+            }
         }
 
         return $this;
@@ -450,6 +453,8 @@ class Node implements \Serializable
     /**
      * @param array $front_controls
      * @return $this
+     *
+     * @deprecated
      */
     public function setFrontControls($front_controls)
     {
@@ -465,7 +470,13 @@ class Node implements \Serializable
      */
     public function getFrontControls()
     {
-        return $this->front_controls;
+        $data = [];
+
+        foreach ($this->front_controls as $name => $control) {
+            $data[$name] = $control instanceof FrontControl ? $control->getData() : $control;
+        }
+
+        return $data;
     }
 
     /**

@@ -29,11 +29,9 @@ class SliderController extends Controller
         /** @var \SmartCore\Module\Slider\Entity\Slider $slider */
         $slider = $this->get('slidermodule.entity.slider_repository')->find($this->slider_id);
 
-        $this->node->addFrontControl('manage_slider', [
-            'default' => true,
-            'title'   => 'Управление слайдами',
-            'uri'     => $this->generateUrl('smart_module.slider.admin_slider', ['id' => $this->slider_id]),
-        ]);
+        $this->node->addFrontControl('manage_slider')
+            ->setTitle('Управление слайдами')
+            ->setUri($this->generateUrl('smart_module.slider.admin_slider', ['id' => $this->slider_id]));
 
         return $this->render('SliderModule::'.$slider->getLibrary().'.html.twig', [
             'slider'  => $slider,

@@ -68,11 +68,9 @@ class CategoryController extends Controller
             return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
 
-        $this->node->addFrontControl('edit', [
-            'title'   => 'Редактировать категории',
-            'uri'     => $this->generateUrl('smart_blog_admin_category'),
-            'default' => true,
-        ]);
+        $this->node->addFrontControl('edit')
+            ->setTitle('Редактировать категории')
+            ->setUri($this->generateUrl('smart_blog_admin_category'));
 
         return $this->render('BlogModule:Category:articles.html.twig', [
             'categories'    => $requestedCategories,

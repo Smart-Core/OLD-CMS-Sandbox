@@ -29,12 +29,12 @@ class TexterService
 
     /**
      * @param int $item_id
-     * @param null $node_id
+     * @param int|null $node_id - укаывается для кеширования.
      * @return mixed|\SmartCore\Module\Texter\Entity\Item
      */
     public function get($item_id, $node_id = null)
     {
-        $cache_key = md5('smart_module.texter'.$item_id);
+        $cache_key = 'smart_module.texter'.$item_id;
 
         if (false == $item = $this->cache->get($cache_key)) {
             $item = $this->em->find('TexterModule:Item', $item_id);

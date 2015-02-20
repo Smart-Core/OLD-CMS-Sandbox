@@ -36,11 +36,10 @@ class ArticleController extends Controller
         }
         $breadchumbs->add($article->getTitle(), $article->getTitle());
 
-        $this->node->addFrontControl('edit', [
-            'title'   => 'Редактировать статью',
-            'uri'     => $this->generateUrl('smart_blog_admin_article_edit', ['id' => $article->getId()]),
-            'default' => true,
-        ]);
+        $this->node->addFrontControl('edit')
+            ->setTitle('Редактировать статью')
+            ->setUri($this->generateUrl('smart_blog_admin_article_edit', ['id' => $article->getId()]))
+            ->setIsDefault(true);
 
         return $this->render('BlogModule:Article:show.html.twig', [
             'article' => $article,
@@ -69,11 +68,9 @@ class ArticleController extends Controller
             return $this->redirect($this->generateUrl('smart_blog.article.index'));
         }
 
-        $this->node->addFrontControl('create', [
-            'title'   => 'Добавить статью',
-            'uri'     => $this->generateUrl('smart_blog_admin_article_create'),
-            'default' => true,
-        ]);
+        $this->node->addFrontControl('create')
+            ->setTitle('Добавить статью')
+            ->setUri($this->generateUrl('smart_blog_admin_article_create'));
 
         return $this->render('BlogModule:Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,

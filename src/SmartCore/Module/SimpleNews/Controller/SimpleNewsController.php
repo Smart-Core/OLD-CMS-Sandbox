@@ -21,12 +21,9 @@ class SimpleNewsController extends Controller
      */
     public function indexAction(Request $request, $page = null)
     {
-        $this->node->addFrontControl('create', [
-            'title'   => 'Добавить новость',
-            //'descr'   => 'Добавить новость',
-            'uri'     => $this->generateUrl('smart_module.news_admin.create'),
-            'default' => true,
-        ]);
+        $this->node->addFrontControl('create')
+            ->setTitle('Добавить новость')
+            ->setUri($this->generateUrl('smart_module.news_admin.create'));
 
         if (null === $page) {
             $page = $request->query->get('page', 1);
@@ -66,19 +63,14 @@ class SimpleNewsController extends Controller
 
         $this->get('cms.breadcrumbs')->add($item->getSlug(), $item->getTitle());
 
-        $this->node->setFrontControls([
-            'edit' => [
-                'title'   => 'Редактировать новость',
-                //'descr'   => 'Редактировать новость',
-                'uri'     => $this->generateUrl('smart_module.news_admin.edit', ['id' => $item->getId() ]),
-                'default' => true,
-            ],
-            'create' => [
-                'title'   => 'Добавить новость',
-                //'descr'   => 'Добавить новость',
-                'uri'     => $this->generateUrl('smart_module.news_admin.create'),
-            ],
-        ]);
+        $this->node->addFrontControl('edit')
+            ->setTitle('Редактировать новость')
+            ->setUri($this->generateUrl('smart_module.news_admin.edit', ['id' => $item->getId() ]));
+
+        $this->node->addFrontControl('create')
+            ->setIsDefault(false)
+            ->setTitle('Добавить новость')
+            ->setUri($this->generateUrl('smart_module.news_admin.create'));
 
         return $this->render('SimpleNewsModule::item.html.twig', ['item' => $item ]);
     }

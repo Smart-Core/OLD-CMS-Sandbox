@@ -59,38 +59,37 @@ class CatalogController extends Controller
             ], ['position' => 'ASC']);
         }
 
-        $this->node->addFrontControl('create_item', [
-            'default' => true,
-            'title'   => 'Добавить запись',
-            'uri'     => $this->generateUrl('smart_module.catalog_item_create_admin_in_category', [
-                    'repository'          => $urm->getRepository()->getName(),
-                    'default_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
-                ]),
-        ]);
+        $this->node->addFrontControl('create_item')
+            ->setTitle('Добавить запись')
+            ->setUri($this->generateUrl('smart_module.catalog_item_create_admin_in_category', [
+                'repository'          => $urm->getRepository()->getName(),
+                'default_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
+            ]));
 
-        if ($this->node->isEip() and !empty($lastCategory)) {
-            $this->node->addFrontControl('create_category', [
-                'title'   => 'Создать категорию',
-                'uri'     => $this->generateUrl('smart_module.catalog_structure_admin_with_parent_category_id', [
-                        'repository'            => $urm->getRepository()->getName(),
-                        'parent_category_id'    => empty($lastCategory) ? 0 : $lastCategory->getId(),
-                        'id'                    => $lastCategory->getStructure()->getId(),
-                    ]),
-            ]);
-            $this->node->addFrontControl('edit_category', [
-                'title' => 'Редактировать категорию',
-                'uri'   => $this->generateUrl('smart_module.catalog_category_admin', [
-                        'repository'    => $urm->getRepository()->getName(),
-                        'id'            => $lastCategory->getId(),
-                        'structure_id'  => $lastCategory->getStructure()->getId(),
-                    ]),
-            ]);
+        if (!empty($lastCategory)) {
+            $this->node->addFrontControl('create_category')
+                ->setIsDefault(false)
+                ->setTitle('Создать категорию')
+                ->setUri($this->generateUrl('smart_module.catalog_structure_admin_with_parent_category_id', [
+                    'repository'         => $urm->getRepository()->getName(),
+                    'parent_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
+                    'id'                 => $lastCategory->getStructure()->getId(),
+                ]));
+
+            $this->node->addFrontControl('edit_category')
+                ->setIsDefault(false)
+                ->setTitle('Редактировать категорию')
+                ->setUri($this->generateUrl('smart_module.catalog_category_admin', [
+                    'repository'   => $urm->getRepository()->getName(),
+                    'id'           => $lastCategory->getId(),
+                    'structure_id' => $lastCategory->getStructure()->getId(),
+                ]));
         }
 
-        $this->node->addFrontControl('manage_repository', [
-            'title' => 'Управление каталогом',
-            'uri'   => $this->generateUrl('smart_module.catalog_repository_admin', ['repository'    => $urm->getRepository()->getName()]),
-        ]);
+        $this->node->addFrontControl('manage_repository')
+            ->setIsDefault(false)
+            ->setTitle('Управление каталогом')
+            ->setUri($this->generateUrl('smart_module.catalog_repository_admin', ['repository' => $urm->getRepository()->getName()]));
 
         return $this->render('CatalogModule::items.html.twig', [
             'category'          => $lastCategory,
@@ -147,13 +146,9 @@ class CatalogController extends Controller
                 'itemSlug' => $item->getSlug(),
             ]).'/', $item->getProperty('title'));
 
-        $this->node->setFrontControls([
-            'edit' => [
-                'title'   => 'Редактировать',
-                'uri'     => $this->generateUrl('smart_module.catalog_item_edit_admin', ['repository' => $urm->getRepository()->getName(), 'id' => $item->getId() ]),
-                'default' => true,
-            ],
-        ]);
+        $this->node->addFrontControl('edit')
+            ->setTitle('Редактировать')
+            ->setUri($this->generateUrl('smart_module.catalog_item_edit_admin', ['repository' => $urm->getRepository()->getName(), 'id' => $item->getId() ]));
 
         return $this->render('CatalogModule::item.html.twig', [
             'category'          => $lastCategory,

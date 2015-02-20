@@ -14,12 +14,9 @@ class TexterController extends Controller
         $nodeId = $this->node->getId();
 
         if ($item = $this->get('smart_module.texter')->get($this->text_item_id, $nodeId)) {
-            $this->node->addFrontControl('edit', [
-                'title'   => 'Редактировать текст',
-                'descr'   => $this->node->getDescription(),
-                'uri'     => $this->generateUrl('cms_admin_node', ['id' => $nodeId]),
-                'default' => true,
-            ]);
+            $this->node->addFrontControl('edit')
+                ->setTitle('Редактировать текст')
+                ->setUri($this->generateUrl('cms_admin_node', ['id' => $nodeId]));
 
             return new Response($item->getText());
         }

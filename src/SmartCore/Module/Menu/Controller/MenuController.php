@@ -36,21 +36,13 @@ class MenuController extends Controller
             $this->get('request')->attributes->remove('__current_folder_path');
         }
 
-        $this->setFrontControls();
-
-        return new Response($menu);
-    }
-
-    protected function setFrontControls()
-    {
-        $this->node->addFrontControl('edit', [
-            'title'    => 'Редактировать меню',
-            'default'  => true,
-            'descr'    => $this->node->getDescription(),
-            'uri'      => $this->generateUrl('cms_admin_node_w_slug', [
+        $this->node->addFrontControl('edit')
+            ->setTitle('Редактировать меню')
+            ->setUri($this->generateUrl('cms_admin_node_w_slug', [
                 'id'   => $this->node->getId(),
                 'slug' => $this->group_id,
-            ]),
-        ]);
+            ]));
+
+        return new Response($menu);
     }
 }
