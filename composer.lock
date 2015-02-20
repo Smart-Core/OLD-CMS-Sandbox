@@ -2157,16 +2157,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-bundle",
-            "version": "3.4",
+            "version": "4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/FMElfinderBundle.git",
-                "reference": "d62b4b17d3efea72239f0a56d5b4c9c557292c09"
+                "reference": "d2e12b26a8e3e8b346f5daf006d2fe35a9162cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/d62b4b17d3efea72239f0a56d5b4c9c557292c09",
-                "reference": "d62b4b17d3efea72239f0a56d5b4c9c557292c09",
+                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/d2e12b26a8e3e8b346f5daf006d2fe35a9162cdc",
+                "reference": "d2e12b26a8e3e8b346f5daf006d2fe35a9162cdc",
                 "shasum": ""
             },
             "require": {
@@ -2212,7 +2212,7 @@
                 "elfinder",
                 "file manager"
             ],
-            "time": "2015-01-20 02:53:32"
+            "time": "2015-02-18 11:08:47"
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
@@ -3690,12 +3690,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "a594cc6deda293034b8fd7795c9950f02fc8251b"
+                "reference": "24d24910c1802c3384c696708503634ac05853a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/a594cc6deda293034b8fd7795c9950f02fc8251b",
-                "reference": "a594cc6deda293034b8fd7795c9950f02fc8251b",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/24d24910c1802c3384c696708503634ac05853a5",
+                "reference": "24d24910c1802c3384c696708503634ac05853a5",
                 "shasum": ""
             },
             "require": {
@@ -3736,7 +3736,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2015-02-02 15:55:54"
+            "time": "2015-02-19 22:17:33"
         },
         {
             "name": "misd/guzzle-bundle",
@@ -4940,12 +4940,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spea/SpBowerBundle.git",
-                "reference": "2e244dfba6bd38937648a55fa03b41ca3ee830c8"
+                "reference": "d2f51eb9b894896ac53b303359ab18c66c9859ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spea/SpBowerBundle/zipball/2e244dfba6bd38937648a55fa03b41ca3ee830c8",
-                "reference": "2e244dfba6bd38937648a55fa03b41ca3ee830c8",
+                "url": "https://api.github.com/repos/Spea/SpBowerBundle/zipball/d2f51eb9b894896ac53b303359ab18c66c9859ad",
+                "reference": "d2f51eb9b894896ac53b303359ab18c66c9859ad",
                 "shasum": ""
             },
             "require": {
@@ -4954,7 +4954,7 @@
                 "php": ">=5.3.3",
                 "symfony/assetic-bundle": "~2.1",
                 "symfony/framework-bundle": "~2.1",
-                "symfony/process": "~2.1"
+                "symfony/process": "~2.3,>=2.3.20 | ~2.4,>=2.4.10 | ~2.5,>=2.5.5"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.0.*",
@@ -4993,7 +4993,7 @@
                 "bower manager",
                 "dependencies"
             ],
-            "time": "2014-12-22 09:38:19"
+            "time": "2015-02-19 18:10:24"
         },
         {
             "name": "stfalcon/tinymce-bundle",
