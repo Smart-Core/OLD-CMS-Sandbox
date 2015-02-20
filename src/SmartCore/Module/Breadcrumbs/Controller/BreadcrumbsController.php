@@ -27,15 +27,15 @@ class BreadcrumbsController extends Controller
     protected $css_class = null;
 
     /**
-     * Запуск модуля.
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
         return $this->render('BreadcrumbsModule::breadcrumbs.html.php', [
+            'css_class' => $this->css_class,
             'delimiter' => $this->delimiter,
             'items'     => $this->get('cms.breadcrumbs'),
             'hide_if_only_home' => $this->hide_if_only_home,
-            'css_class' => $this->css_class,
         ]);
     }
 }
