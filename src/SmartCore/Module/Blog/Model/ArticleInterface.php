@@ -51,12 +51,12 @@ interface ArticleInterface
      * @param bool $enabled
      * @return $this
      */
-    public function setEnabled($enabled);
+    public function setIsEnabled($enabled);
 
     /**
      * @return bool
      */
-    public function getEnabled();
+    public function getIsEnabled();
 
     /**
      * @param string $text

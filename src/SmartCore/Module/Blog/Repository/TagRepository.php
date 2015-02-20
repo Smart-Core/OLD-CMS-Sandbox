@@ -20,7 +20,7 @@ class TagRepository extends EntityRepository
             FROM {$this->_entityName} AS t
             JOIN t.articles AS a
             WHERE t = :tag
-            AND a.enabled = true
+            AND a.is_enabled = true
         ")->setParameter('tag', $tag);
 
         return $query->getSingleScalarResult();
@@ -40,7 +40,7 @@ class TagRepository extends EntityRepository
             FROM {$this->_entityName} AS t
             JOIN t.articles AS a
             WHERE t = :tag
-            AND a.enabled = true
+            AND a.is_enabled = true
         ")->setParameter('tag', $tag);
 
         return $query->getSingleScalarResult();

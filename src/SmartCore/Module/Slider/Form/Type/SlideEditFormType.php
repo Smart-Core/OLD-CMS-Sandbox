@@ -11,7 +11,7 @@ class SlideEditFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('enabled')
+            ->add('is_enabled')
             ->add('title', null, ['attr' => ['class' => 'focused']])
             ->add('position')
             ->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']])

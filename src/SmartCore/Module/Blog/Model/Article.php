@@ -14,15 +14,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class Article implements ArticleInterface
 {
     use ColumnTrait\Id;
+    use ColumnTrait\IsEnabled;
     use ColumnTrait\CreatedAt;
     use ColumnTrait\UpdatedAt;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $enabled;
 
     /**
      * @var string
@@ -75,7 +69,7 @@ abstract class Article implements ArticleInterface
     public function __construct()
     {
         $this->created_at = new \DateTime();
-        $this->enabled    = true;
+        $this->is_enabled = true;
 
         if (array_key_exists('SmartCore\Module\Blog\Model\TagTrait', class_uses($this, false))
             or array_key_exists('SmartCore\Module\Blog\Model\TaggableInterface', class_implements($this, false))
@@ -147,33 +141,6 @@ abstract class Article implements ArticleInterface
     public function getKeywords()
     {
         return $this->keywords;
-    }
-
-    /**
-     * @param bool $enabled
-     * @return $this
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled()
-    {
-        return $this->enabled;
     }
 
     /**

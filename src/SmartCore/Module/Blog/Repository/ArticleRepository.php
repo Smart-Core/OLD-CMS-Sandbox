@@ -16,7 +16,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
     public function findLast($limit = 10)
     {
         return $this->findBy([
-            'enabled' => true,
+            'is_enabled' => true,
         ], [
             'created_at' => 'DESC',
         ], $limit);
@@ -81,7 +81,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
         return $this->_em->createQuery("
             SELECT a
             FROM {$this->_entityName} AS a
-            WHERE a.enabled = true
+            WHERE a.is_enabled = true
             ORDER BY a.created_at DESC
         ");
     }
@@ -96,7 +96,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
         return $this->_em->createQuery("
             SELECT a
             FROM {$this->_entityName} AS a
-            WHERE a.enabled = true
+            WHERE a.is_enabled = true
             AND a.created_at > :firstDate
             AND a.created_at < :lastDate
             ORDER BY a.created_at DESC
@@ -119,7 +119,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
             FROM {$this->_entityName} AS a
             JOIN a.tags AS t
             WHERE t = :tag
-            AND a.enabled = true
+            AND a.is_enabled = true
             ORDER BY a.created_at DESC
         ")->setParameter('tag', $tag);
     }
@@ -135,7 +135,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
         $query = $this->_em->createQuery("
             SELECT COUNT(a.id)
             FROM {$this->_entityName} a
-            WHERE a.enabled = true
+            WHERE a.is_enabled = true
         ");
 
         return $query->getSingleScalarResult();
