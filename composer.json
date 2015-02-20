@@ -91,9 +91,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "SmartCore\\Bundle\\AcceleratorCacheBundle\\Composer\\ScriptHandler::clearCache",
             "php app/console doctrine:schema:update"
-        ],
-        "post-root-package-install": [
-            "SymfonyStandard\\Composer::hookRootPackageInstall"
         ]
     },
     "minimum-stability": "alpha",
