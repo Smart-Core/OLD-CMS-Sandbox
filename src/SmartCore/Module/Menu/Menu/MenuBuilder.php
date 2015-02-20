@@ -127,6 +127,10 @@ class MenuBuilder extends ContainerAware
                     'title' => $item->getDescription(),
                 ])->setExtras($item->getProperties());
 
+                if (!$this->is_admin and $item->getOpenInNewWindow()) {
+                    $new_item->setLinkAttribute('target', '_blank');
+                }
+
                 if ($this->is_admin and (!$item->getIsActive() or (null != $item->getFolder() and !$item->getFolder()->isActive()))) {
                     $new_item->setAttribute('style', 'text-decoration: line-through;');
                 }

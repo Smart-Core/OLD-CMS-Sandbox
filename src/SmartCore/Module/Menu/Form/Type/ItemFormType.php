@@ -41,6 +41,7 @@ class ItemFormType extends AbstractType
             ->add('url')
             ->add('description')
             ->add('position')
+            ->add('open_in_new_window')
         ;
 
         if ($options['data']->getGroup() instanceof Group) {

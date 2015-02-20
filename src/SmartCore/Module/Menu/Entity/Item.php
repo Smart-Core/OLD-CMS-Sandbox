@@ -63,6 +63,13 @@ class Item
     protected $url;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true, options={"default":0})
+     */
+    protected $open_in_new_window;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="array", nullable=true)
@@ -82,6 +89,7 @@ class Item
         $this->children          = new ArrayCollection();
         $this->created_at        = new \DateTime();
         $this->is_active         = true;
+        $this->open_in_new_window = false;
         $this->parent_item       = null;
         $this->position          = 0;
         $this->properties        = null;
@@ -205,6 +213,25 @@ class Item
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * @param boolean $open_in_new_window
+     * @return $this
+     */
+    public function setOpenInNewWindow($open_in_new_window)
+    {
+        $this->open_in_new_window = $open_in_new_window;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getOpenInNewWindow()
+    {
+        return $this->open_in_new_window;
     }
 
     /**
