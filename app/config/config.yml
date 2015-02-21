@@ -115,6 +115,6 @@ smart_sitemap:
         - /admin/
         - /api/
 
-sp_bower:
-    bundles:
+#sp_bower:
+#    bundles:
         #CMSBundle: ~

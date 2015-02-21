@@ -21,8 +21,12 @@ class HelloController extends Controller
             ->title('hi :)')
         ;
 
-        ld($this->get('kernel')->getSiteName());
-        ld($this->get('kernel')->getModules());
+//        $themes = $this->get('liip_theme.active_theme');
+//        $themes->setThemes(['default', 'light']);
+//        $themes->setName('light');
+
+//        ld($themes->getName());
+//        ld($themes->getThemes());
 
 //        ld($em->getRepository('SandboxSiteBundle\Entity\Catalog\Category')->findAll());
 

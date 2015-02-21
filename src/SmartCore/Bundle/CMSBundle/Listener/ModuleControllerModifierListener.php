@@ -5,6 +5,7 @@ namespace SmartCore\Bundle\CMSBundle\Listener;
 use SmartCore\Bundle\CMSBundle\Engine\EngineContext;
 use SmartCore\Bundle\CMSBundle\Engine\EngineFolder;
 use SmartCore\Bundle\CMSBundle\Engine\EngineNode;
+use SmartCore\Bundle\CMSBundle\Locator\ModuleThemeLocator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -14,31 +15,30 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class ModuleControllerModifierListener
 {
-    /**
-     * @var EngineContext
-     */
+    /** @var EngineContext */
     protected $engineContext;
 
-    /**
-     * @var EngineFolder
-     */
+    /** @var EngineFolder */
     protected $engineFolder;
 
-    /**
-     * @var EngineNode
-     */
+    /** @var EngineNode */
     protected $engineNodeManager;
+
+    /** @var ModuleThemeLocator */
+    protected $moduleThemeLocator;
 
     /**
      * @param EngineContext $engineContext
      * @param EngineFolder $engineFolder
      * @param EngineNode $engineNodeManager
+     * @param ModuleThemeLocator $moduleThemeLocator
      */
-    public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineNode $engineNodeManager)
+    public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineNode $engineNodeManager, ModuleThemeLocator $moduleThemeLocator)
     {
-        $this->engineContext     = $engineContext;
-        $this->engineFolder      = $engineFolder;
-        $this->engineNodeManager = $engineNodeManager;
+        $this->engineContext      = $engineContext;
+        $this->engineFolder       = $engineFolder;
+        $this->engineNodeManager  = $engineNodeManager;
+        $this->moduleThemeLocator = $moduleThemeLocator;
     }
 
     public function onView(GetResponseForControllerResultEvent $event)
@@ -78,6 +78,7 @@ class ModuleControllerModifierListener
 
             if (method_exists($controller[0], 'setNode')) {
                 $controller[0]->setNode($node);
+                $this->moduleThemeLocator->setModuleTheme($node->getTemplate());
             }
 
             $this->engineContext->setCurrentNodeId($node->getId());
@@ -108,5 +109,6 @@ class ModuleControllerModifierListener
     public function onResponse(FilterResponseEvent $event)
     {
         $this->engineContext->setCurrentNodeId(null);
+        $this->moduleThemeLocator->setModuleTheme(null);
     }
 }

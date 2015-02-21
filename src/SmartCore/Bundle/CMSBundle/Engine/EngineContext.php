@@ -2,12 +2,13 @@
 
 namespace SmartCore\Bundle\CMSBundle\Engine;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class EngineContext
 {
     protected $current_folder_id = 1;
-    protected $current_folder_path;
+    protected $current_folder_path = '/';
     protected $current_node_id = null;
 
     /**
@@ -15,7 +16,9 @@ class EngineContext
      */
     public function __construct(RequestStack $requestStack)
     {
-        $this->setCurrentFolderPath($requestStack->getMasterRequest()->getBasePath().'/');
+        if ($requestStack->getMasterRequest() instanceof Request) {
+            $this->setCurrentFolderPath($requestStack->getMasterRequest()->getBasePath().'/');
+        }
     }
 
     /**

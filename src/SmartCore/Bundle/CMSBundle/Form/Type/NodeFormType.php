@@ -22,6 +22,11 @@ class NodeFormType extends AbstractType
             $modules[$module_name] = $module_name;
         }
 
+        $moduleThemes = [];
+        foreach (Container::get('cms.module')->getThemes($options['data']->getModule().'Module') as $theme) {
+            $moduleThemes[$theme] = $theme;
+        }
+
         $builder
             ->add('module', 'choice', [
                 'choices' => $modules,
@@ -42,13 +47,21 @@ class NodeFormType extends AbstractType
                     //Node::TOOLBAR_ALWAYS => 'Всегда', // @todo
                 ],
             ])
-            ->add('template')
+            ->add('template', 'choice', [
+                'choices'  => $moduleThemes,
+                'required' => false,
+                'label'    => 'Тема шаблонов',
+            ])
             ->add('description')
             ->add('position')
             ->add('priority')
             ->add('is_active', null, ['required' => false])
             ->add('is_cached', null, ['required' => false])
         ;
+
+        if (empty($moduleThemes)) {
+            $builder->remove('template');
+        }
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

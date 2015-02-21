@@ -25,14 +25,14 @@ class AppKernel extends Kernel
             //new JMS\AopBundle\JMSAopBundle(),
             //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             //new Happyr\GoogleSiteAuthenticatorBundle\HappyrGoogleSiteAuthenticatorBundle(),
-            new HappyR\SlugifyBundle\HappyRSlugifyBundle(),
-            new Misd\GuzzleBundle\MisdGuzzleBundle(),
-            new Sp\BowerBundle\SpBowerBundle(),
+            //new HappyR\SlugifyBundle\HappyRSlugifyBundle(),
+            //new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            //new Sp\BowerBundle\SpBowerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
-            // $bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
+            //$bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }
 
         $this->registerSmartCoreCmsBundles($bundles);

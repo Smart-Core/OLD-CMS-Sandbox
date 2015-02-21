@@ -1,5 +1,5 @@
-# Пример конфигурирования
 parameters:
+    liip_theme.file_locator.class: SmartCore\Bundle\CMSBundle\Locator\ModuleThemeLocator
     admin_path: admin
     user_path: user
 
@@ -106,6 +106,12 @@ liip_doctrine_cache:
             namespace: "smart_blog_%secret%"
             type: file_system
             directory: "%kernel.cache_dir%/smart_blog"
+
+liip_theme:
+    path_patterns:
+        app_resource:
+        bundle_resource:
+            - %%site_dir%%/modules/%%bundle_name%%/%%module_theme%%/%%template%%
 
 mopa_bootstrap:
     form:

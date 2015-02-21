@@ -56,6 +56,30 @@ class EngineModule
     }
 
     /**
+     * @param string $moduleName
+     * @return array
+     */
+    public function getThemes($moduleName)
+    {
+        $dir = $this->kernel->getBundle('SiteBundle')->getPath().'/Resources/modules/'.$moduleName;
+
+        if (!is_dir($dir)) {
+            return [];
+        }
+
+        $finder = new Finder();
+        $finder->directories()->sortByName()->depth('== 0')->in($dir);
+
+        $themes = [];
+        /** @var \Symfony\Component\Finder\SplFileInfo $file */
+        foreach ($finder as $file) {
+            $themes[] = $file->getFilename();
+        }
+
+        return $themes;
+    }
+    
+    /**
      * Проверить, подключен ли модуль.
      *
      * @param string $name
