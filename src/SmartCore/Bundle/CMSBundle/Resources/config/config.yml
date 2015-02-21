@@ -109,7 +109,10 @@ liip_doctrine_cache:
 
 liip_theme:
     path_patterns:
-        app_resource:
+        #app_resource:
+            #- %%site_dir%%/modules/%%bundle_name%%/%%module_theme%%/%%template%%
+        bundle_resource_dir:
+            - %%site_dir%%/modules/%%bundle_name%%/%%module_theme%%/%%template%%
         bundle_resource:
             - %%site_dir%%/modules/%%bundle_name%%/%%module_theme%%/%%template%%
 
