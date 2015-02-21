@@ -21,7 +21,7 @@ class MenuController extends Controller
             $this->get('request')->attributes->set('__selected_inheritance', $this->selected_inheritance);
             $this->get('request')->attributes->set('__current_folder_path', $current_folder_path);
 
-            $menu = $this->renderView('MenuModule::'.$this->node->getTemplate('menu').'.html.twig', [
+            $menu = $this->renderView('MenuModule::menu.html.twig', [
                 'css_class'     => $this->css_class,
                 'current_class' => $this->current_class,
                 'depth'         => $this->depth,
