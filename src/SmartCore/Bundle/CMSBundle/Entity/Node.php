@@ -133,7 +133,7 @@ class Node implements \Serializable
     protected $eip = false;
 
     /**
-     * @var array
+     * @var FrontControl[]
      */
     protected $front_controls = [];
 
@@ -426,28 +426,19 @@ class Node implements \Serializable
 
     /**
      * @param string $name
-     * @param array|null $controls
      * @return FrontControl
      * @throws \Exception
      */
-    public function addFrontControl($name, $controls = null)
+    public function addFrontControl($name)
     {
-        if ($this->isEip()) {
-            if (isset($this->front_controls[$name])) {
-                throw new \Exception("From control: '{$name}' already exists.");
-            }
-
-            if (empty($controls)) {
-                $this->front_controls[$name] = new FrontControl();
-                $this->front_controls[$name]->setDescription($this->getDescription());
-
-                return $this->front_controls[$name];
-            } else {
-                $this->front_controls[$name] = $controls;
-            }
+        if (isset($this->front_controls[$name])) {
+            throw new \Exception("From control: '{$name}' already exists.");
         }
 
-        return $this;
+        $this->front_controls[$name] = new FrontControl();
+        $this->front_controls[$name]->setDescription($this->getDescription());
+
+        return $this->front_controls[$name];
     }
 
     /**
@@ -466,14 +457,16 @@ class Node implements \Serializable
     }
 
     /**
-     * @return array
+     * @return FrontControl[]
      */
     public function getFrontControls()
     {
         $data = [];
 
-        foreach ($this->front_controls as $name => $control) {
-            $data[$name] = $control instanceof FrontControl ? $control->getData() : $control;
+        if ($this->isEip()) {
+            foreach ($this->front_controls as $name => $control) {
+                $data[$name] = $control->getData();
+            }
         }
 
         return $data;
