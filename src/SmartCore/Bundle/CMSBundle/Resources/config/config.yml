@@ -206,10 +206,9 @@ smart_rich_editor:
             content_css: "asset[bundles/felib/tinymce/content.css]"
 
 stfalcon_tinymce:
-    #use_callback_tinymce_init: true
+    use_callback_tinymce_init: true
     theme:
         advanced:
-            base_url: '/'
             file_browser_callback: 'elFinderBrowser'
             plugins:
                 - "advlist autolink lists link image charmap print preview hr anchor pagebreak"

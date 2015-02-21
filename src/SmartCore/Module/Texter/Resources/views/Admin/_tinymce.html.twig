@@ -1,80 +1,12 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{#{% set felib = felib_use('tinymce', 3) %}#}
-
 {% block scripts %}
     {{ parent() }}
     {#{{ tinymce_init3() }}#}
-    {#{{ elfinder_tinymce_init() }}#}
+    {#{{ elfinder_tinymce_init('default', {'width': 980, 'height': 430, 'title': 'Файловый менеджер' }) }}#}
 
-    {{ elfinder_tinymce_init4('tinymce4', {'width': 980, 'height': 450, 'title': 'Файловый менеджер' }) }}
+    {{ elfinder_tinymce_init4('tinymce4', {'width': 980, 'height': 430, 'title': 'Файловый менеджер' }) }}
     {{ tinymce_init() }}
-
-{#
-    <script type="text/javascript">
-        //<![CDATA[
-        function myCustomOnInit() {
-            tinyMCE.get('textarea_ru').focus();
-        }
-
-        function elFinderBrowser (field_name, url, type, win) {
-            tinyMCE.activeEditor.windowManager.open({
-                file: "{{ path('elfinder') }}",
-                title: 'elFinder 2.0',
-                width: 900,
-                height: 450,
-                resizable: 'yes',
-                inline: 'yes',    // This parameter only has an effect if you use the inlinepopups plugin!
-                popup_css: false, // Disable TinyMCE's default popup CSS
-                close_previous: 'no'
-            }, {
-                window: win,
-                input: field_name
-            });
-            return false;
-        }
-        //]]>
-    </script>
-    <script type="text/javascript">
-        $().ready(function() {
-            $('textarea.tinymce').tinymce({
-                // Location of TinyMCE script
-                script_url : '{{ asset('bundles/felib/tinymce/3/tiny_mce.js') }}',
-
-                language : "{{ app.request.locale }}",
-                width : "100%",
-                height: 480,
-                relative_urls : false,
-                force_br_newlines : true,
-                forced_root_block : "",
-                convert_urls : false,
-                oninit : myCustomOnInit,
-                file_browser_callback: elFinderBrowser,
-
-                // General options
-                theme : "advanced",
-                plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist",
-
-                // Theme options
-                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-                // theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
-                theme_advanced_buttons4 : "",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true,
-                theme_advanced_resize_horizontal : false,
-                theme_advanced_resizing_use_cookie : true,
-                theme_advanced_styles : false,
-
-                // Example content CSS (should be your site CSS)
-                content_css : "{{ asset('bundles/felib/tinymce/content.css') }}"
-            });
-        });
-    </script>
-#}
 {% endblock %}
 
 {% block body_js %}
@@ -84,7 +16,7 @@
             e.preventDefault();
             $(this).tab('show');
             $(this.hash + ' input.focused').focus();
-            tinyMCE.get($(this.hash + ' textarea.focused').attr('id')).focus();
+            tinyMCE.get($(this.hash + ' textarea').attr('id')).getBody().focus();
         });
     </script>
 {% endblock body_js %}
