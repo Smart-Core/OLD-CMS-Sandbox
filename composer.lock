@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e76dd0410a6cba187a947e4c7f71274b",
+    "hash": "e3a2ef8c7cdea1147eb920af7b962c45",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -5048,17 +5048,17 @@
         },
         {
             "name": "stfalcon/tinymce-bundle",
-            "version": "v0.2.1",
+            "version": "dev-master",
             "target-dir": "Stfalcon/Bundle/TinymceBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stfalcon/TinymceBundle.git",
-                "reference": "0cb00c774300cf7cd711fcbb3807f440c7fe7b74"
+                "reference": "758c19947b04d93d9d79e0ae8432beaccc0097f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/0cb00c774300cf7cd711fcbb3807f440c7fe7b74",
-                "reference": "0cb00c774300cf7cd711fcbb3807f440c7fe7b74",
+                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/758c19947b04d93d9d79e0ae8432beaccc0097f2",
+                "reference": "758c19947b04d93d9d79e0ae8432beaccc0097f2",
                 "shasum": ""
             },
             "require": {
@@ -5102,7 +5102,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2013-07-22 06:59:21"
+            "time": "2014-09-15 12:37:07"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5969,6 +5969,7 @@
         "smart-core/session-bundle": 20,
         "sonata-project/intl-bundle": 20,
         "sp/bower-bundle": 20,
+        "stfalcon/tinymce-bundle": 20,
         "whiteoctober/breadcrumbs-bundle": 20,
         "white-october/pagerfanta-bundle": 20
     },

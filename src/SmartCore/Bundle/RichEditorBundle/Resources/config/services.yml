@@ -1,0 +1,6 @@
+services:
+    twig.extension.smart_rich_editor.tinymce:
+        class: SmartCore\Bundle\RichEditorBundle\Twig\Extension\TinymceExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension, alias: smart_riche_ditor_tinymce }

@@ -1,3 +1,7 @@
+smart_rich_editor:
+    resource: "@SmartRichEditorBundle/Resources/config/routing.yml"
+    prefix:   /
+
 site:
     resource: '@SiteBundle/Resources/config/routing.yml'
     prefix: /

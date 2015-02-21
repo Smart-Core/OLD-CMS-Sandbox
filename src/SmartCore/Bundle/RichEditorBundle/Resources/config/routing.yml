@@ -1,0 +1,3 @@
+smart_rich_editor_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SmartRichEditorBundle:Default:index }

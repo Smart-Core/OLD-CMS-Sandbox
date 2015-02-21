@@ -1,9 +1,16 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% set felib = felib_use('tinymce', 3) %}
+{#{% set felib = felib_use('tinymce', 3) %}#}
 
 {% block scripts %}
     {{ parent() }}
+    {#{{ tinymce_init3() }}#}
+    {#{{ elfinder_tinymce_init() }}#}
+
+    {{ elfinder_tinymce_init4('tinymce4', {'width': 980, 'height': 450, 'title': 'Файловый менеджер' }) }}
+    {{ tinymce_init() }}
+
+{#
     <script type="text/javascript">
         //<![CDATA[
         function myCustomOnInit() {
@@ -67,9 +74,7 @@
             });
         });
     </script>
-
-    {#{{ tinymce_init() }}#}
-    {#{{ elfinder_tinymce_init() }}#}
+#}
 {% endblock %}
 
 {% block body_js %}

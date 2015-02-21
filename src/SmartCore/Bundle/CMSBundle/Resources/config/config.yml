@@ -68,6 +68,43 @@ fm_elfinder:
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                         upload_deny: ['all']
                         upload_max_size: 50M
+        tinymce4:
+            locale: %locale%    # defaults to current request locale
+            editor: tinymce4    # other choices are ckeditor, tinymce or simple
+            tinymce_popup_path: "asset[bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce_popup.js]"
+            fullscreen: true    # defaults true, applies to simple and ckeditor editors
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            connector:
+                debug: false    # defaults to false
+                bind:
+                    mkfile.pre:
+                        - Plugin.Normalizer.cmdPreprocess
+                        - Plugin.Sanitizer.cmdPreprocess
+                    upload.presave:
+                        - Plugin.Normalizer.onUpLoadPreSave
+                        - Plugin.Sanitizer.onUpLoadPreSave
+                plugin:
+                    Normalizer:
+                        enable: true
+                        nfc: true
+                        nfkc: true
+                    Sanitizer:
+                        enable: true
+                        targets: ['\\','/',':','*','?','"','<','>','|',' ']
+                        replace: '_'
+                roots:          # at least one root must be defined
+                    images:
+                        driver: LocalFileSystem
+                        path: images
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M
+                    uploads:
+                        driver: LocalFileSystem
+                        path: uploads
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 50M
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
@@ -132,7 +169,7 @@ security:
         ROLE_ROOT:        [ ROLE_USER, ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_GUEST ]
         #ROLE_USER:        [ROLE_COMMENTER]
 
-stfalcon_tinymce:
+smart_rich_editor:
     include_jquery: false
     tinymce_jquery: true
     textarea_class: 'wysiwyg'
@@ -157,7 +194,7 @@ stfalcon_tinymce:
             relative_urls: false
             width: "100%"
             height: 380
-            content_css: "/bundles/felib/tinymce/content.css" # @todo настройка в формате "asset[path/to/style.css]"
+            content_css: "asset[bundles/felib/tinymce/content.css]"
         simple:
             theme: "simple"
             force_br_newlines : false
@@ -166,7 +203,27 @@ stfalcon_tinymce:
             relative_urls: false
             width: "100%"
             height: 180
-            content_css: "/bundles/felib/tinymce/content.css" # @todo настройка в формате "asset[path/to/style.css]"
+            content_css: "asset[bundles/felib/tinymce/content.css]"
+
+stfalcon_tinymce:
+    #use_callback_tinymce_init: true
+    theme:
+        advanced:
+            base_url: '/'
+            file_browser_callback: 'elFinderBrowser'
+            plugins:
+                - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
+                - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                - "insertdatetime media nonbreaking save table contextmenu directionality"
+                - "emoticons template paste textcolor"
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview media | forecolor backcolor emoticons"
+            image_advtab: true
+            force_br_newlines : false
+            forced_root_block : ""
+            convert_urls : false
+            relative_urls: false
+            height: 380
+            content_css: "asset[bundles/felib/tinymce/content.css]"
 
 tagcache:
     driver:        %tagcache_driver% # Memcache, Memcached, File, Sqlite, Apc, Nullcache

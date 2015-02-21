@@ -65,7 +65,7 @@
         "smart-core/session-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
         "sp/bower-bundle": "dev-master",
-        "stfalcon/tinymce-bundle": "v0.2.1",
+        "stfalcon/tinymce-bundle": "dev-master",
         "whiteoctober/breadcrumbs-bundle": "dev-master",
         "white-october/pagerfanta-bundle": "dev-master",
         "zendframework/zend-servicemanager": "~2",

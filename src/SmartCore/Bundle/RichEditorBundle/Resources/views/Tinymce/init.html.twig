@@ -1,0 +1,19 @@
+{% if include_jquery %}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+{% endif %}
+
+<script type="text/javascript" src="{{ asset('bundles/felib/tinymce/3/tiny_mce.js') }}"></script>
+
+{% if tinymce_jquery %}
+    <script type="text/javascript" src="{{ asset('bundles/felib/tinymce/3/jquery.tinymce.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/smartricheditor/js/tinymce/3/init.jquery.js') }}"></script>
+{% else %}
+    <script type="text/javascript" src="{{ asset('bundles/smartricheditor/js/tinymce/3/ready.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/smartricheditor/js/tinymce/3/init.standard.js') }}"></script>
+{% endif %}
+
+<script type="text/javascript">
+//<![CDATA[
+    initTinyMCE({{ tinymce_config|raw }});
+//]]>
+</script>
