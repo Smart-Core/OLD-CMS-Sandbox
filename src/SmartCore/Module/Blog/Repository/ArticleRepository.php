@@ -147,22 +147,31 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
      */
     public function getArchiveMonthly($limit = 24)
     {
-        if ('mysql' != $this->_em->getConnection()->getDatabasePlatform()->getName()) {
+        if ('mysql' === $this->_em->getConnection()->getDatabasePlatform()->getName()) {
+            $result = $this->_em->getConnection()->fetchAll('
+                SELECT date_format(created_at, "%Y-%m-01 00:00:00") AS date, COUNT(1) AS count
+                FROM '.$this->getClassMetadata()->getTableName().'
+                GROUP BY date_format(created_at, "%Y-%m" ) DESC
+                ORDER BY date DESC
+                LIMIT 0, '.$limit
+            );
+        } elseif('postgresql' === $this->_em->getConnection()->getDatabasePlatform()->getName()) {
+            $result = $this->_em->getConnection()->fetchAll('
+                SELECT to_char(created_at, "YYYY-mm-01 00:00:00") AS date, COUNT(1) AS count
+                FROM '.$this->getClassMetadata()->getTableName().'
+                GROUP BY to_char(created_at, "YYYY-mm" ) DESC
+                ORDER BY date DESC
+                LIMIT 0, '.$limit
+            );
+        } else {
             throw new \Exception('
 
-                Посчет архива статей, пока работает только с БД MySQL.
+                Архива статей, пока работает только с БД MySQL и PostgresSQL.
                 Call in SmartCore\Module\Blog\Repository\ArticleRepository::getArchiveMonthly();
 
             ');
         }
 
-        return $this->_em->getConnection()->fetchAll('
-            SELECT date_format(created_at, "%Y-%m-01 00:00:00" ) AS date,
-                COUNT(1) AS count
-            FROM '.$this->getClassMetadata()->getTableName().'
-            GROUP BY date_format(created_at, "%Y-%m" ) DESC
-            ORDER BY date DESC
-            LIMIT 0, '.$limit
-        );
+        return $result;
     }
 }
