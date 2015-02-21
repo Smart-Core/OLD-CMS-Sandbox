@@ -10,7 +10,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('node_id',    null,       ['required' => false, 'attr' => ['class' => 'focused']])
+            ->add('node_id',    null,       ['required' => false, 'attr' => ['autofocus' => 'autofocus']])
             ->add('controller', null,       ['required' => false])
             ->add('params',     'textarea', ['required' => false, 'attr' => ['cols' => 15, 'style' => 'height: 150px;']])
             ->add('open_tag',   'textarea', ['required' => false, 'attr' => ['cols' => 5,  'style' => 'height: 78px;']])

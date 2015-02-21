@@ -49,7 +49,7 @@ class ItemFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slug', null, ['attr' => ['class' => 'focused']])
+            ->add('slug', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('is_enabled')
             ->add('position')
             ->add('meta', new MetaFormType(), ['label' => 'Meta tags'])

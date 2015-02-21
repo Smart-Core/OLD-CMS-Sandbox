@@ -24,7 +24,7 @@ class ArticleFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',      null, ['attr' => ['class' => 'focused']])
+            ->add('title',      null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('slug')
             ->add('annotation', null, ['required' => false])
             ->add('text',       null, ['attr' => ['class' => 'wysiwyg', 'data-theme' => 'advanced']])

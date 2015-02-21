@@ -12,7 +12,7 @@ class StructureFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',      null, ['attr'  => ['class' => 'focused']])
+            ->add('title',      null, ['attr'  => ['autofocus' => 'autofocus']])
             ->add('title_form', null, ['label' => 'Title in forms'])
             ->add('name')
             ->add('entries', 'choice', [

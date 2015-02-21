@@ -11,7 +11,7 @@ class PhotoFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', null, ['attr' => ['class' => 'focused']])
+            ->add('description', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('file', 'file')
         ;
     }

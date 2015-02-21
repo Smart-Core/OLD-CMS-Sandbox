@@ -10,7 +10,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('items_per_page', 'integer', ['attr' => ['class' => 'focused']])
+            ->add('items_per_page', 'integer', ['attr' => ['autofocus' => 'autofocus']])
         ;
     }
 

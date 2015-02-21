@@ -25,7 +25,7 @@ class PropertyFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('title', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('name')
             ->add('type', 'choice', [
                 'choices' => [

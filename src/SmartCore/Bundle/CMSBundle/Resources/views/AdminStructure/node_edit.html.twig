@@ -63,7 +63,7 @@
             $('#nodeTab a').click(function (e) {
                 e.preventDefault();
                 $(this).tab('show');
-                $(this.hash + ' input.focused').focus();
+                $(this.hash + ' input[autofocus="autofocus"]').focus();
             });
         </script>
     {% endif %}

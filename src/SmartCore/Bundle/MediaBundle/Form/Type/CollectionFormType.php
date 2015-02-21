@@ -11,7 +11,7 @@ class CollectionFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('title', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('relative_path')
             ->add('file_relative_path_pattern')
             ->add('filename_pattern')

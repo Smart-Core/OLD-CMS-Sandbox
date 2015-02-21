@@ -51,9 +51,10 @@
 {% block body_js %}
     {{ parent() }}
     <script type="text/javascript">
-        {# Фокусировка на элементе с классом .focused а также позиционирование курсора в конец поля #}
+        {# Позиционирование курсора фокусированного инпута в конец поля #}
         $(function(){
-            $('.focused:first').focusEnd();
+            $('input[autofocus="autofocus"]').focusEnd();
+            $('input[autofocus]').focusEnd();
         });
 
         $.fn.setCursorPosition = function(position){

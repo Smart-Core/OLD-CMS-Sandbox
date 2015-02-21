@@ -12,7 +12,7 @@ class RoleFormType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'attr' => ['class' => 'focused'],
+                'attr' => ['autofocus' => 'autofocus'],
                 'label' => 'Role name',
             ])
             ->add('position')

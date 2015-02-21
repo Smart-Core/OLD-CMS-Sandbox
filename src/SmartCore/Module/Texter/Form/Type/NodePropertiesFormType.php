@@ -10,7 +10,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text_item_id', 'integer', ['attr' => ['class' => 'focused']])
+            ->add('text_item_id', 'integer', ['attr' => ['autofocus' => 'autofocus']])
             ->add('editor', 'checkbox', ['required' => false])
         ;
     }

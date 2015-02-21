@@ -52,7 +52,7 @@ class FolderFormType extends AbstractType
         }
 
         $builder
-            ->add('title', null, ['attr' => ['class' => 'focused']])
+            ->add('title', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('uri_part')
             ->add('description')
             ->add('parent_folder', 'cms_folder_tree')

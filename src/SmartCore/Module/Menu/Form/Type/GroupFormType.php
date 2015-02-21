@@ -11,7 +11,7 @@ class GroupFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['attr' => ['class' => 'focused']])
+            ->add('name', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('description')
             ->add('position')
             ->add('properties')

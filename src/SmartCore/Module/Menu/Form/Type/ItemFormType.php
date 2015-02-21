@@ -37,7 +37,7 @@ class ItemFormType extends AbstractType
                 'required'  => false,
             ])
             ->add('folder', 'cms_folder_tree', ['required' => false])
-            ->add('title',  null, ['attr' => ['class' => 'focused']])
+            ->add('title',  null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('url')
             ->add('description')
             ->add('position')

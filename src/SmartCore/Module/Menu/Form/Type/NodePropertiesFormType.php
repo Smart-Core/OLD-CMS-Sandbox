@@ -10,7 +10,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('depth',          'integer',  ['attr' => ['class' => 'focused'], 'required' => false])
+            ->add('depth',          'integer',  ['attr' => ['autofocus' => 'autofocus'], 'required' => false])
             ->add('css_class',      'text',     ['required' => false])
             ->add('current_class',  'text',     ['required' => false])
             ->add('selected_inheritance', 'checkbox', ['required' => false])

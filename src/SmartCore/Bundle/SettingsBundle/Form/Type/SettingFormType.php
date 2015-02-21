@@ -13,7 +13,7 @@ class SettingFormType extends AbstractType
     {
         $builder
             ->add($builder
-                ->create('value', 'text', ['attr' => ['class' => 'focused']])
+                ->create('value', 'text', ['attr' => ['autofocus' => 'autofocus']])
                 ->addViewTransformer(new HtmlTransformer(false))
             )
         ;

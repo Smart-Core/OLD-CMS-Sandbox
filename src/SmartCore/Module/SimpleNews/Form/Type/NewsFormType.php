@@ -16,7 +16,7 @@ class NewsFormType extends AbstractType
 
         $builder
             ->add('is_enabled', null, ['required' => false])
-            ->add('title',      null, ['attr' => ['class' => 'focused']])
+            ->add('title',      null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('slug')
         ;
 
