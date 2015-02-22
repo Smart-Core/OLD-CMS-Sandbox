@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use RickySu\Tagcache\Adapter\TagcacheAdapter;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
+use SmartCore\Bundle\CMSBundle\Entity\Region;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeDefaultPropertiesFormType;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -110,6 +111,15 @@ class EngineNode
         return $this->formFactory->create(new NodeFormType(), $data, $options);
     }
 
+    /**
+     * @param Region|int $region
+     * @return int
+     */
+    public function countInRegion($region)
+    {
+        return $this->repository->countInRegion($region);
+    }
+    
     /**
      * @param  int $id
      * @return Node|null

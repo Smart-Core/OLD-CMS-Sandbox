@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Knp\RadBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
+use SmartCore\Bundle\CMSBundle\Entity\Region;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -57,40 +58,32 @@ class AdminStructureController extends Controller
      * Редактирование области.
      *
      * @param Request $request
-     * @param int $id
+     * @param Region  $region
      * @return Response|RedirectResponse
      */
-    public function regionEditAction(Request $request, $id = 0)
+    public function regionEditAction(Request $request, Region $region)
     {
-        $engineRegion = $this->get('cms.region');
-        $region = $engineRegion->get($id);
-
-        if (empty($region)) {
-            return $this->redirect($this->generateUrl('cms_admin_structure_region'));
-        }
-
-        $form = $engineRegion->createForm($region);
+        $form = $this->get('cms.region')->createForm($region);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($request->request->has('update')) {
                 if ($form->isValid()) {
-                    $engineRegion->update($form->getData());
+                    $this->get('cms.region')->update($form->getData());
                     $this->addFlash('success', 'Область обновлена.'); // @todo перевод
 
                     return $this->redirect($this->generateUrl('cms_admin_structure_region'));
                 }
             } elseif ($request->request->has('delete')) {
-                /** @var \SmartCore\Bundle\CMSBundle\Entity\Region $region */
                 $region = $form->getData();
 
                 if ('content' == $region->getName()) {
                     $this->addFlash('error', 'Нельзя удалить область content'); // @todo перевод
-                } elseif (0 < $this->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Node')->countInRegion($region)) {
+                } elseif (0 < $this->get('cms.node')->countInRegion($region)) {
                     $this->addFlash('error', 'Нельзя удалить область пока в неё включены модули'); // @todo перевод
                 } else {
-                    $engineRegion->remove($region);
+                    $this->get('cms.region')->remove($region);
                     $this->addFlash('success', 'Область удалена.'); // @todo перевод
 
                     return $this->redirect($this->generateUrl('cms_admin_structure_region'));
@@ -106,25 +99,22 @@ class AdminStructureController extends Controller
     /**
      * Создание папки.
      *
-     * @param Request $request
-     * @param int $folder_pid
+     * @param Request      $request
+     * @param Folder|null  $parent
      * @return Response|RedirectResponse
      */
-    public function folderCreateAction(Request $request, $folder_pid = 1)
+    public function folderCreateAction(Request $request, Folder $parent = null)
     {
         $engineFolder = $this->get('cms.folder');
 
-        /** @var Folder $folder */
         $folder = $engineFolder->create();
         $folder->setUserId($this->getUser());
-
-        $parent = $engineFolder->get($folder_pid);
 
         if (empty($parent)) {
             $folder->setTitle($this->get('translator')->trans('Homepage'));
             $folder->setHasInheritNodes(true);
         } else {
-            $folder->setParentFolder($engineFolder->get($folder_pid));
+            $folder->setParentFolder($parent);
         }
 
         $form = $engineFolder->createForm($folder);
@@ -162,32 +152,27 @@ class AdminStructureController extends Controller
 
         return $this->renderView('CMSBundle:AdminStructure:folder_create.html.twig', [
             'form'       => $form->createView(),
-            'folderPath' => $this->get('cms.folder')->getUri($folder_pid),
+            'folderPath' => $this->get('cms.folder')->getUri($parent),
         ]);
     }
 
     /**
      * Редактирование папки.
      *
-     * @param Request $request
-     * @param int $id
-     * @return string|RedirectResponse
+     * @param Request     $request
+     * @param Folder|null $folder
+     * @return Response|RedirectResponse
      */
-    public function folderEditAction(Request $request, $id = 1)
+    public function folderEditAction(Request $request, Folder $folder = null)
     {
-        $engineFolder = $this->get('cms.folder');
-
-        /** @var Folder $folder */
-        $folder = $engineFolder->get($id);
-
         if (empty($folder)) {
             return $this->redirect($this->generateUrl('cms_admin_structure'));
         }
 
-        $form = $engineFolder->createForm($folder);
+        $form = $this->get('cms.folder')->createForm($folder);
 
         // Для корневой папки удаляются некоторые поля формы
-        if (1 == $id) {
+        if (1 == $folder->getId()) {
             $form
                 ->remove('uri_part')
                 ->remove('parent_folder')
@@ -200,7 +185,7 @@ class AdminStructureController extends Controller
             if ($request->request->has('update')) {
                 $form->handleRequest($request);
                 if ($form->isValid()) {
-                    $engineFolder->update($form->getData());
+                    $this->get('cms.folder')->update($form->getData());
 
                     $this->get('tagcache')->deleteTag('folder');
                     $this->addFlash('success', 'Папка обновлена.');
@@ -217,8 +202,8 @@ class AdminStructureController extends Controller
         }
 
         return $this->renderView('CMSBundle:AdminStructure:folder_edit.html.twig', [
-            'allow_delete'  => $id != 1 ? true : false,
-            'folderPath'    => $this->get('cms.folder')->getUri($id),
+            'allow_delete'  => $folder->getId() != 1 ? true : false,
+            'folderPath'    => $this->get('cms.folder')->getUri($folder),
             'form'          => $form->createView(),
         ]);
     }

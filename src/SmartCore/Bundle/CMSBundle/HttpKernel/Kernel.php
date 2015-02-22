@@ -110,6 +110,7 @@ abstract class Kernel extends BaseKernel
     protected function registerCmsDependencyBundles(& $bundles)
     {
         $bundles[] = new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle();
+        $bundles[] = new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle();
         $bundles[] = new \Symfony\Bundle\FrameworkBundle\FrameworkBundle();
         $bundles[] = new \Symfony\Bundle\SecurityBundle\SecurityBundle();
         $bundles[] = new \Symfony\Bundle\TwigBundle\TwigBundle();

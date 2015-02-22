@@ -40,11 +40,14 @@ cms_admin_structure_folder_create:
     path: /structure/folder/create/
     defaults:
         _controller: CMSBundle:AdminStructure:folderCreate
+        parent: 1
 
 cms_admin_structure_folder_create_in_folder:
-    path: /structure/folder/create/{folder_pid}/
+    path: /structure/folder/create/{parent}/
     defaults:
         _controller: CMSBundle:AdminStructure:folderCreate
+    requirements:
+        parent: \d+
 
 cms_admin_structure_folder:
     path: /structure/folder/{id}/

@@ -93,7 +93,7 @@ class EngineToolbar extends Controller
                         'folder_new' => [
                             'title' => $t->trans('Create folder'),
                             'icon'  => 'plus',
-                            'uri'   => $router->generate('cms_admin_structure_folder_create_in_folder', ['folder_pid' => $current_folder_id]),
+                            'uri'   => $router->generate('cms_admin_structure_folder_create_in_folder', ['parent' => $current_folder_id]),
                         ],
                         'diviver_1' => 'diviver',
                         'add_module' => [

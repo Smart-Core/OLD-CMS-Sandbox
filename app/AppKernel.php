@@ -19,7 +19,6 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-            //new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             //new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(), // "abmundi/database-commands-bundle": "dev-master",
             //new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             //new JMS\AopBundle\JMSAopBundle(),
