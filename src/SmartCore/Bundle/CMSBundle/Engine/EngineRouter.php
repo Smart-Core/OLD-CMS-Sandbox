@@ -83,7 +83,7 @@ class EngineRouter
         foreach ($path_parts as $key => $segment) {
             // Проверка строки запроса на допустимые символы.
             // @todo сделать проверку на разрешение круглых скобок.
-            if (!empty($segment) and !preg_match('/^[a-zA-Z\sа-яА-ЯЁё_@0-9.-]*$/iu', $segment)) {
+            if (!empty($segment) and !preg_match('/^[\(\)a-zA-Z\sа-яА-ЯЁё_@0-9.-]*$/iu', $segment)) {
                 $data['status'] = 404;
                 break;
             }
