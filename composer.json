@@ -29,6 +29,7 @@
         "dizda/cloud-backup-bundle": "dev-master",
         "dropbox-php/dropbox-php": "*",
         "egeloen/ordered-form": "~1.0",
+        "egulias/email-validator": "*",
         "egulias/listeners-debug-command-bundle": "*",
         "elao/web-profiler-extra-bundle": "dev-master",
         "fabpot/goutte": "dev-master",

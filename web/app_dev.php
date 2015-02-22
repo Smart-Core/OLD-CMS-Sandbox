@@ -1,4 +1,7 @@
 <?php
+define('START_TIME', microtime(true));
+define('START_MEMORY', memory_get_usage());
+
 use Symfony\Component\HttpFoundation\Request;
 
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line

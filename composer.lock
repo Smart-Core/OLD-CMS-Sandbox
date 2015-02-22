@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e3a2ef8c7cdea1147eb920af7b962c45",
+    "hash": "d1376e7d7ae49575513d188e0bdbecc8",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1214,6 +1214,56 @@
                 "order"
             ],
             "time": "2014-11-08 14:22:42"
+        },
+        {
+            "name": "egulias/email-validator",
+            "version": "1.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "af9417f765623429c9d2a200f0159537e08d1ef3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/af9417f765623429c9d2a200f0159537e08d1ef3",
+                "reference": "af9417f765623429c9d2a200f0159537e08d1ef3",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "~1.0",
+                "php": ">= 5.3.3"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Egulias\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "validation",
+                "validator"
+            ],
+            "time": "2015-01-04 22:42:32"
         },
         {
             "name": "egulias/listeners-debug",
@@ -4780,12 +4830,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "e9e22a731f87712ca12a62cac5a62299282cf74f"
+                "reference": "f0ef76d6b15e8441d931fea53ddd3ce2d9cfb6e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/e9e22a731f87712ca12a62cac5a62299282cf74f",
-                "reference": "e9e22a731f87712ca12a62cac5a62299282cf74f",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/f0ef76d6b15e8441d931fea53ddd3ce2d9cfb6e2",
+                "reference": "f0ef76d6b15e8441d931fea53ddd3ce2d9cfb6e2",
                 "shasum": ""
             },
             "require": {
@@ -4806,7 +4856,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-02-22 17:11:03"
+            "time": "2015-02-22 18:33:57"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -4814,12 +4864,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "83f83201c20633233250e500eb81ff0a96c61862"
+                "reference": "3f97eed17b9c83cbd6b9d6f06b58024ad9ed0402"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/83f83201c20633233250e500eb81ff0a96c61862",
-                "reference": "83f83201c20633233250e500eb81ff0a96c61862",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/3f97eed17b9c83cbd6b9d6f06b58024ad9ed0402",
+                "reference": "3f97eed17b9c83cbd6b9d6f06b58024ad9ed0402",
                 "shasum": ""
             },
             "require": {
@@ -4839,7 +4889,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-02-17 13:25:38"
+            "time": "2015-02-22 20:27:43"
         },
         {
             "name": "smart-core/ladybug-bundle",
