@@ -68,7 +68,7 @@ class TinymceExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'tinymce_init3' => new \Twig_Function_Method($this, 'tinymce_init3', ['is_safe' => ['html']])
+            'tinymce_init3' => new \Twig_Function_Method($this, 'tinymce_init3', ['is_safe' => ['html']]),
         ];
     }
 
@@ -88,7 +88,7 @@ class TinymceExtension extends \Twig_Extension
         // Get path to tinymce script for the jQuery version of the editor
         //$config['jquery_script_url'] = $assets->getUrl($this->baseUrl . 'bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.jquery.js');
         // @todo вынести в конфиг
-        $config['jquery_script_url'] = $assets->getUrl($this->baseUrl . 'bundles/felib/tinymce/3/jquery.tinymce.min.js');
+        $config['jquery_script_url'] = $assets->getUrl($this->baseUrl.'bundles/felib/tinymce/3/jquery.tinymce.min.js');
 
         // Get local button's image
         foreach ($config['tinymce_buttons'] as &$customButton) {
@@ -119,12 +119,11 @@ class TinymceExtension extends \Twig_Extension
         if (isset($config['theme']) && $config['theme']) {
             // Parse the content_css of each theme so we can use 'asset[path/to/asset]' in there
             foreach ($config['theme'] as $themeName => $themeOptions) {
-                if(isset($themeOptions['content_css'])) {
+                if (isset($themeOptions['content_css'])) {
                     // As there may be multiple CSS Files specified we need to parse each of them individually
                     $cssFiles = explode(',', $themeOptions['content_css']);
 
-                    foreach($cssFiles as $idx => $file)
-                    {
+                    foreach ($cssFiles as $idx => $file) {
                         $cssFiles[$idx] = $this->getAssetsUrl(trim($file)); // we trim to be sure we get the file without spaces.
                     }
 
@@ -152,7 +151,6 @@ class TinymceExtension extends \Twig_Extension
         return 'smart_rich_editor_tinymce';
     }
 
-
     /**
      * Get url from config string
      *
@@ -168,7 +166,7 @@ class TinymceExtension extends \Twig_Extension
         $url = preg_replace('/^asset\[(.+)\]$/i', '$1', $inputUrl);
 
         if ($inputUrl !== $url) {
-            return $assets->getUrl($this->baseUrl . $url);
+            return $assets->getUrl($this->baseUrl.$url);
         }
 
         return $inputUrl;

@@ -85,12 +85,7 @@ class ItemLoader implements EntityLoaderInterface
 
         /** @var $item Item */
         foreach ($items as $item) {
-            if (null === $item->getFolder() or !$item->getFolder()->isActive()) {
-//                $item->setFormTitle($ident.'<span style="text-decoration: line-through;">'.$item.'</span>');
-                $item->setFormTitle($ident.'<b>'.$item.'</b>');
-            } else {
-                $item->setFormTitle($ident.$item);
-            }
+            $item->setFormTitle($ident.$item);
             $this->result[] = $item;
             $this->addChild($item);
         }

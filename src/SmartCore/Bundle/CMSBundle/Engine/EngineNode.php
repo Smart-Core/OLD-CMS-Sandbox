@@ -119,7 +119,7 @@ class EngineNode
     {
         return $this->repository->countInRegion($region);
     }
-    
+
     /**
      * @param  int $id
      * @return Node|null

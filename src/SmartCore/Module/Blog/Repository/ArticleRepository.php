@@ -155,7 +155,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
                 ORDER BY date DESC
                 LIMIT 0, '.$limit
             );
-        } elseif('postgresql' === $this->_em->getConnection()->getDatabasePlatform()->getName()) {
+        } elseif ('postgresql' === $this->_em->getConnection()->getDatabasePlatform()->getName()) {
             $result = $this->_em->getConnection()->fetchAll('
                 SELECT to_char(created_at, "YYYY-mm-01 00:00:00") AS date, COUNT(1) AS count
                 FROM '.$this->getClassMetadata()->getTableName().'

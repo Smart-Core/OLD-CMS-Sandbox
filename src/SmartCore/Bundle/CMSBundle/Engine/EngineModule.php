@@ -78,7 +78,7 @@ class EngineModule
 
         return $themes;
     }
-    
+
     /**
      * Проверить, подключен ли модуль.
      *

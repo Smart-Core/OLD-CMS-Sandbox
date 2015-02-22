@@ -24,7 +24,7 @@ class SmartRichEditorExtension extends Extension
 
         // Set target element (textarea) selector
         if (isset($config['textarea_class']) && $config['textarea_class']) {
-            $config['textarea_class'] = ($config['tinymce_jquery'] ? '.' : '') . trim($config['textarea_class'], '.');
+            $config['textarea_class'] = ($config['tinymce_jquery'] ? '.' : '').trim($config['textarea_class'], '.');
         }
 
         $container->setParameter('smart_rich_editor_tinymce.config', $config);

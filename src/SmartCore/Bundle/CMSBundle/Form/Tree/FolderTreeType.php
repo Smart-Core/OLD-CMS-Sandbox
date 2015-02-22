@@ -16,6 +16,7 @@ class FolderTreeType extends DoctrineType
         $loader = function (Options $options) {
             $loader = $this->getLoader($options['em'], $options['query_builder'], $options['class']);
             $loader->setOnlyActive($options['only_active']);
+
             return $loader;
         };
 

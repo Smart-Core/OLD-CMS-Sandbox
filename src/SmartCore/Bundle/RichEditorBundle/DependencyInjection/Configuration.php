@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
                         ->useAttributeAsKey('name')
                         ->beforeNormalization()
                             ->always()
-                            ->then(function($array) use ($defaults) {
+                            ->then(function ($array) use ($defaults) {
                                 // Merge default values with values from the config
                                 if (is_array($array)) {
                                     // Excepted values
