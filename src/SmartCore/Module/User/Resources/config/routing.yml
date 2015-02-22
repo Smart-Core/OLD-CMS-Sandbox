@@ -9,10 +9,10 @@ smart_module.user.edit:
     defaults:
         _controller: UserModule:User:edit
 
-smart_module.user.login:
-    path: /login
-    defaults:
-        _controller: FOSUserBundle:Security:login
+#smart_module.user.login:
+#    path: /login
+#    defaults:
+#        _controller: FOSUserBundle:Security:login
 
 smart_module.user.change-password:
     path: /change-password

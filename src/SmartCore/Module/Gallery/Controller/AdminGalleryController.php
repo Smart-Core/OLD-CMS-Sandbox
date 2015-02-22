@@ -201,6 +201,7 @@ class AdminGalleryController extends Controller
             }
         }
 
+        // @todo убрать обработку $_basePath в события.
         $albumPath  = null;
         $_basePath = null;
         foreach ($this->get('cms.node')->findByModule('Gallery') as $node) {

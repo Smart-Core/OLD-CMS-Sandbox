@@ -5,11 +5,11 @@ cms_admin_index:
         _controller: CMSBundle:Admin:index
 
 # Security
-cms_admin_login:
-    path: /login
-    defaults:
-        _controller: FrameworkBundle:Template:template
-        template: 'CMSBundle:User:login.html.twig'
+#cms_admin_login:
+#    path: /login
+#    defaults:
+#        _controller: FrameworkBundle:Template:template
+#        template: 'CMSBundle:User:login.html.twig'
 
 cms_admin_logout:
     path: /logout

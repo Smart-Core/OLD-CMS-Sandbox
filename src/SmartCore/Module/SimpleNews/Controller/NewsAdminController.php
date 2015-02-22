@@ -132,6 +132,7 @@ class NewsAdminController extends Controller
 
         $itemPath = null;
 
+        // @todo убрать обработку $_basePath в события.
         if ($this->getFilderPath()) {
             $_basePath = $this->getFilderPath();
 

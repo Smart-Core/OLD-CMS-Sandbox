@@ -18,6 +18,10 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            return $this->render('CMSBundle:User:login.html.twig');
+        }
+
         $dashboard = [];
 
         foreach ($this->get('cms.module')->all() as $module) {
