@@ -4,16 +4,19 @@
 set_time_limit(0);
 
 $rootDir = dirname(__DIR__);
+// web-server user
+$user = null; // 'www-data'
 
 // php on windows can't use the shebang line from system()
 $interpreter = defined('PHP_WINDOWS_VERSION_BUILD') ? 'php.exe' : '';
+//$interpreter = defined('PHP_WINDOWS_VERSION_BUILD') ? 'php.exe' : 'sudo -u '.$user;
 
 // Warmup the cache
 echo "Warmup the cache... \n";
 system(sprintf('%s %s cache:warmup --env=prod --no-debug', $interpreter, escapeshellarg($rootDir.'/app/console')));
 
-if (!defined('PHP_WINDOWS_VERSION_BUILD')) {
-    // Ubuntu
+if (!defined('PHP_WINDOWS_VERSION_BUILD') and empty($user)) {
+    // Debian/Ubuntu
     system('chown -hR www-data:www-data ' . $rootDir . '/var/cache/prod/');
     
     // Gentoo
