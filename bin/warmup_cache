@@ -3,24 +3,39 @@
 
 set_time_limit(0);
 
-$rootDir = dirname(__DIR__);
 // web-server user
-$user = null; // 'www-data'
+Warmuper::$user = 'www-data'; // or 'apache' in Gentoo
+Warmuper::$rootDir = dirname(__DIR__);
 
-// php on windows can't use the shebang line from system()
-$interpreter = defined('PHP_WINDOWS_VERSION_BUILD') ? 'php.exe' : '';
-//$interpreter = defined('PHP_WINDOWS_VERSION_BUILD') ? 'php.exe' : 'sudo -u '.$user;
+$env = isset($argv[1]) ? $argv[1] : null;
 
-// Warmup the cache
-echo "Warmup the cache... \n";
-system(sprintf('%s %s cache:warmup --env=prod --no-debug', $interpreter, escapeshellarg($rootDir.'/app/console')));
-
-if (!defined('PHP_WINDOWS_VERSION_BUILD') and empty($user)) {
-    // Debian/Ubuntu
-    system('chown -hR www-data:www-data ' . $rootDir . '/var/cache/prod/');
-    
-    // Gentoo
-    //system('chown -hR apache:apache ' . $rootDir . '/var/cache/prod/');
+if ($env) {
+    echo "Warmup the cache for '$env'... \n";
+    Warmuper::run($env);
+} else {
+    echo "Warmup the cache... \n";
+    Warmuper::run('prod');
+    Warmuper::run('dev');
 }
 
-system(sprintf('%s %s cache:warmup --env=dev', $interpreter, escapeshellarg($rootDir.'/app/console')));
+class Warmuper
+{
+    static public $interpreter = '';
+    static public $rootDir;
+    static public $user = null;
+
+    static public function run($env, $debug = null)
+    {
+        if (defined('PHP_WINDOWS_VERSION_BUILD')) { // php on windows can't use the shebang line from system()
+            self::$interpreter = 'php.exe';
+        } elseif (!empty($user)) {
+            self::$interpreter = 'sudo -u '.$user;
+        }
+
+        system(sprintf("%s %s cache:warmup --env=$env $debug", self::$interpreter, escapeshellarg(self::$rootDir.'/app/console')));
+
+        if (!defined('PHP_WINDOWS_VERSION_BUILD') and !empty(self::$user)) {
+            system('chown -hR '.self::$user.':'.self::$user.' '.self::$rootDir."/var/cache/$env/");
+        }
+    }
+}

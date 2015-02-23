@@ -1,4 +1,22 @@
 <?php
+$count = 60; // 18 сек ожидания
+$isLocked = false;
+
+while ($count--) {
+    if (file_exists(__DIR__.'/../var/rebuild_cache.lock')) {
+        $isLocked = true;
+        usleep(300000); // 1/3 секунды
+    } else {
+        $isLocked = false;
+        break;
+    }
+}
+
+if ($isLocked) {
+    die('Try again later');
+}
+
+?><?php
 define('START_TIME', microtime(true));
 define('START_MEMORY', memory_get_usage());
 
