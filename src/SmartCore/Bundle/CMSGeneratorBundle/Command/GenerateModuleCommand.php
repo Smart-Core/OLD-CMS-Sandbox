@@ -6,6 +6,8 @@ use SmartCore\Bundle\CMSGeneratorBundle\Generator\ModuleGenerator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Symfony\Component\Console\Question\Question;
 
 class GenerateModuleCommand extends GeneratorCommand
 {
@@ -33,10 +35,10 @@ class GenerateModuleCommand extends GeneratorCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dialog = $this->getDialogHelper();
+        $questionHelper = $this->getQuestionHelper();
 
         if ($input->isInteractive()) {
-            if (!$dialog->askConfirmation($output, $dialog->getQuestion('Do you confirm generation', 'yes', '?'), true)) {
+            if (!$questionHelper->ask($input, $output, new ConfirmationQuestion($questionHelper->getQuestion('Do you confirm generation', 'yes', '?'), true))) {
                 $output->writeln('<error>Command aborted</error>');
 
                 return 1;
@@ -56,7 +58,7 @@ class GenerateModuleCommand extends GeneratorCommand
         $bundle = Validators::validateBundleName($bundle);
         $dir = Validators::validateTargetDir($input->getOption('dir'), $bundle, $namespace);
 
-        $dialog->writeSection($output, 'Module generation');
+        $questionHelper->writeSection($output, 'Module generation');
 
         if (!$this->getContainer()->get('filesystem')->isAbsolutePath($dir)) {
             $dir = getcwd().'/'.$dir;
@@ -68,25 +70,25 @@ class GenerateModuleCommand extends GeneratorCommand
         $output->writeln('Generating the module code: <info>OK</info>');
 
         $errors = [];
-        $runner = $dialog->getRunner($output, $errors);
+        $runner = $questionHelper->getRunner($output, $errors);
 
         // check that the namespace is already autoloaded
         $runner($this->checkAutoloader($output, $namespace, $bundle, $dir));
 
-        $dialog->writeGeneratorSummary($output, $errors);
+        $questionHelper->writeGeneratorSummary($output, $errors);
     }
 
     protected function interact(InputInterface $input, OutputInterface $output)
     {
-        $dialog = $this->getDialogHelper();
-        $dialog->writeSection($output, 'Welcome to the Smart Core CMS module generator');
+        $questionHelper = $this->getQuestionHelper();
+        $questionHelper->writeSection($output, 'Welcome to the Smart Core CMS module generator');
 
         // namespace
         $namespace = null;
         try {
             $namespace = $input->getOption('namespace') ? Validators::validateBundleNamespace($input->getOption('namespace')) : null;
         } catch (\Exception $error) {
-            $output->writeln($dialog->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            $output->writeln($questionHelper->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
         }
 
         if (null === $namespace) {
@@ -102,7 +104,34 @@ class GenerateModuleCommand extends GeneratorCommand
                 '',
             ]);
 
-            $namespace = $dialog->askAndValidate($output, $dialog->getQuestion('Module namespace', $input->getOption('namespace')), ['SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleNamespace'], false, $input->getOption('namespace'));
+            $acceptedNamespace = false;
+            while (!$acceptedNamespace) {
+                $question = new Question($questionHelper->getQuestion('Bundle namespace', $input->getOption('namespace')), $input->getOption('namespace'));
+                $question->setValidator(function ($answer) {
+                    return Validators::validateBundleNamespace($answer, false);
+                });
+                $namespace = $questionHelper->ask($input, $output, $question);
+
+                // mark as accepted, unless they want to try again below
+                $acceptedNamespace = true;
+
+                // see if there is a vendor namespace. If not, this could be accidental
+                if (false === strpos($namespace, '\\')) {
+                    // language is (almost) duplicated in Validators
+                    $msg = array();
+                    $msg[] = '';
+                    $msg[] = sprintf('The namespace sometimes contain a vendor namespace (e.g. <info>VendorName/BlogBundle</info> instead of simply <info>%s</info>).', $namespace, $namespace);
+                    $msg[] = 'If you\'ve *did* type a vendor namespace, try using a forward slash <info>/</info> (<info>Acme/BlogBundle</info>)?';
+                    $msg[] = '';
+                    $output->writeln($msg);
+
+                    $question = new ConfirmationQuestion($questionHelper->getQuestion(
+                        sprintf('Keep <comment>%s</comment> as the bundle namespace (choose no to try again)?', $namespace),
+                        'yes'
+                    ), true);
+                    $acceptedNamespace = $questionHelper->ask($input, $output, $question);
+                }
+            }
             $input->setOption('namespace', $namespace);
         }
 
@@ -111,7 +140,7 @@ class GenerateModuleCommand extends GeneratorCommand
         try {
             $bundle = $input->getOption('bundle-name') ? Validators::validateBundleName($input->getOption('bundle-name')) : null;
         } catch (\Exception $error) {
-            $output->writeln($dialog->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            $output->writeln($questionHelper->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
         }
 
         if (null === $bundle) {
@@ -125,7 +154,11 @@ class GenerateModuleCommand extends GeneratorCommand
                 'Based on the namespace, we suggest <comment>'.$bundle.'</comment>.',
                 '',
             ]);
-            $bundle = $dialog->askAndValidate($output, $dialog->getQuestion('Module name', $bundle), ['SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleName'], false, $bundle);
+            $question = new Question($questionHelper->getQuestion('Bundle name', $bundle), $bundle);
+            $question->setValidator(
+                array('SmartCore\Bundle\CMSGeneratorBundle\Command\Validators', 'validateBundleName')
+            );
+            $bundle = $questionHelper->ask($input, $output, $question);
             $input->setOption('bundle-name', $bundle);
         }
 
@@ -134,7 +167,7 @@ class GenerateModuleCommand extends GeneratorCommand
         try {
             $dir = $input->getOption('dir') ? Validators::validateTargetDir($input->getOption('dir'), $bundle, $namespace) : null;
         } catch (\Exception $error) {
-            $output->writeln($dialog->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            $output->writeln($questionHelper->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
         }
 
         if (null === $dir) {
@@ -146,7 +179,11 @@ class GenerateModuleCommand extends GeneratorCommand
                 'the standard conventions.',
                 '',
             ]);
-            $dir = $dialog->askAndValidate($output, $dialog->getQuestion('Target directory', $dir), function ($dir) use ($bundle, $namespace) { return Validators::validateTargetDir($dir, $bundle, $namespace); }, false, $dir);
+            $question = new Question($questionHelper->getQuestion('Target directory', $dir), $dir);
+            $question->setValidator(function ($dir) use ($bundle, $namespace) {
+                return Validators::validateTargetDir($dir, $bundle, $namespace);
+            });
+            $dir = $questionHelper->ask($input, $output, $question);
             $input->setOption('dir', $dir);
         }
 
