@@ -7,7 +7,7 @@ use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="unicat_structures")
+ * @ORM\Table(name="unicat_old_structures")
  */
 class UnicatStructure
 {

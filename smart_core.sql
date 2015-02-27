@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 21 2015 г., 01:51
+-- Время создания: Фев 28 2015 г., 01:02
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.6.5
+-- Версия PHP: 5.6.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -1349,7 +1349,7 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   KEY `is_deleted` (`is_deleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Дамп данных таблицы `texter_history`
@@ -1365,11 +1365,11 @@ INSERT INTO `texter_history` (`id`, `is_deleted`, `item_id`, `locale`, `editor`,
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `unicat_repositories`
+-- Структура таблицы `unicat_old_repositories`
 --
 
-DROP TABLE IF EXISTS `unicat_repositories`;
-CREATE TABLE IF NOT EXISTS `unicat_repositories` (
+DROP TABLE IF EXISTS `unicat_old_repositories`;
+CREATE TABLE IF NOT EXISTS `unicat_old_repositories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1386,20 +1386,20 @@ CREATE TABLE IF NOT EXISTS `unicat_repositories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Дамп данных таблицы `unicat_repositories`
+-- Дамп данных таблицы `unicat_old_repositories`
 --
 
-INSERT INTO `unicat_repositories` (`id`, `name`, `title`, `is_inheritance`, `media_collection_id`, `user_id`, `created_at`, `entities_namespace`, `default_structure_id`) VALUES
+INSERT INTO `unicat_old_repositories` (`id`, `name`, `title`, `is_inheritance`, `media_collection_id`, `user_id`, `created_at`, `entities_namespace`, `default_structure_id`) VALUES
 (1, 'catalog', 'Каталог товаров', 1, 1, 1, '2014-02-11 23:32:04', 'SandboxSiteBundle\\Entity\\Catalog\\', 1);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `unicat_structures`
+-- Структура таблицы `unicat_old_structures`
 --
 
-DROP TABLE IF EXISTS `unicat_structures`;
-CREATE TABLE IF NOT EXISTS `unicat_structures` (
+DROP TABLE IF EXISTS `unicat_old_structures`;
+CREATE TABLE IF NOT EXISTS `unicat_old_structures` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `repository_id` int(11) unsigned DEFAULT NULL,
   `position` smallint(6) DEFAULT '0',
@@ -1417,10 +1417,10 @@ CREATE TABLE IF NOT EXISTS `unicat_structures` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
--- Дамп данных таблицы `unicat_structures`
+-- Дамп данных таблицы `unicat_old_structures`
 --
 
-INSERT INTO `unicat_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`) VALUES
+INSERT INTO `unicat_old_structures` (`id`, `repository_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`) VALUES
 (1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, 'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced'),
 (2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги', 0, '');
 
@@ -1462,7 +1462,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-21 00:35:08', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-02-28 00:30:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1569,7 +1569,7 @@ ALTER TABLE `blog_categories`
 -- Ограничения внешнего ключа таблицы `catalog_categories`
 --
 ALTER TABLE `catalog_categories`
-  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat_structures` (`id`),
+  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat_old_structures` (`id`),
   ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `catalog_categories` (`id`);
 
 --
@@ -1603,7 +1603,7 @@ ALTER TABLE `catalog_properties`
 --
 ALTER TABLE `catalog_properties_groups`
   ADD CONSTRAINT `FK_41BAD1D712469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`),
-  ADD CONSTRAINT `FK_41BAD1D750C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_repositories` (`id`);
+  ADD CONSTRAINT `FK_41BAD1D750C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_old_repositories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_folders`
@@ -1698,14 +1698,14 @@ ALTER TABLE `slides`
   ADD CONSTRAINT `FK_B8C020912CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `sliders` (`id`);
 
 --
--- Ограничения внешнего ключа таблицы `unicat_repositories`
+-- Ограничения внешнего ключа таблицы `unicat_old_repositories`
 --
-ALTER TABLE `unicat_repositories`
-  ADD CONSTRAINT `FK_3A7B6CA37E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat_structures` (`id`),
+ALTER TABLE `unicat_old_repositories`
+  ADD CONSTRAINT `FK_3A7B6CA37E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat_old_structures` (`id`),
   ADD CONSTRAINT `FK_3A7B6CA3B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
 
 --
--- Ограничения внешнего ключа таблицы `unicat_structures`
+-- Ограничения внешнего ключа таблицы `unicat_old_structures`
 --
-ALTER TABLE `unicat_structures`
-  ADD CONSTRAINT `FK_239D6D8E50C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_repositories` (`id`);
+ALTER TABLE `unicat_old_structures`
+  ADD CONSTRAINT `FK_239D6D8E50C9D4F7` FOREIGN KEY (`repository_id`) REFERENCES `unicat_old_repositories` (`id`);
