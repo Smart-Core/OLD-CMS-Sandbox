@@ -132,7 +132,6 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \Knp\Bundle\DisqusBundle\KnpDisqusBundle();
         $bundles[] = new \Knp\Bundle\MenuBundle\KnpMenuBundle();
         $bundles[] = new \Knp\RadBundle\KnpRadBundle();
-        $bundles[] = new \Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle();
         $bundles[] = new \Liip\ThemeBundle\LiipThemeBundle();
         $bundles[] = new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle();
         $bundles[] = new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
@@ -143,6 +142,7 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \SmartCore\Bundle\FelibBundle\FelibBundle();
         $bundles[] = new \SmartCore\Bundle\HtmlBundle\HtmlBundle();
         $bundles[] = new \SmartCore\Bundle\MediaBundle\SmartMediaBundle();
+        $bundles[] = new \SmartCore\Bundle\RichEditorBundle\SmartRichEditorBundle();
         $bundles[] = new \SmartCore\Bundle\SimpleProfilerBundle\SmartSimpleProfilerBundle();
         $bundles[] = new \SmartCore\Bundle\SitemapBundle\SmartSitemapBundle();
         $bundles[] = new \SmartCore\Bundle\SeoBundle\SmartSeoBundle();

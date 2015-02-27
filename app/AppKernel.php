@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             //new HappyR\SlugifyBundle\HappyRSlugifyBundle(),
             //new Misd\GuzzleBundle\MisdGuzzleBundle(),
             //new Sp\BowerBundle\SpBowerBundle(),
-            new SmartCore\Bundle\RichEditorBundle\SmartRichEditorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

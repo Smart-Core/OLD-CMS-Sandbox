@@ -23,11 +23,23 @@ avalanche_imagine:
             type:    thumbnail
             options: { size: [300, 300], mode: inset, quality: 100, format: jpeg }
 
-genemu_form:
-    image: ~
-    file:
-        swf: /assets/uploadify/uploadify.swf
-        folder: /uploads
+doctrine_cache:
+    providers:
+        smart_texter:
+            namespace: "smart_texter_%secret%"
+            type: file_system # memcache
+            file_system:
+                directory: "%kernel.cache_dir%/smart_texter"
+        cms:
+            namespace: "cms_%secret%"
+            type: file_system
+            file_system:
+                directory: "%kernel.cache_dir%/smart_core_cms"
+        smart_blog: # @todo убрать
+            namespace: "smart_blog_%secret%"
+            type: file_system
+            file_system:
+                directory: "%kernel.cache_dir%/smart_blog"
 
 fm_elfinder:
     instances:
@@ -122,27 +134,18 @@ fos_user:
                 address: %email_resetting%
                 sender_name: Password resetting
 
+genemu_form:
+    image: ~
+    file:
+        swf: /assets/uploadify/uploadify.swf
+        folder: /uploads
+
 knp_menu:
     twig:
         template: CMSBundle:Menu:knp_menu.html.twig
 
 knp_disqus:
     api_key: %knp_disqus.api_key%
-
-liip_doctrine_cache:
-    namespaces:
-        smart_texter:
-            namespace: "smart_texter_%secret%"
-            type: file_system # memcache
-            directory: "%kernel.cache_dir%/smart_texter"
-        cms:
-            namespace: "cms_%secret%"
-            type: file_system
-            directory: "%kernel.cache_dir%/smart_core_cms"
-        smart_blog: # @todo убрать
-            namespace: "smart_blog_%secret%"
-            type: file_system
-            directory: "%kernel.cache_dir%/smart_blog"
 
 liip_theme:
     path_patterns:

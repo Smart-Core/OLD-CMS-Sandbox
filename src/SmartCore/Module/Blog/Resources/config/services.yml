@@ -34,7 +34,7 @@ services:
             - @event_dispatcher
 
     smart_blog.cache: # @todo настройку через конфиг.
-        alias: liip_doctrine_cache.ns.smart_blog
+        alias: doctrine_cache.providers.smart_blog
 
     smart_blog.listener.cache.invalidate:
         class: SmartCore\Module\Blog\EventListener\CacheInvalidateListener

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1376e7d7ae49575513d188e0bdbecc8",
+    "hash": "1cf73910e4a80d436dc14e45f3246c4a",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -653,17 +653,16 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "v1.0.1",
-            "target-dir": "Doctrine/Bundle/DoctrineCacheBundle",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d"
+                "reference": "78928cc5fb0f1cde57a973002fa0c5c9ced77bac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d",
-                "reference": "e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/78928cc5fb0f1cde57a973002fa0c5c9ced77bac",
+                "reference": "78928cc5fb0f1cde57a973002fa0c5c9ced77bac",
                 "shasum": ""
             },
             "require": {
@@ -671,18 +670,18 @@
                 "doctrine/inflector": "~1.0",
                 "php": ">=5.3.2",
                 "symfony/doctrine-bridge": "~2.2",
-                "symfony/framework-bundle": "~2.2",
                 "symfony/security": "~2.2"
             },
             "require-dev": {
                 "instaclick/coding-standard": "~1.1",
                 "instaclick/object-calisthenics-sniffs": "dev-master",
                 "instaclick/symfony2-coding-standard": "dev-remaster",
-                "phpunit/phpunit": "~3.7",
+                "phpunit/phpunit": "~4",
                 "satooshi/php-coveralls": "~0.6.1",
-                "squizlabs/php_codesniffer": "dev-master",
+                "squizlabs/php_codesniffer": "~1.5",
                 "symfony/console": "~2.2",
                 "symfony/finder": "~2.2",
+                "symfony/framework-bundle": "~2.2",
                 "symfony/validator": "~2.2",
                 "symfony/yaml": "~2.2"
             },
@@ -693,8 +692,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Bundle\\DoctrineCacheBundle": ""
+                "psr-4": {
+                    "Doctrine\\Bundle\\DoctrineCacheBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -733,7 +732,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2014-11-28 09:43:36"
+            "time": "2015-02-02 04:53:40"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -1426,12 +1425,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/Goutte.git",
-                "reference": "65ab61eae03d670b93a9044ad2328eb81aa1bde5"
+                "reference": "d751608afad65f3a4b56bbdc648cf5983d2ba29a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/65ab61eae03d670b93a9044ad2328eb81aa1bde5",
-                "reference": "65ab61eae03d670b93a9044ad2328eb81aa1bde5",
+                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/d751608afad65f3a4b56bbdc648cf5983d2ba29a",
+                "reference": "d751608afad65f3a4b56bbdc648cf5983d2ba29a",
                 "shasum": ""
             },
             "require": {
@@ -1467,7 +1466,7 @@
             "keywords": [
                 "scraper"
             ],
-            "time": "2014-11-28 09:48:17"
+            "time": "2015-02-26 08:00:41"
         },
         {
             "name": "facebook/php-sdk",
@@ -1972,16 +1971,16 @@
         },
         {
             "name": "guzzlehttp/ringphp",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "a903f51b692427318bc813217c0e6505287e79a4"
+                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/a903f51b692427318bc813217c0e6505287e79a4",
-                "reference": "a903f51b692427318bc813217c0e6505287e79a4",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
+                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
                 "shasum": ""
             },
             "require": {
@@ -2018,7 +2017,8 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "time": "2014-12-11 05:50:32"
+            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "time": "2015-02-26 20:43:09"
         },
         {
             "name": "guzzlehttp/streams",
@@ -2206,16 +2206,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-bundle",
-            "version": "4.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/FMElfinderBundle.git",
-                "reference": "d2e12b26a8e3e8b346f5daf006d2fe35a9162cdc"
+                "reference": "bef1996ec5e12c26ec970cfaecf3d8f0ae4ec2dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/d2e12b26a8e3e8b346f5daf006d2fe35a9162cdc",
-                "reference": "d2e12b26a8e3e8b346f5daf006d2fe35a9162cdc",
+                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/bef1996ec5e12c26ec970cfaecf3d8f0ae4ec2dd",
+                "reference": "bef1996ec5e12c26ec970cfaecf3d8f0ae4ec2dd",
                 "shasum": ""
             },
             "require": {
@@ -2261,7 +2261,7 @@
                 "elfinder",
                 "file manager"
             ],
-            "time": "2015-02-18 11:08:47"
+            "time": "2015-02-21 14:05:02"
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
@@ -3217,12 +3217,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpDisqusBundle.git",
-                "reference": "1560b148a8b4e55445aed561a0dfcd711080f53c"
+                "reference": "5f3d1385e903fae92b73213ba433253eddd6b9b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpDisqusBundle/zipball/1560b148a8b4e55445aed561a0dfcd711080f53c",
-                "reference": "1560b148a8b4e55445aed561a0dfcd711080f53c",
+                "url": "https://api.github.com/repos/KnpLabs/KnpDisqusBundle/zipball/5f3d1385e903fae92b73213ba433253eddd6b9b5",
+                "reference": "5f3d1385e903fae92b73213ba433253eddd6b9b5",
                 "shasum": ""
             },
             "require": {
@@ -3264,7 +3264,7 @@
                 "disqus",
                 "forum"
             ],
-            "time": "2013-12-23 22:16:02"
+            "time": "2015-02-24 10:53:07"
         },
         {
             "name": "knplabs/knp-gaufrette-bundle",
@@ -3448,33 +3448,33 @@
         },
         {
             "name": "knplabs/rad-bundle",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "target-dir": "Knp/RadBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpRadBundle.git",
-                "reference": "66adb061507e645f1585e617f11059446ae7fae4"
+                "reference": "32cf439eddb865e1a0e5fca0559f088d71e793d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpRadBundle/zipball/66adb061507e645f1585e617f11059446ae7fae4",
-                "reference": "66adb061507e645f1585e617f11059446ae7fae4",
+                "url": "https://api.github.com/repos/KnpLabs/KnpRadBundle/zipball/32cf439eddb865e1a0e5fca0559f088d71e793d9",
+                "reference": "32cf439eddb865e1a0e5fca0559f088d71e793d9",
                 "shasum": ""
             },
             "require": {
                 "fzaninotto/faker": "~1.2",
                 "nelmio/alice": "~1.5",
                 "php": ">=5.4",
-                "symfony/symfony": "~2.4"
+                "symfony/symfony": "~2.4,<2.7"
             },
             "require-dev": {
-                "behat/behat": "~3@dev",
-                "behat/mink-extension": "~2@dev",
-                "behat/mink-goutte-driver": "*@dev",
-                "behat/mink-selenium2-driver": "*@dev",
+                "behat/behat": "~3.0",
+                "behat/mink-extension": "~2.0",
+                "behat/mink-goutte-driver": "~1.0",
+                "behat/mink-selenium2-driver": "~1.1",
                 "doctrine/doctrine-fixtures-bundle": "*",
                 "doctrine/orm": "~2.4",
-                "phpspec/phpspec": "~2@dev",
+                "phpspec/phpspec": "~2.0",
                 "symfony/swiftmailer-bundle": "~2.3",
                 "twig/twig": "~1"
             },
@@ -3503,7 +3503,7 @@
             ],
             "description": "The \"KnpLabs Rad Edition\" bundle",
             "homepage": "http://rad.knplabs.com",
-            "time": "2014-09-04 15:25:41"
+            "time": "2015-02-24 09:39:14"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -3628,66 +3628,18 @@
             "time": "2014-09-15 12:42:36"
         },
         {
-            "name": "liip/doctrine-cache-bundle",
-            "version": "dev-master",
-            "target-dir": "Liip/DoctrineCacheBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/liip/LiipDoctrineCacheBundle.git",
-                "reference": "5b4f7d509f27b69474286faf53633ef4c5c318a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipDoctrineCacheBundle/zipball/5b4f7d509f27b69474286faf53633ef4c5c318a6",
-                "reference": "5b4f7d509f27b69474286faf53633ef4c5c318a6",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": ">=2.2",
-                "php": ">=5.3.0",
-                "symfony/symfony": ">=2.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Liip\\DoctrineCacheBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Liip AG",
-                    "homepage": "http://www.liip.ch/"
-                }
-            ],
-            "description": "This Bundle provides integration into Symfony2 with the Doctrine Common Cache layer.",
-            "keywords": [
-                "Symfony2",
-                "cache"
-            ],
-            "time": "2014-03-24 22:22:17"
-        },
-        {
             "name": "liip/functional-test-bundle",
             "version": "dev-master",
             "target-dir": "Liip/FunctionalTestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "8844cb97371d366883eb2cfe2b8bf944f701e7ae"
+                "reference": "5b41140b5eede7ef3447303a4063609663be65ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/8844cb97371d366883eb2cfe2b8bf944f701e7ae",
-                "reference": "8844cb97371d366883eb2cfe2b8bf944f701e7ae",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/5b41140b5eede7ef3447303a4063609663be65ec",
+                "reference": "5b41140b5eede7ef3447303a4063609663be65ec",
                 "shasum": ""
             },
             "require": {
@@ -3730,7 +3682,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2015-01-26 15:21:27"
+            "time": "2015-02-23 13:20:49"
         },
         {
             "name": "liip/theme-bundle",
@@ -4523,28 +4475,35 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.16",
+            "version": "v3.0.18",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "aa30f8cd3ee68144e043ca30713aa7d7df35c5fa"
+                "reference": "ac026149ffb1d3a5c893290d2d3ca8795013de08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/aa30f8cd3ee68144e043ca30713aa7d7df35c5fa",
-                "reference": "aa30f8cd3ee68144e043ca30713aa7d7df35c5fa",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ac026149ffb1d3a5c893290d2d3ca8795013de08",
+                "reference": "ac026149ffb1d3a5c893290d2d3ca8795013de08",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "sensiolabs/security-checker": "~2.0",
                 "symfony/class-loader": "~2.2",
-                "symfony/form": "~2.2",
                 "symfony/framework-bundle": "~2.3",
-                "symfony/process": "~2.2",
+                "symfony/process": "~2.2"
+            },
+            "require-dev": {
+                "symfony/form": "~2.2",
                 "symfony/validator": "~2.2",
                 "symfony/yaml": "~2.2"
+            },
+            "suggest": {
+                "symfony/form": "If you want to use the configurator",
+                "symfony/validator": "If you want to use the configurator",
+                "symfony/yaml": "If you want to use  the configurator"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -4572,7 +4531,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-02-01 05:42:21"
+            "time": "2015-02-27 12:59:18"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -5996,9 +5955,10 @@
     "stability-flags": {
         "symfony/assetic-bundle": 20,
         "sensiolabs/doctrine-query-statistics-bundle": 20,
+        "doctrine/doctrine-cache-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
-        "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
+        "doctrine/migrations": 20,
         "dizda/cloud-backup-bundle": 20,
         "elao/web-profiler-extra-bundle": 20,
         "fabpot/goutte": 20,
@@ -6008,7 +5968,6 @@
         "knplabs/knp-disqus-bundle": 20,
         "knplabs/knp-menu": 20,
         "knplabs/knp-menu-bundle": 20,
-        "liip/doctrine-cache-bundle": 20,
         "liip/functional-test-bundle": 20,
         "liip/theme-bundle": 20,
         "mopa/bootstrap-bundle": 20,
