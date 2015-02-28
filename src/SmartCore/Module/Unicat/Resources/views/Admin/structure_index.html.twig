@@ -1,0 +1,41 @@
+{% extends '@UnicatModule/Admin/_layout.html.twig' %}
+
+{% block title %}{{ 'Structures'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <a href="{{ path('unicat_admin.structure_create', {'configuration': configuration.name}) }}" class="btn btn-success pull-right">
+        <i class="icon-plus icon-white"></i> {{ 'Create structure'|trans }}
+    </a>
+
+    <h2>{{ 'Structures'|trans }}</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Name'|trans }}</th>
+            <th>{{ 'Entries mode'|trans }}</th>
+            <th>{{ 'Is required'|trans }}</th>
+            <th>{{ 'Created at'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in configuration.structures %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>
+                    <a href="{{ path('unicat_admin.structure', {'id': item.id, 'configuration': item.configuration.name}) }}">{{ item.title }}</a>
+                    <a href="{{ path('unicat_admin.structure_edit', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;">
+                        <i class="icon-edit" title="Edit"></i>
+                    </a>
+                </td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.entries }}</td>
+                <td>{{ item.isRequired }}</td>
+                <td>{{ item.createdAt|date() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

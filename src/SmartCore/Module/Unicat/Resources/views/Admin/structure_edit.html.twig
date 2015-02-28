@@ -6,10 +6,6 @@
 
     <h2>{{ 'Structure edit'|trans }}: &laquo;{{ form.vars.data.title }}&raquo;</h2>
 
-    <a href="{{ path('unicat_admin.configuration', {'configuration': configuration.name}) }}">
-        &laquo; назад к конфигурации &laquo;{{ configuration.title }}&raquo;
-    </a>
-
     {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
 
     <style type="text/css" media="screen">

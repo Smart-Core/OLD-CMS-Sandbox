@@ -1,0 +1,17 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}&laquo;{{ configuration.title }}&raquo; / Unicat / {{ parent() }}{% endblock %}
+
+{% block nav %}
+
+    {% set configurationMenu = knp_menu_get('UnicatModule:AdminMenu:configuration', [], {
+        'categoryClass': structure.configuration.categoryClass,
+        'configuration': configuration,
+    }) %}
+
+    {{ knp_menu_render(configurationMenu, {
+        'currentClass': 'active',
+        'clear_matcher': false,
+    }) }}
+
+{% endblock nav %}

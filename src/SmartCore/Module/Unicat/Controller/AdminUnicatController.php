@@ -95,6 +95,23 @@ class AdminUnicatController extends Controller
     }
 
     /**
+     * @param string $configuration
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function structureIndexAction($configuration)
+    {
+        $configuration = $this->get('unicat')->getConfiguration($configuration);
+
+        if (empty($configuration)) {
+            return $this->render('@CMS/Admin/not_found.html.twig');
+        }
+
+        return $this->render('UnicatModule:Admin:structure_index.html.twig', [
+            'configuration'     => $configuration,
+        ]);
+    }
+    
+    /**
      * @param Request $request
      * @param int $id
      * @param string|int $configuration
@@ -142,19 +159,19 @@ class AdminUnicatController extends Controller
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('unicat_admin.configuration', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('unicat_admin.structures_index', ['configuration' => $configuration]));
             }
 
             if ($form->get('create')->isClicked() and $form->isValid()) {
                 $urm->updateStructure($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Структура создана');
 
-                return $this->redirect($this->generateUrl('unicat_admin.configuration', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('unicat_admin.structures_index', ['configuration' => $configuration]));
             }
         }
 
         return $this->render('UnicatModule:Admin:structure_create.html.twig', [
-            'form'       => $form->createView(),
+            'form'          => $form->createView(),
             'configuration' => $urm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
@@ -174,14 +191,14 @@ class AdminUnicatController extends Controller
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('unicat_admin.configuration', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('unicat_admin.structures_index', ['configuration' => $configuration]));
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
                 $urm->updateStructure($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Структура обновлена');
 
-                return $this->redirect($this->generateUrl('unicat_admin.configuration', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('unicat_admin.structures_index', ['configuration' => $configuration]));
             }
         }
 
