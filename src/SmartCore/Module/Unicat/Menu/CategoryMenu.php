@@ -113,7 +113,7 @@ class CategoryMenu extends ContainerAware
 
         /** @var CategoryModel $category */
         foreach ($categories as $category) {
-            $uri = $this->container->get('router')->generate('smart_module.unicat_category_admin', [
+            $uri = $this->container->get('router')->generate('smart_module.unicat_admin.category', [
                 'id'            => $category->getId(),
                 'structure_id'  => $category->getStructure()->getId(),
                 'configuration' => $category->getStructure()->getConfiguration()->getName(),

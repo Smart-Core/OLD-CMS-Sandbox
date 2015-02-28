@@ -3,39 +3,39 @@ smart_module.unicat_admin:
     defaults:
         _controller: UnicatModule:AdminUnicat:index
 
-smart_module.unicat_configuration_admin:
+smart_module.unicat_admin.configuration:
     path: /{configuration}/
     defaults:
         _controller: UnicatModule:AdminUnicat:configuration
 
-smart_module.unicat_structure_admin:
+smart_module.unicat_admin.structure:
     path: /{configuration}/structure_{id}/
     defaults:
         _controller: UnicatModule:AdminUnicat:structure
     requirements:
         id: \d+
 
-smart_module.unicat_structure_admin_with_parent_category_id:
-    path: /{configuration}/structure_{id}/{parent_category_id}/
+smart_module.unicat_admin.structure_with_parent_id:
+    path: /{configuration}/structure_{id}/{parent_id}/
     defaults:
         _controller: UnicatModule:AdminUnicat:structure
     requirements:
         parent_category_id: \d+
         id: \d+
 
-smart_module.unicat_structure_edit_admin:
+smart_module.unicat_admin.structure_edit:
     path: /{configuration}/structure_{id}/edit/
     defaults:
         _controller: UnicatModule:AdminUnicat:structureEdit
     requirements:
         id: \d+
 
-smart_module.unicat_structure_create_admin:
+smart_module.unicat_admin.structure_create:
     path: /{configuration}/structure_create/
     defaults:
         _controller: UnicatModule:AdminUnicat:structureCreate
 
-smart_module.unicat_category_admin:
+smart_module.unicat_admin.category:
     path: /{configuration}/structure_{structure_id}/category_{id}/
     defaults:
         _controller: UnicatModule:AdminUnicat:categoryEdit
@@ -43,19 +43,19 @@ smart_module.unicat_category_admin:
         id: \d+
         structure_id: \d+
 
-smart_module.unicat_properties_group_create_admin:
+smart_module.unicat_admin.properties_group_create:
     path: /{configuration}/properties_group_create/
     defaults:
         _controller: UnicatModule:AdminUnicat:propertiesGroupCreate
 
-smart_module.unicat_properties_admin:
+smart_module.unicat_admin.properties:
     path: /{configuration}/properties_group_{group_id}/
     defaults:
         _controller: UnicatModule:AdminUnicat:properties
     requirements:
         group_id: \d+
 
-smart_module.unicat_property_admin:
+smart_module.unicat_admin.property:
     path: /{configuration}/properties_group_{group_id}/{id}/
     defaults:
         _controller: UnicatModule:AdminUnicat:property
@@ -63,19 +63,19 @@ smart_module.unicat_property_admin:
         group_id: \d+
         id: \d+
 
-smart_module.unicat_item_create_admin:
+smart_module.unicat_admin.item_create:
     path: /{configuration}/item_create/
     defaults:
         _controller: UnicatModule:AdminUnicat:itemCreate
 
-smart_module.unicat_item_create_admin_in_category:
+smart_module.unicat_admin.item_create_in_category:
     path: /{configuration}/item_create/{default_category_id}/
     requirements:
         default_category_id: \d+
     defaults:
         _controller: UnicatModule:AdminUnicat:itemCreate
 
-smart_module.unicat_item_edit_admin:
+smart_module.unicat_admin.item_edit:
     path: /{configuration}/item_{id}/
     defaults:
         _controller: UnicatModule:AdminUnicat:itemEdit

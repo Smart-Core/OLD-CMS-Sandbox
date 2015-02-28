@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <h2>{{ 'Structures'|trans }} <a href="{{ path('smart_module.unicat_structure_create_admin', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create structure'|trans }}</a></h2>
+    <h2>{{ 'Structures'|trans }} <a href="{{ path('smart_module.unicat_admin.structure_create', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create structure'|trans }}</a></h2>
 
     <table class="table table-bordered table-hover">
         <thead><tr>
@@ -20,8 +20,8 @@
             <tr>
                 <td>{{ item.id }}</td>
                 <td>
-                    <a href="{{ path('smart_module.unicat_structure_admin', {'id': item.id, 'configuration': item.configuration.name}) }}">{{ item.title }}</a>
-                    <a href="{{ path('smart_module.unicat_structure_edit_admin', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;">
+                    <a href="{{ path('smart_module.unicat_admin.structure', {'id': item.id, 'configuration': item.configuration.name}) }}">{{ item.title }}</a>
+                    <a href="{{ path('smart_module.unicat_admin.structure_edit', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;">
                         <i class="icon-edit" title="Edit"></i>
                     </a>
                 </td>
@@ -35,7 +35,7 @@
     </table>
 
 
-    <h2>{{ 'Properties groups'|trans }} <a href="{{ path('smart_module.unicat_properties_group_create_admin', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create properties groups'|trans }}</a></h2>
+    <h2>{{ 'Properties groups'|trans }} <a href="{{ path('smart_module.unicat_admin.properties_group_create', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create properties groups'|trans }}</a></h2>
 
     <table class="table table-bordered table-hover">
         <thead><tr>
@@ -46,7 +46,7 @@
         {% for item in properties_groups %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td><a href="{{ path('smart_module.unicat_properties_admin', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
+                <td><a href="{{ path('smart_module.unicat_admin.properties', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
             </tr>
         {% endfor %}
         </tbody>
@@ -54,7 +54,7 @@
 
     <h2>{{ 'Records'|trans }}</h2>
 
-    <a href="{{ path('smart_module.unicat_item_create_admin', {'configuration': configuration.name}) }}" class="btn btn-primary">{{ 'Create record'|trans }}</a>
+    <a href="{{ path('smart_module.unicat_admin.item_create', {'configuration': configuration.name}) }}" class="btn btn-primary">{{ 'Create record'|trans }}</a>
 
     <p>Всего записей: <b>{{ items|length }}</b></p>
 
@@ -71,11 +71,11 @@
         {% for item in items %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td><a href="{{ path('smart_module.unicat_item_edit_admin', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.slug }}</a>
+                <td><a href="{{ path('smart_module.unicat_admin.item_edit', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.slug }}</a>
                 </td>
                 {% for property in properties %}
                     {% if property.showInAdmin %}
-                        <td><a href="{{ path('smart_module.unicat_item_edit_admin', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.getProperty(property.name) }}</a></td>
+                        <td><a href="{{ path('smart_module.unicat_admin.item_edit', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.getProperty(property.name) }}</a></td>
                     {% endif %}
                 {% endfor %}
                 <td>{{ item.createdAt|date() }}</td>

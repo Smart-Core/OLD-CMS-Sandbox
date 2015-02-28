@@ -98,16 +98,16 @@ class AdminUnicatController extends Controller
      * @param Request $request
      * @param int $id
      * @param string|int $configuration
-     * @param int|null $parent_category_id
+     * @param int|null $parent_id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function structureAction(Request $request, $id, $configuration, $parent_category_id = null)
+    public function structureAction(Request $request, $id, $configuration, $parent_id = null)
     {
         $urm        = $this->get('unicat')->getConfigurationManager($configuration);
         $unicat     = $this->get('unicat'); // @todo перевести всё на $urm.
         $structure  = $unicat->getStructure($id);
 
-        $parent_category = $parent_category_id ? $urm->getCategoryRepository()->find($parent_category_id) : null;
+        $parent_category = $parent_id ? $urm->getCategoryRepository()->find($parent_id) : null;
 
         $form = $unicat->getCategoryCreateForm($structure, [], $parent_category);
 
@@ -142,14 +142,14 @@ class AdminUnicatController extends Controller
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration]));
             }
 
             if ($form->get('create')->isClicked() and $form->isValid()) {
                 $urm->updateStructure($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Структура создана');
 
-                return $this->redirect($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration]));
             }
         }
 
@@ -174,14 +174,14 @@ class AdminUnicatController extends Controller
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration]));
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
                 $urm->updateStructure($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Структура обновлена');
 
-                return $this->redirect($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration]));
             }
         }
 
@@ -205,14 +205,14 @@ class AdminUnicatController extends Controller
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration]));
             }
 
             if ($form->get('create')->isClicked() and $form->isValid()) {
                 $urm->updatePropertiesGroup($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Группа свойств создана');
 
-                return $this->redirect($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration]));
             }
         }
 
@@ -241,7 +241,7 @@ class AdminUnicatController extends Controller
                 $unicat->createProperty($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Свойство создано');
 
-                return $this->redirect($this->generateUrl('smart_module.unicat_properties_admin', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.properties', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
             }
         }
 
@@ -272,21 +272,21 @@ class AdminUnicatController extends Controller
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirect($this->generateUrl('smart_module.unicat_properties_admin', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.properties', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
                 $unicat->updateProperty($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Свойство обновлено');
 
-                return $this->redirect($this->generateUrl('smart_module.unicat_properties_admin', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.properties', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
             }
 
             if ($form->has('delete') and $form->get('delete')->isClicked()) {
                 $unicat->deleteProperty($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Свойство удалено');
 
-                return $this->redirect($this->generateUrl('smart_module.unicat_properties_admin', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
+                return $this->redirect($this->generateUrl('smart_module.unicat_admin.properties', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
             }
         }
 
@@ -384,7 +384,7 @@ class AdminUnicatController extends Controller
 
         $url = $request->query->has('redirect_to')
             ? $request->query->get('redirect_to')
-            : $this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $configuration->getName()]);
+            : $this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $configuration->getName()]);
 
         return $this->redirect($url);
     }
@@ -400,7 +400,7 @@ class AdminUnicatController extends Controller
 
         $url = $request->query->has('redirect_to')
             ? $request->query->get('redirect_to')
-            : $this->generateUrl('smart_module.unicat_structure_admin', ['id' => $structure_id, 'configuration' => $configuration->getName()]);
+            : $this->generateUrl('smart_module.unicat_admin.structure', ['id' => $structure_id, 'configuration' => $configuration->getName()]);
 
         return $this->redirect($url);
     }

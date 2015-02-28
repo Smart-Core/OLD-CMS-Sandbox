@@ -7,7 +7,7 @@
     <h2>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h2>
 
     <div class="span12">
-        <a href="{{ path('smart_module.unicat_configuration_admin', {'configuration': structure.configuration.name}) }}">
+        <a href="{{ path('smart_module.unicat_admin.configuration', {'configuration': structure.configuration.name}) }}">
             &laquo; назад к конфигурации &laquo;{{ structure.configuration.title }}&raquo;
         </a>
     </div>

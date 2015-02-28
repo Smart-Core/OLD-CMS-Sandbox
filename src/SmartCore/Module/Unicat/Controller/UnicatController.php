@@ -58,7 +58,7 @@ class UnicatController extends Controller
 
         $this->node->addFrontControl('create_item')
             ->setTitle('Добавить запись')
-            ->setUri($this->generateUrl('smart_module.unicat_item_create_admin_in_category', [
+            ->setUri($this->generateUrl('smart_module.unicat_admin.item_create_in_category', [
                 'configuration'       => $urm->getConfiguration()->getName(),
                 'default_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
             ]));
@@ -67,16 +67,16 @@ class UnicatController extends Controller
             $this->node->addFrontControl('create_category')
                 ->setIsDefault(false)
                 ->setTitle('Создать категорию')
-                ->setUri($this->generateUrl('smart_module.unicat_structure_admin_with_parent_category_id', [
-                    'configuration'      => $urm->getConfiguration()->getName(),
-                    'parent_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
-                    'id'                 => $lastCategory->getStructure()->getId(),
+                ->setUri($this->generateUrl('smart_module.unicat_admin.structure_with_parent_id', [
+                    'configuration' => $urm->getConfiguration()->getName(),
+                    'parent_id'     => empty($lastCategory) ? 0 : $lastCategory->getId(),
+                    'id'            => $lastCategory->getStructure()->getId(),
                 ]));
 
             $this->node->addFrontControl('edit_category')
                 ->setIsDefault(false)
                 ->setTitle('Редактировать категорию')
-                ->setUri($this->generateUrl('smart_module.unicat_category_admin', [
+                ->setUri($this->generateUrl('smart_module.unicat_admin.category', [
                     'configuration' => $urm->getConfiguration()->getName(),
                     'id'            => $lastCategory->getId(),
                     'structure_id'  => $lastCategory->getStructure()->getId(),
@@ -86,7 +86,7 @@ class UnicatController extends Controller
         $this->node->addFrontControl('manage_configuration')
             ->setIsDefault(false)
             ->setTitle('Управление каталогом')
-            ->setUri($this->generateUrl('smart_module.unicat_configuration_admin', ['configuration' => $urm->getConfiguration()->getName()]));
+            ->setUri($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $urm->getConfiguration()->getName()]));
 
         return $this->render('UnicatModule::items.html.twig', [
             'category'          => $lastCategory,
@@ -145,7 +145,7 @@ class UnicatController extends Controller
 
         $this->node->addFrontControl('edit')
             ->setTitle('Редактировать')
-            ->setUri($this->generateUrl('smart_module.unicat_item_edit_admin', ['configuration' => $urm->getConfiguration()->getName(), 'id' => $item->getId() ]));
+            ->setUri($this->generateUrl('smart_module.unicat_admin.item_edit', ['configuration' => $urm->getConfiguration()->getName(), 'id' => $item->getId() ]));
 
         return $this->render('UnicatModule::item.html.twig', [
             'category'          => $lastCategory,
