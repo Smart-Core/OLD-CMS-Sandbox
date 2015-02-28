@@ -2,21 +2,18 @@
 
 namespace SmartCore\Module\Unicat\Service;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Entity\UnicatStructure;
+use SmartCore\Module\Unicat\Form\Type\AttributesGroupFormType;
 use SmartCore\Module\Unicat\Form\Type\ItemFormType;
-use SmartCore\Module\Unicat\Form\Type\PropertiesGroupFormType;
 use SmartCore\Module\Unicat\Form\Type\StructureFormType;
 use SmartCore\Module\Unicat\Model\AttributeModel;
 use SmartCore\Module\Unicat\Model\AttributesGroupModel;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Model\ItemModel;
-use SmartCore\Module\Unicat\Model\PropertiesGroupModel;
-use SmartCore\Module\Unicat\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -244,10 +241,10 @@ class UnicatConfigurationManager
      */
     public function getAttributesGroupCreateForm(array $options = [])
     {
-        $group = $this->configuration->createPropertiesGroup();
+        $group = $this->configuration->createAttributesGroup();
         $group->setConfiguration($this->configuration);
 
-        return $this->getPropertiesGroupForm($group, $options)
+        return $this->getAttributesGroupForm($group, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
@@ -267,9 +264,9 @@ class UnicatConfigurationManager
      * @param array $options
      * @return \Symfony\Component\Form\Form
      */
-    public function getPropertiesGroupForm($data = null, array $options = [])
+    public function getAttributesGroupForm($data = null, array $options = [])
     {
-        return $this->formFactory->create(new PropertiesGroupFormType($this->configuration), $data, $options);
+        return $this->formFactory->create(new AttributesGroupFormType($this->configuration), $data, $options);
     }
 
     /**
@@ -323,8 +320,8 @@ class UnicatConfigurationManager
      */
     public function removeItem(ItemModel $item)
     {
-        foreach ($this->getProperties() as $property) {
-            if ($property->isType('image') and $item->hasProperty($property->getName())) {
+        foreach ($this->getAttributes() as $attribute) {
+            if ($attribute->isType('image') and $item->hasAttribute($attribute->getName())) {
                 // @todo сделать кеширование при первом же вытаскивании данных о записи. тоже самое в saveItem(), а еще лучше выделить этот код в отельный защищенный метод.
                 $tableItems = $this->em->getClassMetadata($this->configuration->getItemClass())->getTableName();
                 $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
@@ -332,8 +329,8 @@ class UnicatConfigurationManager
 
                 $fileId = null;
                 if (!empty($res)) {
-                    $previousProperties = unserialize($res['properties']);
-                    $fileId = $previousProperties[$property->getName()];
+                    $previousAttributes = unserialize($res['attributes']);
+                    $fileId = $previousAttributes[$attribute->getName()];
                 }
 
                 $this->mc->remove($fileId);
@@ -356,16 +353,16 @@ class UnicatConfigurationManager
         /** @var ItemModel $item */
         $item = $form->getData();
 
-        // Проверка и модификация свойств. В частности загрука картинок и валидация.
-        foreach ($this->getProperties() as $property) {
-            if ($property->isType('image') and $item->hasProperty($property->getName())) {
+        // Проверка и модификация атрибута. В частности загрука картинок и валидация.
+        foreach ($this->getAttributes() as $attribute) {
+            if ($attribute->isType('image') and $item->hasAttribute($attribute->getName())) {
                 $tableItems = $this->em->getClassMetadata($this->configuration->getItemClass())->getTableName();
                 $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
                 $res = $this->em->getConnection()->query($sql)->fetch();
 
                 if (!empty($res)) {
-                    $previousProperties = unserialize($res['properties']);
-                    $fileId = $previousProperties[$property->getName()];
+                    $previousAttributes = unserialize($res['attributes']);
+                    $fileId = $previousAttributes[$attribute->getName()];
                 } else {
                     $fileId = null;
                 }
@@ -373,13 +370,13 @@ class UnicatConfigurationManager
                 // удаление файла.
                 $_delete_ = $request->request->get('_delete_');
                 if (is_array($_delete_)
-                    and isset($_delete_['property:'.$property->getName()])
-                    and 'on' === $_delete_['property:'.$property->getName()]
+                    and isset($_delete_['attribute:'.$attribute->getName()])
+                    and 'on' === $_delete_['attribute:'.$attribute->getName()]
                 ) {
                     $this->mc->remove($fileId);
                     $fileId = null;
                 } else {
-                    $file = $item->getProperty($property->getName());
+                    $file = $item->getAttribute($attribute->getName());
 
                     if ($file) {
                         $this->mc->remove($fileId);
@@ -387,7 +384,7 @@ class UnicatConfigurationManager
                     }
                 }
 
-                $item->setProperty($property->getName(), $fileId);
+                $item->setAttribute($attribute->getName(), $fileId);
             }
         }
 

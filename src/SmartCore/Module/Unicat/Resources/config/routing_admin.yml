@@ -8,27 +8,28 @@ unicat_admin.configuration:
     defaults:
         _controller: UnicatModule:AdminUnicat:configuration
 
+# Structure
 unicat_admin.structures_index:
     path: /{configuration}/structure/
     defaults:
-        _controller: UnicatModule:AdminUnicat:structureIndex
+        _controller: UnicatModule:AdminStructure:index
 
 unicat_admin.structure_create:
     path: /{configuration}/structure/create/
     defaults:
-        _controller: UnicatModule:AdminUnicat:structureCreate
+        _controller: UnicatModule:AdminStructure:create
 
 unicat_admin.structure:
     path: /{configuration}/structure/{id}/
     defaults:
-        _controller: UnicatModule:AdminUnicat:structure
+        _controller: UnicatModule:AdminStructure:structure
     requirements:
         id: \d+
 
 unicat_admin.structure_with_parent_id:
     path: /{configuration}/structure/{id}/{parent_id}/
     defaults:
-        _controller: UnicatModule:AdminUnicat:structure
+        _controller: UnicatModule:AdminStructure:structure
     requirements:
         parent_id: \d+
         id: \d+
@@ -36,19 +37,19 @@ unicat_admin.structure_with_parent_id:
 unicat_admin.structure_edit:
     path: /{configuration}/structure/{id}/edit/
     defaults:
-        _controller: UnicatModule:AdminUnicat:structureEdit
+        _controller: UnicatModule:AdminStructure:edit
     requirements:
         id: \d+
 
 unicat_admin.category:
     path: /{configuration}/structure/{structure_id}/category_{id}/
     defaults:
-        _controller: UnicatModule:AdminUnicat:categoryEdit
+        _controller: UnicatModule:AdminStructure:categoryEdit
     requirements:
         id: \d+
         structure_id: \d+
 
-# attributes
+# Attributes
 unicat_admin.attributes_index:
     path: /{configuration}/attributes/
     defaults:
@@ -74,7 +75,7 @@ unicat_admin.attribute:
         group_id: \d+
         id: \d+
 
-# items
+# Items
 unicat_admin.item_create:
     path: /{configuration}/item_create/
     defaults:

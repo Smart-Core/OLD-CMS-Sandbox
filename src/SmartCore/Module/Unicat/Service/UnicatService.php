@@ -180,27 +180,28 @@ class UnicatService
      */
     public function getAttributeCreateForm(UnicatConfiguration $configuration, $groupId, array $options = [])
     {
-        $property = $configuration->createAttribute();
-        $property
+        $attribute = $configuration->createAttribute();
+        $attribute
             ->setGroup($this->em->getRepository($configuration->getAttributesGroupClass())->find($groupId))
             ->setUserId($this->getUserId())
         ;
 
-        return $this->getAttributeForm($configuration, $property, $options)
+        return $this->getAttributeForm($configuration, $attribute, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
     }
 
     /**
      * @param UnicatConfiguration $configuration
+     * @param string $attribute
      * @param array $options
      *
      * @return \Symfony\Component\Form\Form
      *
      * @deprecated
      */
-    public function getAttributeEditForm(UnicatConfiguration $configuration, $property, array $options = [])
+    public function getAttributeEditForm(UnicatConfiguration $configuration, $attribute, array $options = [])
     {
-        return $this->getAttributeForm($configuration, $property, $options)
+        return $this->getAttributeForm($configuration, $attribute, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
