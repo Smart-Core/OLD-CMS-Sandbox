@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <a href="{{ path('unicat_admin.properties_group_create', {'configuration': configuration.name}) }}" class="btn btn-success pull-right">
+    <a href="{{ path('unicat_admin.attributes_group_create', {'configuration': configuration.name}) }}" class="btn btn-success pull-right">
         <i class="icon-plus icon-white"></i> {{ 'Create attributes group'|trans }}
     </a>
 
@@ -21,8 +21,8 @@
         {% for item in attributes_groups %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td><a href="{{ path('unicat_admin.properties', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
-                <td><a href="{{ path('unicat_admin.properties', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.name }}</a></td>
+                <td><a href="{{ path('unicat_admin.attributes', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
+                <td><a href="{{ path('unicat_admin.attributes', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.name }}</a></td>
                 <td>{{ item.createdAt|date() }}</td>
             </tr>
         {% endfor %}

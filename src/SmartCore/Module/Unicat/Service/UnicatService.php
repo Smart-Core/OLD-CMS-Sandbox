@@ -8,12 +8,12 @@ use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Entity\UnicatStructure;
+use SmartCore\Module\Unicat\Form\Type\AttributeFormType;
 use SmartCore\Module\Unicat\Form\Type\CategoryCreateFormType;
 use SmartCore\Module\Unicat\Form\Type\CategoryFormType;
-use SmartCore\Module\Unicat\Form\Type\PropertyFormType;
+use SmartCore\Module\Unicat\Model\AttributeModel;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Model\ItemModel;
-use SmartCore\Module\Unicat\Model\PropertyModel;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -90,15 +90,15 @@ class UnicatService
 
     /**
      * @param UnicatConfiguration|int $configuration
-     * @return \SmartCore\Module\Unicat\Model\PropertyModel[]
+     * @return AttributeModel[]
      */
-    public function getProperties($configuration)
+    public function getAttributes($configuration)
     {
         if ($configuration instanceof UnicatConfiguration) {
             $configuration = $configuration->getId();
         }
 
-        return $this->getConfigurationManager($configuration)->getProperties();
+        return $this->getConfigurationManager($configuration)->getAttributes();
     }
 
     /**
@@ -165,9 +165,9 @@ class UnicatService
      *
      * @deprecated
      */
-    public function getPropertyForm(UnicatConfiguration $configuration, $data = null, array $options = [])
+    public function getAttributeForm(UnicatConfiguration $configuration, $data = null, array $options = [])
     {
-        return $this->formFactory->create(new PropertyFormType($configuration), $data, $options);
+        return $this->formFactory->create(new AttributeFormType($configuration), $data, $options);
     }
 
     /**
@@ -178,15 +178,15 @@ class UnicatService
      *
      * @deprecated
      */
-    public function getPropertyCreateForm(UnicatConfiguration $configuration, $groupId, array $options = [])
+    public function getAttributeCreateForm(UnicatConfiguration $configuration, $groupId, array $options = [])
     {
-        $property = $configuration->createProperty();
+        $property = $configuration->createAttribute();
         $property
-            ->setGroup($this->em->getRepository($configuration->getPropertiesGroupClass())->find($groupId))
+            ->setGroup($this->em->getRepository($configuration->getAttributesGroupClass())->find($groupId))
             ->setUserId($this->getUserId())
         ;
 
-        return $this->getPropertyForm($configuration, $property, $options)
+        return $this->getAttributeForm($configuration, $property, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
     }
 
@@ -198,9 +198,9 @@ class UnicatService
      *
      * @deprecated
      */
-    public function getPropertyEditForm(UnicatConfiguration $configuration, $property, array $options = [])
+    public function getAttributeEditForm(UnicatConfiguration $configuration, $property, array $options = [])
     {
-        return $this->getPropertyForm($configuration, $property, $options)
+        return $this->getAttributeForm($configuration, $property, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
@@ -247,25 +247,25 @@ class UnicatService
     /**
      * @param UnicatConfiguration $configuration
      * @param int $groupId
-     * @return PropertyModel[]
+     * @return AttributeModel[]
      *
      * @deprecated
      */
-    public function getPropertiesGroup(UnicatConfiguration $configuration, $groupId)
+    public function getAttributesGroup(UnicatConfiguration $configuration, $groupId)
     {
-        return $this->em->getRepository($configuration->getPropertiesGroupClass())->find($groupId);
+        return $this->em->getRepository($configuration->getAttributesGroupClass())->find($groupId);
     }
 
     /**
      * @param UnicatConfiguration $configuration
      * @param int $groupId
-     * @return PropertyModel[]
+     * @return AttributeModel[]
      *
      * @deprecated
      */
-    public function getProperty(UnicatConfiguration $configuration, $id)
+    public function getAttribute(UnicatConfiguration $configuration, $id)
     {
-        return $this->em->getRepository($configuration->getPropertyClass())->find($id);
+        return $this->em->getRepository($configuration->getAttributeClass())->find($id);
     }
 
     /**
@@ -309,13 +309,13 @@ class UnicatService
     }
 
     /**
-     * @param PropertyModel $property
+     * @param AttributeModel $entity
      * @return $this
      */
-    public function createProperty(PropertyModel $property)
+    public function createAttribute(AttributeModel $entity)
     {
-        $this->em->persist($property);
-        $this->em->flush($property);
+        $this->em->persist($entity);
+        $this->em->flush($entity);
 
         return $this;
     }
@@ -342,13 +342,13 @@ class UnicatService
     }
 
     /**
-     * @param PropertyModel $property
+     * @param AttributeModel $entity
      * @return $this
      */
-    public function updateProperty(PropertyModel $property)
+    public function updateAttribute(AttributeModel $entity)
     {
-        $this->em->persist($property);
-        $this->em->flush($property);
+        $this->em->persist($entity);
+        $this->em->flush($entity);
 
         return $this;
     }
@@ -368,15 +368,15 @@ class UnicatService
     }
 
     /**
-     * @param PropertyModel $property
+     * @param AttributeModel $entity
      * @return $this
      */
-    public function deleteProperty(PropertyModel $property)
+    public function deleteAttribute(AttributeModel $entity)
     {
         throw new \Exception('@todo надо решить как поступать с данными записей');
 
-        $this->em->remove($property);
-        $this->em->flush($property);
+        $this->em->remove($entity);
+        $this->em->flush($entity);
 
         return $this;
     }

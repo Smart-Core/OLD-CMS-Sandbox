@@ -5,7 +5,7 @@ namespace SmartCore\Module\Unicat\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PropertyImageFormType extends AbstractType
+class AttributeImageFormType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -21,6 +21,6 @@ class PropertyImageFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_property_image';
+        return 'smart_unicat_attribute_image';
     }
 }

@@ -141,7 +141,7 @@ class UnicatController extends Controller
         $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.item', [
                 'slug' => $lastCategory->getSlugFull(),
                 'itemSlug' => $item->getSlug(),
-            ]).'/', $item->getProperty('title'));
+            ]).'/', $item->getAttribute('title'));
 
         $this->node->addFrontControl('edit')
             ->setTitle('Редактировать')

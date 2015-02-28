@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PropertiesGroupFormType extends AbstractType
+class AttributesGroupFormType extends AbstractType
 {
     /**
      * @var UnicatConfiguration
@@ -33,12 +33,12 @@ class PropertiesGroupFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => $this->configuration->getPropertiesGroupClass(),
+            'data_class' => $this->configuration->getAttributesGroupClass(),
         ]);
     }
 
     public function getName()
     {
-        return 'smart_unicat_configuration_'.$this->configuration->getName().'_properties_group';
+        return 'smart_unicat_configuration_'.$this->configuration->getName().'_attributes_group';
     }
 }

@@ -49,24 +49,24 @@ unicat_admin.category:
         structure_id: \d+
 
 # attributes
-unicat_admin.properties_index:
+unicat_admin.attributes_index:
     path: /{configuration}/attributes/
     defaults:
         _controller: UnicatModule:AdminAttributes:index
 
-unicat_admin.properties_group_create:
+unicat_admin.attributes_group_create:
     path: /{configuration}/attributes/create_group/
     defaults:
         _controller: UnicatModule:AdminAttributes:createGroup
 
-unicat_admin.properties:
+unicat_admin.attributes:
     path: /{configuration}/attributes/group_{group_id}/
     defaults:
         _controller: UnicatModule:AdminAttributes:group
     requirements:
         group_id: \d+
 
-unicat_admin.property:
+unicat_admin.attribute:
     path: /{configuration}/attributes/group_{group_id}/{id}/
     defaults:
         _controller: UnicatModule:AdminAttributes:attributeEdit

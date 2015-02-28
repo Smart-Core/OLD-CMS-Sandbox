@@ -9,11 +9,11 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * ORM\Entity()
- * ORM\Table(name="unicat_properties")
+ * ORM\Table(name="unicat_attributes")
  *
  * @UniqueEntity(fields={"name"}, message="Имя свойства должно быть уникальным.")
  */
-class PropertyModel
+class AttributeModel
 {
     use ColumnTrait\Id;
     use ColumnTrait\IsEnabled;
@@ -86,9 +86,9 @@ class PropertyModel
     protected $params_yaml;
 
     /**
-     * @var PropertiesGroupModel
+     * @var AttributesGroupModel
      *
-     * @ORM\ManyToOne(targetEntity="PropertiesGroup", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="AttributesGroup", inversedBy="attributes")
      */
     protected $group;
 
@@ -144,10 +144,10 @@ class PropertyModel
     }
 
     /**
-     * @param \SmartCore\Module\Unicat\Model\PropertiesGroupModel $group
+     * @param AttributesGroupModel $group
      * @return $this
      */
-    public function setGroup(PropertiesGroupModel $group)
+    public function setGroup(AttributesGroupModel $group)
     {
         $this->group = $group;
 
@@ -155,7 +155,7 @@ class PropertyModel
     }
 
     /**
-     * @return \SmartCore\Module\Unicat\Model\PropertiesGroupModel
+     * @return AttributesGroupModel
      */
     public function getGroup()
     {

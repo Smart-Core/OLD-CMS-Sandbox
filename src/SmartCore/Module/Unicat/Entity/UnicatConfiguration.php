@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Smart\CoreBundle\Doctrine\ColumnTrait;
 use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Module\Unicat\Model\CategoryModel;
-use SmartCore\Module\Unicat\Model\PropertiesGroupModel;
-use SmartCore\Module\Unicat\Model\PropertyModel;
+use SmartCore\Module\Unicat\Model\AttributesGroupModel;
+use SmartCore\Module\Unicat\Model\AttributeModel;
 
 /**
  * @ORM\Entity()
@@ -103,17 +103,17 @@ class UnicatConfiguration
     /**
      * @return string
      */
-    public function getPropertyClass()
+    public function getAttributeClass()
     {
-        return $this->entities_namespace.'Property';
+        return $this->entities_namespace.'Attribute';
     }
 
     /**
      * @return string
      */
-    public function getPropertiesGroupClass()
+    public function getAttributesGroupClass()
     {
-        return $this->entities_namespace.'PropertiesGroup';
+        return $this->entities_namespace.'AttributesGroup';
     }
 
     /**
@@ -129,25 +129,25 @@ class UnicatConfiguration
     }
 
     /**
-     * @return PropertyModel
+     * @return AttributeModel
      *
      * @deprecated
      */
-    public function createProperty()
+    public function createAttribute()
     {
-        $class = $this->getPropertyClass();
+        $class = $this->getAttributeClass();
 
         return new $class();
     }
 
     /**
-     * @return PropertiesGroupModel
+     * @return AttributesGroupModel
      *
      * @deprecated
      */
-    public function createPropertiesGroup()
+    public function createAttributesGroup()
     {
-        $class = $this->getPropertiesGroupClass();
+        $class = $this->getAttributesGroupClass();
 
         return new $class();
     }

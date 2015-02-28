@@ -41,8 +41,8 @@ class AdminUnicatController extends Controller
 
         return $this->render('UnicatModule:Admin:configuration.html.twig', [
             'configuration'     => $configuration,
-            'properties_groups' => $em->getRepository($configuration->getPropertiesGroupClass())->findAll(),
-            'properties'        => $em->getRepository($configuration->getPropertyClass())->findAll(),
+            'attributes_groups' => $em->getRepository($configuration->getAttributesGroupClass())->findAll(),
+            'attributes'        => $em->getRepository($configuration->getAttributeClass())->findAll(),
             'items'             => $em->getRepository($configuration->getItemClass())->findBy([], ['id' => 'DESC']),
         ]);
     }

@@ -11,6 +11,8 @@ use SmartCore\Module\Unicat\Entity\UnicatStructure;
 use SmartCore\Module\Unicat\Form\Type\ItemFormType;
 use SmartCore\Module\Unicat\Form\Type\PropertiesGroupFormType;
 use SmartCore\Module\Unicat\Form\Type\StructureFormType;
+use SmartCore\Module\Unicat\Model\AttributeModel;
+use SmartCore\Module\Unicat\Model\AttributesGroupModel;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Model\ItemModel;
 use SmartCore\Module\Unicat\Model\PropertiesGroupModel;
@@ -240,7 +242,7 @@ class UnicatConfigurationManager
      * @param array $options
      * @return $this|\Symfony\Component\Form\Form
      */
-    public function getPropertiesGroupCreateForm(array $options = [])
+    public function getAttributesGroupCreateForm(array $options = [])
     {
         $group = $this->configuration->createPropertiesGroup();
         $group->setConfiguration($this->configuration);
@@ -442,23 +444,23 @@ class UnicatConfigurationManager
 
     /**
      * @param int $groupId
-     * @return PropertyModel[]
+     * @return AttributeModel[]
      */
-    public function getProperties($groupId = null)
+    public function getAttributes($groupId = null)
     {
         $filter = ($groupId) ? ['group' => $groupId] : [];
 
-        return $this->em->getRepository($this->configuration->getPropertyClass())->findBy($filter, ['position' => 'ASC']);
+        return $this->em->getRepository($this->configuration->getAttributeClass())->findBy($filter, ['position' => 'ASC']);
     }
 
     /**
-     * @param PropertyModel $property
+     * @param AttributeModel $entity
      * @return $this
      */
-    public function createProperty(PropertyModel $property)
+    public function createAttribute(AttributeModel $entity)
     {
-        $this->em->persist($property);
-        $this->em->flush($property);
+        $this->em->persist($entity);
+        $this->em->flush($entity);
 
         return $this;
     }
@@ -476,22 +478,22 @@ class UnicatConfigurationManager
     }
 
     /**
-     * @param PropertyModel $property
+     * @param AttributeModel $entity
      * @return $this
      */
-    public function updateProperty(PropertyModel $property)
+    public function updateAttribute(AttributeModel $entity)
     {
-        $this->em->persist($property);
-        $this->em->flush($property);
+        $this->em->persist($entity);
+        $this->em->flush($entity);
 
         return $this;
     }
 
     /**
-     * @param PropertiesGroupModel $property
+     * @param AttributesGroupModel $entity
      * @return $this
      */
-    public function updatePropertiesGroup(PropertiesGroupModel $entity)
+    public function updateAttributesGroup(AttributesGroupModel $entity)
     {
         $this->em->persist($entity);
         $this->em->flush($entity);

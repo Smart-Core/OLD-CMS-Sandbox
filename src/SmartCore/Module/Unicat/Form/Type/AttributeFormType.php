@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PropertyFormType extends AbstractType
+class AttributeFormType extends AbstractType
 {
     /**
      * @var UnicatConfiguration
@@ -56,12 +56,12 @@ class PropertyFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => $this->configuration->getPropertyClass(),
+            'data_class' => $this->configuration->getAttributeClass(),
         ]);
     }
 
     public function getName()
     {
-        return 'smart_unicat_configuration_property';
+        return 'smart_unicat_configuration_attribute';
     }
 }

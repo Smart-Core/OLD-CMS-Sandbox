@@ -16,8 +16,8 @@
         <thead><tr>
             <th style="width: 1%;">id</th>
             <th>{{ 'Slug'|trans }}</th>
-            {% for property in properties %}
-                {% if property.showInAdmin %}<th>{{ property.title }}</th>{% endif %}
+            {% for attribute in attributes %}
+                {% if attribute.showInAdmin %}<th>{{ attribute.title }}</th>{% endif %}
             {% endfor %}
             <th>{{ 'Created at'|trans }}</th>
         </tr></thead>
@@ -27,9 +27,9 @@
                 <td>{{ item.id }}</td>
                 <td><a href="{{ path('unicat_admin.item_edit', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.slug }}</a>
                 </td>
-                {% for property in properties %}
-                    {% if property.showInAdmin %}
-                        <td><a href="{{ path('unicat_admin.item_edit', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.getProperty(property.name) }}</a></td>
+                {% for attribute in attributes %}
+                    {% if attribute.showInAdmin %}
+                        <td><a href="{{ path('unicat_admin.item_edit', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.attribute(attribute.name) }}</a></td>
                     {% endif %}
                 {% endfor %}
                 <td>{{ item.createdAt|date() }}</td>

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ORM\Entity()
- * ORM\Table(name="unicat_items_propertyname",
+ * ORM\Table(name="unicat_items_attributename",
  *      indexes={
  *          @ORM\Index(columns={"value"})
  *      }

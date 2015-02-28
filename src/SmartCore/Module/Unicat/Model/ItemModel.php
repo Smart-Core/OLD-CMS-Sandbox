@@ -59,7 +59,7 @@ class ItemModel
      *
      * @ORM\Column(type="array")
      */
-    protected $properties;
+    protected $attributes;
 
     /**
      * Constructor.
@@ -95,15 +95,15 @@ class ItemModel
             }
         }
 
-        if (false !== strpos($name, 'property:')) {
-            $properyName = str_replace('property:', '', $name);
+        if (false !== strpos($name, 'attribute:')) {
+            $attributeName = str_replace('attribute:', '', $name);
 
-            if (isset($this->properties[$properyName])) {
-                return $this->properties[$properyName];
+            if (isset($this->attributes[$attributeName])) {
+                return $this->attributes[$attributeName];
             }
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -113,8 +113,8 @@ class ItemModel
      */
     public function __set($name, $value)
     {
-        if (false !== strpos($name, 'property:')) {
-            $this->properties[str_replace('property:', '', $name)] = $value;
+        if (false !== strpos($name, 'attribute:')) {
+            $this->attributes[str_replace('attribute:', '', $name)] = $value;
         }
 
         return $this;
@@ -159,12 +159,12 @@ class ItemModel
     }
 
     /**
-     * @param array $properties
+     * @param array $attributes
      * @return $this
      */
-    public function setProperties($properties)
+    public function setAttributes($attributes)
     {
-        $this->properties = $properties;
+        $this->attributes = $attributes;
 
         return $this;
     }
@@ -172,27 +172,36 @@ class ItemModel
     /**
      * @return array
      */
-    public function getProperties()
+    public function getAttributes()
     {
-        return $this->properties;
+        return $this->attributes;
     }
 
     /**
      * @param string $name
      * @return mixed|null
      */
-    public function getProperty($name)
+    public function getAttribute($name)
     {
-        return (isset($this->properties[$name])) ? $this->properties[$name] : null;
+        return (isset($this->attributes[$name])) ? $this->attributes[$name] : null;
+    }
+
+    /**
+     * @param string $name
+     * @return mixed|null
+     */
+    public function getAttr($name)
+    {
+        return $this->getAttr($name);
     }
 
     /**
      * @param string $name
      * @return $this
      */
-    public function removeProperty($name)
+    public function removeAttribute($name)
     {
-        unset($this->properties[$name]);
+        unset($this->attributes[$name]);
 
         return $this;
     }
@@ -202,9 +211,9 @@ class ItemModel
      * @param mixed $value
      * @return $this
      */
-    public function setProperty($name, $value)
+    public function setAttribute($name, $value)
     {
-        $this->properties[$name] = $value;
+        $this->attributes[$name] = $value;
 
         return $this;
     }
@@ -213,9 +222,9 @@ class ItemModel
      * @param string $name
      * @return bool
      */
-    public function hasProperty($name)
+    public function hasAttribute($name)
     {
-        return (isset($this->properties[$name]) or null === @$this->properties[$name]) ? true : false;
+        return (isset($this->attributes[$name]) or null === @$this->attributes[$name]) ? true : false;
     }
 
     /**

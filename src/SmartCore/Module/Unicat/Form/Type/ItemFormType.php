@@ -8,7 +8,7 @@ use SmartCore\Bundle\SeoBundle\Form\Type\MetaFormType;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Form\Tree\CategoryTreeType;
 use SmartCore\Module\Unicat\Model\CategoryModel;
-use SmartCore\Module\Unicat\Model\PropertyModel;
+use SmartCore\Module\Unicat\Model\AttributeModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -77,40 +77,40 @@ class ItemFormType extends AbstractType
             $builder->add('structure:'.$structure->getName(), $categoryTreeType, $optionsCat);
         }
 
-        /** @var $property PropertyModel */
-        foreach (Container::getContainer()->get('unicat')->getProperties($this->configuration) as $property) {
-            $type = $property->getType();
+        /** @var $attribute AttributeModel */
+        foreach (Container::getContainer()->get('unicat')->getAttributes($this->configuration) as $attribute) {
+            $type = $attribute->getType();
             $propertyOptions = [
-                'required'  => $property->getIsRequired(),
-                'label'     => $property->getTitle(),
+                'required'  => $attribute->getIsRequired(),
+                'label'     => $attribute->getTitle(),
             ];
 
-            $propertyOptions = array_merge($propertyOptions, $property->getParams());
+            $attributeOptions = array_merge($propertyOptions, $attribute->getParams());
 
-            if ($property->isType('image')) {
+            if ($attribute->isType('image')) {
                 // @todo сделать виджет загрузки картинок.
                 //$type = 'genemu_jqueryimage';
-                $type = new PropertyImageFormType();
+                $type = new AttributeImageFormType();
 
                 if (isset($options['data'])) {
-                    $propertyOptions['data'] = $options['data']->getProperty($property->getName());
+                    $attributeOptions['data'] = $options['data']->getAttribute($attribute->getName());
                 }
             }
 
-            if ($property->isType('select')) {
+            if ($attribute->isType('select')) {
                 $type = 'choice';
             }
 
-            if ($property->isType('multiselect')) {
+            if ($attribute->isType('multiselect')) {
                 $type = 'choice';
-                $propertyOptions['expanded'] = true;
+                $attributeOptions['expanded'] = true;
                 //$propertyOptions['multiple'] = true; // @todo FS#407 продумать мультиселект
             }
 
-            if (isset($propertyOptions['constraints'])) {
+            if (isset($attributeOptions['constraints'])) {
                 $constraintsObjects = [];
 
-                foreach ($propertyOptions['constraints'] as $constraintsList) {
+                foreach ($attributeOptions['constraints'] as $constraintsList) {
                     foreach ($constraintsList as $constraintClass => $constraintParams) {
                         $_class = '\Symfony\Component\Validator\Constraints\\'.$constraintClass;
 
@@ -118,10 +118,10 @@ class ItemFormType extends AbstractType
                     }
                 }
 
-                $propertyOptions['constraints'] = $constraintsObjects;
+                $attributeOptions['constraints'] = $constraintsObjects;
             }
 
-            $builder->add('property:'.$property->getName(), $type, $propertyOptions);
+            $builder->add('attribute:'.$attribute->getName(), $type, $attributeOptions);
         }
     }
 

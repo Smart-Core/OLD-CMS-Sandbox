@@ -9,9 +9,9 @@ use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 
 /**
  * ORM\Entity()
- * ORM\Table(name="unicat_properties_groups")
+ * ORM\Table(name="unicat_attributes_groups")
  */
-class PropertiesGroupModel
+class AttributesGroupModel
 {
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
@@ -19,11 +19,11 @@ class PropertiesGroupModel
     use ColumnTrait\Title;
 
     /**
-     * @var PropertyModel[]
+     * @var AttributeModel[]
      *
-     * @ORM\OneToMany(targetEntity="Property", mappedBy="group")
+     * @ORM\OneToMany(targetEntity="Attribute", mappedBy="group")
      */
-    protected $properties;
+    protected $attributes;
 
     /**
      * @var CategoryModel
@@ -45,7 +45,7 @@ class PropertiesGroupModel
     public function __construct()
     {
         $this->created_at = new \DateTime();
-        $this->properties = new ArrayCollection();
+        $this->attributes = new ArrayCollection();
     }
 
     /**
@@ -68,22 +68,22 @@ class PropertiesGroupModel
     }
 
     /**
-     * @param \SmartCore\Module\Unicat\Model\PropertyModel[] $properties
+     * @param AttributeModel[] $attributes
      * @return $this
      */
-    public function setProperties($properties)
+    public function setAttributes($attributes)
     {
-        $this->properties = $properties;
+        $this->attributes = $attributes;
 
         return $this;
     }
 
     /**
-     * @return \SmartCore\Module\Unicat\Model\PropertyModel[]
+     * @return AttributeModel[]
      */
-    public function getProperties()
+    public function getAttributes()
     {
-        return $this->properties;
+        return $this->attributes;
     }
 
     /**

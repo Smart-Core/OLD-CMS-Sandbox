@@ -3,11 +3,11 @@
 namespace SandboxSiteBundle\Entity\Catalog;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Module\Unicat\Model\PropertyModel;
+use SmartCore\Module\Unicat\Model\AttributeModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="catalog_properties",
+ * @ORM\Table(name="catalog_attributes",
  *      indexes={
  *          @ORM\Index(columns={"is_enabled"}),
  *          @ORM\Index(columns={"show_in_admin"}),
@@ -17,6 +17,6 @@ use SmartCore\Module\Unicat\Model\PropertyModel;
  *      }
  * )
  */
-class Property extends PropertyModel
+class Attribute extends AttributeModel
 {
 }
