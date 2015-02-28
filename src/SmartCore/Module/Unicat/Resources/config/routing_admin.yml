@@ -20,7 +20,7 @@ unicat_admin.structure_with_parent_id:
     defaults:
         _controller: UnicatModule:AdminUnicat:structure
     requirements:
-        parent_category_id: \d+
+        parent_id: \d+
         id: \d+
 
 unicat_admin.structure_edit:
