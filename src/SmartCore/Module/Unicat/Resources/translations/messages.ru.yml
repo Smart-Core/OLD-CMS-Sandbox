@@ -1,17 +1,18 @@
 Attributes: Атрибуты
 Catalog: Каталог
 Categogy: Категория
-Create properties groups: Создать группу свойств
+Create attributes group: Создать группу атрибутов
 Create record: Создать запись
 Create structure: Создать структуру
 Edit record: Редактировать запись
-Edit property: Редактировать свойство
+Edit attribute: Редактировать атрибут
 Is default inheritance: Наследуемость по умолчанию
 Is inheritance: Наследуемость
 Link names: Названия ссылок
 Property: Свойство
-Properties groups: Группы свойств
-Properties group create: Создание группы свойств
+Attributes group: Группа атрибутов
+Attributes groups: Группы атрибутов
+Attributes group create: Создание группы свойств
 Structures: Структуры
 Structure create: Создание структуры
 Structure edit: Редактирование структуры

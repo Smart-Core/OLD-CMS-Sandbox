@@ -48,31 +48,33 @@ unicat_admin.category:
         id: \d+
         structure_id: \d+
 
+# attributes
 unicat_admin.properties_index:
-    path: /{configuration}/properties/
+    path: /{configuration}/attributes/
     defaults:
-        _controller: UnicatModule:AdminUnicat:index
+        _controller: UnicatModule:AdminAttributes:index
 
 unicat_admin.properties_group_create:
-    path: /{configuration}/properties_group_create/
+    path: /{configuration}/attributes/create_group/
     defaults:
-        _controller: UnicatModule:AdminUnicat:propertiesGroupCreate
+        _controller: UnicatModule:AdminAttributes:createGroup
 
 unicat_admin.properties:
-    path: /{configuration}/properties_group_{group_id}/
+    path: /{configuration}/attributes/group_{group_id}/
     defaults:
-        _controller: UnicatModule:AdminUnicat:properties
+        _controller: UnicatModule:AdminAttributes:group
     requirements:
         group_id: \d+
 
 unicat_admin.property:
-    path: /{configuration}/properties_group_{group_id}/{id}/
+    path: /{configuration}/attributes/group_{group_id}/{id}/
     defaults:
-        _controller: UnicatModule:AdminUnicat:property
+        _controller: UnicatModule:AdminAttributes:attributeEdit
     requirements:
         group_id: \d+
         id: \d+
 
+# items
 unicat_admin.item_create:
     path: /{configuration}/item_create/
     defaults:

@@ -4,28 +4,13 @@
 
 {% block content %}
 
-    <h2>{{ 'Properties groups'|trans }} <a href="{{ path('unicat_admin.properties_group_create', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create properties groups'|trans }}</a></h2>
-
-    <table class="table table-bordered table-hover">
-        <thead><tr>
-            <th style="width: 1%;">id</th>
-            <th>{{ 'Title'|trans }}</th>
-        </tr></thead>
-        <tbody>
-        {% for item in properties_groups %}
-            <tr>
-                <td>{{ item.id }}</td>
-                <td><a href="{{ path('unicat_admin.properties', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <a href="{{ path('unicat_admin.item_create', {'configuration': configuration.name}) }}" class="btn btn-primary pull-right">
+        {{ 'Create record'|trans }}
+    </a>
 
     <h2>{{ 'Records'|trans }}</h2>
 
-    <a href="{{ path('unicat_admin.item_create', {'configuration': configuration.name}) }}" class="btn btn-primary">{{ 'Create record'|trans }}</a>
-
-    <p>Всего записей: <b>{{ items|length }}</b></p>
+    <p>Всего: <b>{{ items|length }}</b></p>
 
     <table class="table table-bordered table-hover">
         <thead><tr>

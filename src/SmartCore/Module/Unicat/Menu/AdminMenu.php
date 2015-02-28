@@ -24,12 +24,15 @@ class AdminMenu extends ContainerAware
         $configuration = $options['configuration']->getName();
 
         // @todo кастомизация имени ссылки
-        $menu->addChild($options['configuration']->getTitle(),      ['route' => 'unicat_admin.configuration',       'routeParameters' => ['configuration' => $configuration]]);
-        $menu->addChild('Structures',   ['route' => 'unicat_admin.structures_index',    'routeParameters' => ['configuration' => $configuration]]);
+        $item = $menu->addChild($options['configuration']->getTitle(),      ['route' => 'unicat_admin.configuration',       'routeParameters' => ['configuration' => $configuration]]);
+        //$item->setLinkAttribute('class', 'btn');
 
+        $menu->addChild('Structures',   ['route' => 'unicat_admin.structures_index',    'routeParameters' => ['configuration' => $configuration]]);
         $menu->addChild('Attributes',   ['route' => 'unicat_admin.properties_index',    'routeParameters' => ['configuration' => $configuration]]);
-        $menu->addChild('Link names',   ['route' => 'unicat_admin.properties_index',    'routeParameters' => ['configuration' => $configuration]]);
-        $menu->addChild('Settings',     ['route' => 'unicat_admin.properties_index',    'routeParameters' => ['configuration' => $configuration]]);
+        $menu->addChild('Link names',   ['uri' => '#']);
+        $menu->addChild('Settings',     ['uri' => '#']);
+        //$menu->addChild('Link names',   ['route' => 'unicat_admin.properties_index',    'routeParameters' => ['configuration' => $configuration]]);
+        //$menu->addChild('Settings',     ['route' => 'unicat_admin.properties_index',    'routeParameters' => ['configuration' => $configuration]]);
 
         return $menu;
     }

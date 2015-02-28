@@ -1,10 +1,10 @@
-{% extends '@CMS/Admin/module.html.twig' %}
+{% extends '@UnicatModule/Admin/_layout.html.twig' %}
 
-{% block title %}{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo; / &laquo;{{ configuration.title }}&raquo; Unicat / {{ parent() }}{% endblock %}
+{% block title %}{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo; / {{ parent() }}{% endblock %}
 
 {% block content %}
 
-    <h2>{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo;</h2>
+    <h2>{{ 'Edit attribute'|trans }} &laquo;{{ form.vars.data.title }}&raquo;</h2>
 
     <div class="well">
         {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}

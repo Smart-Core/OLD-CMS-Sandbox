@@ -1,18 +1,10 @@
-{% extends '@CMS/Admin/module.html.twig' %}
+{% extends '@UnicatModule/Admin/_layout.html.twig' %}
 
-{% block title %}
-    {{ 'Properties group'|trans }} &laquo;{{ group.title }}&raquo;
-    / &laquo;{{ configuration.title }}&raquo; Unicat
-    / {{ parent() }}
-{% endblock %}
+{% block title %}{{ 'Attributes group'|trans }} &laquo;{{ group.title }}&raquo; / {{ parent() }}{% endblock %}
 
 {% block content %}
 
-    <h2>{{ 'Properties group'|trans }} &laquo;{{ group.title }}&raquo;</h2>
-
-    <p><a href="{{ path('unicat_admin.configuration', {'configuration': configuration.name}) }}">
-        &laquo; назад к конфигурации &laquo;{{ configuration.title }}&raquo;
-    </a></p>
+    <h2>{{ 'Attributes group'|trans }} &laquo;{{ group.title }}&raquo;</h2>
 
     <table class="table table-bordered table-hover">
         <thead><tr>
@@ -54,10 +46,6 @@
     </table>
 
     {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
-
-    <a href="{{ path('unicat_admin.configuration', {'configuration': configuration.name}) }}">
-        &laquo; назад к конфигураци &laquo;{{ configuration.title }}&raquo;
-    </a>
 
     <style type="text/css" media="screen">
         .ace_editor * {
