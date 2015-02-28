@@ -11,7 +11,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     {
         $builder
             ->add('text_item_id', 'integer', ['attr' => ['autofocus' => 'autofocus']])
-            ->add('editor', 'checkbox', ['required' => false])
+            ->add('editor', 'checkbox',      ['required' => false, 'label' => 'Визуальный редактор'])
         ;
     }
 
