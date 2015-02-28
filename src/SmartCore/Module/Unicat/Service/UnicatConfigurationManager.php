@@ -7,7 +7,10 @@ use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Entity\UnicatStructure;
+use SmartCore\Module\Unicat\Form\Type\AttributeFormType;
 use SmartCore\Module\Unicat\Form\Type\AttributesGroupFormType;
+use SmartCore\Module\Unicat\Form\Type\CategoryCreateFormType;
+use SmartCore\Module\Unicat\Form\Type\CategoryFormType;
 use SmartCore\Module\Unicat\Form\Type\ItemFormType;
 use SmartCore\Module\Unicat\Form\Type\StructureFormType;
 use SmartCore\Module\Unicat\Model\AttributeModel;
@@ -18,6 +21,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class UnicatConfigurationManager
 {
@@ -47,6 +51,11 @@ class UnicatConfigurationManager
     protected $configuration;
 
     /**
+     * @var SecurityContextInterface
+     */
+    protected $securityContext;
+
+    /**
      * @param ManagerRegistry $doctrine
      * @param FormFactoryInterface $formFactory
      * @param UnicatConfiguration $configuration
@@ -56,13 +65,15 @@ class UnicatConfigurationManager
         ManagerRegistry $doctrine,
         FormFactoryInterface $formFactory,
         UnicatConfiguration $configuration,
-        CollectionService $mc
+        CollectionService $mc,
+        SecurityContextInterface $securityContext
     ) {
         $this->doctrine    = $doctrine;
         $this->em          = $doctrine->getManager();
         $this->formFactory = $formFactory;
         $this->mc          = $mc;
         $this->configuration = $configuration;
+        $this->securityContext = $securityContext;
     }
 
     /**
@@ -170,6 +181,126 @@ class UnicatConfigurationManager
     public function getDefaultStructure()
     {
         return $this->configuration->getDefaultStructure();
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getAttributeCreateForm($groupId, array $options = [])
+    {
+        $attribute = $this->configuration->createAttribute();
+        $attribute
+            ->setGroup($this->em->getRepository($this->configuration->getAttributesGroupClass())->find($groupId))
+            ->setUserId($this->getUserId())
+        ;
+
+        return $this->getAttributeForm($attribute, $options)
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
+    }
+
+    /**
+     * @param mixed $data    The initial data for the form
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getAttributeForm($data = null, array $options = [])
+    {
+        return $this->formFactory->create(new AttributeFormType($this->configuration), $data, $options);
+    }
+
+    /**
+     * @param AttributeModel $attribute
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getAttributeEditForm(AttributeModel $attribute, array $options = [])
+    {
+        return $this->getAttributeForm($attribute, $options)
+            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+    }
+
+    /**
+     * @param int $groupId
+     * @return AttributeModel[]
+     *
+     * @deprecated
+     */
+    public function getAttributesGroup($groupId)
+    {
+        return $this->em->getRepository($this->configuration->getAttributesGroupClass())->find($groupId);
+    }
+
+    /**
+     * @param mixed $data    The initial data for the form
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getCategoryForm($data = null, array $options = [])
+    {
+        return $this->formFactory->create(new CategoryFormType($this->configuration, $this->doctrine), $data, $options);
+    }
+
+    /**
+     * @param UnicatStructure $structure
+     * @param array $options
+     * @param CategoryModel|null $parent_category
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getCategoryCreateForm(UnicatStructure $structure, array $options = [], CategoryModel $parent_category = null)
+    {
+        $category = $this->configuration->createCategory();
+        $category
+            ->setStructure($structure)
+            ->setIsInheritance($structure->getIsDefaultInheritance())
+            ->setUserId($this->getUserId())
+        ;
+
+        if ($parent_category) {
+            $category->setParent($parent_category);
+        }
+
+        return $this->formFactory->create(new CategoryCreateFormType($structure->getConfiguration(), $this->doctrine), $category, $options)
+            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
+    }
+
+    /**
+     * @param CategoryModel $category
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\Form
+     */
+    public function getCategoryEditForm(CategoryModel $category, array $options = [])
+    {
+        return $this->getCategoryForm($category, $options)
+            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+    }
+
+    /**
+     * @param UnicatStructure $structure
+     * @param int $id
+     *
+     * @return CategoryModel|null
+     */
+    public function getCategory($id)
+    {
+        return $this->em->getRepository($this->configuration->getCategoryClass())->find($id);
+    }
+
+    /**
+     * @param int $groupId
+     * @return AttributeModel[]
+     */
+    public function getAttribute($id)
+    {
+        return $this->em->getRepository($this->configuration->getAttributeClass())->find($id);
     }
 
     /**
@@ -508,5 +639,21 @@ class UnicatConfigurationManager
         $this->em->flush($entity);
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    protected function getUserId()
+    {
+        if (null === $token = $this->securityContext->getToken()) {
+            return 0;
+        }
+
+        if (!is_object($user = $token->getUser())) {
+            return 0;
+        }
+
+        return $user->getId();
     }
 }

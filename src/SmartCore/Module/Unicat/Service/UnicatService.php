@@ -8,9 +8,6 @@ use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Entity\UnicatStructure;
-use SmartCore\Module\Unicat\Form\Type\AttributeFormType;
-use SmartCore\Module\Unicat\Form\Type\CategoryCreateFormType;
-use SmartCore\Module\Unicat\Form\Type\CategoryFormType;
 use SmartCore\Module\Unicat\Model\AttributeModel;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Model\ItemModel;
@@ -50,6 +47,9 @@ class UnicatService
      */
     protected $ucm;
 
+    /** @var UnicatConfiguration|null */
+    protected $currentConfiguration;
+
     /**
      * @param EntityManager $em
      * @param FormFactoryInterface $formFactory
@@ -62,11 +62,31 @@ class UnicatService
         MediaCloudService $mediaCloud,
         SecurityContextInterface $securityContext
     ) {
+        $this->currentConfiguration = null;
         $this->doctrine    = $doctrine;
         $this->em          = $doctrine->getManager();
         $this->formFactory = $formFactory;
         $this->mc          = $mediaCloud->getCollection(1); // @todo настройку медиаколлекции. @important
         $this->securityContext = $securityContext;
+    }
+
+    /**
+     * @param UnicatConfiguration $currentConfiguration
+     * @return $this
+     */
+    public function setCurrentConfiguration(UnicatConfiguration $currentConfiguration)
+    {
+        $this->currentConfiguration = $currentConfiguration;
+
+        return $this;
+    }
+
+    /**
+     * @return UnicatConfiguration|null
+     */
+    public function getCurrentConfiguration()
+    {
+        return $this->currentConfiguration;
     }
 
     /**
@@ -81,8 +101,10 @@ class UnicatService
 
         $configuration = $this->getConfiguration($configuration_id);
 
+        $this->setCurrentConfiguration($configuration);
+
         if (!isset($this->ucm[$configuration->getId()])) {
-            $this->ucm[$configuration->getId()] = new UnicatConfigurationManager($this->doctrine, $this->formFactory, $configuration, $this->mc);
+            $this->ucm[$configuration->getId()] = new UnicatConfigurationManager($this->doctrine, $this->formFactory, $configuration, $this->mc, $this->securityContext);
         }
 
         return $this->ucm[$configuration->getId()];
@@ -101,123 +123,6 @@ class UnicatService
         return $this->getConfigurationManager($configuration)->getAttributes();
     }
 
-    /**
-     * @param UnicatConfiguration $configuration
-     * @param mixed $data    The initial data for the form
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated убрать в UnicatConfigurationManager
-     */
-    public function getCategoryForm(UnicatConfiguration $configuration, $data = null, array $options = [])
-    {
-        return $this->formFactory->create(new CategoryFormType($configuration, $this->doctrine), $data, $options);
-    }
-
-    /**
-     * @param UnicatStructure $structure
-     * @param array $options
-     * @param CategoryModel|null $parent_category
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated убрать в UnicatConfigurationManager
-     */
-    public function getCategoryCreateForm(UnicatStructure $structure, array $options = [], CategoryModel $parent_category = null)
-    {
-        $category = $structure->getConfiguration()->createCategory();
-        $category
-            ->setStructure($structure)
-            ->setIsInheritance($structure->getIsDefaultInheritance())
-            ->setUserId($this->getUserId())
-        ;
-
-        if ($parent_category) {
-            $category->setParent($parent_category);
-        }
-
-        return $this->formFactory->create(new CategoryCreateFormType($structure->getConfiguration(), $this->doctrine), $category, $options)
-            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
-    }
-
-    /**
-     * @param CategoryModel $category
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getCategoryEditForm(CategoryModel $category, array $options = [])
-    {
-        return $this->getCategoryForm($category->getStructure()->getConfiguration(), $category, $options)
-            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
-    }
-
-    /**
-     * @param UnicatConfiguration $configuration
-     * @param mixed $data    The initial data for the form
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getAttributeForm(UnicatConfiguration $configuration, $data = null, array $options = [])
-    {
-        return $this->formFactory->create(new AttributeFormType($configuration), $data, $options);
-    }
-
-    /**
-     * @param UnicatConfiguration $configuration
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getAttributeCreateForm(UnicatConfiguration $configuration, $groupId, array $options = [])
-    {
-        $attribute = $configuration->createAttribute();
-        $attribute
-            ->setGroup($this->em->getRepository($configuration->getAttributesGroupClass())->find($groupId))
-            ->setUserId($this->getUserId())
-        ;
-
-        return $this->getAttributeForm($configuration, $attribute, $options)
-            ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
-    }
-
-    /**
-     * @param UnicatConfiguration $configuration
-     * @param string $attribute
-     * @param array $options
-     *
-     * @return \Symfony\Component\Form\Form
-     *
-     * @deprecated
-     */
-    public function getAttributeEditForm(UnicatConfiguration $configuration, $attribute, array $options = [])
-    {
-        return $this->getAttributeForm($configuration, $attribute, $options)
-            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
-    }
-
-    /**
-     * @param UnicatStructure $structure
-     * @param int $id
-     *
-     * @return CategoryModel|null
-     *
-     * @deprecated
-     */
-    public function getCategory(UnicatStructure $structure, $id)
-    {
-        return $this->em->getRepository($structure->getConfiguration()->getCategoryClass())->find($id);
-    }
 
     /**
      * @param UnicatConfiguration $configuration
@@ -243,30 +148,6 @@ class UnicatService
     public function findAllItems(UnicatConfiguration $configuration, $orderBy = null)
     {
         return $this->em->getRepository($configuration->getItemClass())->findBy([], $orderBy);
-    }
-
-    /**
-     * @param UnicatConfiguration $configuration
-     * @param int $groupId
-     * @return AttributeModel[]
-     *
-     * @deprecated
-     */
-    public function getAttributesGroup(UnicatConfiguration $configuration, $groupId)
-    {
-        return $this->em->getRepository($configuration->getAttributesGroupClass())->find($groupId);
-    }
-
-    /**
-     * @param UnicatConfiguration $configuration
-     * @param int $groupId
-     * @return AttributeModel[]
-     *
-     * @deprecated
-     */
-    public function getAttribute(UnicatConfiguration $configuration, $id)
-    {
-        return $this->em->getRepository($configuration->getAttributeClass())->find($id);
     }
 
     /**
@@ -380,23 +261,5 @@ class UnicatService
         $this->em->flush($entity);
 
         return $this;
-    }
-
-    /**
-     * @return int
-     *
-     * @deprecated
-     */
-    protected function getUserId()
-    {
-        if (null === $token = $this->securityContext->getToken()) {
-            return 0;
-        }
-
-        if (!is_object($user = $token->getUser())) {
-            return 0;
-        }
-
-        return $user->getId();
     }
 }

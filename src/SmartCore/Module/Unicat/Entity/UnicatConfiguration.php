@@ -86,6 +86,8 @@ class UnicatConfiguration
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getCategoryClass()
     {
@@ -102,6 +104,8 @@ class UnicatConfiguration
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getAttributeClass()
     {
@@ -110,6 +114,8 @@ class UnicatConfiguration
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getAttributesGroupClass()
     {

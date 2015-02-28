@@ -63,9 +63,8 @@ class AdminAttributesController extends Controller
     public function groupAction(Request $request, $configuration, $group_id)
     {
         $unicat = $this->get('unicat');
-        $configuration = $unicat->getConfiguration($configuration);
-        $attribute = $unicat->getAttributes($configuration, $group_id);
-        $form = $unicat->getAttributeCreateForm($configuration, $group_id);
+        $ucm    = $unicat->getConfigurationManager($configuration);
+        $form   = $ucm->getAttributeCreateForm($group_id);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -73,15 +72,15 @@ class AdminAttributesController extends Controller
                 $unicat->createAttribute($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Свойство создано');
 
-                return $this->redirect($this->generateUrl('unicat_admin.attributes', ['configuration' => $configuration->getName(), 'group_id' => $group_id]));
+                return $this->redirect($this->generateUrl('unicat_admin.attributes', ['configuration' => $unicat->getCurrentConfiguration()->getName(), 'group_id' => $group_id]));
             }
         }
 
         return $this->render('UnicatModule:AdminAttributes:group.html.twig', [
             'form'       => $form->createView(),
-            'attributes' => $attribute,
-            'group'      => $unicat->getAttributesGroup($configuration, $group_id),
-            'configuration' => $configuration, // @todo убрать, это пока для наследуемого шаблона.
+            'attributes' => $unicat->getAttributes($configuration, $group_id),
+            'group'      => $ucm->getAttributesGroup($configuration, $group_id),
+            'configuration' => $unicat->getCurrentConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
 
@@ -95,10 +94,10 @@ class AdminAttributesController extends Controller
     public function attributeEditAction(Request $request, $configuration, $group_id, $id)
     {
         $unicat = $this->get('unicat');
-        $configuration = $unicat->getConfiguration($configuration);
+        $ucm    = $unicat->getConfigurationManager($configuration);
+        $form   = $ucm->getAttributeEditForm($ucm->getAttribute($id));
 
-        $attribute = $unicat->getAttribute($configuration, $id);
-        $form = $unicat->getAttributeEditForm($configuration, $attribute);
+        $configuration = $ucm->getConfiguration();
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

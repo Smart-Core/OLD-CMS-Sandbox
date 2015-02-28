@@ -17,33 +17,33 @@ class AdminStructureController extends Controller
      */
     public function categoryEditAction(Request $request, $structure_id, $id, $configuration)
     {
-        $urm    = $this->get('unicat')->getConfigurationManager($configuration);
-        $unicat = $this->get('unicat'); // @todo перевести всё на $urm.
+        $unicat = $this->get('unicat'); // @todo перевести всё на $ucm.
+        $ucm    = $unicat->getConfigurationManager($configuration);
 
-        $structure = $urm->getStructure($structure_id);
-        $category  = $unicat->getCategory($structure, $id);
+        $structure = $ucm->getStructure($structure_id);
+        $category  = $ucm->getCategory($id);
 
-        $form = $unicat->getCategoryEditForm($category);
+        $form = $ucm->getCategoryEditForm($category);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirectToStructureAdmin($urm->getConfiguration(), $structure_id);
+                return $this->redirectToStructureAdmin($ucm->getConfiguration(), $structure_id);
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
                 $unicat->updateCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория обновлена');
 
-                return $this->redirectToStructureAdmin($urm->getConfiguration(), $structure_id);
+                return $this->redirectToStructureAdmin($ucm->getConfiguration(), $structure_id);
             }
 
             if ($form->has('delete') and $form->get('delete')->isClicked()) {
                 $unicat->deleteCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория удалена');
 
-                return $this->redirectToStructureAdmin($urm->getConfiguration(), $structure_id);
+                return $this->redirectToStructureAdmin($ucm->getConfiguration(), $structure_id);
             }
         }
 
@@ -81,13 +81,13 @@ class AdminStructureController extends Controller
      */
     public function structureAction(Request $request, $id, $configuration, $parent_id = null)
     {
-        $urm        = $this->get('unicat')->getConfigurationManager($configuration);
-        $unicat     = $this->get('unicat'); // @todo перевести всё на $urm.
+        $unicat     = $this->get('unicat'); // @todo перевести всё на $ucm.
+        $ucm        = $unicat->getConfigurationManager($configuration);
         $structure  = $unicat->getStructure($id);
 
-        $parent_category = $parent_id ? $urm->getCategoryRepository()->find($parent_id) : null;
+        $parent_category = $parent_id ? $ucm->getCategoryRepository()->find($parent_id) : null;
 
-        $form = $unicat->getCategoryCreateForm($structure, [], $parent_category);
+        $form = $ucm->getCategoryCreateForm($structure, [], $parent_category);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -95,7 +95,7 @@ class AdminStructureController extends Controller
                 $unicat->createCategory($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Категория создана');
 
-                return $this->redirectToStructureAdmin($urm->getConfiguration(), $id);
+                return $this->redirectToStructureAdmin($ucm->getConfiguration(), $id);
             }
         }
 
@@ -113,8 +113,8 @@ class AdminStructureController extends Controller
      */
     public function createAction(Request $request, $configuration)
     {
-        $urm = $this->get('unicat')->getConfigurationManager($configuration);
-        $form = $urm->getStructureCreateForm();
+        $ucm  = $this->get('unicat')->getConfigurationManager($configuration);
+        $form = $ucm->getStructureCreateForm();
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -124,7 +124,7 @@ class AdminStructureController extends Controller
             }
 
             if ($form->get('create')->isClicked() and $form->isValid()) {
-                $urm->updateStructure($form->getData());
+                $ucm->updateStructure($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Структура создана');
 
                 return $this->redirect($this->generateUrl('unicat_admin.structures_index', ['configuration' => $configuration]));
@@ -133,7 +133,7 @@ class AdminStructureController extends Controller
 
         return $this->render('UnicatModule:AdminStructure:create.html.twig', [
             'form'          => $form->createView(),
-            'configuration' => $urm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
+            'configuration' => $ucm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
 
@@ -145,8 +145,8 @@ class AdminStructureController extends Controller
      */
     public function editAction(Request $request, $id, $configuration)
     {
-        $urm = $this->get('unicat')->getConfigurationManager($configuration);
-        $form = $urm->getStructureEditForm($urm->getStructure($id));
+        $ucm = $this->get('unicat')->getConfigurationManager($configuration);
+        $form = $ucm->getStructureEditForm($ucm->getStructure($id));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -156,7 +156,7 @@ class AdminStructureController extends Controller
             }
 
             if ($form->get('update')->isClicked() and $form->isValid()) {
-                $urm->updateStructure($form->getData());
+                $ucm->updateStructure($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Структура обновлена');
 
                 return $this->redirect($this->generateUrl('unicat_admin.structures_index', ['configuration' => $configuration]));
@@ -165,7 +165,7 @@ class AdminStructureController extends Controller
 
         return $this->render('UnicatModule:AdminStructure:edit.html.twig', [
             'form'          => $form->createView(),
-            'configuration' => $urm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
+            'configuration' => $ucm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
 
