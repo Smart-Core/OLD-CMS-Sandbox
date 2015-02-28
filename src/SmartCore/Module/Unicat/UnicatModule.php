@@ -12,6 +12,33 @@ class UnicatModule extends Bundle
 {
     use ModuleBundleTrait;
 
+    /**
+     * Получить виджеты для рабочего стола.
+     *
+     * @return array
+     */
+    public function getDashboard()
+    {
+        $em      = $this->container->get('doctrine.orm.default_entity_manager');
+        $r       = $this->container->get('router');
+        $configs = $em->getRepository('UnicatModule:UnicatConfiguration')->findAll();
+
+        $data = [
+            'title' => 'Юникат',
+            'items' => [],
+        ];
+
+        foreach ($configs as $config) {
+            $data['items']['manage_config_'.$config->getId()] = [
+                'title' => 'Конфигурация: <b>'.$config->getTitle().'</b>',
+                'descr' => '',
+                'url' => $r->generate('smart_module.unicat_configuration_admin', ['configuration' => $config->getName()]),
+            ];
+        }
+
+        return $data;
+    }
+
     public function build(ContainerBuilder $container)
     {
         parent::build($container);

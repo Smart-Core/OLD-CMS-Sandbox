@@ -35,6 +35,10 @@ class AdminUnicatController extends Controller
 
         $configuration = $this->get('unicat')->getConfiguration($configuration);
 
+        if (empty($configuration)) {
+            return $this->render('@CMS/Admin/not_found.html.twig');
+        }
+
         return $this->render('UnicatModule:Admin:configuration.html.twig', [
             'configuration'     => $configuration,
             'properties_groups' => $em->getRepository($configuration->getPropertiesGroupClass())->findAll(),
