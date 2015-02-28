@@ -18,8 +18,8 @@
         {% for item in configurations %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td><a href="{{ path('smart_module.unicat_admin.configuration', {'configuration': item.name}) }}">{{ item.title }}</a></td>
-                <td><a href="{{ path('smart_module.unicat_admin.configuration', {'configuration': item.name}) }}">{{ item.name }}</a></td>
+                <td><a href="{{ path('unicat_admin.configuration', {'configuration': item.name}) }}">{{ item.title }}</a></td>
+                <td><a href="{{ path('unicat_admin.configuration', {'configuration': item.name}) }}">{{ item.name }}</a></td>
                 <td>{{ item.entitiesNamespace }}</td>
                 <td>{{ item.createdAt|date() }}</td>
             </tr>

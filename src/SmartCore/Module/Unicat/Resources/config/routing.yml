@@ -1,10 +1,10 @@
 
-smart_module.unicat:
+unicat:
     path: /
     defaults:
         _controller: UnicatModule:Unicat:index
 
-smart_module.unicat.item:
+unicat.item:
     path: /{slug}/{itemSlug}.html
     defaults:
         _controller: UnicatModule:Unicat:item
@@ -12,7 +12,7 @@ smart_module.unicat.item:
         itemSlug: '.+'
         slug: '.+'
 
-smart_module.unicat.category:
+unicat.category:
     path: /{slug}
     defaults:
         _controller: UnicatModule:Unicat:category

@@ -32,7 +32,7 @@ class UnicatModule extends Bundle
             $data['items']['manage_config_'.$config->getId()] = [
                 'title' => 'Конфигурация: <b>'.$config->getTitle().'</b>',
                 'descr' => '',
-                'url' => $r->generate('smart_module.unicat_admin.configuration', ['configuration' => $config->getName()]),
+                'url' => $r->generate('unicat_admin.configuration', ['configuration' => $config->getName()]),
             ];
         }
 

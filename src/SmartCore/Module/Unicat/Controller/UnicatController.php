@@ -36,7 +36,7 @@ class UnicatController extends Controller
         $requestedCategories = $urm->findCategoriesBySlug($slug);
 
         foreach ($requestedCategories as $category) {
-            $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
+            $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
         }
 
         $lastCategory = end($requestedCategories);
@@ -58,7 +58,7 @@ class UnicatController extends Controller
 
         $this->node->addFrontControl('create_item')
             ->setTitle('Добавить запись')
-            ->setUri($this->generateUrl('smart_module.unicat_admin.item_create_in_category', [
+            ->setUri($this->generateUrl('unicat_admin.item_create_in_category', [
                 'configuration'       => $urm->getConfiguration()->getName(),
                 'default_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
             ]));
@@ -67,7 +67,7 @@ class UnicatController extends Controller
             $this->node->addFrontControl('create_category')
                 ->setIsDefault(false)
                 ->setTitle('Создать категорию')
-                ->setUri($this->generateUrl('smart_module.unicat_admin.structure_with_parent_id', [
+                ->setUri($this->generateUrl('unicat_admin.structure_with_parent_id', [
                     'configuration' => $urm->getConfiguration()->getName(),
                     'parent_id'     => empty($lastCategory) ? 0 : $lastCategory->getId(),
                     'id'            => $lastCategory->getStructure()->getId(),
@@ -76,7 +76,7 @@ class UnicatController extends Controller
             $this->node->addFrontControl('edit_category')
                 ->setIsDefault(false)
                 ->setTitle('Редактировать категорию')
-                ->setUri($this->generateUrl('smart_module.unicat_admin.category', [
+                ->setUri($this->generateUrl('unicat_admin.category', [
                     'configuration' => $urm->getConfiguration()->getName(),
                     'id'            => $lastCategory->getId(),
                     'structure_id'  => $lastCategory->getStructure()->getId(),
@@ -86,7 +86,7 @@ class UnicatController extends Controller
         $this->node->addFrontControl('manage_configuration')
             ->setIsDefault(false)
             ->setTitle('Управление каталогом')
-            ->setUri($this->generateUrl('smart_module.unicat_admin.configuration', ['configuration' => $urm->getConfiguration()->getName()]));
+            ->setUri($this->generateUrl('unicat_admin.configuration', ['configuration' => $urm->getConfiguration()->getName()]));
 
         return $this->render('UnicatModule::items.html.twig', [
             'category'          => $lastCategory,
@@ -111,7 +111,7 @@ class UnicatController extends Controller
         $requestedCategories = $urm->findCategoriesBySlug($slug);
 
         foreach ($requestedCategories as $category) {
-            $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
+            $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
         }
 
         $lastCategory = end($requestedCategories);
@@ -138,14 +138,14 @@ class UnicatController extends Controller
 
         $this->get('html')->setMetas($item->getMeta());
 
-        $this->get('cms.breadcrumbs')->add($this->generateUrl('smart_module.unicat.item', [
+        $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.item', [
                 'slug' => $lastCategory->getSlugFull(),
                 'itemSlug' => $item->getSlug(),
             ]).'/', $item->getProperty('title'));
 
         $this->node->addFrontControl('edit')
             ->setTitle('Редактировать')
-            ->setUri($this->generateUrl('smart_module.unicat_admin.item_edit', ['configuration' => $urm->getConfiguration()->getName(), 'id' => $item->getId() ]));
+            ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $urm->getConfiguration()->getName(), 'id' => $item->getId() ]));
 
         return $this->render('UnicatModule::item.html.twig', [
             'category'          => $lastCategory,

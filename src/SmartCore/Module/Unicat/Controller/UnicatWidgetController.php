@@ -46,7 +46,7 @@ class UnicatWidgetController extends Controller
             'categoryClass' => $ucm->getCategoryClass(),
             'css_class'     => $css_class,
             'depth'         => $depth,
-            'routeName'     => 'smart_module.unicat.category',
+            'routeName'     => 'unicat.category',
             'structure'     => empty($structure) ? $ucm->getDefaultStructure() : $ucm->getStructure($structure),
             'template'      => $template,
         ]);

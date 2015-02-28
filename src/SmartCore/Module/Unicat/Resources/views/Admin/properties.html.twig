@@ -10,7 +10,7 @@
 
     <h2>{{ 'Properties group'|trans }} &laquo;{{ group.title }}&raquo;</h2>
 
-    <p><a href="{{ path('smart_module.unicat_admin.configuration', {'configuration': configuration.name}) }}">
+    <p><a href="{{ path('unicat_admin.configuration', {'configuration': configuration.name}) }}">
         &laquo; назад к конфигурации &laquo;{{ configuration.title }}&raquo;
     </a></p>
 
@@ -31,7 +31,7 @@
         {% for item in properties %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td><a href="{{ path('smart_module.unicat_admin.property', {
+                <td><a href="{{ path('unicat_admin.property', {
                         'configuration': configuration.name,
                         'group_id': item.group.id,
                         'id': item.id,
@@ -55,7 +55,7 @@
 
     {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
 
-    <a href="{{ path('smart_module.unicat_admin.configuration', {'configuration': configuration.name}) }}">
+    <a href="{{ path('unicat_admin.configuration', {'configuration': configuration.name}) }}">
         &laquo; назад к конфигураци &laquo;{{ configuration.title }}&raquo;
     </a>
 

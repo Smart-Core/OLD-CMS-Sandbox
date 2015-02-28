@@ -4,7 +4,7 @@
 
     <ul>
         {% for category in childenCategories %}
-            <li><a href="{{ path('smart_module.unicat.category', {'slug': category.slugFull}) }}/">{{ category }}</a></li>
+            <li><a href="{{ path('unicat.category', {'slug': category.slugFull}) }}/">{{ category }}</a></li>
         {% endfor %}
     </ul>
     <hr />
@@ -12,7 +12,7 @@
 
 {% if items|length %}
 {% for item in items %}
-    <h1><a href="{{ path('smart_module.unicat.item', {'slug': category.slugFull, 'itemSlug': item.slug}) }}">{{ item.property('title') }}</a></h1>
+    <h1><a href="{{ path('unicat.item', {'slug': category.slugFull, 'itemSlug': item.slug}) }}">{{ item.property('title') }}</a></h1>
 
     {% if item.property('description') %} <p>Описание: {{ item.property('description') }}</p> {% endif %}
 
