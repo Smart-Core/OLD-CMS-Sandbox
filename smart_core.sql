@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Фев 28 2015 г., 11:25
+-- Время создания: Фев 28 2015 г., 23:01
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -214,6 +214,77 @@ INSERT INTO `blog_tags` (`id`, `slug`, `title`, `created_at`, `weight`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `catalog_attributes`
+--
+
+DROP TABLE IF EXISTS `catalog_attributes`;
+CREATE TABLE IF NOT EXISTS `catalog_attributes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) DEFAULT '1',
+  `is_dedicated_table` tinyint(1) NOT NULL,
+  `is_required` tinyint(1) NOT NULL,
+  `position` smallint(6) DEFAULT '0',
+  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `show_in_admin` tinyint(1) NOT NULL,
+  `show_in_list` tinyint(1) NOT NULL,
+  `show_in_view` tinyint(1) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `group_id` int(10) unsigned DEFAULT NULL,
+  `params_yaml` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
+  KEY `position` (`position`),
+  KEY `is_enabled` (`is_enabled`),
+  KEY `show_in_admin` (`show_in_admin`),
+  KEY `show_in_list` (`show_in_list`),
+  KEY `show_in_view` (`show_in_view`),
+  KEY `IDX_3670975FE54D947` (`group_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Дамп данных таблицы `catalog_attributes`
+--
+
+INSERT INTO `catalog_attributes` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`, `params_yaml`) VALUES
+(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 0, 0, '2014-02-13 20:37:50', 'N;', 1, NULL),
+(2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL),
+(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL),
+(4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL),
+(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:0:{}', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `catalog_attributes_groups`
+--
+
+DROP TABLE IF EXISTS `catalog_attributes_groups`;
+CREATE TABLE IF NOT EXISTS `catalog_attributes_groups` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `category_id` int(10) unsigned DEFAULT NULL,
+  `configuration_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_A9A6740412469DE2` (`category_id`),
+  KEY `IDX_41BAD1D773F32DD8` (`configuration_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `catalog_attributes_groups`
+--
+
+INSERT INTO `catalog_attributes_groups` (`id`, `name`, `title`, `created_at`, `category_id`, `configuration_id`) VALUES
+(1, 'wares_description', 'Описание товара', '2014-02-12 19:24:52', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `catalog_categories`
 --
 
@@ -275,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `catalog_items` (
   `is_enabled` tinyint(1) DEFAULT '1',
   `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `properties` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `attributes` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
@@ -288,7 +359,7 @@ CREATE TABLE IF NOT EXISTS `catalog_items` (
 -- Дамп данных таблицы `catalog_items`
 --
 
-INSERT INTO `catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `properties`, `user_id`, `created_at`, `position`) VALUES
+INSERT INTO `catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`) VALUES
 (1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18', 0),
 (2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57', 1),
 (3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
@@ -371,77 +442,6 @@ CREATE TABLE IF NOT EXISTS `catalog_items_title` (
 -- Дамп данных таблицы `catalog_items_title`
 --
 
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `catalog_properties`
---
-
-DROP TABLE IF EXISTS `catalog_properties`;
-CREATE TABLE IF NOT EXISTS `catalog_properties` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `is_enabled` tinyint(1) DEFAULT '1',
-  `is_dedicated_table` tinyint(1) NOT NULL,
-  `is_required` tinyint(1) NOT NULL,
-  `position` smallint(6) DEFAULT '0',
-  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `show_in_admin` tinyint(1) NOT NULL,
-  `show_in_list` tinyint(1) NOT NULL,
-  `show_in_view` tinyint(1) NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `created_at` datetime NOT NULL,
-  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `group_id` int(10) unsigned DEFAULT NULL,
-  `params_yaml` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
-  KEY `position` (`position`),
-  KEY `is_enabled` (`is_enabled`),
-  KEY `show_in_admin` (`show_in_admin`),
-  KEY `show_in_list` (`show_in_list`),
-  KEY `show_in_view` (`show_in_view`),
-  KEY `IDX_3670975FE54D947` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
-
---
--- Дамп данных таблицы `catalog_properties`
---
-
-INSERT INTO `catalog_properties` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`, `params_yaml`) VALUES
-(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 0, 0, '2014-02-13 20:37:50', 'N;', 1, NULL),
-(2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL),
-(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL),
-(4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL),
-(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:0:{}', 1, NULL);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `catalog_properties_groups`
---
-
-DROP TABLE IF EXISTS `catalog_properties_groups`;
-CREATE TABLE IF NOT EXISTS `catalog_properties_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `category_id` int(10) unsigned DEFAULT NULL,
-  `configuration_id` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_A9A6740412469DE2` (`category_id`),
-  KEY `IDX_41BAD1D773F32DD8` (`configuration_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-
---
--- Дамп данных таблицы `catalog_properties_groups`
---
-
-INSERT INTO `catalog_properties_groups` (`id`, `name`, `title`, `created_at`, `category_id`, `configuration_id`) VALUES
-(1, 'wares_description', 'Описание товара', '2014-02-12 19:24:52', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1566,6 +1566,19 @@ ALTER TABLE `blog_categories`
   ADD CONSTRAINT `FK_DC3564813D8E604F` FOREIGN KEY (`parent`) REFERENCES `blog_categories` (`id`);
 
 --
+-- Ограничения внешнего ключа таблицы `catalog_attributes`
+--
+ALTER TABLE `catalog_attributes`
+  ADD CONSTRAINT `FK_32E9C31CFE54D947` FOREIGN KEY (`group_id`) REFERENCES `catalog_attributes_groups` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `catalog_attributes_groups`
+--
+ALTER TABLE `catalog_attributes_groups`
+  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat_configurations` (`id`),
+  ADD CONSTRAINT `FK_41BAD1D712469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `catalog_categories`
 --
 ALTER TABLE `catalog_categories`
@@ -1591,19 +1604,6 @@ ALTER TABLE `catalog_items_categories_relations_single`
 --
 ALTER TABLE `catalog_items_title`
   ADD CONSTRAINT `FK_3E5E937E126F525E` FOREIGN KEY (`item_id`) REFERENCES `catalog_items` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `catalog_properties`
---
-ALTER TABLE `catalog_properties`
-  ADD CONSTRAINT `FK_32E9C31CFE54D947` FOREIGN KEY (`group_id`) REFERENCES `catalog_properties_groups` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `catalog_properties_groups`
---
-ALTER TABLE `catalog_properties_groups`
-  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat_configurations` (`id`),
-  ADD CONSTRAINT `FK_41BAD1D712469DE2` FOREIGN KEY (`category_id`) REFERENCES `catalog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_folders`
