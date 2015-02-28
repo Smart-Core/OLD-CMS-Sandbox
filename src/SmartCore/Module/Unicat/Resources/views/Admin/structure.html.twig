@@ -1,0 +1,30 @@
+{% extends '@UnicatModule/Admin/configuration.html.twig' %}
+
+{% block title %}{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo; / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h2>
+
+    <div class="span12">
+        <a href="{{ path('smart_module.unicat_configuration_admin', {'configuration': structure.configuration.name}) }}">
+            &laquo; назад к конфигурации &laquo;{{ structure.configuration.title }}&raquo;
+        </a>
+    </div>
+
+    <div class="span3">
+        {{ form(form, {'attr': {'class': 'well'} }) }}
+    </div>
+
+    <div class="span8">
+        {% set menuItem = knp_menu_get('UnicatModule:CategoryMenu:adminTree', [], {
+            'categoryClass': structure.configuration.categoryClass,
+            'structure': structure
+        }) %}
+        {{ knp_menu_render(menuItem, {
+            'currentClass': 'active',
+            'clear_matcher': false,
+        }) }}
+    </div>
+
+{% endblock content %}

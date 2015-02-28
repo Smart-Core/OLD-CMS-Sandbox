@@ -2,11 +2,11 @@
 
 namespace SmartCore\Module\Menu;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 use SmartCore\Module\Menu\DependencyInjection\Compiler\FormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class MenuModule extends Bundle
+class MenuModule extends ModuleBundle
 {
     /**
      * Получить виджеты для рабочего стола.

@@ -148,7 +148,7 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \SmartCore\Bundle\SeoBundle\SmartSeoBundle();
         $bundles[] = new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle();
         $bundles[] = new \SmartCore\Bundle\SettingsBundle\SmartCoreSettingsBundle();
-        $bundles[] = new \SmartCore\Bundle\UnicatBundle\UnicatBundle();
+        //$bundles[] = new \SmartCore\Module\Unicat\UnicatBundle();
         $bundles[] = new \Sonata\IntlBundle\SonataIntlBundle();
         $bundles[] = new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(); // "stfalcon/tinymce-bundle": "v0.2.1",
         $bundles[] = new \WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle();

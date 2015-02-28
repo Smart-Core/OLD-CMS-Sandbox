@@ -1,0 +1,7 @@
+parameters:
+#    unicat.example.class: SmartCore\Module\Unicat\Example
+
+services:
+    unicat:
+        class: SmartCore\Module\Unicat\Service\UnicatService
+        arguments: [ @doctrine, @form.factory, @smart_media, @security.context ]

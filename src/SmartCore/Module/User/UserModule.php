@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\User;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class UserModule extends Bundle
+class UserModule extends ModuleBundle
 {
 }

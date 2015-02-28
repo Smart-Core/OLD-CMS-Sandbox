@@ -3,7 +3,7 @@
 namespace SandboxSiteBundle\Entity\Catalog;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Bundle\UnicatBundle\Model\PropertyModel;
+use SmartCore\Module\Unicat\Model\PropertyModel;
 
 /**
  * @ORM\Entity

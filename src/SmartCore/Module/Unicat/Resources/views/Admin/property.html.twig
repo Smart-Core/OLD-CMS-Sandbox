@@ -1,0 +1,40 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo; / &laquo;{{ configuration.title }}&raquo; Unicat / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Edit property'|trans }} &laquo;{{ form.vars.data.title }}&raquo;</h2>
+
+    <div class="well">
+        {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}
+    </div>
+
+    <style type="text/css" media="screen">
+        .ace_editor * {
+            font-family: consolas, Courier, monospace;
+            font-size: 14px;
+        }
+        #smart_unicat_configuration_property_params_yaml, #ace_params_yaml {
+            font-family: consolas, Courier, monospace;
+            font-size: 14px;
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+
+    <script src="{{ asset('bundles/felib/ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $('#smart_unicat_configuration_property_params_yaml_control_group > .controls').append('<div id="ace_params_yaml" />');
+
+        var editor = ace.edit("ace_params_yaml");
+        var textarea = $('#smart_unicat_configuration_property_params_yaml').hide();
+        editor.setTheme("ace/theme/github");
+        editor.getSession().setMode("ace/mode/yaml");
+        editor.getSession().setValue(textarea.val());
+        editor.getSession().on('change', function(){
+            textarea.val(editor.getSession().getValue());
+        });
+    </script>
+
+{% endblock content %}

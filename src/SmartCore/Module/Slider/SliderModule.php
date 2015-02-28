@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Slider;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class SliderModule extends Bundle
+class SliderModule extends ModuleBundle
 {
     /**
      * Получить виджеты для рабочего стола.
@@ -13,9 +13,6 @@ class SliderModule extends Bundle
      */
     public function getDashboard()
     {
-        $em     = $this->container->get('doctrine.orm.default_entity_manager');
-        $r      = $this->container->get('router');
-
         $data = [
             'title' => 'Слайдер',
             'items' => [],
@@ -25,7 +22,7 @@ class SliderModule extends Bundle
             $data['items']['edit_slider_'.$slider->getId()] = [
                 'title' => 'Редактировать слайдер: <b>'.$slider->getTitle().'</b>',
                 'descr' => '',
-                'url' => $r->generate('smart_module.slider.admin_slider', ['id' => $slider->getId()]),
+                'url' => $this->container->get('router')->generate('smart_module.slider.admin_slider', ['id' => $slider->getId()]),
             ];
         }
 

@@ -53,7 +53,11 @@ class WidgetController extends Controller
             $this->getCacheService()->set($cacheKey, $path, ['smart_module.widget', 'folder', 'node_'.$this->node_id, 'node']);
         }
 
-        $response = $this->forward($this->node_id.':'.$this->controller, $path);
+        if ($this->get('cms.module')->has($path['_node']->getModule())) {
+            $response = $this->forward($this->node_id.':'.$this->controller, $path);
+        } else {
+            return new Response('Module "'.$path['_node']->getModule().'" is unavailable.');
+        }
 
         if ($response->isServerError()) {
             //return new Response($response->getStatusCode() . ' ' . Response::$statusTexts[$response->getStatusCode()]);

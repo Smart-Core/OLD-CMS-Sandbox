@@ -1,0 +1,43 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %} {{ 'Create record'|trans }} / &laquo;{{ configuration.title }}&raquo; Unicat / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Create record'|trans }}</h2>
+
+    <a href="{{ path('smart_module.unicat_configuration_admin', {'configuration': configuration.name}) }}">
+        &laquo; назад к конфигурации &laquo;{{ configuration.title }}&raquo;
+    </a>
+
+    <div class="well">
+        {{ form_start(form, {'attr':{'class':'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+        <fieldset>
+            <div class="tabbable">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#base-settings" data-toggle="tab">{{ 'Base settings'|trans }}</a></li>
+                    <li><a href="#meta-tags" data-toggle="tab">{{ 'Meta tags'|trans }}</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="meta-tags">
+                        {{ form_widget(form.meta) }}
+                    </div>
+                    <div class="tab-pane active" id="base-settings">
+                        {{ form_widget(form) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        {{ form_rest(form) }}
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        {{ form_end(form) }}
+    </div>
+
+    {{ tinymce_init3() }}
+    {{ elfinder_tinymce_init() }}
+
+{% endblock content %}

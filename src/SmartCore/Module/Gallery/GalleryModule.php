@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Gallery;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class GalleryModule extends Bundle
+class GalleryModule extends ModuleBundle
 {
     /**
      * Получить виджеты для рабочего стола.

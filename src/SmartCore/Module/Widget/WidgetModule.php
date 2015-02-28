@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\Widget;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class WidgetModule extends Bundle
+class WidgetModule extends ModuleBundle
 {
 }

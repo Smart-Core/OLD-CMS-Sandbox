@@ -3,11 +3,11 @@
 namespace SmartCore\Module\SimpleNews;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 use SmartCore\Module\SimpleNews\DependencyInjection\Compiler\FormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class SimpleNewsModule extends Bundle
+class SimpleNewsModule extends ModuleBundle
 {
     /**
      * Действие при создании ноды.
@@ -27,20 +27,16 @@ class SimpleNewsModule extends Bundle
      */
     public function getDashboard()
     {
-        $r = $this->container->get('router');
-
-        $data = [
+        return [
             'title' => 'Новости',
             'items' => [
                 'new' => [
                     'title' => 'Написать новость',
                     'descr' => '',
-                    'url' => $r->generate('smart_module.news_admin.create'),
+                    'url' => $this->container->get('router')->generate('smart_module.news_admin.create'),
                 ],
             ],
         ];
-
-        return $data;
     }
 
     public function build(ContainerBuilder $container)

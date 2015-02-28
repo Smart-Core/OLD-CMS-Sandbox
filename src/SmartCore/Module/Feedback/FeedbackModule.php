@@ -2,8 +2,8 @@
 
 namespace SmartCore\Module\Feedback;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class FeedbackModule extends Bundle
+class FeedbackModule extends ModuleBundle
 {
 }

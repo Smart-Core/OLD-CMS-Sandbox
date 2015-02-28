@@ -1,0 +1,87 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}&laquo;{{ configuration.title }}&raquo; Unicat / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Structures'|trans }} <a href="{{ path('smart_module.unicat_structure_create_admin', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create structure'|trans }}</a></h2>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Name'|trans }}</th>
+            <th>{{ 'Entries mode'|trans }}</th>
+            <th>{{ 'Is required'|trans }}</th>
+            <th>{{ 'Created at'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in configuration.structures %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>
+                    <a href="{{ path('smart_module.unicat_structure_admin', {'id': item.id, 'configuration': item.configuration.name}) }}">{{ item.title }}</a>
+                    <a href="{{ path('smart_module.unicat_structure_edit_admin', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;">
+                        <i class="icon-edit" title="Edit"></i>
+                    </a>
+                </td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.entries }}</td>
+                <td>{{ item.isRequired }}</td>
+                <td>{{ item.createdAt|date() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2>{{ 'Properties groups'|trans }} <a href="{{ path('smart_module.unicat_properties_group_create_admin', {'configuration': configuration.name}) }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create properties groups'|trans }}</a></h2>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in properties_groups %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td><a href="{{ path('smart_module.unicat_properties_admin', {'configuration': configuration.name, 'group_id': item.id}) }}">{{ item.title }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>{{ 'Records'|trans }}</h2>
+
+    <a href="{{ path('smart_module.unicat_item_create_admin', {'configuration': configuration.name}) }}" class="btn btn-primary">{{ 'Create record'|trans }}</a>
+
+    <p>Всего записей: <b>{{ items|length }}</b></p>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Slug'|trans }}</th>
+            {% for property in properties %}
+                {% if property.showInAdmin %}<th>{{ property.title }}</th>{% endif %}
+            {% endfor %}
+            <th>{{ 'Created at'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td><a href="{{ path('smart_module.unicat_item_edit_admin', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.slug }}</a>
+                </td>
+                {% for property in properties %}
+                    {% if property.showInAdmin %}
+                        <td><a href="{{ path('smart_module.unicat_item_edit_admin', {'configuration': configuration.name, 'id': item.id}) }}"{% if item.isDisabled %} style="text-decoration: line-through;"{% endif %}>{{ item.getProperty(property.name) }}</a></td>
+                    {% endif %}
+                {% endfor %}
+                <td>{{ item.createdAt|date() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

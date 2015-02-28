@@ -1,0 +1,42 @@
+{% extends '@UnicatModule/Admin/configuration.html.twig' %}
+
+{% block title %}{{ 'Structure edit'|trans }} &laquo;{{ form.vars.data.title }}&raquo; / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Structure edit'|trans }}: &laquo;{{ form.vars.data.title }}&raquo;</h2>
+
+    <a href="{{ path('smart_module.unicat_configuration_admin', {'configuration': configuration.name}) }}">
+        &laquo; назад к конфигурации &laquo;{{ configuration.title }}&raquo;
+    </a>
+
+    {{ form(form, {'attr': {'class': 'well form-horizontal'}}) }}
+
+    <style type="text/css" media="screen">
+        .ace_editor * {
+            font-family: consolas, Courier, monospace;
+            font-size: 14px;
+        }
+        #smart_unicat_structure_properties, #ace_params_yaml {
+            font-family: consolas, Courier, monospace;
+            font-size: 14px;
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+
+    <script src="{{ asset('bundles/felib/ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $('#smart_unicat_structure_properties_control_group > .controls').append('<div id="ace_params_yaml" />');
+
+        var editor = ace.edit("ace_params_yaml");
+        var textarea = $('#smart_unicat_structure_properties').hide();
+        editor.setTheme("ace/theme/github");
+        editor.getSession().setMode("ace/mode/yaml");
+        editor.getSession().setValue(textarea.val());
+        editor.getSession().on('change', function(){
+            textarea.val(editor.getSession().getValue());
+        });
+    </script>
+
+{% endblock content %}

@@ -3,11 +3,11 @@
 namespace {{ namespace }};
 
 {% block use_statements %}
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 {% endblock use_statements %}
 
 {% block class_definition %}
-class {{ bundle }} extends Bundle
+class {{ bundle }} extends ModuleBundle
 {% endblock class_definition %}
 {
 {% block class_body %}

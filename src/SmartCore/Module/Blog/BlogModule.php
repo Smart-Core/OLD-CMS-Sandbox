@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Blog;
 
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class BlogModule extends Bundle
+class BlogModule extends ModuleBundle
 {
     /**
      * Получить виджеты для рабочего стола.

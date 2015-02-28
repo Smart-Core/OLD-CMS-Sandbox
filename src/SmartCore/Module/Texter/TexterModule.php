@@ -3,10 +3,10 @@
 namespace SmartCore\Module\Texter;
 
 use SmartCore\Bundle\CMSBundle\Entity\Node;
-use SmartCore\Bundle\CMSBundle\Module\Bundle;
+use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 use SmartCore\Module\Texter\Entity\Item;
 
-class TexterModule extends Bundle
+class TexterModule extends ModuleBundle
 {
     /**
      * Действие при создании ноды.
