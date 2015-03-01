@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1cf73910e4a80d436dc14e45f3246c4a",
+    "hash": "9593565784262b928e9d030cf408513f",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -2724,48 +2724,6 @@
             "time": "2012-01-02 20:40:52"
         },
         {
-            "name": "jms/debugging-bundle",
-            "version": "dev-master",
-            "target-dir": "JMS/DebuggingBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/JMSDebuggingBundle.git",
-                "reference": "430daab75b88d78ee9e06ed2ae7811ea3da947af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDebuggingBundle/zipball/430daab75b88d78ee9e06ed2ae7811ea3da947af",
-                "reference": "430daab75b88d78ee9e06ed2ae7811ea3da947af",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "JMS\\DebuggingBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache2"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "This bundle provides advanced debugging tools (for your Symfony2 project).",
-            "homepage": "http://jmsyst.com/bundles/JMSDebuggingBundle",
-            "keywords": [
-                "debugging"
-            ],
-            "time": "2015-01-25 19:32:21"
-        },
-        {
             "name": "jms/di-extra-bundle",
             "version": "1.5.0",
             "target-dir": "JMS/DiExtraBundle",
@@ -4789,12 +4747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "f0ef76d6b15e8441d931fea53ddd3ce2d9cfb6e2"
+                "reference": "de0ff7ce6c16cab658f3de86b48cfa9f96fd1c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/f0ef76d6b15e8441d931fea53ddd3ce2d9cfb6e2",
-                "reference": "f0ef76d6b15e8441d931fea53ddd3ce2d9cfb6e2",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/de0ff7ce6c16cab658f3de86b48cfa9f96fd1c6c",
+                "reference": "de0ff7ce6c16cab658f3de86b48cfa9f96fd1c6c",
                 "shasum": ""
             },
             "require": {
@@ -4815,7 +4773,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-02-22 18:33:57"
+            "time": "2015-03-01 21:30:34"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5963,7 +5921,6 @@
         "elao/web-profiler-extra-bundle": 20,
         "fabpot/goutte": 20,
         "friendsofsymfony/user-bundle": 20,
-        "jms/debugging-bundle": 20,
         "hwi/oauth-bundle": 20,
         "knplabs/knp-disqus-bundle": 20,
         "knplabs/knp-menu": 20,
