@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Module\Unicat\Model\AttributesGroupModel;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="{{ table_prefix ~ configuration_name }}_attributes_groups")
+ */
+class AttributesGroup extends AttributesGroupModel
+{
+}

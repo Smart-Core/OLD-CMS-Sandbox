@@ -6,6 +6,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Knp\RadBundle\Controller\Controller;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Form\Type\ConfigurationFormType;
+use SmartCore\Module\Unicat\Generator\DoctrineEntityGenerator;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminUnicatController extends Controller
@@ -17,6 +21,53 @@ class AdminUnicatController extends Controller
 
         $form = $this->createForm(new ConfigurationFormType());
         $form->add('create', 'submit', ['attr' => ['class' => 'btn-primary']]);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                if ($form->get('create')->isClicked()) {
+                    /** @var UnicatConfiguration $uc */
+                    $uc = $form->getData();
+
+                    $generator = new DoctrineEntityGenerator();
+                    $generator->setSkeletonDirs($this->get('kernel')->getBundle('UnicatModule')->getPath().'/Resources/skeleton');
+                    $siteBundle = $this->get('kernel')->getBundle('SiteBundle');
+                    $targetDir  = $siteBundle->getPath().'/Entity/'.ucfirst($uc->getName());
+
+                    if (!is_dir($targetDir) and !@mkdir($targetDir, 0777, true)) {
+                        throw new \InvalidArgumentException(sprintf('The directory "%s" does not exist and could not be created.', $targetDir));
+                    }
+
+                    $reflector = new \ReflectionClass($siteBundle);
+                    $namespace = $reflector->getNamespaceName().'\Entity\\'.ucfirst($uc->getName());
+                    $generator->generate($targetDir, $uc->getName(), $namespace);
+
+
+                    $application = new Application($this->get('kernel'));
+                    $application->setAutoExit(false);
+                    $applicationInput = new ArrayInput([
+                        'command' => 'doctrine:schema:update',
+                        '--force' => true,
+                    ]);
+                    $applicationOutput = new BufferedOutput();
+                    $retval = $application->run($applicationInput, $applicationOutput);
+
+
+                    $uc
+                        ->setEntitiesNamespace($namespace.'\\')
+                        ->setUserId($this->getUser())
+                    ;
+
+                    $em->persist($uc);
+                    $em->flush($uc);
+
+                    $this->addFlash('success', 'Конфигурация <b>'.$uc->getName().'</b> создана.');
+                }
+
+                return $this->redirect($this->generateUrl('unicat_admin'));
+            }
+        }
 
         return $this->render('UnicatModule:Admin:index.html.twig', [
             'configurations' => $em->getRepository('UnicatModule:UnicatConfiguration')->findAll(),

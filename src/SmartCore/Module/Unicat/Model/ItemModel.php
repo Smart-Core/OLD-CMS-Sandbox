@@ -11,10 +11,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * ORM\Entity()
  * ORM\Table(name="unicat_items",
  *      indexes={
- *          ORM\Index(name="position", columns={"position"}),
+ *          ORM\Index(columns={"position"}),
  *      }
  * )
- * @UniqueEntity(fields={"slug", "slug"}, message="Запись с таким сегментом URI уже существует.")
+ * @UniqueEntity(fields={"slug"}, message="Запись с таким сегментом URI уже существует.")
  */
 class ItemModel
 {

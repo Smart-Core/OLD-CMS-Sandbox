@@ -9,20 +9,24 @@ use SmartCore\Bundle\MediaBundle\Entity\Collection;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Model\AttributesGroupModel;
 use SmartCore\Module\Unicat\Model\AttributeModel;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="unicat_configurations",
- *      indexes={
- *          @ORM\Index(columns={"name"}),
+ * @ORM\Table(name="unicat__configurations",
+ *      uniqueConstraints={
+ *          @ORM\UniqueConstraint(columns={"name"}),
+ *          @ORM\UniqueConstraint(columns={"title"}),
  *      }
  * )
+ * @UniqueEntity(fields={"name"}, message="Конфигурация с таким именем уже существует.")
+ * @UniqueEntity(fields={"title"}, message="Конфигурация с таким заголовком уже существует.")
  */
 class UnicatConfiguration
 {
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
-    use ColumnTrait\Name;
+    use ColumnTrait\NameUnique;
     use ColumnTrait\Title;
     use ColumnTrait\UserId;
 
