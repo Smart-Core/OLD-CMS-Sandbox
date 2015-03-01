@@ -28,7 +28,9 @@ class Node implements \Serializable
 
     use ColumnTrait\Id;
     use ColumnTrait\IsActive;
+    use ColumnTrait\IsDeleted;
     use ColumnTrait\CreatedAt;
+    use ColumnTrait\DeletedAt;
     use ColumnTrait\Description;
     use ColumnTrait\Position;
     use ColumnTrait\UserId;
@@ -355,6 +357,10 @@ class Node implements \Serializable
      */
     public function setPriority($priority)
     {
+        if (empty($priority)) {
+            $priority = 0;
+        }
+
         $this->priority = $priority;
 
         return $this;

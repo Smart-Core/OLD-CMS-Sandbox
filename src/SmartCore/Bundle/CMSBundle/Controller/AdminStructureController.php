@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Controller;
 
 use Knp\RadBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Entity\Folder;
+use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Entity\Region;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,51 @@ class AdminStructureController extends Controller
         }
 
         return $this->render('CMSBundle:AdminStructure:structure.html.twig');
+    }
+
+    /**
+     * @return Response
+     */
+    public function trashAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $this->render('CMSBundle:AdminStructure:trash.html.twig', [
+            'deleted_nodes' => $em->getRepository('CMSBundle:Node')->findBy(['is_deleted' => true]),
+        ]);
+    }
+
+    /**
+     * @param Node $node
+     * @return RedirectResponse
+     */
+    public function trashRestoreNodeAction(Node $node)
+    {
+        $node
+            ->setIsDeleted(false)
+            ->setDeletedAt(null)
+        ;
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($node);
+        $em->flush($node);
+
+        $this->addFlash('success', 'Нода восстановлена.'); // @todo перевод
+
+        return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
+    }
+
+    /**
+     * @param Node $node
+     * @return RedirectResponse
+     */
+    public function trashPurgeNodeAction(Node $node)
+    {
+        $this->get('cms.node')->remove($node);
+
+        $this->addFlash('success', 'Нода удалена.'); // @todo перевод
+
+        return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
     }
 
     /**
@@ -244,12 +290,12 @@ class AdminStructureController extends Controller
             return $this->redirect($this->generateUrl('cms_admin_structure_folder_create'));
         }
 
-        $engineNode = $this->get('cms.node');
-        $node = $engineNode->create();
+        $cmsNode = $this->get('cms.node');
+        $node = $cmsNode->create();
         $node->setUserId($this->getUser())
             ->setFolder($folder);
 
-        $form = $engineNode->createForm($node);
+        $form = $cmsNode->createForm($node);
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create')) {
@@ -258,7 +304,7 @@ class AdminStructureController extends Controller
                     /** @var $createdNode \SmartCore\Bundle\CMSBundle\Entity\Node */
                     $createdNode = $form->getData();
 
-                    $engineNode->update($createdNode);
+                    $cmsNode->update($createdNode);
 
                     // Если у модуля есть роутинги, тогда нода подключается к папке как роутер.
                     $folder = $createdNode->getFolder();
@@ -296,8 +342,8 @@ class AdminStructureController extends Controller
      */
     public function nodeEditAction(Request $request, $id)
     {
-        $engineNode = $this->get('cms.node');
-        $node = $engineNode->get($id);
+        $cmsNode = $this->get('cms.node');
+        $node = $cmsNode->get($id);
 
         if (empty($node)) {
             return $this->redirect($this->generateUrl('cms_admin_structure'));
@@ -305,8 +351,8 @@ class AdminStructureController extends Controller
 
         $nodeParams = $node->getParams();
 
-        $form = $engineNode->createForm($node);
-        $form_properties = $this->createForm($engineNode->getPropertiesFormType($node->getModule()), $nodeParams);
+        $form = $cmsNode->createForm($node);
+        $form_properties = $this->createForm($cmsNode->getPropertiesFormType($node->getModule()), $nodeParams);
 
         $form->remove('module');
 
@@ -325,7 +371,7 @@ class AdminStructureController extends Controller
                     /** @var $updatedNode \SmartCore\Bundle\CMSBundle\Entity\Node */
                     $updatedNode = $form->getData();
                     $updatedNode->setParams($form_properties->getData());
-                    $engineNode->update($updatedNode);
+                    $cmsNode->update($updatedNode);
 
                     $this->get('tagcache')->deleteTag('node');
                     $this->addFlash('success', 'Параметры модуля <b>'.$node->getModule().'</b> ('.$node->getId().') обновлены.'); // @todo перевод.
@@ -341,11 +387,33 @@ class AdminStructureController extends Controller
                     ld($form_properties->isValid());
                 }
             } elseif ($request->request->has('delete')) {
-                die('@todo');
+                $form->handleRequest($request);
+
+                /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
+                $node = $form->getData();
+                $node
+                    ->setIsDeleted(true)
+                    ->setDeletedAt(new \DateTime())
+                ;
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($node);
+                $em->flush($node);
+
+                $this->get('tagcache')->deleteTag('node');
+
+                $this->addFlash('success', 'Нода <b>'.$node->getModule().'</b> ('.$node->getId().') удалена.'); // @todo перевод.
+
+                if ($request->query->has('redirect_to')) {
+                    return $this->get('cms.router')->redirect($node);
+                }
+
+                return $this->redirect($this->generateUrl('cms_admin_structure'));
             }
         }
 
         return $this->render('CMSBundle:AdminStructure:node_edit.html.twig', [
+            'allow_delete'    => true,
             'form'            => $form->createView(),
             'form_properties' => $form_properties->createView(),
             'node'            => $node,

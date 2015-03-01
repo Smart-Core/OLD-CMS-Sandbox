@@ -30,6 +30,9 @@ Datetime: Дата и время
 Descr: Описание
 Description: Описание
 Delete: Удалить
+Deleted at: Удалено
+Deleted folders: Удалённые папки
+Deleted nodes: Удалённые ноды
 Dimension: Размер
 Disabled: Отключен
 Edit: Редактировать
@@ -116,6 +119,7 @@ Template self: Собственный шаблон
 Templates: Шаблоны
 Text: Текст
 Title: Заголовок
+Trash: Корзина
 Type: Тип
 Value: Значение
 Viewing: Просмотр

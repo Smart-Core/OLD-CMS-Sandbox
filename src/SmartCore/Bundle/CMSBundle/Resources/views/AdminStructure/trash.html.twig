@@ -1,0 +1,64 @@
+{% extends '@CMS/Admin/_layout.html.twig' %}
+
+{% block title %}{{ 'Trash'|trans }} / {{ 'Structure'|trans }} / {{ parent() }}{% endblock %}
+
+{% block subnav %}
+    {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
+{% endblock subnav %}
+
+{% block content %}
+    {{ parent() }}
+
+    <h3>{{ 'Deleted folders'|trans }}</h3>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Action'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in deleted_folders %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                <td>
+                    <a href="#" class="btn btn-small btn-success">Восстановить</a>
+                    <a href="#" class="btn btn-small btn-danger">Удалить окончательно</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>{{ 'Deleted nodes'|trans }}</h3>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Module'|trans }}</th>
+            <th>{{ 'Folder'|trans }}</th>
+            <th>{{ 'Region'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th>{{ 'Deleted at'|trans }}</th>
+            <th>{{ 'Action'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in deleted_nodes %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.module }}</td>
+                <td>{{ item.folder }}</td>
+                <td>{{ item.region }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.deletedAt|date() }}</td>
+                <td style="width: 1%; white-space: nowrap;">
+                    <a href="{{ path('cms_admin_structure_trash_restore_node', {'id': item.id}) }}" class="btn btn-small btn-success">Восстановить</a>
+                    <a href="{{ path('cms_admin_structure_trash_purge_node', {'id': item.id}) }}" class="btn btn-small btn-danger" onclick="return confirm('Вы уверены, что хотите окончательно удалить ноду?')">Удалить окончательно</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

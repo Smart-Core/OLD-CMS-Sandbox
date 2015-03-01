@@ -64,6 +64,7 @@ class AdminMenu extends ContainerAware
         $menu->addChild('Create folder',  ['route' => 'cms_admin_structure_folder_create']);
         $menu->addChild('Connect module', ['route' => 'cms_admin_structure_node_create']);
         $menu->addChild('Regions',        ['route' => 'cms_admin_structure_region']);
+        $menu->addChild('Trash',          ['route' => 'cms_admin_structure_trash']);
 
         return $menu;
     }
@@ -156,6 +157,10 @@ class AdminMenu extends ContainerAware
 
             /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
             foreach ($folder->getNodes() as $node) {
+                if ($node->isDeleted()) {
+                    continue;
+                }
+
                 $uri = $this->container->get('router')->generate('cms_admin_structure_node_properties', ['id' => $node->getId()]);
                 $sub_menu->addChild($node->getDescription().' ('.$node->getModule().':'.$node->getId().')', ['uri' => $uri])->setAttributes([
                     'title' => $node->getDescription(),

@@ -22,6 +22,21 @@ cms_admin_structure:
     defaults:
         _controller: CMSBundle:AdminStructure:structure
 
+cms_admin_structure_trash:
+    path: /structure/trash/
+    defaults:
+        _controller: CMSBundle:AdminStructure:trash
+
+cms_admin_structure_trash_restore_node:
+    path: /structure/trash/restore_node/{id}/
+    defaults:
+        _controller: CMSBundle:AdminStructure:trashRestoreNode
+
+cms_admin_structure_trash_purge_node:
+    path: /structure/trash/purge_node/{id}/
+    defaults:
+        _controller: CMSBundle:AdminStructure:trashPurgeNode
+
 # Region
 cms_admin_structure_region:
     path: /structure/region/

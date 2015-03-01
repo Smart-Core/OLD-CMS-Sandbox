@@ -19,7 +19,7 @@ class Item extends ItemModel
      * @var Category[]
      *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(name="catalog_items_categories_relations")
+     * @ORM\JoinTable(name="unicat_catalog_items_categories_relations")
      */
     protected $categories;
 
@@ -27,7 +27,7 @@ class Item extends ItemModel
      * @var Category[]
      *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="itemsSingle", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(name="catalog_items_categories_relations_single")
+     * @ORM\JoinTable(name="unicat_catalog_items_categories_relations_single")
      */
     protected $categoriesSingle;
 }

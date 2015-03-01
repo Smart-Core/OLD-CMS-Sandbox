@@ -134,7 +134,9 @@ class EngineNode
             return $this->nodes[$id];
         }
 
-        return $this->repository->find($id);
+        $node = $this->repository->find($id);
+
+        return $node->isDeleted() ? null : $node;
     }
 
     /**
@@ -160,7 +162,7 @@ class EngineNode
      */
     public function update(Node $node)
     {
-        /** @var \SmartCore\Bundle\CMSBundle\Module\Bundle $module */
+        /** @var \SmartCore\Bundle\CMSBundle\Module\ModuleBundle $module */
         $module = $this->kernel->getBundle($node->getModule().'Module');
 
         // Свежесозданная нода выполняет свои действия, а также устанавливает параметры по умолчанию.
@@ -383,11 +385,21 @@ class EngineNode
     }
 
     /**
-     * @param Node $entity
+     * @param Node $node
      */
-    public function remove(Node $entity)
+    public function remove(Node $node)
     {
-        $this->em->remove($entity);
-        $this->em->flush($entity);
+        try {
+            $module = $this->kernel->getBundle($node->getModule().'Module');
+
+            if ($module instanceof \SmartCore\Bundle\CMSBundle\Module\ModuleBundle) {
+                $module->deleteNode($node);
+            }
+        } catch (\InvalidArgumentException $e) {
+            // do nothing
+        }
+
+        $this->em->remove($node);
+        $this->em->flush($node);
     }
 }

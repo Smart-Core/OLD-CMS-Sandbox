@@ -61,6 +61,7 @@ class NodeRepository extends EntityRepository
 
         $engine_nodes_table = $this->_class->getTableName();
 
+        // @todo переделать на SQL для поддержки PgSQL
         $sql = "
             SELECT id
             FROM $engine_nodes_table
