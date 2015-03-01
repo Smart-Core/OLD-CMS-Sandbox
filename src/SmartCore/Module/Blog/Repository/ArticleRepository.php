@@ -166,7 +166,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
         } else {
             throw new \Exception('
 
-                Архива статей, пока работает только с БД MySQL и PostgresSQL.
+                Архив статей, пока работает только с БД MySQL и PostgresSQL.
                 Call in SmartCore\Module\Blog\Repository\ArticleRepository::getArchiveMonthly();
 
             ');
