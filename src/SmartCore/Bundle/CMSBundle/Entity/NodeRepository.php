@@ -61,12 +61,12 @@ class NodeRepository extends EntityRepository
 
         $engine_nodes_table = $this->_class->getTableName();
 
-        // @todo переделать на SQL для поддержки PgSQL
         $sql = "
             SELECT id
             FROM $engine_nodes_table
             WHERE folder_id = '$folder'
-            AND is_active = '1'
+            AND is_active = TRUE
+            AND is_deleted = FALSE
         ";
 
         // Исключение ранее включенных нод.
@@ -97,7 +97,8 @@ class NodeRepository extends EntityRepository
             FROM $engine_nodes_table AS n,
                 $engine_regions_inherit_table AS ri
             WHERE n.region_id = ri.region_id
-                AND n.is_active = 1
+                AND n.is_active = TRUE
+                AND n.is_deleted = FALSE
                 AND n.folder_id = '$folder'
                 AND ri.folder_id = '$folder'
             ORDER BY n.position ASC
