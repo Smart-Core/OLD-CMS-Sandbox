@@ -7,7 +7,7 @@ use SmartCore\Module\Unicat\Model\ItemModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="catalog_items",
+ * @ORM\Table(name="unicat_catalog_items",
  *      indexes={
  *          @ORM\Index(columns={"position"}),
  *      }

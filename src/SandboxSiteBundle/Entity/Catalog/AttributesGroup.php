@@ -7,7 +7,7 @@ use SmartCore\Module\Unicat\Model\AttributesGroupModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="catalog_attributes_groups")
+ * @ORM\Table(name="unicat_catalog_attributes_groups")
  */
 class AttributesGroup extends AttributesGroupModel
 {

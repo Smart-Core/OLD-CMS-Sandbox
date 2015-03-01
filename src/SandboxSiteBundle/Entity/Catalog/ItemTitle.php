@@ -7,7 +7,7 @@ use SmartCore\Module\Unicat\Model\TypeStringModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="catalog_items_title",
+ * @ORM\Table(name="unicat_catalog_items_title",
  *      indexes={
  *          @ORM\Index(columns={"value"})
  *      }

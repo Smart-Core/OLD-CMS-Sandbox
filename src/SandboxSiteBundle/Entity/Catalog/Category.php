@@ -7,7 +7,7 @@ use SmartCore\Module\Unicat\Model\CategoryModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="catalog_categories",
+ * @ORM\Table(name="unicat_catalog_categories",
  *      indexes={
  *          @ORM\Index(columns={"is_enabled"}),
  *          @ORM\Index(columns={"position"})
