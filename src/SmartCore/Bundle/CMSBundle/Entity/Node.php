@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="engine_nodes",
  *      indexes={
  *          @ORM\Index(columns={"is_active"}),
+ *          @ORM\Index(columns={"is_deleted"}),
  *          @ORM\Index(columns={"position"}),
  *          @ORM\Index(columns={"region_id"}),
  *          @ORM\Index(columns={"module"})
@@ -153,6 +154,7 @@ class Node implements \Serializable
         $this->created_at   = new \DateTime();
         $this->is_active    = true;
         $this->is_cached    = false;
+        $this->is_deleted   = false;
         $this->params       = [];
         $this->position     = 0;
         $this->priority     = 0;
@@ -171,6 +173,7 @@ class Node implements \Serializable
             $this->id,
             $this->is_active,
             $this->is_cached,
+            $this->is_deleted,
             $this->module,
             $this->params,
             $this->folder,
@@ -198,6 +201,7 @@ class Node implements \Serializable
             $this->id,
             $this->is_active,
             $this->is_cached,
+            $this->is_deleted,
             $this->module,
             $this->params,
             $this->folder,

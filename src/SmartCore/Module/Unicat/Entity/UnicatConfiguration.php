@@ -85,7 +85,7 @@ class UnicatConfiguration
      */
     public function __toString()
     {
-        return $this->title.' ('.$this->entities_namespace.')';
+        return $this->title;
     }
 
     /**

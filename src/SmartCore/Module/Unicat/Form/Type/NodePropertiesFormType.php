@@ -18,6 +18,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
             ->add('configuration_id', 'choice', [
                 'choices'  => $configurations,
                 'required' => false,
+                'label'    => 'Configuration',
             ])
         ;
     }

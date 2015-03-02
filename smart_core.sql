@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 02 2015 г., 11:33
+-- Время создания: Мар 02 2015 г., 12:01
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `position` smallint(6) DEFAULT '0',
   `uri_part` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
-  `is_deleted` tinyint(1) DEFAULT '0',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `description` longtext COLLATE utf8_unicode_ci,
   `meta` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `redirect_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -322,7 +322,7 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL),
 (14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
-(16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
+(16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, 0, NULL, 'a:0:{}', NULL, 32, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
 (17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
 
 -- --------------------------------------------------------
@@ -374,15 +374,16 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `is_cached` tinyint(1) NOT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `controls_in_toolbar` int(11) NOT NULL,
-  `is_deleted` tinyint(1) DEFAULT '0',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F4FF528B162CB942` (`folder_id`),
   KEY `IDX_F4FF528BE9ED820C` (`region_id`),
   KEY `is_active` (`is_active`),
   KEY `position` (`position`),
-  KEY `module` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
+  KEY `module` (`module`),
+  KEY `IDX_3055D1B7FD07C8FB` (`is_deleted`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
 
 --
 -- Дамп данных таблицы `engine_nodes`
@@ -418,7 +419,9 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (28, 15, 1, 1, 'Unicat', 'a:2:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL, 1, 0, NULL),
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0, 0, NULL),
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, 'Тесты с каталогом', 1, '2014-07-01 13:42:20', 0, NULL, 0, 1, '2015-03-02 03:42:04'),
-(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, 0, NULL);
+(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, 0, NULL),
+(32, 16, 1, 1, 'Unicat', 'a:1:{s:16:"configuration_id";i:2;}', 0, 0, NULL, 1, '2015-03-02 11:37:36', 0, NULL, 1, 0, NULL),
+(33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1108,7 +1111,7 @@ INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `
 DROP TABLE IF EXISTS `texter_history`;
 CREATE TABLE IF NOT EXISTS `texter_history` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `is_deleted` tinyint(1) DEFAULT '0',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `item_id` int(11) NOT NULL,
   `locale` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
   `editor` smallint(6) NOT NULL,
@@ -1421,12 +1424,14 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_69D20251989D9B62` (`slug`),
   KEY `IDX_69D20251462CE4F5` (`position`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `unicat_blog_items`
 --
 
+INSERT INTO `unicat_blog_items` (`id`, `slug`, `meta`, `attributes`, `is_enabled`, `created_at`, `position`, `user_id`) VALUES
+(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:690:"<p>&nbsp;</p>\r\n<hr id="readmore" />\r\n<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1447,6 +1452,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items_categories_relations` (
 -- Дамп данных таблицы `unicat_blog_items_categories_relations`
 --
 
+INSERT INTO `unicat_blog_items_categories_relations` (`item_id`, `category_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -1467,6 +1474,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items_categories_relations_single` (
 -- Дамп данных таблицы `unicat_blog_items_categories_relations_single`
 --
 
+INSERT INTO `unicat_blog_items_categories_relations_single` (`item_id`, `category_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
