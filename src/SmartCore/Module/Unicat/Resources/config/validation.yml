@@ -5,3 +5,5 @@ SmartCore\Module\Unicat\Entity\UnicatConfiguration:
                 pattern: '/^[a-z]+$/'
                 htmlPattern: '^[a-z]+$'
                 message: Имя может состоять только из латинских букв в нижнем регистре.
+        title:
+            - NotBlank: ~
