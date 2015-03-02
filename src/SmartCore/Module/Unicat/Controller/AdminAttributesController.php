@@ -78,8 +78,8 @@ class AdminAttributesController extends Controller
 
         return $this->render('UnicatModule:AdminAttributes:group.html.twig', [
             'form'       => $form->createView(),
-            'attributes' => $unicat->getAttributes($configuration, $group_id),
-            'group'      => $ucm->getAttributesGroup($configuration, $group_id),
+            'attributes' => $unicat->getAttributes($configuration),
+            'group'      => $ucm->getAttributesGroup($group_id),
             'configuration' => $unicat->getCurrentConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }

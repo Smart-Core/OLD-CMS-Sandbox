@@ -226,9 +226,7 @@ class UnicatConfigurationManager
 
     /**
      * @param int $groupId
-     * @return AttributeModel[]
-     *
-     * @deprecated
+     * @return AttributeModel
      */
     public function getAttributesGroup($groupId)
     {

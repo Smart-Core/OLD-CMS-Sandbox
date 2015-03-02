@@ -15,7 +15,7 @@ class UnicatStructure
     use ColumnTrait\CreatedAt;
     use ColumnTrait\Name;
     use ColumnTrait\Position;
-    use ColumnTrait\Title;
+    use ColumnTrait\TitleNotBlank;
     use ColumnTrait\UserId;
 
     /**

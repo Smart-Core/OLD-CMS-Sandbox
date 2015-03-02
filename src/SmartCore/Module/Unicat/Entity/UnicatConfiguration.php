@@ -27,7 +27,7 @@ class UnicatConfiguration
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
     use ColumnTrait\NameUnique;
-    use ColumnTrait\Title;
+    use ColumnTrait\TitleNotBlank;
     use ColumnTrait\UserId;
 
     /**

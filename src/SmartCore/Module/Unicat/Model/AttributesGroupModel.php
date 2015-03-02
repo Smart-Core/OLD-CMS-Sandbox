@@ -16,7 +16,7 @@ class AttributesGroupModel
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
     use ColumnTrait\Name;
-    use ColumnTrait\Title;
+    use ColumnTrait\TitleNotBlank;
 
     /**
      * @var AttributeModel[]

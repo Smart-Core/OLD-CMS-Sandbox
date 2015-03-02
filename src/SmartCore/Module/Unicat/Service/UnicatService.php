@@ -113,6 +113,8 @@ class UnicatService
     /**
      * @param UnicatConfiguration|int $configuration
      * @return AttributeModel[]
+     *
+     * @deprecated
      */
     public function getAttributes($configuration)
     {

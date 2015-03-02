@@ -5,6 +5,7 @@ namespace SmartCore\Module\Unicat\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Smart\CoreBundle\Doctrine\ColumnTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -19,8 +20,7 @@ class AttributeModel
     use ColumnTrait\IsEnabled;
     use ColumnTrait\CreatedAt;
     use ColumnTrait\Position;
-    use ColumnTrait\NameUnique;
-    use ColumnTrait\Title;
+    use ColumnTrait\TitleNotBlank;
     use ColumnTrait\UserId;
 
     /**
@@ -93,6 +93,20 @@ class AttributeModel
     protected $group;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *      pattern="/^[a-z_]+$/",
+     *      htmlPattern="^[a-z_]+$",
+     *      message="Имя может состоять только из латинских букв в нижнем регистре и символов подчеркивания."
+     * )
+     *
+     * @todo перевод сообщения
+     */
+    protected $name;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -103,6 +117,15 @@ class AttributeModel
         $this->params_yaml = null;
         $this->position = 0;
         $this->user_id = 0;
+    }
+
+    /**
+     * @see getName
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 
     /**
@@ -291,5 +314,25 @@ class AttributeModel
     public function isType($type)
     {
         return ($type === $this->type) ? true : false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return static
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }
