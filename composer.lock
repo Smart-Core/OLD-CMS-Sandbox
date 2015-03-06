@@ -978,12 +978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "058a4635ac9b80a5b1997df28a754e64b1425a1d"
+                "reference": "b962049fefa47da897bcc75569eec02965332aee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/058a4635ac9b80a5b1997df28a754e64b1425a1d",
-                "reference": "058a4635ac9b80a5b1997df28a754e64b1425a1d",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/b962049fefa47da897bcc75569eec02965332aee",
+                "reference": "b962049fefa47da897bcc75569eec02965332aee",
                 "shasum": ""
             },
             "require": {
@@ -1028,7 +1028,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-02-19 08:13:05"
+            "time": "2015-03-05 21:12:06"
         },
         {
             "name": "doctrine/orm",
@@ -1425,12 +1425,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/Goutte.git",
-                "reference": "d751608afad65f3a4b56bbdc648cf5983d2ba29a"
+                "reference": "17131e3bcf29351bc6b7bc641eb6abc2126ad30c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/d751608afad65f3a4b56bbdc648cf5983d2ba29a",
-                "reference": "d751608afad65f3a4b56bbdc648cf5983d2ba29a",
+                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/17131e3bcf29351bc6b7bc641eb6abc2126ad30c",
+                "reference": "17131e3bcf29351bc6b7bc641eb6abc2126ad30c",
                 "shasum": ""
             },
             "require": {
@@ -1466,7 +1466,7 @@
             "keywords": [
                 "scraper"
             ],
-            "time": "2015-02-26 08:00:41"
+            "time": "2015-03-02 14:15:10"
         },
         {
             "name": "facebook/php-sdk",
@@ -1598,12 +1598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "f54031a652846cd8e7b12119fe713eae90e24cf9"
+                "reference": "2684b0dddff35b4de40920b11972b71ae386b9f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f54031a652846cd8e7b12119fe713eae90e24cf9",
-                "reference": "f54031a652846cd8e7b12119fe713eae90e24cf9",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/2684b0dddff35b4de40920b11972b71ae386b9f5",
+                "reference": "2684b0dddff35b4de40920b11972b71ae386b9f5",
                 "shasum": ""
             },
             "require": {
@@ -1657,7 +1657,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-01-20 09:35:03"
+            "time": "2015-03-06 14:51:30"
         },
         {
             "name": "fzaninotto/faker",
@@ -2072,16 +2072,16 @@
         },
         {
             "name": "hakre/dropbox-uploader",
-            "version": "v1.1.21",
+            "version": "v1.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hakre/DropboxUploader.git",
-                "reference": "0a96ec5e8774ba2023931caff9d8ea7d8624969b"
+                "reference": "133b6761be11aa913c632582818c56bbba789b69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hakre/DropboxUploader/zipball/0a96ec5e8774ba2023931caff9d8ea7d8624969b",
-                "reference": "0a96ec5e8774ba2023931caff9d8ea7d8624969b",
+                "url": "https://api.github.com/repos/hakre/DropboxUploader/zipball/133b6761be11aa913c632582818c56bbba789b69",
+                "reference": "133b6761be11aa913c632582818c56bbba789b69",
                 "shasum": ""
             },
             "require": {
@@ -2107,7 +2107,7 @@
                 "dropbox",
                 "upload"
             ],
-            "time": "2015-01-22 23:16:07"
+            "time": "2015-03-02 23:18:37"
         },
         {
             "name": "happyr/google-site-authenticator-bundle",
@@ -3354,12 +3354,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "dc2c5b9702369f952fd7268a9a8a24473705b3a7"
+                "reference": "f9b9fe1995d2aecaaab408420664d4b9235deaeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/dc2c5b9702369f952fd7268a9a8a24473705b3a7",
-                "reference": "dc2c5b9702369f952fd7268a9a8a24473705b3a7",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/f9b9fe1995d2aecaaab408420664d4b9235deaeb",
+                "reference": "f9b9fe1995d2aecaaab408420664d4b9235deaeb",
                 "shasum": ""
             },
             "require": {
@@ -3402,7 +3402,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-01-28 10:37:00"
+            "time": "2015-03-04 10:53:50"
         },
         {
             "name": "knplabs/rad-bundle",
@@ -3771,16 +3771,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f"
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c41c218e239b50446fd883acb1ecfd4b770caeae",
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae",
                 "shasum": ""
             },
             "require": {
@@ -3797,6 +3797,7 @@
                 "phpunit/phpunit": "~4.0",
                 "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*",
+                "swiftmailer/swiftmailer": "~5.3",
                 "videlalvaro/php-amqplib": "~2.4"
             },
             "suggest": {
@@ -3813,7 +3814,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12.x-dev"
+                    "dev-master": "1.13.x-dev"
                 }
             },
             "autoload": {
@@ -3839,7 +3840,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-12-29 21:29:35"
+            "time": "2015-03-05 01:12:12"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -4747,12 +4748,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "081449245a8c7a21c8c4579ece2371d6b0298101"
+                "reference": "8fa0fa29112cf7266b3cca759b230794c8ec347c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/081449245a8c7a21c8c4579ece2371d6b0298101",
-                "reference": "081449245a8c7a21c8c4579ece2371d6b0298101",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/8fa0fa29112cf7266b3cca759b230794c8ec347c",
+                "reference": "8fa0fa29112cf7266b3cca759b230794c8ec347c",
                 "shasum": ""
             },
             "require": {
@@ -4773,7 +4774,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-03-02 05:44:54"
+            "time": "2015-03-06 02:17:15"
         },
         {
             "name": "smart-core/felib-bundle",
