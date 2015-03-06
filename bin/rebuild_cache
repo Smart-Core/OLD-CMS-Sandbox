@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+file_put_contents('var/rebuild_cache.lock', time());
+
+$fc = file_get_contents('web/app.php');
+
+if (false === strpos($fc, 'rebuild_cache.lock')) {
+    $checker = '<?php
+    $count = 60; // 18 seconds awaiting
+    $isLocked = false;
+    while ($count--) {
+        if (file_exists(__DIR__."/../var/rebuild_cache.lock")) {
+            $isLocked = true;
+            usleep(300000); // 1/3 seconds
+        } else {
+            $isLocked = false;
+            break;
+        }
+    }
+    if ($isLocked) {
+        die("Try again later");
+    }
+?>';
+
+    system('cp web/app.php var/app.php');
+    file_put_contents('web/app.php', $checker.$fc);
+}
+
+system('sh bin/clear_cache');
+system('php bin/warmup_cache prod');
+system('mv var/app.php web/app.php');
+system('rm var/rebuild_cache.lock');
+system('php bin/warmup_cache dev');
