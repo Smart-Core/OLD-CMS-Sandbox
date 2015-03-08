@@ -85,7 +85,7 @@ class ItemFormType extends AbstractType
                 'label'     => $attribute->getTitle(),
             ];
 
-            $attributeOptions = array_merge($propertyOptions, $attribute->getParams());
+            $attributeOptions = array_merge($propertyOptions, $attribute->getParam('form'));
 
             if ($attribute->isType('image')) {
                 // @todo сделать виджет загрузки картинок.

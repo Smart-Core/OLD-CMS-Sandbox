@@ -64,9 +64,10 @@ class LocalProvider implements ProviderInterface
      *
      * @param integer $id
      * @param string|null $filter
+     * @param string|null default_filter
      * @return string|null
      */
-    public function get($id, $filter = null)
+    public function get($id, $filter = null, $default_filter = '200_200')
     {
         if (null === $id) {
             return;
@@ -79,12 +80,18 @@ class LocalProvider implements ProviderInterface
             return;
         }
 
+        try {
+            $this->container->get('liip_imagine.filter.configuration')->get($filter);
+        } catch (\RuntimeException $e) {
+            $filter = $default_filter;
+        }
+
         if ($filter) {
             $fileTransformed = $this->filesTransformedRepo->findOneBy(['file' => $file, 'filter' => $filter]);
 
             if (null === $fileTransformed) {
-                $imagine = $this->container->get('imagine');
-                $imagineFilterManager = $this->container->get('imagine.filter.manager');
+                $imagine = $this->container->get('liip_imagine');
+                $imagineFilterManager = $this->container->get('liip_imagine.filter.manager');
 
                 if ($file->isMimeType('image/jpeg') or $file->isMimeType('image/png') or $file->isMimeType('image/gif')) {
                     // dummy
@@ -103,7 +110,7 @@ class LocalProvider implements ProviderInterface
 
                 $transformedImagePath = $webDir.'/'.$file->getFilename();
 
-                $transformedImage = $imagineFilterManager->getFilter($filter)->apply($originalImage);
+                $transformedImage = $imagineFilterManager->applyFilter($originalImage, $filter);
                 $transformedImage->save($transformedImagePath);
 
                 $fileTransformed = new FileTransformed();

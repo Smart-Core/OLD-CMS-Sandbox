@@ -18,7 +18,7 @@
 {% for photo in photos %}
     <a class="smart_gallery" href="{{ smart_media(photo.imageId) }}" name="image_{{ photo.id }}" title="{{ photo.description }}">
         <div class="smart_gallery_image" id="smart_gallery_image_{{ photo.id }}">
-            {{ smart_media_img(photo.imageId, '200-200') }}
+            {{ smart_media_img(photo.imageId, '200_200') }}
         </div>
     </a>
 {% endfor %}

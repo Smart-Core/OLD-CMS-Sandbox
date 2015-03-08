@@ -73,13 +73,13 @@ class CollectionService
     /**
      * Получить ссылку на файл.
      *
-     * @param integer $id
-     * @param string|null $filter
+     * @param integer       $id
+     * @param string|null   $filter
      * @return string|null
      */
     public function get($id, $filter = null)
     {
-        return $this->provider->get($id, $filter);
+        return $this->provider->get($id, $filter, $this->collection->getDefaultFilter());
     }
 
     /**

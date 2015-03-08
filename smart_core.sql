@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 08 2015 г., 20:44
+-- Время создания: Мар 09 2015 г., 02:28
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -657,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `media_collections` (
 --
 
 INSERT INTO `media_collections` (`id`, `default_storage_id`, `title`, `default_filter`, `params`, `relative_path`, `filename_pattern`, `file_relative_path_pattern`, `created_at`) VALUES
-(1, 1, 'Каталог товаров', NULL, 'N;', '/catalog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-02-14 13:43:18'),
+(1, 1, 'Каталог товаров', '300_300', 'N;', '/catalog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-02-14 13:43:18'),
 (2, 1, 'Фотогалерея', NULL, 'N;', '/gallery', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-07-15 04:46:03'),
 (3, 1, 'Блог', NULL, 'N;', '/blog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2015-03-08 15:07:15');
 
@@ -723,25 +723,22 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
 --
 
 INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storage_id`, `filter`, `size`, `created_at`) VALUES
-(1, 1, 1, 1, '300-300', 6438, '2014-02-16 14:48:48'),
-(3, 1, 1, 1, '100-100', 1809, '2014-02-16 14:49:22'),
-(5, 3, 1, 1, '100-100', 2201, '2014-02-17 01:24:51'),
-(6, 3, 1, 1, '300-300', 8678, '2014-02-17 01:25:09'),
-(7, 4, 1, 1, '100-100', 2001, '2014-02-17 01:41:50'),
-(8, 4, 1, 1, '300-300', 8494, '2014-02-17 01:41:53'),
-(9, 5, 1, 1, '300-300', 9631, '2014-02-17 22:11:27'),
-(10, 5, 1, 1, '100-100', 2219, '2014-02-17 22:38:10'),
-(11, 6, 1, 1, '300-300', 12833, '2014-03-06 16:38:41'),
-(12, 6, 1, 1, '100-100', 2934, '2014-06-26 00:10:52'),
-(13, 7, 2, 1, '200-200', 6675, '2014-07-15 23:49:51'),
-(14, 8, 2, 1, '200-200', 6419, '2014-07-15 23:54:05');
+(15, 1, 1, 1, '300_300', 6438, '2015-03-09 02:14:11'),
+(16, 3, 1, 1, '300_300', 8678, '2015-03-09 02:14:11'),
+(17, 1, 1, 1, '200_200', 3770, '2015-03-09 02:15:19'),
+(18, 3, 1, 1, '200_200', 4926, '2015-03-09 02:15:19'),
+(19, 5, 1, 1, '300_300', 9631, '2015-03-09 02:17:55'),
+(20, 6, 1, 1, '300_300', 12833, '2015-03-09 02:17:56'),
+(21, 4, 1, 1, '300_300', 8494, '2015-03-09 02:18:19'),
+(22, 1, 1, 1, '100_100', 1809, '2015-03-09 02:24:43'),
+(23, 6, 1, 1, '100_100', 2934, '2015-03-09 02:25:35');
 
 -- --------------------------------------------------------
 
@@ -1176,8 +1173,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_attributes` (
 
 INSERT INTO `unicat_blog_attributes` (`id`, `group_id`, `is_dedicated_table`, `is_required`, `type`, `show_in_admin`, `show_in_list`, `show_in_view`, `params`, `params_yaml`, `is_enabled`, `created_at`, `position`, `name`, `title`, `user_id`) VALUES
 (1, 1, 0, 1, 'text', 1, 1, 1, 'a:0:{}', NULL, 1, '2015-03-02 11:06:53', 0, 'title', 'Заголовок', 1),
-(2, 1, 0, 0, 'textarea', 0, 1, 0, 'a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}', 'attr:\r\n    class: ''wysiwyg''\r\n    data-theme: ''advanced''', 1, '2015-03-02 11:07:46', 0, 'annotation', 'Аннотация', 1),
-(3, 1, 0, 0, 'textarea', 0, 0, 1, 'a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}', 'attr:\r\n    class: ''wysiwyg''\r\n    data-theme: ''advanced''', 1, '2015-03-02 11:19:18', 0, 'text', 'Текст', 1);
+(2, 1, 0, 0, 'textarea', 0, 1, 0, 'a:1:{s:4:"form";a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}}', 'form:\r\n    attr:\r\n        class: ''wysiwyg''\r\n        data-theme: ''advanced''', 1, '2015-03-02 11:07:46', 0, 'annotation', 'Аннотация', 1),
+(3, 1, 0, 0, 'textarea', 0, 0, 1, 'a:1:{s:4:"form";a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}}', 'form:\r\n    attr:\r\n        class: ''wysiwyg''\r\n        data-theme: ''advanced''', 1, '2015-03-02 11:19:18', 0, 'text', 'Текст', 1);
 
 -- --------------------------------------------------------
 
@@ -1294,7 +1291,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items_categories_relations` (
 --
 
 INSERT INTO `unicat_blog_items_categories_relations` (`item_id`, `category_id`) VALUES
-(1, 6);
+(1, 6),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -1316,7 +1314,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items_categories_relations_single` (
 --
 
 INSERT INTO `unicat_blog_items_categories_relations_single` (`item_id`, `category_id`) VALUES
-(1, 6);
+(1, 6),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -1361,7 +1360,7 @@ INSERT INTO `unicat_catalog_attributes` (`id`, `is_enabled`, `is_dedicated_table
 (2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL),
 (3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL),
 (4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL),
-(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:0:{}', 1, NULL);
+(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:1:{s:6:"filter";s:7:"300_300";}', 1, 'filter: 300_300');
 
 -- --------------------------------------------------------
 
@@ -1469,7 +1468,7 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
 INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`) VALUES
 (1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18', 0),
 (2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57', 1),
-(3, 1, 'seagate-500g', 'N;', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
+(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
 (4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56', 0),
 (5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40', 0);
 
@@ -1567,6 +1566,7 @@ CREATE TABLE IF NOT EXISTS `unicat__configurations` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(10) unsigned NOT NULL,
+  `items_per_page` smallint(5) unsigned NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_9D36C6A05E237E06` (`name`),
   UNIQUE KEY `UNIQ_F622D4622B36786B` (`title`),
@@ -1578,9 +1578,9 @@ CREATE TABLE IF NOT EXISTS `unicat__configurations` (
 -- Дамп данных таблицы `unicat__configurations`
 --
 
-INSERT INTO `unicat__configurations` (`id`, `media_collection_id`, `default_structure_id`, `entities_namespace`, `is_inheritance`, `created_at`, `name`, `title`, `user_id`) VALUES
-(1, 1, 1, 'SandboxSiteBundle\\Entity\\Catalog\\', 0, '2015-02-28 03:01:59', 'catalog', 'Каталог товаров', 1),
-(2, 3, 3, 'SandboxSiteBundle\\Entity\\Blog\\', 1, '2015-03-02 05:23:03', 'blog', 'Блог', 1);
+INSERT INTO `unicat__configurations` (`id`, `media_collection_id`, `default_structure_id`, `entities_namespace`, `is_inheritance`, `created_at`, `name`, `title`, `user_id`, `items_per_page`) VALUES
+(1, 1, 1, 'SandboxSiteBundle\\Entity\\Catalog\\', 1, '2015-02-28 03:01:59', 'catalog', 'Каталог товаров', 1, 2),
+(2, 3, 3, 'SandboxSiteBundle\\Entity\\Blog\\', 1, '2015-03-02 05:23:03', 'blog', 'Блог', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1612,7 +1612,7 @@ CREATE TABLE IF NOT EXISTS `unicat__structures` (
 --
 
 INSERT INTO `unicat__structures` (`id`, `configuration_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`, `is_tree`) VALUES
-(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, 'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced', 0),
+(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, 'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced', 1),
 (2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги', 0, '', 0),
 (3, 2, 0, 'single', 'Категории', 0, 0, '2015-03-02 10:43:54', 'categories', 'Категория', 1, NULL, 1),
 (4, 2, 0, 'multi', 'Тэги', 0, 0, '2015-03-08 14:24:38', 'tags', 'Тэги', 1, NULL, 0);

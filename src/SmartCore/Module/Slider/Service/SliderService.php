@@ -160,7 +160,7 @@ class SliderService
     {
         $webDir = '/images/slider'; // @todo настройку пути хранения слайдов, для разных "групп" свой путь.
 
-        $dir = $this->container->getParameter('imagine.web_root').$webDir;
+        $dir = $this->container->getParameter('kernel.root_dir').'/../web'.$webDir;
 
         if (!is_dir($dir) and false === @mkdir($dir, 0777, true)) {
             throw new \RuntimeException(sprintf("Unable to create the %s directory (%s)\n", $webDir, $dir));

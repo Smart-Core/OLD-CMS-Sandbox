@@ -36,7 +36,7 @@
     {% endif %}
 
     {% if item.attribute('image') %}
-        <p>{{ smart_media_img(item.attribute('image'), '300-300') }}</p>
+        <p>{{ smart_media_img(item.attribute('image'), attributes.image.params.filter) }}</p>
     {% endif %}
 
     <hr />

@@ -47,12 +47,12 @@ class MediaCloudService
      * Получить ссылку на файл.
      *
      * @param int $id
-     * @param string $filer
+     * @param string $filter
      * @return string
      *
      * @todo кеширование.
      */
-    public function getFileUrl($id, $filer = null)
+    public function getFileUrl($id, $filter = null)
     {
         if (!is_numeric($id)) {
             return;
@@ -65,7 +65,7 @@ class MediaCloudService
             return;
         }
 
-        return $this->getCollection($file->getCollection()->getId())->get($id, $filer);
+        return $this->getCollection($file->getCollection()->getId())->get($id, $filter);
     }
 
     public function createCollection()

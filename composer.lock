@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9593565784262b928e9d030cf408513f",
+    "hash": "9cd093a70a99581568293efa562d654e",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -57,56 +57,6 @@
                 "twig"
             ],
             "time": "2014-05-31 13:57:16"
-        },
-        {
-            "name": "avalanche123/imagine-bundle",
-            "version": "v2.1.2",
-            "target-dir": "Avalanche/Bundle/ImagineBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/avalanche123/AvalancheImagineBundle.git",
-                "reference": "e53bc4a5295d7248c5392b4d40e2c517e3cfd922"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/AvalancheImagineBundle/zipball/e53bc4a5295d7248c5392b4d40e2c517e3cfd922",
-                "reference": "e53bc4a5295d7248c5392b4d40e2c517e3cfd922",
-                "shasum": ""
-            },
-            "require": {
-                "imagine/imagine": "v0.4.1",
-                "symfony/framework-bundle": "2.*"
-            },
-            "require-dev": {
-                "makasim/temp-file": "dev-master"
-            },
-            "suggest": {
-                "symfony/twig-bundle": "2.*"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Avalanche\\Bundle\\ImagineBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bulat Shakirzyanov",
-                    "email": "mallluhuct@gmail.com",
-                    "homepage": "http://avalanche123.com"
-                }
-            ],
-            "description": "Image manipulation using Imagine and Twig Filters.",
-            "homepage": "https://github.com/avalanche123/AvalancheImagineBundle",
-            "keywords": [
-                "image manipulation",
-                "imagine"
-            ],
-            "time": "2012-12-13 18:34:10"
         },
         {
             "name": "dizda/cloud-backup-bundle",
@@ -978,12 +928,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "b962049fefa47da897bcc75569eec02965332aee"
+                "reference": "fca67c4a5a6f4334e8b6a57410f7b386b012ab01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/b962049fefa47da897bcc75569eec02965332aee",
-                "reference": "b962049fefa47da897bcc75569eec02965332aee",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/fca67c4a5a6f4334e8b6a57410f7b386b012ab01",
+                "reference": "fca67c4a5a6f4334e8b6a57410f7b386b012ab01",
                 "shasum": ""
             },
             "require": {
@@ -1028,7 +978,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-03-05 21:12:06"
+            "time": "2015-03-06 20:53:13"
         },
         {
             "name": "doctrine/orm",
@@ -2431,16 +2381,16 @@
         },
         {
             "name": "imagine/imagine",
-            "version": "v0.4.1",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/avalanche123/Imagine.git",
-                "reference": "9d644b6940a7b30a4c9de1873b625e6a686533be"
+                "reference": "83ca8babede0e54f935ec09d55a726bf4b0a3f7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/9d644b6940a7b30a4c9de1873b625e6a686533be",
-                "reference": "9d644b6940a7b30a4c9de1873b625e6a686533be",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/83ca8babede0e54f935ec09d55a726bf4b0a3f7c",
+                "reference": "83ca8babede0e54f935ec09d55a726bf4b0a3f7c",
                 "shasum": ""
             },
             "require": {
@@ -2449,7 +2399,17 @@
             "require-dev": {
                 "sami/sami": "dev-master"
             },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Imagine": "lib/"
@@ -2474,7 +2434,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2012-12-13 18:31:18"
+            "time": "2014-11-11 11:36:02"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -3641,6 +3601,80 @@
                 "Symfony2"
             ],
             "time": "2015-02-23 13:20:49"
+        },
+        {
+            "name": "liip/imagine-bundle",
+            "version": "1.2.3",
+            "target-dir": "Liip/ImagineBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liip/LiipImagineBundle.git",
+                "reference": "a97b46f5bbbf8e2a2646871f4bea1a11b189cbb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/a97b46f5bbbf8e2a2646871f4bea1a11b189cbb8",
+                "reference": "a97b46f5bbbf8e2a2646871f4bea1a11b189cbb8",
+                "shasum": ""
+            },
+            "require": {
+                "imagine/imagine": "~0.5,<0.7",
+                "php": ">=5.3.2",
+                "symfony/filesystem": "~2.3",
+                "symfony/finder": "~2.3",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/options-resolver": "~2.3"
+            },
+            "require-dev": {
+                "amazonwebservices/aws-sdk-for-php": "~1.0",
+                "aws/aws-sdk-php": "~2.4",
+                "doctrine/cache": "~1.1",
+                "doctrine/mongodb-odm": "1.0.*",
+                "doctrine/orm": "~2.3",
+                "ext-gd": "*",
+                "phpunit/phpunit": "~4.3",
+                "psr/log": "~1.0",
+                "symfony/browser-kit": "~2.3",
+                "symfony/console": "~2.3",
+                "symfony/form": "~2.3",
+                "symfony/yaml": "~2.3",
+                "twig/twig": "~1.0"
+            },
+            "suggest": {
+                "amazonwebservices/aws-sdk-for-php": "Add it if you'd like to use aws v1 resolver",
+                "aws/aws-sdk-php": "Add it if you'd like to use aws v2 resolver",
+                "monolog/monolog": "If you'd want to write logs",
+                "twig/twig": "If you'd want to use some handy twig filters"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-0.x": "0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Liip\\ImagineBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Liip and other contributors",
+                    "homepage": "https://github.com/liip/LiipImagineBundle/contributors"
+                }
+            ],
+            "description": "This Bundle assists in imagine manipulation using the imagine library",
+            "homepage": "http://liip.ch",
+            "keywords": [
+                "image",
+                "imagine"
+            ],
+            "time": "2015-02-22 19:35:59"
         },
         {
             "name": "liip/theme-bundle",
@@ -5130,12 +5164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0"
+                "reference": "07c4b393f2d50dbc9a59117219e83196ad1a4fc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/422b0add2110f0cf9bc7a873a386ea053f4a89f0",
-                "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/07c4b393f2d50dbc9a59117219e83196ad1a4fc8",
+                "reference": "07c4b393f2d50dbc9a59117219e83196ad1a4fc8",
                 "shasum": ""
             },
             "require": {
@@ -5187,7 +5221,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2015-01-27 12:45:16"
+            "time": "2015-03-06 18:51:13"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -5906,6 +5940,108 @@
                 "zf2"
             ],
             "time": "2015-01-14 16:44:17"
+        },
+        {
+            "name": "zenstruck/imagine-extra-bundle",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckImagineExtraBundle.git",
+                "reference": "ed7dc8ab7135ae9dae654bb3a51e3b782c0ab568"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckImagineExtraBundle/zipball/ed7dc8ab7135ae9dae654bb3a51e3b782c0ab568",
+                "reference": "ed7dc8ab7135ae9dae654bb3a51e3b782c0ab568",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/dependency-injection": "~2.1",
+                "symfony/http-kernel": "~2.1",
+                "zenstruck/imagine-filters": "~1.2"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "~0.4"
+            },
+            "suggest": {
+                "avalanche123/imagine-bundle": "For integration with AvalancheImagineBundle",
+                "liip/imagine-bundle": "For integration with LiipImagineBundle"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zenstruck\\Bundle\\ImagineExtraBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Integrate imagine-filters library into Symfony2",
+            "homepage": "http://zenstruck.com/project/ZenstruckImagineExtraBundle",
+            "keywords": [
+                "imagine"
+            ],
+            "time": "2014-12-05 18:38:51"
+        },
+        {
+            "name": "zenstruck/imagine-filters",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/imagine-filters.git",
+                "reference": "a11886c8d72234f2a8e9dddb74322dada4e2ae6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/imagine-filters/zipball/a11886c8d72234f2a8e9dddb74322dada4e2ae6c",
+                "reference": "a11886c8d72234f2a8e9dddb74322dada4e2ae6c",
+                "shasum": ""
+            },
+            "require": {
+                "imagine/imagine": "~0.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zenstruck\\Imagine\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Extra filters for Imagine",
+            "homepage": "http://zenstruck.com/project/imagine-filters",
+            "keywords": [
+                "imagine"
+            ],
+            "time": "2014-12-05 16:00:23"
         }
     ],
     "packages-dev": [],

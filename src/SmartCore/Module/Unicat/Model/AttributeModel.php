@@ -205,6 +205,18 @@ class AttributeModel
     }
 
     /**
+     * @return array
+     */
+    public function getParam($name)
+    {
+        if (!empty($this->params) and isset($this->params[$name])) {
+            return $this->params[$name];
+        } else {
+            return [];
+        }
+    }
+
+    /**
      * @param array $params_yaml
      * @return $this
      */

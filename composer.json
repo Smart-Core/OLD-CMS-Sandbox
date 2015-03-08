@@ -26,7 +26,6 @@
         "doctrine/migrations": "1.0.*@dev",
 
         "asm89/twig-cache-extension": "*",
-        "avalanche123/imagine-bundle": "*",
         "dizda/cloud-backup-bundle": "dev-master",
         "dropbox-php/dropbox-php": "*",
         "egeloen/ordered-form": "~1.0",
@@ -51,6 +50,7 @@
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "2.0.*@dev",
         "knplabs/rad-bundle": "*",
+        "liip/imagine-bundle": "*",
         "liip/functional-test-bundle": "dev-master",
         "liip/theme-bundle": "dev-master",
         "misd/guzzle-bundle": "~1.0",
@@ -69,7 +69,8 @@
         "whiteoctober/breadcrumbs-bundle": "dev-master",
         "white-october/pagerfanta-bundle": "dev-master",
         "zendframework/zend-servicemanager": "~2",
-        "zendframework/zend-tag": "~2"
+        "zendframework/zend-tag": "~2",
+        "zenstruck/imagine-extra-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [

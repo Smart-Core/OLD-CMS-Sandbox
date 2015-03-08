@@ -2,7 +2,7 @@
 {% block smart_module_simple_news_image_widget %}
     {% spaceless %}
     {% if data is not empty %}
-        {{ smart_media_img(data, '100-100') }} {# @todo Сделать глобальный фильтр для предсросмотра картинок  #}
+        {{ smart_media_img(data, '100_100') }} {# @todo Сделать глобальный фильтр для предпросросмотра картинок  #}
         <input type="checkbox" name="_delete_[{{ name }}]" id="{{ id ~ 'remove'}}" /><label for="{{ id ~ 'remove'}}" style="display: inline;"> Удалить</label>
         <br />
     {% endif %}

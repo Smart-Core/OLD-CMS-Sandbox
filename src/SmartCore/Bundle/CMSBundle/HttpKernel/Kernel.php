@@ -119,7 +119,6 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \Symfony\Bundle\AsseticBundle\AsseticBundle();
         $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
 
-        $bundles[] = new \Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle();
         $bundles[] = new \Dizda\CloudBackupBundle\DizdaCloudBackupBundle();
         $bundles[] = new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle();
         $bundles[] = new \FM\ElfinderBundle\FMElfinderBundle();
@@ -133,6 +132,7 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \Knp\Bundle\MenuBundle\KnpMenuBundle();
         $bundles[] = new \Knp\RadBundle\KnpRadBundle();
         $bundles[] = new \Liip\ThemeBundle\LiipThemeBundle();
+        $bundles[] = new \Liip\ImagineBundle\LiipImagineBundle();
         $bundles[] = new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle();
         $bundles[] = new \RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
         $bundles[] = new \RickySu\TagcacheBundle\TagcacheBundle();
@@ -153,6 +153,7 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(); // "stfalcon/tinymce-bundle": "v0.2.1",
         $bundles[] = new \WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle();
         $bundles[] = new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle();
+        $bundles[] = new \Zenstruck\Bundle\ImagineExtraBundle\ZenstruckImagineExtraBundle();
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

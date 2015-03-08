@@ -605,7 +605,12 @@ class UnicatConfigurationManager
     {
         $filter = ($groupId) ? ['group' => $groupId] : [];
 
-        return $this->em->getRepository($this->configuration->getAttributeClass())->findBy($filter, ['position' => 'ASC']);
+        $attrs = [];
+        foreach ($this->em->getRepository($this->configuration->getAttributeClass())->findBy($filter, ['position' => 'ASC']) as $attr) {
+            $attrs[$attr->getName()] = $attr;
+        }
+
+        return $attrs;
     }
 
     /**

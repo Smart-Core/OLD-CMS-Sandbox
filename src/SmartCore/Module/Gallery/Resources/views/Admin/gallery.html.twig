@@ -29,7 +29,7 @@
         {% for album in albums %}
             <tr>
                 <td>{{ album.id }}</td>
-                <td><a href="{{ path('smart_module.gallery.admin_album', {'id': album.id, 'gallery_id': album.gallery.id }) }}">{{ smart_media_img(album.coverImageId, '200-200') }}</a></td>
+                <td><a href="{{ path('smart_module.gallery.admin_album', {'id': album.id, 'gallery_id': album.gallery.id }) }}">{{ smart_media_img(album.coverImageId, '200_200') }}</a></td>
                 <td>
                     <a href="{{ path('smart_module.gallery.admin_album_edit', {'id': album.id, 'gallery_id': album.gallery.id }) }}" style="float: right;">
                         <i class="icon-edit" title="{{ 'Edit'|trans }}"></i>

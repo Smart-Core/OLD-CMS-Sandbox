@@ -12,6 +12,7 @@ class CollectionFormType extends AbstractType
     {
         $builder
             ->add('title', null, ['attr' => ['autofocus' => 'autofocus']])
+            ->add('default_filter')
             ->add('relative_path')
             ->add('file_relative_path_pattern')
             ->add('filename_pattern')
