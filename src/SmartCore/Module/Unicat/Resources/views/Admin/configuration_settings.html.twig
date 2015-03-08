@@ -1,0 +1,11 @@
+{% extends '@UnicatModule/Admin/_layout.html.twig' %}
+
+{% block title %}{{ 'Settings'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'Configuration settings'|trans }}: {{ configuration.name }}</h2>
+
+    {{ form(form, {'attr':{'class':'well form-horizontal'}}) }}
+
+{% endblock content %}

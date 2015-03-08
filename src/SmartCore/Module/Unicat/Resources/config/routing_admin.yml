@@ -8,6 +8,11 @@ unicat_admin.configuration:
     defaults:
         _controller: UnicatModule:AdminUnicat:configuration
 
+unicat_admin.configuration.settings:
+    path: /{configuration}/settings/
+    defaults:
+        _controller: UnicatModule:AdminUnicat:configurationSettings
+
 # Structure
 unicat_admin.structures_index:
     path: /{configuration}/structure/

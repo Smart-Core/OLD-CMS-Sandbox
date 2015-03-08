@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 08 2015 г., 14:49
+-- Время создания: Мар 08 2015 г., 15:25
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -650,7 +650,7 @@ CREATE TABLE IF NOT EXISTS `media_collections` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_C40927D314E68FF3` (`default_storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `media_collections`
@@ -658,7 +658,8 @@ CREATE TABLE IF NOT EXISTS `media_collections` (
 
 INSERT INTO `media_collections` (`id`, `default_storage_id`, `title`, `default_filter`, `params`, `relative_path`, `filename_pattern`, `file_relative_path_pattern`, `created_at`) VALUES
 (1, 1, 'Каталог товаров', NULL, 'N;', '/catalog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-02-14 13:43:18'),
-(2, 1, 'Фотогалерея', NULL, 'N;', '/gallery', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-07-15 04:46:03');
+(2, 1, 'Фотогалерея', NULL, 'N;', '/gallery', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2014-07-15 04:46:03'),
+(3, 1, 'Блог', NULL, 'N;', '/blog', '{hour}_{minutes}_{rand(10)}', '/{year}/{month}/{day}', '2015-03-08 15:07:15');
 
 -- --------------------------------------------------------
 
@@ -1741,7 +1742,7 @@ CREATE TABLE IF NOT EXISTS `unicat__configurations` (
 
 INSERT INTO `unicat__configurations` (`id`, `media_collection_id`, `default_structure_id`, `entities_namespace`, `is_inheritance`, `created_at`, `name`, `title`, `user_id`) VALUES
 (1, 1, 1, 'SandboxSiteBundle\\Entity\\Catalog\\', 1, '2015-02-28 03:01:59', 'catalog', 'Каталог товаров', 1),
-(2, NULL, NULL, 'SandboxSiteBundle\\Entity\\Blog\\', 1, '2015-03-02 05:23:03', 'blog', 'Блог', 1);
+(2, 3, 3, 'SandboxSiteBundle\\Entity\\Blog\\', 1, '2015-03-02 05:23:03', 'blog', 'Блог', 1);
 
 -- --------------------------------------------------------
 

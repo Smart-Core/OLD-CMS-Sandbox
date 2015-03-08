@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Knp\RadBundle\Controller\Controller;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Form\Type\ConfigurationFormType;
+use SmartCore\Module\Unicat\Form\Type\ConfigurationSettingsFormType;
 use SmartCore\Module\Unicat\Generator\DoctrineEntityGenerator;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -98,6 +99,39 @@ class AdminUnicatController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $configuration
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function configurationSettingsAction(Request $request, $configuration)
+    {
+        $configuration = $this->get('unicat')->getConfiguration($configuration);
+
+        if (empty($configuration)) {
+            return $this->render('@CMS/Admin/not_found.html.twig');
+        }
+
+        $form = $this->createForm(new ConfigurationSettingsFormType(), $configuration);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $this->persist($configuration, true);
+
+                $this->addFlash('success', 'Настройки конфигурации обновлены.');
+
+                return $this->redirect($this->generateUrl('unicat_admin.configuration.settings', ['configuration' => $configuration->getName()]));
+            }
+        }
+
+        return $this->render('UnicatModule:Admin:configuration_settings.html.twig', [
+            'configuration' => $configuration,
+            'form'          => $form->createView(),
+        ]);
+    }
+    
     /**
      * @param Request $request
      * @param string $configuration
