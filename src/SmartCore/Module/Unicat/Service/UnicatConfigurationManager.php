@@ -95,17 +95,44 @@ class UnicatConfigurationManager
     }
 
     /**
-     * @param CategoryModel $category
-     * @param array $order
-     * @return ItemModel[]|null
-     *
-     * @todo сделать настройку сортировки
+     * @param array|null $orderBy
+     * @return ItemModel|null
      */
-    public function findItemsInCategory(CategoryModel $category, array $order = ['position' => 'ASC'])
+    public function getFindAllItemsQuery($orderBy = null)
     {
         $itemEntity = $this->configuration->getItemClass();
 
-        $query = $this->em->createQuery("
+        return $this->em->createQuery("
+           SELECT i
+           FROM $itemEntity AS i
+           WHERE i.is_enabled = 1
+           ORDER BY i.position ASC
+        ");
+    }
+
+    /**
+     * @param CategoryModel $category
+     * @param array $order
+     * @return ItemModel[]|null
+     */
+    public function findItemsInCategory(CategoryModel $category, array $order = ['position' => 'ASC'])
+    {
+        return $this->getFindItemsInCategoryQuery($category, $order)->getResult();
+    }
+
+    /**
+     * @param CategoryModel $category
+     * @param array $order
+     * @return \Doctrine\ORM\Query
+     *
+     * @todo сделать настройку сортировки
+     * @todo вынести в Repository
+     */
+    public function getFindItemsInCategoryQuery(CategoryModel $category, array $order = ['position' => 'ASC'])
+    {
+        $itemEntity = $this->configuration->getItemClass();
+
+        return $this->em->createQuery("
            SELECT i
            FROM $itemEntity AS i
            JOIN i.categoriesSingle AS cs
@@ -113,8 +140,6 @@ class UnicatConfigurationManager
            AND i.is_enabled = 1
            ORDER BY i.position ASC
         ")->setParameter('category', $category->getId());
-
-        return $query->getResult();
     }
 
     /**
@@ -130,10 +155,11 @@ class UnicatConfigurationManager
 
     /**
      * @param string $slug
+     * @param UnicatStructure $structure
      * @return CategoryModel[]
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function findCategoriesBySlug($slug = null, $structure = null)
+    public function findCategoriesBySlug($slug = null, UnicatStructure $structure)
     {
         $categories = [];
         $parent = null;

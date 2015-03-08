@@ -19,6 +19,11 @@ unicat.item:
     requirements:
         itemSlug: '.+'
 
+unicat.category_root:
+    path: /
+    defaults:
+        _controller: UnicatModule:Unicat:category
+
 unicat.category:
     path: /{slug}
     defaults:

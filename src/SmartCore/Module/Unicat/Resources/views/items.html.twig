@@ -10,8 +10,8 @@
     <hr />
 {% endif %}
 
-{% if items|length %}
-{% for item in items %}
+{% if pagerfanta|length %}
+{% for item in pagerfanta %}
 
     {% set is_found_default_structure = false %}
     {% for category in item.categories %}
@@ -38,4 +38,22 @@
 
     <hr />
 {% endfor %}
+{% endif %}
+
+
+{% if slug %}
+    {% set pagerfantaRouteName = 'unicat.category' %}
+{% else %}
+    {% set pagerfantaRouteName = 'unicat.category_root' %}
+{% endif %}
+{% if pagerfanta.haveToPaginate %}
+    {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
+        'routeName': pagerfantaRouteName,
+        'routeParams': {
+            'slug': slug,
+            '_basePath': app.request.attributes.get('_route_params')['_basePath']
+        },
+        'css_container_class': 'pagination pagination-centered',
+    })
+    }}
 {% endif %}

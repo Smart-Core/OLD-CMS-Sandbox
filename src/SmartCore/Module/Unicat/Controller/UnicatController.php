@@ -3,9 +3,13 @@
 namespace SmartCore\Module\Unicat\Controller;
 
 use Knp\RadBundle\Controller\Controller;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Exception\NotValidCurrentPageException;
+use Pagerfanta\Pagerfanta;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Service\UnicatConfigurationManager;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UnicatController extends Controller
@@ -17,19 +21,25 @@ class UnicatController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->categoryAction();
+        return $this->categoryAction($request);
     }
 
     /**
-     * @param string $slug
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param null $slug
+     * @param int|null $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function categoryAction($slug = null)
+    public function categoryAction(Request $request, $slug = null, $page = null)
     {
         if (null === $this->configuration_id) {
             return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
+        }
+
+        if (null === $page) {
+            $page = $request->query->get('page', 1);
         }
 
         $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
@@ -59,19 +69,32 @@ class UnicatController extends Controller
 
         $this->buuldFrontControlForCategory($ucm, $lastCategory);
 
-        $items = null;
+        $pagerfanta = null;
 
         if ($slug) {
-            $items = $lastCategory ? $ucm->findItemsInCategory($lastCategory) : null;
+            if ($lastCategory) {
+                $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($ucm->getFindItemsInCategoryQuery($lastCategory)));
+            }
         } elseif($ucm->getConfiguration()->isInheritance()) {
-            $items = $ucm->findAllItems();
+            $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($ucm->getFindAllItemsQuery()));
+        }
+
+        if (!empty($pagerfanta)) {
+            $pagerfanta->setMaxPerPage(1);
+
+            try {
+                $pagerfanta->setCurrentPage($page);
+            } catch (NotValidCurrentPageException $e) {
+                return $this->createNotFoundException('Такой страницы не найдено');
+            }
         }
 
         return $this->render('UnicatModule::items.html.twig', [
             'configuration'     => $ucm->getConfiguration(),
             'lastCategory'      => $lastCategory,
             'childenCategories' => $childenCategories,
-            'items'             => $items,
+            'pagerfanta'        => $pagerfanta,
+            'slug'              => $slug,
         ]);
     }
 
