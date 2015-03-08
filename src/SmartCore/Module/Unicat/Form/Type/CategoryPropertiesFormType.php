@@ -34,6 +34,6 @@ class CategoryPropertiesFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_category_properties';
+        return 'unicat_structure_properties';
     }
 }

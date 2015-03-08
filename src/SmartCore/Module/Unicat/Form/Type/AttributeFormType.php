@@ -62,6 +62,6 @@ class AttributeFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_configuration_attribute';
+        return 'unicat_configuration_attribute';
     }
 }

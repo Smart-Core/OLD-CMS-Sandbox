@@ -38,7 +38,7 @@ abstract class CategoryModel
     /**
      * Включает записи вложенных категорий.
      *
-     * @ORM\Column(type="boolean", options={"default:1"})
+     * @ORM\Column(type="boolean", options={"default":1})
      */
     protected $is_inheritance;
 

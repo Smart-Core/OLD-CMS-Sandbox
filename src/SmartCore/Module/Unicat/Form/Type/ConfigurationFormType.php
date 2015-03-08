@@ -25,6 +25,6 @@ class ConfigurationFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_configuration';
+        return 'unicat_configuration';
     }
 }

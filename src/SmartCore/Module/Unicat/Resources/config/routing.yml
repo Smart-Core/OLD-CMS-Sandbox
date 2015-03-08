@@ -4,17 +4,25 @@ unicat:
     defaults:
         _controller: UnicatModule:Unicat:index
 
-unicat.item:
-    path: /{slug}/{itemSlug}.html
+unicat.item_in_structure:
+    path: /{structureSlug}/{itemSlug}.html
     defaults:
         _controller: UnicatModule:Unicat:item
     requirements:
         itemSlug: '.+'
-        slug: '.+'
+        structureSlug: '.+'
+
+unicat.item:
+    path: /{itemSlug}.html
+    defaults:
+        _controller: UnicatModule:Unicat:item
+    requirements:
+        itemSlug: '.+'
 
 unicat.category:
     path: /{slug}
     defaults:
         _controller: UnicatModule:Unicat:category
+        slug: null
     requirements:
         slug: '.+'

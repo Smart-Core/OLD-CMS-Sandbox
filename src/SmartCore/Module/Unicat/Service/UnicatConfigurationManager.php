@@ -542,22 +542,23 @@ class UnicatConfigurationManager
         // @todo убрать выборку структур в StructureRepository (Entity)
         $list_string = '';
         foreach ($structures as $node_id) {
-            $list_string .= $node_id.',';
+            if (!empty($node_id)) {
+                $list_string .= $node_id.',';
+            }
         }
 
         $list_string = substr($list_string, 0, strlen($list_string)-1);
 
-        if (false == $list_string) {
-            return [];
+        //$structuresColection = new ArrayCollection(); // @todo наследуемые категории.
+        $structuresSingleColection = new ArrayCollection();
+
+        if (!empty($list_string)) {
+            $structuresSingleColection = $this->em->createQuery("
+                SELECT c
+                FROM {$this->configuration->getStructureClass()} c
+                WHERE c.id IN({$list_string})
+            ")->getResult();
         }
-
-        $structuresSingleColection = $this->em->createQuery("
-            SELECT c
-            FROM {$this->configuration->getCategoryClass()} c
-            WHERE c.id IN({$list_string})
-        ")->getResult();
-
-        //$structuresCollection = new ArrayCollection(); // @todo наследуемые категории.
 
         $item->setCategories($structuresSingleColection)
             ->setCategoriesSingle($structuresSingleColection);

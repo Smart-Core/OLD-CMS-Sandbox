@@ -46,14 +46,14 @@ class UnicatStructure
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", options={"default:0"})
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_default_inheritance;
 
     /**
      * Древовидная структура.
      *
-     * @ORM\Column(type="boolean", options={"default:1"})
+     * @ORM\Column(type="boolean", options={"default":1})
      */
     protected $is_tree;
 

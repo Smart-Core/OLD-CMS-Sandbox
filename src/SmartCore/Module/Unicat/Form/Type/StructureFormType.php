@@ -35,6 +35,6 @@ class StructureFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_structure';
+        return 'unicat_structure';
     }
 }

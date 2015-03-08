@@ -7,7 +7,7 @@ use SmartCore\Module\Unicat\Model\AttributeModel;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="unicat_blog_catalog_attributes",
+ * @ORM\Table(name="unicat_blog_attributes",
  *      indexes={
  *          @ORM\Index(columns={"is_enabled"}),
  *          @ORM\Index(columns={"show_in_admin"}),

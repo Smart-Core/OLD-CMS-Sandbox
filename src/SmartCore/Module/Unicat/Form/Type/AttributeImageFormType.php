@@ -21,6 +21,6 @@ class AttributeImageFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_attribute_image';
+        return 'unicat_attribute_image';
     }
 }
