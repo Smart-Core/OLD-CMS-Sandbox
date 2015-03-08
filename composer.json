@@ -26,6 +26,8 @@
         "doctrine/migrations": "1.0.*@dev",
 
         "asm89/twig-cache-extension": "*",
+        "amazonwebservices/aws-sdk-for-php": "*",
+        "aws/aws-sdk-php": "*",
         "dizda/cloud-backup-bundle": "dev-master",
         "dropbox-php/dropbox-php": "*",
         "egeloen/ordered-form": "~1.0",
