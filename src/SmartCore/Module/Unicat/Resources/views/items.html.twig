@@ -10,9 +10,20 @@
     <hr />
 {% endif %}
 
+{{ dump(category) }}
+
 {% if items|length %}
 {% for item in items %}
-    <h1><a href="{{ path('unicat.item', {'slug': category.slugFull, 'itemSlug': item.slug}) }}">{{ item.attribute('title') }}</a></h1>
+
+    {#{% if  %}#}
+
+    {% for item_category in item.categories %}
+        {% if configuration.defualtStructure == item_category.structure %}
+            <h1><a href="{{ path('unicat.item_in_structure', {'structureSlug': item_category.slugFull, 'itemSlug': item.slug}) }}">{{ item.attribute('title') }}</a></h1>
+        {% else %}
+            <h1><a href="{{ path('unicat.item', {'itemSlug': item.slug}) }}">{{ item.attribute('title') }}</a></h1>
+        {% endif %}
+    {% endfor %}
 
     {% if item.attribute('description') %} <p>Описание: {{ item.attribute('description') }}</p> {% endif %}
 

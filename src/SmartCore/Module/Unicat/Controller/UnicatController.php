@@ -5,6 +5,7 @@ namespace SmartCore\Module\Unicat\Controller;
 use Knp\RadBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Unicat\Model\CategoryModel;
+use SmartCore\Module\Unicat\Service\UnicatConfigurationManager;
 use Symfony\Component\HttpFoundation\Response;
 
 class UnicatController extends Controller
@@ -31,9 +32,9 @@ class UnicatController extends Controller
             return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
-        $urm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
+        $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
-        $requestedCategories = $urm->findCategoriesBySlug($slug);
+        $requestedCategories = $ucm->findCategoriesBySlug($slug);
 
         foreach ($requestedCategories as $category) {
             $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
@@ -43,23 +44,48 @@ class UnicatController extends Controller
 
         if ($lastCategory instanceof CategoryModel) {
             $this->get('html')->setMetas($lastCategory->getMeta());
-            $childenCategories = $urm->getCategoryRepository()->findBy([
+            $childenCategories = $ucm->getCategoryRepository()->findBy([
                 'is_enabled' => true,
                 'parent'     => $lastCategory,
-                'structure'  => $urm->getDefaultStructure(),
+                'structure'  => $ucm->getDefaultStructure(),
             ], ['position' => 'ASC']);
         } else {
-            $childenCategories = $urm->getCategoryRepository()->findBy([
+            $childenCategories = $ucm->getCategoryRepository()->findBy([
                 'is_enabled' => true,
                 'parent'     => null,
-                'structure'  => $urm->getDefaultStructure(),
+                'structure'  => $ucm->getDefaultStructure(),
             ], ['position' => 'ASC']);
         }
 
+        $this->buuldFrontControlForCategory($ucm, $lastCategory);
+
+        $items = null;
+
+        if ($slug) {
+            $items = $lastCategory ? $ucm->findItemsInCategory($lastCategory) : null;
+        } elseif($ucm->getConfiguration()->isInheritance()) {
+            $items = $ucm->findAllItems();
+        }
+
+        return $this->render('UnicatModule::items.html.twig', [
+            'configuration'     => $ucm->getConfiguration(),
+            'category'          => $lastCategory,
+            'childenCategories' => $childenCategories,
+            'items'             => $items,
+        ]);
+    }
+
+    /**
+     * @param UnicatConfigurationManager $ucm
+     * @param CategoryModel|false $lastCategory
+     * @throws \Exception
+     */
+    protected function buuldFrontControlForCategory(UnicatConfigurationManager $ucm, $lastCategory = false)
+    {
         $this->node->addFrontControl('create_item')
             ->setTitle('Добавить запись')
             ->setUri($this->generateUrl('unicat_admin.item_create_in_category', [
-                'configuration'       => $urm->getConfiguration()->getName(),
+                'configuration'       => $ucm->getConfiguration()->getName(),
                 'default_category_id' => empty($lastCategory) ? 0 : $lastCategory->getId(),
             ]));
 
@@ -68,7 +94,7 @@ class UnicatController extends Controller
                 ->setIsDefault(false)
                 ->setTitle('Создать категорию')
                 ->setUri($this->generateUrl('unicat_admin.structure_with_parent_id', [
-                    'configuration' => $urm->getConfiguration()->getName(),
+                    'configuration' => $ucm->getConfiguration()->getName(),
                     'parent_id'     => empty($lastCategory) ? 0 : $lastCategory->getId(),
                     'id'            => $lastCategory->getStructure()->getId(),
                 ]));
@@ -77,7 +103,7 @@ class UnicatController extends Controller
                 ->setIsDefault(false)
                 ->setTitle('Редактировать категорию')
                 ->setUri($this->generateUrl('unicat_admin.category', [
-                    'configuration' => $urm->getConfiguration()->getName(),
+                    'configuration' => $ucm->getConfiguration()->getName(),
                     'id'            => $lastCategory->getId(),
                     'structure_id'  => $lastCategory->getStructure()->getId(),
                 ]));
@@ -86,29 +112,23 @@ class UnicatController extends Controller
         $this->node->addFrontControl('manage_configuration')
             ->setIsDefault(false)
             ->setTitle('Управление каталогом')
-            ->setUri($this->generateUrl('unicat_admin.configuration', ['configuration' => $urm->getConfiguration()->getName()]));
-
-        return $this->render('UnicatModule::items.html.twig', [
-            'category'          => $lastCategory,
-            'childenCategories' => $childenCategories,
-            'items'             => $lastCategory ? $urm->findItemsInCategory($lastCategory) : null,
-        ]);
+            ->setUri($this->generateUrl('unicat_admin.configuration', ['configuration' => $ucm->getConfiguration()->getName()]));
     }
-
+    
     /**
-     * @param string $slug
+     * @param string|null $structureSlug
      * @param string $itemSlug
      * @return Response
      */
-    public function itemAction($slug, $itemSlug)
+    public function itemAction($structureSlug, $itemSlug)
     {
         if (null === $this->configuration_id) {
             return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
         }
 
-        $urm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
+        $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
-        $requestedCategories = $urm->findCategoriesBySlug($slug);
+        $requestedCategories = $ucm->findCategoriesBySlug($structureSlug);
 
         foreach ($requestedCategories as $category) {
             $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
@@ -117,20 +137,20 @@ class UnicatController extends Controller
         $lastCategory = end($requestedCategories);
 
         if ($lastCategory instanceof CategoryModel) {
-            $childenCategories = $urm->getCategoryRepository()->findBy([
+            $childenCategories = $ucm->getCategoryRepository()->findBy([
                 'is_enabled' => true,
                 'parent'     => $lastCategory,
-                'structure'  => $urm->getDefaultStructure(),
+                'structure'  => $ucm->getDefaultStructure(),
             ]);
         } else {
-            $childenCategories = $urm->getCategoryRepository()->findBy([
+            $childenCategories = $ucm->getCategoryRepository()->findBy([
                 'is_enabled' => true,
                 'parent'     => null,
-                'structure'  => $urm->getDefaultStructure(),
+                'structure'  => $ucm->getDefaultStructure(),
             ]);
         }
 
-        $item = $urm->findItem($itemSlug);
+        $item = $ucm->findItem($itemSlug);
 
         if (empty($item)) {
             throw $this->createNotFoundException();
@@ -145,7 +165,7 @@ class UnicatController extends Controller
 
         $this->node->addFrontControl('edit')
             ->setTitle('Редактировать')
-            ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $urm->getConfiguration()->getName(), 'id' => $item->getId() ]));
+            ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $ucm->getConfiguration()->getName(), 'id' => $item->getId() ]));
 
         return $this->render('UnicatModule::item.html.twig', [
             'category'          => $lastCategory,

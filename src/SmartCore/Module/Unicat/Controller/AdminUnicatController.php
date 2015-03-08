@@ -140,34 +140,34 @@ class AdminUnicatController extends Controller
      */
     public function itemCreateAction(Request $request, $configuration, $default_category_id = null)
     {
-        $urm  = $this->get('unicat')->getConfigurationManager($configuration);
+        $ucm  = $this->get('unicat')->getConfigurationManager($configuration);
 
-        $newItem = $urm->createItemEntity();
+        $newItem = $ucm->createItemEntity();
         $newItem->setUserId($this->getUser());
 
         if ($default_category_id) {
-            $newItem->setCategories(new ArrayCollection([$urm->getCategoryRepository()->find($default_category_id)]));
+            $newItem->setCategories(new ArrayCollection([$ucm->getCategoryRepository()->find($default_category_id)]));
         }
 
-        $form = $urm->getItemCreateForm($newItem);
+        $form = $ucm->getItemCreateForm($newItem);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 if ($form->get('cancel')->isClicked()) {
-                    return $this->redirectToConfigurationAdmin($urm->getConfiguration());
+                    return $this->redirectToConfigurationAdmin($ucm->getConfiguration());
                 }
 
-                $urm->createItem($form, $request);
+                $ucm->createItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись создана');
 
-                return $this->redirectToConfigurationAdmin($urm->getConfiguration());
+                return $this->redirectToConfigurationAdmin($ucm->getConfiguration());
             }
         }
 
         return $this->render('UnicatModule:Admin:item_create.html.twig', [
             'form'       => $form->createView(),
-            'configuration' => $urm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
+            'configuration' => $ucm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
 
@@ -179,33 +179,33 @@ class AdminUnicatController extends Controller
      */
     public function itemEditAction(Request $request, $configuration, $id)
     {
-        $urm  = $this->get('unicat')->getConfigurationManager($configuration);
-        $form = $urm->getItemEditForm($urm->findItem($id));
+        $ucm  = $this->get('unicat')->getConfigurationManager($configuration);
+        $form = $ucm->getItemEditForm($ucm->findItem($id));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->get('cancel')->isClicked()) {
-                return $this->redirectToConfigurationAdmin($urm->getConfiguration());
+                return $this->redirectToConfigurationAdmin($ucm->getConfiguration());
             }
 
             if ($form->get('delete')->isClicked()) {
-                $urm->removeItem($form->getData());
+                $ucm->removeItem($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Запись удалена');
 
-                return $this->redirectToConfigurationAdmin($urm->getConfiguration());
+                return $this->redirectToConfigurationAdmin($ucm->getConfiguration());
             }
 
             if ($form->isValid() and $form->get('update')->isClicked() and $form->isValid()) {
-                $urm->updateItem($form, $request);
+                $ucm->updateItem($form, $request);
                 $this->get('session')->getFlashBag()->add('success', 'Запись обновлена');
 
-                return $this->redirectToConfigurationAdmin($urm->getConfiguration());
+                return $this->redirectToConfigurationAdmin($ucm->getConfiguration());
             }
         }
 
         return $this->render('UnicatModule:Admin:item_edit.html.twig', [
             'form'       => $form->createView(),
-            'configuration' => $urm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
+            'configuration' => $ucm->getConfiguration(), // @todo убрать, это пока для наследуемого шаблона.
         ]);
     }
 

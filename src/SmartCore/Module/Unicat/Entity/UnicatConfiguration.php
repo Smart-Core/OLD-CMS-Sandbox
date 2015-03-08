@@ -44,7 +44,7 @@ class UnicatConfiguration
      *
      * @var bool
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":1})
      */
     protected $is_inheritance;
 
