@@ -69,7 +69,7 @@ class UnicatController extends Controller
 
         return $this->render('UnicatModule::items.html.twig', [
             'configuration'     => $ucm->getConfiguration(),
-            'category'          => $lastCategory,
+            'lastCategory'      => $lastCategory,
             'childenCategories' => $childenCategories,
             'items'             => $items,
         ]);

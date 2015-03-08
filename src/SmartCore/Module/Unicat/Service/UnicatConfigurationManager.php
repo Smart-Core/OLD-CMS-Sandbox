@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Unicat\Service;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use SmartCore\Bundle\MediaBundle\Service\CollectionService;
@@ -555,7 +556,7 @@ class UnicatConfigurationManager
         if (!empty($list_string)) {
             $structuresSingleColection = $this->em->createQuery("
                 SELECT c
-                FROM {$this->configuration->getStructureClass()} c
+                FROM {$this->configuration->getCategoryClass()} c
                 WHERE c.id IN({$list_string})
             ")->getResult();
         }

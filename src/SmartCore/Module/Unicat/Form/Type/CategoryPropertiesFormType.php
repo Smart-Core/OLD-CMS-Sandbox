@@ -18,7 +18,7 @@ class CategoryPropertiesFormType extends AbstractType
     {
         foreach ($this->properties as $name => $options) {
             if ('image' === $options) {
-                $type = new PropertyImageFormType();
+                $type = new AttributeImageFormType();
             } elseif (isset($options['type'])) {
                 $type = $options['type'];
             } else {
@@ -34,6 +34,6 @@ class CategoryPropertiesFormType extends AbstractType
 
     public function getName()
     {
-        return 'unicat_structure_properties';
+        return 'unicat_category_properties';
     }
 }
