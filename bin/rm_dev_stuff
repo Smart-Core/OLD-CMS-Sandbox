@@ -8,7 +8,9 @@ find . -depth -type d -name "Tests" -exec rm -vrf {} \;
 find . -depth -type d -name "test*" -exec rm -vrf {} \;
 find . -depth -type d -name "doc" -exec rm -vrf {} \;
 find . -depth -type d -name "docs" -exec rm -vrf {} \;
+find . -depth -type d -name "_docs" -exec rm -vrf {} \;
 find . -depth -type d -name "examples" -exec rm -vrf {} \;
+find . -depth -type d -name "_samples" -exec rm -vrf {} \;
 find . -depth -type d -name "notes" -exec rm -vrf {} \;
 
 find . -depth -type f -name ".editorconfig" -exec rm -vrf {} \;
