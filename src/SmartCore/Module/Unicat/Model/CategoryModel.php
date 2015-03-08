@@ -129,7 +129,7 @@ abstract class CategoryModel
     }
 
     /**
-     * @param CategoryModel|null $parent
+     * @param CategoryModel|null  $parent
      * @return $this
      */
     public function setParent(CategoryModel $parent = null)
