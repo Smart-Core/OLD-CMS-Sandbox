@@ -44,7 +44,6 @@ class AdminUnicatController extends Controller
                     $namespace = $reflector->getNamespaceName().'\Entity\\'.ucfirst($uc->getName());
                     $generator->generate($targetDir, $uc->getName(), $namespace);
 
-
                     $application = new Application($this->get('kernel'));
                     $application->setAutoExit(false);
                     $applicationInput = new ArrayInput([
@@ -53,7 +52,6 @@ class AdminUnicatController extends Controller
                     ]);
                     $applicationOutput = new BufferedOutput();
                     $retval = $application->run($applicationInput, $applicationOutput);
-
 
                     $uc
                         ->setEntitiesNamespace($namespace.'\\')
@@ -131,7 +129,7 @@ class AdminUnicatController extends Controller
             'form'          => $form->createView(),
         ]);
     }
-    
+
     /**
      * @param Request $request
      * @param string $configuration

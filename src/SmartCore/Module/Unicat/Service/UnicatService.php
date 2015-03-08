@@ -96,7 +96,7 @@ class UnicatService
     public function getConfigurationManager($configuration_id)
     {
         if (empty($configuration_id)) {
-            return null;
+            return;
         }
 
         $configuration = $this->getConfiguration($configuration_id);
@@ -124,7 +124,6 @@ class UnicatService
 
         return $this->getConfigurationManager($configuration)->getAttributes();
     }
-
 
     /**
      * @param UnicatConfiguration $configuration

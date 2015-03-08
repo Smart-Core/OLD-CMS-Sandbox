@@ -103,7 +103,7 @@ class ItemModel
             }
         }
 
-        return null;
+        return;
     }
 
     /**

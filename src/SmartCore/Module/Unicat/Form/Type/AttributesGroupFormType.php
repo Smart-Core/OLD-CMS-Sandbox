@@ -39,6 +39,6 @@ class AttributesGroupFormType extends AbstractType
 
     public function getName()
     {
-        return 'unicat_configuration_'.$this->configuration->getName().'_attributes_group';
+        return 'unicat_attributes_group_'.$this->configuration->getName();
     }
 }

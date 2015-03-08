@@ -75,7 +75,7 @@ class UnicatController extends Controller
             if ($lastCategory) {
                 $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($ucm->getFindItemsInCategoryQuery($lastCategory)));
             }
-        } elseif($ucm->getConfiguration()->isInheritance()) {
+        } elseif ($ucm->getConfiguration()->isInheritance()) {
             $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($ucm->getFindAllItemsQuery()));
         }
 
@@ -137,7 +137,7 @@ class UnicatController extends Controller
             ->setTitle('Управление каталогом')
             ->setUri($this->generateUrl('unicat_admin.configuration', ['configuration' => $ucm->getConfiguration()->getName()]));
     }
-    
+
     /**
      * @param string|null $structureSlug
      * @param string $itemSlug

@@ -9,9 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AttributeFormType extends AbstractType
 {
-    /**
-     * @var UnicatConfiguration
-     */
+    /** @var UnicatConfiguration */
     protected $configuration;
 
     /**
@@ -62,6 +60,6 @@ class AttributeFormType extends AbstractType
 
     public function getName()
     {
-        return 'unicat_configuration_attribute';
+        return 'unicat_attribute';
     }
 }
