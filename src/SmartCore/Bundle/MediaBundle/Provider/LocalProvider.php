@@ -90,7 +90,7 @@ class LocalProvider implements ProviderInterface
             $fileTransformed = $this->filesTransformedRepo->findOneBy(['file' => $file, 'filter' => $filter]);
 
             if (null === $fileTransformed) {
-                $imagine = $this->container->get('liip_imagine');
+                $imagine = $this->container->get('liip_imagine.binary.loader.default');
                 $imagineFilterManager = $this->container->get('liip_imagine.filter.manager');
 
                 if ($file->isMimeType('image/jpeg') or $file->isMimeType('image/png') or $file->isMimeType('image/gif')) {
@@ -101,7 +101,7 @@ class LocalProvider implements ProviderInterface
                     return;
                 }
 
-                $originalImage = $imagine->open(dirname($this->request->server->get('SCRIPT_FILENAME')).$file->getFullRelativeUrl());
+                $originalImage = $imagine->find($file->getFullRelativeUrl());
 
                 $webDir = dirname($this->request->server->get('SCRIPT_FILENAME')).$this->generator->generateRelativePath($file, $filter);
                 if (!is_dir($webDir) and false === @mkdir($webDir, 0777, true)) {
@@ -110,8 +110,7 @@ class LocalProvider implements ProviderInterface
 
                 $transformedImagePath = $webDir.'/'.$file->getFilename();
 
-                $transformedImage = $imagineFilterManager->applyFilter($originalImage, $filter);
-                $transformedImage->save($transformedImagePath);
+                file_put_contents($transformedImagePath, $imagineFilterManager->applyFilter($originalImage, $filter)->getContent());
 
                 $fileTransformed = new FileTransformed();
                 $fileTransformed
