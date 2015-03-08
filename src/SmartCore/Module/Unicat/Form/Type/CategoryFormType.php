@@ -84,6 +84,6 @@ class CategoryFormType extends AbstractType
 
     public function getName()
     {
-        return 'smart_unicat_configuration_'.$this->configuration->getName().'_category';
+        return 'unicat_category_'.$this->configuration->getName();
     }
 }

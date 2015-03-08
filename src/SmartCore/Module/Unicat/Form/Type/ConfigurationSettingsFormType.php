@@ -18,6 +18,7 @@ class ConfigurationSettingsFormType extends AbstractType
         $builder
             ->add('title',          null, ['attr'  => ['autofocus' => 'autofocus']])
             ->add('is_inheritance', null, ['required' => false])
+            ->add('items_per_page')
             ->add('media_collection')
             ->add('default_structure', 'entity', [
                 'class' => 'UnicatModule:UnicatStructure',
@@ -43,6 +44,6 @@ class ConfigurationSettingsFormType extends AbstractType
 
     public function getName()
     {
-        return 'unicat_configuration';
+        return 'unicat_configuration_settings';
     }
 }

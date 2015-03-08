@@ -80,7 +80,7 @@ class UnicatController extends Controller
         }
 
         if (!empty($pagerfanta)) {
-            $pagerfanta->setMaxPerPage(1);
+            $pagerfanta->setMaxPerPage($ucm->getConfiguration()->getItemsPerPage());
 
             try {
                 $pagerfanta->setCurrentPage($page);

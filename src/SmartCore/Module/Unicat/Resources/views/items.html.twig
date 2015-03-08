@@ -10,7 +10,10 @@
     <hr />
 {% endif %}
 
-{% if pagerfanta|length %}
+<p>Всего записей: <b>{{ pagerfanta.count }}</b>
+    {% if pagerfanta.haveToPaginate %} Страница: {{ pagerfanta.currentPage }} Записей на страницу: {{ pagerfanta.maxPerPage }}{% endif %}
+</p>
+
 {% for item in pagerfanta %}
 
     {% set is_found_default_structure = false %}
@@ -38,15 +41,15 @@
 
     <hr />
 {% endfor %}
-{% endif %}
 
-
-{% if slug %}
-    {% set pagerfantaRouteName = 'unicat.category' %}
-{% else %}
-    {% set pagerfantaRouteName = 'unicat.category_root' %}
-{% endif %}
 {% if pagerfanta.haveToPaginate %}
+    Страница: {{ pagerfanta.currentPage }} Записей на страницу: {{ pagerfanta.maxPerPage }}
+
+    {% if slug %}
+        {% set pagerfantaRouteName = 'unicat.category' %}
+    {% else %}
+        {% set pagerfantaRouteName = 'unicat.category_root' %}
+    {% endif %}
     {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
         'routeName': pagerfantaRouteName,
         'routeParams': {

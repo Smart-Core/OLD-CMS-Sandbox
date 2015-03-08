@@ -49,6 +49,13 @@ class UnicatConfiguration
     protected $is_inheritance;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="smallint", options={"default":10, "unsigned"=true})
+     */
+    protected $items_per_page;
+
+    /**
      * @var Collection
      *
      * @ORM\ManyToOne(targetEntity="SmartCore\Bundle\MediaBundle\Entity\Collection")
@@ -76,6 +83,7 @@ class UnicatConfiguration
     {
         $this->created_at           = new \DateTime();
         $this->is_inheritance       = true;
+        $this->items_per_page       = 10;
         $this->entities_namespace   = null;
         $this->structures           = new ArrayCollection();
     }
@@ -263,5 +271,28 @@ class UnicatConfiguration
     public function getDefaultStructure()
     {
         return $this->default_structure;
+    }
+
+    /**
+     * @return int
+     */
+    public function getItemsPerPage()
+    {
+        return $this->items_per_page;
+    }
+
+    /**
+     * @param int $items_per_page
+     * @return $this
+     */
+    public function setItemsPerPage($items_per_page)
+    {
+        if ($items_per_page < 1) {
+            $items_per_page = 10;
+        }
+
+        $this->items_per_page = $items_per_page;
+
+        return $this;
     }
 }

@@ -20,6 +20,6 @@ class CategoryCreateFormType extends CategoryFormType
 
     public function getName()
     {
-        return 'smart_unicat_configuration_'.$this->configuration->getName().'_category_create';
+        return 'unicat_category_'.$this->configuration->getName().'_create';
     }
 }

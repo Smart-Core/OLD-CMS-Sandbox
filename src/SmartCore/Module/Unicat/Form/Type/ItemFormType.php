@@ -140,6 +140,6 @@ class ItemFormType extends AbstractType
      */
     public function getName()
     {
-        return 'smart_unicat_configuration_'.$this->configuration->getName().'_item';
+        return 'unicat_item_'.$this->configuration->getName();
     }
 }

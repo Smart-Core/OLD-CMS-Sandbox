@@ -13,7 +13,7 @@
             font-family: consolas, Courier, monospace;
             font-size: 14px;
         }
-        #smart_unicat_structure_properties, #ace_params_yaml {
+        #unicat_structure_properties, #ace_params_yaml {
             font-family: consolas, Courier, monospace;
             font-size: 14px;
             width: 100%;
@@ -23,10 +23,10 @@
 
     <script src="{{ asset('bundles/felib/ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
     <script>
-        $('#smart_unicat_structure_properties_control_group > .controls').append('<div id="ace_params_yaml" />');
+        $('#unicat_structure_properties_control_group > .controls').append('<div id="ace_params_yaml" />');
 
         var editor = ace.edit("ace_params_yaml");
-        var textarea = $('#smart_unicat_structure_properties').hide();
+        var textarea = $('#unicat_structure_properties').hide();
         editor.setTheme("ace/theme/github");
         editor.getSession().setMode("ace/mode/yaml");
         editor.getSession().setValue(textarea.val());
