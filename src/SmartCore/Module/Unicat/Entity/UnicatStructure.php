@@ -46,9 +46,16 @@ class UnicatStructure
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", options={"default:0"})
      */
     protected $is_default_inheritance;
+
+    /**
+     * Древовидная структура.
+     *
+     * @ORM\Column(type="boolean", options={"default:1"})
+     */
+    protected $is_tree;
 
     /**
      * @var string
@@ -75,6 +82,7 @@ class UnicatStructure
         $this->user_id    = 0;
         $this->is_default_inheritance = false;
         $this->is_required = true;
+        $this->is_tree     = true;
     }
 
     /**
@@ -148,6 +156,37 @@ class UnicatStructure
     public function isRequired()
     {
         return $this->is_required;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsTree()
+    {
+        return $this->is_tree;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTree()
+    {
+        return $this->is_tree;
+    }
+
+    /**
+     * @param bool $is_tree
+     * @return $this
+     */
+    public function setIsTree($is_tree)
+    {
+        if (empty($is_tree)) {
+            $is_tree = 0;
+        }
+
+        $this->is_tree = $is_tree;
+
+        return $this;
     }
 
     /**

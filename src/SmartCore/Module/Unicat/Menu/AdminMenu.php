@@ -24,7 +24,7 @@ class AdminMenu extends ContainerAware
         $configuration = $options['configuration']->getName();
 
         // @todo кастомизация имени ссылки
-        $item = $menu->addChild($options['configuration']->getTitle(),      ['route' => 'unicat_admin.configuration',       'routeParameters' => ['configuration' => $configuration]]);
+        $item = $menu->addChild($options['configuration']->getTitle(), ['route' => 'unicat_admin.configuration', 'routeParameters' => ['configuration' => $configuration]]);
         //$item->setLinkAttribute('class', 'btn');
 
         $menu->addChild('Structures',   ['route' => 'unicat_admin.structures_index',    'routeParameters' => ['configuration' => $configuration]]);

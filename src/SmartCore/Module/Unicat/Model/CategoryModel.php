@@ -36,7 +36,9 @@ abstract class CategoryModel
     protected $slug;
 
     /**
-     * @ORM\Column(type="boolean")
+     * Включает записи вложенных категорий.
+     *
+     * @ORM\Column(type="boolean", options={"default:1"})
      */
     protected $is_inheritance;
 
@@ -108,7 +110,7 @@ abstract class CategoryModel
     }
 
     /**
-     * @param mixed $is_inheritance
+     * @param bool $is_inheritance
      * @return $this
      */
     public function setIsInheritance($is_inheritance)
@@ -119,7 +121,7 @@ abstract class CategoryModel
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsInheritance()
     {
@@ -127,10 +129,10 @@ abstract class CategoryModel
     }
 
     /**
-     * @param mixed $parent
+     * @param CategoryModel|null $parent
      * @return $this
      */
-    public function setParent($parent)
+    public function setParent(CategoryModel $parent = null)
     {
         $this->parent = $parent;
 
@@ -138,7 +140,7 @@ abstract class CategoryModel
     }
 
     /**
-     * @return mixed
+     * @return CategoryModel
      */
     public function getParent()
     {

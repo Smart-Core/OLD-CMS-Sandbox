@@ -19,7 +19,8 @@ class StructureFormType extends AbstractType
                 'choices' => UnicatStructure::getEntriesChoices(),
             ])
             ->add('is_required')
-            ->add('is_default_inheritance')
+            ->add('is_default_inheritance', null, ['required' => false])
+            ->add('is_tree',    null, ['required' => false])
             ->add('position')
             ->add('properties')
         ;

@@ -4,6 +4,9 @@
 
 {% block nav %}
 
+    {% set __selected_inheritance = app.request.attributes.get('__selected_inheritance') %}
+    {% set __si = app.request.attributes.set('__selected_inheritance', false) %}
+
     {% set configurationMenu = knp_menu_get('UnicatModule:AdminMenu:configuration', [], {
         'categoryClass': structure.configuration.categoryClass,
         'configuration': configuration,
@@ -13,5 +16,7 @@
         'currentClass': 'active',
         'clear_matcher': false,
     }) }}
+
+    {% set __si = app.request.attributes.set('__selected_inheritance', __selected_inheritance) %}
 
 {% endblock nav %}

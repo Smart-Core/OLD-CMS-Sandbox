@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 02 2015 г., 12:01
+-- Время создания: Мар 08 2015 г., 14:49
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -1392,7 +1392,7 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_categories` (
   KEY `IDX_F57287B52534008B` (`structure_id`),
   KEY `IDX_F57287B546C53D4C` (`is_enabled`),
   KEY `IDX_F57287B5462CE4F5` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `unicat_blog_categories`
@@ -1403,7 +1403,9 @@ INSERT INTO `unicat_blog_categories` (`id`, `parent_id`, `structure_id`, `slug`,
 (2, NULL, 3, 'os', 0, 'a:0:{}', 'N;', 1, '2015-03-02 10:44:40', 0, 'Операционные системы', 1),
 (3, NULL, 3, 'imposition', 0, 'a:0:{}', 'N;', 1, '2015-03-02 10:44:52', 0, 'Верстка', 1),
 (4, NULL, 3, 'soft', 0, 'a:0:{}', 'N;', 1, '2015-03-02 10:45:07', 0, 'Программы (софт)', 1),
-(5, NULL, 3, 'other', 0, 'a:0:{}', 'N;', 1, '2015-03-02 10:45:17', 0, 'Другое', 1);
+(5, NULL, 3, 'other', 0, 'a:0:{}', 'N;', 1, '2015-03-02 10:45:17', 0, 'Другое', 1),
+(6, NULL, 4, 'php', 1, 'a:0:{}', 'N;', 1, '2015-03-08 14:29:47', 0, 'PHP', 1),
+(7, 1, 3, 'php', 1, 'a:0:{}', 'N;', 1, '2015-03-08 14:32:35', 0, 'PHP', 1);
 
 -- --------------------------------------------------------
 
@@ -1759,20 +1761,22 @@ CREATE TABLE IF NOT EXISTS `unicat__structures` (
   `created_at` datetime NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title_form` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `is_default_inheritance` tinyint(1) DEFAULT NULL,
+  `is_default_inheritance` tinyint(1) NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
+  `is_tree` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_C3D9EB2050C9D4F7` (`configuration_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `unicat__structures`
 --
 
-INSERT INTO `unicat__structures` (`id`, `configuration_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`) VALUES
-(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, 'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced'),
-(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги', 0, ''),
-(3, 2, 0, 'single', 'Категории', 1, 0, '2015-03-02 10:43:54', 'categories', 'Категория', 0, NULL);
+INSERT INTO `unicat__structures` (`id`, `configuration_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`, `is_tree`) VALUES
+(1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, 'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced', 0),
+(2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги', 0, '', 0),
+(3, 2, 0, 'single', 'Категории', 0, 0, '2015-03-02 10:43:54', 'categories', 'Категория', 1, NULL, 1),
+(4, 2, 0, 'multi', 'Тэги', 0, 0, '2015-03-08 14:24:38', 'tags', 'Тэги', 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1812,7 +1816,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-02 04:48:35', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-07 18:51:48', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 

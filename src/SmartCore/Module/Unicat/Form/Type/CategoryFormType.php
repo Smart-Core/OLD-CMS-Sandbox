@@ -27,6 +27,7 @@ class CategoryFormType extends AbstractType
 
     /**
      * @param UnicatConfiguration $configuration
+     * @param ManagerRegistry $doctrine
      */
     public function __construct(UnicatConfiguration $configuration, ManagerRegistry $doctrine)
     {
@@ -50,6 +51,10 @@ class CategoryFormType extends AbstractType
             ->add('parent', $categoryTreeType)
             ->add('meta', new MetaFormType(), ['label' => 'Meta tags'])
         ;
+
+        if (!$category->getStructure()->isTree()) {
+            $builder->remove('parent');
+        }
 
         $structure = null;
 
