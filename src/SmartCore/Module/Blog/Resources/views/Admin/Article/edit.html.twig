@@ -4,9 +4,7 @@
 
 {% block content %}
 
-    <div class="well well-small">
-        {{ form(form) }}
-    </div>
+    {{ form(form, {'attr':{'class': 'well well-small _form-horizontal'}}) }}
 
     {{ tinymce_init3() }}
     {{ elfinder_tinymce_init() }}

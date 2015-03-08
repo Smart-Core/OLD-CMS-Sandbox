@@ -52,8 +52,6 @@
         </div>
     </div>
 
-    <div class="well">
-        {{ form(form) }}
-    </div>
+    {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 
 {% endblock content %}

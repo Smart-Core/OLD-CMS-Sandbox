@@ -36,17 +36,17 @@
 </div>
 
 <div class="span4">
-    <div class="well well-small">
-        <h4>{{ 'Create'|trans }} {{ 'Region'|trans }}</h4>
-        <form action="" {{ form_enctype(form) }} method="post" class="_form-horizontal">
-            {{ form_widget(form) }}
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Create'|trans }}</button>
-                </div>
+
+    <h4>{{ 'Create'|trans }} {{ 'Region'|trans }}</h4>
+    <form action="" {{ form_enctype(form) }} method="post" class="_form-horizontal well well-small">
+        {{ form_widget(form) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Create'|trans }}</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+
 </div>
 </div>
 

@@ -35,15 +35,13 @@
         </div>
     </div>
 
-    <div class="well well-small">
-        <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-horizontal">
-            {{ form_widget(form) }}
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
-                </div>
+    <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-horizontal well well-small">
+        {{ form_widget(form) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
 {% endblock content %}

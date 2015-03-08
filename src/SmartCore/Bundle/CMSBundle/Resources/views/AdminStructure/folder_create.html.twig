@@ -5,41 +5,39 @@
 {% block content %}
 <div class="row-fluid">
     <div class="span9">
-    {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
+        {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 
-        <div class="well well-small">
-            {{ form_start(form, {'attr':{'class':'form-horizontal'}}) }}
-            {{ form_errors(form) }}
-            <fieldset>
-                <div class="tabbable">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#base-settings" data-toggle="tab">{{ 'Base settings'|trans }}</a></li>
-                        <li><a href="#meta-tags" data-toggle="tab">{{ 'Meta tags'|trans }}</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane" id="meta-tags">
-                            {{ form_widget(form.meta) }}
-                        </div>
-                        <div class="tab-pane active" id="base-settings">
-                            {{ form_widget(form) }}
-                        </div>
+        {{ form_start(form, {'attr':{'class': 'well well-small form-horizontal'}}) }}
+        {{ form_errors(form) }}
+        <fieldset>
+            <div class="tabbable">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#base-settings" data-toggle="tab">{{ 'Base settings'|trans }}</a></li>
+                    <li><a href="#meta-tags" data-toggle="tab">{{ 'Meta tags'|trans }}</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="meta-tags">
+                        {{ form_widget(form.meta) }}
+                    </div>
+                    <div class="tab-pane active" id="base-settings">
+                        {{ form_widget(form) }}
                     </div>
                 </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
 
-                        {% if app.request.query.has('redirect_to') and folderPath %}
-                            <a class="btn cms-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
-                        {% else %}
-                            <a class="btn cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
-                        {% endif %}
+                    {% if app.request.query.has('redirect_to') and folderPath %}
+                        <a class="btn cms-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
+                    {% else %}
+                        <a class="btn cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                    {% endif %}
 
-                    </div>
                 </div>
-            </fieldset>
-            {{ form_end(form) }}
-        </div>
+            </div>
+        </fieldset>
+        {{ form_end(form) }}
     </div>
 {% endblock content %}
 

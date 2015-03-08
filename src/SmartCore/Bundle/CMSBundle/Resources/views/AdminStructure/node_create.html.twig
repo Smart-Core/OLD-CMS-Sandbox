@@ -7,39 +7,37 @@
     <div class="span9">
     {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 
-    <div class="well well-small">
-        <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-            {% if form_properties.count > 0 %}
-                <ul class="nav nav-pills" id="nodeTab">
-                    <li class="active"><a href="#node-properties">Параметры подключения модуля</a></li>
-                    <li><a href="#node-common">Основные свойства</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="node-properties">
-                        {% form_theme form_properties '@CMS/Form/bootstrap.html.twig' %}
-                        {{ form_widget(form_properties) }}
-                    </div>
-                    <div class="tab-pane" id="node-common">
-                        {{ form_widget(form) }}
-                    </div>
+    <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal well well-small">
+        {% if form_properties.count > 0 %}
+            <ul class="nav nav-pills" id="nodeTab">
+                <li class="active"><a href="#node-properties">Параметры подключения модуля</a></li>
+                <li><a href="#node-common">Основные свойства</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="node-properties">
+                    {% form_theme form_properties '@CMS/Form/bootstrap.html.twig' %}
+                    {{ form_widget(form_properties) }}
                 </div>
-            {% else %}
-                {{ form_widget(form) }}
-            {% endif %}
-
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
-
-                    {% if app.request.query.has('redirect_to') and folderPath %}
-                        <a class="btn cms-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
-                    {% else %}
-                        <a class="btn cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
-                    {% endif %}
+                <div class="tab-pane" id="node-common">
+                    {{ form_widget(form) }}
                 </div>
             </div>
-        </form>
-    </div>
+        {% else %}
+            {{ form_widget(form) }}
+        {% endif %}
+
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+
+                {% if app.request.query.has('redirect_to') and folderPath %}
+                    <a class="btn cms-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
+                {% else %}
+                    <a class="btn cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </form>
 
     </div>
 {% endblock content %}

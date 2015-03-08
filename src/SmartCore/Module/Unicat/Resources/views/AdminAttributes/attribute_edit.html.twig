@@ -6,9 +6,7 @@
 
     <h3>{{ 'Edit attribute'|trans }} &laquo;{{ form.vars.data.title }}&raquo;</h3>
 
-    <div class="well">
-        {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}
-    </div>
+    {{ form(form, {'attr': {'class': 'form-horizontal well'}}) }}
 
     <style type="text/css" media="screen">
         .ace_editor * {

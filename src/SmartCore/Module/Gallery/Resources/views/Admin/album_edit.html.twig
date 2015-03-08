@@ -8,8 +8,6 @@
 
     <h3>{{ 'Edit album'|trans }}: {{ album.title }}</h3>
 
-    <div class="well">
-        {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
-    </div>
+    {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 
 {% endblock content %}

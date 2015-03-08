@@ -124,7 +124,7 @@ class AdminMediaLibraryController extends Controller
             }
         }
 
-        return $this->render('CMSBundle:AdminMediaLibrary:edit_collection.html.twig', [
+        return $this->render('CMSBundle:AdminMediaLibrary:create_collection.html.twig', [
             'form'   => $form->createView(),
         ]);
     }
