@@ -34,7 +34,7 @@ class UnicatController extends Controller
 
         $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
-        $requestedCategories = $ucm->findCategoriesBySlug($slug);
+        $requestedCategories = $ucm->findCategoriesBySlug($slug, $ucm->getDefaultStructure());
 
         foreach ($requestedCategories as $category) {
             $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
@@ -120,7 +120,7 @@ class UnicatController extends Controller
      * @param string $itemSlug
      * @return Response
      */
-    public function itemAction($structureSlug, $itemSlug)
+    public function itemAction($structureSlug = null, $itemSlug)
     {
         if (null === $this->configuration_id) {
             return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
@@ -128,7 +128,7 @@ class UnicatController extends Controller
 
         $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
-        $requestedCategories = $ucm->findCategoriesBySlug($structureSlug);
+        $requestedCategories = $ucm->findCategoriesBySlug($structureSlug, $ucm->getDefaultStructure());
 
         foreach ($requestedCategories as $category) {
             $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.category', ['slug' => $category->getSlugFull()]).'/', $category->getTitle());
@@ -159,7 +159,7 @@ class UnicatController extends Controller
         $this->get('html')->setMetas($item->getMeta());
 
         $this->get('cms.breadcrumbs')->add($this->generateUrl('unicat.item', [
-                'slug' => $lastCategory->getSlugFull(),
+                'slug' => empty($lastCategory) ? '' : $lastCategory->getSlugFull(),
                 'itemSlug' => $item->getSlug(),
             ]).'/', $item->getAttribute('title'));
 
@@ -168,7 +168,7 @@ class UnicatController extends Controller
             ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $ucm->getConfiguration()->getName(), 'id' => $item->getId() ]));
 
         return $this->render('UnicatModule::item.html.twig', [
-            'category'          => $lastCategory,
+            'lastCategory'      => $lastCategory,
             'childenCategories' => $childenCategories,
             'item'              => $item,
         ]);

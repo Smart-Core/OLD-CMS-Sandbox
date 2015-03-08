@@ -250,7 +250,7 @@ class UnicatConfiguration
      * @param UnicatStructure $default_structure
      * @return $this
      */
-    public function setDefaultStructure(UnicatStructure $default_structure)
+    public function setDefaultStructure(UnicatStructure $default_structure = null)
     {
         $this->default_structure = $default_structure;
 

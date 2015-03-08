@@ -133,7 +133,7 @@ class UnicatConfigurationManager
      * @return CategoryModel[]
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function findCategoriesBySlug($slug = null)
+    public function findCategoriesBySlug($slug = null, $structure = null)
     {
         $categories = [];
         $parent = null;
@@ -147,6 +147,7 @@ class UnicatConfigurationManager
                 'is_enabled' => true,
                 'parent' => $parent,
                 'slug'   => $categoryName,
+                'structure' => $structure,
             ]);
 
             if ($category) {
