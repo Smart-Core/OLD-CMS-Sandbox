@@ -41,6 +41,7 @@
         "genemu/form-bundle": "v2.2.2",
         "helios-ag/fm-elfinder-bundle": "*",
         "incenteev/composer-parameter-handler": "~2.0",
+        "intervention/image": "*",
         "jms/di-extra-bundle": "*",
         "jms/serializer-bundle": "*",
         "jms/security-extra-bundle": "*",
