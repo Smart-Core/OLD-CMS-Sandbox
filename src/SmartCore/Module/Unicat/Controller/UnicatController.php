@@ -90,6 +90,7 @@ class UnicatController extends Controller
         }
 
         return $this->render('UnicatModule::items.html.twig', [
+            'mode'              => 'list',
             'attributes'        => $ucm->getAttributes(),
             'configuration'     => $ucm->getConfiguration(),
             'lastCategory'      => $lastCategory,
@@ -192,9 +193,11 @@ class UnicatController extends Controller
             ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $ucm->getConfiguration()->getName(), 'id' => $item->getId() ]));
 
         return $this->render('UnicatModule::item.html.twig', [
-            'lastCategory'      => $lastCategory,
-            'childenCategories' => $childenCategories,
-            'item'              => $item,
+            'mode'          => 'view',
+            'attributes'    => $ucm->getAttributes(),
+            'item'          => $item,
+//            'lastCategory'      => $lastCategory,
+//            'childenCategories' => $childenCategories,
         ]);
     }
 }

@@ -16,30 +16,8 @@
 
 {% for item in pagerfanta %}
 
-    {% set is_found_default_structure = false %}
-    {% for category in item.categories %}
-        {% if configuration.defaultStructure.id == category.structure.id and is_found_default_structure == false %}
-            <h1><a href="{{ path('unicat.item_in_structure', {'structureSlug': category.slugFull, 'itemSlug': item.slug}) }}">{{ item.attribute('title') }}</a></h1>
-            {% set is_found_default_structure = true %}
-        {% endif %}
-    {% endfor %}
-    {% if is_found_default_structure == false %}
-        <h1><a href="{{ path('unicat.item', {'itemSlug': item.slug}) }}">{{ item.attribute('title') }}</a></h1>
-    {% endif %}
+    {% include 'UnicatModule::item.html.twig' %}
 
-    {% if item.attribute('description') %} <p>Описание: {{ item.attribute('description') }}</p> {% endif %}
-
-    <p>Наличие: {% if item.attribute('in_sight') %} есть {% else %} нет {% endif %} </p>
-
-    {% if item.attribute('price') %}
-        <p>Цена: {{ item.attribute('price') }}</p>
-    {% endif %}
-
-    {% if item.attribute('image') %}
-        <p>{{ smart_media_img(item.attribute('image'), attributes.image.params.filter) }}</p>
-    {% endif %}
-
-    <hr />
 {% endfor %}
 
 {% if pagerfanta.haveToPaginate %}

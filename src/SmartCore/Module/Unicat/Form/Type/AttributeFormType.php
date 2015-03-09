@@ -44,10 +44,14 @@ class AttributeFormType extends AbstractType
             ->add('position')
             ->add('is_dedicated_table', null, ['required' => false])
             ->add('is_enabled',    null, ['required' => false])
+            ->add('is_link',       null, ['required' => false])
             ->add('is_required',   null, ['required' => false])
+            ->add('is_show_title', null, ['required' => false])
             ->add('show_in_admin', null, ['required' => false])
             ->add('show_in_list',  null, ['required' => false])
             ->add('show_in_view',  null, ['required' => false])
+            ->add('open_tag')
+            ->add('close_tag')
         ;
     }
 

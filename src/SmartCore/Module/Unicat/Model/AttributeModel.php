@@ -24,25 +24,53 @@ class AttributeModel
     use ColumnTrait\UserId;
 
     /**
+     * enum('string','text','date','datetime','img','file','select','multiselect','int','double','checkbox','password')
+     *
+     * @ORM\Column(type="string", length=12)
+     */
+    protected $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true, options={"default":"<p>"})
+     */
+    protected $open_tag;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true, options={"default":"</p>"})
+     */
+    protected $close_tag;
+
+    /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_dedicated_table;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    protected $is_link;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_required;
 
     /**
-     * enum('string','text','date','datetime','img','file','select','multiselect','int','double','checkbox','password')
+     * @var boolean
      *
-     * @ORM\Column(type="string", length=12)
+     * @ORM\Column(type="boolean", options={"default":1})
      */
-    protected $type;
+    protected $is_show_title;
 
     /**
      * Отображать в списке администратора.
@@ -111,12 +139,18 @@ class AttributeModel
      */
     public function __construct()
     {
-        $this->created_at = new \DateTime();
-        $this->is_enabled = true;
-        $this->params = [];
-        $this->params_yaml = null;
-        $this->position = 0;
-        $this->user_id = 0;
+        $this->created_at       = new \DateTime();
+        $this->is_dedicated_table = false;
+        $this->is_enabled       = true;
+        $this->is_link          = false;
+        $this->is_required      = false;
+        $this->is_show_title    = true;
+        $this->params           = [];
+        $this->params_yaml      = null;
+        $this->position         = 0;
+        $this->user_id          = 0;
+        $this->open_tag         = '<p>';
+        $this->close_tag        = '</p>';
     }
 
     /**
@@ -148,6 +182,25 @@ class AttributeModel
     }
 
     /**
+     * @return boolean
+     */
+    public function isIsLink()
+    {
+        return $this->is_link;
+    }
+
+    /**
+     * @param boolean $is_link
+     * @return $this
+     */
+    public function setIsLink($is_link)
+    {
+        $this->is_link = $is_link;
+
+        return $this;
+    }
+
+    /**
      * @param boolean $is_required
      * @return $this
      */
@@ -164,6 +217,25 @@ class AttributeModel
     public function getIsRequired()
     {
         return $this->is_required;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsShowTitle()
+    {
+        return $this->is_show_title;
+    }
+
+    /**
+     * @param boolean $is_show_title
+     * @return $this
+     */
+    public function setIsShowTitle($is_show_title)
+    {
+        $this->is_show_title = $is_show_title;
+
+        return $this;
     }
 
     /**
@@ -329,6 +401,27 @@ class AttributeModel
     }
 
     /**
+     * @param string $mode
+     * @return bool
+     */
+    public function isShowIn($mode)
+    {
+        switch ($mode) {
+            case 'view':
+                return $this->show_in_view;
+                break;
+            case 'list':
+                return $this->show_in_list;
+                break;
+            case 'admin':
+                return $this->show_in_admin;
+                break;
+        }
+
+        return false;
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -344,6 +437,43 @@ class AttributeModel
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOpenTag()
+    {
+        return $this->open_tag;
+    }
+
+    /**
+     * @param string $open_tag
+     * @return $this
+     */
+    public function setOpenTag($open_tag)
+    {
+        $this->open_tag = $open_tag;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCloseTag()
+    {
+        return $this->close_tag;
+    }
+
+    /**
+     * @param string $close_tag
+     * @return $this
+     */
+    public function setCloseTag($close_tag)
+    {
+        $this->close_tag = $close_tag;
 
         return $this;
     }

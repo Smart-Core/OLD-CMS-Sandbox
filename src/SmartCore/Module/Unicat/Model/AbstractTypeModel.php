@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      }
  * )
  */
-abstract class AbstractType
+abstract class AbstractTypeModel
 {
     /**
      * @var ItemModel

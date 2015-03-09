@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 09 2015 г., 02:28
+-- Время создания: Мар 09 2015 г., 21:03
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -723,22 +723,22 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
 --
 
 INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storage_id`, `filter`, `size`, `created_at`) VALUES
-(15, 1, 1, 1, '300_300', 6438, '2015-03-09 02:14:11'),
-(16, 3, 1, 1, '300_300', 8678, '2015-03-09 02:14:11'),
-(17, 1, 1, 1, '200_200', 3770, '2015-03-09 02:15:19'),
-(18, 3, 1, 1, '200_200', 4926, '2015-03-09 02:15:19'),
-(19, 5, 1, 1, '300_300', 9631, '2015-03-09 02:17:55'),
-(20, 6, 1, 1, '300_300', 12833, '2015-03-09 02:17:56'),
-(21, 4, 1, 1, '300_300', 8494, '2015-03-09 02:18:19'),
-(22, 1, 1, 1, '100_100', 1809, '2015-03-09 02:24:43'),
-(23, 6, 1, 1, '100_100', 2934, '2015-03-09 02:25:35');
+(1, 1, 1, 1, '300_300', 28215, '2015-03-09 05:11:54'),
+(2, 3, 1, 1, '300_300', 34430, '2015-03-09 05:11:54'),
+(3, 5, 1, 1, '300_300', 39337, '2015-03-09 05:12:00'),
+(4, 6, 1, 1, '300_300', 46972, '2015-03-09 05:12:00'),
+(5, 8, 2, 1, '200_200', 27695, '2015-03-09 05:14:15'),
+(6, 7, 2, 1, '200_200', 21122, '2015-03-09 05:14:16'),
+(7, 6, 1, 1, '100_100', 8506, '2015-03-09 20:27:01'),
+(8, 1, 1, 1, '100_100', 4622, '2015-03-09 20:27:03'),
+(9, 4, 1, 1, '300_300', 35813, '2015-03-09 20:28:33');
 
 -- --------------------------------------------------------
 
@@ -1143,8 +1143,8 @@ DROP TABLE IF EXISTS `unicat_blog_attributes`;
 CREATE TABLE IF NOT EXISTS `unicat_blog_attributes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `group_id` int(10) unsigned DEFAULT NULL,
-  `is_dedicated_table` tinyint(1) NOT NULL,
-  `is_required` tinyint(1) NOT NULL,
+  `is_dedicated_table` tinyint(1) NOT NULL DEFAULT '0',
+  `is_required` tinyint(1) NOT NULL DEFAULT '0',
   `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `show_in_admin` tinyint(1) NOT NULL,
   `show_in_list` tinyint(1) NOT NULL,
@@ -1157,6 +1157,10 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_attributes` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(10) unsigned NOT NULL,
+  `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
+  `is_link` tinyint(1) NOT NULL DEFAULT '0',
+  `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
+  `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_CD6A232E5E237E06` (`name`),
   KEY `IDX_CD6A232EFE54D947` (`group_id`),
@@ -1171,10 +1175,10 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_attributes` (
 -- Дамп данных таблицы `unicat_blog_attributes`
 --
 
-INSERT INTO `unicat_blog_attributes` (`id`, `group_id`, `is_dedicated_table`, `is_required`, `type`, `show_in_admin`, `show_in_list`, `show_in_view`, `params`, `params_yaml`, `is_enabled`, `created_at`, `position`, `name`, `title`, `user_id`) VALUES
-(1, 1, 0, 1, 'text', 1, 1, 1, 'a:0:{}', NULL, 1, '2015-03-02 11:06:53', 0, 'title', 'Заголовок', 1),
-(2, 1, 0, 0, 'textarea', 0, 1, 0, 'a:1:{s:4:"form";a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}}', 'form:\r\n    attr:\r\n        class: ''wysiwyg''\r\n        data-theme: ''advanced''', 1, '2015-03-02 11:07:46', 0, 'annotation', 'Аннотация', 1),
-(3, 1, 0, 0, 'textarea', 0, 0, 1, 'a:1:{s:4:"form";a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}}', 'form:\r\n    attr:\r\n        class: ''wysiwyg''\r\n        data-theme: ''advanced''', 1, '2015-03-02 11:19:18', 0, 'text', 'Текст', 1);
+INSERT INTO `unicat_blog_attributes` (`id`, `group_id`, `is_dedicated_table`, `is_required`, `type`, `show_in_admin`, `show_in_list`, `show_in_view`, `params`, `params_yaml`, `is_enabled`, `created_at`, `position`, `name`, `title`, `user_id`, `is_show_title`, `is_link`, `open_tag`, `close_tag`) VALUES
+(1, 1, 0, 1, 'text', 1, 1, 1, 'a:0:{}', NULL, 1, '2015-03-02 11:06:53', 0, 'title', 'Заголовок', 1, 0, 1, '<h1>', '</h1>'),
+(2, 1, 0, 0, 'textarea', 0, 1, 0, 'a:1:{s:4:"form";a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}}', 'form:\r\n    attr:\r\n        class: ''wysiwyg''\r\n        data-theme: ''advanced''', 1, '2015-03-02 11:07:46', 0, 'annotation', 'Аннотация', 1, 0, 0, '<p>', '</p>'),
+(3, 1, 0, 0, 'textarea', 0, 0, 1, 'a:1:{s:4:"form";a:1:{s:4:"attr";a:2:{s:5:"class";s:7:"wysiwyg";s:10:"data-theme";s:8:"advanced";}}}', 'form:\r\n    attr:\r\n        class: ''wysiwyg''\r\n        data-theme: ''advanced''', 1, '2015-03-02 11:19:18', 0, 'text', 'Текст', 1, 0, 0, '<p>', '</p>');
 
 -- --------------------------------------------------------
 
@@ -1269,7 +1273,7 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
 --
 
 INSERT INTO `unicat_blog_items` (`id`, `slug`, `meta`, `attributes`, `is_enabled`, `created_at`, `position`, `user_id`) VALUES
-(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:690:"<p>&nbsp;</p>\r\n<hr id="readmore" />\r\n<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1);
+(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:653:"<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1327,8 +1331,8 @@ DROP TABLE IF EXISTS `unicat_catalog_attributes`;
 CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `is_enabled` tinyint(1) DEFAULT '1',
-  `is_dedicated_table` tinyint(1) NOT NULL,
-  `is_required` tinyint(1) NOT NULL,
+  `is_dedicated_table` tinyint(1) NOT NULL DEFAULT '0',
+  `is_required` tinyint(1) NOT NULL DEFAULT '0',
   `position` smallint(6) DEFAULT '0',
   `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1341,6 +1345,10 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes` (
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `group_id` int(10) unsigned DEFAULT NULL,
   `params_yaml` longtext COLLATE utf8_unicode_ci,
+  `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
+  `is_link` tinyint(1) NOT NULL DEFAULT '0',
+  `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
+  `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
   KEY `position` (`position`),
@@ -1355,12 +1363,12 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes` (
 -- Дамп данных таблицы `unicat_catalog_attributes`
 --
 
-INSERT INTO `unicat_catalog_attributes` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`, `params_yaml`) VALUES
-(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 0, 0, '2014-02-13 20:37:50', 'N;', 1, NULL),
-(2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL),
-(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL),
-(4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 0, 0, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL),
-(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:1:{s:6:"filter";s:7:"300_300";}', 1, 'filter: 300_300');
+INSERT INTO `unicat_catalog_attributes` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`, `params_yaml`, `is_show_title`, `is_link`, `open_tag`, `close_tag`) VALUES
+(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 1, 0, '2014-02-13 20:37:50', 'N;', 1, NULL, 1, 1, '<h1>', '</h1>'),
+(2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL, 1, 0, '<p>', '</p>'),
+(3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL, 1, 0, '<p>', '</p>'),
+(4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 1, 1, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL, 1, 0, '<p>', '</p>'),
+(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:1:{s:6:"filter";s:7:"300_300";}', 1, 'filter: 300_300', 1, 0, '<p>', '</p>');
 
 -- --------------------------------------------------------
 
@@ -1466,7 +1474,7 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
 --
 
 INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`) VALUES
-(1, 1, 'np900', 'N;', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18', 0),
+(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18', 0),
 (2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57', 1),
 (3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
 (4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56', 0),

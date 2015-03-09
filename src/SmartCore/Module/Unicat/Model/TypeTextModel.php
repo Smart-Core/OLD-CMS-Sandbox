@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * {@inheritDoc}
  */
-abstract class TypeTextModel extends AbstractType
+abstract class TypeTextModel extends AbstractTypeModel
 {
     /**
      * @ORM\Column(type="text")

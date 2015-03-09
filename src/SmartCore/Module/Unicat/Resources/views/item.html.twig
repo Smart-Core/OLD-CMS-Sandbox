@@ -1,14 +1,29 @@
+{% set item_link = null %}
 
-<h1>{{ item.attribute('title') }}</h1>
+{% for attr in attributes %}
+    {% if attr.isShowIn(mode) and item.hasAttribute(attr.name) %}
+        {# @todo сделать линки более универсальные #}
+        {% if attr.isLink and mode == 'list' %}
+            {% set is_found_default_structure = false %}
+            {% for category in item.categories %}
+                {% if configuration.defaultStructure.id == category.structure.id and is_found_default_structure == false %}
+                    {{ attr.openTag }}
+                        <a href="{{ path('unicat.item_in_structure', {'structureSlug': category.slugFull, 'itemSlug': item.slug}) }}">{{ item.attribute(attr.name) }}</a>
+                    {{ attr.closeTag }}
+                    {% set is_found_default_structure = true %}
+                {% endif %}
+            {% endfor %}
+            {% if is_found_default_structure == false %}
+                {{ attr.openTag }}<a href="{{ path('unicat.item', {'itemSlug': item.slug}) }}">{{ item.attribute(attr.name) }}</a>{{ attr.closeTag }}
+            {% endif %}
+        {% elseif attr.type == 'checkbox' %}
+            {{ attr.openTag }}{{ attr.title }}: {% if item.attribute(attr.name) %} да {% else %} нет {% endif %}{{ attr.closeTag }}
+        {% elseif attr.type == 'image' %}
+            {{ attr.openTag }}{{ smart_media_img(item.attribute(attr.name), attr.params.filter) }}{{ attr.closeTag }}
+        {% else %}
+            {{ attr.openTag }}{% if attr.isShowTitle %}{{ attr.title }}: {% endif %}{{ item.attribute(attr.name) }}{{ attr.closeTag }}
+        {% endif %}
+    {% endif %}
+{% endfor %}
 
-{% if item.attribute('image') %}
-    <p>{{ smart_media_img(item.attribute('image'), '300-300') }}</p>
-{% endif %}
-
-{% if item.attribute('description') %} <p>Описание: {{ item.attribute('description') }}</p> {% endif %}
-
-<p>Наличие: {% if item.attribute('in_sight') %} есть {% else %} нет {% endif %} </p>
-
-{% if item.attribute('price') %}
-    <p>Цена: {{ item.attribute('price') }}</p>
-{% endif %}
+<hr />
