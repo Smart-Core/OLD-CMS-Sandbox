@@ -14,7 +14,7 @@ class Collection
 {
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
-    use ColumnTrait\Title;
+    use ColumnTrait\TitleNotBlank;
 
     /**
      * @var string
@@ -90,7 +90,7 @@ class Collection
      */
     public function __toString()
     {
-        return $this->title;
+        return (string) $this->title;
     }
 
     /**

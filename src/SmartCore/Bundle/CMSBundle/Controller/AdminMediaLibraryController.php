@@ -105,7 +105,10 @@ class AdminMediaLibraryController extends Controller
      */
     public function createCollectionAction(Request $request)
     {
-        $form = $this->createForm(new CollectionFormType(), new Collection('/new'));
+        $collection = new Collection('/new');
+        $collection->setTitle('Новая коллекция');
+
+        $form = $this->createForm(new CollectionFormType(), $collection);
         $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
         $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
 
