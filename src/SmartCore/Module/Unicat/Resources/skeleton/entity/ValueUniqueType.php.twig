@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use Doctrine\ORM\Mapping as ORM;
+use SmartCore\Module\Unicat\Model\Value{{ type }}Model;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="{{ table_prefix ~ configuration_name ~ '_values__' ~ table_name }}",
+ *      indexes={
+ *          @ORM\Index(columns={"value"}),
+ *      },
+ *      uniqueConstraints={
+ *          @ORM\UniqueConstraint(columns={"item_id"}),
+ *      }
+ * )
+ */
+class {{ class_name }} extends Value{{ type }}Model
+{
+}

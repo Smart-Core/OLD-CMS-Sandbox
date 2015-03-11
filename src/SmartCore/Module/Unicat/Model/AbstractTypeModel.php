@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  *          @ORM\Index(columns={"value"})
  *      }
  * )
+ *
+ * @todo переименовать в AbstractValueModel
  */
 abstract class AbstractTypeModel
 {

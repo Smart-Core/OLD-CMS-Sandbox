@@ -23,8 +23,8 @@ class AttributeFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['attr' => ['autofocus' => 'autofocus']])
-            ->add('name')
+            ->add('title', null, ['attr' => ['autofocus' => 'autofocus', 'placeholder' => 'Произвольная строка']])
+            ->add('name',  null, ['attr' => ['placeholder' => 'Латинские буквы в нижем регистре и символы подчеркивания.']])
             ->add('type', 'choice', [
                 'choices' => [
                     'text'        => 'Text',
@@ -43,6 +43,10 @@ class AttributeFormType extends AbstractType
             ->add('params_yaml',   null, ['attr' => ['data-editor' => 'yaml']])
             ->add('position')
             ->add('is_dedicated_table', null, ['required' => false])
+            ->add('update_all_records_with_default_value', 'text', [
+                'attr' => ['placeholder' => 'Пустое поле - не обновлять записи'],
+                'required' => false,
+            ])
             ->add('is_enabled',    null, ['required' => false])
             ->add('is_link',       null, ['required' => false])
             ->add('is_required',   null, ['required' => false])

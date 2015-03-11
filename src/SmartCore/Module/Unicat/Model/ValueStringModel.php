@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * {@inheritDoc}
  */
-abstract class TypeIntModel extends AbstractTypeModel
+abstract class ValueStringModel extends AbstractTypeModel
 {
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $value;
 }

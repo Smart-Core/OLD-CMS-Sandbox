@@ -187,12 +187,13 @@ class ItemModel
     }
 
     /**
+     * Short alias for getAttribute
      * @param string $name
      * @return mixed|null
      */
     public function getAttr($name)
     {
-        return $this->getAttr($name);
+        return $this->getAttribute($name);
     }
 
     /**

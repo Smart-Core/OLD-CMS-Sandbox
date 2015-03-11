@@ -53,8 +53,7 @@ class AdminUnicatController extends Controller
                     $applicationOutput = new BufferedOutput();
                     $retval = $application->run($applicationInput, $applicationOutput);
 
-                    $uc
-                        ->setEntitiesNamespace($namespace.'\\')
+                    $uc->setEntitiesNamespace($namespace.'\\')
                         ->setUserId($this->getUser())
                     ;
 

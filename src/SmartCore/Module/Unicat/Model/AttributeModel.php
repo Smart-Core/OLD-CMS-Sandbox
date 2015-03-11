@@ -135,6 +135,11 @@ class AttributeModel
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $update_all_records_with_default_value;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -160,6 +165,33 @@ class AttributeModel
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getValueClassName()
+    {
+        if ($this->is_dedicated_table) {
+            $className = 'Value';
+
+            foreach (explode('_', $this->name) as $namePart) {
+                $className .= ucfirst($namePart);
+            }
+
+            return $className;
+        }
+
+        return null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValueClassNameWithNameSpace()
+    {
+        $reflector = new \ReflectionClass($this);
+        return $reflector->getNamespaceName().'\\'.$this->getValueClassName();
     }
 
     /**
@@ -474,6 +506,25 @@ class AttributeModel
     public function setCloseTag($close_tag)
     {
         $this->close_tag = $close_tag;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateAllRecordsWithDefaultValue()
+    {
+        return $this->update_all_records_with_default_value;
+    }
+
+    /**
+     * @param mixed $update_all_records_with_default_value
+     * @return $this
+     */
+    public function setUpdateAllRecordsWithDefaultValue($update_all_records_with_default_value)
+    {
+        $this->update_all_records_with_default_value = $update_all_records_with_default_value;
 
         return $this;
     }

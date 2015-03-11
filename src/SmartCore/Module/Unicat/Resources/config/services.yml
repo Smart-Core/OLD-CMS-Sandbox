@@ -5,3 +5,5 @@ services:
     unicat:
         class: SmartCore\Module\Unicat\Service\UnicatService
         arguments: [ @doctrine, @form.factory, @smart_media, @security.context ]
+        calls:
+            - [ setContainer, [ @service_container ] ]

@@ -6,6 +6,12 @@ use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 
 class DoctrineEntityGenerator extends Generator
 {
+    /**
+     * @param string $dir
+     * @param string $configuration_name
+     * @param string $namespace
+     * @param string $table_prefix
+     */
     public function generate($dir, $configuration_name, $namespace, $table_prefix = 'unicat_')
     {
         $parameters = [

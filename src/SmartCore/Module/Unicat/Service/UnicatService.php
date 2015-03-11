@@ -8,15 +8,23 @@ use SmartCore\Bundle\MediaBundle\Service\CollectionService;
 use SmartCore\Bundle\MediaBundle\Service\MediaCloudService;
 use SmartCore\Module\Unicat\Entity\UnicatConfiguration;
 use SmartCore\Module\Unicat\Entity\UnicatStructure;
+use SmartCore\Module\Unicat\Generator\DoctrineValueEntityGenerator;
+use SmartCore\Module\Unicat\Model\AbstractTypeModel;
 use SmartCore\Module\Unicat\Model\AttributeModel;
 use SmartCore\Module\Unicat\Model\CategoryModel;
 use SmartCore\Module\Unicat\Model\ItemModel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class UnicatService
 {
+    use ContainerAwareTrait;
+
     /**
      * @var ManagerRegistry
      */
@@ -87,6 +95,14 @@ class UnicatService
     public function getCurrentConfiguration()
     {
         return $this->currentConfiguration;
+    }
+
+    /**
+     * @return UnicatConfigurationManager|null
+     */
+    public function getCurrentConfigurationManager()
+    {
+        return $this->currentConfiguration ? $this->getConfigurationManager($this->currentConfiguration->getId()) : null;
     }
 
     /**
@@ -197,8 +213,65 @@ class UnicatService
      */
     public function createAttribute(AttributeModel $entity)
     {
+        if ($entity->getIsDedicatedTable()) {
+            $reflector = new \ReflectionClass($entity);
+            $targetDir = dirname($reflector->getFileName());
+
+            $generator = new DoctrineValueEntityGenerator();
+            $generator->setSkeletonDirs($this->container->get('kernel')->getBundle('UnicatModule')->getPath().'/Resources/skeleton');
+
+            $generator->generate(
+                $targetDir,
+                $this->getCurrentConfiguration()->getName(),
+                $entity->getType(),
+                $entity->getValueClassName(),
+                $reflector->getNamespaceName(),
+                $entity->getName()
+            );
+
+            $application = new Application($this->container->get('kernel'));
+            $application->setAutoExit(false);
+            $applicationInput = new ArrayInput([
+                'command' => 'doctrine:schema:update',
+                '--force' => true,
+            ]);
+            $applicationOutput = new BufferedOutput();
+            $retval = $application->run($applicationInput, $applicationOutput);
+
+            $valueClass = $reflector->getNamespaceName().'\\'.$entity->getValueClassName();
+        }
+
+        $defaultValue = $entity->getUpdateAllRecordsWithDefaultValue();
+
+        if (!empty($defaultValue) or $defaultValue == 0) {
+            /** @var ItemModel $item */
+            foreach ($this->getCurrentConfigurationManager()->findAllItems() as $item) {
+                // @todo поддержку других типов.
+                switch ($entity->getType()) {
+                    case 'checkbox':
+                        $defaultValue = (bool) $defaultValue;
+                        break;
+                    default:
+                        break;
+                }
+
+                $item->setAttribute($entity->getName(), $defaultValue);
+
+                if ($entity->getIsDedicatedTable()) {
+                    /** @var AbstractTypeModel $value */
+                    $value = new $valueClass();
+                    $value
+                        ->setItem($item)
+                        ->setValue($defaultValue)
+                    ;
+
+                    $this->em->persist($value);
+                }
+            }
+        }
+
         $this->em->persist($entity);
-        $this->em->flush($entity);
+        $this->em->flush();
 
         return $this;
     }

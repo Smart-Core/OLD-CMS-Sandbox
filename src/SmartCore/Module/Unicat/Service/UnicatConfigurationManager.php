@@ -14,6 +14,7 @@ use SmartCore\Module\Unicat\Form\Type\CategoryCreateFormType;
 use SmartCore\Module\Unicat\Form\Type\CategoryFormType;
 use SmartCore\Module\Unicat\Form\Type\ItemFormType;
 use SmartCore\Module\Unicat\Form\Type\StructureFormType;
+use SmartCore\Module\Unicat\Model\AbstractTypeModel;
 use SmartCore\Module\Unicat\Model\AttributeModel;
 use SmartCore\Module\Unicat\Model\AttributesGroupModel;
 use SmartCore\Module\Unicat\Model\CategoryModel;
@@ -259,6 +260,7 @@ class UnicatConfigurationManager
             ->remove('name')
             ->remove('type')
             ->remove('is_dedicated_table')
+            ->remove('update_all_records_with_default_value')
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }
@@ -523,7 +525,24 @@ class UnicatConfigurationManager
 
         // Проверка и модификация атрибута. В частности загрука картинок и валидация.
         foreach ($this->getAttributes() as $attribute) {
+            if ($attribute->getIsDedicatedTable()) {
+                $valueClass = $attribute->getValueClassNameWithNameSpace();
+
+                /** @var AbstractTypeModel $av */
+                // @todo пока допускается использование одного поля со значениями, но нужно предусмотреть и множественные.
+                $value = $this->em->getRepository($valueClass)->findOneBy(['item' => $item]);
+
+                if (empty($value)) {
+                    $av = new $valueClass();
+                }
+
+                $av->setValue($item->getAttr($attribute->getName()));
+
+                $this->em->persist($av);
+            }
+
             if ($attribute->isType('image') and $item->hasAttribute($attribute->getName())) {
+                // @todo Здесь выполняется нативный SQL т.к. ORM отдаёт скешированный?
                 $tableItems = $this->em->getClassMetadata($this->configuration->getItemClass())->getTableName();
                 $sql = "SELECT * FROM $tableItems WHERE id = '{$item->getId()}'";
                 $res = $this->em->getConnection()->query($sql)->fetch();
@@ -603,7 +622,7 @@ class UnicatConfigurationManager
             ->setCategoriesSingle($structuresSingleColection);
 
         $this->em->persist($item);
-        $this->em->flush($item);
+        $this->em->flush();
 
         return $this;
     }
