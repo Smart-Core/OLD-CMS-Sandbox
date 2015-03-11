@@ -121,7 +121,7 @@ class AdminAttributesController extends Controller
             }
         }
 
-        return $this->render('UnicatModule:AdminAttributes:attribute_edit.html.twig', [
+        return $this->render('UnicatModule:AdminAttributes:edit.html.twig', [
             'form'          => $form->createView(),
             'configuration' => $configuration, // @todo убрать, это пока для наследуемого шаблона.
         ]);
