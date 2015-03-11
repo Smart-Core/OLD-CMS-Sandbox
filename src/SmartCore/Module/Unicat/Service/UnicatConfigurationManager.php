@@ -112,6 +112,46 @@ class UnicatConfigurationManager
     }
 
     /**
+     * @param array $criteria
+     * @param array|null $orderBy
+     * @param int|null $limit
+     * @param int|null $offset
+     * @return \Doctrine\ORM\Query
+     *
+     * @todo $orderBy, $limit, $offset
+     */
+    public function getFindItemsQuery(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    {
+        $itemEntity = $this->configuration->getItemClass();
+        $attributes = $this->getAttributes();
+
+        $from = $itemEntity.' i';
+
+        $qb = $this->em->createQueryBuilder('i');
+        $qb->select('i');
+
+        $firstWhere = true;
+        foreach ($criteria as $key => $val) {
+            if (isset($attributes[$key])) {
+                $attr = $attributes[$key];
+                $from .= ', '.$attr->getValueClassNameWithNameSpace().' '.$key;
+
+                if ($firstWhere) {
+                    $qb->where('i.id = '.$key.'.item');
+                } else {
+                    $qb->andWhere('i.id = '.$key.'.item');
+                }
+
+                $qb->andWhere($key.'.value = :'.$key)
+                   ->setParameter($key, $val);
+            }
+        }
+
+        $qb->add('from', $from);
+
+        return $qb->getQuery();
+    }
+    /**
      * @param CategoryModel $category
      * @param array $order
      * @return ItemModel[]|null
@@ -533,12 +573,12 @@ class UnicatConfigurationManager
                 $value = $this->em->getRepository($valueClass)->findOneBy(['item' => $item]);
 
                 if (empty($value)) {
-                    $av = new $valueClass();
+                    $value = new $valueClass();
                 }
 
-                $av->setValue($item->getAttr($attribute->getName()));
+                $value->setValue($item->getAttr($attribute->getName()));
 
-                $this->em->persist($av);
+                $this->em->persist($value);
             }
 
             if ($attribute->isType('image') and $item->hasAttribute($attribute->getName())) {

@@ -2,6 +2,10 @@
 
 namespace SmartCore\Module\Unicat\Controller;
 
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Exception\NotValidCurrentPageException;
+use Pagerfanta\Pagerfanta;
+use Smart\CoreBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use SmartCore\Bundle\CMSBundle\Module\CacheTrait;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -54,5 +58,35 @@ class UnicatWidgetController extends Controller
         $this->get('request')->attributes->remove('__selected_inheritance');
 
         return new Response($categoryTree);
+    }
+
+
+    public function getItemsAction(array $criteria, array $orderBy = null, $limit = 10, $offset = null)
+    {
+        if (null === $this->configuration_id) {
+            return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
+        }
+
+        $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
+
+        //$pagerfanta = new Pagerfanta(new DoctrineORMAdapter($ucm->getFindItemsQuery($criteria, $orderBy, $limit, $offset)));
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($ucm->getFindItemsQuery($criteria, $orderBy, $limit, $offset)));
+        $pagerfanta->setMaxPerPage($limit);
+
+        try {
+            $pagerfanta->setCurrentPage(1);
+        } catch (NotValidCurrentPageException $e) {
+            return $this->createNotFoundException('Такой страницы не найдено');
+        }
+
+        return $this->render('UnicatModule::items.html.twig', [
+            'mode'              => 'list',
+            'attributes'        => $ucm->getAttributes(),
+            'configuration'     => $ucm->getConfiguration(),
+            'lastCategory'      => null,
+            'childenCategories' => null,
+            'pagerfanta'        => $pagerfanta,
+            'slug'              => null,
+        ]);
     }
 }

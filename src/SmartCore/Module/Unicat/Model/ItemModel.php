@@ -121,6 +121,15 @@ class ItemModel
     }
 
     /**
+     * @see getName
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId().': '.$this->getSlug();
+    }
+
+    /**
      * @param mixed $categories
      * @return $this
      */

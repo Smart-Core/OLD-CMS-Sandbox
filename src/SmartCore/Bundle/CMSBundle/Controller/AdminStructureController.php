@@ -352,7 +352,8 @@ class AdminStructureController extends Controller
         $nodeParams = $node->getParams();
 
         $form = $cmsNode->createForm($node);
-        $form_properties = $this->createForm($cmsNode->getPropertiesFormType($node->getModule()), $nodeParams);
+        $propertiesFormType = $cmsNode->getPropertiesFormType($node->getModule());
+        $form_properties = $this->createForm($propertiesFormType, $nodeParams);
 
         $form->remove('module');
 
@@ -416,6 +417,7 @@ class AdminStructureController extends Controller
             'allow_delete'    => true,
             'form'            => $form->createView(),
             'form_properties' => $form_properties->createView(),
+            'form_properties_template' => $propertiesFormType->getTemplate(),
             'node'            => $node,
         ]);
     }

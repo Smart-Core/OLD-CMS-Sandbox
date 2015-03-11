@@ -14,9 +14,7 @@ class WidgetController extends Controller
     use CacheTrait;
     use NodeTrait;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $node_id;
 
     /**
@@ -32,6 +30,15 @@ class WidgetController extends Controller
      * @var string
      */
     protected $params;
+
+    /** @var string */
+    protected $tamplate_theme = null;
+
+    /** @var string */
+    protected $open_tag = null;
+
+    /** @var string */
+    protected $close_tag = null;
 
     /**
      * @param Request $request
@@ -53,8 +60,11 @@ class WidgetController extends Controller
             $this->getCacheService()->set($cacheKey, $path, ['smart_module.widget', 'folder', 'node_'.$this->node_id, 'node']);
         }
 
-        if ($this->get('cms.module')->has($path['_node']->getModule())) {
+        if ($this->get('cms.module')->has($path['_node']->getModule()) and !empty($this->controller)) {
+            $originalTpl = $node->getTemplate();
+            $node->setTemplate($this->tamplate_theme);
             $response = $this->forward($this->node_id.':'.$this->controller, $path);
+            $node->setTemplate($originalTpl);
         } else {
             return new Response('Module "'.$path['_node']->getModule().'" is unavailable.');
         }
@@ -66,9 +76,9 @@ class WidgetController extends Controller
 
         if (strlen(trim($response->getContent())) > 0) {
             $response->setContent(
-                $this->node->getParam('open_tag')."\n".
+                $this->open_tag."\n".
                 $response->getContent()."\n".
-                $this->node->getParam('close_tag')
+                $this->close_tag
             );
         }
 

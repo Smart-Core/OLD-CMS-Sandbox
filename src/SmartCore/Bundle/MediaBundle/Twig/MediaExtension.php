@@ -45,11 +45,12 @@ class MediaExtension extends \Twig_Extension
     /**
      * @param  int          $id
      * @param  string|null  $filter
+     * @param  string       $alt
      * @return null|string
      */
-    public function renderImgTag($id, $filter = null)
+    public function renderImgTag($id, $filter = null, $alt = '')
     {
-        return (empty($id)) ? null : '<img src="'.$this->generateFileUrl($id, $filter).'" alt="" />';
+        return (empty($id)) ? null : '<img src="'.$this->generateFileUrl($id, $filter).'" alt="'.$alt.'" />';
     }
 
     /**

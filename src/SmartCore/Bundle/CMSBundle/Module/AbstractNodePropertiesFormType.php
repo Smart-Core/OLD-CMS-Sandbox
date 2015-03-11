@@ -41,4 +41,12 @@ abstract class AbstractNodePropertiesFormType extends AbstractType
 
         return $choices;
     }
+
+    /**
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return '@CMS/AdminStructure/node_properties_form.html.twig';
+    }
 }

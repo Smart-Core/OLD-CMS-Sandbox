@@ -50,4 +50,21 @@ class UnicatModule extends Bundle
     {
         return new UnicatExtension();
     }
+
+    /**
+     * @return array
+     *
+     * @todo
+     */
+    public function getWidgets()
+    {
+        return [
+            'category_tree' => [
+                'class' => 'UnicatWidget:categoryTree',
+            ],
+            'get_items' => [
+                'class' => 'UnicatWidget:getItems',
+            ],
+        ];
+    }
 }

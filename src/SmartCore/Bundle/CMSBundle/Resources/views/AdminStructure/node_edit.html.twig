@@ -17,8 +17,8 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="node-properties">
-                    {% form_theme form_properties '@CMS/Form/bootstrap_wide.html.twig' %}
-                    {{ form_widget(form_properties) }}
+                    {#{% include '@CMS/AdminStructure/node_properties_form.html.twig' %}#}
+                    {% include form_properties_template %}
                 </div>
                 <div class="tab-pane" id="node-common">
                     {{ form_widget(form) }}

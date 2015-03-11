@@ -9,6 +9,7 @@ use SmartCore\Bundle\CMSBundle\Entity\Node;
 use SmartCore\Bundle\CMSBundle\Entity\Region;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeDefaultPropertiesFormType;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
+use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -182,7 +183,7 @@ class EngineNode
      * Получить форму редактирования параметров подключения модуля.
      *
      * @param  string $module_name
-     * @return FormTypeInterface
+     * @return AbstractNodePropertiesFormType
      */
     public function getPropertiesFormType($module_name)
     {
