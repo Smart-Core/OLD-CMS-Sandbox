@@ -24,6 +24,19 @@
         .well {
             padding-bottom: 45px;
         }
+        .modal-admin {
+            width: 800px;
+            margin-left: -400px;
+            height: 80%;
+        }
+        .modal-body {
+            overflow-y: auto;
+            max-height: 1000px;
+            height: 80%;
+        }
+        .modal-body table em {
+            color: red;
+        }
     </style>
 
     {#
@@ -51,6 +64,13 @@
 {% block body_js %}
     {{ parent() }}
     <script type="text/javascript">
+        $('.modal2').on('show', function () {
+            $(this).find('.modal-body').css({
+                width:'auto', //probably not needed
+                height:'50%', //probably not needed
+                'max-height':'80%'
+            });
+        });
         {# Позиционирование курсора фокусированного инпута в конец поля #}
         $(function(){
             $('input[autofocus="autofocus"]').focusEnd();

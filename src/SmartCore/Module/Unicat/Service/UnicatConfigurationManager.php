@@ -256,6 +256,9 @@ class UnicatConfigurationManager
     public function getAttributeEditForm(AttributeModel $attribute, array $options = [])
     {
         return $this->getAttributeForm($attribute, $options)
+            ->remove('name')
+            ->remove('type')
+            ->remove('is_dedicated_table')
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
     }

@@ -91,7 +91,7 @@ class AdminAttributesController extends Controller
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function attributeEditAction(Request $request, $configuration, $group_id, $id)
+    public function editAction(Request $request, $configuration, $group_id, $id)
     {
         $unicat = $this->get('unicat');
         $ucm    = $unicat->getConfigurationManager($configuration);

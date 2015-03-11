@@ -75,7 +75,7 @@ unicat_admin.attributes:
 unicat_admin.attribute:
     path: /{configuration}/attributes/group_{group_id}/{id}/
     defaults:
-        _controller: UnicatModule:AdminAttributes:attributeEdit
+        _controller: UnicatModule:AdminAttributes:edit
     requirements:
         group_id: \d+
         id: \d+
