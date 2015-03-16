@@ -1,0 +1,30 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'WebForms'|trans }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ 'WebForms'|trans }}</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead><tr>
+            <th style="width: 1%;">id</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Name'|trans }}</th>
+            <th>{{ 'Created at'|trans }}</th>
+        </tr></thead>
+        <tbody>
+        {% for item in webForms %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td><a href="{{ path('web_form.admin_manage', {'name': item.name}) }}">{{ item.title }}</a></td>
+                <td><a href="{{ path('web_form.admin_manage', {'name': item.name}) }}">{{ item.name }}</a></td>
+                <td>{{ item.createdAt|date() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
+
+{% endblock content %}

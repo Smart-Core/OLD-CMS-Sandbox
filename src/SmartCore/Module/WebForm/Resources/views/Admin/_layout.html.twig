@@ -1,0 +1,21 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}&laquo;{{ web_form.title }}&raquo; / {{ 'WebForm'|trans }} / {{ parent() }}{% endblock %}
+
+{% block nav %}
+
+    {#{% set __selected_inheritance = app.request.attributes.get('__selected_inheritance') %}#}
+    {#{% set __si = app.request.attributes.set('__selected_inheritance', false) %}#}
+
+    {% set configurationMenu = knp_menu_get('WebFormModule:AdminMenu:manage', [], {
+        'web_form': web_form,
+    }) %}
+
+    {{ knp_menu_render(configurationMenu, {
+        'currentClass': 'active',
+        'clear_matcher': false,
+    }) }}
+
+    {#{% set __si = app.request.attributes.set('__selected_inheritance', __selected_inheritance) %}#}
+
+{% endblock nav %}

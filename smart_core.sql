@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 09 2015 г., 21:03
+-- Время создания: Мар 17 2015 г., 04:10
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.6
 
@@ -1580,7 +1580,7 @@ CREATE TABLE IF NOT EXISTS `unicat__configurations` (
   UNIQUE KEY `UNIQ_F622D4622B36786B` (`title`),
   KEY `IDX_9D36C6A0B52E685C` (`media_collection_id`),
   KEY `IDX_9D36C6A07E2E521` (`default_structure_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `unicat__configurations`
@@ -1663,9 +1663,86 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-07 18:51:48', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-16 18:40:07', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `webforms`
+--
+
+DROP TABLE IF EXISTS `webforms`;
+CREATE TABLE IF NOT EXISTS `webforms` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_641866195E237E06` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `webforms`
+--
+
+INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`) VALUES
+(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `webforms_fields`
+--
+
+DROP TABLE IF EXISTS `webforms_fields`;
+CREATE TABLE IF NOT EXISTS `webforms_fields` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `position` smallint(6) DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `web_form_id` int(10) unsigned DEFAULT NULL,
+  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `params_yaml` longtext COLLATE utf8_unicode_ci,
+  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `is_required` tinyint(1) NOT NULL DEFAULT '0',
+  `is_enabled` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_4FE98D465E237E06` (`name`),
+  KEY `IDX_4FE98D46B75935E3` (`web_form_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `webforms_fields`
+--
+
+INSERT INTO `webforms_fields` (`id`, `created_at`, `name`, `position`, `title`, `user_id`, `web_form_id`, `params`, `params_yaml`, `type`, `is_required`, `is_enabled`) VALUES
+(1, '2015-03-17 03:56:03', 'email', 0, 'Ваш емаил', 1, 1, 'a:0:{}', NULL, 'email', 1, 1),
+(2, '2015-03-17 03:57:27', 'text', 0, 'Текст', 1, 1, 'a:0:{}', NULL, 'textarea', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `webforms_messages`
+--
+
+DROP TABLE IF EXISTS `webforms_messages`;
+CREATE TABLE IF NOT EXISTS `webforms_messages` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `created_at` datetime NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Дамп данных таблицы `webforms_messages`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1902,8 +1979,8 @@ ALTER TABLE `unicat_catalog_attributes`
 -- Ограничения внешнего ключа таблицы `unicat_catalog_attributes_groups`
 --
 ALTER TABLE `unicat_catalog_attributes_groups`
-  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`),
-  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
+  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
+  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_categories`
@@ -1944,3 +2021,9 @@ ALTER TABLE `unicat__configurations`
 --
 ALTER TABLE `unicat__structures`
   ADD CONSTRAINT `FK_239D6D8E73F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `webforms_fields`
+--
+ALTER TABLE `webforms_fields`
+  ADD CONSTRAINT `FK_4FE98D46B75935E3` FOREIGN KEY (`web_form_id`) REFERENCES `webforms` (`id`);

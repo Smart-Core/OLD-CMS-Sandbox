@@ -1,0 +1,7 @@
+parameters:
+#    web_form.example.class: SmartCore\Module\WebForm\Example
+
+services:
+#    web_form.example:
+#        class: %web_form.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
