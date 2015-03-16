@@ -725,12 +725,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "78928cc5fb0f1cde57a973002fa0c5c9ced77bac"
+                "reference": "9c5a4ebedb583b882062fb8b276b8af5ca9063ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/78928cc5fb0f1cde57a973002fa0c5c9ced77bac",
-                "reference": "78928cc5fb0f1cde57a973002fa0c5c9ced77bac",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/9c5a4ebedb583b882062fb8b276b8af5ca9063ac",
+                "reference": "9c5a4ebedb583b882062fb8b276b8af5ca9063ac",
                 "shasum": ""
             },
             "require": {
@@ -800,7 +800,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-02-02 04:53:40"
+            "time": "2015-03-15 18:50:55"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -1046,12 +1046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "fca67c4a5a6f4334e8b6a57410f7b386b012ab01"
+                "reference": "b8ed2683bf48cf13c92f80d99cb723ae28efb227"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/fca67c4a5a6f4334e8b6a57410f7b386b012ab01",
-                "reference": "fca67c4a5a6f4334e8b6a57410f7b386b012ab01",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/b8ed2683bf48cf13c92f80d99cb723ae28efb227",
+                "reference": "b8ed2683bf48cf13c92f80d99cb723ae28efb227",
                 "shasum": ""
             },
             "require": {
@@ -1096,7 +1096,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-03-06 20:53:13"
+            "time": "2015-03-13 10:18:59"
         },
         {
             "name": "doctrine/orm",
@@ -1666,12 +1666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "2684b0dddff35b4de40920b11972b71ae386b9f5"
+                "reference": "808672b01f6aa6777417551c72a0be2c3545eafe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/2684b0dddff35b4de40920b11972b71ae386b9f5",
-                "reference": "2684b0dddff35b4de40920b11972b71ae386b9f5",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/808672b01f6aa6777417551c72a0be2c3545eafe",
+                "reference": "808672b01f6aa6777417551c72a0be2c3545eafe",
                 "shasum": ""
             },
             "require": {
@@ -1725,7 +1725,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-03-06 14:51:30"
+            "time": "2015-03-12 11:42:34"
         },
         {
             "name": "fzaninotto/faker",
@@ -2536,16 +2536,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
-            "version": "2.2",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/ElFinderPHP.git",
-                "reference": "fbce0034f07b8f681cccfb10f68d4e9592b8751b"
+                "reference": "a0352962c134ec572d52cd2836477abd4c9dc0ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/fbce0034f07b8f681cccfb10f68d4e9592b8751b",
-                "reference": "fbce0034f07b8f681cccfb10f68d4e9592b8751b",
+                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/a0352962c134ec572d52cd2836477abd4c9dc0ba",
+                "reference": "a0352962c134ec572d52cd2836477abd4c9dc0ba",
                 "shasum": ""
             },
             "require": {
@@ -2585,7 +2585,7 @@
                 "elfinder",
                 "filemanager"
             ],
-            "time": "2015-02-14 13:46:26"
+            "time": "2015-03-14 15:22:56"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -2867,16 +2867,16 @@
         },
         {
             "name": "jbroadway/urlify",
-            "version": "1.0.3-stable",
+            "version": "1.0.4-stable",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jbroadway/urlify.git",
-                "reference": "c9ada9d3873d11f72fa772aecd6896efad11ee67"
+                "reference": "1a47f32e3eb70391f5a56efb139ad6a3ca45f1ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jbroadway/urlify/zipball/c9ada9d3873d11f72fa772aecd6896efad11ee67",
-                "reference": "c9ada9d3873d11f72fa772aecd6896efad11ee67",
+                "url": "https://api.github.com/repos/jbroadway/urlify/zipball/1a47f32e3eb70391f5a56efb139ad6a3ca45f1ab",
+                "reference": "1a47f32e3eb70391f5a56efb139ad6a3ca45f1ab",
                 "shasum": ""
             },
             "require": {
@@ -2895,14 +2895,13 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD"
             ],
             "authors": [
                 {
                     "name": "Johnny Broadway",
                     "email": "johnny@johnnybroadway.com",
-                    "homepage": "http://www.johnnybroadway.com/",
-                    "role": "Main Developer"
+                    "homepage": "http://www.johnnybroadway.com/"
                 }
             ],
             "description": "PHP port of URLify.js from the Django project. Transliterates non-ascii characters for use in URLs.",
@@ -2918,7 +2917,7 @@
                 "url",
                 "urlify"
             ],
-            "time": "2014-03-17 16:14:04"
+            "time": "2015-03-09 22:33:47"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -3761,12 +3760,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "f9b9fe1995d2aecaaab408420664d4b9235deaeb"
+                "reference": "773199ac0e2a5be6bc641a6bfab69b75be2a2007"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/f9b9fe1995d2aecaaab408420664d4b9235deaeb",
-                "reference": "f9b9fe1995d2aecaaab408420664d4b9235deaeb",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/773199ac0e2a5be6bc641a6bfab69b75be2a2007",
+                "reference": "773199ac0e2a5be6bc641a6bfab69b75be2a2007",
                 "shasum": ""
             },
             "require": {
@@ -3809,7 +3808,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-03-04 10:53:50"
+            "time": "2015-03-16 10:58:49"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -4285,21 +4284,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "24d24910c1802c3384c696708503634ac05853a5"
+                "reference": "f27f0e924999ac1698e82094acea48e2ec669d06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/24d24910c1802c3384c696708503634ac05853a5",
-                "reference": "24d24910c1802c3384c696708503634ac05853a5",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/f27f0e924999ac1698e82094acea48e2ec669d06",
+                "reference": "f27f0e924999ac1698e82094acea48e2ec669d06",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
+                "psr/log": "~1.0",
                 "symfony/framework-bundle": "~2.0"
             },
             "require-dev": {
+                "kriswallsmith/assetic": "~1.1",
+                "phpunit/phpunit": "~4.5",
                 "symfony/console": "~2.0",
-                "symfony/expression-language": "~2.6"
+                "symfony/expression-language": "~2.6",
+                "twig/twig": "~1.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -4331,7 +4334,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2015-02-19 22:17:33"
+            "time": "2015-03-10 16:28:49"
         },
         {
             "name": "misd/guzzle-bundle",
@@ -4407,16 +4410,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.13.0",
+            "version": "1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae"
+                "reference": "c31a2c4e8db5da8b46c74cf275d7f109c0f249ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c41c218e239b50446fd883acb1ecfd4b770caeae",
-                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c31a2c4e8db5da8b46c74cf275d7f109c0f249ac",
+                "reference": "c31a2c4e8db5da8b46c74cf275d7f109c0f249ac",
                 "shasum": ""
             },
             "require": {
@@ -4476,7 +4479,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-03-05 01:12:12"
+            "time": "2015-03-09 09:58:04"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -5762,16 +5765,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.3.1",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "c5f963e7f9d6f6438fda4f22d5cc2db296ec621a"
+                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/c5f963e7f9d6f6438fda4f22d5cc2db296ec621a",
-                "reference": "c5f963e7f9d6f6438fda4f22d5cc2db296ec621a",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/31454f258f10329ae7c48763eb898a75c39e0a9f",
+                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f",
                 "shasum": ""
             },
             "require": {
@@ -5783,7 +5786,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.3-dev"
+                    "dev-master": "5.4-dev"
                 }
             },
             "autoload": {
@@ -5810,7 +5813,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-12-05 14:17:14"
+            "time": "2015-03-14 06:06:39"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -6278,12 +6281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/BreadcrumbsBundle.git",
-                "reference": "b6c781810f0a8e2e4f0948139a8b3bde4ad14320"
+                "reference": "416d6f5e0f06cbbf88c648b2fcccf55290ffc42a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/BreadcrumbsBundle/zipball/b6c781810f0a8e2e4f0948139a8b3bde4ad14320",
-                "reference": "b6c781810f0a8e2e4f0948139a8b3bde4ad14320",
+                "url": "https://api.github.com/repos/whiteoctober/BreadcrumbsBundle/zipball/416d6f5e0f06cbbf88c648b2fcccf55290ffc42a",
+                "reference": "416d6f5e0f06cbbf88c648b2fcccf55290ffc42a",
                 "shasum": ""
             },
             "require": {
@@ -6312,7 +6315,7 @@
                 "breadcrumbs",
                 "symfony"
             ],
-            "time": "2015-02-10 23:19:14"
+            "time": "2015-03-10 09:21:11"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
