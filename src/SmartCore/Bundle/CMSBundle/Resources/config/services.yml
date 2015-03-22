@@ -2,9 +2,6 @@ parameters:
     router.class: SmartCore\Bundle\CMSBundle\Router\NodeRouter
 
 services:
-    db.logger:
-        class: Doctrine\DBAL\Logging\DebugStack
-
 # Listeners
     cms.controller.listener:
         class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener

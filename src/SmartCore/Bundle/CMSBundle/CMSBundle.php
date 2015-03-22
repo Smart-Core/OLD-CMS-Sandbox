@@ -14,10 +14,6 @@ class CMSBundle extends Bundle
     public function boot()
     {
         Container::setContainer($this->container);
-
-        if ($this->container->get('kernel')->getEnvironment() == 'prod' and $this->container->has('db.logger')) {
-            $this->container->get('database_connection')->getConfiguration()->setSQLLogger($this->container->get('db.logger'));
-        }
     }
 
     public function build(ContainerBuilder $container)
