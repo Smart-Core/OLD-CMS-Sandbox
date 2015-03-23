@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aa48eb61b82b35b523496ef12098794c",
+    "hash": "21ec27ca98b0a855f1efdfb4d4724490",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -533,24 +533,24 @@
         },
         {
             "name": "doctrine/data-fixtures",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "b4a135c7db56ecc4602b54a2184368f440cac33e"
+                "reference": "b6e28afc4a52bfbb6768091f890d08085aa77e70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b4a135c7db56ecc4602b54a2184368f440cac33e",
-                "reference": "b4a135c7db56ecc4602b54a2184368f440cac33e",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b6e28afc4a52bfbb6768091f890d08085aa77e70",
+                "reference": "b6e28afc4a52bfbb6768091f890d08085aa77e70",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": ">=2.2,<2.5-dev",
+                "doctrine/common": "~2.2",
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "doctrine/orm": ">=2.2,<2.5-dev"
+                "doctrine/orm": "~2.4"
             },
             "suggest": {
                 "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
@@ -574,10 +574,8 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/",
-                    "role": "Creator"
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
                 }
             ],
             "description": "Data Fixtures for all Doctrine Object Managers",
@@ -585,7 +583,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2013-07-10 17:04:07"
+            "time": "2015-03-23 01:13:09"
         },
         {
             "name": "doctrine/dbal",
@@ -1047,12 +1045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "b8ed2683bf48cf13c92f80d99cb723ae28efb227"
+                "reference": "d2d18ef671b47a7d48fae54806adac87e82fe8e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/b8ed2683bf48cf13c92f80d99cb723ae28efb227",
-                "reference": "b8ed2683bf48cf13c92f80d99cb723ae28efb227",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/d2d18ef671b47a7d48fae54806adac87e82fe8e9",
+                "reference": "d2d18ef671b47a7d48fae54806adac87e82fe8e9",
                 "shasum": ""
             },
             "require": {
@@ -1097,7 +1095,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-03-13 10:18:59"
+            "time": "2015-03-22 13:09:02"
         },
         {
             "name": "doctrine/orm",
@@ -2815,16 +2813,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "572806fd083b622dd430d76c34564459596fef2a"
+                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/572806fd083b622dd430d76c34564459596fef2a",
-                "reference": "572806fd083b622dd430d76c34564459596fef2a",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/8f3761154b4c1f5128365dfc32cbf757f27d97b6",
+                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6",
                 "shasum": ""
             },
             "require": {
@@ -2867,7 +2865,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-03-09 13:03:15"
+            "time": "2015-03-18 17:41:04"
         },
         {
             "name": "jbroadway/urlify",
@@ -3585,12 +3583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpDisqusBundle.git",
-                "reference": "5f3d1385e903fae92b73213ba433253eddd6b9b5"
+                "reference": "a32445c3853f865d4ce53d9d8b98b2a252308f8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpDisqusBundle/zipball/5f3d1385e903fae92b73213ba433253eddd6b9b5",
-                "reference": "5f3d1385e903fae92b73213ba433253eddd6b9b5",
+                "url": "https://api.github.com/repos/KnpLabs/KnpDisqusBundle/zipball/a32445c3853f865d4ce53d9d8b98b2a252308f8c",
+                "reference": "a32445c3853f865d4ce53d9d8b98b2a252308f8c",
                 "shasum": ""
             },
             "require": {
@@ -3632,7 +3630,7 @@
                 "disqus",
                 "forum"
             ],
-            "time": "2015-02-24 10:53:07"
+            "time": "2015-03-22 22:48:09"
         },
         {
             "name": "knplabs/knp-gaufrette-bundle",
@@ -4156,12 +4154,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "0f7b983a22b59cbee27ff6e26c7a9a8d805eb5e2"
+                "reference": "7976f4aa8396b81fe4d363a97d09de11ece98d7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/0f7b983a22b59cbee27ff6e26c7a9a8d805eb5e2",
-                "reference": "0f7b983a22b59cbee27ff6e26c7a9a8d805eb5e2",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/7976f4aa8396b81fe4d363a97d09de11ece98d7d",
+                "reference": "7976f4aa8396b81fe4d363a97d09de11ece98d7d",
                 "shasum": ""
             },
             "require": {
@@ -4173,12 +4171,13 @@
             "suggest": {
                 "doctrine/dbal": "Required when using the fixture loading functionality with an ORM and SQLite",
                 "doctrine/doctrine-fixtures-bundle": "Required when using the fixture loading functionality",
-                "doctrine/orm": "Required when using the fixture loading functionality with an ORM and SQLite"
+                "doctrine/orm": "Required when using the fixture loading functionality with an ORM and SQLite",
+                "nelmio/alice": "Required when using loadFixtureFiles functionality"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -4204,7 +4203,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2015-03-20 15:18:13"
+            "time": "2015-03-23 07:42:08"
         },
         {
             "name": "liip/imagine-bundle",
@@ -5592,12 +5591,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "b21649813cca9196089d5d00455556fbfe93e7e3"
+                "reference": "77a2538c07283a7685a77a42941bbc9a41ef2914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/b21649813cca9196089d5d00455556fbfe93e7e3",
-                "reference": "b21649813cca9196089d5d00455556fbfe93e7e3",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/77a2538c07283a7685a77a42941bbc9a41ef2914",
+                "reference": "77a2538c07283a7685a77a42941bbc9a41ef2914",
                 "shasum": ""
             },
             "require": {
@@ -5637,7 +5636,7 @@
                 }
             ],
             "description": "Symfony SonataIntlBundle",
-            "homepage": "http://sonata-project.org/bundles/intl",
+            "homepage": "https://sonata-project.org/bundles/intl",
             "keywords": [
                 "date",
                 "intl",
@@ -5645,7 +5644,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-02-10 17:04:33"
+            "time": "2015-03-21 08:43:44"
         },
         {
             "name": "sp/bower-bundle",
@@ -6232,12 +6231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "89c8c4fbb071d6d55023b3c9bdbec5d6b70acaef"
+                "reference": "54ebf26f7369150bbcddb612de94bd121f16d261"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/89c8c4fbb071d6d55023b3c9bdbec5d6b70acaef",
-                "reference": "89c8c4fbb071d6d55023b3c9bdbec5d6b70acaef",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/54ebf26f7369150bbcddb612de94bd121f16d261",
+                "reference": "54ebf26f7369150bbcddb612de94bd121f16d261",
                 "shasum": ""
             },
             "require": {
@@ -6276,7 +6275,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2015-01-31 09:28:42"
+            "time": "2015-03-22 20:26:36"
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
