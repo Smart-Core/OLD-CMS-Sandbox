@@ -2,40 +2,6 @@ parameters:
     router.class: SmartCore\Bundle\CMSBundle\Router\NodeRouter
 
 services:
-# Listeners
-    cms.controller.listener:
-        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
-        tags:
-            - { name: kernel.event_listener, event: kernel.controller, method: onController }
-    cms.request.listener:
-        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onRequest }
-    cms.response.listener:
-        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
-        tags:
-            - { name: kernel.event_listener, event: kernel.response, method: onResponse }
-    cms.view.listener:
-        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
-        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
-        tags:
-            - { name: kernel.event_listener, event: kernel.view, method: onView }
-    cms.db.table_prefix_subscriber:
-        class: SmartCore\Bundle\CMSBundle\Listener\TablePrefixSubscriber
-        arguments: [ %database_table_prefix% ]
-        public: false
-        tags:
-            - { name: doctrine.event_subscriber }
-    cms.folder.doctrine_subscriber:
-        class: SmartCore\Bundle\CMSBundle\Listener\FolderDoctrineSubscriber
-        arguments: [ @service_container ]
-        public: false
-        tags:
-            - { name: doctrine.event_listener, event: prePersist }
-            - { name: doctrine.event_listener, event: preUpdate }
 # Core
     cms.breadcrumbs:
         class: SmartCore\Bundle\CMSBundle\Tools\Breadcrumbs
@@ -70,21 +36,51 @@ services:
             - [ setResolver,  [ @routing.resolver ] ]
         tags:
             - { name: routing.loader }
-    cms.routes.modules_enabled.loader:
+    cms.routes.modules.loader:
         class: SmartCore\Bundle\CMSBundle\Router\ModuleRoutesLoader
         calls:
             - [ setContainer, [ @service_container ] ]
             - [ setResolver,  [ @routing.resolver ] ]
         tags:
             - { name: routing.loader }
-#    cms.routes.nodes.loader:
-#        class: SmartCore\Bundle\CMSBundle\Router\NodeMatcherLoader
-#        tags:
-#            - { name: routing.loader }
     cms.toolbar:
         class: SmartCore\Bundle\CMSBundle\Engine\EngineToolbar
         calls:
             - [ setContainer, [ @service_container ] ]
+# Listeners
+    cms.controller.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onController }
+    cms.request.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onRequest }
+    cms.response.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onResponse }
+    cms.view.listener:
+        class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
+        arguments: [ @cms.context, @cms.folder, @cms.node, @liip_theme.file_locator ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.view, method: onView }
+    cms.db.table_prefix_subscriber:
+        class: SmartCore\Bundle\CMSBundle\Listener\TablePrefixSubscriber
+        arguments: [ %database_table_prefix% ]
+        public: false
+        tags:
+            - { name: doctrine.event_subscriber }
+    cms.folder.doctrine_subscriber:
+        class: SmartCore\Bundle\CMSBundle\Listener\FolderDoctrineSubscriber
+        arguments: [ @service_container ]
+        public: false
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
 # Forms
     cms.form.type.extension.node_id:
         class: SmartCore\Bundle\CMSBundle\Form\Extension\FormTypeNodeIdExtension
@@ -111,7 +107,6 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
-
 # Menu selected items
     cms.menu.voter.request:
         class: SmartCore\Bundle\CMSBundle\Menu\RequestVoter
