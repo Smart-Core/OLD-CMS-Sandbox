@@ -182,7 +182,7 @@ class AttributeModel
             return $className;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -191,6 +191,7 @@ class AttributeModel
     public function getValueClassNameWithNameSpace()
     {
         $reflector = new \ReflectionClass($this);
+
         return $reflector->getNamespaceName().'\\'.$this->getValueClassName();
     }
 
@@ -488,6 +489,7 @@ class AttributeModel
     public function setOpenTag($open_tag)
     {
         $this->open_tag = $open_tag;
+
         return $this;
     }
 

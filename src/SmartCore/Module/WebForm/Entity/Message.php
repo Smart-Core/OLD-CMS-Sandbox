@@ -78,7 +78,7 @@ class Message
     /**
      * @return array
      */
-    static public function getFormChoicesStatuses()
+    public static function getFormChoicesStatuses()
     {
         return [
             self::STATUS_NEW            => 'Новый',

@@ -60,7 +60,6 @@ class UnicatWidgetController extends Controller
         return new Response($categoryTree);
     }
 
-
     public function getItemsAction(array $criteria, array $orderBy = null, $limit = 10, $offset = null)
     {
         if (null === $this->configuration_id) {

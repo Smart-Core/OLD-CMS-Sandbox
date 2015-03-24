@@ -11,7 +11,6 @@ use SmartCore\Bundle\CMSBundle\Form\Type\NodeDefaultPropertiesFormType;
 use SmartCore\Bundle\CMSBundle\Form\Type\NodeFormType;
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 class EngineNode
