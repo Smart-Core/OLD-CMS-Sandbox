@@ -84,7 +84,7 @@ class WebFormController extends Controller
                 $mailer = $this->get('mailer');
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Сообщение с веб-формы &laquo;'.$webForm->getTitle().'&raquo; с сайта '.$this->container->getParameter('base_url'))
+                    ->setSubject('Сообщение с веб-формы «'.$webForm->getTitle().'» ('.$this->container->getParameter('base_url').')')
                     ->setFrom($webForm->getFromEmail())
                     ->setTo($addresses)
                     ->setBody($this->renderView('WebFormModule:Email:notice.email.twig', ['web_form' => $webForm, 'message' => $message]))
