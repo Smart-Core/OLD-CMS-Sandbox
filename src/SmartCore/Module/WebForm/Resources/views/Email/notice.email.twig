@@ -1,3 +1,4 @@
+{#<b>{{ field.title }}:</b> {{ message.dataValue(field.name) }} <br/>#}
 {% for field in web_form.fields %}
-    <b>{{ field.title }}:</b> {{ message.dataValue(field.name) }} <br/>
+ {{ field.title }}: {{ message.dataValue(field.name) }}
 {% endfor %}
