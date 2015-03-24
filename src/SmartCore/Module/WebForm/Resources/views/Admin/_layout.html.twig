@@ -1,6 +1,7 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block title %}&laquo;{{ web_form.title }}&raquo; / {{ 'WebForm'|trans }} / {{ parent() }}{% endblock %}
+{% block title %}{% if title %}{{ title|trans }} / {% endif %}&laquo;{{ web_form.title }}&raquo; / {{ 'WebForm'|trans }} / {{ parent() }}
+{% endblock %}
 
 {% block nav %}
 
@@ -14,6 +15,7 @@
     {{ knp_menu_render(configurationMenu, {
         'currentClass': 'active',
         'clear_matcher': false,
+        'template': 'WebFormModule:Menu:knp_menu.html.twig',
     }) }}
 
     {#{% set __si = app.request.attributes.set('__selected_inheritance', __selected_inheritance) %}#}

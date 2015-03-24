@@ -1,0 +1,10 @@
+{% extends '@WebFormModule/Admin/_layout.html.twig' %}
+
+{% block content %}
+
+    <h2>{{ 'Settings of WebForm'|trans }}: &laquo;{{ web_form.title }}&raquo;</h2>
+
+    {{ form_errors(form) }}
+    {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
+
+{% endblock content %}

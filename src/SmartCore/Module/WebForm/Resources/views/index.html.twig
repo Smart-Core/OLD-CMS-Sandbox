@@ -1,1 +1,6 @@
-{{ 'Welcome to new generated module'|trans }}.
+{% if form is defined %}
+    {% form_theme form '@CMS/Form/bootstrap_wide.html.twig' %}
+{% endif %}
+
+{#{{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}#}
+{{ form(form) }}

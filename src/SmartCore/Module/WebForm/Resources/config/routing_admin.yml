@@ -7,28 +7,37 @@ web_form.admin_manage:
     path: /{name}/
     defaults:
         _controller: WebFormModule:AdminWebForm:manage
-#    requirements:
-#        id: \d+
+
+web_form.admin_edit_message:
+    path: /{name}/{id}/
+    defaults:
+        _controller: WebFormModule:AdminWebForm:editMessage
+    requirements:
+        id: \d+
 
 web_form.admin_new_messages:
     path: /{name}/new_messages/
     defaults:
-        _controller: WebFormModule:AdminWebForm:manage
+        _controller: WebFormModule:AdminWebForm:messages
+        status: 0
 
 web_form.admin_in_progress:
     path: /{name}/in_progress/
     defaults:
-        _controller: WebFormModule:AdminWebForm:manage
+        _controller: WebFormModule:AdminWebForm:messages
+        status: 1
 
 web_form.admin_finished:
     path: /{name}/finished/
     defaults:
-        _controller: WebFormModule:AdminWebForm:manage
+        _controller: WebFormModule:AdminWebForm:messages
+        status: 2
 
 web_form.admin_rejected:
     path: /{name}/rejected/
     defaults:
-        _controller: WebFormModule:AdminWebForm:manage
+        _controller: WebFormModule:AdminWebForm:messages
+        status: 3
 
 web_form.admin_fields:
     path: /{name}/fields/
@@ -45,5 +54,4 @@ web_form.admin_field_edit:
 web_form.admin_settings:
     path: /{name}/settings/
     defaults:
-        _controller: WebFormModule:AdminWebForm:manage
-
+        _controller: WebFormModule:AdminWebForm:settings

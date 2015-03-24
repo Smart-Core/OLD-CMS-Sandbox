@@ -9,8 +9,17 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $webforms = [];
+        foreach ($this->em->getRepository('WebFormModule:WebForm')->findAll() as $webform) {
+            $webforms[$webform->getId()] = $webform;
+        }
+
         $builder
-            //->add('some_value')
+            ->add('webform_id', 'choice', [
+                'choices'  => $webforms,
+                'required' => false,
+                'label'    => 'WebForms',
+            ])
         ;
     }
 

@@ -1,0 +1,18 @@
+{% extends '@WebFormModule/Admin/_layout.html.twig' %}
+
+{% block content %}
+
+    <h2>{{ 'Message'|trans }}: &laquo;{{ form.vars.data.id }}&raquo;</h2>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal well'}} ) }}
+
+    {% for field in web_form.fields %}
+        <div class="control-group">
+            <label class="control-label optional">{{ field.title }}:</label>
+            <div class="controls">{{ form.vars.data.dataValue(field.name) }}</div>
+        </div>
+    {% endfor %}
+
+    {{ form_end(form) }}
+
+{% endblock content %}

@@ -19,11 +19,27 @@ class WebForm
     use ColumnTrait\UserId;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    protected $is_use_captcha;
+
+    /**
      * @var WebFormField[]
      *
      * @ORM\OneToMany(targetEntity="WebFormField", mappedBy="web_form")
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $fields;
+
+    /**
+     * @var Message[]
+     *
+     * @ORM\OneToMany(targetEntity="Message", mappedBy="web_form")
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    protected $messages;
 
     /**
      * Constructor.
@@ -32,6 +48,16 @@ class WebForm
     {
         $this->created_at   = new \DateTime();
         $this->fields       = new ArrayCollection();
+        $this->messages     = new ArrayCollection();
+    }
+
+    /**
+     * @see getName
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getTitle();
     }
 
     /**
@@ -49,6 +75,44 @@ class WebForm
     public function setFields($fields)
     {
         $this->fields = $fields;
+
+        return $this;
+    }
+
+    /**
+     * @return Message[]
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param Message[] $messages
+     * @return $this
+     */
+    public function setMessages($messages)
+    {
+        $this->messages = $messages;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsUseCaptcha()
+    {
+        return $this->is_use_captcha;
+    }
+
+    /**
+     * @param boolean $is_use_captcha
+     * @return $this
+     */
+    public function setIsUseCaptcha($is_use_captcha)
+    {
+        $this->is_use_captcha = $is_use_captcha;
 
         return $this;
     }

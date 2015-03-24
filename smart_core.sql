@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 17 2015 г., 04:10
+-- Время создания: Мар 24 2015 г., 06:14
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.6.6
+-- Версия PHP: 5.6.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   KEY `is_active` (`is_active`),
   KEY `is_deleted` (`is_deleted`),
   KEY `position` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `engine_folders`
@@ -323,7 +323,8 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
 (16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, 0, NULL, 'a:0:{}', NULL, 32, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
-(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL);
+(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL),
+(18, 1, 'Веб-форма', 0, 0, 'web-form', 1, 0, NULL, 'a:0:{}', NULL, 34, 0, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -383,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   KEY `position` (`position`),
   KEY `module` (`module`),
   KEY `IDX_3055D1B7FD07C8FB` (`is_deleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
 -- Дамп данных таблицы `engine_nodes`
@@ -421,7 +422,8 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, 'Тесты с каталогом', 1, '2014-07-01 13:42:20', 0, NULL, 0, 1, '2015-03-02 03:42:04'),
 (31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, 0, NULL),
 (32, 16, 1, 1, 'Unicat', 'a:1:{s:16:"configuration_id";i:2;}', 0, 0, NULL, 1, '2015-03-02 11:37:36', 0, NULL, 1, 0, NULL),
-(33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, 0, NULL);
+(33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, 0, NULL),
+(34, 18, 1, 1, 'WebForm', 'a:1:{s:10:"webform_id";i:1;}', 0, 0, NULL, 1, '2015-03-24 03:18:10', 0, NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -790,7 +792,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   KEY `IDX_D885BF9AFE54D947` (`group_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
 -- Дамп данных таблицы `menu`
@@ -813,7 +815,8 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 (15, 1, 15, 1, 5, NULL, NULL, NULL, 1, '2014-02-12 16:12:41', '2014-02-12 16:12:51', NULL, 'N;', 0),
 (17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;', 0),
 (18, 2, 7, 1, 0, NULL, NULL, NULL, 1, '2015-02-15 21:41:46', NULL, NULL, 'N;', 0),
-(19, 1, NULL, 1, 255, 'Ссылка на яндекс', 'Откроется в новом окне', 'http://ya.ru', 1, '2015-02-15 23:07:04', '2015-02-21 01:29:55', NULL, 'N;', 1);
+(19, 1, NULL, 1, 255, 'Ссылка на яндекс', 'Откроется в новом окне', 'http://ya.ru', 1, '2015-02-15 23:07:04', '2015-02-21 01:29:55', NULL, 'N;', 1),
+(20, 1, 18, 1, 4, NULL, NULL, NULL, 1, '2015-03-24 03:17:53', NULL, NULL, 'N;', 0);
 
 -- --------------------------------------------------------
 
@@ -1663,7 +1666,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-16 18:40:07', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-24 04:05:05', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1680,6 +1683,7 @@ CREATE TABLE IF NOT EXISTS `webforms` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_use_captcha` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_641866195E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -1688,8 +1692,8 @@ CREATE TABLE IF NOT EXISTS `webforms` (
 -- Дамп данных таблицы `webforms`
 --
 
-INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`) VALUES
-(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback');
+INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`, `is_use_captcha`) VALUES
+(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback', 1);
 
 -- --------------------------------------------------------
 
@@ -1714,15 +1718,16 @@ CREATE TABLE IF NOT EXISTS `webforms_fields` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_4FE98D465E237E06` (`name`),
   KEY `IDX_4FE98D46B75935E3` (`web_form_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `webforms_fields`
 --
 
 INSERT INTO `webforms_fields` (`id`, `created_at`, `name`, `position`, `title`, `user_id`, `web_form_id`, `params`, `params_yaml`, `type`, `is_required`, `is_enabled`) VALUES
-(1, '2015-03-17 03:56:03', 'email', 0, 'Ваш емаил', 1, 1, 'a:0:{}', NULL, 'email', 1, 1),
-(2, '2015-03-17 03:57:27', 'text', 0, 'Текст', 1, 1, 'a:0:{}', NULL, 'textarea', 1, 1);
+(1, '2015-03-17 03:56:03', 'email', 2, 'Ваш емаил', 1, 1, 'a:0:{}', NULL, 'email', 1, 1),
+(2, '2015-03-17 03:57:27', 'text', 3, 'Сообщение', 1, 1, 'a:0:{}', NULL, 'textarea', 1, 1),
+(3, '2015-03-24 03:15:32', 'name', 0, 'Имя', 1, 1, 'a:0:{}', NULL, 'text', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1736,13 +1741,21 @@ CREATE TABLE IF NOT EXISTS `webforms_messages` (
   `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  `comment` longtext COLLATE utf8_unicode_ci,
+  `status` smallint(6) NOT NULL DEFAULT '0',
+  `web_form_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_24719905B75935E3` (`web_form_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `webforms_messages`
 --
 
+INSERT INTO `webforms_messages` (`id`, `data`, `created_at`, `user_id`, `comment`, `status`, `web_form_id`) VALUES
+(1, 'a:3:{s:4:"name";s:4:"1234";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:3:"dfg";}', '2015-03-24 04:17:00', 1, NULL, 0, 1),
+(2, 'a:3:{s:4:"name";s:6:"222222";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:11:"54555555555";}', '2015-03-24 04:17:42', 0, 'hfgh 3', 0, 1),
+(3, 'a:3:{s:4:"name";s:3:"dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:4:"dfhj";}', '2015-03-24 04:50:33', 0, NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2027,3 +2040,9 @@ ALTER TABLE `unicat__structures`
 --
 ALTER TABLE `webforms_fields`
   ADD CONSTRAINT `FK_4FE98D46B75935E3` FOREIGN KEY (`web_form_id`) REFERENCES `webforms` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `webforms_messages`
+--
+ALTER TABLE `webforms_messages`
+  ADD CONSTRAINT `FK_24719905B75935E3` FOREIGN KEY (`web_form_id`) REFERENCES `webforms` (`id`);

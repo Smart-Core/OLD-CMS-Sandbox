@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Feedback\Controller;
 
+use Knp\RadBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Feedback\Form\Type\FeedbackFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class FeedbackController extends Controller
@@ -39,15 +39,10 @@ class FeedbackController extends Controller
         $form = $this->createForm(new FeedbackFormType());
         $form->handleRequest($request);
 
-        $item = $form->getData();
-
         $session = $this->get('session')->getFlashBag();
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($item);
-            $em->flush($item);
-
+            $this->persist($form->getData(), true);
             $session->add('success', 'Сообщение отправлено.');
         } else {
             $session->add('error', 'При заполнении формы допущены ошибки.');

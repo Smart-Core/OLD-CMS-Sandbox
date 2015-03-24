@@ -14,7 +14,7 @@
             <th>{{ 'Created at'|trans }}</th>
         </tr></thead>
         <tbody>
-        {% for item in webForms %}
+        {% for item in web_forms %}
             <tr>
                 <td>{{ item.id }}</td>
                 <td><a href="{{ path('web_form.admin_manage', {'name': item.name}) }}">{{ item.title }}</a></td>
