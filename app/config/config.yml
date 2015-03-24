@@ -89,7 +89,7 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:
-        type:  file
+        type:  memory # file
         path:  %kernel.root_dir%/../var/mailspool
 
 #liip_theme:
