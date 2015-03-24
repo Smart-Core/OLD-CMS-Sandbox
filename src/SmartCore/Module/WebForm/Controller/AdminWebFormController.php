@@ -251,19 +251,13 @@ class AdminWebFormController extends Controller
             'web_form'  => $webForm,
         ]);
     }
-    
+
     /**
-     * @param Request $request
      * @param WebForm $webForm
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function manageAction(Request $request, WebForm $webForm)
+    public function manageAction(WebForm $webForm)
     {
         return $this->redirect($this->generateUrl('web_form.admin_new_messages', ['name' => $webForm->getName()]));
-
-        return $this->render('WebFormModule:Admin:manage.html.twig', [
-            'web_form' => $webForm,
-            //'form' => $form->createView(),
-        ]);
     }
 }

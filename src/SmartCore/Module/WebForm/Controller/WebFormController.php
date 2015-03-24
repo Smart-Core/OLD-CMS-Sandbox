@@ -73,7 +73,26 @@ class WebFormController extends Controller
                 ->setWebForm($webForm)
             ;
             $this->persist($message, true);
-            $session->add('success', 'Сообщение отправлено.');
+
+            if ($webForm->getSendNoticeEmails()) {
+                $addresses = [];
+
+                foreach (explode(',', $webForm->getSendNoticeEmails()) as $email) {
+                    $addresses[] = trim($email);
+                }
+
+                $mailer = $this->get('mailer');
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Сообщение с веб-формы &laquo;'.$webForm->getTitle().'&raquo; с сайта '.$this->container->getParameter('base_url'))
+                    ->setFrom($webForm->getFromEmail())
+                    ->setTo($addresses)
+                    ->setBody($this->renderView('WebFormModule:Email:notice.email.twig', ['web_form' => $webForm, 'message' => $message]))
+                ;
+                $mailer->send($message);
+            }
+
+            $session->add('success', $webForm->getFinalText() ? $webForm->getFinalText() : 'Сообщение отправлено.');
         } else {
             $session->add('error', 'При заполнении формы допущены ошибки.');
             $session->add('feedback_data', $request->request->all());
@@ -100,7 +119,10 @@ class WebFormController extends Controller
             $fb->add('captcha', 'genemu_captcha', ['mapped' => false]);
         }
 
-        $fb->add('send', 'submit', ['attr' => ['class' => 'btn btn-success']]);
+        $fb->add('send', 'submit', [
+            'attr' => ['class' => 'btn btn-success'],
+            'label' => $webForm->getSendButtonTitle(),
+        ]);
 
         return $fb->getForm();
     }

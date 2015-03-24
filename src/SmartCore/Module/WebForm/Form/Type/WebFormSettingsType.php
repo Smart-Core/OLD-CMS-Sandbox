@@ -14,6 +14,10 @@ class WebFormSettingsType extends AbstractType
             ->add('title', null, ['attr'  => ['autofocus' => 'autofocus']])
             ->add('name')
             ->add('is_use_captcha', null, ['required' => false])
+            ->add('send_button_title')
+            ->add('send_notice_emails')
+            ->add('from_email')
+            ->add('final_text')
         ;
     }
 
