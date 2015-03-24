@@ -16,7 +16,7 @@ Blocks: Блоки
 Briefly: Кратко
 Cancel: Отменить
 Close: Закрыть
-Comment: Комметарий
+Comment: Комментарий
 Configuration: Конфигурация
 Connect module: Подключить модуль
 Control panel: Панель управления
@@ -71,6 +71,7 @@ Login: Вход
 Logout: Выход
 Lockout nodes: Блокировка нод
 Menu: Меню
+Message: Сообщение
 Meta tags: Мета тэги
 My profile: Мой профиль
 Module: Модуль

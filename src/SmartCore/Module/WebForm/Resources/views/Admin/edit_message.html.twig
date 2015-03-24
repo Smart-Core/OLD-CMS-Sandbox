@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h2>{{ 'Message'|trans }}: &laquo;{{ form.vars.data.id }}&raquo;</h2>
+    <h2>{{ 'Message'|trans }} #{{ form.vars.data.id }} от {{ form.vars.data.createdAt|date }}</h2>
 
     {{ form_start(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 
