@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 24 2015 г., 06:14
+-- Время создания: Мар 24 2015 г., 07:32
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.7
 
@@ -1684,6 +1684,10 @@ CREATE TABLE IF NOT EXISTS `webforms` (
   `user_id` int(10) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_use_captcha` tinyint(1) NOT NULL DEFAULT '0',
+  `send_button_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `send_notice_emails` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `final_text` longtext COLLATE utf8_unicode_ci,
+  `from_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_641866195E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -1692,8 +1696,8 @@ CREATE TABLE IF NOT EXISTS `webforms` (
 -- Дамп данных таблицы `webforms`
 --
 
-INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`, `is_use_captcha`) VALUES
-(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback', 1);
+INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`, `is_use_captcha`, `send_button_title`, `send_notice_emails`, `final_text`, `from_email`) VALUES
+(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback', 1, NULL, NULL, 'Сообщение отправлено', 'noreply@smart-core.org');
 
 -- --------------------------------------------------------
 
@@ -1746,16 +1750,17 @@ CREATE TABLE IF NOT EXISTS `webforms_messages` (
   `web_form_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_24719905B75935E3` (`web_form_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `webforms_messages`
 --
 
 INSERT INTO `webforms_messages` (`id`, `data`, `created_at`, `user_id`, `comment`, `status`, `web_form_id`) VALUES
-(1, 'a:3:{s:4:"name";s:4:"1234";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:3:"dfg";}', '2015-03-24 04:17:00', 1, NULL, 0, 1),
+(1, 'a:3:{s:4:"name";s:4:"1234";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:3:"dfg";}', '2015-03-24 04:17:00', 1, 'nm bnm, bnm,', 1, 1),
 (2, 'a:3:{s:4:"name";s:6:"222222";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:11:"54555555555";}', '2015-03-24 04:17:42', 0, 'hfgh 3', 0, 1),
-(3, 'a:3:{s:4:"name";s:3:"dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:4:"dfhj";}', '2015-03-24 04:50:33', 0, NULL, 0, 1);
+(3, 'a:3:{s:4:"name";s:3:"dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:4:"dfhj";}', '2015-03-24 04:50:33', 0, NULL, 0, 1),
+(4, 'a:3:{s:4:"name";s:7:"dfg dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:17:"678 sdfg 547 8fgh";}', '2015-03-24 06:15:54', 1, NULL, 0, 1);
 
 -- --------------------------------------------------------
 
