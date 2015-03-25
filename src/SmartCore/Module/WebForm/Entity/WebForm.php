@@ -24,6 +24,13 @@ class WebForm
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
+    protected $is_ajax;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
     protected $is_use_captcha;
 
     /**
@@ -76,9 +83,11 @@ class WebForm
      */
     public function __construct()
     {
-        $this->created_at   = new \DateTime();
-        $this->fields       = new ArrayCollection();
-        $this->messages     = new ArrayCollection();
+        $this->created_at       = new \DateTime();
+        $this->fields           = new ArrayCollection();
+        $this->is_use_captcha   = false;
+        $this->is_ajax          = false;
+        $this->messages         = new ArrayCollection();
     }
 
     /**
@@ -124,6 +133,25 @@ class WebForm
     public function setMessages($messages)
     {
         $this->messages = $messages;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsAjax()
+    {
+        return $this->is_ajax;
+    }
+
+    /**
+     * @param boolean $is_ajax
+     * @return $this
+     */
+    public function setIsAjax($is_ajax)
+    {
+        $this->is_ajax = $is_ajax;
 
         return $this;
     }

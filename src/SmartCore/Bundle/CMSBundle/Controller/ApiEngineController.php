@@ -34,7 +34,7 @@ class ApiEngineController extends Controller
             return $this->notFoundAction();
         }
 
-        $controller = $this->get('cms.router')->matchModuleApi($node->getModule(), '/'.$slug);
+        $controller = $this->get('cms.router')->matchModuleApi($node->getModule(), '/'.$slug, $request);
 
         if (null === $controller) {
             return $this->notFoundAction();

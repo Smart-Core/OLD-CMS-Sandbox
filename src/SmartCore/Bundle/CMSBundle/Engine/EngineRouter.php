@@ -4,9 +4,11 @@ namespace SmartCore\Bundle\CMSBundle\Engine;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\RequestContext;
 
 class EngineRouter
 {
@@ -159,20 +161,29 @@ class EngineRouter
     }
 
     /**
-     * @param  string $module
-     * @param  string $path
+     * @param  string       $module
+     * @param  string       $path
+     * @param  Request|null $request
      * @return array|null
      *
      * @throw ResourceNotFoundException
      */
-    public function matchModule($module, $path)
+    public function matchModule($module, $path, Request $request = null)
     {
         if (false === strpos($path, '/')) {
             $path = '/'.$path;
         }
 
         if ($this->container->has('cms.router_module.'.$module)) {
-            return $this->container->get('cms.router_module.'.$module)->match($path);
+            /** @var \Symfony\Component\Routing\Matcher\UrlMatcher $matcher */
+            $matcher = $this->container->get('cms.router_module.'.$module);
+            if ($request) {
+                $context = new RequestContext();
+                $context->fromRequest(Request::createFromGlobals());
+                $matcher->setContext($context);
+            }
+
+            return $matcher->match($path);
         }
 
         return;
@@ -181,7 +192,7 @@ class EngineRouter
     /**
      * @param  string $module
      * @param  string $path
-     * @return array
+     * @return array|null
      */
     public function matchModuleAdmin($module, $path)
     {
@@ -189,14 +200,23 @@ class EngineRouter
     }
 
     /**
-     * @param  string $module
-     * @param  string $path
-     * @return array
+     * @param  string       $module
+     * @param  string       $path
+     * @param  Request|null $request
+     * @return array|null
      */
-    public function matchModuleApi($module, $path)
+    public function matchModuleApi($module, $path, Request $request = null)
     {
         if ($this->container->has('cms.router_module_api.'.$module)) {
-            return $this->container->get('cms.router_module_api.'.$module)->match($path);
+            /** @var \Symfony\Component\Routing\Matcher\UrlMatcher $matcher */
+            $matcher = $this->container->get('cms.router_module_api.'.$module);
+            if ($request) {
+                $context = new RequestContext();
+                $context->fromRequest(Request::createFromGlobals());
+                $matcher->setContext($context);
+            }
+
+            return $matcher->match($path);
         }
 
         return;

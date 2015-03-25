@@ -5,6 +5,8 @@ site:
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
+genemu_base64:
+    resource: "@GenemuFormBundle/Resources/config/routing/base64.xml"
 genemu_image:
     resource: "@GenemuFormBundle/Resources/config/routing/image.xml"
 genemu_upload:

@@ -12,7 +12,7 @@ class NodeRouter extends Router
      * В случае если в текущем запросе есть аттрибут '_basePath', то считается, что выполнен
      * запрос в контексте ноды и нужно добавить '_basePath' в рараметры маршрута.
      *
-     * Сейчас приходится использовать статический Container:: из-за того, что в Router он приватный :(
+     * Приходится использовать статический Container:: из-за того, что в Router он приватный :(
      *
      * {@inheritdoc}
      */
@@ -21,7 +21,7 @@ class NodeRouter extends Router
         $rootHash = md5(Container::getParameter('secret'));
 
         // @todo пока что так не подставляется _basePath для админских маршрутов.
-        if (false === stripos($name, 'admin')) {
+        if (false === stripos($name, 'admin') and false === stripos($name, 'cms_api_node')) {
             /** @var Request $request */
             $request = Container::get('request');
 

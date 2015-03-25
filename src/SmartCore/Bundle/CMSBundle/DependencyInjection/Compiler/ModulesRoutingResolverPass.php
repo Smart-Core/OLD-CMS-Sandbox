@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Обход всех модулей и создание сервисов роутингов для каждого.
@@ -18,8 +19,7 @@ class ModulesRoutingResolverPass implements CompilerPassInterface
 
             // Обработка routing.yml
             $routingConfig = $module['path'].'/Resources/config/routing.yml';
-
-            if (file_exists($routingConfig)) {
+            if (file_exists($routingConfig) and is_array(Yaml::parse(file_get_contents($routingConfig)))) {
                 $definition = new Definition(
                     'Symfony\\Component\\Routing\\Router', [
                         new Reference('routing.loader'),
@@ -37,7 +37,7 @@ class ModulesRoutingResolverPass implements CompilerPassInterface
 
             // Обработка routing_admin.yml
             $routingConfig = $module['path'].'/Resources/config/routing_admin.yml';
-            if (file_exists($routingConfig)) {
+            if (file_exists($routingConfig) and is_array(Yaml::parse(file_get_contents($routingConfig)))) {
                 $definition = new Definition(
                     'Symfony\\Component\\Routing\\Router', [
                         new Reference('routing.loader'),
@@ -66,8 +66,7 @@ class ModulesRoutingResolverPass implements CompilerPassInterface
 
             // Обработка routing_api.yml
             $routingConfig = $module['path'].'/Resources/config/routing_api.yml';
-
-            if (file_exists($routingConfig)) {
+            if (file_exists($routingConfig) and is_array(Yaml::parse(file_get_contents($routingConfig)))) {
                 $definition = new Definition(
                     'Symfony\\Component\\Routing\\Router', [
                         new Reference('routing.loader'),

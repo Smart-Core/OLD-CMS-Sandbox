@@ -50,6 +50,7 @@ class ModuleGenerator extends Generator
 
         $this->renderFile('module/routing.'.$format.'.twig', $dir.'/Resources/config/routing.'.$format, $parameters);
         $this->renderFile('module/routing_admin.'.$format.'.twig', $dir.'/Resources/config/routing_admin.'.$format, $parameters);
+        $this->renderFile('module/routing_api.'.$format.'.twig', $dir.'/Resources/config/routing_api.'.$format, $parameters);
         $this->renderFile('module/services.'.$format.'.twig', $dir.'/Resources/config/services.'.$format, $parameters);
         $this->renderFile('module/settings.yml.twig', $dir.'/Resources/config/settings.yml', $parameters);
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 24 2015 г., 07:32
+-- Время создания: Мар 25 2015 г., 09:04
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.7
 
@@ -1544,25 +1544,6 @@ INSERT INTO `unicat_catalog_items_categories_relations_single` (`item_id`, `cate
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `unicat_catalog_items_title`
---
-
-DROP TABLE IF EXISTS `unicat_catalog_items_title`;
-CREATE TABLE IF NOT EXISTS `unicat_catalog_items_title` (
-  `item_id` int(11) unsigned NOT NULL,
-  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`item_id`),
-  KEY `value` (`value`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Дамп данных таблицы `unicat_catalog_items_title`
---
-
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `unicat__configurations`
 --
 
@@ -1688,6 +1669,7 @@ CREATE TABLE IF NOT EXISTS `webforms` (
   `send_notice_emails` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `final_text` longtext COLLATE utf8_unicode_ci,
   `from_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_ajax` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_641866195E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -1696,8 +1678,8 @@ CREATE TABLE IF NOT EXISTS `webforms` (
 -- Дамп данных таблицы `webforms`
 --
 
-INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`, `is_use_captcha`, `send_button_title`, `send_notice_emails`, `final_text`, `from_email`) VALUES
-(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback', 1, NULL, NULL, 'Сообщение отправлено', 'noreply@smart-core.org');
+INSERT INTO `webforms` (`id`, `created_at`, `title`, `user_id`, `name`, `is_use_captcha`, `send_button_title`, `send_notice_emails`, `final_text`, `from_email`, `is_ajax`) VALUES
+(1, '2015-03-17 02:36:43', 'Обратная связь', 1, 'feedback', 1, NULL, NULL, 'Сообщение отправлено', 'noreply@smart-core.org', 1);
 
 -- --------------------------------------------------------
 
@@ -2020,12 +2002,6 @@ ALTER TABLE `unicat_catalog_items_categories_relations`
 ALTER TABLE `unicat_catalog_items_categories_relations_single`
   ADD CONSTRAINT `FK_85899D7212469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_85899D72126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `unicat_catalog_items_title`
---
-ALTER TABLE `unicat_catalog_items_title`
-  ADD CONSTRAINT `FK_3E5E937E126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat__configurations`
