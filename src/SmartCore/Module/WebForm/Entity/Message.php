@@ -44,7 +44,7 @@ class Message
     /**
      * @var WebForm
      *
-     * @ORM\ManyToOne(targetEntity="WebForm", inversedBy="fields")
+     * @ORM\ManyToOne(targetEntity="WebForm", inversedBy="messages")
      */
     protected $web_form;
 
