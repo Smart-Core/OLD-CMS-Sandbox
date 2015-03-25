@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 25 2015 г., 09:04
+-- Время создания: Мар 25 2015 г., 10:10
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.7
 
@@ -316,7 +316,6 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL),
 (7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL),
 (8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'a:0:{}', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
-(9, 1, 'Обратная связь', 0, 0, 'feedback', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-21 13:35:11', NULL),
 (11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
 (12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL),
 (13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL),
@@ -403,7 +402,6 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (11, 5, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:8;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0, NULL, 1, 0, NULL),
 (12, 8, 1, 1, 'SimpleNews', 'a:1:{s:14:"items_per_page";i:3;}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0, NULL, 1, 0, NULL),
 (13, 1, 6, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:9;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0, NULL, 0, 0, NULL),
-(14, 9, 1, 1, 'Feedback', 'a:0:{}', 0, 0, NULL, 1, '2014-01-21 19:32:26', 0, NULL, 0, 0, NULL),
 (15, 8, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:10;s:6:"editor";b:1;}', 0, 0, 'Текст над новостями', 1, '2014-01-22 19:02:27', 0, NULL, 0, 0, NULL),
 (16, 6, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:11;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 10:01:55', 0, NULL, 1, 0, NULL),
 (17, 1, 1, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"12";s:10:"controller";s:15:"NewsWidget:last";s:6:"params";s:8:"count: 3";s:8:"open_tag";s:48:"<hr /><h3>Последние новости</h3>";s:9:"close_tag";N;}', 10, 0, NULL, 1, '2014-01-29 18:27:59', 0, NULL, 0, 0, NULL),
@@ -504,27 +502,6 @@ INSERT INTO `engine_roles` (`id`, `name`, `position`) VALUES
 (1, 'ROLE_ADMIN', 0),
 (2, 'ROLE_ROOT', 0),
 (3, 'ROLE_NEWSMAKER', 0);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `feedbacks`
---
-
-DROP TABLE IF EXISTS `feedbacks`;
-CREATE TABLE IF NOT EXISTS `feedbacks` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Дамп данных таблицы `feedbacks`
---
-
 
 -- --------------------------------------------------------
 
@@ -806,7 +783,6 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 (6, 1, 5, 1, 2, NULL, NULL, NULL, 1, '2013-05-06 09:38:51', '2014-01-21 15:52:24', NULL, NULL, 0),
 (7, 1, 16, 1, 2, NULL, NULL, NULL, 1, '2013-08-10 11:14:29', '2015-03-02 03:36:03', NULL, NULL, 0),
 (8, 1, 8, 1, 1, NULL, NULL, NULL, 1, '2013-12-22 21:45:59', '2014-01-21 15:52:18', NULL, NULL, 0),
-(9, 1, 9, 1, 4, NULL, NULL, NULL, 1, '2014-01-21 15:51:46', '2014-01-21 15:53:27', NULL, NULL, 0),
 (10, 1, 11, 1, 0, NULL, NULL, NULL, 1, '2014-01-29 10:31:12', '2014-01-29 10:34:31', 5, 'N;', 0),
 (11, 1, 12, 1, 3, NULL, NULL, NULL, 1, '2014-01-30 20:42:06', '2015-03-02 03:37:08', NULL, 'N;', 0),
 (12, 1, 13, 1, 2, NULL, NULL, NULL, 1, '2014-02-07 18:02:12', '2014-02-07 18:02:22', NULL, 'N;', 0),
