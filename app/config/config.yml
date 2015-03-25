@@ -70,7 +70,9 @@ doctrine:
                 unix_socket: %database_socket%
                 logging:  %kernel.debug%
                 mapping_types:
-                    enum: string                
+                    enum: string
+                #options:
+                    #1002: "SET NAMES 'UTF8' COLLATE 'utf8_unicode_ci'"
             #db2:
                 #driver:   %database2_driver%
                 #port:     %database2_port%
