@@ -34,10 +34,6 @@ class UnicatController extends Controller
      */
     public function categoryAction(Request $request, $slug = null, $page = null)
     {
-        if (null === $this->configuration_id) {
-            return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         if (null === $page) {
             $page = $request->query->get('page', 1);
         }
@@ -147,10 +143,6 @@ class UnicatController extends Controller
      */
     public function itemAction($structureSlug = null, $itemSlug)
     {
-        if (null === $this->configuration_id) {
-            return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
         $requestedCategories = $ucm->findCategoriesBySlug($structureSlug, $ucm->getDefaultStructure());

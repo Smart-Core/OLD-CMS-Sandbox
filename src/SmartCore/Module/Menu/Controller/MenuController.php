@@ -8,10 +8,6 @@ class MenuController extends Controller
 {
     public function indexAction()
     {
-        if (null === $this->group_id) {
-            return new Response('Module Menu not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         $current_folder_path = $this->get('cms.context')->getCurrentFolderPath();
 
         $cache_key = md5('smart_module.menu'.$current_folder_path.$this->node->getId());

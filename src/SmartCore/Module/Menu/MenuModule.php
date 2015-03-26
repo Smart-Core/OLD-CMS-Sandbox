@@ -35,10 +35,23 @@ class MenuModule extends ModuleBundle
         return $data;
     }
 
+    /**
+     * @param ContainerBuilder $container
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
 
         $container->addCompilerPass(new FormPass());
+    }
+
+    /**
+     * @return array
+     */
+    public function getRequiredParams()
+    {
+        return [
+            'group_id'
+        ];
     }
 }

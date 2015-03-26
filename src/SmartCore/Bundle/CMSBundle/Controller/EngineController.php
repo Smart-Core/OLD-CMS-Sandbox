@@ -196,4 +196,14 @@ class EngineController extends Controller
         // @todo сделать роутинги для POST запросов к нодам.
         return $this->forward("{$node->getId()}:{$node->getModule()}:post", ['slug' => $slug]);
     }
+
+    /**
+     * @param Node $node
+     *
+     * @return Response
+     */
+    public function moduleNotConfiguredAction(Node $_node)
+    {
+        return new Response('Module "'.$_node->getModule().'" not yet configured. Node: '.$_node->getId().'<br />');
+    }
 }

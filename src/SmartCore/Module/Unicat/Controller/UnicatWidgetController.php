@@ -36,10 +36,6 @@ class UnicatWidgetController extends Controller
         $selected_inheritance = false,
         $structure = null
     ) {
-        if (null === $this->configuration_id) {
-            return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
         // Хак для Menu\RequestVoter
@@ -62,10 +58,6 @@ class UnicatWidgetController extends Controller
 
     public function getItemsAction(array $criteria, array $orderBy = null, $limit = 10, $offset = null)
     {
-        if (null === $this->configuration_id) {
-            return new Response('Module Unicat not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         $ucm = $this->get('unicat')->getConfigurationManager($this->configuration_id);
 
         //$pagerfanta = new Pagerfanta(new DoctrineORMAdapter($ucm->getFindItemsQuery($criteria, $orderBy, $limit, $offset)));

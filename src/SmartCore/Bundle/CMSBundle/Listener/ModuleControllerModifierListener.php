@@ -4,6 +4,7 @@ namespace SmartCore\Bundle\CMSBundle\Listener;
 
 use SmartCore\Bundle\CMSBundle\Engine\EngineContext;
 use SmartCore\Bundle\CMSBundle\Engine\EngineFolder;
+use SmartCore\Bundle\CMSBundle\Engine\EngineModule;
 use SmartCore\Bundle\CMSBundle\Engine\EngineNode;
 use SmartCore\Bundle\CMSBundle\Locator\ModuleThemeLocator;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,9 @@ class ModuleControllerModifierListener
     /** @var EngineFolder */
     protected $engineFolder;
 
+    /** @var EngineModule */
+    protected $engineModule;
+
     /** @var EngineNode */
     protected $engineNodeManager;
 
@@ -33,10 +37,11 @@ class ModuleControllerModifierListener
      * @param EngineNode $engineNodeManager
      * @param ModuleThemeLocator $moduleThemeLocator
      */
-    public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineNode $engineNodeManager, ModuleThemeLocator $moduleThemeLocator)
+    public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineModule $engineModule, EngineNode $engineNodeManager, ModuleThemeLocator $moduleThemeLocator)
     {
         $this->engineContext      = $engineContext;
         $this->engineFolder       = $engineFolder;
+        $this->engineModule       = $engineModule;
         $this->engineNodeManager  = $engineNodeManager;
         $this->moduleThemeLocator = $moduleThemeLocator;
     }
@@ -59,6 +64,23 @@ class ModuleControllerModifierListener
         if ($request->attributes->has('_node')) {
             /** @var $node \SmartCore\Bundle\CMSBundle\Entity\Node */
             $node = $request->attributes->get('_node');
+
+            if ($this->engineModule->has($node->getModule())) {
+                $isValidRequiredParams = true;
+                foreach ($this->engineModule->get($node->getModule())->getRequiredParams() as $param) {
+                    if (null === $node->getParam($param)) {
+                        $isValidRequiredParams = false;
+                    }
+                }
+
+                if (!$isValidRequiredParams) {
+                    $controller[0] = new \SmartCore\Bundle\CMSBundle\Controller\EngineController();
+                    $controller[1] = 'moduleNotConfiguredAction';
+                    $event->setController($controller);
+
+                    return;
+                }
+            }
 
             // @todo сделать поддержку кириллических путей.
             $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);

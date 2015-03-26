@@ -70,4 +70,9 @@ trait ModuleBundleTrait
     {
         return $this->container->has('cms.router_module.'.$this->getShortName().'.admin') ? true : false;
     }
+
+    public function getRequiredParams()
+    {
+        return [];
+    }
 }

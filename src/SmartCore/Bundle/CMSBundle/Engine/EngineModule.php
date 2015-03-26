@@ -18,7 +18,7 @@ class EngineModule
     protected $kernel;
 
     /**
-     * @var \SmartCore\Bundle\CMSBundle\Module\Bundle[]
+     * @var \SmartCore\Bundle\CMSBundle\Module\ModuleBundle[]
      */
     protected $modules = [];
 
@@ -37,7 +37,7 @@ class EngineModule
     /**
      * Получение списка всех модулей.
      *
-     * @return \SmartCore\Bundle\CMSBundle\Module\Bundle[]
+     * @return \SmartCore\Bundle\CMSBundle\Module\ModuleBundle[]
      */
     public function all()
     {
@@ -48,7 +48,7 @@ class EngineModule
      * Получение информации о модуле.
      *
      * @param string $name
-     * @return \SmartCore\Bundle\CMSBundle\Module\Bundle|null
+     * @return \SmartCore\Bundle\CMSBundle\Module\ModuleBundle|null
      */
     public function get($name)
     {

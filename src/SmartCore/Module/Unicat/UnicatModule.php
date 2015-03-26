@@ -39,6 +39,9 @@ class UnicatModule extends Bundle
         return $data;
     }
 
+    /**
+     * @param ContainerBuilder $container
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
@@ -46,6 +49,9 @@ class UnicatModule extends Bundle
         $container->addCompilerPass(new FormPass());
     }
 
+    /**
+     * @return UnicatExtension
+     */
     public function getContainerExtension()
     {
         return new UnicatExtension();
@@ -65,6 +71,16 @@ class UnicatModule extends Bundle
             'get_items' => [
                 'class' => 'UnicatWidget:getItems',
             ],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getRequiredParams()
+    {
+        return [
+            'configuration_id'
         ];
     }
 }

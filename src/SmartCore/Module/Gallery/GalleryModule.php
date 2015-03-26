@@ -31,4 +31,14 @@ class GalleryModule extends ModuleBundle
 
         return $data;
     }
+
+    /**
+     * @return array
+     */
+    public function getRequiredParams()
+    {
+        return [
+            'gallery_id'
+        ];
+    }
 }

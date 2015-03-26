@@ -22,10 +22,6 @@ class WebFormController extends Controller
      */
     public function indexAction()
     {
-        if (null === $this->webform_id) {
-            return new Response('Module WebForms not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
@@ -126,10 +122,6 @@ class WebFormController extends Controller
      */
     public function ajaxGetFormAction(Request $request)
     {
-        if (null === $this->webform_id) {
-            return new Response('Module WebForms not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
@@ -173,10 +165,6 @@ class WebFormController extends Controller
      */
     public function postAction(Request $request)
     {
-        if (null === $this->webform_id) {
-            return new Response('Module WebForms not yet configured. Node: '.$this->node->getId().'<br />');
-        }
-
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
