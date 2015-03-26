@@ -97,10 +97,11 @@ class ModuleControllerModifierListener
                 }
             }
 
-            $route = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'));
-
-            $path = $route ? $route->getPath() : null;
-            if (false !== strpos($path, '{_basePath}')) {
+// @todo эксперимент с _basePath пока не удался т.к. в виджет он не попадает, но там бывает нужен.
+//            $route = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'));
+//
+//            $path = $route ? $route->getPath() : null;
+//            if (false !== strpos($path, '{_basePath}')) {
                 // @todo сделать поддержку кириллических путей.
                 $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
 
@@ -116,7 +117,7 @@ class ModuleControllerModifierListener
 
                 $request->attributes->set('_route_params', $routeParams);
                 //}
-            }
+//            }
 
             if (method_exists($controller[0], 'setNode')) {
                 $controller[0]->setNode($node);
