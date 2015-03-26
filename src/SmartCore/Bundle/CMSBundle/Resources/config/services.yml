@@ -51,6 +51,8 @@ services:
     cms.controller.listener:
         class: SmartCore\Bundle\CMSBundle\Listener\ModuleControllerModifierListener
         arguments: [ @cms.context, @cms.folder, @cms.module, @cms.node, @liip_theme.file_locator ]
+        calls:
+            - [ setContainer, [ @service_container ] ]
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onController }
     cms.request.listener:

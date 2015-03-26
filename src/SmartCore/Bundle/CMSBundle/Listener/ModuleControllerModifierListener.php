@@ -7,6 +7,8 @@ use SmartCore\Bundle\CMSBundle\Engine\EngineFolder;
 use SmartCore\Bundle\CMSBundle\Engine\EngineModule;
 use SmartCore\Bundle\CMSBundle\Engine\EngineNode;
 use SmartCore\Bundle\CMSBundle\Locator\ModuleThemeLocator;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -16,6 +18,8 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class ModuleControllerModifierListener
 {
+    use ContainerAwareTrait;
+
     /** @var EngineContext */
     protected $engineContext;
 
@@ -34,11 +38,22 @@ class ModuleControllerModifierListener
     /**
      * @param EngineContext $engineContext
      * @param EngineFolder $engineFolder
+     * @param EngineModule $engineModule
      * @param EngineNode $engineNodeManager
      * @param ModuleThemeLocator $moduleThemeLocator
      */
     public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineModule $engineModule, EngineNode $engineNodeManager, ModuleThemeLocator $moduleThemeLocator)
+    //public function __construct(ContainerInterface $container)
     {
+        /*
+        $this->container          = $container;
+        $this->engineContext      = $container->get('cms.context');
+        $this->engineFolder       = $container->get('cms.folder');
+        $this->engineModule       = $container->get('cms.module');
+        $this->engineNodeManager  = $container->get('cms.node');
+        $this->moduleThemeLocator = $container->get('liip_theme.file_locator');
+        */
+
         $this->engineContext      = $engineContext;
         $this->engineFolder       = $engineFolder;
         $this->engineModule       = $engineModule;
@@ -82,21 +97,24 @@ class ModuleControllerModifierListener
                 }
             }
 
-            // @todo сделать поддержку кириллических путей.
-            $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
+            $path = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'))->getPath();
+            if (false !== strpos($path, '{_basePath}')) {
+                // @todo сделать поддержку кириллических путей.
+                $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
 
-            if (false !== strrpos($basePath, '/', strlen($basePath) - 1)) {
-                $basePath = substr($basePath, 0, strlen($basePath) - 1);
+                if (false !== strrpos($basePath, '/', strlen($basePath) - 1)) {
+                    $basePath = substr($basePath, 0, strlen($basePath) - 1);
+                }
+
+                //$routeParams = $request->attributes->get('_route_params', null);
+
+                //if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
+                $routeParams = $node->getControllerParams();
+                $routeParams['_basePath'] = $basePath;
+
+                $request->attributes->set('_route_params', $routeParams);
+                //}
             }
-
-            //$routeParams = $request->attributes->get('_route_params', null);
-
-            //if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
-            $routeParams = $node->getControllerParams();
-            $routeParams['_basePath'] = $basePath;
-
-            $request->attributes->set('_route_params', $routeParams);
-            //}
 
             if (method_exists($controller[0], 'setNode')) {
                 $controller[0]->setNode($node);
