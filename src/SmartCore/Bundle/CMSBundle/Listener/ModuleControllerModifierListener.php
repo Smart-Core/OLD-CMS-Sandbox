@@ -97,7 +97,9 @@ class ModuleControllerModifierListener
                 }
             }
 
-            $path = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'))->getPath();
+            $route = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'));
+
+            $path = $route ? $route->getPath() : null;
             if (false !== strpos($path, '{_basePath}')) {
                 // @todo сделать поддержку кириллических путей.
                 $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
