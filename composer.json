@@ -101,6 +101,9 @@
         ]
     },
     "minimum-stability": "alpha",
+    "config": {
+        "preferred-install": "dist"
+    },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
