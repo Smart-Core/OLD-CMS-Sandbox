@@ -100,10 +100,11 @@
             "php app/console doctrine:schema:update"
         ]
     },
-    "minimum-stability": "alpha",
     "config": {
+        "bin-dir": "bin",
         "preferred-install": "dist"
     },
+    "minimum-stability": "alpha",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
