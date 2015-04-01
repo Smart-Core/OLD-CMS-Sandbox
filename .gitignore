@@ -1,10 +1,10 @@
 /app/config/parameters.yml
-/app/bootstrap.php.cache
-/app/SymfonyRequirements.php
 /bin/doctrine*
+/bin/jp.php
 /bin/security*
 /bin/symfony_requirements
 /bin/phpspec*
+/bin/pscss
 /public_html
 /var/
 /vendor/
