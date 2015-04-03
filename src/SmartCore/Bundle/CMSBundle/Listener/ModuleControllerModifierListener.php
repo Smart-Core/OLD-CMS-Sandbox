@@ -97,6 +97,7 @@ class ModuleControllerModifierListener
                 }
             }
 
+
 // @todo эксперимент с _basePath пока не удался т.к. в виджет он не попадает, но там бывает нужен.
 //            $route = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'));
 //
@@ -114,6 +115,11 @@ class ModuleControllerModifierListener
                 //if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
                 $routeParams = $node->getControllerParams();
                 $routeParams['_basePath'] = $basePath;
+
+            if ($node->getId() == 29) {
+                ld($request);
+                ld($routeParams);
+            }
 
                 $request->attributes->set('_route_params', $routeParams);
                 //}
