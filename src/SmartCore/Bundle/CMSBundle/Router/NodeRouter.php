@@ -2,38 +2,45 @@
 
 namespace SmartCore\Bundle\CMSBundle\Router;
 
-use SmartCore\Bundle\CMSBundle\Container;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RequestContext;
 
 class NodeRouter extends Router
 {
     /** @var ContainerInterface */
-    protected $c = null;
+    protected $mycontainer;
 
     /** @var string */
     protected $rootHash = 'kksdg7724tkshdfvI6734khvsdfKHvdf74';
 
     /**
-     * В случае, если в пути маршрута есть паттерн {_folderPath}, то пробуем подставить его из $parameters или атрибута _route_params.
+     * Приходится переопределять конструктор из-за того, что в Router container приватный :(
      *
-     * Приходится использовать статический Container:: из-за того, что в Router он приватный :(
+     * Constructor.
+     *
+     * @param ContainerInterface $container A ContainerInterface instance
+     * @param mixed              $resource  The main resource to load
+     * @param array              $options   An array of options
+     * @param RequestContext     $context   The context
+     */
+    public function __construct(ContainerInterface $container, $resource, array $options = array(), RequestContext $context = null)
+    {
+        parent::__construct($container, $resource, $options, $context);
+        $this->mycontainer = $container;
+    }
+
+    /**
+     * В случае, если в пути маршрута есть паттерн {_folderPath}, то пробуем подставить его из $parameters или атрибута _route_params.
      *
      * {@inheritdoc}
      */
     public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH)
     {
-        if (empty($this->c)) {
-            $this->c = Container::getContainer();
-            $this->rootHash = md5($this->c->getParameter('secret'));
-        }
+        // Метод getDeclaredRouteData() генерируется через SmartCore\Bundle\CMSBundle\Router\PhpGeneratorDumper
+        $declaredRouteData = $this->getGenerator()->getDeclaredRouteData($name);
 
-        $route = $this->getRouteCollection()->get($name);
-
-        $path = $route ? $route->getPath() : null;
-
-        if (false !== strpos($path, '{_folderPath}')) {
+        if (isset($declaredRouteData[0][0]) and in_array('_folderPath', $declaredRouteData[0])) {
             if (isset($parameters['_folderPath'])) {
                 // Удаление последнего слеша
                 if (mb_substr($parameters['_folderPath'], - 1) == '/') {
@@ -46,7 +53,7 @@ class NodeRouter extends Router
                 }
             }
 
-            $routeParams = $this->c->get('request')->attributes->get('_route_params', null);
+            $routeParams = $this->mycontainer->get('request')->attributes->get('_route_params', null);
 
             if (isset($routeParams['_folderPath']) and (!isset($parameters['_folderPath']) or empty($parameters['_folderPath']))) {
                 $parameters['_folderPath'] = empty($routeParams['_folderPath']) ? $this->rootHash : $routeParams['_folderPath'];

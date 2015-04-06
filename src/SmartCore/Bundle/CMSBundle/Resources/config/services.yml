@@ -1,5 +1,6 @@
 parameters:
     router.class: SmartCore\Bundle\CMSBundle\Router\NodeRouter
+    router.options.generator_dumper_class: SmartCore\Bundle\CMSBundle\Router\PhpGeneratorDumper
 
 services:
 # Core
