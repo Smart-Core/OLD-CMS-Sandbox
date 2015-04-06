@@ -4,10 +4,15 @@ namespace SmartCore\Bundle\CMSBundle\Router;
 
 use SmartCore\Bundle\CMSBundle\Container;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class NodeRouter extends Router
 {
+    /** @var  ContainerInterface */
+    protected $c = null;
+    protected $rootHash = 'kksdg7724tkshdfvI6734khvsdfKHvdf74';
+
     /**
      * В случае, если в пути маршрута есть паттерн {_folderPath}, то пробуем подставить его из $parameters или атрибута _route_params.
      *
@@ -17,9 +22,13 @@ class NodeRouter extends Router
      */
     public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH)
     {
-        $container = Container::getContainer();
+        if (empty($this->c)) {
+            $this->c = Container::getContainer();
+        }
 
-        $rootHash = md5($container->getParameter('secret'));
+//        $container = Container::getContainer();
+
+//        $rootHash = md5($container->getParameter('secret'));
 
         $route = $this->getRouteCollection()->get($name);
 
@@ -38,13 +47,13 @@ class NodeRouter extends Router
                 }
             }
 
-            $routeParams = $container->get('request')->attributes->get('_route_params', null);
+            $routeParams = $this->c->get('request')->attributes->get('_route_params', null);
 
             if (isset($routeParams['_folderPath']) and (!isset($parameters['_folderPath']) or empty($parameters['_folderPath']))) {
-                $parameters['_folderPath'] = empty($routeParams['_folderPath']) ? $rootHash : $routeParams['_folderPath'];
+                $parameters['_folderPath'] = empty($routeParams['_folderPath']) ? $this->rootHash : $routeParams['_folderPath'];
             }
         }
 
-        return str_replace($rootHash.'/', '', $this->getGenerator()->generate($name, $parameters, $referenceType));
+        return str_replace($this->rootHash.'/', '', $this->getGenerator()->generate($name, $parameters, $referenceType));
     }
 }
