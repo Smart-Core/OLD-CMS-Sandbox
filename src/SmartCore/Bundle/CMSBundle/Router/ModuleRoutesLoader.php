@@ -42,9 +42,9 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
                 /** @var \Symfony\Component\Routing\RouteCollection $importedRoutes */
                 $importedRoutes = $this->import('@'.$moduleName.'Module/Resources/config/routing.yml', 'yaml');
                 $importedRoutes->addPrefix(
-                    '/{_basePath}/',
-                    ['_basePath' => ''],
-                    ['_basePath' => '.*']
+                    '/{_folderPath}/',
+                    ['_folderPath' => ''],
+                    ['_folderPath' => '.*']
                 );
 
                 $collection->addCollection($importedRoutes);

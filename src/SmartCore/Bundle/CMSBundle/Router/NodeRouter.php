@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 class NodeRouter extends Router
 {
     /**
-     * В случае если в текущем запросе есть аттрибут '_basePath', то считается, что выполнен
-     * запрос в контексте ноды и нужно добавить '_basePath' в рараметры маршрута.
+     * В случае если в текущем запросе есть аттрибут '_folderPath', то считается, что выполнен
+     * запрос в контексте ноды и нужно добавить '_folderPath' в рараметры маршрута.
      *
      * Приходится использовать статический Container:: из-за того, что в Router он приватный :(
      *
@@ -27,25 +27,25 @@ class NodeRouter extends Router
 
         $path = $route ? $route->getPath() : null;
 
-        if (false !== strpos($path, '{_basePath}')) {
+        if (false !== strpos($path, '{_folderPath}')) {
             $request = $container->get('request');
 
             $routeParams = $request->attributes->get('_route_params', null);
 
-            if (isset($routeParams['_basePath']) and (!isset($parameters['_basePath']) or empty($parameters['_basePath']))) {
-                $parameters['_basePath'] = empty($routeParams['_basePath']) ? $rootHash : $routeParams['_basePath'];
+            if (isset($routeParams['_folderPath']) and (!isset($parameters['_folderPath']) or empty($parameters['_folderPath']))) {
+                $parameters['_folderPath'] = empty($routeParams['_folderPath']) ? $rootHash : $routeParams['_folderPath'];
             }
         }
 
         */
-        // @todo пока что так не подставляется _basePath для админских маршрутов.
+        // @todo пока что так не подставляется _folderPath для админских маршрутов.
         if (false === stripos($name, 'admin') and false === stripos($name, 'cms_api_node')) {
             $request = $container->get('request');
 
             $routeParams = $request->attributes->get('_route_params', null);
 
-            if (isset($routeParams['_basePath']) and (!isset($parameters['_basePath']) or empty($parameters['_basePath']))) {
-                $parameters['_basePath'] = empty($routeParams['_basePath']) ? $rootHash : $routeParams['_basePath'];
+            if (isset($routeParams['_folderPath']) and (!isset($parameters['_folderPath']) or empty($parameters['_folderPath']))) {
+                $parameters['_folderPath'] = empty($routeParams['_folderPath']) ? $rootHash : $routeParams['_folderPath'];
             }
         }
 

@@ -98,27 +98,27 @@ class ModuleControllerModifierListener
             }
 
 
-// @todo эксперимент с _basePath пока не удался т.к. в виджет он не попадает, но там бывает нужен.
+// @todo эксперимент с _folderPath пока не удался т.к. в виджет он не попадает, но там бывает нужен.
 //            $route = $this->container->get('router')->getRouteCollection()->get($request->attributes->get('_route'));
 //
 //            $path = $route ? $route->getPath() : null;
-//            if (false !== strpos($path, '{_basePath}')) {
+//            if (false !== strpos($path, '{_folderPath}')) {
                 // @todo сделать поддержку кириллических путей.
-                $basePath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
+                $folderPath = substr(str_replace($request->getBaseUrl(), '', $this->engineFolder->getUri($node)), 1);
 
-                if (false !== strrpos($basePath, '/', strlen($basePath) - 1)) {
-                    $basePath = substr($basePath, 0, strlen($basePath) - 1);
+                if (false !== strrpos($folderPath, '/', strlen($folderPath) - 1)) {
+                    $folderPath = substr($folderPath, 0, strlen($folderPath) - 1);
                 }
 
                 //$routeParams = $request->attributes->get('_route_params', null);
 
-                //if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $basePath, 0)) {
+                //if (isset($routeParams['slug']) and 0 === strpos($routeParams['slug'], $folderPath, 0)) {
                 $routeParams = $node->getControllerParams();
-                $routeParams['_basePath'] = $basePath;
+                $routeParams['_folderPath'] = $folderPath;
 
             if ($node->getId() == 29) {
-                ld($request);
-                ld($routeParams);
+//                ld($request);
+//                ld($routeParams);
             }
 
                 $request->attributes->set('_route_params', $routeParams);

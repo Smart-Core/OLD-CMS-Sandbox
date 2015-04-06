@@ -201,30 +201,30 @@ class AdminGalleryController extends Controller
             }
         }
 
-        // @todo убрать обработку $_basePath в события.
+        // @todo убрать обработку $_folderPath в события.
         $albumPath  = null;
-        $_basePath = null;
+        $_folderPath = null;
         foreach ($this->get('cms.node')->findByModule('Gallery') as $node) {
             if ($node->getParam('gallery_id') === (int) $id) {
-                $_basePath = $this->get('cms.folder')->getUri($node);
+                $_folderPath = $this->get('cms.folder')->getUri($node);
 
                 break;
             }
         }
 
-        if ($_basePath) {
+        if ($_folderPath) {
             // Удаление последнего слеша
-            if (mb_substr($_basePath, - 1) == '/') {
-                $_basePath = mb_substr($_basePath, 0, mb_strlen($_basePath) - 1);
+            if (mb_substr($_folderPath, - 1) == '/') {
+                $_folderPath = mb_substr($_folderPath, 0, mb_strlen($_folderPath) - 1);
             }
 
             // Удаление первого слеша
-            if (mb_substr($_basePath, 0, 1) == '/') {
-                $_basePath = mb_substr($_basePath, 1);
+            if (mb_substr($_folderPath, 0, 1) == '/') {
+                $_folderPath = mb_substr($_folderPath, 1);
             }
 
             $albumPath = $this->generateUrl('smart_module.gallery.album', [
-                '_basePath' => $_basePath,
+                '_folderPath' => $_folderPath,
                 'id' => $id,
             ]);
         }

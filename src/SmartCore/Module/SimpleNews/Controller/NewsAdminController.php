@@ -132,22 +132,22 @@ class NewsAdminController extends Controller
 
         $itemPath = null;
 
-        // @todo убрать обработку $_basePath в события.
+        // @todo убрать обработку $_folderPath в события.
         if ($this->getFilderPath()) {
-            $_basePath = $this->getFilderPath();
+            $_folderPath = $this->getFilderPath();
 
             // Удаление последнего слеша
-            if (mb_substr($_basePath, - 1) == '/') {
-                $_basePath = mb_substr($_basePath, 0, mb_strlen($_basePath) - 1);
+            if (mb_substr($_folderPath, - 1) == '/') {
+                $_folderPath = mb_substr($_folderPath, 0, mb_strlen($_folderPath) - 1);
             }
 
             // Удаление первого слеша
-            if (mb_substr($_basePath, 0, 1) == '/') {
-                $_basePath = mb_substr($_basePath, 1);
+            if (mb_substr($_folderPath, 0, 1) == '/') {
+                $_folderPath = mb_substr($_folderPath, 1);
             }
 
             $itemPath = $this->generateUrl('smart_module.news.item', [
-                '_basePath' => $_basePath,
+                '_folderPath' => $_folderPath,
                 'slug' => $form->getData()->getSlug(),
             ]);
         }
