@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class NodeRouter extends Router
 {
-    /** @var  ContainerInterface */
+    /** @var ContainerInterface */
     protected $c = null;
+
+    /** @var string */
     protected $rootHash = 'kksdg7724tkshdfvI6734khvsdfKHvdf74';
 
     /**
@@ -24,11 +26,8 @@ class NodeRouter extends Router
     {
         if (empty($this->c)) {
             $this->c = Container::getContainer();
+            $this->rootHash = md5($this->c->getParameter('secret'));
         }
-
-//        $container = Container::getContainer();
-
-//        $rootHash = md5($container->getParameter('secret'));
 
         $route = $this->getRouteCollection()->get($name);
 
