@@ -28,12 +28,10 @@
     {% else %}
         {% set pagerfantaRouteName = 'unicat.category_root' %}
     {% endif %}
+
     {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
         'routeName': pagerfantaRouteName,
-        'routeParams': {
-            'slug': slug,
-            '_folderPath': app.request.attributes.get('_route_params')['_folderPath']
-        },
+        'routeParams': {'slug': slug},
         'css_container_class': 'pagination pagination-centered',
     })
     }}

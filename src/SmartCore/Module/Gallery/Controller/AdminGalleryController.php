@@ -201,32 +201,17 @@ class AdminGalleryController extends Controller
             }
         }
 
-        // @todo убрать обработку $_folderPath в события.
         $albumPath  = null;
-        $_folderPath = null;
+
         foreach ($this->get('cms.node')->findByModule('Gallery') as $node) {
             if ($node->getParam('gallery_id') === (int) $id) {
-                $_folderPath = $this->get('cms.folder')->getUri($node);
+                $albumPath = $this->generateUrl('smart_module.gallery.album', [
+                    '_folderPath' => $this->get('cms.folder')->getUri($node),
+                    'id' => $id,
+                ]);
 
                 break;
             }
-        }
-
-        if ($_folderPath) {
-            // Удаление последнего слеша
-            if (mb_substr($_folderPath, - 1) == '/') {
-                $_folderPath = mb_substr($_folderPath, 0, mb_strlen($_folderPath) - 1);
-            }
-
-            // Удаление первого слеша
-            if (mb_substr($_folderPath, 0, 1) == '/') {
-                $_folderPath = mb_substr($_folderPath, 1);
-            }
-
-            $albumPath = $this->generateUrl('smart_module.gallery.album', [
-                '_folderPath' => $_folderPath,
-                'id' => $id,
-            ]);
         }
 
         return $this->render('GalleryModule:Admin:album.html.twig', [

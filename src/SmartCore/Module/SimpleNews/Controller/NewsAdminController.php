@@ -132,24 +132,13 @@ class NewsAdminController extends Controller
 
         $itemPath = null;
 
-        // @todo убрать обработку $_folderPath в события.
-        if ($this->getFilderPath()) {
-            $_folderPath = $this->getFilderPath();
-
-            // Удаление последнего слеша
-            if (mb_substr($_folderPath, - 1) == '/') {
-                $_folderPath = mb_substr($_folderPath, 0, mb_strlen($_folderPath) - 1);
+        foreach ($this->get('cms.node')->findByModule('SimpleNews') as $node) {
+            if ($folderPath = $this->get('cms.folder')->getUri($node)) {
+                $itemPath = $this->generateUrl('smart_module.news.item', [
+                    '_folderPath' => $folderPath,
+                    'slug' => $form->getData()->getSlug(),
+                ]);
             }
-
-            // Удаление первого слеша
-            if (mb_substr($_folderPath, 0, 1) == '/') {
-                $_folderPath = mb_substr($_folderPath, 1);
-            }
-
-            $itemPath = $this->generateUrl('smart_module.news.item', [
-                '_folderPath' => $_folderPath,
-                'slug' => $form->getData()->getSlug(),
-            ]);
         }
 
         return $this->render('SimpleNewsModule:Admin:edit.html.twig', [
@@ -179,20 +168,5 @@ class NewsAdminController extends Controller
             : $this->generateUrl($redirect_to);
 
         return $this->redirect($url);
-    }
-
-    /**
-     * Получить путь к папке на сайте, куда подключен модуль.
-     *
-     * @return null|string
-     */
-    protected function getFilderPath()
-    {
-        $folderPath = null;
-        foreach ($this->get('cms.node')->findByModule('SimpleNews') as $node) {
-            $folderPath = $this->get('cms.folder')->getUri($node->getFolderId());
-        }
-
-        return $folderPath;
     }
 }

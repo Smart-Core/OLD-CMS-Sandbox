@@ -9,7 +9,6 @@
 {% if news.haveToPaginate %}
     {{ pagerfanta(news, 'twitter_bootstrap_translated', {
             'routeName': 'smart_module.news.page',
-            'routeParams': {'_folderPath': app.request.attributes.get('_route_params')['_folderPath']},
             'css_container_class': 'pagination pagination-centered',
         })
     }}
