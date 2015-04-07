@@ -85,7 +85,7 @@ class SettingsManager
             ]);
 
             if (empty($setting)) {
-                throw new \Exception('Wrong bundle-name pair in setting.');
+                throw new \Exception('Wrong bundle-name pair in setting. (Bundle: '.$bundle.', Name: '.$name.')');
             }
 
             $this->tagcache->set($cache_key, $setting, ['smart.settings']);
