@@ -39,7 +39,7 @@ class Node implements \Serializable
     /**
      * @var int
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="smallint")
      */
     protected $controls_in_toolbar;
 

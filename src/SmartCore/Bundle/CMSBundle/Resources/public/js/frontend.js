@@ -145,7 +145,6 @@ function renderToolbar() {
 
                 div_pull_right.prepend('<button type="button" class="btn btn-primary btn-sm span2" data-toggle="button" class-toggle="btn-danger">' + value[0] + '</button>');
             } else {
-
                 var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-' + value.icon + ' icon-' + value.icon + ' icon-white"></i>&nbsp;' + value.title + '<b class="caret"></b></a>';
 
                 // есть итемы. btn-inverse
@@ -212,6 +211,35 @@ function renderToolbar() {
                 }
             }
         });
+    }
 
+    // Уведомления
+    if (typeof cms_front_controls.toolbar.notifications === 'object') {
+        var count = Object.keys(cms_front_controls.toolbar.notifications).length;
+
+        if (count > 0) {
+            var item = '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Уведомления"><i class="glyphicon glyphicon-bullhorn icon-bullhorn icon-white"></i> <span class="label label-danger label-important">' + count + '</span></a>';
+
+            item += '<ul class="dropdown-menu">';
+            $.each(cms_front_controls.toolbar.notifications, function(index, value) {
+                if (typeof value === 'object') {
+                    $.each(value, function(index2, value2) {
+                        console.log(value2);
+                        item += '<li><a href="' + value2.url + '">' + value2.title;
+                        if (value2.count > 0) {
+                            item += ' <span class="label label-danger label-important">' + value2.count + '</span>';
+                        }
+                        item += '</a></li>';
+                    });
+                }
+            });
+            item += '</ul>';
+
+            if (twitterBootstrapVersion == 2) {
+                $('body > div.navbar > div.navbar-inner > div.container > div.nav-collapse > div.pull-right > ul.nav').prepend(item + '</li>');
+            } else {
+                $('body > nav.navbar > div.container > div.navbar-collapse > div.pull-right > ul.navbar-right').prepend(item + '</li>');
+            }
+        }
     }
 }

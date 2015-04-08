@@ -29,6 +29,7 @@ class CmsExtension extends \Twig_Extension
             'cms_current_folder'        => new \Twig_Function_Method($this, 'getCurrentFolder'),
             'cms_folder_path'           => new \Twig_Function_Method($this, 'generateFolderPath'),
             'cms_nodes_count_in_region' => new \Twig_Function_Method($this, 'nodesCountInRegion'),
+            'cms_get_notifications'     => new \Twig_Function_Method($this, 'getNotifications'),
         ];
     }
 
@@ -74,6 +75,24 @@ class CmsExtension extends \Twig_Extension
         $em = $this->container->get('doctrine.orm.entity_manager');
 
         return $em->getRepository('CMSBundle:Node')->countInRegion($region);
+    }
+
+    /**
+     * @return array
+     */
+    public function getNotifications()
+    {
+        $data = [];
+
+        foreach ($this->container->get('cms.module')->all() as $module) {
+            $notices = $module->getNotifications();
+
+            if (!empty($notices)) {
+                $data['notifications'][$module->getName()] = $notices;
+            }
+        }
+
+        return $data;
     }
 
     /**

@@ -41,6 +41,16 @@ trait ModuleBundleTrait
     }
 
     /**
+     * Получить оповещения.
+     *
+     * @return array
+     */
+    public function getNotifications()
+    {
+        return [];
+    }
+
+    /**
      * @todo Получение списка доступных виджетов у модуля.
      *
      * @return array

@@ -134,6 +134,7 @@ class EngineToolbar extends Controller
                     ],
                 ],
             ],
+            'notifications' => [],
         ];
 
         foreach ($this->get('cms.node')->getNodes() as $node) {
@@ -147,6 +148,14 @@ class EngineToolbar extends Controller
                         ];
                     }
                 }
+            }
+        }
+
+        foreach ($this->get('cms.module')->all() as $module) {
+            $notices = $module->getNotifications();
+
+            if (!empty($notices)) {
+                $data['notifications'][$module->getName()] = $notices;
             }
         }
 
