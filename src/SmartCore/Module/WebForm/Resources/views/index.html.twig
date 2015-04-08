@@ -5,8 +5,7 @@
     {#{{ form_javascript(form) }}#}
 {% endif %}
 
-{#{{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}#}
-{{ form(form) }}
+{% include '@WebFormModule/_form.html.twig' %}
 
 {% if web_form.isAjax %}
 <script>
