@@ -136,6 +136,10 @@ class AdminMenu extends ContainerAware
 
         /** @var $folder Folder */
         foreach ($folders as $folder) {
+            if ($folder->isDeleted()) {
+                continue;
+            }
+
             $uri = $this->container->get('router')->generate('cms_admin_structure_folder', ['id' => $folder->getId()]);
 
             if ($folder->isActive()) {

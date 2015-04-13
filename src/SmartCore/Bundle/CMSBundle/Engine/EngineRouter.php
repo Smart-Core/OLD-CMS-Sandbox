@@ -98,13 +98,16 @@ class EngineRouter
 
             $folder = $this->container->get('doctrine.orm.entity_manager')->getRepository('CMSBundle:Folder')->findOneBy([
                 'is_active'     => true,
-                'is_deleted'    => false,
                 'uri_part'      => empty($segment) ? null : $segment,
                 'parent_folder' => $parent_folder,
             ]);
 
             if ($folder) {
-                if (true) { // @todo if ($this->Permissions->isAllowed('folder', 'read', $folder->permissions)) {
+                if ($folder->isDeleted()) {
+                    $data['status'] = 404;
+
+                    break;
+                } else { // @todo if ($this->Permissions->isAllowed('folder', 'read', $folder->permissions)) {
                     if ($folder->getUriPart()) {
                         $data['current_folder_path'] .= $folder->getUriPart().'/';
                     }
@@ -129,20 +132,27 @@ class EngineRouter
                         try {
                             $node = $this->container->get('cms.node')->get($router_node_id);
 
+                            $node_slug = str_replace($data['current_folder_path'], '', substr('/'.$baseUrl.'/', 0, -1).$slug);
+
+                            if ($node_slug !== '/' and ($node->isDeleted() or $node->isNotActive())) {
+                                $data['status'] = 404;
+
+                                break;
+                            }
+
                             $data['node_routing'] = [
                                 'node_id'    => $router_node_id,
-                                'controller' => $this->matchModule(
-                                        $node->getModule(),
-                                        str_replace($data['current_folder_path'], '', substr('/'.$baseUrl.'/', 0, -1).$slug)
-                                    ),
+                                'controller' => $this->matchModule($node->getModule(), $node_slug),
                             ];
                         } catch (ResourceNotFoundException $e) {
                             // Роутинг модуля не нашел запрошенного ресурса.
                         }
                     }
-                } else {
-                    $data['status'] = 403;
                 }
+
+                /*else { // @todo права доступа
+                    $data['status'] = 403;
+                }*/
             } elseif (empty($data['node_routing'])) {
                 $data['status'] = 404;
             }

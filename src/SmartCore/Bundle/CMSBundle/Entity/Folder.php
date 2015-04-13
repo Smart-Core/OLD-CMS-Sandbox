@@ -28,6 +28,7 @@ class Folder
     use ColumnTrait\IsActive;
     use ColumnTrait\IsDeleted;
     use ColumnTrait\CreatedAt;
+    use ColumnTrait\DeletedAt;
     use ColumnTrait\Description;
     use ColumnTrait\Position;
     use ColumnTrait\UserId;
@@ -55,6 +56,13 @@ class Folder
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $nodes;
+
+    /**
+     * @var Region[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Region", mappedBy="folders", fetch="EXTRA_LAZY")
+     */
+    protected $regions;
 
     /**
      * @var string
@@ -158,6 +166,7 @@ class Folder
         $this->parent_folder        = null;
         $this->permissions          = null;
         $this->position             = 0;
+        $this->regions              = new ArrayCollection();
         $this->redirect_to          = null;
         $this->router_node_id       = null;
         $this->template_inheritable = null;
@@ -384,5 +393,25 @@ class Folder
     public function getTemplateSelf()
     {
         return $this->template_self;
+    }
+
+    /**
+     * @return Region[]|ArrayCollection
+     */
+    public function getRegions()
+    {
+        return $this->regions;
+    }
+
+    /**
+     * @param Region[]|ArrayCollection $regions
+     *
+     * @return $this
+     */
+    public function setRegions($regions)
+    {
+        $this->regions = $regions;
+
+        return $this;
     }
 }

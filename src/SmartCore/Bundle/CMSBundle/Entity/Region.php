@@ -35,7 +35,7 @@ class Region
     /**
      * @var Folder[]|ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Folder", fetch="EXTRA_LAZY")
+     * @ORM\ManyToMany(targetEntity="Folder", inversedBy="regions", fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="engine_regions_inherit")
      */
     protected $folders;
@@ -68,7 +68,7 @@ class Region
      * @param Folder $folder
      * @return $this
      */
-    public function setFolder(Folder $folder)
+    public function addFolder(Folder $folder)
     {
         $this->folders->add($folder);
 

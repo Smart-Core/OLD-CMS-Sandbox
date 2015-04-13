@@ -37,6 +37,16 @@ cms_admin_structure_trash_purge_node:
     defaults:
         _controller: CMSBundle:AdminStructure:trashPurgeNode
 
+cms_admin_structure_trash_restore_folder:
+    path: /structure/trash/restore_folder/{id}/
+    defaults:
+        _controller: CMSBundle:AdminStructure:trashRestoreFolder
+
+cms_admin_structure_trash_purge_folder:
+    path: /structure/trash/purge_folder/{id}/
+    defaults:
+        _controller: CMSBundle:AdminStructure:trashPurgeFolder
+
 # Region
 cms_admin_structure_region:
     path: /structure/region/

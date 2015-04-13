@@ -21,10 +21,10 @@
         {% for item in deleted_folders %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td>{{ item.title }}</td>
-                <td>
-                    <a href="#" class="btn btn-small btn-success">Восстановить</a>
-                    <a href="#" class="btn btn-small btn-danger">Удалить окончательно</a>
+                <td>{{ item.title }} ({{ item.uriPart }})</td>
+                <td style="width: 1%; white-space: nowrap;">
+                    <a href="{{ path('cms_admin_structure_trash_restore_folder', {'id': item.id}) }}" class="btn btn-small btn-success">Восстановить</a>
+                    <a href="{{ path('cms_admin_structure_trash_purge_folder', {'id': item.id}) }}" class="btn btn-small btn-danger" onclick="return confirm('Вы уверены, что хотите окончательно удалить папку?')">Удалить окончательно</a>
                 </td>
             </tr>
         {% endfor %}

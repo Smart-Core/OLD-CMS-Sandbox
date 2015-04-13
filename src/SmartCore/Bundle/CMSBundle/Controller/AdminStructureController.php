@@ -33,9 +33,44 @@ class AdminStructureController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         return $this->render('CMSBundle:AdminStructure:trash.html.twig', [
-            'deleted_nodes' => $em->getRepository('CMSBundle:Node')->findBy(['is_deleted' => true]),
+            'deleted_folders' => $em->getRepository('CMSBundle:Folder')->findBy(['is_deleted' => true]),
+            'deleted_nodes'   => $em->getRepository('CMSBundle:Node')->findBy(['is_deleted' => true]),
         ]);
     }
+
+    /**
+     * @param Folder $folder
+     * @return RedirectResponse
+     */
+    public function trashRestoreFolderAction(Folder $folder)
+    {
+        $folder
+            ->setIsDeleted(false)
+            ->setDeletedAt(null)
+        ;
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($folder);
+        $em->flush($folder);
+
+        $this->addFlash('success', 'Папка восстановлена.');
+
+        return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
+    }
+
+    /**
+     * @param Folder $folder
+     * @return RedirectResponse
+     */
+    public function trashPurgeFolderAction(Folder $folder)
+    {
+        $this->get('cms.folder')->remove($folder);
+
+        $this->addFlash('success', 'Папка удалена.');
+
+        return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
+    }
+
 
     /**
      * @param Node $node
@@ -52,7 +87,7 @@ class AdminStructureController extends Controller
         $em->persist($node);
         $em->flush($node);
 
-        $this->addFlash('success', 'Нода восстановлена.'); // @todo перевод
+        $this->addFlash('success', 'Нода восстановлена.');
 
         return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
     }
@@ -65,7 +100,7 @@ class AdminStructureController extends Controller
     {
         $this->get('cms.node')->remove($node);
 
-        $this->addFlash('success', 'Нода удалена.'); // @todo перевод
+        $this->addFlash('success', 'Нода удалена.');
 
         return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
     }
@@ -88,7 +123,7 @@ class AdminStructureController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $engineRegion->update($form->getData());
-                $this->addFlash('success', 'Область создана.'); // @todo перевод
+                $this->addFlash('success', 'Область создана.');
 
                 return $this->redirect($this->generateUrl('cms_admin_structure_region'));
             }
@@ -117,7 +152,7 @@ class AdminStructureController extends Controller
             if ($request->request->has('update')) {
                 if ($form->isValid()) {
                     $this->get('cms.region')->update($form->getData());
-                    $this->addFlash('success', 'Область обновлена.'); // @todo перевод
+                    $this->addFlash('success', 'Область обновлена.');
 
                     return $this->redirect($this->generateUrl('cms_admin_structure_region'));
                 }
@@ -125,12 +160,12 @@ class AdminStructureController extends Controller
                 $region = $form->getData();
 
                 if ('content' == $region->getName()) {
-                    $this->addFlash('error', 'Нельзя удалить область content'); // @todo перевод
+                    $this->addFlash('error', 'Нельзя удалить область content');
                 } elseif (0 < $this->get('cms.node')->countInRegion($region)) {
-                    $this->addFlash('error', 'Нельзя удалить область пока в неё включены модули'); // @todo перевод
+                    $this->addFlash('error', 'Нельзя удалить область пока в неё включены модули');
                 } else {
                     $this->get('cms.region')->remove($region);
-                    $this->addFlash('success', 'Область удалена.'); // @todo перевод
+                    $this->addFlash('success', 'Область удалена.');
 
                     return $this->redirect($this->generateUrl('cms_admin_structure_region'));
                 }
@@ -243,12 +278,40 @@ class AdminStructureController extends Controller
                     return $this->redirect($this->generateUrl('cms_admin_structure'));
                 }
             } elseif ($request->request->has('delete')) {
-                die('@todo');
+                $form->handleRequest($request);
+
+                /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */
+                $folder = $form->getData();
+                $folder
+                    ->setIsDeleted(true)
+                    ->setDeletedAt(new \DateTime())
+                ;
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($folder);
+                $em->flush($folder);
+
+                $this->get('tagcache')->deleteTag('node');
+                $this->get('tagcache')->deleteTag('folder');
+
+                $this->addFlash('success', 'Папка <b>'.$folder->getTitle().'</b> ('.$folder->getId().') удалена.');
+
+                if ($request->query->has('redirect_to')) {
+                    return $this->get('cms.router')->redirect($folder->getParentFolder());
+                }
+
+                return $this->redirect($this->generateUrl('cms_admin_structure'));
             }
         }
 
+        $allow_delete = $folder->getId() != 1 ? true : false;
+
+        if ($allow_delete and ($folder->getChildren()->count() > 0 or $folder->getNodes()->count() > 0 or $folder->getRegions()->count() > 0)) {
+            $allow_delete = false;
+        }
+
         return $this->renderView('CMSBundle:AdminStructure:folder_edit.html.twig', [
-            'allow_delete'  => $folder->getId() != 1 ? true : false,
+            'allow_delete'  => $allow_delete,
             'folderPath'    => $this->get('cms.folder')->getUri($folder),
             'form'          => $form->createView(),
         ]);
@@ -375,7 +438,7 @@ class AdminStructureController extends Controller
                     $cmsNode->update($updatedNode);
 
                     $this->get('tagcache')->deleteTag('node');
-                    $this->addFlash('success', 'Параметры модуля <b>'.$node->getModule().'</b> ('.$node->getId().') обновлены.'); // @todo перевод.
+                    $this->addFlash('success', 'Параметры модуля <b>'.$node->getModule().'</b> ('.$node->getId().') обновлены.');
 
                     if ($request->query->has('redirect_to')) {
                         return $this->get('cms.router')->redirect($updatedNode);
@@ -403,7 +466,7 @@ class AdminStructureController extends Controller
 
                 $this->get('tagcache')->deleteTag('node');
 
-                $this->addFlash('success', 'Нода <b>'.$node->getModule().'</b> ('.$node->getId().') удалена.'); // @todo перевод.
+                $this->addFlash('success', 'Нода <b>'.$node->getModule().'</b> ('.$node->getId().') удалена.');
 
                 if ($request->query->has('redirect_to')) {
                     return $this->get('cms.router')->redirect($node);

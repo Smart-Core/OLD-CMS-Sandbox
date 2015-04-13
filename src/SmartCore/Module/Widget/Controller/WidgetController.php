@@ -50,6 +50,10 @@ class WidgetController extends Controller
             return new Response('Node doen\'t exist.');
         }
 
+        if ($node->isDeleted() or $node->isNotActive()) {
+            return new Response('Node is not active.');
+        }
+
         $cacheKey = md5('smart_module.widget.yaml_params'.$this->node_id.$this->controller.$this->params);
         if (false === $path = $this->getCacheService()->get($cacheKey)) {
             $path = Yaml::parse($this->params);
