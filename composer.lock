@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "61060c819a93954488cc6b79096a5da1",
+    "hash": "58cab459145af1ed9a111fab2f5f9b88",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -4284,12 +4284,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "6213794345602db9813192a9e22b35fd97b9ea0b"
+                "reference": "4bb3d2830b2c6cdac0c9ded56fac338ab7dba379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/6213794345602db9813192a9e22b35fd97b9ea0b",
-                "reference": "6213794345602db9813192a9e22b35fd97b9ea0b",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/4bb3d2830b2c6cdac0c9ded56fac338ab7dba379",
+                "reference": "4bb3d2830b2c6cdac0c9ded56fac338ab7dba379",
                 "shasum": ""
             },
             "require": {
@@ -4307,7 +4307,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -4334,7 +4334,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2015-04-01 15:06:40"
+            "time": "2015-04-13 06:13:46"
         },
         {
             "name": "misd/guzzle-bundle",
@@ -5125,17 +5125,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.20",
+            "version": "v3.0.21",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "48c76189fb0a76a20a4a67a750b513ed06074b55"
+                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/48c76189fb0a76a20a4a67a750b513ed06074b55",
-                "reference": "48c76189fb0a76a20a4a67a750b513ed06074b55",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/da23c78093676a823a1ff43a214987ea3fbf83c8",
+                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8",
                 "shasum": ""
             },
             "require": {
@@ -5181,7 +5181,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-03-26 11:09:50"
+            "time": "2015-04-10 06:20:46"
         },
         {
             "name": "sensio/framework-extra-bundle",

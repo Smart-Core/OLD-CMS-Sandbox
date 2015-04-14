@@ -9,7 +9,7 @@
         "php": ">=5.4.11",
         "ext-intl": "*",
         "ext-curl": "*",
-        "symfony/symfony": "~2.6",
+        "symfony/symfony": "2.6.*",
         "symfony/assetic-bundle": "dev-master",
         "symfony/monolog-bundle": "*",
         "symfony/swiftmailer-bundle": "*",
