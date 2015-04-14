@@ -148,11 +148,14 @@ class AdminMenu extends ContainerAware
                 $title = '<span style="text-decoration: line-through;">'.$folder->getTitle().'</span>';
             }
 
-            $menu->addChild($folder->getTitle(), ['uri' => $uri])->setAttributes([
-                'class' => 'folder',
-                'title' => $folder->getDescription(),
-                'id'    => 'folder_id_'.$folder->getId(),
-            ])->setLabel($title);
+            $menu->addChild($folder->getTitle(), ['uri' => $uri])
+                ->setAttributes([
+                    'class' => 'folder',
+                    'title' => $folder->getDescription(),
+                    'id'    => 'folder_id_'.$folder->getId(),
+                ])
+                ->setLabel($title)
+            ;
 
             /** @var $sub_menu ItemInterface */
             $sub_menu = $menu[$folder->getTitle()];
@@ -165,11 +168,21 @@ class AdminMenu extends ContainerAware
                     continue;
                 }
 
+                $title = $node->getDescription().' ('.$node->getModule().':'.$node->getId().')';
+
+                if ($node->isNotActive()) {
+                    $title = '<span style="text-decoration: line-through;">'.$title.'</span>';
+                }
+
                 $uri = $this->container->get('router')->generate('cms_admin_structure_node_properties', ['id' => $node->getId()]);
-                $sub_menu->addChild($node->getDescription().' ('.$node->getModule().':'.$node->getId().')', ['uri' => $uri])->setAttributes([
-                    'title' => $node->getDescription(),
-                    'id'    => 'node_id_'.$node->getId(),
-                ]);
+                $sub_menu
+                    ->addChild($node->getId(), ['uri' => $uri])
+                    ->setAttributes([
+                        'title' => $node->getDescription(),
+                        'id'    => 'node_id_'.$node->getId(),
+                    ])
+                    ->setLabel($title)
+                ;
             }
         }
     }
