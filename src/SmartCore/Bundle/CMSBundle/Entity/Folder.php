@@ -110,13 +110,6 @@ class Folder
     protected $router_node_id;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $has_inherit_nodes;
-
-    /**
      * @var array
      *
      * @ORM\Column(type="array", nullable=true)
@@ -159,7 +152,6 @@ class Folder
         $this->is_active            = true;
         $this->is_deleted           = false;
         $this->is_file              = false;
-        $this->has_inherit_nodes    = false;
         $this->lockout_nodes        = null;
         $this->meta                 = [];
         $this->nodes                = new ArrayCollection();
@@ -235,25 +227,6 @@ class Folder
     public function getIsFile()
     {
         return $this->is_file;
-    }
-
-    /**
-     * @param bool $has_inherit_nodes
-     * @return $this
-     */
-    public function setHasInheritNodes($has_inherit_nodes)
-    {
-        $this->has_inherit_nodes = $has_inherit_nodes;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getHasInheritNodes()
-    {
-        return $this->has_inherit_nodes;
     }
 
     /**

@@ -193,7 +193,6 @@ class AdminStructureController extends Controller
 
         if (empty($parent)) {
             $folder->setTitle($this->get('translator')->trans('Homepage'));
-            $folder->setHasInheritNodes(true);
         } else {
             $folder->setParentFolder($parent);
         }
