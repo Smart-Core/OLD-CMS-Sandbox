@@ -226,10 +226,10 @@ class EngineNode
         \Profiler::start('buildNodesList');
 
         $used_nodes = [];
-        $lockout_nodes = [ // @todo блокировку нод.
+        $lockout_nodes = [   // @todo блокировку нод.
             'single'  => [], // Блокировка нод в папке, без наследования.
             'inherit' => [], // Блокировка нод в папке, с наследованием.
-            'except'  => []// Блокировка всех нод в папке, кроме заданных.
+            'except'  => [], // Блокировка всех нод в папке, кроме заданных.
         ];
 
         /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */
