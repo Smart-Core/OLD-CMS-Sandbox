@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Мар 25 2015 г., 10:10
+-- Время создания: Апр 15 2015 г., 01:46
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.7
 
@@ -295,6 +295,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `user_id` int(11) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `template_self` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `folder_pid_uri_part` (`folder_pid`,`uri_part`),
   KEY `IDX_6B4611ABA640A07B` (`folder_pid`),
@@ -307,23 +308,23 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
 -- Дамп данных таблицы `engine_folders`
 --
 
-INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `description`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `user_id`, `created_at`, `template_self`) VALUES
-(1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL),
-(2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL),
-(3, 1, 'Аккаунт пользователя', 0, 255, 'user', 1, 0, NULL, 'a:0:{}', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL),
-(4, 8, 'Вложенная', 0, 0, 'under_news', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27', NULL),
-(5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50', NULL),
-(6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL),
-(7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL),
-(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'a:0:{}', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL),
-(11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL),
-(12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL),
-(13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL),
-(14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL),
-(15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL),
-(16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, 0, NULL, 'a:0:{}', NULL, 32, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL),
-(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL),
-(18, 1, 'Веб-форма', 0, 0, 'web-form', 1, 0, NULL, 'a:0:{}', NULL, 34, 0, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL);
+INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `is_deleted`, `description`, `meta`, `redirect_to`, `router_node_id`, `has_inherit_nodes`, `permissions`, `lockout_nodes`, `template_inheritable`, `user_id`, `created_at`, `template_self`, `deleted_at`) VALUES
+(1, NULL, 'Главная', 0, 0, NULL, 1, 0, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, 1, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL, NULL),
+(2, 1, 'О компании', 0, 10, 'about', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL, NULL),
+(3, 1, 'Аккаунт пользователя', 0, 255, 'user', 1, 0, NULL, 'a:0:{}', NULL, 7, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL, NULL),
+(4, 8, 'Вложенная', 0, 0, 'under_news', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27', NULL, NULL),
+(5, 1, 'Так просто ;)', 0, 3, 'simple', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50', NULL, NULL),
+(6, 2, 'Вложенная папка', 0, 0, 'inner', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL, NULL),
+(7, 1, '22222222222222', 0, 10, '22222222', 0, 0, '22', 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2013-08-10 11:14:06', NULL, NULL),
+(8, 1, 'Новости', 0, 0, 'news', 1, 0, NULL, 'a:0:{}', NULL, 12, 0, 'N;', 'N;', NULL, 1, '2013-12-22 21:45:42', NULL, NULL),
+(11, 6, 'Еще одна вложенная', 0, 0, 'in2', 1, 0, NULL, 'a:0:{}', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-29 10:30:42', NULL, NULL),
+(12, 1, 'Слайдер', 0, 0, 'slider', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-01-30 20:38:12', NULL, NULL),
+(13, 1, 'Блог', 0, 0, 'blog', 1, 0, NULL, 'N;', NULL, 22, 0, 'N;', 'N;', NULL, 1, '2014-02-07 18:01:54', NULL, NULL),
+(14, 12, 'Nivo', 0, 0, 'nivo', 1, 0, NULL, 'N;', NULL, NULL, 0, 'N;', 'N;', NULL, 1, '2014-02-10 07:55:59', NULL, NULL),
+(15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 0, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL, NULL),
+(16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, 0, NULL, 'a:0:{}', NULL, 32, 0, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL, NULL),
+(17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 0, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL, NULL),
+(18, 1, 'Веб-форма', 0, 0, 'web-form', 1, 0, NULL, 'a:0:{}', NULL, 34, 0, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -373,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `created_at` datetime NOT NULL,
   `is_cached` tinyint(1) NOT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `controls_in_toolbar` int(11) NOT NULL,
+  `controls_in_toolbar` smallint(6) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1623,7 +1624,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-03-24 04:05:05', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-04-14 02:27:36', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
