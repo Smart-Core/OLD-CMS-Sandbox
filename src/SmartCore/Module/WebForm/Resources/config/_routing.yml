@@ -1,4 +1,0 @@
-#web_form.index:
-#    path: /
-#    defaults:
-#        _controller: WebFormModule:WebForm:index

@@ -8,6 +8,12 @@
     {#{% set __selected_inheritance = app.request.attributes.get('__selected_inheritance') %}#}
     {#{% set __si = app.request.attributes.set('__selected_inheritance', false) %}#}
 
+    {% if nodePath %}
+        <a class="btn btn-small" href="{{ nodePath }}" title="{{ app.request.host ~ nodePath }}" style="float: right; margin-top: 4px;">
+            <i class="icon-home"></i> Перейти на страницу веб-формы на сайте
+        </a>
+    {% endif %}
+
     {% set configurationMenu = knp_menu_get('WebFormModule:AdminMenu:manage', [], {
         'web_form': web_form,
     }) %}

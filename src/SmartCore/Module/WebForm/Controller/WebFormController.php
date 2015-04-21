@@ -36,6 +36,12 @@ class WebFormController extends Controller
             $form->isValid();
         }
 
+        $this->node->addFrontControl('crm')
+            ->setTitle('Управление веб-формой')
+            ->setUri($this->generateUrl('web_form.admin_new_messages', [
+                'name' => $webForm->getName(),
+            ]));
+
         return $this->render('WebFormModule::index.html.twig', [
             'form' => $form->createView(),
             'node_id' => $this->node->getId(),

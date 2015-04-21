@@ -86,9 +86,10 @@ class AdminWebFormController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         return $this->render('WebFormModule:Admin:fields.html.twig', [
-            'web_form' => $webForm,
+            'form'            => $form->createView(),
+            'nodePath'        => $this->getNodePath($webForm),
+            'web_form'        => $webForm,
             'web_form_fields' => $em->getRepository('WebFormModule:WebFormField')->findBy(['web_form' => $webForm]),
-            'form' => $form->createView(),
         ]);
     }
 
@@ -133,9 +134,9 @@ class AdminWebFormController extends Controller
         }
 
         return $this->render('WebFormModule:Admin:field_edit.html.twig', [
-            'web_form' => $webForm,
+            'form'           => $form->createView(),
+            'web_form'       => $webForm,
             'web_form_field' => $webFormField,
-            'form' => $form->createView(),
         ]);
     }
 
@@ -167,8 +168,9 @@ class AdminWebFormController extends Controller
         }
 
         return $this->render('WebFormModule:Admin:settings.html.twig', [
-            'form' => $form->createView(),
-            'web_form' => $webForm,
+            'form'      => $form->createView(),
+            'nodePath'  => $this->getNodePath($webForm),
+            'web_form'  => $webForm,
         ]);
     }
 
@@ -209,6 +211,7 @@ class AdminWebFormController extends Controller
 
         return $this->render('WebFormModule:Admin:messages.html.twig', [
             'web_form'   => $webForm,
+            'nodePath'   => $this->getNodePath($webForm),
             'pagerfanta' => $pagerfanta,
             'title'      => $title,
         ]);
@@ -259,5 +262,22 @@ class AdminWebFormController extends Controller
     public function manageAction(WebForm $webForm)
     {
         return $this->redirect($this->generateUrl('web_form.admin_new_messages', ['name' => $webForm->getName()]));
+    }
+
+    /**
+     * @param \SmartCore\Module\WebForm\Entity\WebForm $webForm
+     *
+     * @return null|string
+     * @throws \Exception
+     */
+    protected function getNodePath(WebForm $webForm)
+    {
+        foreach ($this->get('cms.node')->findByModule('WebForm') as $node) {
+            if ($node->getParam('webform_id') === (int) $webForm->getId()) {
+                return $this->generateUrl('web_form.index', [
+                    '_folderPath' => $this->get('cms.folder')->getUri($node),
+                ]);
+            }
+        }
     }
 }
