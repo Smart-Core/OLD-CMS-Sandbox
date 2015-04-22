@@ -22,6 +22,7 @@ class AdminConfigController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return Response
      */
     public function editSettingAction(Request $request, $id)

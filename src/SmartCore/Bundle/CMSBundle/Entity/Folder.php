@@ -193,6 +193,7 @@ class Folder
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -212,6 +213,7 @@ class Folder
 
     /**
      * @param bool $is_file
+     *
      * @return $this
      */
     public function setIsFile($is_file)
@@ -231,6 +233,7 @@ class Folder
 
     /**
      * @param string $uri_part
+     *
      * @return $this
      */
     public function setUriPart($uri_part)
@@ -250,6 +253,7 @@ class Folder
 
     /**
      * @param array $meta
+     *
      * @return $this
      */
     public function setMeta(array $meta)
@@ -275,6 +279,7 @@ class Folder
 
     /**
      * @param Folder $parent_folder
+     *
      * @return $this
      */
     public function setParentFolder(Folder $parent_folder)
@@ -294,6 +299,7 @@ class Folder
 
     /**
      * @param string $form_title
+     *
      * @return $this
      */
     public function setFormTitle($form_title)
@@ -313,6 +319,7 @@ class Folder
 
     /**
      * @param int|null $router_node_id
+     *
      * @return $this
      */
     public function setRouterNodeId($router_node_id)
@@ -332,6 +339,7 @@ class Folder
 
     /**
      * @param string $template_inheritable
+     *
      * @return $this
      */
     public function setTemplateInheritable($template_inheritable)
@@ -351,6 +359,7 @@ class Folder
 
     /**
      * @param string $template_self
+     *
      * @return $this
      */
     public function setTemplateSelf($template_self)

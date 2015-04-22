@@ -10,6 +10,7 @@ class ModuleThemeLocator extends FileLocator
 
     /**
      * @param string $moduleTheme
+     *
      * @return $this
      */
     public function setModuleTheme($moduleTheme)
@@ -21,6 +22,7 @@ class ModuleThemeLocator extends FileLocator
 
     /**
      * @param array $parameters
+     *
      * @return array
      */
     protected function getPathsForBundleResource($parameters)

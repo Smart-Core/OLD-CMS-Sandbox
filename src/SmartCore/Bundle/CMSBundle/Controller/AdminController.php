@@ -49,6 +49,7 @@ class AdminController extends Controller
      * Renders Elfinder.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function elfinderAction(Request $request)
@@ -103,6 +104,7 @@ class AdminController extends Controller
      * AJAX обновление БД.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function moduleInstallUpdateDbAction(Request $request)

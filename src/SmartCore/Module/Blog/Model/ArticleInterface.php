@@ -11,6 +11,7 @@ interface ArticleInterface
 
     /**
      * @param string $annotation
+     *
      * @return $this
      */
     public function setAnnotation($annotation);
@@ -27,6 +28,7 @@ interface ArticleInterface
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description);
@@ -38,6 +40,7 @@ interface ArticleInterface
 
     /**
      * @param string $keywords
+     *
      * @return $this
      */
     public function setKeywords($keywords);
@@ -49,6 +52,7 @@ interface ArticleInterface
 
     /**
      * @param bool $enabled
+     *
      * @return $this
      */
     public function setIsEnabled($enabled);
@@ -60,6 +64,7 @@ interface ArticleInterface
 
     /**
      * @param string $text
+     *
      * @return $this
      */
     public function setText($text);
@@ -71,6 +76,7 @@ interface ArticleInterface
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title);
@@ -92,6 +98,7 @@ interface ArticleInterface
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug);

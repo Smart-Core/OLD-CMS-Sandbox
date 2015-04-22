@@ -12,6 +12,7 @@ class AdminMenu extends ContainerAware
     /**
      * @param FactoryInterface $factory
      * @param array $options
+     *
      * @return ItemInterface
      */
     public function main(FactoryInterface $factory, array $options)
@@ -54,6 +55,7 @@ class AdminMenu extends ContainerAware
      *
      * @param FactoryInterface $factory
      * @param array $options
+     *
      * @return ItemInterface
      */
     public function structure(FactoryInterface $factory, array $options)

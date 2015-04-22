@@ -12,6 +12,7 @@ class Category extends ContainerAware
     /**
      * @param FactoryInterface $factory
      * @param array $options
+     *
      * @return ItemInterface
      */
     public function tree(FactoryInterface $factory, array $options)
@@ -31,7 +32,6 @@ class Category extends ContainerAware
      * Рекурсивный метод для удаления фабрики, что позволяет кешировать объект меню.
      *
      * @param ItemInterface $menu
-     * @return void
      */
     protected function removeFactory(ItemInterface $menu)
     {
@@ -48,7 +48,6 @@ class Category extends ContainerAware
      * @param ItemInterface $menu
      * @param CategoryInterface|null $parent
      * @param string $categoryClass
-     * @return void
      */
     protected function addChild(ItemInterface $menu, CategoryInterface $parent = null, $categoryClass)
     {
@@ -75,6 +74,7 @@ class Category extends ContainerAware
     /**
      * @param FactoryInterface $factory
      * @param array $options
+     *
      * @return ItemInterface
      */
     public function adminTree(FactoryInterface $factory, array $options)
@@ -95,7 +95,6 @@ class Category extends ContainerAware
      * @param ItemInterface $menu
      * @param CategoryInterface|null $parent
      * @param string $categoryClass
-     * @return void
      */
     protected function addChildToAdminTree(ItemInterface $menu, CategoryInterface $parent = null, $categoryClass)
     {

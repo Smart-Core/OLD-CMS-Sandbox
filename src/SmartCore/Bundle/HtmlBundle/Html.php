@@ -116,6 +116,7 @@ class Html
 
     /**
      * @param string $doctype
+     *
      * @return $this
      */
     public function setDoctype($doctype = 'html5')
@@ -128,6 +129,7 @@ class Html
 
     /**
      * @param string $keyword
+     *
      * @return $this
      */
     public function addMetaKeyword($keyword)
@@ -143,6 +145,7 @@ class Html
 
     /**
      * @param string $descr
+     *
      * @return $this
      */
     public function setMetaDescription($descr)
@@ -154,6 +157,7 @@ class Html
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -176,6 +180,7 @@ class Html
      *
      * @param string $attr
      * @param string $value
+     *
      * @return $this
      */
     public function setBodyAttribute($attr, $value)
@@ -189,6 +194,7 @@ class Html
      * @param string $name
      * @param string $content
      * @param string $type (name, http-equiv, property)
+     *
      * @return $this
      */
     public function setMeta($name, $content, $type = 'name')
@@ -200,6 +206,7 @@ class Html
 
     /**
      * @param array  $meta_tags
+     *
      * @return $this
      */
     public function setMetas(array $meta_tags)
@@ -212,6 +219,7 @@ class Html
     /**
      * @param string $name
      * @param string $content
+     *
      * @return $this
      */
     public function setMetaHttpEquiv($name, $content)
@@ -224,6 +232,7 @@ class Html
     /**
      * @param string $name
      * @param string $content
+     *
      * @return $this
      */
     public function setMetaProperty($name, $content)
@@ -239,6 +248,7 @@ class Html
      * @param string $href
      * @param array null $params
      * @param int $priority
+     *
      * @return $this
      */
     public function addLink($href, $params = null, $priority = 0)
@@ -264,6 +274,7 @@ class Html
      * @param string $input - src или code.
      * @param array|string $params - параметры. (_code - вставить код между тегами <script> и </script>.)
      * @param int $priority - чем больше, чем раньше подключится
+     *
      * @return $this
      */
     public function addScript($input, $params = null, $priority = 0)
@@ -296,6 +307,7 @@ class Html
      * @param string $input - href или code.
      * @param array|string $params - параметры. (_code - вставляет код между тегами <style> и </style>)
      * @param int $priority - позиция (чем больше, чем раньше подключится)
+     *
      * @return $this
      */
     public function addStyle($input, $params = null, $priority = 0)
@@ -335,6 +347,7 @@ class Html
      * Метод автоматически подключает либу jquery.
      *
      * @param string $js_code
+     *
      * @return $this
      */
     public function addDocumentReady($js_code)
@@ -346,6 +359,7 @@ class Html
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -359,6 +373,7 @@ class Html
      * Добавить строку перед title.
      *
      * @param string $title
+     *
      * @return $this
      */
     public function titlePrepend($title)
@@ -372,6 +387,7 @@ class Html
      * Добавить строку после title.
      *
      * @param string $title
+     *
      * @return $this
      */
     public function titleAppend($title)
@@ -398,7 +414,7 @@ class Html
     }
 
     /**
-     * Добавление произвольного кода в секцию <head>
+     * Добавление произвольного кода в секцию <head>.
      *
      * @param string $code
      */

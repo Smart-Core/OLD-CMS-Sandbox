@@ -36,6 +36,7 @@ class SliderService
 
     /**
      * @param  Slide $slide
+     *
      * @return $this
      */
     public function save(Slide $slide)
@@ -75,6 +76,7 @@ class SliderService
 
     /**
      * @param Slider $slider
+     *
      * @return $this
      */
     public function createSlider(Slider $slider)
@@ -87,6 +89,7 @@ class SliderService
 
     /**
      * @param Slider $slider
+     *
      * @return $this
      */
     public function updateSlider(Slider $slider)
@@ -99,6 +102,7 @@ class SliderService
 
     /**
      * @param Slide $slide
+     *
      * @return $this
      */
     public function updateSlide(Slide $slide)
@@ -111,6 +115,7 @@ class SliderService
 
     /**
      * @param Slide $slide
+     *
      * @return $this
      */
     public function deleteSlide(Slide $slide)
@@ -125,6 +130,7 @@ class SliderService
 
     /**
      * @param  Slider $slider
+     *
      * @return $this
      */
     public function deleteSlider(Slider $slider)
@@ -137,6 +143,7 @@ class SliderService
 
     /**
      * @param  int $id
+     *
      * @return Slide
      */
     public function getSlide($id)
@@ -146,6 +153,7 @@ class SliderService
 
     /**
      * @param  int $id
+     *
      * @return Slider
      */
     public function getSlider($id)

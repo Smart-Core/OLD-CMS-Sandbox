@@ -10,6 +10,7 @@ class TexterModule extends ModuleBundle
 {
     /**
      * Действие при создании ноды.
+     *
      * @param Node $node
      */
     public function createNode(Node $node)
@@ -30,6 +31,7 @@ class TexterModule extends ModuleBundle
 
     /**
      * Действие при обновлении ноды.
+     *
      * @param Node $node
      */
     public function updateNode(Node $node)

@@ -40,6 +40,7 @@ class AdminStructureController extends Controller
 
     /**
      * @param Folder $folder
+     *
      * @return RedirectResponse
      */
     public function trashRestoreFolderAction(Folder $folder)
@@ -60,6 +61,7 @@ class AdminStructureController extends Controller
 
     /**
      * @param Folder $folder
+     *
      * @return RedirectResponse
      */
     public function trashPurgeFolderAction(Folder $folder)
@@ -71,9 +73,9 @@ class AdminStructureController extends Controller
         return $this->redirect($this->generateUrl('cms_admin_structure_trash'));
     }
 
-
     /**
      * @param Node $node
+     *
      * @return RedirectResponse
      */
     public function trashRestoreNodeAction(Node $node)
@@ -94,6 +96,7 @@ class AdminStructureController extends Controller
 
     /**
      * @param Node $node
+     *
      * @return RedirectResponse
      */
     public function trashPurgeNodeAction(Node $node)
@@ -109,6 +112,7 @@ class AdminStructureController extends Controller
      * Отображение списка всех регионов, а также форма добавления нового.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function regionIndexAction(Request $request)
@@ -140,6 +144,7 @@ class AdminStructureController extends Controller
      *
      * @param Request $request
      * @param Region  $region
+     *
      * @return Response|RedirectResponse
      */
     public function regionEditAction(Request $request, Region $region)
@@ -182,6 +187,7 @@ class AdminStructureController extends Controller
      *
      * @param Request      $request
      * @param Folder|null  $parent
+     *
      * @return Response|RedirectResponse
      */
     public function folderCreateAction(Request $request, Folder $parent = null)
@@ -241,6 +247,7 @@ class AdminStructureController extends Controller
      *
      * @param Request     $request
      * @param Folder|null $folder
+     *
      * @return Response|RedirectResponse
      */
     public function folderEditAction(Request $request, Folder $folder = null)
@@ -319,6 +326,7 @@ class AdminStructureController extends Controller
     /**
      * @param int $id
      * @param string|null $slug
+     *
      * @return Response
      */
     public function nodeAction(Request $request, $id, $slug = null)
@@ -344,6 +352,7 @@ class AdminStructureController extends Controller
      *
      * @param Request $request
      * @param int $folder_pid
+     *
      * @return RedirectResponse|Response
      */
     public function nodeCreateAction(Request $request, $folder_pid = 1)
@@ -400,6 +409,7 @@ class AdminStructureController extends Controller
      *
      * @param Request $request
      * @param int $id
+     *
      * @return RedirectResponse|Response
      */
     public function nodeEditAction(Request $request, $id)

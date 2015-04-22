@@ -67,6 +67,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
 
     /**
      * @param UserInterface $author
+     *
      * @return $this
      */
     public function setAuthor(UserInterface $author)
@@ -86,6 +87,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
 
     /**
      * @param UploadedFile $image
+     *
      * @return $this
      */
     public function setImage(UploadedFile $image)
@@ -105,6 +107,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
 
     /**
      * @param int $image_id
+     *
      * @return $this
      */
     public function setImageId($image_id)
@@ -124,6 +127,7 @@ class Article extends SmartArticle implements SignedArticleInterface, ImagedArti
 
     /**
      * @param bool $is_commentable
+     *
      * @return $this
      */
     public function setIsCommentable($is_commentable)

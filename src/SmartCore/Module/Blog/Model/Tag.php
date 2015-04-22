@@ -109,6 +109,7 @@ abstract class Tag implements TagInterface
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug)
@@ -128,6 +129,7 @@ abstract class Tag implements TagInterface
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)

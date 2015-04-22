@@ -82,6 +82,7 @@ abstract class Category implements CategoryInterface
 
     /**
      * @param CategoryInterface $parent
+     *
      * @return $this
      */
     public function setParent(CategoryInterface $parent)
@@ -118,7 +119,6 @@ abstract class Category implements CategoryInterface
      * Рекурсивный обход для построение списка всех родительских категорий.
      *
      * @param ArrayCollection $parents
-     * @return void
      */
     protected function buildParents(ArrayCollection $parents)
     {
@@ -132,6 +132,7 @@ abstract class Category implements CategoryInterface
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug)

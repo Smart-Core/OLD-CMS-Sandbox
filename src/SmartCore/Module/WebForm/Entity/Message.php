@@ -98,6 +98,7 @@ class Message
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -117,6 +118,7 @@ class Message
 
     /**
      * @param string $name
+     *
      * @return mixed
      */
     public function getDataValue($name)
@@ -126,6 +128,7 @@ class Message
 
     /**
      * @param array $data
+     *
      * @return $this
      */
     public function setData($data)
@@ -145,6 +148,7 @@ class Message
 
     /**
      * @param int $status
+     *
      * @return $this
      */
     public function setStatus($status)
@@ -164,6 +168,7 @@ class Message
 
     /**
      * @param WebForm $web_form
+     *
      * @return $this
      */
     public function setWebForm($web_form)

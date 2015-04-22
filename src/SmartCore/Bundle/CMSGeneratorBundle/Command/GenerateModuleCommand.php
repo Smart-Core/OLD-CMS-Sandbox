@@ -205,6 +205,7 @@ class GenerateModuleCommand extends GeneratorCommand
      * @param string $namespace
      * @param string $bundle
      * @param string $dir
+     *
      * @return array
      */
     protected function checkAutoloader(OutputInterface $output, $namespace, $bundle, $dir)

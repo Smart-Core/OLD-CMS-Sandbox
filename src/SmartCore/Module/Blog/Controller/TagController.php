@@ -31,6 +31,7 @@ class TagController extends Controller
     /**
      * @param Request $requst
      * @param string $slug
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showArticlesAction(Request $requst, $slug)

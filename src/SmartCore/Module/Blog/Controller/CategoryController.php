@@ -18,6 +18,7 @@ class CategoryController extends Controller
     /**
      * @param Request $request
      * @param string $slug
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function articlesAction(Request $requst, $slug = null)

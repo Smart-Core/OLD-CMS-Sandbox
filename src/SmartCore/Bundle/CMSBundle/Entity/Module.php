@@ -40,6 +40,7 @@ class Module
 
     /**
      * @param string $class
+     *
      * @return $this
      */
     public function setClass($class)

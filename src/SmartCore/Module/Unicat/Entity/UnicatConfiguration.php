@@ -31,7 +31,7 @@ class UnicatConfiguration
     use ColumnTrait\UserId;
 
     /**
-     * Пространство имен сущностей, например: DemoSiteBundle\Entity\Catalog\
+     * Пространство имен сущностей, например: DemoSiteBundle\Entity\Catalog\.
      *
      * @var string
      *
@@ -172,6 +172,7 @@ class UnicatConfiguration
 
     /**
      * @param string $entities_namespace
+     *
      * @return $this
      */
     public function setEntitiesNamespace($entities_namespace)
@@ -191,6 +192,7 @@ class UnicatConfiguration
 
     /**
      * @param bool $is_inheritance
+     *
      * @return $this
      */
     public function setIsInheritance($is_inheritance)
@@ -218,6 +220,7 @@ class UnicatConfiguration
 
     /**
      * @param Collection|null $media_collection
+     *
      * @return $this
      */
     public function setMediaCollection(Collection $media_collection = null)
@@ -237,6 +240,7 @@ class UnicatConfiguration
 
     /**
      * @param UnicatStructure[]|ArrayCollection $structures
+     *
      * @return $this
      */
     public function setStructures($structures)
@@ -256,6 +260,7 @@ class UnicatConfiguration
 
     /**
      * @param UnicatStructure $default_structure
+     *
      * @return $this
      */
     public function setDefaultStructure(UnicatStructure $default_structure = null)
@@ -283,6 +288,7 @@ class UnicatConfiguration
 
     /**
      * @param int $items_per_page
+     *
      * @return $this
      */
     public function setItemsPerPage($items_per_page)

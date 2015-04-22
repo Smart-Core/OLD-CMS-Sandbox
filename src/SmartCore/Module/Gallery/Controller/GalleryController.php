@@ -44,7 +44,9 @@ class GalleryController extends Controller
 
     /**
      * @param int $id
+     *
      * @return Response
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function albumAction($id)

@@ -46,6 +46,7 @@ class HtmlTitleExtension extends \Twig_Extension
 
     /**
      * @param  array $options
+     *
      * @return string
      */
     public function renderTitle(array $options = [])

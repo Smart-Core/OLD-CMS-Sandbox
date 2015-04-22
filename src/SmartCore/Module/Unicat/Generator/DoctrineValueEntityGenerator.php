@@ -13,6 +13,7 @@ class DoctrineValueEntityGenerator extends Generator
      * @param string $namespace
      * @param string $table_name
      * @param string $table_prefix
+     *
      * @throws \Exception
      */
     public function generate($dir, $configuration_name, $type, $className, $namespace, $table_name, $table_prefix = 'unicat_')

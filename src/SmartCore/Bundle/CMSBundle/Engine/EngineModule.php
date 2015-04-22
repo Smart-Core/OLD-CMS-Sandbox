@@ -48,6 +48,7 @@ class EngineModule
      * Получение информации о модуле.
      *
      * @param string $name
+     *
      * @return \SmartCore\Bundle\CMSBundle\Module\ModuleBundle|null
      */
     public function get($name)
@@ -57,6 +58,7 @@ class EngineModule
 
     /**
      * @param string $moduleName
+     *
      * @return array
      */
     public function getThemes($moduleName)
@@ -83,6 +85,7 @@ class EngineModule
      * Проверить, подключен ли модуль.
      *
      * @param string $name
+     *
      * @return bool
      */
     public function has($name)

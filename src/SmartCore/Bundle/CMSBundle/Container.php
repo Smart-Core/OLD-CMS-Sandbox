@@ -13,6 +13,7 @@ class Container
 
     /**
      * @param  string $name
+     *
      * @return ContainerInterface
      */
     public static function get($name)
@@ -22,6 +23,7 @@ class Container
 
     /**
      * @param  string $name
+     *
      * @return ContainerInterface
      */
     public static function has($name)
@@ -47,6 +49,7 @@ class Container
 
     /**
      * @param  string $name
+     *
      * @return mixed
      */
     public static function getParameter($name)
@@ -56,6 +59,7 @@ class Container
 
     /**
      * @param  string $name
+     *
      * @return mixed
      */
     public static function hasParameter($name)

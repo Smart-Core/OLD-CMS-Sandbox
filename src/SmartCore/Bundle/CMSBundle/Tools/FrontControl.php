@@ -26,6 +26,7 @@ class FrontControl
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -37,6 +38,7 @@ class FrontControl
 
     /**
      * @param boolean $isDefault
+     *
      * @return $this
      */
     public function setIsDefault($isDefault)
@@ -48,6 +50,7 @@ class FrontControl
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -59,6 +62,7 @@ class FrontControl
 
     /**
      * @param string $uri
+     *
      * @return $this
      */
     public function setUri($uri)

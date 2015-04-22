@@ -11,18 +11,19 @@ interface ProviderInterface
      *
      * @param integer $id
      * @param string|null $filter
+     *
      * @return string|null
      */
     public function get($id, $filter = null);
 
     /**
      * @param File $file
-     * @return void
      */
     public function upload(File $file);
 
     /**
      * @param int $id
+     *
      * @return bool
      */
     public function remove($id);
@@ -34,6 +35,7 @@ interface ProviderInterface
      * @param array|null $orderBy
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return File[]|null
      */
     public function findBy($categoryId = null, array $orderBy = null, $limit = null, $offset = null);

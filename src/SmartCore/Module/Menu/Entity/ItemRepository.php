@@ -9,6 +9,7 @@ class ItemRepository extends EntityRepository
     /**
      * @param Group     $group
      * @param Item|null $parent_item
+     *
      * @return Item[]
      */
     public function findByParent(Group $group, Item $parent_item = null)

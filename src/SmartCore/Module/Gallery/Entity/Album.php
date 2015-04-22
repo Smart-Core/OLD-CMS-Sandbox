@@ -78,6 +78,7 @@ class Album
 
     /**
      * @param int $cover_image_id
+     *
      * @return $this
      */
     public function setCoverImageId($cover_image_id)
@@ -97,6 +98,7 @@ class Album
 
     /**
      * @param Gallery $gallery
+     *
      * @return $this
      */
     public function setGallery(Gallery $gallery)
@@ -116,6 +118,7 @@ class Album
 
     /**
      * @param Photo[]|ArrayCollection $photos
+     *
      * @return $this
      */
     public function setPhotos($photos)
@@ -135,6 +138,7 @@ class Album
 
     /**
      * @param int $photos_count
+     *
      * @return $this
      */
     public function setPhotosCount($photos_count)
@@ -162,6 +166,7 @@ class Album
 
     /**
      * @param int $last_image_id
+     *
      * @return $this
      */
     public function setLastImageId($last_image_id)

@@ -42,6 +42,7 @@ class ItemLoader implements EntityLoaderInterface
 
     /**
      * @param Group $group
+     *
      * @return $this
      */
     public function setGroup($group)

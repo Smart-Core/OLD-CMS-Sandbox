@@ -95,6 +95,7 @@ class UnicatStructure
 
     /**
      * @param string $entries
+     *
      * @return $this
      */
     public function setEntries($entries)
@@ -106,6 +107,7 @@ class UnicatStructure
 
     /**
      * @param bool $is_default_inheritance
+     *
      * @return $this
      */
     public function setIsDefaultInheritance($is_default_inheritance)
@@ -129,6 +131,7 @@ class UnicatStructure
 
     /**
      * @param bool $is_required
+     *
      * @return $this
      */
     public function setIsRequired($is_required)
@@ -176,6 +179,7 @@ class UnicatStructure
 
     /**
      * @param bool $is_tree
+     *
      * @return $this
      */
     public function setIsTree($is_tree)
@@ -191,6 +195,7 @@ class UnicatStructure
 
     /**
      * @param string $properties
+     *
      * @return $this
      */
     public function setProperties($properties)
@@ -210,6 +215,7 @@ class UnicatStructure
 
     /**
      * @param UnicatConfiguration $configuration
+     *
      * @return $this
      */
     public function setConfiguration(UnicatConfiguration $configuration)
@@ -229,6 +235,7 @@ class UnicatStructure
 
     /**
      * @param string $title_form
+     *
      * @return $this
      */
     public function setTitleForm($title_form)

@@ -92,6 +92,7 @@ class WebForm
 
     /**
      * @see getName
+     *
      * @return string
      */
     public function __toString()
@@ -109,6 +110,7 @@ class WebForm
 
     /**
      * @param WebFormField[] $fields
+     *
      * @return $this
      */
     public function setFields($fields)
@@ -128,6 +130,7 @@ class WebForm
 
     /**
      * @param Message[] $messages
+     *
      * @return $this
      */
     public function setMessages($messages)
@@ -147,6 +150,7 @@ class WebForm
 
     /**
      * @param boolean $is_ajax
+     *
      * @return $this
      */
     public function setIsAjax($is_ajax)
@@ -166,6 +170,7 @@ class WebForm
 
     /**
      * @param boolean $is_use_captcha
+     *
      * @return $this
      */
     public function setIsUseCaptcha($is_use_captcha)
@@ -185,6 +190,7 @@ class WebForm
 
     /**
      * @param string $send_button_title
+     *
      * @return $this
      */
     public function setSendButtonTitle($send_button_title)
@@ -204,6 +210,7 @@ class WebForm
 
     /**
      * @param string $send_notice_emails
+     *
      * @return $this
      */
     public function setSendNoticeEmails($send_notice_emails)
@@ -223,6 +230,7 @@ class WebForm
 
     /**
      * @param string $final_text
+     *
      * @return $this
      */
     public function setFinalText($final_text)
@@ -242,6 +250,7 @@ class WebForm
 
     /**
      * @param string $from_email
+     *
      * @return $this
      */
     public function setFromEmail($from_email)

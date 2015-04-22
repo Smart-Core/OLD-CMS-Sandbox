@@ -10,6 +10,7 @@ class CategoryController extends Controller
 {
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function indexAction(Request $request)
@@ -37,7 +38,9 @@ class CategoryController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction(Request $request, $id)

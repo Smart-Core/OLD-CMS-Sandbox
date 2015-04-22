@@ -9,6 +9,7 @@ class MessageRepository extends EntityRepository
     /**
      * @param WebForm $webForm
      * @param int $status
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByStatusQuery(WebForm $webForm, $status)
@@ -28,6 +29,7 @@ class MessageRepository extends EntityRepository
     /**
      * @param WebForm $webForm
      * @param int $status
+     *
      * @return int
      */
     public function getCountByStatus(WebForm $webForm, $status)

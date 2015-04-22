@@ -25,6 +25,7 @@ class RequestVoter implements VoterInterface
 
     /**
      * @param ItemInterface $item
+     *
      * @return bool|null
      */
     public function matchItem(ItemInterface $item)

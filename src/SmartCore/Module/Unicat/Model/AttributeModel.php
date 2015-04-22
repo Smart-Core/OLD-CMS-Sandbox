@@ -160,6 +160,7 @@ class AttributeModel
 
     /**
      * @see getName
+     *
      * @return string
      */
     public function __toString()
@@ -197,6 +198,7 @@ class AttributeModel
 
     /**
      * @param bool $is_dedicated_table
+     *
      * @return $this
      */
     public function setIsDedicatedTable($is_dedicated_table)
@@ -224,6 +226,7 @@ class AttributeModel
 
     /**
      * @param boolean $is_link
+     *
      * @return $this
      */
     public function setIsLink($is_link)
@@ -235,6 +238,7 @@ class AttributeModel
 
     /**
      * @param boolean $is_required
+     *
      * @return $this
      */
     public function setIsRequired($is_required)
@@ -262,6 +266,7 @@ class AttributeModel
 
     /**
      * @param boolean $is_show_title
+     *
      * @return $this
      */
     public function setIsShowTitle($is_show_title)
@@ -273,6 +278,7 @@ class AttributeModel
 
     /**
      * @param AttributesGroupModel $group
+     *
      * @return $this
      */
     public function setGroup(AttributesGroupModel $group)
@@ -292,6 +298,7 @@ class AttributeModel
 
     /**
      * @param array $params
+     *
      * @return $this
      */
     public function setParams(array $params = [])
@@ -323,6 +330,7 @@ class AttributeModel
 
     /**
      * @param array $params_yaml
+     *
      * @return $this
      */
     public function setParamsYaml($params_yaml)
@@ -350,6 +358,7 @@ class AttributeModel
 
     /**
      * @param boolean $show_in_admin
+     *
      * @return $this
      */
     public function setShowInAdmin($show_in_admin)
@@ -369,6 +378,7 @@ class AttributeModel
 
     /**
      * @param boolean $show_in_list
+     *
      * @return $this
      */
     public function setShowInList($show_in_list)
@@ -388,6 +398,7 @@ class AttributeModel
 
     /**
      * @param boolean $show_in_view
+     *
      * @return $this
      */
     public function setShowInView($show_in_view)
@@ -407,6 +418,7 @@ class AttributeModel
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -426,6 +438,7 @@ class AttributeModel
 
     /**
      * @param string $type
+     *
      * @return bool
      */
     public function isType($type)
@@ -435,6 +448,7 @@ class AttributeModel
 
     /**
      * @param string $mode
+     *
      * @return bool
      */
     public function isShowIn($mode)
@@ -484,6 +498,7 @@ class AttributeModel
 
     /**
      * @param string $open_tag
+     *
      * @return $this
      */
     public function setOpenTag($open_tag)
@@ -503,6 +518,7 @@ class AttributeModel
 
     /**
      * @param string $close_tag
+     *
      * @return $this
      */
     public function setCloseTag($close_tag)
@@ -522,6 +538,7 @@ class AttributeModel
 
     /**
      * @param mixed $update_all_records_with_default_value
+     *
      * @return $this
      */
     public function setUpdateAllRecordsWithDefaultValue($update_all_records_with_default_value)

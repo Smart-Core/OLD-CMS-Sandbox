@@ -21,6 +21,7 @@ class EngineRouter
 
     /**
      * @param  mixed|null $obj Node, Folder, $folderId or NULL for current folder Id form cms.context.
+     *
      * @return string
      */
     public function getPath($obj = null)
@@ -48,6 +49,7 @@ class EngineRouter
      *      [status]: int 200
      *      [template]: string "main"
      *      [node_route]: array
+     *
      *          @todo
      *      [current_folder_id]: int
      *      [current_folder_path]: string
@@ -174,6 +176,7 @@ class EngineRouter
      * @param  string       $module
      * @param  string       $path
      * @param  Request|null $request
+     *
      * @return array|null
      *
      * @throw ResourceNotFoundException
@@ -202,6 +205,7 @@ class EngineRouter
     /**
      * @param  string $module
      * @param  string $path
+     *
      * @return array|null
      */
     public function matchModuleAdmin($module, $path)
@@ -213,6 +217,7 @@ class EngineRouter
      * @param  string       $module
      * @param  string       $path
      * @param  Request|null $request
+     *
      * @return array|null
      */
     public function matchModuleApi($module, $path, Request $request = null)
@@ -234,6 +239,7 @@ class EngineRouter
 
     /**
      * @param  mixed|null $obj
+     *
      * @return RedirectResponse
      */
     public function redirect($obj = null)

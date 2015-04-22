@@ -11,6 +11,7 @@ class SimpleNewsModule extends ModuleBundle
 {
     /**
      * Действие при создании ноды.
+     *
      * @param Node $node
      */
     public function createNode(Node $node)

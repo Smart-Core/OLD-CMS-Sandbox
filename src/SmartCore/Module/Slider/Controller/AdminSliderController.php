@@ -10,6 +10,7 @@ class AdminSliderController extends Controller
 {
     /**
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -38,7 +39,9 @@ class AdminSliderController extends Controller
     /**
      * @param  Request $request
      * @param  int $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *
      * @throws \RuntimeException
      */
     public function sliderAction(Request $request, $id)
@@ -96,6 +99,7 @@ class AdminSliderController extends Controller
     /**
      * @param  Request $request
      * @param  int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function sliderEditAction(Request $request, $id)
@@ -140,6 +144,7 @@ class AdminSliderController extends Controller
 
     /**
      * @param  int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function slideEditAction(Request $request, $id)

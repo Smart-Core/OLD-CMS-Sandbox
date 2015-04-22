@@ -27,6 +27,7 @@ class AdminAppearanceController extends Controller
     /**
      * @param Request $request
      * @param string $name
+     *
      * @return Response|RedirectResponse
      */
     public function templateEditAction(Request $request, $name)
@@ -78,6 +79,7 @@ class AdminAppearanceController extends Controller
 
     /**
      * @param string $name
+     *
      * @return Response|RedirectResponse
      */
     public function templateHistoryAction($name)
@@ -98,6 +100,7 @@ class AdminAppearanceController extends Controller
 
     /**
      * @param string $name
+     *
      * @return Response|RedirectResponse
      */
     public function styleHistoryAction($name)
@@ -118,6 +121,7 @@ class AdminAppearanceController extends Controller
 
     /**
      * @param int $id
+     *
      * @return Response
      */
     public function historyCodeAction($id)
@@ -138,6 +142,7 @@ class AdminAppearanceController extends Controller
 
     /**
      * @param int $id
+     *
      * @return Response
      */
     public function historyRollbackAction($id)
@@ -168,6 +173,7 @@ class AdminAppearanceController extends Controller
     /**
      * @param Request $request
      * @param string $name
+     *
      * @return Response|RedirectResponse
      */
     public function styleEditAction(Request $request, $name)

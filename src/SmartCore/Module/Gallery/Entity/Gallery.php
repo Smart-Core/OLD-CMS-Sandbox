@@ -64,6 +64,7 @@ class Gallery
 
     /**
      * @param Album[]|ArrayCollection $albums
+     *
      * @return $this
      */
     public function setAlbums($albums)
@@ -83,6 +84,7 @@ class Gallery
 
     /**
      * @param \SmartCore\Bundle\MediaBundle\Entity\Collection $media_collection
+     *
      * @return $this
      */
     public function setMediaCollection(Collection $media_collection)
@@ -102,6 +104,7 @@ class Gallery
 
     /**
      * @param string $order_albums_by
+     *
      * @return $this
      */
     public function setOrderAlbumsBy($order_albums_by)

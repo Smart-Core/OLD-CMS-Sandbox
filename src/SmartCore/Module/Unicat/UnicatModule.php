@@ -80,7 +80,7 @@ class UnicatModule extends Bundle
     public function getRequiredParams()
     {
         return [
-            'configuration_id'
+            'configuration_id',
         ];
     }
 }

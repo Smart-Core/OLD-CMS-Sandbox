@@ -38,7 +38,7 @@ class GalleryModule extends ModuleBundle
     public function getRequiredParams()
     {
         return [
-            'gallery_id'
+            'gallery_id',
         ];
     }
 }

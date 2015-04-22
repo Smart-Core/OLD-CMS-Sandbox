@@ -83,6 +83,7 @@ class ItemHistory
 
     /**
      * @param int $editor
+     *
      * @return $this
      */
     public function setEditor($editor)
@@ -102,6 +103,7 @@ class ItemHistory
 
     /**
      * @param int $item_id
+     *
      * @return $this
      */
     public function setItemId($item_id)
@@ -121,6 +123,7 @@ class ItemHistory
 
     /**
      * @param string $locale
+     *
      * @return $this
      */
     public function setLocale($locale)
@@ -140,6 +143,7 @@ class ItemHistory
 
     /**
      * @param array $meta
+     *
      * @return $this
      */
     public function setMeta($meta)

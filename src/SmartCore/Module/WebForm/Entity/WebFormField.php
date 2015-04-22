@@ -87,6 +87,7 @@ class WebFormField
 
     /**
      * @param boolean $is_required
+     *
      * @return $this
      */
     public function setIsRequired($is_required)
@@ -106,6 +107,7 @@ class WebFormField
 
     /**
      * @param array $params
+     *
      * @return $this
      */
     public function setParams(array $params = [])
@@ -137,6 +139,7 @@ class WebFormField
 
     /**
      * @param array $params_yaml
+     *
      * @return $this
      */
     public function setParamsYaml($params_yaml)
@@ -164,6 +167,7 @@ class WebFormField
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -183,6 +187,7 @@ class WebFormField
 
     /**
      * @param string $type
+     *
      * @return bool
      */
     public function isType($type)
@@ -200,6 +205,7 @@ class WebFormField
 
     /**
      * @param WebForm $web_form
+     *
      * @return $this
      */
     public function setWebForm($web_form)
@@ -219,6 +225,7 @@ class WebFormField
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

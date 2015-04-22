@@ -39,10 +39,11 @@ class AdminController extends Controller
     }
 
     /**
-     * Редактирование пункта меню
+     * Редактирование пункта меню.
      *
      * @param Request $request
      * @param int $item_id
+     *
      * @return RedirectResponse|Response
      */
     public function itemAction(Request $request, $item_id)
@@ -89,6 +90,7 @@ class AdminController extends Controller
      *
      * @param Request $request
      * @param int $group_id
+     *
      * @return RedirectResponse|Response
      */
     public function groupEditAction(Request $request, $group_id)
@@ -138,6 +140,7 @@ class AdminController extends Controller
      *
      * @param Request $request
      * @param int $group_id
+     *
      * @return RedirectResponse|Response
      */
     public function groupAction(Request $request, $group_id)

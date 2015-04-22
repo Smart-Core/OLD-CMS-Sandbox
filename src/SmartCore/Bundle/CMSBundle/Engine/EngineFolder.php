@@ -65,6 +65,7 @@ class EngineFolder
      * Поиск по родительской папке.
      *
      * @param Folder $parent_folder
+     *
      * @return Folder[]
      */
     public function findByParent(Folder $parent_folder = null)
@@ -76,6 +77,7 @@ class EngineFolder
      * Получение полной ссылки на папку, указав её id. Если не указать ид папки, то вернётся текущий путь.
      *
      * @param  mixed|null $data - Node, Folder, $folderId or NULL for current folder Id form cms.context.
+     *
      * @return string $uri
      *
      * @todo абсолютный урл с портом и схемой.
@@ -99,7 +101,7 @@ class EngineFolder
             $uri = '/';
             $uri_parts = [];
 
-            /** @var $folder Folder */
+            /* @var $folder Folder */
             while ($folder_id != 1) {
                 $folder = $this->repository->findOneBy([
                     'id'         => $folder_id,
@@ -128,6 +130,7 @@ class EngineFolder
 
     /**
      * @param int $id
+     *
      * @return null|Folder
      */
     public function get($id)
@@ -148,6 +151,7 @@ class EngineFolder
 
     /**
      * @param Folder $folder
+     *
      * @return $this
      */
     public function update(Folder $folder)

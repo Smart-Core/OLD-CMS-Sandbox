@@ -88,6 +88,7 @@ class UnicatConfigurationManager
 
     /**
      * @param array|null $orderBy
+     *
      * @return ItemModel|null
      */
     public function findAllItems($orderBy = null)
@@ -97,6 +98,7 @@ class UnicatConfigurationManager
 
     /**
      * @param array|null $orderBy
+     *
      * @return ItemModel|null
      */
     public function getFindAllItemsQuery($orderBy = null)
@@ -116,6 +118,7 @@ class UnicatConfigurationManager
      * @param array|null $orderBy
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return \Doctrine\ORM\Query
      *
      * @todo $orderBy, $limit, $offset
@@ -154,6 +157,7 @@ class UnicatConfigurationManager
     /**
      * @param CategoryModel $category
      * @param array $order
+     *
      * @return ItemModel[]|null
      */
     public function findItemsInCategory(CategoryModel $category, array $order = ['position' => 'ASC'])
@@ -164,6 +168,7 @@ class UnicatConfigurationManager
     /**
      * @param CategoryModel $category
      * @param array $order
+     *
      * @return \Doctrine\ORM\Query
      *
      * @todo сделать настройку сортировки
@@ -185,6 +190,7 @@ class UnicatConfigurationManager
 
     /**
      * @param string|int $val
+     *
      * @return ItemModel|null
      */
     public function findItem($val)
@@ -197,7 +203,9 @@ class UnicatConfigurationManager
     /**
      * @param string $slug
      * @param UnicatStructure $structure
+     *
      * @return CategoryModel[]
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function findCategoriesBySlug($slug = null, UnicatStructure $structure = null)
@@ -209,7 +217,7 @@ class UnicatConfigurationManager
                 break;
             }
 
-            /** @var CategoryModel $category */
+            /* @var CategoryModel $category */
             if ($structure) {
                 $category = $this->getCategoryRepository()->findOneBy([
                     'is_enabled' => true,
@@ -307,6 +315,7 @@ class UnicatConfigurationManager
 
     /**
      * @param int $groupId
+     *
      * @return AttributeModel
      */
     public function getAttributesGroup($groupId)
@@ -375,6 +384,7 @@ class UnicatConfigurationManager
 
     /**
      * @param int $groupId
+     *
      * @return AttributeModel[]
      */
     public function getAttribute($id)
@@ -422,6 +432,7 @@ class UnicatConfigurationManager
 
     /**
      * @param array $options
+     *
      * @return $this|\Symfony\Component\Form\Form
      */
     public function getStructureCreateForm(array $options = [])
@@ -436,6 +447,7 @@ class UnicatConfigurationManager
 
     /**
      * @param array $options
+     *
      * @return $this|\Symfony\Component\Form\Form
      */
     public function getStructureEditForm($data = null, array $options = [])
@@ -447,6 +459,7 @@ class UnicatConfigurationManager
 
     /**
      * @param array $options
+     *
      * @return $this|\Symfony\Component\Form\Form
      */
     public function getAttributesGroupCreateForm(array $options = [])
@@ -462,6 +475,7 @@ class UnicatConfigurationManager
     /**
      * @param mixed|null $data
      * @param array $options
+     *
      * @return \Symfony\Component\Form\Form
      */
     public function getStructureForm($data = null, array $options = [])
@@ -472,6 +486,7 @@ class UnicatConfigurationManager
     /**
      * @param mixed|null $data
      * @param array $options
+     *
      * @return \Symfony\Component\Form\Form
      */
     public function getAttributesGroupForm($data = null, array $options = [])
@@ -481,6 +496,7 @@ class UnicatConfigurationManager
 
     /**
      * @param int $id
+     *
      * @return UnicatStructure
      */
     public function getStructure($id)
@@ -501,6 +517,7 @@ class UnicatConfigurationManager
     /**
      * @param FormInterface $form
      * @param Request $request
+     *
      * @return $this
      *
      * @todo события
@@ -513,6 +530,7 @@ class UnicatConfigurationManager
     /**
      * @param FormInterface $form
      * @param Request $request
+     *
      * @return $this
      *
      * @todo события
@@ -524,6 +542,7 @@ class UnicatConfigurationManager
 
     /**
      * @param ItemModel $item
+     *
      * @return $this
      *
      * @todo события
@@ -556,6 +575,7 @@ class UnicatConfigurationManager
     /**
      * @param FormInterface $form
      * @param Request $request
+     *
      * @return $this|array
      */
     public function saveItem(FormInterface $form, Request $request)
@@ -568,7 +588,7 @@ class UnicatConfigurationManager
             if ($attribute->getIsDedicatedTable()) {
                 $valueClass = $attribute->getValueClassNameWithNameSpace();
 
-                /** @var AbstractTypeModel $av */
+                /* @var AbstractTypeModel $av */
                 // @todo пока допускается использование одного поля со значениями, но нужно предусмотреть и множественные.
                 $value = $this->em->getRepository($valueClass)->findOneBy(['item' => $item]);
 
@@ -669,6 +689,7 @@ class UnicatConfigurationManager
 
     /**
      * @param int $groupId
+     *
      * @return AttributeModel[]
      */
     public function getAttributes($groupId = null)
@@ -685,6 +706,7 @@ class UnicatConfigurationManager
 
     /**
      * @param AttributeModel $entity
+     *
      * @return $this
      */
     public function createAttribute(AttributeModel $entity)
@@ -697,6 +719,7 @@ class UnicatConfigurationManager
 
     /**
      * @param CategoryModel $category
+     *
      * @return $this
      */
     public function updateCategory(CategoryModel $category)
@@ -709,6 +732,7 @@ class UnicatConfigurationManager
 
     /**
      * @param AttributeModel $entity
+     *
      * @return $this
      */
     public function updateAttribute(AttributeModel $entity)
@@ -721,6 +745,7 @@ class UnicatConfigurationManager
 
     /**
      * @param AttributesGroupModel $entity
+     *
      * @return $this
      */
     public function updateAttributesGroup(AttributesGroupModel $entity)
@@ -733,6 +758,7 @@ class UnicatConfigurationManager
 
     /**
      * @param UnicatStructure $entity
+     *
      * @return $this
      */
     public function updateStructure(UnicatStructure $entity)

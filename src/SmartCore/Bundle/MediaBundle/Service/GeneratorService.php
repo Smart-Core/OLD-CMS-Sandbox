@@ -30,6 +30,7 @@ class GeneratorService
 
     /**
      * @param string|null $filter
+     *
      * @return string
      */
     public function generateRelativePath(File $file, $filter = null)
@@ -49,6 +50,7 @@ class GeneratorService
 
     /**
      * @param string|null $pattern
+     *
      * @return mixed|string
      */
     protected function generatePattern($pattern = null)
@@ -65,6 +67,7 @@ class GeneratorService
 
     /**
      * @param string $name
+     *
      * @return string
      *
      * @todo транслитерацию.

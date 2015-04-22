@@ -27,6 +27,7 @@ class UnicatWidgetController extends Controller
      * @param string $template
      * @param bool $selected_inheritance
      * @param int $structure
+     *
      * @return Response
      */
     public function categoryTreeAction(

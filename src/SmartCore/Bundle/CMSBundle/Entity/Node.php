@@ -129,7 +129,7 @@ class Node implements \Serializable
     protected $controller = [];
 
     /**
-     * Edit-In-Place
+     * Edit-In-Place.
      *
      * @var bool
      */
@@ -146,7 +146,7 @@ class Node implements \Serializable
     protected $region_name = null;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -193,7 +193,6 @@ class Node implements \Serializable
 
     /**
      * @param string $serialized
-     * @return void
      */
     public function unserialize($serialized)
     {
@@ -222,6 +221,7 @@ class Node implements \Serializable
 
     /**
      * @param int $controls_in_toolbar
+     *
      * @return $this
      */
     public function setControlsInToolbar($controls_in_toolbar)
@@ -241,6 +241,7 @@ class Node implements \Serializable
 
     /**
      * @param bool $is_cached
+     *
      * @return $this
      */
     public function setIsCached($is_cached)
@@ -260,6 +261,7 @@ class Node implements \Serializable
 
     /**
      * @param Region $region
+     *
      * @return $this
      */
     public function setRegion(Region $region)
@@ -291,6 +293,7 @@ class Node implements \Serializable
 
     /**
      * @param Folder $folder
+     *
      * @return $this
      */
     public function setFolder(Folder $folder)
@@ -310,6 +313,7 @@ class Node implements \Serializable
 
     /**
      * @param string $module
+     *
      * @return $this
      */
     public function setModule($module)
@@ -329,6 +333,7 @@ class Node implements \Serializable
 
     /**
      * @param array $params
+     *
      * @return $this
      */
     public function setParams(array $params)
@@ -348,6 +353,7 @@ class Node implements \Serializable
 
     /**
      * @param string $key
+     *
      * @return mixed
      */
     public function getParam($key, $default = null)
@@ -357,6 +363,7 @@ class Node implements \Serializable
 
     /**
      * @param int $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -380,6 +387,7 @@ class Node implements \Serializable
 
     /**
      * @param string $template
+     *
      * @return $this
      */
     public function setTemplate($template)
@@ -411,6 +419,7 @@ class Node implements \Serializable
 
     /**
      * @param bool $eip
+     *
      * @return $this
      */
     public function setEip($eip)
@@ -438,7 +447,9 @@ class Node implements \Serializable
 
     /**
      * @param string $name
+     *
      * @return FrontControl
+     *
      * @throws \Exception
      */
     public function addFrontControl($name)
@@ -455,6 +466,7 @@ class Node implements \Serializable
 
     /**
      * @param array $front_controls
+     *
      * @return $this
      *
      * @deprecated
@@ -486,6 +498,7 @@ class Node implements \Serializable
 
     /**
      * @param string $controller
+     *
      * @return $this
      */
     public function setController($controller)

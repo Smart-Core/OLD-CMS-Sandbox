@@ -9,6 +9,7 @@ class TagRepository extends EntityRepository
 {
     /**
      * @param TagInterface $tag
+     *
      * @return int
      *
      * @todo возможность выбора по нескольким тэгам.
@@ -28,6 +29,7 @@ class TagRepository extends EntityRepository
 
     /**
      * @param TagInterface $tag
+     *
      * @return int
      *
      * @todo возможность выбора по нескольким тэгам.

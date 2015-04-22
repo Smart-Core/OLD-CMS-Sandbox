@@ -15,7 +15,7 @@ class NodeRouter extends Router
     protected $rootHash = 'kksdg7724tkshdfvI6734khvsdfKHvdf74';
 
     /**
-     * Приходится переопределять конструктор из-за того, что в Router container приватный :(
+     * Приходится переопределять конструктор из-за того, что в Router container приватный :(.
      *
      * Constructor.
      *

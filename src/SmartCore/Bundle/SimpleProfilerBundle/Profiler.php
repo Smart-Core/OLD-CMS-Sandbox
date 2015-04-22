@@ -1,6 +1,6 @@
 <?php
 /**
- * https://github.com/jimrubenstein/php-profiler
+ * https://github.com/jimrubenstein/php-profiler.
  */
 class Profiler
 {
@@ -8,6 +8,7 @@ class Profiler
      * Used to insure that the {@link init} method is only called once.
      *
      * @see Profiler::init()
+     *
      * @var bool
      */
     protected static $init = false;
@@ -22,7 +23,7 @@ class Profiler
     protected static $enabled = false;
 
     /**
-     * Time the profiler was included
+     * Time the profiler was included.
      *
      * This is used to calculate time-from-start values for all methods
      * as well as total running time.
@@ -31,7 +32,7 @@ class Profiler
     protected static $globalStartMemory = 0;
 
     /**
-     * Time the profiler 'ends'
+     * Time the profiler 'ends'.
      *
      * This is populated just before rendering output (see {@link Profiler::render()})
      */
@@ -39,13 +40,13 @@ class Profiler
     protected static $globalEndMemory = 0;
 
     /**
-     * Total time script took to run
+     * Total time script took to run.
      */
     protected static $globalDuration = 0;
 
     /**
      * Used to identify when some methods are accessed internally
-     * versus when they're used externally (as an api or so)
+     * versus when they're used externally (as an api or so).
      *
      * @var string
      */
@@ -65,7 +66,7 @@ class Profiler
     protected static $kernel = null;
 
     /**
-     * Create a constructor that basically says "don't construct me!"
+     * Create a constructor that basically says "don't construct me!".
      */
     public function __construct()
     {
@@ -73,7 +74,7 @@ class Profiler
     }
 
     /**
-     * Initialize the profiler
+     * Initialize the profiler.
      */
     public static function init()
     {
@@ -88,7 +89,7 @@ class Profiler
     }
 
     /**
-     * Check to see if the profiler is enabled
+     * Check to see if the profiler is enabled.
      *
      * @see profiler::enabled
      *
@@ -100,7 +101,7 @@ class Profiler
     }
 
     /**
-     * Enable the profiler
+     * Enable the profiler.
      *
      * @see profiler::enabled
      */
@@ -110,7 +111,7 @@ class Profiler
     }
 
     /**
-     * Disable the profiler
+     * Disable the profiler.
      *
      * @see profiler::enabled
      */
@@ -132,7 +133,7 @@ class Profiler
     }
 
     /**
-     * Get the global memory usage in KB
+     * Get the global memory usage in KB.
      *
      * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
      */
@@ -163,7 +164,7 @@ class Profiler
     }
 
     /**
-     * Start a new step
+     * Start a new step.
      *
      * This is the most-called method of the profiler.  It initializes and returns a new step node.
      *
@@ -184,7 +185,7 @@ class Profiler
     }
 
     /**
-     * End a step
+     * End a step.
      *
      * End a step by name, or end all steps in the current tree.
      *

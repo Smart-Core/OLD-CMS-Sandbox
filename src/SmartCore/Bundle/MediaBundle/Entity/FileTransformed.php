@@ -74,6 +74,7 @@ class FileTransformed
 
     /**
      * @param Collection $collection
+     *
      * @return $this
      */
     public function setCollection(Collection $collection)
@@ -93,6 +94,7 @@ class FileTransformed
 
     /**
      * @param File $file
+     *
      * @return $this
      */
     public function setFile(File $file)
@@ -114,6 +116,7 @@ class FileTransformed
 
     /**
      * @param string $filter
+     *
      * @return $this
      */
     public function setFilter($filter)
@@ -133,6 +136,7 @@ class FileTransformed
 
     /**
      * @param int $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -152,6 +156,7 @@ class FileTransformed
 
     /**
      * @param Storage $storage
+     *
      * @return $this
      */
     public function setStorage(Storage $storage)

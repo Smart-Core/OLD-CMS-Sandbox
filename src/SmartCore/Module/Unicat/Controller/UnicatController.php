@@ -30,6 +30,7 @@ class UnicatController extends Controller
      * @param Request $request
      * @param null $slug
      * @param int|null $page
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function categoryAction(Request $request, $slug = null, $page = null)
@@ -99,6 +100,7 @@ class UnicatController extends Controller
     /**
      * @param UnicatConfigurationManager $ucm
      * @param CategoryModel|false $lastCategory
+     *
      * @throws \Exception
      */
     protected function buuldFrontControlForCategory(UnicatConfigurationManager $ucm, $lastCategory = false)
@@ -139,6 +141,7 @@ class UnicatController extends Controller
     /**
      * @param string|null $structureSlug
      * @param string $itemSlug
+     *
      * @return Response
      */
     public function itemAction($structureSlug = null, $itemSlug)

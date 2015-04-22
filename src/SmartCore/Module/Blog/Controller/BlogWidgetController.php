@@ -12,6 +12,7 @@ class BlogWidgetController extends Controller
 
     /**
      * @param integer $limit
+     *
      * @return Response
      */
     public function archiveMonthlyAction($limit = 24)

@@ -51,7 +51,7 @@ class MenuModule extends ModuleBundle
     public function getRequiredParams()
     {
         return [
-            'group_id'
+            'group_id',
         ];
     }
 }

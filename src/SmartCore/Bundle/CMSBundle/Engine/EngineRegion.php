@@ -54,6 +54,7 @@ class EngineRegion
     /**
      * @param string|null $name
      * @param string|null $descr
+     *
      * @return Region
      */
     public function create($name = null, $descr = null)
@@ -76,6 +77,7 @@ class EngineRegion
 
     /**
      * @param integer $id
+     *
      * @return Region|null
      */
     public function get($id)

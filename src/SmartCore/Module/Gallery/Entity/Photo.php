@@ -53,6 +53,7 @@ class Photo
 
     /**
      * @param \SmartCore\Module\Gallery\Entity\Album $album
+     *
      * @return $this
      */
     public function setAlbum($album)
@@ -72,6 +73,7 @@ class Photo
 
     /**
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     *
      * @return $this
      */
     public function setFile($file)
@@ -91,6 +93,7 @@ class Photo
 
     /**
      * @param int $image_id
+     *
      * @return $this
      */
     public function setImageId($image_id)

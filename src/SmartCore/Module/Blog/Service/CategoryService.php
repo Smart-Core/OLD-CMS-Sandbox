@@ -81,6 +81,7 @@ class CategoryService extends AbstractBlogService
     /**
      * @param array $criteria
      * @param array $orderBy
+     *
      * @return CategoryInterface
      */
     public function findOneBy(array $criteria, array $orderBy = null)
@@ -90,6 +91,7 @@ class CategoryService extends AbstractBlogService
 
     /**
      * @param int $id
+     *
      * @return CategoryInterface|null
      */
     public function get($id)

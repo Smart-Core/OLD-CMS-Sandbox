@@ -85,6 +85,7 @@ class Setting
 
     /**
      * @param string $bundle
+     *
      * @return $this
      */
     public function setBundle($bundle)
@@ -104,6 +105,7 @@ class Setting
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -123,6 +125,7 @@ class Setting
 
     /**
      * @param string $value
+     *
      * @return $this
      */
     public function setValue($value)
@@ -147,6 +150,7 @@ class Setting
 
     /**
      * @param bool $serialized
+     *
      * @return $this
      */
     public function setSerialized($serialized)

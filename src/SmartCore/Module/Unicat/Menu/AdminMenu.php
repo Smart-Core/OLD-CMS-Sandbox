@@ -12,6 +12,7 @@ class AdminMenu extends ContainerAware
     /**
      * @param FactoryInterface $factory
      * @param array $options
+     *
      * @return ItemInterface
      */
     public function configuration(FactoryInterface $factory, array $options)

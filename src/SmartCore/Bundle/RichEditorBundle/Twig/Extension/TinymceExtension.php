@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class TinymceExtension extends \Twig_Extension
 {
     /**
-     * Container
+     * Container.
      *
      * @var ContainerInterface
      */
@@ -20,14 +20,14 @@ class TinymceExtension extends \Twig_Extension
 
     /**
      * Asset Base Url
-     * Used to over ride the asset base url (to not use CDN for instance)
+     * Used to over ride the asset base url (to not use CDN for instance).
      *
      * @var String
      */
     protected $baseUrl;
 
     /**
-     * Initialize tinymce helper
+     * Initialize tinymce helper.
      *
      * @param ContainerInterface $container
      */
@@ -49,7 +49,7 @@ class TinymceExtension extends \Twig_Extension
     }
 
     /**
-     * Get parameters from the service container
+     * Get parameters from the service container.
      *
      * @param string $name
      *
@@ -73,7 +73,7 @@ class TinymceExtension extends \Twig_Extension
     }
 
     /**
-     * TinyMce initializations
+     * TinyMce initializations.
      *
      * @return string
      */
@@ -152,7 +152,7 @@ class TinymceExtension extends \Twig_Extension
     }
 
     /**
-     * Get url from config string
+     * Get url from config string.
      *
      * @param string $inputUrl
      *

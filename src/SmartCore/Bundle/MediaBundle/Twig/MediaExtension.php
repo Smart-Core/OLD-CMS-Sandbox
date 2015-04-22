@@ -35,6 +35,7 @@ class MediaExtension extends \Twig_Extension
     /**
      * @param  int          $id
      * @param  string|null  $filter
+     *
      * @return string
      */
     public function generateFileUrl($id, $filter = null)
@@ -46,6 +47,7 @@ class MediaExtension extends \Twig_Extension
      * @param  int          $id
      * @param  string|null  $filter
      * @param  string       $alt
+     *
      * @return null|string
      */
     public function renderImgTag($id, $filter = null, $alt = '')

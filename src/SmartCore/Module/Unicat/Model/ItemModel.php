@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *          ORM\Index(columns={"position"}),
  *      }
  * )
+ *
  * @UniqueEntity(fields={"slug"}, message="Запись с таким сегментом URI уже существует.")
  */
 class ItemModel
@@ -75,6 +76,7 @@ class ItemModel
 
     /**
      * @param string $name
+     *
      * @return mixed
      */
     public function __get($name)
@@ -109,6 +111,7 @@ class ItemModel
     /**
      * @param string $name
      * @param mixed $value
+     *
      * @return $this
      */
     public function __set($name, $value)
@@ -122,6 +125,7 @@ class ItemModel
 
     /**
      * @see getName
+     *
      * @return string
      */
     public function __toString()
@@ -131,6 +135,7 @@ class ItemModel
 
     /**
      * @param mixed $categories
+     *
      * @return $this
      */
     public function setCategories($categories)
@@ -150,6 +155,7 @@ class ItemModel
 
     /**
      * @param CategoryModel[] $categoriesSingle
+     *
      * @return $this
      */
     public function setCategoriesSingle($categoriesSingle)
@@ -169,6 +175,7 @@ class ItemModel
 
     /**
      * @param array $attributes
+     *
      * @return $this
      */
     public function setAttributes($attributes)
@@ -188,6 +195,7 @@ class ItemModel
 
     /**
      * @param string $name
+     *
      * @return mixed|null
      */
     public function getAttribute($name)
@@ -196,8 +204,10 @@ class ItemModel
     }
 
     /**
-     * Short alias for getAttribute
+     * Short alias for getAttribute.
+     *
      * @param string $name
+     *
      * @return mixed|null
      */
     public function getAttr($name)
@@ -207,6 +217,7 @@ class ItemModel
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function removeAttribute($name)
@@ -219,6 +230,7 @@ class ItemModel
     /**
      * @param string $name
      * @param mixed $value
+     *
      * @return $this
      */
     public function setAttribute($name, $value)
@@ -230,6 +242,7 @@ class ItemModel
 
     /**
      * @param string $name
+     *
      * @return bool
      */
     public function hasAttribute($name)
@@ -239,6 +252,7 @@ class ItemModel
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug)
@@ -258,6 +272,7 @@ class ItemModel
 
     /**
      * @param array $meta
+     *
      * @return $this
      */
     public function setMeta(array $meta)

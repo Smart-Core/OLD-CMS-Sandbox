@@ -43,6 +43,7 @@ class SettingsManager
 
     /**
      * @param string|null $bundle
+     *
      * @return array
      */
     public function all($bundle = null)
@@ -58,6 +59,7 @@ class SettingsManager
 
     /**
      * @param int $id
+     *
      * @return Setting|null
      */
     public function findById($id)
@@ -70,6 +72,7 @@ class SettingsManager
     /**
      * @param string $bundle
      * @param string $name
+     *
      * @return mixed
      */
     public function get($bundle, $name)
@@ -96,6 +99,7 @@ class SettingsManager
 
     /**
      * @param Setting $setting
+     *
      * @return bool
      */
     public function updateEntity(Setting $setting)

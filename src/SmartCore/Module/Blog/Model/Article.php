@@ -88,6 +88,7 @@ abstract class Article implements ArticleInterface
 
     /**
      * @param string $annotation
+     *
      * @return $this
      */
     public function setAnnotation($annotation)
@@ -107,6 +108,7 @@ abstract class Article implements ArticleInterface
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -126,6 +128,7 @@ abstract class Article implements ArticleInterface
 
     /**
      * @param string $keywords
+     *
      * @return $this
      */
     public function setKeywords($keywords)
@@ -145,6 +148,7 @@ abstract class Article implements ArticleInterface
 
     /**
      * @param string $text
+     *
      * @return $this
      */
     public function setText($text)
@@ -164,6 +168,7 @@ abstract class Article implements ArticleInterface
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -183,6 +188,7 @@ abstract class Article implements ArticleInterface
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug)

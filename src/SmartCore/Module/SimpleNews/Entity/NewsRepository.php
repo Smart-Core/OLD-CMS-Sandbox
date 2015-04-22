@@ -8,6 +8,7 @@ class NewsRepository extends EntityRepository
 {
     /**
      * @param int $count
+     *
      * @return News[]
      */
     public function findLastEnabled($count = 5)

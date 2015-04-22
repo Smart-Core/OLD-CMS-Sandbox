@@ -22,6 +22,7 @@ trait CategoryTrait
 
     /**
      * @param Category $category
+     *
      * @return $this
      */
     public function setCategory(CategoryInterface $category = null)

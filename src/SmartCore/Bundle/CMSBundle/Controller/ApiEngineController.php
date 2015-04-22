@@ -22,6 +22,7 @@ class ApiEngineController extends Controller
     /**
      * @param Request $request
      * @param string $slug
+     *
      * @return Response
      */
     public function nodeAction(Request $request, $node_id, $slug = null)

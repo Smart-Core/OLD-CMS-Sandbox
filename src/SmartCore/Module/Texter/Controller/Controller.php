@@ -10,6 +10,7 @@ class Controller extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
 
     /**
      * Для каждого экземпляра ноды хранится ИД текстовой записи.
+     *
      * @var int
      */
     protected $text_item_id;
@@ -18,7 +19,7 @@ class Controller extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
      * Какой редактор использовать.
      * Пока используется как флаг, где:
      *  0 - Codemirror
-     *  1 - TinyMCE
+     *  1 - TinyMCE.
      *
      * @var int
      */

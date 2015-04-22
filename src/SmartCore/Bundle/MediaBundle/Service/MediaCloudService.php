@@ -32,6 +32,7 @@ class MediaCloudService
 
     /**
      * @param int $id
+     *
      * @return CollectionService
      */
     public function getCollection($id)
@@ -48,6 +49,7 @@ class MediaCloudService
      *
      * @param int $id
      * @param string $filter
+     *
      * @return string
      *
      * @todo кеширование.

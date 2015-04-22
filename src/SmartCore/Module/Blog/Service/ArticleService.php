@@ -101,6 +101,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param int $id
+     *
      * @return Article|null
      */
     public function get($id)
@@ -120,6 +121,7 @@ class ArticleService extends AbstractBlogService
      * @param CategoryInterface $category
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return Article[]|null
      *
      * @todo доделать или удалить.
@@ -133,6 +135,7 @@ class ArticleService extends AbstractBlogService
      * @param CategoryInterface[]|array $categories
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return Article[]|null
      */
     public function getByCategories(array $categories = [], $limit = null, $offset = null)
@@ -142,6 +145,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param CategoryInterface|null $category
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByCategoryQuery(CategoryInterface $category = null)
@@ -151,6 +155,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param array $categories
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByCategoriesQuery(array $categories = [], $limit = null, $offset = null)
@@ -161,6 +166,7 @@ class ArticleService extends AbstractBlogService
     /**
      * @param \DateTime|null $firstDate
      * @param \DateTime|null $lastDate
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByDateQuery(\DateTime $firstDate = null, \DateTime $lastDate = null)
@@ -170,6 +176,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param string $slug
+     *
      * @return Article|null
      */
     public function getBySlug($slug)
@@ -179,6 +186,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param CategoryInterface $category
+     *
      * @return int
      */
     public function getCountByCategory(CategoryInterface $category = null)
@@ -188,6 +196,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param int|null $limit
+     *
      * @return Article[]|null
      */
     public function getLast($limit = 10)
@@ -201,6 +210,7 @@ class ArticleService extends AbstractBlogService
 
     /**
      * @param int $limit
+     *
      * @return array
      */
     public function getArchiveMonthly($limit = 24)

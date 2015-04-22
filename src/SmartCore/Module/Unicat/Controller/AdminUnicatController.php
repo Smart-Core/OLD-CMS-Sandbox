@@ -75,6 +75,7 @@ class AdminUnicatController extends Controller
 
     /**
      * @param string $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function configurationAction($configuration)
@@ -99,6 +100,7 @@ class AdminUnicatController extends Controller
     /**
      * @param Request $request
      * @param $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function configurationSettingsAction(Request $request, $configuration)
@@ -133,6 +135,7 @@ class AdminUnicatController extends Controller
      * @param Request $request
      * @param string $configuration
      * @param int $default_category_id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function itemCreateAction(Request $request, $configuration, $default_category_id = null)
@@ -172,6 +175,7 @@ class AdminUnicatController extends Controller
      * @param Request $request
      * @param string $configuration
      * @param int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function itemEditAction(Request $request, $configuration, $id)
@@ -208,6 +212,7 @@ class AdminUnicatController extends Controller
 
     /**
      * @param UnicatConfiguration $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function redirectToConfigurationAdmin(UnicatConfiguration $configuration)

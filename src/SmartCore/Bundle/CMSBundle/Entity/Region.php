@@ -66,6 +66,7 @@ class Region
 
     /**
      * @param Folder $folder
+     *
      * @return $this
      */
     public function addFolder(Folder $folder)
@@ -77,6 +78,7 @@ class Region
 
     /**
      * @param Folder[] $folder
+     *
      * @return $this
      */
     public function setFolders($folders)
@@ -96,6 +98,7 @@ class Region
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

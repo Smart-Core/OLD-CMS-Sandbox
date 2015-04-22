@@ -41,6 +41,7 @@ class Role
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

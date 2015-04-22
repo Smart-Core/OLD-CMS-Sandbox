@@ -114,6 +114,7 @@ class Item
 
     /**
      * @param Folder|null $folder
+     *
      * @return $this
      */
     public function setFolder(Folder $folder = null)
@@ -133,6 +134,7 @@ class Item
 
     /**
      * @param string $form_title
+     *
      * @return $this
      */
     public function setFormTitle($form_title)
@@ -152,6 +154,7 @@ class Item
 
     /**
      * @param Group $group
+     *
      * @return $this
      */
     public function setGroup(Group $group)
@@ -179,6 +182,7 @@ class Item
 
     /**
      * @param array|null $properties
+     *
      * @return $this
      */
     public function setProperties(array $properties = null)
@@ -198,6 +202,7 @@ class Item
 
     /**
      * @param string|null $url
+     *
      * @return $this
      */
     public function setUrl($url = null)
@@ -217,6 +222,7 @@ class Item
 
     /**
      * @param boolean $open_in_new_window
+     *
      * @return $this
      */
     public function setOpenInNewWindow($open_in_new_window)
@@ -236,6 +242,7 @@ class Item
 
     /**
      * @param Item|null $parent_item
+     *
      * @return $this
      */
     public function setParentItem($parent_item)

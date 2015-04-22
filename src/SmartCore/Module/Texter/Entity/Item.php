@@ -72,6 +72,7 @@ class Item
 
     /**
      * @param int $editor
+     *
      * @return $this
      */
     public function setEditor($editor)
@@ -91,6 +92,7 @@ class Item
 
     /**
      * @param string $locale
+     *
      * @return $this
      */
     public function setLocale($locale)
@@ -118,6 +120,7 @@ class Item
 
     /**
      * @param array $meta
+     *
      * @return $this
      */
     public function setMeta(array $meta)

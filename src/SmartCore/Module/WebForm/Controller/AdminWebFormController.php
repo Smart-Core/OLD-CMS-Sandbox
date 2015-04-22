@@ -20,6 +20,7 @@ class AdminWebFormController extends Controller
 {
     /**
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -143,6 +144,7 @@ class AdminWebFormController extends Controller
     /**
      * @param Request $request
      * @param WebForm $webForm
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function settingsAction(Request $request, WebForm $webForm)
@@ -177,6 +179,7 @@ class AdminWebFormController extends Controller
     /**
      * @param Request $request
      * @param WebForm $webForm
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function messagesAction(Request $request, WebForm $webForm, $status)
@@ -257,6 +260,7 @@ class AdminWebFormController extends Controller
 
     /**
      * @param WebForm $webForm
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function manageAction(WebForm $webForm)
@@ -268,6 +272,7 @@ class AdminWebFormController extends Controller
      * @param \SmartCore\Module\WebForm\Entity\WebForm $webForm
      *
      * @return null|string
+     *
      * @throws \Exception
      */
     protected function getNodePath(WebForm $webForm)
@@ -279,5 +284,7 @@ class AdminWebFormController extends Controller
                 ]);
             }
         }
+
+        return;
     }
 }

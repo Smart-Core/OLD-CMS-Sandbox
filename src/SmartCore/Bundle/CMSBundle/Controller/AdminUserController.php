@@ -17,6 +17,7 @@ class AdminUserController extends Controller
 {
     /**
      * Список всех пользователей.
+     *
      * @return Response
      *
      * @todo постраничность
@@ -29,9 +30,10 @@ class AdminUserController extends Controller
     }
 
     /**
-     * На основе \FOS\UserBundle\Controller\RegistrationController::registerAction
+     * На основе \FOS\UserBundle\Controller\RegistrationController::registerAction.
      *
      * @param Request $request
+     *
      * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
@@ -81,10 +83,11 @@ class AdminUserController extends Controller
     }
 
     /**
-     * На основе \FOS\UserBundle\Controller\ProfileController::editAction
+     * На основе \FOS\UserBundle\Controller\ProfileController::editAction.
      *
      * @param Request $request
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, $id)
@@ -145,6 +148,7 @@ class AdminUserController extends Controller
     /**
      * @param Request $request
      * @param $id
+     *
      * @return Response
      */
     public function roleEditAction(Request $request, $id)

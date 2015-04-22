@@ -31,6 +31,7 @@ class FolderLoader implements EntityLoaderInterface
 
     /**
      * @param bool|null $only_active
+     *
      * @return $this
      */
     public function setOnlyActive($only_active)

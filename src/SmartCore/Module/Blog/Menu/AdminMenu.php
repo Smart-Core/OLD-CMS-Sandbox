@@ -10,6 +10,7 @@ class AdminMenu extends ContainerAware
     /**
      * @param FactoryInterface $factory
      * @param array $options
+     *
      * @return \Knp\Menu\ItemInterface
      */
     public function main(FactoryInterface $factory, array $options)

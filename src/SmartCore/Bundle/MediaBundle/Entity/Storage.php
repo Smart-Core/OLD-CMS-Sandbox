@@ -67,6 +67,7 @@ class Storage
 
     /**
      * @param string $relative_path
+     *
      * @return $this
      */
     public function setRelativePath($relative_path)
@@ -86,6 +87,7 @@ class Storage
 
     /**
      * @param array|null $params
+     *
      * @return $this
      */
     public function setParams(array $params = null)
@@ -105,6 +107,7 @@ class Storage
 
     /**
      * @param string $provider
+     *
      * @return $this
      */
     public function setProvider($provider)

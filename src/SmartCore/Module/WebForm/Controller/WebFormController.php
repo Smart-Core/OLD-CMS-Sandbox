@@ -51,7 +51,9 @@ class WebFormController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return JsonResponse
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Doctrine\ORM\TransactionRequiredException
@@ -124,6 +126,7 @@ class WebFormController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function ajaxGetFormAction(Request $request)
@@ -164,9 +167,10 @@ class WebFormController extends Controller
             'web_form' => $webForm,
         ]);
     }
-    
+
     /**
      * @param  Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function postAction(Request $request)
@@ -226,9 +230,10 @@ class WebFormController extends Controller
             $mailer->send($message);
         }
     }
-    
+
     /**
      * @param WebForm $webForm
+     *
      * @return \Symfony\Component\Form\Form
      */
     protected function getForm(WebForm $webForm)

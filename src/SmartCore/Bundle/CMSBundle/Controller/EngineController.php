@@ -23,6 +23,7 @@ class EngineController extends Controller
     /**
      * @param Request $request
      * @param string $slug
+     *
      * @return Response
      */
     public function runAction(Request $request, $slug)
@@ -85,6 +86,7 @@ class EngineController extends Controller
      *
      * @param Request $request
      * @param \SmartCore\Bundle\CMSBundle\Entity\Node[] $nodes
+     *
      * @return array|Response|RedirectResponse
      */
     protected function buildModulesData(Request $request, array $nodes)
@@ -158,6 +160,7 @@ class EngineController extends Controller
      *
      * @param Request $request
      * @param string $slug
+     *
      * @return RedirectResponse|Response
      *
      * @todo продумать!

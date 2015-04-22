@@ -8,6 +8,7 @@ trait ModuleBundleTrait
 {
     /**
      * Действие при создании ноды.
+     *
      * @param Node $node
      */
     public function createNode(Node $node)
@@ -16,6 +17,7 @@ trait ModuleBundleTrait
 
     /**
      * Действие при удалении ноды.
+     *
      * @param Node $node
      */
     public function deleteNode(Node $node)
@@ -24,6 +26,7 @@ trait ModuleBundleTrait
 
     /**
      * Действие при обновлении ноды.
+     *
      * @param Node $node
      */
     public function updateNode(Node $node)
@@ -62,7 +65,7 @@ trait ModuleBundleTrait
 
     /**
      * Получить короткое имя (без суффикса Module).
-     * Сейчас используется только в админке для получения списка
+     * Сейчас используется только в админке для получения списка.
      *
      * @return string
      */

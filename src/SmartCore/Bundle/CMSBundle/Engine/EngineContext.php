@@ -23,6 +23,7 @@ class EngineContext
 
     /**
      * @param int $current_folder_id
+     *
      * @return $this
      */
     public function setCurrentFolderId($current_folder_id)
@@ -42,6 +43,7 @@ class EngineContext
 
     /**
      * @param string $current_folder_path
+     *
      * @return $this
      */
     public function setCurrentFolderPath($current_folder_path)
@@ -61,6 +63,7 @@ class EngineContext
 
     /**
      * @param int $current_node_id
+     *
      * @return $this
      */
     public function setCurrentNodeId($current_node_id)

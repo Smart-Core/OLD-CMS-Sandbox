@@ -13,6 +13,7 @@ class ArticleController extends Controller
 {
     /**
      * @param Request $requst
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function indexAction(Request $requst)
@@ -37,7 +38,9 @@ class ArticleController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction(Request $request, $id)
@@ -68,6 +71,7 @@ class ArticleController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function createAction(Request $request)

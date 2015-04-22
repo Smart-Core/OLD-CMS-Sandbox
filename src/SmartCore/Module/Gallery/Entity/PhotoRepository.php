@@ -8,6 +8,7 @@ class PhotoRepository extends EntityRepository
 {
     /**
      * @param Album|int $album
+     *
      * @return int
      */
     public function countInAlbum($album)

@@ -31,6 +31,7 @@ class AdminMediaLibraryController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function createStorageAction(Request $request)
@@ -62,6 +63,7 @@ class AdminMediaLibraryController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return Response
      */
     public function editStorageAction(Request $request, $id)
@@ -101,6 +103,7 @@ class AdminMediaLibraryController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function createCollectionAction(Request $request)
@@ -135,6 +138,7 @@ class AdminMediaLibraryController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return Response
      */
     public function editCollectionAction(Request $request, $id)

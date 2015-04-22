@@ -34,6 +34,7 @@ abstract class AbstractBlogService
 
     /**
      * @param integer $count
+     *
      * @return $this
      */
     public function setItemsCountPerPage($count)

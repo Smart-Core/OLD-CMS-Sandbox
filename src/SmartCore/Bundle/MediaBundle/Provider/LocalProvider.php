@@ -65,6 +65,7 @@ class LocalProvider implements ProviderInterface
      * @param integer $id
      * @param string|null $filter
      * @param string|null default_filter
+     *
      * @return string|null
      */
     public function get($id, $filter = null, $default_filter = '200_200')
@@ -129,7 +130,9 @@ class LocalProvider implements ProviderInterface
 
     /**
      * @param File $file
+     *
      * @return \Symfony\Component\HttpFoundation\File\File|void
+     *
      * @throws \RuntimeException
      */
     public function upload(File $file)
@@ -160,6 +163,7 @@ class LocalProvider implements ProviderInterface
 
     /**
      * @param int $id
+     *
      * @return bool
      *
      * @todo качественную обработку ошибок.
@@ -194,6 +198,7 @@ class LocalProvider implements ProviderInterface
      * @param array|null $orderBy
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return File[]|null
      */
     public function findBy($categoryId = null, array $orderBy = null, $limit = null, $offset = null)

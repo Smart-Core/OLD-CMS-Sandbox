@@ -125,6 +125,7 @@ class Url
 
     /**
      * @param string $loc
+     *
      * @return $this
      */
     public function setLoc($loc)
@@ -144,6 +145,7 @@ class Url
 
     /**
      * @param float $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -167,6 +169,7 @@ class Url
 
     /**
      * @param string $referer
+     *
      * @return $this
      */
     public function setReferer($referer)
@@ -186,6 +189,7 @@ class Url
 
     /**
      * @param string $changefreq
+     *
      * @return $this
      */
     public function setChangefreq($changefreq)
@@ -205,6 +209,7 @@ class Url
 
     /**
      * @param bool $is_visited
+     *
      * @return $this
      */
     public function setIsVisited($is_visited)
@@ -224,6 +229,7 @@ class Url
 
     /**
      * @param \DateTime $lastmod
+     *
      * @return $this
      */
     public function setLastmod($lastmod)
@@ -243,6 +249,7 @@ class Url
 
     /**
      * @param int $status
+     *
      * @return $this
      */
     public function setStatus($status)
@@ -262,6 +269,7 @@ class Url
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)

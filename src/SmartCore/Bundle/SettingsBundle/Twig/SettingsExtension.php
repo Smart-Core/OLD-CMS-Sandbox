@@ -33,6 +33,7 @@ class SettingsExtension extends \Twig_Extension
     /**
      * @param string $bundle
      * @param string $name
+     *
      * @return string
      */
     public function getSetting($bundle, $name)
@@ -44,6 +45,7 @@ class SettingsExtension extends \Twig_Extension
      * @param string $bundle
      * @param string $name
      * @param string $value
+     *
      * @return bool
      */
     public function isSetting($bundle, $name, $value)

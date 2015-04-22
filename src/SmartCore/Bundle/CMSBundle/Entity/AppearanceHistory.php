@@ -59,6 +59,7 @@ class AppearanceHistory
 
     /**
      * @param string $code
+     *
      * @return $this
      */
     public function setCode($code)
@@ -79,6 +80,7 @@ class AppearanceHistory
 
     /**
      * @param string $filename
+     *
      * @return $this
      */
     public function setFilename($filename)
@@ -98,6 +100,7 @@ class AppearanceHistory
 
     /**
      * @param string $path
+     *
      * @return $this
      */
     public function setPath($path)
@@ -117,6 +120,7 @@ class AppearanceHistory
 
     /**
      * @param string $hash
+     *
      * @return $this
      */
     public function setHash($hash)

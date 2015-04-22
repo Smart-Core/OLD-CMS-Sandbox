@@ -16,6 +16,7 @@ class NewsWidgetController extends Controller
      * Последние новости.
      *
      * @param  int $count
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function lastAction($count = 5)

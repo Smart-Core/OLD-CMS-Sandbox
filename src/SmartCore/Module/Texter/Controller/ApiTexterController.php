@@ -9,6 +9,7 @@ class ApiTexterController extends Controller
 {
     /**
      * @param null $item_id
+     *
      * @return JsonResponse
      */
     public function jsonAction($item_id = null)
@@ -32,6 +33,7 @@ class ApiTexterController extends Controller
 
     /**
      * @param null $item_id
+     *
      * @return JsonResponse
      */
     public function htmlAction($item_id = null)

@@ -17,6 +17,7 @@ class SimpleNewsController extends Controller
      * Список новостей постранично.
      *
      * @param string $slug
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $page = null)
@@ -51,6 +52,7 @@ class SimpleNewsController extends Controller
      * Отображение заданной новости.
      *
      * @param string $slug
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function itemAction($slug)

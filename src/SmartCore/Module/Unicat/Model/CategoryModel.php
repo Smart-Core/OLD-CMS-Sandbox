@@ -111,6 +111,7 @@ abstract class CategoryModel
 
     /**
      * @param bool $is_inheritance
+     *
      * @return $this
      */
     public function setIsInheritance($is_inheritance)
@@ -130,6 +131,7 @@ abstract class CategoryModel
 
     /**
      * @param CategoryModel|null  $parent
+     *
      * @return $this
      */
     public function setParent(CategoryModel $parent = null)
@@ -149,6 +151,7 @@ abstract class CategoryModel
 
     /**
      * @param mixed $slug
+     *
      * @return $this
      */
     public function setSlug($slug)
@@ -168,6 +171,7 @@ abstract class CategoryModel
 
     /**
      * @param UnicatStructure $structure
+     *
      * @return $this
      */
     public function setStructure(UnicatStructure $structure)
@@ -187,6 +191,7 @@ abstract class CategoryModel
 
     /**
      * @param array $meta
+     *
      * @return $this
      */
     public function setMeta(array $meta)
@@ -212,6 +217,7 @@ abstract class CategoryModel
 
     /**
      * @param array $properties
+     *
      * @return $this
      */
     public function setProperties($properties)
@@ -224,6 +230,7 @@ abstract class CategoryModel
     /**
      * @param string $name
      * @param mixed $value
+     *
      * @return $this
      */
     public function setProperty($name, $value)
@@ -243,6 +250,7 @@ abstract class CategoryModel
 
     /**
      * @param string $name
+     *
      * @return mixed|null
      */
     public function getProperty($name)
@@ -252,6 +260,7 @@ abstract class CategoryModel
 
     /**
      * @param string $name
+     *
      * @return bool
      */
     public function hasProperty($name)
@@ -277,6 +286,7 @@ abstract class CategoryModel
 
     /**
      * @param string $form_title
+     *
      * @return $this
      */
     public function setFormTitle($form_title)

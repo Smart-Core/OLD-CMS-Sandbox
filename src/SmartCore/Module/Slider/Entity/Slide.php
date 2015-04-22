@@ -71,6 +71,7 @@ class Slide
 
     /**
      * @param string $file_name
+     *
      * @return $this
      */
     public function setFileName($file_name)
@@ -90,6 +91,7 @@ class Slide
 
     /**
      * @param string $original_file_name
+     *
      * @return $this
      */
     public function setOriginalFileName($original_file_name)
@@ -109,6 +111,7 @@ class Slide
 
     /**
      * @param \SmartCore\Module\Slider\Entity\Slider $slider
+     *
      * @return $this
      */
     public function setSlider(Slider $slider)
@@ -128,6 +131,7 @@ class Slide
 
     /**
      * @param mixed $properties
+     *
      * @return $this
      */
     public function setProperties($properties)

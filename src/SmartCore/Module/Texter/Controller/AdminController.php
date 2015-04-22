@@ -13,6 +13,7 @@ class AdminController extends Controller
 
     /**
      * @param  Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -45,6 +46,7 @@ class AdminController extends Controller
     /**
      * @param  Request $request
      * @param  int $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function itemAction(Request $request, $id)
@@ -107,6 +109,7 @@ class AdminController extends Controller
 
     /**
      * @param  int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @todo пагинацию.
@@ -128,6 +131,7 @@ class AdminController extends Controller
 
     /**
      * @param  int $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function rollbackAction($id)

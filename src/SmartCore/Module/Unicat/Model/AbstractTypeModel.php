@@ -42,6 +42,7 @@ abstract class AbstractTypeModel
 
     /**
      * @param \SmartCore\Module\Unicat\Model\ItemModel $item
+     *
      * @return $this
      */
     public function setItem(ItemModel $item)
@@ -61,6 +62,7 @@ abstract class AbstractTypeModel
 
     /**
      * @param string $value
+     *
      * @return $this
      */
     public function setValue($value)

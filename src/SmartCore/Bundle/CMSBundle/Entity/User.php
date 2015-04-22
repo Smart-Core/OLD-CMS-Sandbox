@@ -78,7 +78,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get the full name of the user (first + last name)
+     * Get the full name of the user (first + last name).
      *
      * @return string
      */

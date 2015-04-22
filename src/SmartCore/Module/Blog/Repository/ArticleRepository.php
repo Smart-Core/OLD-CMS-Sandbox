@@ -11,6 +11,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
 {
     /**
      * @param int $limit
+     *
      * @return ArticleInterface[]|null
      */
     public function findLast($limit = 10)
@@ -24,6 +25,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
 
     /**
      * @param TagInterface $tag
+     *
      * @return ArticleInterface[]|null
      */
     public function findByTag(TagInterface $tag)
@@ -35,6 +37,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
      * @param CategoryInterface[]|array $categories
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return ArticleInterface[]|null
      */
     public function findByCategories(array $categories = [], $limit = null, $offset = null)
@@ -46,6 +49,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
      * @param array $categories
      * @param int|null $limit
      * @param int|null $offset
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByCategoriesQuery(array $categories = [], $limit = null, $offset = null)
@@ -74,6 +78,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
 
     /**
      * @param CategoryInterface|null $category
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByCategoryQuery(CategoryInterface $category = null)
@@ -89,6 +94,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
     /**
      * @param \DateTime|null $firstDate
      * @param \DateTime|null $lastDate
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByDateQuery(\DateTime $firstDate = null, \DateTime $lastDate = null)
@@ -108,6 +114,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
 
     /**
      * @param TagInterface $tag
+     *
      * @return \Doctrine\ORM\Query
      *
      * @todo enabled
@@ -126,6 +133,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
 
     /**
      * @param CategoryInterface|null $category
+     *
      * @return integer
      *
      * @todo поддержку категорий.
@@ -143,6 +151,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
 
     /**
      * @param int $limit
+     *
      * @return array
      */
     public function getArchiveMonthly($limit = 24)

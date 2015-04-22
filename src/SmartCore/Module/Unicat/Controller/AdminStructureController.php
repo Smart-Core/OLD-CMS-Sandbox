@@ -13,6 +13,7 @@ class AdminStructureController extends Controller
      * @param int $structure_id
      * @param int $id
      * @param string $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function categoryEditAction(Request $request, $structure_id, $id, $configuration)
@@ -57,6 +58,7 @@ class AdminStructureController extends Controller
 
     /**
      * @param string $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction($configuration)
@@ -77,6 +79,7 @@ class AdminStructureController extends Controller
      * @param int $id
      * @param string|int $configuration
      * @param int|null $parent_id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function structureAction(Request $request, $id, $configuration, $parent_id = null)
@@ -109,6 +112,7 @@ class AdminStructureController extends Controller
     /**
      * @param Request $request
      * @param string $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request, $configuration)
@@ -141,6 +145,7 @@ class AdminStructureController extends Controller
      * @param Request $request
      * @param int $id
      * @param string|int $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, $id, $configuration)
@@ -172,6 +177,7 @@ class AdminStructureController extends Controller
     /**
      * @param UnicatConfiguration $configuration
      * @param int $structure_id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function redirectToStructureAdmin(UnicatConfiguration $configuration, $structure_id)

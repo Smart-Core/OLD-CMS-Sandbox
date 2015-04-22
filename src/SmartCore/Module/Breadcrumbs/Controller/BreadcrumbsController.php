@@ -11,12 +11,14 @@ class BreadcrumbsController extends Controller
 
     /**
      * Разделитель.
+     *
      * @var string
      */
     protected $delimiter = '»'; //'&raquo;'; // @todo подумать как можно в форме свойств ноды, экранировать спец символы.
 
     /**
      * Скрыть "хлебные крошки", если выбрана корневая папка.
+     *
      * @var bool
      */
     protected $hide_if_only_home = false;

@@ -146,6 +146,7 @@ class File
 
     /**
      * @param string|null $filter
+     *
      * @return string
      */
     public function getFullRelativePath($filter = null)
@@ -161,6 +162,7 @@ class File
 
     /**
      * @param string|null $filter
+     *
      * @return string
      */
     public function getFullRelativeUrl($filter = null)
@@ -170,6 +172,7 @@ class File
 
     /**
      * @param bool $is_preuploaded
+     *
      * @return $this
      */
     public function setIsPreuploaded($is_preuploaded)
@@ -197,6 +200,7 @@ class File
 
     /**
      * @param Category $category
+     *
      * @return $this
      */
     public function setCategory(Category $category)
@@ -216,6 +220,7 @@ class File
 
     /**
      * @param Collection $collection
+     *
      * @return $this
      */
     public function setCollection(Collection $collection)
@@ -244,6 +249,7 @@ class File
 
     /**
      * @param Storage $storage
+     *
      * @return $this
      */
     public function setStorage(Storage $storage)
@@ -263,6 +269,7 @@ class File
 
     /**
      * @param string $filename
+     *
      * @return $this
      */
     public function setFilename($filename)
@@ -282,6 +289,7 @@ class File
 
     /**
      * @param string $relative_path
+     *
      * @return $this
      */
     public function setRelativePath($relative_path)
@@ -301,6 +309,7 @@ class File
 
     /**
      * @param string $originalFilename
+     *
      * @return $this
      */
     public function setOriginalFilename($originalFile)
@@ -320,6 +329,7 @@ class File
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -339,6 +349,7 @@ class File
 
     /**
      * @param string $mimeType
+     *
      * @return $this
      */
     public function setMimeType($mimeType)
@@ -358,6 +369,7 @@ class File
 
     /**
      * @param int $original_size
+     *
      * @return $this
      */
     public function setOriginalSize($original_size)
@@ -377,6 +389,7 @@ class File
 
     /**
      * @param int $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -396,6 +409,7 @@ class File
 
     /**
      * @param int $user_id
+     *
      * @return $this
      */
     public function setUserId($user_id)
@@ -415,6 +429,7 @@ class File
 
     /**
      * @param string $type
+     *
      * @return bool
      */
     public function isMimeType($type)

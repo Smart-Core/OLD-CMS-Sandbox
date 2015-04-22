@@ -10,7 +10,7 @@ class WebFormModule extends ModuleBundle
     public function getRequiredParams()
     {
         return [
-            'webform_id'
+            'webform_id',
         ];
     }
 

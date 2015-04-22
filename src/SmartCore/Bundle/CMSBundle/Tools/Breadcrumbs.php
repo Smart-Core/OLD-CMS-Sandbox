@@ -104,6 +104,7 @@ class Breadcrumbs implements \Iterator, \Countable
      * Получиить хлебные крошки.
      *
      * @param int $num
+     *
      * @return array
      */
     public function get($num = null)
@@ -169,6 +170,7 @@ class Breadcrumbs implements \Iterator, \Countable
      * Является ли указанный путь абсолютным.
      *
      * @param string $path
+     *
      * @return string
      */
     public function isAbsolutePath($path)

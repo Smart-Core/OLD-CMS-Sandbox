@@ -87,6 +87,7 @@ class Slider
 
     /**
      * @param int $width
+     *
      * @return $this
      */
     public function setWidth($width)
@@ -106,6 +107,7 @@ class Slider
 
     /**
      * @param string $slide_properties
+     *
      * @return $this
      */
     public function setSlideProperties($slide_properties)
@@ -125,6 +127,7 @@ class Slider
 
     /**
      * @param string $mode
+     *
      * @return $this
      */
     public function setMode($mode)
@@ -144,6 +147,7 @@ class Slider
 
     /**
      * @param string $library
+     *
      * @return $this
      */
     public function setLibrary($library)
@@ -163,6 +167,7 @@ class Slider
 
     /**
      * @param int $pause_time
+     *
      * @return $this
      */
     public function setPauseTime($pause_time)
@@ -182,6 +187,7 @@ class Slider
 
     /**
      * @param int $height
+     *
      * @return $this
      */
     public function setHeight($height)
@@ -201,6 +207,7 @@ class Slider
 
     /**
      * @param \SmartCore\Module\Slider\Entity\Slide[] $slides
+     *
      * @return $this
      */
     public function setSlides($slides)

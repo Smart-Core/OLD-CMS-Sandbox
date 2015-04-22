@@ -30,6 +30,7 @@ class TexterService
     /**
      * @param int $item_id
      * @param int|null $node_id - укаывается для кеширования.
+     *
      * @return mixed|\SmartCore\Module\Texter\Entity\Item
      */
     public function get($item_id, $node_id = null)

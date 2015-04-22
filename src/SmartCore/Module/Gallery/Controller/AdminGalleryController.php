@@ -16,6 +16,7 @@ class AdminGalleryController extends Controller
 {
     /**
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -48,6 +49,7 @@ class AdminGalleryController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function galleryAction(Request $request, $id)
@@ -102,6 +104,7 @@ class AdminGalleryController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function galleryEditAction(Request $request, $id)
@@ -144,7 +147,9 @@ class AdminGalleryController extends Controller
      * @param Request $request
      * @param int $id
      * @param int $gallery_id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
      * @todo pagination
@@ -226,6 +231,7 @@ class AdminGalleryController extends Controller
      * @param Request $request
      * @param int $id
      * @param int $gallery_id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function albumEditAction(Request $request, $id, $gallery_id)
@@ -284,7 +290,9 @@ class AdminGalleryController extends Controller
      * @param int $gallery_id
      * @param int $album_id
      * @param bool $set_as_cover
+     *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function photoAction(Request $request, $id, $gallery_id, $album_id, $set_as_cover = false)

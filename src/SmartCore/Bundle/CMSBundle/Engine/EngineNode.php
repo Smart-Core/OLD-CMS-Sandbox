@@ -113,6 +113,7 @@ class EngineNode
 
     /**
      * @param Region|int $region
+     *
      * @return int
      */
     public function countInRegion($region)
@@ -122,6 +123,7 @@ class EngineNode
 
     /**
      * @param  int $id
+     *
      * @return Node|null
      */
     public function get($id)
@@ -141,6 +143,7 @@ class EngineNode
 
     /**
      * @param Folder $folder
+     *
      * @return array|Node[]
      */
     public function findInFolder(Folder $folder)
@@ -150,6 +153,7 @@ class EngineNode
 
     /**
      * @param string $name
+     *
      * @return array|Node[]
      */
     public function findByModule($name)
@@ -182,6 +186,7 @@ class EngineNode
      * Получить форму редактирования параметров подключения модуля.
      *
      * @param  string $module_name
+     *
      * @return AbstractNodePropertiesFormType
      */
     public function getPropertiesFormType($module_name)
@@ -204,6 +209,7 @@ class EngineNode
      * параметрами запускаются модули.
      *
      * @param  array  $router_data
+     *
      * @return Node[]
      */
     public function buildList(array $router_data)
@@ -229,7 +235,7 @@ class EngineNode
         $lockout_nodes = [   // @todo блокировку нод.
             'single'  => [], // Блокировка нод в папке, без наследования.
             'inherit' => [], // Блокировка нод в папке, с наследованием.
-            'except'  => [], // Блокировка всех нод в папке, кроме заданных.
+            'except'  => []  // Блокировка всех нод в папке, кроме заданных.
         ];
 
         /** @var $folder \SmartCore\Bundle\CMSBundle\Entity\Folder */

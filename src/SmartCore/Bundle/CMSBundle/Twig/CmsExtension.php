@@ -37,6 +37,7 @@ class CmsExtension extends \Twig_Extension
      * Получение текущей папки.
      *
      * @param string|null $field
+     *
      * @return null|\SmartCore\Bundle\CMSBundle\Entity\Folder
      */
     public function getCurrentFolder($field = null)
@@ -58,6 +59,7 @@ class CmsExtension extends \Twig_Extension
      * Получение полной ссылки на папку, указав её id. Если не указать ид папки, то вернётся текущий путь.
      *
      * @param mixed|null $data
+     *
      * @return string
      */
     public function generateFolderPath($data = null)
@@ -67,6 +69,7 @@ class CmsExtension extends \Twig_Extension
 
     /**
      * @param  Region|int $region
+     *
      * @return int
      */
     public function nodesCountInRegion($region)

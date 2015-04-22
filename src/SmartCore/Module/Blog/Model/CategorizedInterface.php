@@ -11,6 +11,7 @@ interface CategorizedInterface
 
     /**
      * @param CategoryInterface|null $category
+     *
      * @return $this
      */
     public function setCategory(CategoryInterface $category = null);

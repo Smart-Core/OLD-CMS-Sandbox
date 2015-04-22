@@ -80,6 +80,7 @@ class UnicatService
 
     /**
      * @param UnicatConfiguration $currentConfiguration
+     *
      * @return $this
      */
     public function setCurrentConfiguration(UnicatConfiguration $currentConfiguration)
@@ -107,6 +108,7 @@ class UnicatService
 
     /**
      * @param string|int $configuration_id
+     *
      * @return UnicatConfigurationManager|null
      */
     public function getConfigurationManager($configuration_id)
@@ -128,6 +130,7 @@ class UnicatService
 
     /**
      * @param UnicatConfiguration|int $configuration
+     *
      * @return AttributeModel[]
      *
      * @deprecated
@@ -169,6 +172,7 @@ class UnicatService
 
     /**
      * @param int|string $val
+     *
      * @return UnicatConfiguration
      */
     public function getConfiguration($val)
@@ -188,6 +192,7 @@ class UnicatService
 
     /**
      * @param int $id
+     *
      * @return UnicatStructure
      */
     public function getStructure($id)
@@ -197,6 +202,7 @@ class UnicatService
 
     /**
      * @param CategoryModel $category
+     *
      * @return $this
      */
     public function createCategory(CategoryModel $category)
@@ -209,6 +215,7 @@ class UnicatService
 
     /**
      * @param AttributeModel $entity
+     *
      * @return $this
      */
     public function createAttribute(AttributeModel $entity)
@@ -278,6 +285,7 @@ class UnicatService
 
     /**
      * @param CategoryModel $category
+     *
      * @return $this
      */
     public function updateCategory(CategoryModel $category)
@@ -299,6 +307,7 @@ class UnicatService
 
     /**
      * @param AttributeModel $entity
+     *
      * @return $this
      */
     public function updateAttribute(AttributeModel $entity)
@@ -311,6 +320,7 @@ class UnicatService
 
     /**
      * @param CategoryModel $category
+     *
      * @return $this
      */
     public function deleteCategory(CategoryModel $category)
@@ -325,6 +335,7 @@ class UnicatService
 
     /**
      * @param AttributeModel $entity
+     *
      * @return $this
      */
     public function deleteAttribute(AttributeModel $entity)

@@ -6,6 +6,7 @@ class TidyService
 {
     /**
      * @param string $html
+     *
      * @return string
      */
     public function prettifyFragment($html)
@@ -28,6 +29,7 @@ class TidyService
 
     /**
      * @param string $html
+     *
      * @return string
      */
     public function prettifyDocument($html)

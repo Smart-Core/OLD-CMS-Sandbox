@@ -95,6 +95,7 @@ class Collection
 
     /**
      * @param Storage $default_storage
+     *
      * @return $this
      */
     public function setDefaultStorage(Storage $default_storage)
@@ -114,6 +115,7 @@ class Collection
 
     /**
      * @param string $default_filter
+     *
      * @return $this
      */
     public function setDefaultFilter($default_filter)
@@ -133,6 +135,7 @@ class Collection
 
     /**
      * @param array|null $params
+     *
      * @return $this
      */
     public function setParams(array $params = null)
@@ -152,6 +155,7 @@ class Collection
 
     /**
      * @param string $file_relative_path_pattern
+     *
      * @return $this
      */
     public function setFileRelativePathPattern($file_relative_path_pattern)
@@ -171,6 +175,7 @@ class Collection
 
     /**
      * @param string $filename_pattern
+     *
      * @return $this
      */
     public function setFilenamePattern($filename_pattern)
@@ -190,6 +195,7 @@ class Collection
 
     /**
      * @param File[] $files
+     *
      * @return $this
      */
     public function setFiles($files)
@@ -209,6 +215,7 @@ class Collection
 
     /**
      * @param string $relative_path
+     *
      * @return $this
      */
     public function setRelativePath($relative_path)

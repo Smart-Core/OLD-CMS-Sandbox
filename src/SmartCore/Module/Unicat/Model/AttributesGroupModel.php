@@ -50,6 +50,7 @@ class AttributesGroupModel
 
     /**
      * @param CategoryModel $category
+     *
      * @return $this
      */
     public function setCategory(CategoryModel $category = null)
@@ -69,6 +70,7 @@ class AttributesGroupModel
 
     /**
      * @param AttributeModel[] $attributes
+     *
      * @return $this
      */
     public function setAttributes($attributes)
@@ -88,6 +90,7 @@ class AttributesGroupModel
 
     /**
      * @param UnicatConfiguration $configuration
+     *
      * @return $this
      */
     public function setConfiguration(UnicatConfiguration $configuration)

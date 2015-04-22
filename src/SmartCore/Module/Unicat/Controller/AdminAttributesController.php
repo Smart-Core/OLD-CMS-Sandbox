@@ -26,6 +26,7 @@ class AdminAttributesController extends Controller
     /**
      * @param Request $request
      * @param string|int $configuration
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function createGroupAction(Request $request, $configuration)
@@ -58,6 +59,7 @@ class AdminAttributesController extends Controller
      * @param Request $request
      * @param string $configuration
      * @param int $group_id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function groupAction(Request $request, $configuration, $group_id)
@@ -89,6 +91,7 @@ class AdminAttributesController extends Controller
      * @param string $configuration
      * @param int $group_id
      * @param int $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, $configuration, $group_id, $id)

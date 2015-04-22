@@ -30,6 +30,7 @@ abstract class AbstractNodePropertiesFormType extends AbstractType
 
     /**
      * @param string $entityName
+     *
      * @return array
      */
     protected function getChoicesByEntity($entityName)

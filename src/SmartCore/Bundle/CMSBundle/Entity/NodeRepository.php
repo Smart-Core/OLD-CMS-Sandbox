@@ -8,6 +8,7 @@ class NodeRepository extends EntityRepository
 {
     /**
      * @param array $list
+     *
      * @return Node[]
      */
     public function findIn(array $list)
@@ -33,6 +34,7 @@ class NodeRepository extends EntityRepository
 
     /**
      * @param Region|int $region
+     *
      * @return int
      */
     public function countInRegion($region)
@@ -51,6 +53,7 @@ class NodeRepository extends EntityRepository
     /**
      * @param int|Folder $folder
      * @param array $exclude_nodes
+     *
      * @return \Doctrine\DBAL\Driver\Statement
      */
     public function getInFolder($folder, array $exclude_nodes = [])
@@ -81,6 +84,7 @@ class NodeRepository extends EntityRepository
 
     /**
      * @param int|Folder $folder
+     *
      * @return \Doctrine\DBAL\Driver\Statement
      */
     public function getInheritedInFolder($folder)

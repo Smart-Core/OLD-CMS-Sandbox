@@ -90,6 +90,7 @@ class TagService extends AbstractBlogService
 
     /**
      * @param int $id
+     *
      * @return TagInterface|null
      */
     public function get($id)
@@ -99,6 +100,7 @@ class TagService extends AbstractBlogService
 
     /**
      * @return TagInterface[]|null
+     *
      * @throws \Exception
      *
      * @todo нормальный выброс исключения.
@@ -114,6 +116,7 @@ class TagService extends AbstractBlogService
 
     /**
      * @param TagInterface $tag
+     *
      * @return int
      *
      * @todo возможность выбора по нескольким тэгам.
@@ -125,7 +128,9 @@ class TagService extends AbstractBlogService
 
     /**
      * @param string $slug
+     *
      * @return TagInterface
+     *
      * @throws \Exception
      *
      * @todo нормальный выброс исключения.
@@ -157,6 +162,7 @@ class TagService extends AbstractBlogService
 
     /**
      * @param TagInterface $tag
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getFindByTagQuery(TagInterface $tag)
@@ -166,6 +172,7 @@ class TagService extends AbstractBlogService
 
     /**
      * @param string $route
+     *
      * @return array
      *
      * @todo сделать в сущности тэга weight, который будет автоматически инкрементироваться и декрементироваться при измнениях в статьях.
@@ -192,6 +199,7 @@ class TagService extends AbstractBlogService
 
     /**
      * @param string $route
+     *
      * @return Cloud
      */
     public function getCloudZend($route)

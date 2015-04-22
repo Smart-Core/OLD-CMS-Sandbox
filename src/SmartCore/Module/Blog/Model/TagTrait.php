@@ -22,6 +22,7 @@ trait TagTrait
 
     /**
      * @param TagInterface $tag
+     *
      * @return $this
      */
     public function addTag(TagInterface $tag)
@@ -36,6 +37,7 @@ trait TagTrait
 
     /**
      * @param TagInterface $tag
+     *
      * @return $this
      */
     public function removeTag(TagInterface $tag)
@@ -50,6 +52,7 @@ trait TagTrait
 
     /**
      * @param TagInterface[]|ArrayCollection $tags
+     *
      * @return $this
      */
     public function setTags($tags)

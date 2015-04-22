@@ -168,6 +168,7 @@ abstract class Kernel extends BaseKernel
 
     /**
      * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
+     *
      * @throws \LogicException
      */
     protected function autoRegisterSiteBundle(&$bundles)
@@ -246,7 +247,7 @@ abstract class Kernel extends BaseKernel
     */
 
     /**
-     * Размещение кеша в /var/
+     * Размещение кеша в /var/.
      *
      * @return string
      */
@@ -256,7 +257,7 @@ abstract class Kernel extends BaseKernel
     }
 
     /**
-     * Размещение логов в /var/
+     * Размещение логов в /var/.
      *
      * @return string
      */

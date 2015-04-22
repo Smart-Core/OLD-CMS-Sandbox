@@ -63,6 +63,7 @@ class Group
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -82,6 +83,7 @@ class Group
 
     /**
      * @param string $properties
+     *
      * @return $this
      */
     public function setProperties($properties)
@@ -101,6 +103,7 @@ class Group
 
     /**
      * @param Item[] $items
+     *
      * @return $this
      */
     public function setItems($items)

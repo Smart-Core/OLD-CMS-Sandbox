@@ -68,6 +68,7 @@ class NewsInstance
 
     /**
      * @param News[]|ArrayCollection $news
+     *
      * @return $this
      */
     public function setNews($news)
@@ -87,6 +88,7 @@ class NewsInstance
 
     /**
      * @param bool $use_annotation_widget
+     *
      * @return $this
      */
     public function setUseAnnotationWidget($use_annotation_widget)
@@ -114,6 +116,7 @@ class NewsInstance
 
     /**
      * @param bool $use_image
+     *
      * @return $this
      */
     public function setUseImage($use_image)
@@ -141,6 +144,7 @@ class NewsInstance
 
     /**
      * @param bool $use_end_publish_date
+     *
      * @return $this
      */
     public function setUseEndPublishDate($use_end_publish_date)
@@ -168,6 +172,7 @@ class NewsInstance
 
     /**
      * @param Collection $media_collection
+     *
      * @return $this
      */
     public function setMediaCollection(Collection $media_collection = null)

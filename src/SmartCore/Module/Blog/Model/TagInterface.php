@@ -26,6 +26,7 @@ interface TagInterface
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug);
@@ -37,6 +38,7 @@ interface TagInterface
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title);

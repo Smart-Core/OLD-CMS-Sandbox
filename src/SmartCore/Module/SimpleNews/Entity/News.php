@@ -60,7 +60,7 @@ class News
     protected $annotation_widget;
 
     /**
-     * Дата публикации
+     * Дата публикации.
      *
      * @var \DateTime
      *
@@ -69,7 +69,7 @@ class News
     protected $publish_date;
 
     /**
-     * Дата окончания публикации
+     * Дата окончания публикации.
      *
      * @var \DateTime
      *
@@ -111,6 +111,7 @@ class News
 
     /**
      * @param \DateTime $end_publish_date
+     *
      * @return $this
      */
     public function setEndPublishDate(\DateTime $end_publish_date)
@@ -130,6 +131,7 @@ class News
 
     /**
      * @param \DateTime $publish_date
+     *
      * @return $this
      */
     public function setPublishDate(\DateTime $publish_date)
@@ -149,6 +151,7 @@ class News
 
     /**
      * @param int|null $image_id
+     *
      * @return $this
      */
     public function setImageId($image_id)
@@ -168,6 +171,7 @@ class News
 
     /**
      * @param UploadedFile|null $image
+     *
      * @return $this
      */
     public function setImage(UploadedFile $image = null)
@@ -187,6 +191,7 @@ class News
 
     /**
      * @param string $annotation
+     *
      * @return $this
      */
     public function setAnnotation($annotation)
@@ -206,6 +211,7 @@ class News
 
     /**
      * @param string $annotation_widget
+     *
      * @return $this
      */
     public function setAnnotationWidget($annotation_widget)
@@ -225,6 +231,7 @@ class News
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug)
@@ -244,6 +251,7 @@ class News
 
     /**
      * @param NewsInstance $instance
+     *
      * @return $this
      */
     public function setInstance(NewsInstance $instance)

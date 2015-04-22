@@ -17,6 +17,7 @@ class CategoryTreeType extends DoctrineType
 
     /**
      * @param UnicatStructure $structure
+     *
      * @return $this
      */
     public function setStructure(UnicatStructure $structure)

@@ -16,6 +16,7 @@ interface CategoryInterface
 
     /**
      * @param CategoryInterface $parent
+     *
      * @return $this
      */
     public function setParent(CategoryInterface $parent);
@@ -37,6 +38,7 @@ interface CategoryInterface
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug);
@@ -48,6 +50,7 @@ interface CategoryInterface
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title);
