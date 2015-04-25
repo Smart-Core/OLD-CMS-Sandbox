@@ -85,9 +85,15 @@ class AdminStructureController extends Controller
             ->setDeletedAt(null)
         ;
 
+        // Если у модуля есть роутинги, тогда нода подключается к папке как роутер.
+        $folder = $node->getFolder();
+        if ($this->container->has('cms.router_module.'.$node->getModule()) and !$folder->getRouterNodeId()) {
+            $folder->setRouterNodeId($node->getId());
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($node);
-        $em->flush($node);
+        $em->flush();
 
         $this->addFlash('success', 'Нода восстановлена.');
 
@@ -469,9 +475,11 @@ class AdminStructureController extends Controller
                     ->setDeletedAt(new \DateTime())
                 ;
 
+                $node->getFolder()->setRouterNodeId(null);
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($node);
-                $em->flush($node);
+                $em->flush();
 
                 $this->get('tagcache')->deleteTag('node');
 

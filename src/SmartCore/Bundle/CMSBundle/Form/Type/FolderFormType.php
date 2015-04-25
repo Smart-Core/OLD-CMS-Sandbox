@@ -36,7 +36,6 @@ class FolderFormType extends AbstractType
         }
 
         $routedNodes = ['' => ''];
-        /** @var \SmartCore\Bundle\CMSBundle\Entity\Node $node */
         foreach ($this->container->get('cms.node')->findInFolder($options['data']) as $node) {
             if (!$this->container->has('cms.router_module.'.$node->getModule())) {
                 continue;
