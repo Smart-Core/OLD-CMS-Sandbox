@@ -53,7 +53,7 @@ class AdminUserController extends Controller
             return $event->getResponse();
         }
 
-        $form = $this->get('fos_user.registration.form.factory')->createForm();
+        $form = $this->get('cms.form.registration.admin.factory')->createForm();
         $form->setData($user);
 
         if ($request->isMethod('POST')) {
@@ -95,7 +95,7 @@ class AdminUserController extends Controller
             return $this->redirect($this->generateUrl('cms_admin_user'));
         }
 
-        $form = $this->get('fos_user.profile.form.factory')->createForm();
+        $form = $this->get('cms.form.profile.admin.factory')->createForm();
         $form->setData($user);
 
         if ($request->isMethod('POST')) {

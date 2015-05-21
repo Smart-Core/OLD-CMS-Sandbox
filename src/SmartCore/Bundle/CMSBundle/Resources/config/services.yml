@@ -100,6 +100,13 @@ services:
         arguments: [ @doctrine.orm.default_entity_manager ]
         tags:
             - { name: form.type, alias: smart_core_cms_user }
+    cms.form.registration.admin.factory:
+        class: FOS\UserBundle\Form\Factory\FormFactory
+        arguments: [ @form.factory, %fos_user.registration.form.name%, 'smart_core_cms_user', %fos_user.registration.form.validation_groups% ]
+    cms.form.profile.admin.factory:
+        class: FOS\UserBundle\Form\Factory\FormFactory
+        arguments: [ @form.factory, %fos_user.profile.form.name%, 'smart_core_cms_user', %fos_user.profile.form.validation_groups% ]
+
 # Twig
     cms.twig.extension:
         class: SmartCore\Bundle\CMSBundle\Twig\CmsExtension
