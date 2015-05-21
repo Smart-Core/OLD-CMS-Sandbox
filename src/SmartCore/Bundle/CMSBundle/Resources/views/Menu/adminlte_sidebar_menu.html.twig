@@ -3,10 +3,14 @@
 {% block linkElement %}
     {#{% import _self as knp_menu %}#}
     <a href="{{ item.uri }}"{{ knp_menu.attributes(item.linkAttributes) }}>
-        {# @todo настройку иконок через атрибуты пунктов меню #}
-        <i class='fa fa-link'></i>
+        {% if item.extras.beforeCode %}
+            {{ item.extras.beforeCode }}
+        {% endif %}
         <span>
             {{ block('label')|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages')) }}
         </span>
+        {% if item.extras.afterCode %}
+            {{ item.extras.afterCode }}
+        {% endif %}
     </a>
 {% endblock %}

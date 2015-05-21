@@ -20,18 +20,34 @@ class AdminMenu extends ContainerAware
         $menu = $factory->createItem('admin_main');
 
         $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'sidebar-menu'); // nav navbar-nav
-        $menu->addChild('Dashboard',     ['route' => 'cms_admin_index']);
-        $menu->addChild('Structure',     ['route' => 'cms_admin_structure']);
-        $menu->addChild('Modules',       ['route' => 'cms_admin_module']);
-        $menu->addChild('Files',         ['route' => 'cms_admin_files']);
-        $menu->addChild('Users',         ['route' => 'cms_admin_user']);
-        $menu->addChild('Configuration', ['route' => 'cms_admin_config']);
-        $menu->addChild('Appearance',    ['route' => 'cms_admin_appearance']);
+        $menu->addChild('Dashboard',     ['route' => 'cms_admin_index'])->setExtras(['beforeCode' => '<i class="fa fa-dashboard"></i>']);
+        $menu->addChild('Structure',     ['route' => 'cms_admin_structure'])->setExtras(['beforeCode' => '<i class="fa fa-folder-open"></i>']);
+        $menu->addChild('Files',         ['route' => 'cms_admin_files'])->setExtras(['beforeCode' => '<i class="fa fa-download"></i>']);
+        $menu->addChild('Users',         ['route' => 'cms_admin_user'])->setExtras(['beforeCode' => '<i class="fa fa-users"></i>']);
+        $menu->addChild('Configuration', ['route' => 'cms_admin_config'])->setExtras(['beforeCode' => '<i class="fa fa-gears"></i>']);
+        $menu->addChild('Appearance',    ['route' => 'cms_admin_appearance'])->setExtras(['beforeCode' => '<i class="fa fa-image"></i>']);
 
         /*
-        $menu->addChild('Reports',       ['route' => 'cms_admin_reports']);
-        $menu->addChild('Help',          ['route' => 'cms_admin_help']);
+        $menu->addChild('Reports',       ['route' => 'cms_admin_reports'])->setExtras(['beforeCode' => '<i class="fa fa-file-excel-o"></i>']);
+        $menu->addChild('Help',          ['route' => 'cms_admin_help'])->setExtras(['beforeCode' => '<i class="fa fa-question"></i>']);
         */
+
+        $modulesItems = $menu->addChild('Modules', ['route' => 'cms_admin_module'])
+            ->setAttribute('class', 'treeview')
+            ->setExtras([
+                'afterCode'  => '<i class="fa fa-angle-left pull-right"></i>',
+                'beforeCode' => '<i class="fa fa-th"></i>',
+            ])
+        ;
+        $modulesItems->setChildrenAttribute('class', 'treeview-menu');
+
+        foreach ($this->container->get('cms.module')->all() as $module) {
+            if ($module->hasAdmin()) {
+                $modulesItems->addChild($module->getShortName(), ['route' => 'cms_admin_module_full_path', 'routeParameters' => ['name' => $module->getShortName()]])
+                    ->setExtras(['beforeCode' => '<i class="fa fa-angle-right"></i>'])
+                ;
+            }
+        }
 
         return $menu;
     }

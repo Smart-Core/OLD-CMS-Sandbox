@@ -166,6 +166,11 @@ cms_admin_module:
     defaults:
         _controller: CMSBundle:Admin:module
 
+cms_admin_module_full_path:
+    path: /module/{name}/
+    defaults:
+        _controller: CMSBundle:Admin:module
+
 cms_admin_module_install_updatedb:
     path: /module/install/updatedb
     methods: 'POST'
