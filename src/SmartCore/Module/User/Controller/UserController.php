@@ -74,7 +74,7 @@ class UserController extends Controller
 
     public function registerCheckEmailAction()
     {
-        if ($this->container->get('session')->has('fos_user_send_confirmation_email/email')) {
+        if ($this->get('session')->has('fos_user_send_confirmation_email/email')) {
             return $this->forward('FOSUserBundle:Registration:checkEmail');
         }
 

@@ -330,7 +330,8 @@ class AdminStructureController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param Request     $request
+     * @param int         $id
      * @param string|null $slug
      *
      * @return Response
@@ -342,9 +343,9 @@ class AdminStructureController extends Controller
         $controller = $this->get('cms.router')->matchModuleAdmin($node->getModule(), '/'.$slug);
         $controller['_node'] = $node;
 
-        $subRequest = $this->container->get('request')->duplicate($request->query->all(), null, $controller);
+        $subRequest = $this->get('request')->duplicate($request->query->all(), null, $controller);
 
-        $response = $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
+        $response = $this->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
 
         if ($response->isRedirection() and $request->query->has('redirect_to')) {
             return $this->redirect($request->query->get('redirect_to'));

@@ -56,8 +56,8 @@ class EngineController extends Controller
             $this->get('cms.breadcrumbs')->add($this->get('cms.folder')->getUri($folder), $folder->getTitle(), $folder->getDescription());
         }
 
-        $this->container->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
-        $this->container->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
+        $this->get('cms.context')->setCurrentFolderId($router_data['current_folder_id']);
+        $this->get('cms.context')->setCurrentFolderPath($router_data['current_folder_path']);
 
         // Список нод кешируется только при GET запросах.
         $router_data['http_method'] = $request->getMethod();

@@ -21,6 +21,7 @@ class ApiEngineController extends Controller
 {
     /**
      * @param Request $request
+     * @param int $node_id
      * @param string $slug
      *
      * @return Response
@@ -43,7 +44,7 @@ class ApiEngineController extends Controller
 
         $controller['_node'] = $node;
 
-        $subRequest = $this->container->get('request')->duplicate(
+        $subRequest = $this->get('request')->duplicate(
             $request->query->all(),
             $request->request->all(),
             $controller,
@@ -52,7 +53,7 @@ class ApiEngineController extends Controller
             $request->server->all()
         );
 
-        return $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
+        return $this->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
     }
 
     /**
