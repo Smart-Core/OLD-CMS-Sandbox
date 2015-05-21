@@ -5,8 +5,8 @@
 {% block content %}
 
     {% if folderPath %}
-        <a class="btn btn-small" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right;">
-            <i class="icon-home"></i> Перейти на страницу новостей на сайте
+        <a class="btn btn-default btn-small btn-sm" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right;">
+            <i class="icon-home"></i><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Перейти на страницу новостей на сайте
         </a>
     {% endif %}
 

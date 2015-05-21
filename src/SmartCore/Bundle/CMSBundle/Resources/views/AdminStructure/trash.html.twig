@@ -9,6 +9,9 @@
 {% block content %}
     {{ parent() }}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <h3>{{ 'Deleted folders'|trans }}</h3>
 
     <table class="table table-bordered table-hover">
@@ -30,6 +33,12 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+</div>
+
+
+<div class="box box-primary">
+    <div class="box-header with-border">
 
     <h3>{{ 'Deleted nodes'|trans }}</h3>
 
@@ -60,5 +69,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

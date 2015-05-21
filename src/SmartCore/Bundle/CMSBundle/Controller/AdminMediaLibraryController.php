@@ -38,7 +38,7 @@ class AdminMediaLibraryController extends Controller
     {
         $form = $this->createForm(new StorageFormType(), new Storage('/_media'));
         $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -79,7 +79,7 @@ class AdminMediaLibraryController extends Controller
 
         $form = $this->createForm(new StorageFormType(), $storage);
         $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -113,7 +113,7 @@ class AdminMediaLibraryController extends Controller
 
         $form = $this->createForm(new CollectionFormType(), $collection);
         $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -154,7 +154,7 @@ class AdminMediaLibraryController extends Controller
 
         $form = $this->createForm(new CollectionFormType(), $collection);
         $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

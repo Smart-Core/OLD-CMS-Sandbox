@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     {% include '@UnicatModule/help/attr.html.twig' %}
 
     <h3>{{ 'Attributes group'|trans }} &laquo;{{ group.title }}&raquo;</h3>
@@ -46,6 +49,11 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
+
+    <h3>Создать новый атрибут</h3>
 
     {{ form(form, {'attr': {'class': 'form-horizontal well'}}) }}
 

@@ -4,7 +4,10 @@
 
 {% block content %}
 
-    <a href="{{ path('cms_admin_config_media') }}" class="btn">Медиа библиотека</a>
+<div class="box box-success">
+    <div class="box-header with-border">
+
+    <a href="{{ path('cms_admin_config_media') }}" class="btn btn-primary">Медиа библиотека</a>
 
     <h3>{{ 'Settings'|trans }}</a></h3>
 
@@ -24,5 +27,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

@@ -168,6 +168,14 @@ mopa_bootstrap:
         show_legend: false # default is true
         checkbox_label: label
         error_type: block # or inline which is default
+        date_wrapper_class:
+            year: col-xs-1
+            month: col-xs-1
+            day: col-xs-1
+        horizontal: true
+        horizontal_label_class: ''
+        horizontal_label_offset_class: ''
+        horizontal_input_wrapper_class: controls
         render_optional_text: false
         render_required_asterisk: true
 

@@ -310,7 +310,7 @@ class UnicatConfigurationManager
             ->remove('is_dedicated_table')
             ->remove('update_all_records_with_default_value')
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -368,7 +368,7 @@ class UnicatConfigurationManager
     {
         return $this->getCategoryForm($category, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -403,7 +403,7 @@ class UnicatConfigurationManager
         return $this->getItemForm($data, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('delete', 'submit', ['attr' => [ 'class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить запись?')" ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -427,7 +427,7 @@ class UnicatConfigurationManager
     {
         return $this->getItemForm($data, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -442,7 +442,7 @@ class UnicatConfigurationManager
 
         return $this->getStructureForm($structure, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -454,7 +454,7 @@ class UnicatConfigurationManager
     {
         return $this->getStructureForm($data, $options)
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**
@@ -469,7 +469,7 @@ class UnicatConfigurationManager
 
         return $this->getAttributesGroupForm($group, $options)
             ->add('create', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]]);
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]]);
     }
 
     /**

@@ -4,8 +4,11 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <a href="{{ path('unicat_admin.attributes_group_create', {'configuration': configuration.name}) }}" class="btn btn-success pull-right">
-        <i class="icon-plus icon-white"></i> {{ 'Create attributes group'|trans }}
+        <i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Create attributes group'|trans }}
     </a>
 
     <h3>{{ 'Attributes groups'|trans }}</h3>
@@ -28,5 +31,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

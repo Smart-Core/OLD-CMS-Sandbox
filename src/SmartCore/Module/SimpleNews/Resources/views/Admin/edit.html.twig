@@ -5,8 +5,8 @@
 {% block content %}
 
     {% if itemPath %}
-        <a class="btn btn-small" href="{{ itemPath }}" title="{{ app.request.host ~ itemPath }}" style="float: right;">
-            <i class="icon-home"></i> Перейти на страницу новости на сайте
+        <a class="btn btn-default btn-small btn-sm" href="{{ itemPath }}" title="{{ app.request.host ~ itemPath }}" style="float: right;">
+            <i class="icon-home"></i><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Перейти на страницу новости на сайте
         </a>
     {% endif %}
 

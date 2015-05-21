@@ -10,15 +10,21 @@
         <li class="active"><a>Свойства слайда</a></li>
     </ul>
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <table style="width: 100%;">
         <tr>
             <td style="vertical-align: top;">
                 {{ form(form, {'attr': {'class': 'form-horizontal'}} ) }}
             </td>
             <td>
-                <img src="{{ asset(webPath) }}{{ slide.filename }}" alt="" width="500" />
+                <img src="{{ asset(webPath) }}{{ slide.filename }}" alt="" width="500" style="margin-left: 40px;" />
             </td>
         </tr>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

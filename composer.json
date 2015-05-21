@@ -60,7 +60,7 @@
         "liip/functional-test-bundle": "dev-master",
         "liip/theme-bundle": "dev-master",
         "misd/guzzle-bundle": "~1.0",
-        "mopa/bootstrap-bundle":  "~2.3@dev",
+        "mopa/bootstrap-bundle":  "dev-master",
         "mremi/templating-extra-bundle": "dev-master",
         "pagerfanta/pagerfanta": "v1.0.1",
         "rickysu/tagcache-bundle": "dev-master",

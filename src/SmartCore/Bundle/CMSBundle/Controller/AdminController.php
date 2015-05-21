@@ -52,7 +52,7 @@ class AdminController extends Controller
      *
      * @return Response
      */
-    public function elfinderAction(Request $request)
+    public function elfinderAction()
     {
         return $this->render('CMSBundle:Admin:elfinder.html.twig', [
             'fullscreen' => true,

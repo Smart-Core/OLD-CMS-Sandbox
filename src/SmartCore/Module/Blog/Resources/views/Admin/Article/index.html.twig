@@ -4,9 +4,12 @@
 
 {% block content %}
 
-    <p><a href="{{ path('smart_blog_admin_article_create') }}" class="btn btn-success">{{ 'Add article'|trans }}</a></p>
+    <p style="margin-top: 10px;"><a href="{{ path('smart_blog_admin_article_create') }}" class="btn btn-success">{{ 'Add article'|trans }}</a></p>
 
     <p>{{ 'Total articles'|trans }}: {{ pagerfanta.count }}</p>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
 
     <table class="table table-striped">
         <thead>
@@ -36,10 +39,13 @@
     </table>
 
     {% if pagerfanta.haveToPaginate %}
-        {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
+        {{ pagerfanta(pagerfanta, 'twitter_bootstrap3_translated', {
                 'css_container_class': 'pagination pagination-centered',
             })
         }}
     {% endif %}
+
+    </div>
+</div>
 
 {% endblock content %}

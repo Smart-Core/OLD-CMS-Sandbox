@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<div class="box box-success">
+    <div class="box-header with-border">
+
     <h3>{{ 'Templates'|trans }} <small>{{ templates_path }}</small></h3>
     <ul class="nav nav-pills">
         {% for template in templates %}
@@ -17,5 +20,8 @@
             <li><a href="{{ path('cms_admin_appearance_style', {'name': style}) }}">{{ style }}</a></li>
         {% endfor %}
     </ul>
+
+    </div>
+</div>
 
 {% endblock content %}

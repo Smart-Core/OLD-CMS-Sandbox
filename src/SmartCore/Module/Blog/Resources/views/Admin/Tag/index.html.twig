@@ -4,11 +4,15 @@
 
 {% block content %}
 
-    <div class="span3">
+<div class="box box-primary">
+    <div class="box-header with-border">
+
+        <div class="row">
+    <div class="span3 col-md-3">
         {{ form(form, {'attr': {'class': 'well'} }) }}
     </div>
 
-    <div class="span8">
+    <div class="span8 col-md-8">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -39,11 +43,16 @@
         <p>{{ 'Total tags'|trans }}: {{ pagerfanta.count }}</p>
 
         {% if pagerfanta.haveToPaginate %}
-            {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
+            {{ pagerfanta(pagerfanta, 'twitter_bootstrap3_translated', {
                     'css_container_class': 'pagination pagination-centered',
                 })
             }}
         {% endif %}
     </div>
+
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}

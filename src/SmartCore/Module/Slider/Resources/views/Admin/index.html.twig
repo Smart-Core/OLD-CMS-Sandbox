@@ -8,6 +8,9 @@
         <li class="active"><a>Список всех слайдеров</a></li>
     </ul>
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <div class="tab-content">
         <div class="tab-pane active" id="all">
             <table class="table table-bordered table-hover">
@@ -36,6 +39,11 @@
         </div>
     </div>
 
+    </div>
+</div>
+
+    <h3>Создать новый слайдер</h3>
+    
     {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 
 {% endblock content %}

@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <a href="{{ path('unicat_admin.item_create', {'configuration': configuration.name}) }}" class="btn btn-primary pull-right">
         {{ 'Create record'|trans }}
     </a>
@@ -37,5 +40,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

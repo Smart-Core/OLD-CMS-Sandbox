@@ -2,6 +2,9 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <h2>{{ 'Fields of WebForm'|trans }}: &laquo;{{ web_form.title }}&raquo;</h2>
 
     <table class="table table-bordered table-hover">
@@ -30,6 +33,11 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
+
+    <h3>Создать новое поле</h3>
 
     {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 

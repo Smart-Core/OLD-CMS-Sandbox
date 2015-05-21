@@ -109,8 +109,8 @@ class AdminWebFormController extends Controller
         $form = $this->createForm(new WebFormFieldType(), $webFormField);
         $form
             ->add('update', 'submit', ['attr' => ['class' => 'btn-primary']])
-            ->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить поле?')" ]])
-            ->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate' ]])
+            ->add('delete', 'submit', ['attr' => ['class' => 'btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить поле?')" ]])
+            ->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]])
         ;
 
         if ($request->isMethod('POST')) {
@@ -152,7 +152,7 @@ class AdminWebFormController extends Controller
         $form = $this->createForm(new WebFormSettingsType(), $webForm);
         $form
             ->add('update', 'submit', ['attr' => ['class' => 'btn-primary']])
-            ->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate' ]])
+            ->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]])
         ;
 
         if ($request->isMethod('POST')) {
@@ -235,7 +235,7 @@ class AdminWebFormController extends Controller
         $form = $this->createForm(new MessageType(), $message);
         $form
             ->add('update', 'submit', ['attr' => ['class' => 'btn-primary']])
-            ->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate' ]])
+            ->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]])
         ;
 
         if ($request->isMethod('POST')) {

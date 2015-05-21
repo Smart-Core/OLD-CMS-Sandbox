@@ -4,8 +4,11 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <a href="{{ path('unicat_admin.structure_create', {'configuration': configuration.name}) }}" class="btn btn-success pull-right">
-        <i class="icon-plus icon-white"></i> {{ 'Create structure'|trans }}
+        <i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Create structure'|trans }}
     </a>
 
     <h3>{{ 'Structures'|trans }}</h3>
@@ -27,7 +30,7 @@
                 <td>
                     <a href="{{ path('unicat_admin.structure', {'id': item.id, 'configuration': item.configuration.name}) }}">{{ item.title }}</a>
                     <a href="{{ path('unicat_admin.structure_edit', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;">
-                        <i class="icon-edit" title="Edit"></i>
+                        <i class="icon-edit" title="Edit"></i><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </a>
                 </td>
                 <td>{{ item.name }}</td>
@@ -39,5 +42,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

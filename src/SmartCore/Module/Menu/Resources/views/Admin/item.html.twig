@@ -13,9 +13,9 @@
         {{ form_widget(form) }}
         <div class="control-group">
             <div class="controls">
-                <button type="submit" name="update" class="btn btn-success"><i class="icon-ok icon-white"></i> {{ 'Save'|trans }}</button>
-                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить пункт меню?')"><i class="icon-trash icon-white"></i> {{ 'Delete'|trans }}</button>
-                <a class="btn" href="{{ path('smart_menu_admin_group', {'group_id': item.group.id }) }}"> {{ 'Cancel'|trans }}</a>
+                <button type="submit" name="update" class="btn btn-success"><i class="icon-ok icon-white"></i><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ 'Save'|trans }}</button>
+                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить пункт меню?')"><i class="icon-trash icon-white"></i><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{ 'Delete'|trans }}</button>
+                <a class="btn btn-default" href="{{ path('smart_menu_admin_group', {'group_id': item.group.id }) }}"> {{ 'Cancel'|trans }}</a>
             </div>
         </div>
     </form>

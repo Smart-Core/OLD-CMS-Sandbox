@@ -1,18 +1,20 @@
 {% extends '@CMS/Form/bootstrap.html.twig' %}
 
+{#
 {% block form_widget_simple %}
     {% if not widget_remove_btn|default(null) %}
-        {% set attr = attr|merge({'class': attr.class|default('') ~ ' input-block-level'}) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control input-block-level'}) %}
     {% endif %}
     {{ parent() }}
 {% endblock form_widget_simple %}
 
 {% block choice_widget_collapsed %}
-    {% set attr = attr|merge({'class': attr.class|default('') ~ ' input-block-level'}) %}
+    {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control input-block-level'}) %}
     {{ parent() }}
 {% endblock choice_widget_collapsed %}
 
 {% block textarea_widget %}
-    {% set attr = attr|merge({'class': attr.class|default('') ~ ' input-block-level'}) %}
+    {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control input-block-level'}) %}
     {{ parent() }}
 {% endblock textarea_widget %}
+#}

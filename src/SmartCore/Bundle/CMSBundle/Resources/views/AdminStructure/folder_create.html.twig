@@ -3,8 +3,8 @@
 {% block title %}{{ 'Create folder'|trans }} / {{ parent() }}{% endblock %}
 
 {% block content %}
-<div class="row-fluid">
-    <div class="span9">
+<div class="row">
+    <div class="span9 col-md-9">
         {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 
         {{ form_start(form, {'attr':{'class': 'well well-small form-horizontal'}}) }}
@@ -26,12 +26,12 @@
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                    <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add'|trans }}</button>
 
                     {% if app.request.query.has('redirect_to') and folderPath %}
-                        <a class="btn cms-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
+                        <a class="btn btn-default cms-cancel" href="{{ folderPath }}">{{ 'Cancel'|trans }}</a>
                     {% else %}
-                        <a class="btn cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
+                        <a class="btn btn-default cms-cancel" href="{{ path('cms_admin_structure') }}">{{ 'Cancel'|trans }}</a>
                     {% endif %}
 
                 </div>
@@ -42,7 +42,7 @@
 {% endblock content %}
 
 {% block bottom_nav %}
-    <div class="span3">
+    <div class="span3 col-md-3">
         {{ include('@CMS/AdminStructure/_tree.html.twig') }}
     </div>
 </div>

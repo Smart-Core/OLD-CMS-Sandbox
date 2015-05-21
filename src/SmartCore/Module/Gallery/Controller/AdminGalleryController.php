@@ -321,7 +321,7 @@ class AdminGalleryController extends Controller
             ->remove('file')
             ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
             ->add('delete', 'submit', ['attr' => [ 'class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить фотографию?')" ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn', 'formnovalidate' => 'formnovalidate' ]])
+            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]])
         ;
 
         if ($request->isMethod('POST')) {

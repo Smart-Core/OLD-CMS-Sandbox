@@ -7,3 +7,43 @@
         </div>
     {% endspaceless %}
 {% endblock button_row %}
+
+{# @todo пока так добавляется id с _control_group - нужен для интеграции ace #}
+{% block widget_form_group_start %}
+    {% if widget_form_group|default(false) or form.parent == null %}
+        {% if form.parent is not null and 'collection' in form.parent.vars.block_prefixes %} {# i am a collection child #}
+        {% if not omit_collection_item %}
+            {# collection item wrapper doesnt need form-group it gets added to childs anyways #}
+            {% set widget_form_group_attr = widget_form_group_attr|merge({class: 'collection-item'}) %}
+        {% endif %}
+    {% endif %}
+    {% if errors|length > 0 %}
+        {# Add Error Class to Widget Wrapper#}
+        {% set widget_form_group_attr = widget_form_group_attr|merge({'class': widget_form_group_attr.class|default('') ~ ' has-error'}) %}
+    {% endif %}
+        {% if help_widget_popover.selector is sameas(null) %}
+            {% set help_widget_popover = help_widget_popover|merge({'selector': '#' ~ id }) %}
+        {% endif %}
+        {# @todo вот эта строчка id="{{ id ~ '_control_group' }}" #}
+        <div id="{{ id ~ '_control_group' }}" {% if help_widget_popover.title is not sameas(null) %}{{ block('help_widget_popover') }}{% endif %} {% for attrname,attrvalue in widget_form_group_attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
+        {# a form item containing the field in block_prefixes is a near subform or a field directly #}
+        {% if (form|length > 0 and form.parent != null)
+            and 'field' not in form.vars.block_prefixes
+            and 'date' not in form.vars.block_prefixes %}
+            {% if show_child_legend%}
+                {{ block('form_legend') }}
+            {% elseif label_render %}
+                {{ form_label(form, label|default(null)) }}
+            {% else %}
+            {% endif %}
+        {% else %}
+        {% if label_render %}
+            {{ form_label(form, label|default(null)) }}
+        {% endif %}
+    {% endif %}
+    {% else %}
+        {% if label_render %}
+            {{ form_label(form, label|default(null)) }}
+        {% endif %}
+    {% endif %}
+{% endblock widget_form_group_start %}

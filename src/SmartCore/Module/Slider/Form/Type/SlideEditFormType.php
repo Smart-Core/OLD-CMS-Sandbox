@@ -16,7 +16,7 @@ class SlideEditFormType extends AbstractType
             ->add('position')
             ->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']])
             ->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить слайд?')"]])
-            ->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']])
+            ->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']])
         ;
     }
 

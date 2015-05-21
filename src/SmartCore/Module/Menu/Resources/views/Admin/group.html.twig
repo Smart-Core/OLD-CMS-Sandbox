@@ -9,6 +9,9 @@
         <li><a href="{{ path('smart_menu_admin_group_edit', {'group_id': group.id }) }}">Свойства группы меню</a></li>
     </ul>
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <h4>Пункты меню</h4>
 
     {% set menu = knp_menu_get('MenuModule:MenuBuilder:full', [], {
@@ -18,16 +21,20 @@
 
     {{ knp_menu_render(menu, {'currentAsLink': true, 'currentClass': 'active', 'compressed': true }) }}
 
+    </div>
+</div>
+
     <form action="{{ path('smart_menu_admin_group', {'group_id': group.id }) }}" {{ form_enctype(form) }} method="post" class="form-horizontal well well-small">
         <h4>Добавить пункт</h4>
         {{ form_widget(form) }}
         <div class="control-group">
             <div class="controls">
-                <button type="submit" name="create_item" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                <button type="submit" name="create_item" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add'|trans }}</button>
                 {#<button type="submit" name="update" class="btn btn-primary"><i class="icon-ok icon-white"></i> {{ 'Save'|trans }}</button>#}
                 {#<a class="btn" href="{{ path('smart_menu_admin') }}"> {{ 'Cancel'|trans }}</a>#}
             </div>
         </div>
     </form>
+
 
 {% endblock content %}

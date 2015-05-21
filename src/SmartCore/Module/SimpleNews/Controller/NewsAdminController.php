@@ -18,8 +18,15 @@ class NewsAdminController extends Controller
     {
         $em = $this->getDoctrine();
 
+        $folderPath = null;
+        foreach ($this->get('cms.node')->findByModule('SimpleNews') as $node) {
+            $folderPath = $this->get('cms.folder')->getUri($node);
+
+            break;
+        }
+
         return $this->render('SimpleNewsModule:Admin:index.html.twig', [
-            'folderPath' => $this->getFilderPath(),
+            'folderPath' => $folderPath,
             'news'       => $em->getRepository('SimpleNewsModule:News')->findBy([], ['id' => 'DESC']),
         ]);
     }
@@ -47,7 +54,7 @@ class NewsAdminController extends Controller
 
         $form = $this->createForm(new NewsFormType(), $news);
         $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -65,9 +72,16 @@ class NewsAdminController extends Controller
             }
         }
 
+        $folderPath = null;
+        foreach ($this->get('cms.node')->findByModule('SimpleNews') as $node) {
+            $folderPath = $this->get('cms.folder')->getUri($node);
+
+            break;
+        }
+
         return $this->render('SimpleNewsModule:Admin:create.html.twig', [
             'form'       => $form->createView(),
-            'folderPath' => $this->getFilderPath(),
+            'folderPath' => $folderPath,
         ]);
     }
 
@@ -82,7 +96,7 @@ class NewsAdminController extends Controller
         $form = $this->createForm(new NewsFormType(), $this->getDoctrine()->getManager()->find('SimpleNewsModule:News', $id));
         $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
         $form->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить запись?')"]]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

@@ -19,9 +19,9 @@
 
         {{ block('label') }}
         {% if item.extra('countNewMessages') %}
-            <span class="badge badge-important">{{ item.extra('countNewMessages') }}</span>
+            <span class="label-danger badge badge-important">{{ item.extra('countNewMessages') }}</span>
         {% elseif item.extra('countInProgress') %}
-            <span class="badge badge-success">{{ item.extra('countInProgress') }}</span>
+            <span class="label-success badge badge-success">{{ item.extra('countInProgress') }}</span>
         {% endif %}
     </a>
 {% endblock %}

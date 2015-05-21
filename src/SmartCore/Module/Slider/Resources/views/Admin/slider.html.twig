@@ -5,8 +5,8 @@
 {% block content %}
 
     {% if folderPath %}
-        <a class="btn btn-small" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right; margin-top: 8px;">
-            <i class="icon-home"></i> Перейти на страницу слайдера на сайте
+        <a class="btn btn-default btn-small btn-sm" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right; margin-top: 8px;">
+            <i class="icon-home"></i><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Перейти на страницу слайдера на сайте
         </a>
     {% endif %}
 
@@ -15,6 +15,9 @@
         <li class="active"><a href="{{ path('smart_module.slider.admin_slider', {'id': slider.id }) }}">Редактирование слайдера <b>&laquo;{{ slider.title }}&raquo;</b></a></li>
         <li><a href="{{ path('smart_module.slider.admin_slider_edit', {'id': slider.id}) }}">Свойства слайдера</a></li>
     </ul>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
 
     <div class="tab-content">
         <div class="tab-pane active" id="all">
@@ -51,6 +54,11 @@
 
         </div>
     </div>
+
+    </div>
+</div>
+
+    <h3>Загрузить картинку</h3>
 
     {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 

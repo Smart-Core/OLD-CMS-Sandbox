@@ -35,7 +35,7 @@ class AdminConfigController extends Controller
 
         $form = $this->createForm(new SettingFormType(), $setting);
         $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn', 'formnovalidate' => 'formnovalidate']]);
+        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

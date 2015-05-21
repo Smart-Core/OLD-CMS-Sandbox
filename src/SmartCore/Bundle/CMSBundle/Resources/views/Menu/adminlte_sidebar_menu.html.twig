@@ -1,0 +1,12 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block linkElement %}
+    {#{% import _self as knp_menu %}#}
+    <a href="{{ item.uri }}"{{ knp_menu.attributes(item.linkAttributes) }}>
+        {# @todo настройку иконок через атрибуты пунктов меню #}
+        <i class='fa fa-link'></i>
+        <span>
+            {{ block('label')|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages')) }}
+        </span>
+    </a>
+{% endblock %}

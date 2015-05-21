@@ -4,21 +4,32 @@
 
 {% block content %}
 
-    <h3>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h3>
+<div class="box box-primary">
+    <div class="box-header with-border">
 
-    <div class="span3">
-        {{ form(form, {'attr': {'class': 'well'} }) }}
-    </div>
+        <div class="row">
 
-    <div class="span8">
-        {% set menuItem = knp_menu_get('UnicatModule:CategoryMenu:adminTree', [], {
-            'categoryClass': structure.configuration.categoryClass,
-            'structure': structure
-        }) %}
-        {{ knp_menu_render(menuItem, {
-            'currentClass': 'active',
-            'clear_matcher': false,
-        }) }}
+        <div class="col-md-12">
+            <h3>{{ 'Structure'|trans }} &laquo;{{ structure.title }}&raquo;</h3>
+        </div>
+
+        <div class="span3 col-md-4">
+            {{ form(form, {'attr': {'class': 'form-horizontal well'} }) }}
+        </div>
+
+        <div class="span8 col-md-8">
+            {% set menuItem = knp_menu_get('UnicatModule:CategoryMenu:adminTree', [], {
+                'categoryClass': structure.configuration.categoryClass,
+                'structure': structure
+            }) %}
+            {{ knp_menu_render(menuItem, {
+                'currentClass': 'active',
+                'clear_matcher': false,
+            }) }}
+        </div>
+
+        </div>
     </div>
+</div>
 
 {% endblock content %}

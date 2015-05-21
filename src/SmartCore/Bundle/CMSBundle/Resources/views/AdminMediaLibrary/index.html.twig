@@ -8,9 +8,12 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <h1>{{ 'Media Library'|trans }}</h1>
 
-    <h3>Коллекции <a href="{{ path('cms_admin_config_media_create_collection') }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create collection'|trans }}</a></h3>
+    <h3>Коллекции <a href="{{ path('cms_admin_config_media_create_collection') }}" class="btn btn-default btn-xs btn-mini"><i class="icon-plus"></i><span class="glyphicon glyphicon-plus"></span> {{ 'Create collection'|trans }}</a></h3>
 
     <table class="table table-bordered table-hover">
         <thead><tr>
@@ -34,7 +37,7 @@
     </table>
 
 
-    <h3>Хранилища <a href="{{ path('cms_admin_config_media_create_storage') }}" class="btn btn-mini"><i class="icon-plus"></i> {{ 'Create storage'|trans }}</a></h3>
+    <h3>Хранилища <a href="{{ path('cms_admin_config_media_create_storage') }}" class="btn btn-default btn-xs btn-mini"><i class="icon-plus"></i><span class="glyphicon glyphicon-plus"></span> {{ 'Create storage'|trans }}</a></h3>
 
     <table class="table table-bordered table-hover">
         <thead><tr>
@@ -54,5 +57,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
 
 {% endblock content %}

@@ -1,0 +1,103 @@
+{% extends '@CMS/admin.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <style media="all" type="text/css"> @import url({{ asset('bundles/cms/css/admin.css') }}); </style>
+    <style media="all" type="text/css">
+        label span {
+            color: red;
+        }
+        .form-horizontal {
+            margin: 5px 0 5px;
+        }
+        .form-horizontal .control-group {
+            margin-bottom: 12px;
+        }
+        .form-horizontal .control-label {
+            width: 180px;
+        }
+        .form-horizontal .controls {
+            margin-left: 200px;
+        }
+        .form-horizontal option[selected=selected] {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+{% block navbar %}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            {% block navbar_inner %}
+            <!-- Be sure to leave the brand out there if you want it shown -->
+            <a class="brand" href="{{ app.request.baseUrl }}/" title="Перейти на сайт"><i class="icon-home icon-white"></i></a>
+
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <!-- .nav, .navbar-search, .navbar-form, etc -->
+                {{ knp_menu_render('CMSBundle:AdminMenu:main', { 'currentClass': 'active', 'clear_matcher': false })}}
+
+                <ul class="nav pull-right">
+                    {% set notifications = cms_get_notifications() %}
+                    {% if notifications %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Уведомления">
+                                <i class="icon-bullhorn icon-white"></i>
+                                <span class="badge badge-important">{{ notifications|length }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for module_notifications in notifications %}
+                                    {% for notifies in module_notifications %}
+                                        {% for notify in notifies %}
+                                            <li>
+                                                {#<i class="icon-zcog"></i>#}
+                                                <a href="{{ notify.url }}">{{ notify.title }}
+                                                    {% if notify.count %}
+                                                        <span class="badge badge-{{ notify.badge }}">{{ notify.count }}</span>
+                                                    {% endif %}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {{ app.user.userName }} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li ><a href="{{ path('cms_admin_user_edit', {'id': app.user.id}) }}"><i class="icon-cog"></i> {{ 'My profile'|trans }}</a></li>
+                            <li class="divider"></li>
+                            <li ><a href="{{ logout_path('admin') }}"><i class="icon-off"></i> {{ 'Exit'|trans }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            {% endblock navbar_inner %}
+        </div>
+    </div>
+</div>
+{% endblock navbar %}
+
+<div class="container">
+    {% block nav '' %}
+
+    {% include '@SmartCore/flash_messages.html.twig' %}
+
+    {% block content %}
+        {% block subnav '' %}
+    {% endblock content %}
+
+    {% block bottom_nav '' %}
+</div>
+{% endblock body %}

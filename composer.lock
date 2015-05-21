@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "587491da40dad9728cbe0fe581a81c56",
+    "hash": "5036263e9fe1bebeef83119625e0a897",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -4490,40 +4490,47 @@
         },
         {
             "name": "mopa/bootstrap-bundle",
-            "version": "2.3.x-dev",
+            "version": "dev-master",
             "target-dir": "Mopa/Bundle/BootstrapBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "a71200d932d9b3c4ab9ecbeb0ba52b367d9596e9"
+                "reference": "a5573423b7d029d65bf85e3eba336d5d85d695f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/a71200d932d9b3c4ab9ecbeb0ba52b367d9596e9",
-                "reference": "a71200d932d9b3c4ab9ecbeb0ba52b367d9596e9",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/a5573423b7d029d65bf85e3eba336d5d85d695f1",
+                "reference": "a5573423b7d029d65bf85e3eba336d5d85d695f1",
                 "shasum": ""
             },
             "require": {
-                "mopa/composer-bridge": "1.3.*",
-                "symfony/symfony": "~2.3"
+                "mopa/composer-bridge": "~1.3",
+                "symfony/console": "~2.3",
+                "symfony/form": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/twig-bundle": "~2.3|~3.0",
+                "twig/twig": ">=1.12"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6"
             },
             "suggest": {
-                "craue/formflow-bundle": "dev-master",
-                "jlong/sass-twitter-bootstrap": "dev-master",
-                "knplabs/knp-menu-bundle": "2.0.*",
-                "knplabs/knp-paginator-bundle": "dev-master",
+                "craue/formflow-bundle": "~2.0",
+                "knplabs/knp-menu-bundle": "~2.0@dev",
+                "knplabs/knp-paginator-bundle": "~2.3",
                 "mopa/bootstrap-sandbox-bundle": "~2.3",
-                "twbs/bootstrap": "2.*"
+                "twbs/bootstrap": ">2.0,<4.0-dev",
+                "twbs/bootstrap-sass": "v3.1.1"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
-                    "Mopa\\Bundle\\BootstrapBundle": ""
+                    "Mopa\\Bundle\\BootstrapBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4548,23 +4555,24 @@
                 "form",
                 "template"
             ],
-            "time": "2015-01-12 09:44:26"
+            "time": "2015-04-30 12:53:38"
         },
         {
             "name": "mopa/composer-bridge",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaComposerBridge.git",
-                "reference": "bbbd9b4595993cda248a996f21af3298f12fa331"
+                "reference": "6f64e2f626bcdf2a6cab5d5c1be1d46a53905c13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaComposerBridge/zipball/bbbd9b4595993cda248a996f21af3298f12fa331",
-                "reference": "bbbd9b4595993cda248a996f21af3298f12fa331",
+                "url": "https://api.github.com/repos/phiamo/MopaComposerBridge/zipball/6f64e2f626bcdf2a6cab5d5c1be1d46a53905c13",
+                "reference": "6f64e2f626bcdf2a6cab5d5c1be1d46a53905c13",
                 "shasum": ""
             },
             "require": {
+                "symfony/class-loader": ">=2.0.0",
                 "symfony/console": ">=2.0.0"
             },
             "type": "symfony-bridge",
@@ -4598,7 +4606,7 @@
                 "Symfony2",
                 "composer"
             ],
-            "time": "2014-12-29 13:24:12"
+            "time": "2015-02-23 10:26:44"
         },
         {
             "name": "mremi/templating-extra-bundle",

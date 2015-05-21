@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<div class="box box-primary">
+    <div class="box-header with-border">
+
     <table class="table table-bordered table-hover">
         <thead><tr>
             <th style="width: 1%;">#</th>
@@ -25,9 +28,12 @@
 
         <div class="control-group">
             <div class="controls">
-                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i> {{ 'Add'|trans }}</button>
+                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add'|trans }}</button>
             </div>
         </div>
     </form>
+
+    </div>
+</div>
 
 {% endblock content %}

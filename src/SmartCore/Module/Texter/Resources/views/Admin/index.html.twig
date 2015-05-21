@@ -3,6 +3,11 @@
 {% block title %}Текстер / {{ parent() }}{% endblock %}
 
 {% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+
+        <h3>Текстер</h3>
+
     <div class="tab-content">
         <div class="tab-pane active" id="all">
             <table class="table table-bordered table-hover">
@@ -24,14 +29,17 @@
                                     <a href="{{ item._folderPath }}" title="Перейти на страницу с текстером">{{ item._folderPath }}</a>
                                 </small>
                             {% else %}
-                                <span class="label label-important" title="Этот текст нигде не используется">{{ 'No'|trans }}</span>
+                                <span class="label label-danger label-important" title="Этот текст нигде не используется">{{ 'No'|trans }}</span>
                             {% endif %}
                         </td>
-                        <td><a href="{{ path('smart_module.texter.admin.history', {'id': item.id}) }}" title="История"><i class="icon-time"></i></a></td>
+                        <td><a href="{{ path('smart_module.texter.admin.history', {'id': item.id}) }}" title="История"><i class="icon-time"></i><span class="glyphicon glyphicon-time" aria-hidden="true"></span></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+
+    </div>
+</div>
 {% endblock content %}

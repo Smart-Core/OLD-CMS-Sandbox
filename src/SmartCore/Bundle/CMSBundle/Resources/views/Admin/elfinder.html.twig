@@ -2,6 +2,8 @@
 
 {% block title %}{{ 'Files'|trans }} / {{ parent() }}{% endblock %}
 
+{% set is_hide_footer = true %}
+
 {% block styles %}
     {{ parent() }}
     <style media="all" type="text/css">
@@ -27,7 +29,7 @@
             {% if fullscreen %}
             var $window = $(window);
             $window.resize(function(){
-                var $win_height = $window.height() - 60;
+                var $win_height = $window.height() - 82; // 60
                 if( $f.height() != $win_height ){
                     $f.height($win_height).resize();
                 }

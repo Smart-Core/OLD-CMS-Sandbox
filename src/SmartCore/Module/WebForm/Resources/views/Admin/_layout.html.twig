@@ -9,8 +9,8 @@
     {#{% set __si = app.request.attributes.set('__selected_inheritance', false) %}#}
 
     {% if nodePath %}
-        <a class="btn btn-small" href="{{ nodePath }}" title="{{ app.request.host ~ nodePath }}" style="float: right; margin-top: 4px;">
-            <i class="icon-home"></i> Перейти на страницу веб-формы на сайте
+        <a class="btn btn-default btn-small btn-sm" href="{{ nodePath }}" title="{{ app.request.host ~ nodePath }}" style="float: right; margin-top: 4px;">
+            <i class="icon-home"></i><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Перейти на страницу веб-формы на сайте
         </a>
     {% endif %}
 

@@ -5,12 +5,15 @@
 {% block content %}
 
     {% if folderPath %}
-        <a class="btn btn-small" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right; margin-top: 14px;">
-            <i class="icon-home"></i> Перейти на страницу фотогалереи на сайте
+        <a class="btn btn-default btn-small btn-sm" href="{{ folderPath }}" title="{{ app.request.host ~ folderPath }}" style="float: right; margin-top: 14px;">
+            <i class="icon-home"></i><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Перейти на страницу фотогалереи на сайте
         </a>
     {% endif %}
 
     <a class="btn btn-small btn-link" href="{{ path('smart_module.gallery.admin') }}" style="float: right; margin-top: 14px;"> &laquo; Назад к списку галерей</a>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
 
     <h2>{{ 'Albums'|trans }} ({{ gallery.title }})</h2>
 
@@ -48,7 +51,7 @@
                     {% if album.enabled %}
                         <span class="label label-success">{{ 'Enabled'|trans }}</span>
                     {% else %}
-                        <span class="label label-important">{{ 'Disabled'|trans }}</span>
+                        <span class="label label-danger label-important">{{ 'Disabled'|trans }}</span>
                     {% endif %}
                     </a>
                 </td>
@@ -58,6 +61,11 @@
         {% endfor %}
         </tbody>
     </table>
+
+    </div>
+</div>
+
+    <h3>Новый альбом</h3>
 
     {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
 
