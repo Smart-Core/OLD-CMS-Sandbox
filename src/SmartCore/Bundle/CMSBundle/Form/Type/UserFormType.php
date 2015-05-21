@@ -31,8 +31,15 @@ class UserFormType extends AbstractType
 
         $builder
             ->add('enabled', null,  ['required' => false])
-            ->add('username', null, ['label' => 'form.username', 'translation_domain' => 'FOSUserBundle'])
-            ->add('email', 'email', ['label' => 'form.email', 'translation_domain' => 'FOSUserBundle'])
+            ->add('username', null, [
+                'label' => 'form.username',
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => ['autofocus' => 'autofocus'],
+            ])
+            ->add('email', 'email', [
+                'label' => 'form.email',
+                'translation_domain' => 'FOSUserBundle',
+            ])
             ->add('plainPassword', 'repeated', [
                 'type'            => 'password',
                 'required'        => false,

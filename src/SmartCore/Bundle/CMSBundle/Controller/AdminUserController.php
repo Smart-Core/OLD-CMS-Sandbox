@@ -38,12 +38,10 @@ class AdminUserController extends Controller
      */
     public function createAction(Request $request)
     {
-        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
-        $formFactory = $this->container->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
-        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager = $this->get('fos_user.user_manager');
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
-        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher = $this->get('event_dispatcher');
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
@@ -55,7 +53,7 @@ class AdminUserController extends Controller
             return $event->getResponse();
         }
 
-        $form = $formFactory->createForm();
+        $form = $this->get('fos_user.registration.form.factory')->createForm();
         $form->setData($user);
 
         if ($request->isMethod('POST')) {
@@ -67,7 +65,7 @@ class AdminUserController extends Controller
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('cms_admin_user');
+                    $url = $this->get('router')->generate('cms_admin_user');
                     $response = new RedirectResponse($url);
                 }
 
@@ -92,18 +90,19 @@ class AdminUserController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $user = $this->container->get('fos_user.user_manager')->findUserBy(['id' => $id]);
+        $user = $this->get('fos_user.user_manager')->findUserBy(['id' => $id]);
         if (!is_object($user) || !$user instanceof UserInterface) {
             return $this->redirect($this->generateUrl('cms_admin_user'));
         }
 
-        $form = $this->createForm(new UserFormType($this->get('doctrine.orm.default_entity_manager')), $user);
+        $form = $this->get('fos_user.profile.form.factory')->createForm();
+        $form->setData($user);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $this->container->get('fos_user.user_manager')->updateUser($user);
+                $this->get('fos_user.user_manager')->updateUser($user);
                 $this->get('session')->getFlashBag()->set('success', 'Данные пользовалеля <b>'.$user->getUsername().'</b> обновлены.');
 
                 return $this->redirect($this->generateUrl('cms_admin_user'));

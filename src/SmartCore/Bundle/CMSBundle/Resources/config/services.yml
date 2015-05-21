@@ -95,6 +95,11 @@ services:
         arguments: [ @doctrine ]
         tags:
             - { name: form.type, alias: cms_folder_tree }
+    cms.form.type.user:
+        class: SmartCore\Bundle\CMSBundle\Form\Type\UserFormType
+        arguments: [ @doctrine.orm.default_entity_manager ]
+        tags:
+            - { name: form.type, alias: smart_core_cms_user }
 # Twig
     cms.twig.extension:
         class: SmartCore\Bundle\CMSBundle\Twig\CmsExtension

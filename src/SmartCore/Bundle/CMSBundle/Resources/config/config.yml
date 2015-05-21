@@ -128,12 +128,17 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: SmartCore\Bundle\CMSBundle\Entity\User
+    profile:
+        form:
+            type: smart_core_cms_user
     registration:
         confirmation:
             enabled: true
             from_email:
                 address: %registration_email_confirmation%
                 sender_name: Email confirmation
+        form:
+            type: smart_core_cms_user
     resetting:
         email:
             from_email:
