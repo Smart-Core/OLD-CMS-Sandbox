@@ -39,9 +39,9 @@
                 <td>{{ item.isEnabled }}</td>
                 <td>{{ item.isRequired }}</td>
                 <td>
-                    {% if item.showInAdmin %}<span class="label label-important">admin</span>{% endif %}
-                    {% if item.showInList  %}<span class="label label-info">list</span>{% endif %}
-                    {% if item.showInView  %}<span class="label label-warning">view</span>{% endif %}
+                    {% if item.showInAdmin %}<span class="label label-danger">admin</span>{% endif %}
+                    {% if item.showInList  %}<span class="label label-primary">list</span>{% endif %}
+                    {% if item.showInView  %}<span class="label label-success">view</span>{% endif %}
                 </td>
                 <td>{{ item.isDedicatedTable }}</td>
                 <td>{{ item.createdAt|date() }}</td>

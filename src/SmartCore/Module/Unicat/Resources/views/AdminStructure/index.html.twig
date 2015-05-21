@@ -29,7 +29,7 @@
                 <td>{{ item.id }}</td>
                 <td>
                     <a href="{{ path('unicat_admin.structure', {'id': item.id, 'configuration': item.configuration.name}) }}">{{ item.title }}</a>
-                    <a href="{{ path('unicat_admin.structure_edit', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;">
+                    <a href="{{ path('unicat_admin.structure_edit', {'id': item.id, 'configuration': item.configuration.name}) }}" style="float: right;" title="Редактирование структуры">
                         <i class="icon-edit" title="Edit"></i><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </a>
                 </td>
