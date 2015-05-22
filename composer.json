@@ -64,7 +64,7 @@
         "mremi/templating-extra-bundle": "dev-master",
         "pagerfanta/pagerfanta": "v1.0.1",
         "rickysu/tagcache-bundle": "dev-master",
-        "smart-core/accelerator-cache-bundle": "1.0.x",
+        "smart-core/accelerator-cache-bundle": "dev-master",
         "smart-core/core-bundle": "dev-master",
         "smart-core/felib-bundle": "dev-master",
         "smart-core/ladybug-bundle": "~0.7",
