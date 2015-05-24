@@ -13,6 +13,9 @@
 <div class="box box-primary">
     <div class="box-header with-border">
 
+        <div class="row">
+            <div class="col-md-8">
+
         <table class="table table-bordered table-hover">
             <thead><tr>
                 <th>id</th>
@@ -35,19 +38,25 @@
             {% endfor %}
             </tbody>
         </table>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Создать новую группу меню</h3>
+
+                <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-vertical well">
+                    {{ form_widget(form) }}
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add group'|trans }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
 
     </div>
 </div>
 
-    <h3>Создать новую группу меню</h3>
-
-    <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-horizontal well">
-        {{ form_widget(form) }}
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add group'|trans }}</button>
-            </div>
-        </div>
-    </form>
 
 {% endblock content %}
