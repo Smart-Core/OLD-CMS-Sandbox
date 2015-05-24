@@ -90,7 +90,7 @@ class AdminController extends Controller
         }
 
         // @todo убрать в сервис.
-        if (! empty($filename)) {
+        if (!empty($filename)) {
             $this->get('cms.module')->install($filename);
         }
 
@@ -112,7 +112,7 @@ class AdminController extends Controller
         if ($request->isXmlHttpRequest()) {
             $application = new Application($this->get('kernel'));
             $application->setAutoExit(false);
-            $input = new ArrayInput(['command' => 'doctrine:schema:update', "--force" => true]);
+            $input = new ArrayInput(['command' => 'doctrine:schema:update', '--force' => true]);
             $output = new BufferedOutput();
 
             $retval = $application->run($input, $output);

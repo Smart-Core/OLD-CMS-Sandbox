@@ -12,7 +12,7 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
     use ContainerAwareTrait;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Route is loaded
      */
@@ -60,7 +60,7 @@ class ModuleRoutesLoader extends Loader implements LoaderInterface
      * @param mixed  $resource A resource
      * @param string $type     The resource type
      *
-     * @return boolean true if this class supports the given resource, false otherwise
+     * @return bool true if this class supports the given resource, false otherwise
      */
     public function supports($resource, $type = null)
     {

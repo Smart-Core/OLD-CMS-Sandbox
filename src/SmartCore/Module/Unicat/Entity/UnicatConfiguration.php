@@ -49,7 +49,7 @@ class UnicatConfiguration
     protected $is_inheritance;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="smallint", options={"default":10, "unsigned"=true})
      */

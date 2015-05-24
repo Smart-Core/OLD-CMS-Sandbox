@@ -37,7 +37,7 @@ class FrontControl
     }
 
     /**
-     * @param boolean $isDefault
+     * @param bool $isDefault
      *
      * @return $this
      */

@@ -160,7 +160,7 @@ class Breadcrumbs implements \Iterator, \Countable
             foreach ($bc as $item) {
                 echo --$cnt ? "<a href=\"{$item['uri']}\" title=\"{$item['descr']}\">" : '';
                 echo $item['title'];
-                echo $cnt ? "</a>&nbsp;&raquo;&nbsp;" : '';
+                echo $cnt ? '</a>&nbsp;&raquo;&nbsp;' : '';
             }
             echo "\n";
         }

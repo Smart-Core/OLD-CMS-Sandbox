@@ -1,4 +1,5 @@
 <?php
+
 /**
  * https://github.com/jimrubenstein/php-profiler.
  */
@@ -289,9 +290,9 @@ class Profiler
         echo "\n<pre>";
 
         if ($input === false) {
-            echo "установлен в <b>false</b>";
+            echo 'установлен в <b>false</b>';
         } elseif ($input === null) {
-            echo "установлен в <b>null</b>";
+            echo 'установлен в <b>null</b>';
         } else {
             print_r($input);
         }

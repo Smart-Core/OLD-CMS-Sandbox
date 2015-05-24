@@ -214,8 +214,7 @@ class Node implements \Serializable
             $this->controls_in_toolbar,
             $this->user_id,
             $this->created_at,
-            $this->controller,
-            ) = unserialize($serialized);
+            $this->controller) = unserialize($serialized);
         //) = igbinary_unserialize($serialized);
     }
 

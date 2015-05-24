@@ -76,7 +76,7 @@ class EngineRegion
     }
 
     /**
-     * @param integer $id
+     * @param int $id
      *
      * @return Region|null
      */

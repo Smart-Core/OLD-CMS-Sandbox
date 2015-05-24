@@ -62,7 +62,7 @@ class LocalProvider implements ProviderInterface
     /**
      * Получить ссылку на файл.
      *
-     * @param integer $id
+     * @param int $id
      * @param string|null $filter
      * @param string|null default_filter
      *

@@ -49,7 +49,7 @@ class ArticleController extends Controller
 
     /**
      * @param Request $requst
-     * @param integer $page
+     * @param int $page
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -81,8 +81,8 @@ class ArticleController extends Controller
 
     /**
      * @param Request $requst
-     * @param integer $year
-     * @param integer $month
+     * @param int $year
+     * @param int $month
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */

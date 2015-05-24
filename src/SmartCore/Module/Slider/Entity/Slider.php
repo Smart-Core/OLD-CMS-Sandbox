@@ -16,14 +16,14 @@ class Slider
     use ColumnTrait\Title;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="smallint", nullable=true)
      */
     private $width;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="smallint", nullable=true)
      */

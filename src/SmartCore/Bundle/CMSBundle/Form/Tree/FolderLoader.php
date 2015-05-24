@@ -1,4 +1,5 @@
 <?php
+
 namespace SmartCore\Bundle\CMSBundle\Form\Tree;
 
 use Doctrine\Common\Persistence\ObjectManager;

@@ -1,4 +1,5 @@
 <?php
+
 namespace SmartCore\Module\Blog\Form\Type;
 
 use Symfony\Component\Form\AbstractType;

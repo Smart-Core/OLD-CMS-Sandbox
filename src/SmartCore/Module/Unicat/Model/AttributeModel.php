@@ -45,28 +45,28 @@ class AttributeModel
     protected $close_tag;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_dedicated_table;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_link;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_required;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":1})
      */
@@ -75,7 +75,7 @@ class AttributeModel
     /**
      * Отображать в списке администратора.
      *
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean")
      */
@@ -84,7 +84,7 @@ class AttributeModel
     /**
      * Отображать в списке записей.
      *
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean")
      */
@@ -93,7 +93,7 @@ class AttributeModel
     /**
      * Отображать при просмотре записи.
      *
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean")
      */
@@ -217,7 +217,7 @@ class AttributeModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isIsLink()
     {
@@ -225,7 +225,7 @@ class AttributeModel
     }
 
     /**
-     * @param boolean $is_link
+     * @param bool $is_link
      *
      * @return $this
      */
@@ -237,7 +237,7 @@ class AttributeModel
     }
 
     /**
-     * @param boolean $is_required
+     * @param bool $is_required
      *
      * @return $this
      */
@@ -249,7 +249,7 @@ class AttributeModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsRequired()
     {
@@ -257,7 +257,7 @@ class AttributeModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isIsShowTitle()
     {
@@ -265,7 +265,7 @@ class AttributeModel
     }
 
     /**
-     * @param boolean $is_show_title
+     * @param bool $is_show_title
      *
      * @return $this
      */
@@ -357,7 +357,7 @@ class AttributeModel
     }
 
     /**
-     * @param boolean $show_in_admin
+     * @param bool $show_in_admin
      *
      * @return $this
      */
@@ -369,7 +369,7 @@ class AttributeModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getShowInAdmin()
     {
@@ -377,7 +377,7 @@ class AttributeModel
     }
 
     /**
-     * @param boolean $show_in_list
+     * @param bool $show_in_list
      *
      * @return $this
      */
@@ -389,7 +389,7 @@ class AttributeModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getShowInList()
     {
@@ -397,7 +397,7 @@ class AttributeModel
     }
 
     /**
-     * @param boolean $show_in_view
+     * @param bool $show_in_view
      *
      * @return $this
      */
@@ -409,7 +409,7 @@ class AttributeModel
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getShowInView()
     {

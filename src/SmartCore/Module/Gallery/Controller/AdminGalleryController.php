@@ -172,7 +172,7 @@ class AdminGalleryController extends Controller
         ;
 
         $form = $this->createForm(new PhotoFormType(), $photo);
-        $form->add('upload', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]]);
+        $form->add('upload', 'submit', ['attr' => ['class' => 'btn btn-success']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -246,8 +246,8 @@ class AdminGalleryController extends Controller
         }
 
         $form = $this->createForm(new AlbumFormType(), $album);
-        $form->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-             ->add('delete', 'submit', ['attr' => [ 'class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить альбом?')" ]])
+        $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']])
+             ->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить альбом?')"]])
              ->add('cancel', 'submit');
 
         if ($request->isMethod('POST')) {
@@ -319,9 +319,9 @@ class AdminGalleryController extends Controller
         $form = $this->createForm(new PhotoFormType(), $photo);
         $form
             ->remove('file')
-            ->add('update', 'submit', ['attr' => [ 'class' => 'btn btn-success' ]])
-            ->add('delete', 'submit', ['attr' => [ 'class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить фотографию?')" ]])
-            ->add('cancel', 'submit', ['attr' => [ 'class' => 'btn-default', 'formnovalidate' => 'formnovalidate' ]])
+            ->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']])
+            ->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить фотографию?')"]])
+            ->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']])
         ;
 
         if ($request->isMethod('POST')) {

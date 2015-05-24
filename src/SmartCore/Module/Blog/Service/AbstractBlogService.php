@@ -20,12 +20,12 @@ abstract class AbstractBlogService
     protected $eventDispatcher;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $itemsPerPage;
 
     /**
-     * @return integer
+     * @return int
      */
     public function getItemsCountPerPage()
     {
@@ -33,7 +33,7 @@ abstract class AbstractBlogService
     }
 
     /**
-     * @param integer $count
+     * @param int $count
      *
      * @return $this
      */

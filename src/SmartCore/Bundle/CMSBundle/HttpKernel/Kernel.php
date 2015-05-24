@@ -55,7 +55,7 @@ abstract class Kernel extends BaseKernel
     /**
      * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
      */
-    protected function registerSmartCoreCmsBundles(& $bundles)
+    protected function registerSmartCoreCmsBundles(&$bundles)
     {
         $this->registerCmsDependencyBundles($bundles);
         $this->autoRegisterSiteBundle($bundles);
@@ -65,7 +65,7 @@ abstract class Kernel extends BaseKernel
     /**
      * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
      */
-    protected function registerCmsModules(& $bundles)
+    protected function registerCmsModules(&$bundles)
     {
         $cacheModules = $this->getCacheDir().'/smart_core_cms_modules_enabled.meta';
 
@@ -107,7 +107,7 @@ abstract class Kernel extends BaseKernel
     /**
      * @param \Symfony\Component\HttpKernel\Bundle\BundleInterface[] $bundles
      */
-    protected function registerCmsDependencyBundles(& $bundles)
+    protected function registerCmsDependencyBundles(&$bundles)
     {
         $bundles[] = new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle();
         $bundles[] = new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle();

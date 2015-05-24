@@ -134,7 +134,7 @@ class ArticleRepository extends EntityRepository implements ArticleRepositoryInt
     /**
      * @param CategoryInterface|null $category
      *
-     * @return integer
+     * @return int
      *
      * @todo поддержку категорий.
      */

@@ -12,5 +12,5 @@ if ($cnt > 1 or $hide_if_only_home == false) {
         echo $item['title'];
         echo $cnt ? "</a>&nbsp;{$delimiter}&nbsp;" : '';
     }
-    echo "</div>";
+    echo '</div>';
 }

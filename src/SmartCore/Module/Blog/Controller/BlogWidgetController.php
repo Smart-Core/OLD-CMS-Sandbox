@@ -11,7 +11,7 @@ class BlogWidgetController extends Controller
     use NodeTrait;
 
     /**
-     * @param integer $limit
+     * @param int $limit
      *
      * @return Response
      */

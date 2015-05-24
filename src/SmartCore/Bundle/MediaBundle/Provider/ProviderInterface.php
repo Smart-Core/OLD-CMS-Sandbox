@@ -9,7 +9,7 @@ interface ProviderInterface
     /**
      * Получить ссылку на файл.
      *
-     * @param integer $id
+     * @param int $id
      * @param string|null $filter
      *
      * @return string|null

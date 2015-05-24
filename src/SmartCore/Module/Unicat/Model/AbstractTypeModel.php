@@ -33,7 +33,7 @@ abstract class AbstractTypeModel
     //protected $value;
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId()
     {

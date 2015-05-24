@@ -221,7 +221,7 @@ class Item
     }
 
     /**
-     * @param boolean $open_in_new_window
+     * @param bool $open_in_new_window
      *
      * @return $this
      */
@@ -233,7 +233,7 @@ class Item
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getOpenInNewWindow()
     {

@@ -37,7 +37,7 @@ class MenuBuilder extends ContainerAware
     /**
      * Глубина вложенности.
      *
-     * @var integer
+     * @var int
      */
     protected $depth;
 

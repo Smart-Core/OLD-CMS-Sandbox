@@ -45,7 +45,7 @@ class SimpleNewsController extends Controller
             $this->get('cms.breadcrumbs')->add(null, $this->get('translator')->trans('Page').': '.$page);
         }
 
-        return $this->render('SimpleNewsModule::news.html.twig', ['news' => $pagerfanta ]);
+        return $this->render('SimpleNewsModule::news.html.twig', ['news' => $pagerfanta]);
     }
 
     /**
@@ -57,7 +57,7 @@ class SimpleNewsController extends Controller
      */
     public function itemAction($slug)
     {
-        $item = $this->getDoctrine()->getRepository('SimpleNewsModule:News')->findOneBy(['slug' => $slug ]);
+        $item = $this->getDoctrine()->getRepository('SimpleNewsModule:News')->findOneBy(['slug' => $slug]);
 
         if (empty($item)) {
             throw $this->createNotFoundException('News not found');
@@ -67,13 +67,13 @@ class SimpleNewsController extends Controller
 
         $this->node->addFrontControl('edit')
             ->setTitle('Редактировать новость')
-            ->setUri($this->generateUrl('smart_module.news_admin.edit', ['id' => $item->getId() ]));
+            ->setUri($this->generateUrl('smart_module.news_admin.edit', ['id' => $item->getId()]));
 
         $this->node->addFrontControl('create')
             ->setIsDefault(false)
             ->setTitle('Добавить новость')
             ->setUri($this->generateUrl('smart_module.news_admin.create'));
 
-        return $this->render('SimpleNewsModule::item.html.twig', ['item' => $item ]);
+        return $this->render('SimpleNewsModule::item.html.twig', ['item' => $item]);
     }
 }

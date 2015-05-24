@@ -43,7 +43,7 @@ class NodeRouter extends Router
         if (isset($declaredRouteData[0][0]) and in_array('_folderPath', $declaredRouteData[0])) {
             if (isset($parameters['_folderPath'])) {
                 // Удаление последнего слеша
-                if (mb_substr($parameters['_folderPath'], - 1) == '/') {
+                if (mb_substr($parameters['_folderPath'], -1) == '/') {
                     $parameters['_folderPath'] = mb_substr($parameters['_folderPath'], 0, mb_strlen($parameters['_folderPath']) - 1);
                 }
 

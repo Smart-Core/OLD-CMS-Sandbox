@@ -134,7 +134,7 @@ class Html
      */
     public function addMetaKeyword($keyword)
     {
-        if (isset($this->meta['name']['keywords']) and ! empty($this->meta['name']['keywords'])) {
+        if (isset($this->meta['name']['keywords']) and !empty($this->meta['name']['keywords'])) {
             $this->meta['name']['keywords'] .= ', '.$keyword;
         } else {
             $this->setMeta('keywords', $keyword);

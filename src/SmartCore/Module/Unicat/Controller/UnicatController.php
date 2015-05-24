@@ -185,7 +185,7 @@ class UnicatController extends Controller
 
         $this->node->addFrontControl('edit')
             ->setTitle('Редактировать')
-            ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $ucm->getConfiguration()->getName(), 'id' => $item->getId() ]));
+            ->setUri($this->generateUrl('unicat_admin.item_edit', ['configuration' => $ucm->getConfiguration()->getName(), 'id' => $item->getId()]));
 
         return $this->render('UnicatModule::item.html.twig', [
             'mode'          => 'view',

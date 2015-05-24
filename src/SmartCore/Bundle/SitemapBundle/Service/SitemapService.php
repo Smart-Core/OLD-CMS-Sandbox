@@ -123,7 +123,7 @@ class SitemapService
                 $links = $crawler->filter('a')->extract('href');
                 $this->parseLinks($links, $url);
             } catch (\InvalidArgumentException $e) {
-                echo "Bad location: ".$this->baseUrl.$url->getLoc().PHP_EOL;
+                echo 'Bad location: '.$this->baseUrl.$url->getLoc().PHP_EOL;
 
                 $url->setStatus(500)
                     ->setIsVisited(true);

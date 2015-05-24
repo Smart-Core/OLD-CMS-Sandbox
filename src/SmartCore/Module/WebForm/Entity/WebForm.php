@@ -20,14 +20,14 @@ class WebForm
     use ColumnTrait\UserId;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $is_ajax;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
@@ -141,7 +141,7 @@ class WebForm
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isIsAjax()
     {
@@ -149,7 +149,7 @@ class WebForm
     }
 
     /**
-     * @param boolean $is_ajax
+     * @param bool $is_ajax
      *
      * @return $this
      */
@@ -161,7 +161,7 @@ class WebForm
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isIsUseCaptcha()
     {
@@ -169,7 +169,7 @@ class WebForm
     }
 
     /**
-     * @param boolean $is_use_captcha
+     * @param bool $is_use_captcha
      *
      * @return $this
      */

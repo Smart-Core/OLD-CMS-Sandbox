@@ -23,7 +23,7 @@ class WebFormField
     use ColumnTrait\UserId;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
@@ -86,7 +86,7 @@ class WebFormField
     }
 
     /**
-     * @param boolean $is_required
+     * @param bool $is_required
      *
      * @return $this
      */
@@ -98,7 +98,7 @@ class WebFormField
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsRequired()
     {

@@ -73,8 +73,8 @@ class CollectionService
     /**
      * Получить ссылку на файл.
      *
-     * @param integer       $id
-     * @param string|null   $filter
+     * @param int         $id
+     * @param string|null $filter
      *
      * @return string|null
      */

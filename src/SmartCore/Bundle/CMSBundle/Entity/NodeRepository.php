@@ -39,13 +39,13 @@ class NodeRepository extends EntityRepository
      */
     public function countInRegion($region)
     {
-        $query = $this->_em->createQuery("
+        $query = $this->_em->createQuery('
             SELECT COUNT(n.id)
             FROM CMSBundle:Node AS n
             JOIN CMSBundle:Region AS r
             WHERE r.id = :region
             AND n.region = r
-        ")->setParameter('region', $region);
+        ')->setParameter('region', $region);
 
         return $query->getSingleScalarResult();
     }

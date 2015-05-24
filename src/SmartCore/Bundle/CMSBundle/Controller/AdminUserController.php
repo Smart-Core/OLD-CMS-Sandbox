@@ -6,7 +6,6 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use SmartCore\Bundle\CMSBundle\Form\Type\RoleFormType;
-use SmartCore\Bundle\CMSBundle\Form\Type\UserFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
