@@ -2,6 +2,9 @@
 
 {% block title %}Новости / {{ parent() }}{% endblock %}
 
+{% set page_header = 'SimpleNews'|trans %}
+{% set page_description = 'Module'|trans %}
+
 {% block content %}
 
     {% if folderPath %}
@@ -10,7 +13,7 @@
         </a>
     {% endif %}
 
-    <ul class="nav nav-tabs" id="myTab">
+    <ul class="nav nav-pills" id="myTab">
         <li class="active"><a>Список всех новостей</a></li>
         <li><a href="{{ path('smart_module.news_admin.create') }}">Написать новость</a></li>
     </ul>

@@ -2,6 +2,9 @@
 
 {% block title %}&laquo;{{ configuration.title }}&raquo; / Unicat / {{ parent() }}{% endblock %}
 
+{% set page_header = 'Unicat'|trans %}
+{% set page_description = 'Module'|trans %}
+
 {% block nav %}
 
     {% set __selected_inheritance = app.request.attributes.get('__selected_inheritance') %}

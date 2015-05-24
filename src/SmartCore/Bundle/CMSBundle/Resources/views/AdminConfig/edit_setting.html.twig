@@ -2,19 +2,20 @@
 
 {% block title %}{{ 'Settings'|trans }} / {{ parent() }}{% endblock %}
 
+{% set page_header = 'Configuration'|trans %}
+
 {% block content %}
 
-    <h3>Редактирование настройки</h3>
+<div class="box box-primary">
+    <div class="box-header with-border">
 
-    <div class="well well-small">
-        <h4>{{ setting.bundle }}:{{ setting.name }}</h4>
-        <br />
+    <h3>Редактирование настройки: &laquo;{{ setting.bundle }}:{{ setting.name }}&raquo;</h3>
 
-        {{ form_errors(form) }}
+    {{ form_errors(form) }}
 
-        {{ form(form, {
-            'attr': {'class': 'form-horizontal'}
-        }) }}
+    {{ form(form, {'attr': {'class': 'form-horizontal well'} }) }}
+
     </div>
+</div>
 
 {% endblock content %}

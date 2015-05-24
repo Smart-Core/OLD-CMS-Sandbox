@@ -2,6 +2,8 @@
 
 {% block title %}{{ 'Users'|trans }} / {{ parent() }}{% endblock %}
 
+{% set page_header = 'Users'|trans %}
+
 {% block nav %}
     {{ knp_menu_render('CMSBundle:AdminMenu:user', { 'currentClass': 'active', 'clear_matcher': true })}}
 {% endblock nav %}

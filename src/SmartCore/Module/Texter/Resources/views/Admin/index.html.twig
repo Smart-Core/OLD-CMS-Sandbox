@@ -1,12 +1,15 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block title %}Текстер / {{ parent() }}{% endblock %}
+{% block title %}{{ 'Texter'|trans }} / {{ parent() }}{% endblock %}
+
+{% set page_header = 'Texter'|trans %}
+{% set page_description = 'Module'|trans %}
 
 {% block content %}
 <div class="box box-primary">
     <div class="box-header with-border">
 
-        <h3>Текстер</h3>
+        <h3>Текстовые записи</h3>
 
     <div class="tab-content">
         <div class="tab-pane active" id="all">

@@ -10,12 +10,16 @@
         </a>
     {% endif %}
 
-    <ul class="nav nav-tabs" id="myTab">
+    <ul class="nav nav-pills" id="myTab">
         <li><a href="{{ path('smart_module.news_admin') }}">Список всех новостей</a></li>
         <li><a href="{{ path('smart_module.news_admin.create') }}">Написать новость</a></li>
         <li class="active"><a>Редактирование новости</a></li>
     </ul>
 
-    {% include '@SimpleNewsModule/Admin/_form.html.twig' with {'form': form} %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            {% include '@SimpleNewsModule/Admin/_form.html.twig' with {'form': form} %}
+        </div>
+    </div>
 
 {% endblock content %}

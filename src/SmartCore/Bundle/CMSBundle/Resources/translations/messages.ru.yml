@@ -6,6 +6,7 @@ Add group: Добавить группу
 Annotation: Аннотация
 Administration: Администрирование
 Add module: Добавить модуль
+All: Все
 All structure: Вся структура
 All users: Все пользователи
 Appearance: Оформление
@@ -24,6 +25,7 @@ Create: Создать
 Create datetime: Дата создания
 Create folder: Добавить папку
 Create node: Подключить модуль
+Create role: Создать роль
 Create user: Создать пользователя
 Created: Создано
 Created at: Дата создания
@@ -43,6 +45,7 @@ Edit folder: Редактировать папку
 Edit node: Редактировать ноду
 Edit style: Редактировать стиль
 Edit template: Редактировать шаблон
+Edit templates and styles: Редактирование шаблонов и стилей
 Editor: Редактор
 Enabled: Включен
 Exit: Выход

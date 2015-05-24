@@ -22,6 +22,7 @@ class AdminController extends Controller
             return $this->itemAction($request, $this->text_item_id);
         }
 
+        // @todo pagination
         $items = $this->getDoctrine()->getRepository('TexterModule:Item')->findAll();
 
         /** @var $item Item */
@@ -119,13 +120,16 @@ class AdminController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $items = $em->getRepository('TexterModule:ItemHistory')->findBy(
+        $item = $em->getRepository('TexterModule:Item')->find($id);
+
+        $itemsHistory = $em->getRepository('TexterModule:ItemHistory')->findBy(
             ['item_id' => $id],
             ['created_at' => 'DESC']
         );
 
         return $this->render('TexterModule:Admin:history.html.twig', [
-            'items' => $items,
+            'item' => $item,
+            'items_history' => $itemsHistory,
         ]);
     }
 

@@ -1,4 +1,4 @@
-{% extends '@CMS/Admin/module.html.twig' %}
+{% extends '@WebFormModule/Admin/_layout.html.twig' %}
 
 {% block title %}{{ 'WebForms'|trans }} / {{ parent() }}{% endblock %}
 
@@ -7,7 +7,7 @@
 <div class="box box-primary">
     <div class="box-header with-border">
 
-    <h2>{{ 'WebForms'|trans }}</h2>
+    <h2>{{ 'All'|trans ~ ' ' ~ 'WebForms'|trans }}</h2>
 
     <table class="table table-bordered table-hover">
         <thead><tr>

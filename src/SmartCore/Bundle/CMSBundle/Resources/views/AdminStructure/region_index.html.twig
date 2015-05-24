@@ -2,6 +2,9 @@
 
 {% block title %}{{ 'Regions'|trans }} / {{ 'Structure'|trans }} / {{ parent() }}{% endblock %}
 
+{% set page_header = 'Regions'|trans %}
+{% set page_description = 'Structure'|trans %}
+
 {% block subnav %}
     {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 {% endblock subnav %}
@@ -41,7 +44,7 @@
 <div class="span4 col-md-4">
 
     <h4>{{ 'Create'|trans }} {{ 'Region'|trans }}</h4>
-    <form action="" {{ form_enctype(form) }} method="post" class="form-vertical well well-small">
+    <form action="" {{ form_enctype(form) }} method="post" class="form-vertical well">
         {{ form_widget(form) }}
         <div class="control-group">
             <div class="controls">

@@ -30,6 +30,9 @@
             color: #23527c;
             text-decoration: underline;
         }
+        h3 {
+            margin-top: 10px;
+        }
         .form-button {
             margin: 3px 0px 5px 20px;
             float: left;
@@ -132,7 +135,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="{{ path('cms_admin') }}" class="logo">
+            <a href="{{ path('cms_admin_index') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>C</b>MS</span>
                 <!-- logo for regular state and mobile devices -->
@@ -369,21 +372,23 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
 
+            {% if page_header is not empty %}
+            {% if not is_hide_content_header %}
             <!-- Content Header (Page header) -->
-            {#<section class="content-header">#}
-                {#
+            <section class="content-header">
                 <h1>
-                    Page Header
-                    <small>Optional description</small>
+                    {{ page_header }}
+                    <small>{{ page_description }}</small>
                 </h1>
-                #}
                 {#
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
+                    <li><a href="{{ path('cms_admin_index') }}" title="На главную админки"><i class="fa fa-dashboard"></i></a></li>
+                    <li class="active"><a href="#">Here</a></li>
                 </ol>
                 #}
-            {#</section>#}
+            </section>
+            {% endif %}
+            {% endif %}
 
             <!-- Main content -->
             <section class="content">
@@ -411,7 +416,7 @@
                 <b>Smart Core</b> CMS v0.5
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2015 <a href="http://smart-core.org/" target="_blank">Company</a>.</strong> All rights reserved.
+            Copyright &copy; 2015 <a href="http://smart-core.org/" target="_blank">Smart Core Web Solutions</a>. All rights reserved.
         </footer>
         {% endif %}
 

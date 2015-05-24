@@ -5400,22 +5400,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/AcceleratorCacheBundle.git",
-                "reference": "ad96a3a3814fe0c8766bf8f0126112ced1c8a4cc"
+                "reference": "bf314652ce2944ff26e5562d31e8150c02f5a497"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/ad96a3a3814fe0c8766bf8f0126112ced1c8a4cc",
-                "reference": "ad96a3a3814fe0c8766bf8f0126112ced1c8a4cc",
+                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/bf314652ce2944ff26e5562d31e8150c02f5a497",
+                "reference": "bf314652ce2944ff26e5562d31e8150c02f5a497",
                 "shasum": ""
             },
             "require": {
+                "symfony/console": ">=2.1",
                 "symfony/framework-bundle": ">=2.1"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.3"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-1.0": "1.0.x-dev",
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -5445,7 +5448,7 @@
                 "task",
                 "wincache"
             ],
-            "time": "2015-05-22 22:54:03"
+            "time": "2015-05-23 23:37:03"
         },
         {
             "name": "smart-core/core-bundle",

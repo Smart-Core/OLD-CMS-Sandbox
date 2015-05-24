@@ -2,12 +2,16 @@
 
 {% block title %}{{ 'Configuration'|trans }} / {{ parent() }}{% endblock %}
 
+{% set page_header = 'Configuration'|trans %}
+
 {% block content %}
 
 <div class="box box-success">
     <div class="box-header with-border">
 
-    <a href="{{ path('cms_admin_config_media') }}" class="btn btn-primary">Медиа библиотека</a>
+        <h3>{{ 'Media Library'|trans }}</a></h3>
+
+    <a href="{{ path('cms_admin_config_media') }}" class="btn btn-default">Настроить Медиа библиотеку</a>
 
     <h3>{{ 'Settings'|trans }}</a></h3>
 

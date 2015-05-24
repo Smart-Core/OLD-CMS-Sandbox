@@ -2,6 +2,9 @@
 
 {% block title %}{{ 'Structure'|trans }} / {{ parent() }}{% endblock %}
 
+{% set page_header = 'Structure'|trans %}
+{% set page_description = 'Управление папками, нодами и областями'|trans %}
+
 {% block styles %}
     {{ parent() }}
     <style media="all" type="text/css"> @import url({{ asset('bundles/felib/jquery-dynatree/1.2.5/src/skin-vista/ui.dynatree.css') }}); </style>

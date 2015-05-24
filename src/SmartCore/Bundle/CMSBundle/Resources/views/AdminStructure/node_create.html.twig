@@ -5,9 +5,13 @@
 {% block content %}
 <div class="row">
     <div class="span9 col-md-9">
+
     {{ knp_menu_render('CMSBundle:AdminMenu:structure', {'currentClass': 'active'})  }}
 
-    <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal well well-small">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+
+    <form action="" {{ form_enctype(form) }} method="POST" class="form-horizontal well">
         {% if form_properties.count > 0 %}
             <ul class="nav nav-pills" id="nodeTab">
                 <li class="active"><a href="#node-properties">Параметры подключения модуля</a></li>
@@ -38,6 +42,8 @@
             </div>
         </div>
     </form>
+        </div>
+        </div>
 
     </div>
 {% endblock content %}

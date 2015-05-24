@@ -2,9 +2,15 @@
 
 {% block content %}
 
-    <h2>{{ 'Settings of WebForm'|trans }}: &laquo;{{ web_form.title }}&raquo;</h2>
+<div class="box box-primary">
+    <div class="box-header with-border">
+
+    <h3>{{ 'Settings of WebForm'|trans }}: &laquo;{{ web_form.title }}&raquo;</h3>
 
     {{ form_errors(form) }}
     {{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}
+
+    </div>
+</div>
 
 {% endblock content %}

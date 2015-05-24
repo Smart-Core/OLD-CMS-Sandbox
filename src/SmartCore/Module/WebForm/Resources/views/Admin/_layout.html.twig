@@ -1,7 +1,9 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block title %}{% if title %}{{ title|trans }} / {% endif %}&laquo;{{ web_form.title }}&raquo; / {{ 'WebForm'|trans }} / {{ parent() }}
-{% endblock %}
+{% block title %}{% if title %}{{ title|trans }} / {% endif %}&laquo;{{ web_form.title }}&raquo; / {{ 'WebForm'|trans }} / {{ parent() }}{% endblock %}
+
+{% set page_header = 'WebForm'|trans %}
+{% set page_description = 'Module'|trans %}
 
 {% block nav %}
 
@@ -14,15 +16,17 @@
         </a>
     {% endif %}
 
-    {% set configurationMenu = knp_menu_get('WebFormModule:AdminMenu:manage', [], {
-        'web_form': web_form,
-    }) %}
+    {% if web_form %}
+        {% set configurationMenu = knp_menu_get('WebFormModule:AdminMenu:manage', [], {
+            'web_form': web_form,
+        }) %}
 
-    {{ knp_menu_render(configurationMenu, {
-        'currentClass': 'active',
-        'clear_matcher': false,
-        'template': 'WebFormModule:Menu:knp_menu.html.twig',
-    }) }}
+        {{ knp_menu_render(configurationMenu, {
+            'currentClass': 'active',
+            'clear_matcher': false,
+            'template': 'WebFormModule:Menu:knp_menu.html.twig',
+        }) }}
+    {% endif %}
 
     {#{% set __si = app.request.attributes.set('__selected_inheritance', __selected_inheritance) %}#}
 

@@ -1,6 +1,6 @@
-{% extends '@CMS/Admin/module.html.twig' %}
+{% extends '@GalleryModule/Admin/index.html.twig' %}
 
-{% block title %}{{ gallery.title }} / {{ 'Gallery'|trans }} / {{ parent() }}{% endblock %}
+{% block title %}{{ gallery.title }} / {{ parent() }}{% endblock %}
 
 {% block content %}
 
@@ -15,7 +15,7 @@
 <div class="box box-primary">
     <div class="box-header with-border">
 
-    <h2>{{ 'Albums'|trans }} ({{ gallery.title }})</h2>
+    <h3>{{ 'Albums'|trans }} &laquo;{{ gallery.title }}&raquo;</h3>
 
     <table class="table table-bordered table-hover">
         <thead><tr>

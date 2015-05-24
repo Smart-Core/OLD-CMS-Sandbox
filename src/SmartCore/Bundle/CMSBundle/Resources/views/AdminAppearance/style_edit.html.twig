@@ -1,6 +1,6 @@
-{% extends '@CMS/Admin/_layout.html.twig' %}
+{% extends '@CMS/AdminAppearance/index.html.twig' %}
 
-{% block title %} {{ 'Edit style'|trans }}: {{ name }} / {{ 'Appearance'|trans }} / {{ parent() }}{% endblock %}
+{% block title %} {{ 'Edit style'|trans }}: {{ name }} / {{ parent() }}{% endblock %}
 
 {% set is_hide_footer = true %}
 
@@ -66,7 +66,7 @@
         });
 
         function setHeight(){
-            $('#ace_template_twig').css('height', $(window).height() - 130 + 'px'); // 125
+            $('#ace_template_twig').css('height', $(window).height() - 170 + 'px'); // 125
         };
 
         $(window).resize(function(){

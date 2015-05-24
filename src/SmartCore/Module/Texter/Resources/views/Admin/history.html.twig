@@ -1,36 +1,30 @@
-{% extends '@CMS/Admin/module.html.twig' %}
-
-{% block title %}Текстер / {{ parent() }}{% endblock %}
+{% extends '@TexterModule/Admin/index.html.twig' %}
 
 {% block content %}
 <div class="box box-primary">
     <div class="box-header with-border">
 
-    <div class="tab-content">
-        <div class="tab-pane active" id="all">
-            <table class="table table-bordered table-hover">
-                <thead>
+        <h3>История изменений текста: <a href="{{ path('smart_module.texter.admin.edit', {'id': item.id}) }}">#{{ item.id }}</a></h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>{{ 'Date'|trans }}</th>
+                <th>{{ 'Text'|trans }}</th>
+                <th>{{ 'Action'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in items_history %}
                 <tr>
-                    <th>{{ 'Date'|trans }}</th>
-                    <th>{{ 'Text'|trans }}</th>
-                    <th>{{ 'Action'|trans }}</th>
+                    <td>{{ item.createdAt|localizeddate('medium') }}</td>
+                    <td>{{ item.announce }}</td>
+                    <td>
+                        <a href="{{ path('smart_module.texter.admin.rollback', {'id': item.id}) }}" title=""><i class="icon-forward"></i><span class="glyphicon glyphicon-forward" aria-hidden="true"></span>Откатить</a>
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for item in items %}
-                    <tr>
-                        <td>{{ item.createdAt|localizeddate('medium') }}</td>
-                        <td>{{ item.announce }}</td>
-                        <td>
-                            <a href="{{ path('smart_module.texter.admin.rollback', {'id': item.id}) }}" title=""><i class="icon-forward"></i><span class="glyphicon glyphicon-forward" aria-hidden="true"></span>Откатить</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-        </div>
-    </div>
+            {% endfor %}
+            </tbody>
+        </table>
 
     </div>
 </div>
