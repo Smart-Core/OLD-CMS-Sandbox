@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Апр 15 2015 г., 02:40
+-- Время создания: Май 28 2015 г., 03:17
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.6.7
+-- Версия PHP: 5.6.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -376,6 +376,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `controls_in_toolbar` smallint(6) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `deleted_at` datetime DEFAULT NULL,
+  `is_use_eip` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `IDX_F4FF528B162CB942` (`folder_id`),
   KEY `IDX_F4FF528BE9ED820C` (`region_id`),
@@ -389,39 +390,39 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
 -- Дамп данных таблицы `engine_nodes`
 --
 
-INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `description`, `user_id`, `created_at`, `is_cached`, `template`, `controls_in_toolbar`, `is_deleted`, `deleted_at`) VALUES
-(1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL, 0, 0, NULL),
-(2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 1, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL, 1, 0, NULL),
-(3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 2, 'Левая колонка', 1, '2013-03-21 06:03:37', 0, NULL, 1, 0, NULL),
-(4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:1;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL, 1, 0, NULL),
-(5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL, 0, 0, NULL),
-(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0, 0, NULL),
-(7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0, 0, NULL),
-(9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL, 0, 0, NULL),
-(10, 7, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:7;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0, NULL, 0, 0, NULL),
-(11, 5, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:8;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0, NULL, 1, 0, NULL),
-(12, 8, 1, 1, 'SimpleNews', 'a:1:{s:14:"items_per_page";i:3;}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0, NULL, 1, 0, NULL),
-(13, 1, 6, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:9;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0, NULL, 0, 0, NULL),
-(15, 8, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:10;s:6:"editor";b:1;}', 0, 0, 'Текст над новостями', 1, '2014-01-22 19:02:27', 0, NULL, 0, 0, NULL),
-(16, 6, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:11;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 10:01:55', 0, NULL, 1, 0, NULL),
-(17, 1, 1, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"12";s:10:"controller";s:15:"NewsWidget:last";s:6:"params";s:8:"count: 3";s:8:"open_tag";s:48:"<hr /><h3>Последние новости</h3>";s:9:"close_tag";N;}', 10, 0, NULL, 1, '2014-01-29 18:27:59', 0, NULL, 0, 0, NULL),
-(18, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL, 0, 0, NULL),
-(19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL, 0, 0, NULL),
-(20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL, 1, 0, NULL),
-(21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, 'Цветочки!', 1, '2014-01-30 20:38:27', 0, NULL, 1, 0, NULL),
-(22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL, 1, 0, NULL),
-(23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, 'Тэги блога', 1, '2014-02-07 22:55:10', 0, NULL, 0, 0, NULL),
-(24, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:15;s:6:"editor";b:1;}', 19, 0, NULL, 1, '2014-02-08 21:01:35', 0, NULL, 0, 0, NULL),
-(25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL, 1, 0, NULL),
-(26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL, 0, 0, NULL),
-(27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, 'Nivo', 1, '2014-02-10 08:13:18', 0, NULL, 1, 0, NULL),
-(28, 15, 1, 1, 'Unicat', 'a:2:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL, 1, 0, NULL),
-(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0, 0, NULL),
-(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, 'Тесты с каталогом', 1, '2014-07-01 13:42:20', 0, NULL, 0, 1, '2015-03-02 03:42:04'),
-(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, 0, NULL),
-(32, 16, 1, 1, 'Unicat', 'a:1:{s:16:"configuration_id";i:2;}', 0, 0, NULL, 1, '2015-03-02 11:37:36', 0, NULL, 1, 0, NULL),
-(33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, 0, NULL),
-(34, 18, 1, 1, 'WebForm', 'a:1:{s:10:"webform_id";i:1;}', 0, 0, NULL, 1, '2015-03-24 03:18:10', 0, NULL, 1, 0, NULL);
+INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module`, `params`, `position`, `priority`, `description`, `user_id`, `created_at`, `is_cached`, `template`, `controls_in_toolbar`, `is_deleted`, `deleted_at`, `is_use_eip`) VALUES
+(1, 1, 4, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:1;s:6:"editor";b:1;}', 20, 0, 'Футер', 1, '2013-03-20 05:46:40', 0, NULL, 0, 0, NULL, 1),
+(2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 1, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL, 1, 0, NULL, 1),
+(3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 2, 'Левая колонка', 1, '2013-03-21 06:03:37', 0, NULL, 1, 0, NULL, 1),
+(4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:1;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL, 1, 0, NULL, 1),
+(5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, NULL, 0, 0, NULL, 1),
+(6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0, 0, NULL, 1),
+(7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0, 0, NULL, 1),
+(9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL, 0, 0, NULL, 1),
+(10, 7, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:7;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-08-10 11:14:55', 0, NULL, 0, 0, NULL, 1),
+(11, 5, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:8;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2013-12-20 20:11:41', 0, NULL, 1, 0, NULL, 1),
+(12, 8, 1, 1, 'SimpleNews', 'a:1:{s:14:"items_per_page";i:3;}', 1, 0, NULL, 1, '2013-12-22 21:58:57', 0, NULL, 1, 0, NULL, 1),
+(13, 1, 6, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:9;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-20 03:47:18', 0, NULL, 0, 0, NULL, 1),
+(15, 8, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:10;s:6:"editor";b:1;}', 0, 0, 'Текст над новостями', 1, '2014-01-22 19:02:27', 0, NULL, 0, 0, NULL, 1),
+(16, 6, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:11;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 10:01:55', 0, NULL, 1, 0, NULL, 1),
+(17, 1, 1, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"12";s:10:"controller";s:15:"NewsWidget:last";s:6:"params";s:8:"count: 3";s:8:"open_tag";s:48:"<hr /><h3>Последние новости</h3>";s:9:"close_tag";N;}', 10, 0, NULL, 1, '2014-01-29 18:27:59', 0, NULL, 0, 0, NULL, 1),
+(18, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:12;s:6:"editor";b:1;}', 9, 0, 'Последние новости', 1, '2014-01-29 19:43:16', 0, NULL, 0, 0, NULL, 1),
+(19, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:13;s:6:"editor";b:1;}', 0, 0, 'Надпись над меню', 1, '2014-01-29 19:45:52', 0, NULL, 0, 0, NULL, 1),
+(20, 11, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:14;s:6:"editor";b:1;}', 0, 0, NULL, 1, '2014-01-29 20:16:33', 0, NULL, 1, 0, NULL, 1),
+(21, 12, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:1;}', 0, 0, 'Цветочки!', 1, '2014-01-30 20:38:27', 0, NULL, 1, 0, NULL, 1),
+(22, 13, 1, 1, 'Blog', 'a:0:{}', 0, 0, NULL, 1, '2014-02-07 18:02:37', 0, NULL, 1, 0, NULL, 1),
+(23, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:19:"BlogWidget:tagCloud";s:6:"params";N;s:8:"open_tag";s:34:"<hr /><h4>Тэги блога</h4>";s:9:"close_tag";N;}', 30, 0, 'Тэги блога', 1, '2014-02-07 22:55:10', 0, NULL, 0, 0, NULL, 1),
+(24, 1, 3, 0, 'Texter', 'a:2:{s:12:"text_item_id";i:15;s:6:"editor";b:1;}', 19, 0, NULL, 1, '2014-02-08 21:01:35', 0, NULL, 0, 0, NULL, 1),
+(25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL, 1, 0, NULL, 1),
+(26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL, 0, 0, NULL, 1),
+(27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, 'Nivo', 1, '2014-02-10 08:13:18', 0, NULL, 1, 0, NULL, 1),
+(28, 15, 1, 1, 'Unicat', 'a:2:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL, 1, 0, NULL, 1),
+(29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0, 0, NULL, 1),
+(30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, 'Тесты с каталогом', 1, '2014-07-01 13:42:20', 0, NULL, 0, 1, '2015-03-02 03:42:04', 1),
+(31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, 0, NULL, 1),
+(32, 16, 1, 1, 'Unicat', 'a:1:{s:16:"configuration_id";i:2;}', 0, 0, NULL, 1, '2015-03-02 11:37:36', 0, NULL, 1, 0, NULL, 1),
+(33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, 0, NULL, 1),
+(34, 18, 1, 1, 'WebForm', 'a:1:{s:10:"webform_id";i:1;}', 0, 0, NULL, 1, '2015-03-24 03:18:10', 0, NULL, 1, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -558,7 +559,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
 
 INSERT INTO `gallery_albums` (`id`, `gallery_id`, `title`, `description`, `created_at`, `user_id`, `cover_image_id`, `photos_count`, `updated_at`, `is_enabled`, `last_image_id`, `position`) VALUES
 (1, 1, 'Первый альбом', NULL, '2014-07-15 04:17:36', 1, 8, 2, '2014-07-15 23:54:05', 1, 8, 0),
-(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1, NULL, 0, '2014-07-15 23:49:22', 0, NULL, 0);
+(2, 1, 'Второй альбом', NULL, '2014-07-15 04:18:21', 1, NULL, 0, '2015-05-21 20:57:06', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -702,7 +703,7 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_B0A0921B93CB796C` (`file_id`),
   KEY `IDX_B0A0921B514956FD` (`collection_id`),
   KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
@@ -717,7 +718,10 @@ INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storag
 (6, 7, 2, 1, '200_200', 21122, '2015-03-09 05:14:16'),
 (7, 6, 1, 1, '100_100', 8506, '2015-03-09 20:27:01'),
 (8, 1, 1, 1, '100_100', 4622, '2015-03-09 20:27:03'),
-(9, 4, 1, 1, '300_300', 35813, '2015-03-09 20:28:33');
+(9, 4, 1, 1, '300_300', 35813, '2015-03-09 20:28:33'),
+(10, 4, 1, 1, '100_100', 6138, '2015-05-21 22:08:47'),
+(11, 3, 1, 1, '100_100', 6289, '2015-05-24 08:12:20'),
+(12, 5, 1, 1, '100_100', 6411, '2015-05-24 08:13:15');
 
 -- --------------------------------------------------------
 
@@ -818,7 +822,7 @@ CREATE TABLE IF NOT EXISTS `menu_groups` (
 --
 
 INSERT INTO `menu_groups` (`id`, `position`, `name`, `description`, `user_id`, `created_at`, `properties`) VALUES
-(1, 0, 'Главное меню', NULL, 1, '2013-05-06 03:54:13', NULL),
+(1, 0, 'Главное', NULL, 1, '2013-05-06 03:54:13', NULL),
 (2, 0, 'Второе', NULL, 1, '2015-02-15 20:24:38', NULL);
 
 -- --------------------------------------------------------
@@ -1623,8 +1627,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-04-14 02:27:36', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
-(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'MdaZxuZKbcCL1IePGhILE6v+iUUKrINsdpdMMmsc1+LZ7ZBERkb8s+Q6hlp9n4lhU9QKUwnhFpGi8vvjHOPORw==', '2014-01-19 18:56:18', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-05-27 14:34:44', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
 -- --------------------------------------------------------

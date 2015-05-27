@@ -107,6 +107,15 @@ class Node implements \Serializable
     protected $is_cached;
 
     /**
+     * Использовать Edit-In-Place. Если отключить также не будет генерироваться div вокруг ноды.
+     *
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", options={"default":1})
+     */
+    protected $is_use_eip;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     //protected $cache_params;
@@ -155,6 +164,7 @@ class Node implements \Serializable
         $this->is_active    = true;
         $this->is_cached    = false;
         $this->is_deleted   = false;
+        $this->is_use_eip   = true;
         $this->params       = [];
         $this->position     = 0;
         $this->priority     = 0;
@@ -174,6 +184,7 @@ class Node implements \Serializable
             $this->is_active,
             $this->is_cached,
             $this->is_deleted,
+            $this->is_use_eip,
             $this->module,
             $this->params,
             $this->folder,
@@ -201,6 +212,7 @@ class Node implements \Serializable
             $this->is_active,
             $this->is_cached,
             $this->is_deleted,
+            $this->is_use_eip,
             $this->module,
             $this->params,
             $this->folder,
@@ -445,6 +457,26 @@ class Node implements \Serializable
     }
 
     /**
+     * @return boolean
+     */
+    public function getIsUseEip()
+    {
+        return $this->is_use_eip;
+    }
+
+    /**
+     * @param boolean $is_use_eip
+     *
+     * @return $this
+     */
+    public function setIsUseEip($is_use_eip)
+    {
+        $this->is_use_eip = $is_use_eip;
+
+        return $this;
+    }
+
+    /**
      * @param string $name
      *
      * @return FrontControl
@@ -472,7 +504,7 @@ class Node implements \Serializable
      */
     public function setFrontControls($front_controls)
     {
-        if ($this->isEip()) {
+        if ($this->isEip() and $this->getIsUseEip()) {
             $this->front_controls = $front_controls;
         }
 
@@ -486,7 +518,7 @@ class Node implements \Serializable
     {
         $data = [];
 
-        if ($this->isEip()) {
+        if ($this->isEip() and $this->getIsUseEip()) {
             foreach ($this->front_controls as $name => $control) {
                 $data[$name] = $control->getData();
             }

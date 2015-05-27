@@ -57,6 +57,7 @@ class NodeFormType extends AbstractType
             ->add('priority')
             ->add('is_active', null, ['required' => false])
             ->add('is_cached', null, ['required' => false])
+            ->add('is_use_eip', null, ['required' => false])
         ;
 
         if (empty($moduleThemes)) {
