@@ -4,6 +4,14 @@ read -r -p "Are you sure? [y/N] " response
 
 case $response in
     [yY][eE][sS]|[yY])
+        if [ -f "var/bootstrap.php.cache" ]
+        then
+            echo "Vendors already installed"
+        else
+            echo "Install vendors"
+            composer.phar install
+        fi
+
         if [ -d "src/SandboxSiteBundle" ]
         then
             echo "Start purging..."
