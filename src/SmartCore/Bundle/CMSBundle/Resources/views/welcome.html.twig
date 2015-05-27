@@ -6,15 +6,48 @@
 })
 }}{% endblock %}
 
-{% set felib = felib_use('bootstrap', '2.3.2') %}
+{% if is_setting('cms', 'twitter_bootstrap_version', 3) %}
+    {% set felib = felib_use('bootstrap', '3.3.4') %}
+{% else %}
+    {% set felib = felib_use('bootstrap', '2.3.2') %}
+{% endif %}
 
 {% block styles %}
     {{ parent() }}
     <style type="text/css">
-        @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});
+        {% if is_setting('cms', 'twitter_bootstrap_version', 3) %}
+            @import url({{ asset('bundles/cms/css/bootstrap-theme-smart-core.css') }});
+        {% else %}
+            @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.css') }});
+            {#@import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});#}
+        {% endif %}
+
         body {
             margin-top: 40px;
             margin-bottom: 40px;
+        }
+        .hero-unit {
+            padding: 60px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 200;
+            line-height: 30px;
+            color: inherit;
+            background-color: #eeeeee;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+        }
+        .hero-unit h1 {
+            margin-bottom: 0;
+            font-size: 60px;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: inherit;
+        }
+
+        .hero-unit li {
+            line-height: 30px;
         }
     </style>
 {% endblock %}
