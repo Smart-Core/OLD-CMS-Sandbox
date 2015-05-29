@@ -1,4 +1,5 @@
 /app/config/parameters.yml
+/bin/*.bat
 /bin/doctrine*
 /bin/jp.php
 /bin/security*
