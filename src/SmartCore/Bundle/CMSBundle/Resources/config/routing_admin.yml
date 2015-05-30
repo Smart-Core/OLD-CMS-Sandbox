@@ -251,12 +251,12 @@ cms_admin_config_media_edit_collection:
     requirements:
         id: \d+
 
-# @todo
 cms_admin_reports:
     path: /reports/
     defaults:
-        _controller: CMSBundle:Admin:notFound
+        _controller: CMSBundle:Admin:reports
 
+# @todo
 cms_admin_help:
     path: /help/
     defaults:

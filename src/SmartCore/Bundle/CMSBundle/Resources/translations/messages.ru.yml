@@ -104,6 +104,8 @@ Region: Область
 Regions: Области
 Reports: Отчеты
 Priority: Приоритет
+Recomended: Рекомендуется
+Required: Требуется
 Role: Роль
 Role name: Название роли
 Roles: Роли
@@ -119,6 +121,7 @@ Status: Статус
 String: Строка
 Structure: Структура
 Styles: Стили
+System: Система
 Tag: Тэг
 Tags: Тэги
 Template: Шаблон

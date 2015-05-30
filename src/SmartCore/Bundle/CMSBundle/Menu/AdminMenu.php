@@ -26,12 +26,6 @@ class AdminMenu extends ContainerAware
         $menu->addChild('Users',         ['route' => 'cms_admin_user'])->setExtras(['beforeCode' => '<i class="fa fa-users"></i>']);
         $menu->addChild('Configuration', ['route' => 'cms_admin_config'])->setExtras(['beforeCode' => '<i class="fa fa-gears"></i>']);
         $menu->addChild('Appearance',    ['route' => 'cms_admin_appearance'])->setExtras(['beforeCode' => '<i class="fa fa-image"></i>']);
-
-        /*
-        $menu->addChild('Reports',       ['route' => 'cms_admin_reports'])->setExtras(['beforeCode' => '<i class="fa fa-file-excel-o"></i>']);
-        $menu->addChild('Help',          ['route' => 'cms_admin_help'])->setExtras(['beforeCode' => '<i class="fa fa-question"></i>']);
-        */
-
         $modulesItems = $menu->addChild('Modules', ['route' => 'cms_admin_module'])
             ->setAttribute('class', 'treeview')
             ->setExtras([
@@ -40,6 +34,9 @@ class AdminMenu extends ContainerAware
             ])
         ;
         $modulesItems->setChildrenAttribute('class', 'treeview-menu');
+
+        $menu->addChild('Reports',       ['route' => 'cms_admin_reports'])->setExtras(['beforeCode' => '<i class="fa fa-file-excel-o"></i>']);
+//        $menu->addChild('Help',          ['route' => 'cms_admin_help'])->setExtras(['beforeCode' => '<i class="fa fa-question"></i>']);
 
         foreach ($this->container->get('cms.module')->all() as $module) {
             if ($module->hasAdmin()) {

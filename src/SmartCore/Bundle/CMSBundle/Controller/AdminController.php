@@ -10,6 +10,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AdminController extends Controller
 {
@@ -45,6 +46,197 @@ class AdminController extends Controller
         return $this->render('CMSBundle:Admin:not_found.html.twig', []);
     }
 
+    /**
+     * @return Response
+     */
+    public function reportsAction()
+    {
+        $system = [
+            'php' => $this->getPhpSettings(),
+            'platform' => $this->getPlatformInfo(),
+        ];
+
+        return $this->render('CMSBundle:Admin:reports.html.twig', [
+            'system' => $system,
+        ]);
+    }
+
+    /**
+     * Получить информацию о платформе.
+     *
+     * @return array
+     */
+    protected function getPlatformInfo()
+    {
+        $db = $this->get('database_connection');
+
+        $data = [];
+        // Smart Core Version
+        $data[] = [
+            'title' => 'Smart Core CMS version',
+            'value' => 'v0.5',
+            'required' => '',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        $data[] = [
+            'title' => 'Symfony2 Framework version',
+            'value' => Kernel::VERSION,
+            'required' => '',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        $data[] = [
+            'title' => 'Database server',
+            'value' => $db->query('SHOW VARIABLES LIKE "%version_comment%"')->fetchObject()->Value.' version '.$db->query('SELECT version() AS version')->fetchObject()->version,
+            'required' => 'MySQL 5.1',
+            'recomended' => 'MySQL 5.5+ or PostgreSQL 9.3+',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        $data[] = [
+            'title' => 'Web Server',
+            'value' => $_SERVER['SERVER_SOFTWARE'].' ('.php_sapi_name().')',
+            'required' => '',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        return $data;
+    }
+
+    /**
+     * Получить настрйоки PHP.
+     *
+     * @return array
+     */
+    protected function getPhpSettings()
+    {
+        $data = [];
+        // PHP Version
+        $data[] = [
+            'title' => 'PHP Version',
+            'value' => phpversion(),
+            'required' => '5.4.1',
+            'recomended' => '5.5.9+',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        $data[] = [
+            'title' => 'PHP Built On:',
+            'value' => php_uname(),
+            'required' => '',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Memory limit
+        $data[] = [
+            'title' => 'Memory Limit',
+            'value' => ini_get('memory_limit'),
+            'required' => '128M',
+            'recomended' => '256M',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Safe Mode
+        if (ini_get('safe_mode')) {
+            $value = 'On';
+        } else {
+            $value = 'Off';
+        }
+        $data[] = [
+            'title' => 'Safe Mode',
+            'value' => $value,
+            'required' => 'Off',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Display Errors
+        if (ini_get('display_errors')) {
+            $value = 'On';
+        } else {
+            $value = 'Off';
+        }
+        $data[] = [
+            'title' => 'Display Errors',
+            'value' => $value,
+            'required' => 'Off',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Magic Quotes
+        if (ini_get('magic_quotes_gpc')) {
+            $value = 'On';
+        } else {
+            $value = 'Off';
+        }
+        $data[] = [
+            'title' => 'Magic Quotes',
+            'value' => $value,
+            'required' => 'Off',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Register Globals
+        if (ini_get('register_globals')) {
+            $value = 'On';
+        } else {
+            $value = 'Off';
+        }
+        $data[] = [
+            'title' => 'Register Globals',
+            'value' => $value,
+            'required' => 'Off',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Output Buffering
+        if ((bool)ini_get('output_buffering')) {
+            $value = 'On';
+        } else {
+            $value = 'Off';
+        }
+        $data[] = [
+            'title' => 'Output Buffering',
+            'value' => $value,
+            'required' => 'On',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Mbstring Enabled
+        if (extension_loaded('mbstring')) {
+            $value = 'Yes';
+        } else {
+            $value = 'No';
+        }
+        $data[] = [
+            'title' => 'Mbstring Enabled',
+            'value' => $value,
+            'required' => 'Yes',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        // Upload_max_filesize
+        $data[] = [
+            'title' => 'Upload max filesize',
+            'value' => ini_get('upload_max_filesize'),
+            'required' => '4M',
+            'recomended' => '20M',
+            'hint' => '',
+            'warning' => 0,
+        ];
+        return $data;
+    }
+    
     /**
      * Renders Elfinder.
      *
