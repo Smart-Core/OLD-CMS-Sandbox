@@ -115,24 +115,14 @@ class AdminController extends Controller
     protected function getPhpSettings()
     {
         $data = [];
-        // PHP Version
         $data[] = [
             'title' => 'PHP Version',
-            'value' => phpversion(),
+            'value' => phpversion().' ('.php_uname('m').')',
             'required' => '5.4.1',
             'recomended' => '5.5.9+',
             'hint' => '',
             'warning' => 0,
         ];
-        $data[] = [
-            'title' => 'PHP Built On:',
-            'value' => php_uname(),
-            'required' => '',
-            'recomended' => '',
-            'hint' => '',
-            'warning' => 0,
-        ];
-        // Memory limit
         $data[] = [
             'title' => 'Memory Limit',
             'value' => ini_get('memory_limit'),
@@ -169,57 +159,33 @@ class AdminController extends Controller
             'hint' => '',
             'warning' => 0,
         ];
-        // Magic Quotes
-        if (ini_get('magic_quotes_gpc')) {
-            $value = 'On';
-        } else {
-            $value = 'Off';
-        }
         $data[] = [
             'title' => 'Magic Quotes',
-            'value' => $value,
+            'value' => ini_get('magic_quotes_gpc') ? 'On' : 'Off',
             'required' => 'Off',
             'recomended' => '',
             'hint' => '',
             'warning' => 0,
         ];
-        // Register Globals
-        if (ini_get('register_globals')) {
-            $value = 'On';
-        } else {
-            $value = 'Off';
-        }
         $data[] = [
             'title' => 'Register Globals',
-            'value' => $value,
+            'value' => ini_get('register_globals') ? 'On' : 'Off',
             'required' => 'Off',
             'recomended' => '',
             'hint' => '',
             'warning' => 0,
         ];
-        // Output Buffering
-        if ((bool)ini_get('output_buffering')) {
-            $value = 'On';
-        } else {
-            $value = 'Off';
-        }
         $data[] = [
             'title' => 'Output Buffering',
-            'value' => $value,
+            'value' => ((bool)ini_get('output_buffering')) ? 'On' : 'Off',
             'required' => 'On',
             'recomended' => '',
             'hint' => '',
             'warning' => 0,
         ];
-        // Mbstring Enabled
-        if (extension_loaded('mbstring')) {
-            $value = 'Yes';
-        } else {
-            $value = 'No';
-        }
         $data[] = [
             'title' => 'Mbstring Enabled',
-            'value' => $value,
+            'value' => extension_loaded('mbstring') ? 'Yes' : 'No',
             'required' => 'Yes',
             'recomended' => '',
             'hint' => '',
