@@ -71,7 +71,6 @@ class AdminController extends Controller
         $db = $this->get('database_connection');
 
         $data = [];
-        // Smart Core Version
         $data[] = [
             'title' => 'Smart Core CMS version',
             'value' => 'v0.5',
@@ -80,9 +79,10 @@ class AdminController extends Controller
             'hint' => '',
             'warning' => 0,
         ];
+        $isDebug = $this->get('kernel')->isDebug() ? 'true' : 'false';
         $data[] = [
             'title' => 'Symfony2 Framework version',
-            'value' => Kernel::VERSION,
+            'value' => Kernel::VERSION.' (debug = '.$isDebug.')',
             'required' => '',
             'recomended' => '',
             'hint' => '',
@@ -131,29 +131,17 @@ class AdminController extends Controller
             'hint' => '',
             'warning' => 0,
         ];
-        // Safe Mode
-        if (ini_get('safe_mode')) {
-            $value = 'On';
-        } else {
-            $value = 'Off';
-        }
         $data[] = [
             'title' => 'Safe Mode',
-            'value' => $value,
+            'value' => ini_get('safe_mode') ? 'On' : 'Off',
             'required' => 'Off',
             'recomended' => '',
             'hint' => '',
             'warning' => 0,
         ];
-        // Display Errors
-        if (ini_get('display_errors')) {
-            $value = 'On';
-        } else {
-            $value = 'Off';
-        }
         $data[] = [
             'title' => 'Display Errors',
-            'value' => $value,
+            'value' => ini_get('display_errors') ? 'On' : 'Off',
             'required' => 'Off',
             'recomended' => '',
             'hint' => '',
@@ -191,7 +179,6 @@ class AdminController extends Controller
             'hint' => '',
             'warning' => 0,
         ];
-        // Upload_max_filesize
         $data[] = [
             'title' => 'Upload max filesize',
             'value' => ini_get('upload_max_filesize'),
