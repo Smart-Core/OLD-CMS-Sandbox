@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "638bd861e83d91e2bc42ff3a6d47b40b",
+    "hash": "18e535da9a3e4c6ff6720fbf7534f032",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -113,16 +113,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "259cb660d3ff6f9b2279fe3a28c2bc7eb95edf10"
+                "reference": "dbec59551993f3838563980c67b73dd06c6a5247"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/259cb660d3ff6f9b2279fe3a28c2bc7eb95edf10",
-                "reference": "259cb660d3ff6f9b2279fe3a28c2bc7eb95edf10",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dbec59551993f3838563980c67b73dd06c6a5247",
+                "reference": "dbec59551993f3838563980c67b73dd06c6a5247",
                 "shasum": ""
             },
             "require": {
@@ -181,7 +181,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-05-29 19:46:39"
+            "time": "2015-06-01 21:33:37"
         },
         {
             "name": "dizda/cloud-backup-bundle",
@@ -1449,12 +1449,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
-                "reference": "8090ced6d6621cefcc468a23e01b02a3f6bcfdb7"
+                "reference": "b68a3b424096db659878a0f6c2024cc069cfb9b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/8090ced6d6621cefcc468a23e01b02a3f6bcfdb7",
-                "reference": "8090ced6d6621cefcc468a23e01b02a3f6bcfdb7",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/b68a3b424096db659878a0f6c2024cc069cfb9b5",
+                "reference": "b68a3b424096db659878a0f6c2024cc069cfb9b5",
                 "shasum": ""
             },
             "require": {
@@ -1495,7 +1495,7 @@
                 "extra",
                 "profiler"
             ],
-            "time": "2015-01-30 08:28:07"
+            "time": "2015-06-01 07:07:31"
         },
         {
             "name": "fabpot/goutte",
@@ -2523,12 +2523,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "a614cb1a87e474637885fa0a6e55690edb416d87"
+                "reference": "faea7fa22628e310a882f7cfba8f3c8dea060c89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/a614cb1a87e474637885fa0a6e55690edb416d87",
-                "reference": "a614cb1a87e474637885fa0a6e55690edb416d87",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/faea7fa22628e310a882f7cfba8f3c8dea060c89",
+                "reference": "faea7fa22628e310a882f7cfba8f3c8dea060c89",
                 "shasum": ""
             },
             "require": {
@@ -2627,7 +2627,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2014-11-15 10:36:48"
+            "time": "2015-05-04 07:15:14"
         },
         {
             "name": "imagine/imagine",
@@ -4022,16 +4022,16 @@
         },
         {
             "name": "leafo/scssphp",
-            "version": "v0.1.1",
+            "version": "v0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/scssphp.git",
-                "reference": "8c08da585537e97efd528c7d278463d2b9396371"
+                "reference": "e1bbe36b3fdf788f691242c83105f3884ec3b37e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/8c08da585537e97efd528c7d278463d2b9396371",
-                "reference": "8c08da585537e97efd528c7d278463d2b9396371",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/e1bbe36b3fdf788f691242c83105f3884ec3b37e",
+                "reference": "e1bbe36b3fdf788f691242c83105f3884ec3b37e",
                 "shasum": ""
             },
             "require": {
@@ -4073,7 +4073,7 @@
                 "scss",
                 "stylesheet"
             ],
-            "time": "2014-08-12 22:41:53"
+            "time": "2015-05-31 20:09:00"
         },
         {
             "name": "liip/functional-test-bundle",
@@ -4418,12 +4418,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "49d60ea4c4bd96074fb0b7f4bf8fd1e655ce7676"
+                "reference": "0b467cf9e3de5b80cb7830dc758265204a5fcde5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/49d60ea4c4bd96074fb0b7f4bf8fd1e655ce7676",
-                "reference": "49d60ea4c4bd96074fb0b7f4bf8fd1e655ce7676",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/0b467cf9e3de5b80cb7830dc758265204a5fcde5",
+                "reference": "0b467cf9e3de5b80cb7830dc758265204a5fcde5",
                 "shasum": ""
             },
             "require": {
@@ -4478,7 +4478,7 @@
                 "form",
                 "template"
             ],
-            "time": "2015-05-29 20:43:35"
+            "time": "2015-06-01 18:19:12"
         },
         {
             "name": "mopa/composer-bridge",
@@ -5115,17 +5115,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.25",
+            "version": "v3.0.28",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "01931139b0f067a4016d5d56e82c2b3086533b89"
+                "reference": "8175618b07793b9d43c3be931f3d8d4c14c9e866"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/01931139b0f067a4016d5d56e82c2b3086533b89",
-                "reference": "01931139b0f067a4016d5d56e82c2b3086533b89",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/8175618b07793b9d43c3be931f3d8d4c14c9e866",
+                "reference": "8175618b07793b9d43c3be931f3d8d4c14c9e866",
                 "shasum": ""
             },
             "require": {
@@ -5171,7 +5171,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-05-29 22:35:41"
+            "time": "2015-06-01 15:04:20"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -5638,16 +5638,16 @@
         },
         {
             "name": "sp/bower-bundle",
-            "version": "dev-master",
+            "version": "v0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spea/SpBowerBundle.git",
-                "reference": "e12c620d5ad5830718343bdb56e7afce543d8829"
+                "reference": "e492c022755f5b764672f715c7ca3a52c942a2b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spea/SpBowerBundle/zipball/e12c620d5ad5830718343bdb56e7afce543d8829",
-                "reference": "e12c620d5ad5830718343bdb56e7afce543d8829",
+                "url": "https://api.github.com/repos/Spea/SpBowerBundle/zipball/e492c022755f5b764672f715c7ca3a52c942a2b6",
+                "reference": "e492c022755f5b764672f715c7ca3a52c942a2b6",
                 "shasum": ""
             },
             "require": {
@@ -5656,7 +5656,7 @@
                 "php": ">=5.3.3",
                 "symfony/assetic-bundle": "~2.1",
                 "symfony/framework-bundle": "~2.1",
-                "symfony/process": "~2.3,>=2.3.20 | ~2.4,>=2.4.10 | ~2.5,>=2.5.5"
+                "symfony/process": "~2.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.0.*",
@@ -5665,7 +5665,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.12-dev"
+                    "dev-master": "0.11-dev"
                 }
             },
             "autoload": {
@@ -5695,7 +5695,7 @@
                 "bower manager",
                 "dependencies"
             ],
-            "time": "2015-05-29 20:02:23"
+            "time": "2014-07-14 08:51:16"
         },
         {
             "name": "stfalcon/tinymce-bundle",
@@ -6735,7 +6735,6 @@
         "smart-core/felib-bundle": 20,
         "smart-core/session-bundle": 20,
         "sonata-project/intl-bundle": 20,
-        "sp/bower-bundle": 20,
         "stfalcon/tinymce-bundle": 20,
         "whiteoctober/breadcrumbs-bundle": 20,
         "white-october/pagerfanta-bundle": 20
