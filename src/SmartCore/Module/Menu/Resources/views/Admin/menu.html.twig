@@ -16,18 +16,17 @@
             <div class="col-md-6">
                 <h3>Пункты меню &laquo;{{ menu.name }}&raquo;</h3>
 
-                {% set menu = knp_menu_get('MenuModule:MenuBuilder:full', [], {
+                {% set menuItems = knp_menu_get('MenuModule:MenuBuilder:full', [], {
                     'menu': menu,
                     'is_admin': true,
                 }) %}
 
-                {{ knp_menu_render(menu, {'currentAsLink': true, 'currentClass': 'active', 'compressed': true }) }}
+                {{ knp_menu_render(menuItems, {'currentAsLink': true, 'currentClass': 'active', 'compressed': true }) }}
             </div>
             <div class="col-md-6">
                 <h3>Добавить пункт в меню &laquo;{{ menu.name }}&raquo;</h3>
 
                 <form action="{{ path('smart_module.menu.admin_menu', {'menu_id': menu.id }) }}" {{ form_enctype(form) }} method="post" class="form-horizontal well">
-
                     {{ form_widget(form) }}
                     <div class="control-group">
                         <div class="controls">
