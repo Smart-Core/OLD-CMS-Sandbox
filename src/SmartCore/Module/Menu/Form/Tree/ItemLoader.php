@@ -4,7 +4,7 @@ namespace SmartCore\Module\Menu\Form\Tree;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
-use SmartCore\Module\Menu\Entity\Group;
+use SmartCore\Module\Menu\Entity\Menu;
 use SmartCore\Module\Menu\Entity\Item;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
 
@@ -26,9 +26,9 @@ class ItemLoader implements EntityLoaderInterface
     protected $level;
 
     /**
-     * @var Group
+     * @var Menu
      */
-    protected $group;
+    protected $menu;
 
     /**
      * @param ObjectManager $em
@@ -41,13 +41,13 @@ class ItemLoader implements EntityLoaderInterface
     }
 
     /**
-     * @param Group $group
+     * @param Menu $menu
      *
      * @return $this
      */
-    public function setGroup($group)
+    public function setMenu(Menu $menu)
     {
-        $this->group = $group;
+        $this->menu = $menu;
 
         return $this;
     }
@@ -79,7 +79,7 @@ class ItemLoader implements EntityLoaderInterface
 
         $items = $this->repo->findBy([
                 'parent_item' => $parent,
-                'group' => $this->group,
+                'menu' => $this->menu,
             ],
             ['position' => 'ASC']
         );

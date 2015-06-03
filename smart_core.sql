@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Май 28 2015 г., 03:17
+-- Время создания: Июн 04 2015 г., 04:16
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.9
 
@@ -750,13 +750,40 @@ INSERT INTO `media_storages` (`id`, `provider`, `title`, `relative_path`, `param
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `menu`
+-- Структура таблицы `menus`
 --
 
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE IF NOT EXISTS `menu` (
+DROP TABLE IF EXISTS `menus`;
+CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) unsigned DEFAULT NULL,
+  `position` smallint(6) DEFAULT '0',
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
+  `user_id` int(11) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `properties` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `menus`
+--
+
+INSERT INTO `menus` (`id`, `position`, `name`, `description`, `user_id`, `created_at`, `properties`) VALUES
+(1, 0, 'Главное', NULL, 1, '2013-05-06 03:54:13', NULL),
+(2, 0, 'Второе', NULL, 1, '2015-02-15 20:24:38', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `menu_items`
+--
+
+DROP TABLE IF EXISTS `menu_items`;
+CREATE TABLE IF NOT EXISTS `menu_items` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) unsigned DEFAULT NULL,
   `folder_id` int(10) unsigned DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
   `position` smallint(6) DEFAULT '0',
@@ -770,16 +797,16 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `open_in_new_window` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `IDX_D885BF9AFE54D947` (`group_id`),
+  KEY `IDX_D885BF9AFE54D947` (`menu_id`),
   KEY `IDX_D885BF9A5550C4ED` (`pid`),
   KEY `IDX_D885BF9A162CB942` (`folder_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
--- Дамп данных таблицы `menu`
+-- Дамп данных таблицы `menu_items`
 --
 
-INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `user_id`, `created_at`, `updated_at`, `pid`, `properties`, `open_in_new_window`) VALUES
+INSERT INTO `menu_items` (`id`, `menu_id`, `folder_id`, `is_active`, `position`, `title`, `description`, `url`, `user_id`, `created_at`, `updated_at`, `pid`, `properties`, `open_in_new_window`) VALUES
 (1, 1, 1, 1, 0, NULL, 'Перейти на главную страницу', NULL, 1, '2013-05-06 05:25:48', '2015-02-21 01:37:06', NULL, NULL, 0),
 (2, 1, 2, 1, 10, NULL, '123 561', NULL, 1, '2013-05-06 05:48:06', '2015-03-02 03:37:35', NULL, NULL, 0),
 (3, 1, 3, 1, 999, NULL, NULL, NULL, 1, '2013-05-06 07:28:54', '2013-12-22 08:49:04', NULL, NULL, 0),
@@ -797,33 +824,6 @@ INSERT INTO `menu` (`id`, `group_id`, `folder_id`, `is_active`, `position`, `tit
 (18, 2, 7, 1, 0, NULL, NULL, NULL, 1, '2015-02-15 21:41:46', NULL, NULL, 'N;', 0),
 (19, 1, NULL, 1, 255, 'Ссылка на яндекс', 'Откроется в новом окне', 'http://ya.ru', 1, '2015-02-15 23:07:04', '2015-02-21 01:29:55', NULL, 'N;', 1),
 (20, 1, 18, 1, 4, NULL, NULL, NULL, 1, '2015-03-24 03:17:53', NULL, NULL, 'N;', 0);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `menu_groups`
---
-
-DROP TABLE IF EXISTS `menu_groups`;
-CREATE TABLE IF NOT EXISTS `menu_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `position` smallint(6) DEFAULT '0',
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8_unicode_ci,
-  `user_id` int(11) unsigned NOT NULL,
-  `created_at` datetime NOT NULL,
-  `properties` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Дамп данных таблицы `menu_groups`
---
-
-INSERT INTO `menu_groups` (`id`, `position`, `name`, `description`, `user_id`, `created_at`, `properties`) VALUES
-(1, 0, 'Главное', NULL, 1, '2013-05-06 03:54:13', NULL),
-(2, 0, 'Второе', NULL, 1, '2015-02-15 20:24:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -1627,7 +1627,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-05-27 14:34:44', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-02 03:30:05', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1890,12 +1890,12 @@ ALTER TABLE `media_files_transformed`
   ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `menu`
+-- Ограничения внешнего ключа таблицы `menu_items`
 --
-ALTER TABLE `menu`
+ALTER TABLE `menu_items`
   ADD CONSTRAINT `FK_7D053A93162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`group_id`) REFERENCES `menu_groups` (`id`);
+  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`),
+  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `simple_news`

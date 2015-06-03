@@ -7,7 +7,7 @@
 
 {% block content %}
     <ul class="nav nav-pills" id="myTab">
-        <li class="active"><a>Список всех групп меню</a></li>
+        <li class="active"><a>Список всех меню</a></li>
     </ul>
 
 <div class="box box-primary">
@@ -26,14 +26,14 @@
                 <th>{{ 'Actions'|trans }}</th>
             </tr></thead>
             <tbody>
-            {% for group in groups %}
+            {% for menu in menus %}
                 <tr>
-                    <td>{{ group.id }}</td>
-                    <td><a href="{{ path('smart_menu_admin_group', {'group_id': group.id}) }}">{{ group.name }}</a></td>
-                    <td>{{ group.description }}</td>
-                    <td>{{ group.position}}</td>
-                    <td>{{ group.items.count }}</td>
-                    <td><a href="{{ path('smart_menu_admin_group_edit', {'group_id': group.id}) }}">Свойства группы</a></td>
+                    <td>{{ menu.id }}</td>
+                    <td><a href="{{ path('smart_module.menu.admin_menu', {'menu_id': menu.id}) }}">{{ menu.name }}</a></td>
+                    <td>{{ menu.description }}</td>
+                    <td>{{ menu.position}}</td>
+                    <td>{{ menu.items.count }}</td>
+                    <td><a href="{{ path('smart_module.menu.admin_menu_edit', {'menu_id': menu.id}) }}">Свойства меню</a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -41,13 +41,13 @@
             </div>
 
             <div class="col-md-4">
-                <h3>Создать новую группу меню</h3>
+                <h3>Создать новое меню</h3>
 
-                <form action="{{ path('smart_menu_admin') }}" {{ form_enctype(form) }} method="post" class="form-vertical well">
+                <form action="{{ path('smart_module.menu.admin') }}" {{ form_enctype(form) }} method="post" class="form-vertical well">
                     {{ form_widget(form) }}
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add group'|trans }}</button>
+                            <button type="submit" name="create" class="btn btn-success"><i class="icon-plus icon-white"></i><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add menu'|trans }}</button>
                         </div>
                     </div>
                 </form>

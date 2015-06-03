@@ -5,9 +5,9 @@ namespace SmartCore\Module\Menu\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use SmartCore\Module\Menu\Entity\Group;
+use SmartCore\Module\Menu\Entity\Menu;
 use SmartCore\Module\Menu\Entity\Item;
-use SmartCore\Module\Menu\Form\Type\GroupFormType;
+use SmartCore\Module\Menu\Form\Type\MenuFormType;
 use SmartCore\Module\Menu\Form\Type\ItemFormType;
 
 class AdminController extends Controller
@@ -16,24 +16,24 @@ class AdminController extends Controller
     {
         $em = $this->get('doctrine.orm.default_entity_manager');
 
-        $form = $this->createForm(new GroupFormType());
+        $form = $this->createForm(new MenuFormType());
 
         if ($request->isMethod('POST') and $request->request->has('create')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $group = $form->getData();
-                $group->setUserId($this->getUser()->getId());
-                $em->persist($group);
+                $menu = $form->getData();
+                $menu->setUserId($this->getUser()->getId());
+                $em->persist($menu);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->add('success', 'Группа меню создана.'); // @todo translate
+                $this->get('session')->getFlashBag()->add('success', 'Меню создано.'); // @todo translate
 
-                return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group->getId()]));
+                return $this->redirect($this->generateUrl('smart_module.menu.admin_menu', ['menu_id' => $menu->getId()]));
             }
         }
 
         return $this->render('MenuModule:Admin:index.html.twig', [
-            'groups' => $em->getRepository('MenuModule:Group')->findAll(),
+            'menus' => $em->getRepository('MenuModule:Menu')->findAll(),
             'form'   => $form->createView(),
         ]);
     }
@@ -65,7 +65,7 @@ class AdminController extends Controller
                     $this->getCacheService()->deleteTag('smart_module.menu');
                     $this->get('session')->getFlashBag()->add('success', 'Пункт меню обновлён.'); // @todo translate
 
-                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
+                    return $this->redirect($this->generateUrl('smart_module.menu.admin_menu', ['menu_id' => $item->getMenu()->getId()]));
                 }
             } elseif ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
@@ -75,7 +75,7 @@ class AdminController extends Controller
                 $this->getCacheService()->deleteTag('smart_module.menu');
                 $this->get('session')->getFlashBag()->add('success', 'Пункт меню удалён.');
 
-                return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $item->getGroup()->getId()]));
+                return $this->redirect($this->generateUrl('smart_module.menu.admin_menu', ['menu_id' => $item->getMenu()->getId()]));
             }
         }
 
@@ -89,21 +89,21 @@ class AdminController extends Controller
      * Редактирование свойств группы меню.
      *
      * @param Request $request
-     * @param int $group_id
+     * @param int $menu_id
      *
      * @return RedirectResponse|Response
      */
-    public function groupEditAction(Request $request, $group_id)
+    public function menuEditAction(Request $request, $menu_id)
     {
         $em = $this->get('doctrine.orm.default_entity_manager');
 
-        $group = $em->find('MenuModule:Group', $group_id);
+        $menu = $em->find('MenuModule:Menu', $menu_id);
 
-        if (empty($group)) {
-            return $this->redirect($this->generateUrl('smart_menu_admin'));
+        if (empty($menu)) {
+            return $this->redirect($this->generateUrl('smart_module.menu.admin'));
         }
 
-        $form = $this->createForm(new GroupFormType(), $group);
+        $form = $this->createForm(new MenuFormType(), $menu);
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('update')) {
@@ -115,7 +115,7 @@ class AdminController extends Controller
                     $this->getCacheService()->deleteTag('smart_module.menu');
                     $this->get('session')->getFlashBag()->add('success', 'Группа меню обновлена.'); // @todo translate
 
-                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group_id]));
+                    return $this->redirect($this->generateUrl('smart_module.menu.admin_menu', ['menu_id' => $menu_id]));
                 }
             } elseif ($request->request->has('delete')) {
                 // @todo безопасное удаление, в частности отключение из нод и удаление всех связаных пунктов меню.
@@ -125,12 +125,12 @@ class AdminController extends Controller
                 $this->getCacheService()->deleteTag('smart_module.menu');
                 $this->get('session')->getFlashBag()->add('success', 'Группа меню удалеа.');
 
-                return $this->redirect($this->generateUrl('smart_menu_admin'));
+                return $this->redirect($this->generateUrl('smart_module.menu.admin'));
             }
         }
 
-        return $this->render('MenuModule:Admin:group_edit.html.twig', [
-            'group' => $group,
+        return $this->render('MenuModule:Admin:menu_edit.html.twig', [
+            'menu' => $menu,
             'form'  => $form->createView(),
         ]);
     }
@@ -139,21 +139,21 @@ class AdminController extends Controller
      * Редактирование группы меню.
      *
      * @param Request $request
-     * @param int $group_id
+     * @param int $menu_id
      *
      * @return RedirectResponse|Response
      */
-    public function groupAction(Request $request, $group_id)
+    public function menuAction(Request $request, $menu_id)
     {
         $em = $this->get('doctrine.orm.default_entity_manager');
 
-        $group = $em->find('MenuModule:Group', $group_id);
+        $menu = $em->find('MenuModule:Menu', $menu_id);
 
-        if (empty($group)) {
-            return $this->redirect($this->generateUrl('smart_menu_admin'));
+        if (empty($menu)) {
+            return $this->redirect($this->generateUrl('smart_module.menu.admin'));
         }
 
-        $form = $this->createForm(new ItemFormType($group), new Item());
+        $form = $this->createForm(new ItemFormType($menu), new Item());
 
         if ($request->isMethod('POST')) {
             if ($request->request->has('create_item')) {
@@ -162,21 +162,21 @@ class AdminController extends Controller
                     /** @var Item $item */
                     $item = $form->getData();
                     $item->setUserId($this->getUser()->getId());
-                    $item->setGroup($group);
+                    $item->setMenu($menu);
 
                     $em->persist($item);
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('success', 'Пункт меню создан.'); // @todo translate
 
-                    return $this->redirect($this->generateUrl('smart_menu_admin_group', ['group_id' => $group_id]));
+                    return $this->redirect($this->generateUrl('smart_module.menu.admin_menu', ['menu_id' => $menu_id]));
                 }
             }
         }
 
-        return $this->render('MenuModule:Admin:group.html.twig', [
-            'group' => $group,
-            'form'  => $form->createView(),
+        return $this->render('MenuModule:Admin:menu.html.twig', [
+            'menu' => $menu,
+            'form' => $form->createView(),
         ]);
     }
 }

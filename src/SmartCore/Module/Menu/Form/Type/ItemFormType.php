@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Menu\Form\Type;
 
-use SmartCore\Module\Menu\Entity\Group;
+use SmartCore\Module\Menu\Entity\Menu;
 use SmartCore\Module\Menu\Entity\Item;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,29 +12,29 @@ use Symfony\Component\Yaml\Yaml;
 class ItemFormType extends AbstractType
 {
     /**
-     * @var Group
+     * @var Menu
      */
-    protected $group;
+    protected $menu;
 
     /**
      * Constructor.
      */
-    public function __construct(Group $group = null)
+    public function __construct(Menu $menu = null)
     {
-        $this->group = $group;
+        $this->menu = $menu;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if (empty($this->group) and $options['data'] instanceof Item) {
-            $this->group = $options['data']->getGroup();
+        if (empty($this->menu) and $options['data'] instanceof Item) {
+            $this->menu = $options['data']->getMenu();
         }
 
         $builder
             ->add('is_active')
             ->add('parent_item', 'smart_module_menu_item_tree', [
-                'group' => $this->group,
-                'required'  => false,
+                'menu'     => $this->menu,
+                'required' => false,
             ])
             ->add('folder', 'cms_folder_tree', ['required' => false])
             ->add('title',  null, ['attr' => ['autofocus' => 'autofocus']])
@@ -44,12 +44,12 @@ class ItemFormType extends AbstractType
             ->add('open_in_new_window')
         ;
 
-        if ($options['data']->getGroup() instanceof Group) {
-            $this->group = $options['data']->getGroup();
+        if ($options['data']->getMenu() instanceof Menu) {
+            $this->menu = $options['data']->getMenu();
         }
 
-        if ($this->group) {
-            $properties = Yaml::parse($this->group->getProperties());
+        if ($this->menu) {
+            $properties = Yaml::parse($this->menu->getProperties());
 
             if (is_array($properties)) {
                 $builder->add($builder->create(

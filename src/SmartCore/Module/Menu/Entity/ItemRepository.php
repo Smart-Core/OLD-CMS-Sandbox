@@ -7,16 +7,16 @@ use Doctrine\ORM\EntityRepository;
 class ItemRepository extends EntityRepository
 {
     /**
-     * @param Group     $group
+     * @param Menu      $menu
      * @param Item|null $parent_item
      *
      * @return Item[]
      */
-    public function findByParent(Group $group, Item $parent_item = null)
+    public function findByParent(Menu $menu, Item $parent_item = null)
     {
         return $this->findBy([
             'parent_item' => $parent_item,
-            'group' => $group,
+            'menu'        => $menu,
         ], ['position' => 'ASC']);
     }
 }

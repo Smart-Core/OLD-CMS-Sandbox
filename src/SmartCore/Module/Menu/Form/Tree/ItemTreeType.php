@@ -15,13 +15,13 @@ class ItemTreeType extends DoctrineType
 
         $loader = function (Options $options) {
             $loader = $this->getLoader($options['em'], $options['query_builder'], $options['class']);
-            $loader->setGroup($options['group']);
+            $loader->setMenu($options['menu']);
 
             return $loader;
         };
 
         $resolver->setDefaults([
-            'group'     => null,
+            'menu'      => null,
             'property'  => 'form_title',
             'loader'    => $loader,
             'class'     => 'MenuModule:Item',

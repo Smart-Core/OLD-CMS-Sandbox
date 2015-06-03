@@ -10,7 +10,7 @@ use SmartCore\Bundle\CMSBundle\Entity\Folder;
 /**
  * @ORM\Entity(repositoryClass="ItemRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\Table(name="menu")
+ * @ORM\Table(name="menu_items")
  */
 class Item
 {
@@ -40,11 +40,11 @@ class Item
     protected $children;
 
     /**
-     * @var Group
+     * @var Menu
      *
-     * @ORM\ManyToOne(targetEntity="Group", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="items")
      */
-    protected $group;
+    protected $menu;
 
     /**
      * @var Folder
@@ -153,23 +153,23 @@ class Item
     }
 
     /**
-     * @param Group $group
-     *
-     * @return $this
+     * @return Menu
      */
-    public function setGroup(Group $group)
+    public function getMenu()
     {
-        $this->group = $group;
-
-        return $this;
+        return $this->menu;
     }
 
     /**
-     * @return Group
+     * @param Menu $menu
+     *
+     * @return $this
      */
-    public function getGroup()
+    public function setMenu(Menu $menu)
     {
-        return $this->group;
+        $this->menu = $menu;
+
+        return $this;
     }
 
     /**

@@ -5,7 +5,7 @@ namespace SmartCore\Module\Menu\Menu;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use SmartCore\Module\Menu\Entity\Group;
+use SmartCore\Module\Menu\Entity\Menu;
 use SmartCore\Module\Menu\Entity\Item;
 
 class MenuBuilder extends ContainerAware
@@ -16,9 +16,9 @@ class MenuBuilder extends ContainerAware
     protected $em;
 
     /**
-     * @var Group
+     * @var Menu
      */
-    protected $group;
+    protected $menu;
 
     /**
      * Режим администрирования.
@@ -55,7 +55,7 @@ class MenuBuilder extends ContainerAware
 
         $menu = $factory->createItem('menu');
 
-        if (empty($this->group)) {
+        if (empty($this->menu)) {
             return $menu;
         }
 
@@ -80,7 +80,7 @@ class MenuBuilder extends ContainerAware
         $defaul_options = $options + [
             'css_class' => null,
             'depth'     => null,
-            'group'     => null,
+            'menu'      => null,
             'is_admin'  => false,
         ];
 
@@ -98,13 +98,13 @@ class MenuBuilder extends ContainerAware
     protected function addChild(ItemInterface $menu, Item $parent_item = null)
     {
         $items = (null == $parent_item)
-            ? $this->em->getRepository('MenuModule:Item')->findByParent($this->group, null)
+            ? $this->em->getRepository('MenuModule:Item')->findByParent($this->menu, null)
             : $parent_item->getChildren();
 
         /** @var Item $item */
         foreach ($items as $item) {
             if ($this->is_admin) {
-                $uri = $this->container->get('router')->generate('smart_menu_admin_item', ['item_id' => $item->getId()]);
+                $uri = $this->container->get('router')->generate('smart_module.menu.admin_item', ['item_id' => $item->getId()]);
             } else {
                 $itemUrl = $item->getUrl();
 

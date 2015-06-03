@@ -14,6 +14,6 @@ abstract class Controller extends BaseController
     protected $css_class     = null;
     protected $current_class = 'active';
     protected $depth         = 0;
-    protected $group_id      = null;
+    protected $menu_id       = null;
     protected $selected_inheritance = false;
 }

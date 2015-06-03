@@ -21,7 +21,7 @@ class MenuController extends Controller
                 'css_class'     => $this->css_class,
                 'current_class' => $this->current_class,
                 'depth'         => $this->depth,
-                'group'         => $this->getDoctrine()->getManager()->find('MenuModule:Group', $this->group_id),
+                'menu'          => $this->getDoctrine()->getManager()->find('MenuModule:Menu', $this->menu_id),
             ]);
 
             //$menu = $this->get('html.tidy')->prettifyFragment($menu);
@@ -36,7 +36,7 @@ class MenuController extends Controller
             ->setTitle('Редактировать меню')
             ->setUri($this->generateUrl('cms_admin_node_w_slug', [
                 'id'   => $this->node->getId(),
-                'slug' => $this->group_id,
+                'slug' => $this->menu_id,
             ]));
 
         return new Response($menu);

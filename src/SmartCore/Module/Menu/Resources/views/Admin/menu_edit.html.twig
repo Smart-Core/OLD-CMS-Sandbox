@@ -1,0 +1,32 @@
+{% extends 'MenuModule:Admin:index.html.twig' %}
+
+{% block title %}Свойства: {{ menu.name }} / {{ parent() }}{% endblock %}
+
+{% block content %}
+    <ul class="nav nav-pills" id="myTab">
+        <li><a href="{{ path('smart_module.menu.admin') }}">Список всех  меню</a></li>
+        <li><a href="{{ path('smart_module.menu.admin_menu', {'menu_id': menu.id }) }}">Редактирование меню</a></li>
+        <li class="active"><a href="{{ path('smart_module.menu.admin_menu_edit', {'menu_id': menu.id }) }}">Свойства меню</a></li>
+    </ul>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+
+        <h3>Свойства меню &laquo;{{ menu.name }}&raquo;</h3>
+
+    <form action="{{ path('smart_module.menu.admin_menu_edit', {'menu_id': menu.id }) }}" {{ form_enctype(form) }} method="post" class="form-horizontal well">
+
+        {{ form_widget(form) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" name="update" class="btn btn-success"><i class="icon-ok icon-white"></i><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ 'Save'|trans }}</button>
+                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить меню {{ menu.name }}?')"><i class="icon-trash icon-white"></i><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{ 'Delete'|trans }}</button>
+                <a class="btn btn-default" href="{{ path('smart_module.menu.admin_menu', {'menu_id': menu.id }) }}"> {{ 'Cancel'|trans }}</a>
+            </div>
+        </div>
+    </form>
+
+    </div>
+</div>
+
+{% endblock content %}

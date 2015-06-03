@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GroupFormType extends AbstractType
+class MenuFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,12 +21,12 @@ class GroupFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\Menu\Entity\Group',
+            'data_class' => 'SmartCore\Module\Menu\Entity\Menu',
         ]);
     }
 
     public function getName()
     {
-        return 'smart_module_menu_group';
+        return 'smart_module_menu';
     }
 }

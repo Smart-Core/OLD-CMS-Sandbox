@@ -1,24 +1,24 @@
 
-smart_menu_admin:
+smart_module.menu.admin:
     path: /
     defaults:
         _controller: MenuModule:Admin:index
 
-smart_menu_admin_group:
-    path: /{group_id}
+smart_module.menu.admin_menu:
+    path: /{menu_id}
     defaults:
-        _controller: MenuModule:Admin:group
+        _controller: MenuModule:Admin:menu
     requirements:
-        group_id: \d+
+        menu_id: \d+
 
-smart_menu_admin_group_edit:
-    path: /{group_id}/edit
+smart_module.menu.admin_menu_edit:
+    path: /{menu_id}/edit
     defaults:
-        _controller: MenuModule:Admin:groupEdit
+        _controller: MenuModule:Admin:menuEdit
     requirements:
-        group_id: \d+
+        menu_id: \d+
 
-smart_menu_admin_item:
+smart_module.menu.admin_item:
     path: /item/{item_id}
     defaults:
         _controller: MenuModule:Admin:item

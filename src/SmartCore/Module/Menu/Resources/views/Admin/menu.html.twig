@@ -1,12 +1,12 @@
 {% extends '@MenuModule/Admin/index.html.twig' %}
 
-{% block title %}{{ group.name }} / {{ parent() }}{% endblock %}
+{% block title %}{{ menu.name }} / {{ parent() }}{% endblock %}
 
 {% block content %}
     <ul class="nav nav-pills" id="myTab">
-        <li><a href="{{ path('smart_menu_admin') }}">Список всех групп меню</a></li>
-        <li class="active"><a href="{{ path('smart_menu_admin_group', {'group_id': group.id }) }}">Редактирование группы меню</a></li>
-        <li><a href="{{ path('smart_menu_admin_group_edit', {'group_id': group.id }) }}">Свойства группы меню</a></li>
+        <li><a href="{{ path('smart_module.menu.admin') }}">Список всех меню</a></li>
+        <li class="active"><a href="{{ path('smart_module.menu.admin_menu', {'menu_id': menu.id }) }}">Редактирование меню</a></li>
+        <li><a href="{{ path('smart_module.menu.admin_menu_edit', {'menu_id': menu.id }) }}">Свойства меню</a></li>
     </ul>
 
 <div class="box box-primary">
@@ -14,19 +14,19 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h3>Пункты меню &laquo;{{ group.name }}&raquo;</h3>
+                <h3>Пункты меню &laquo;{{ menu.name }}&raquo;</h3>
 
                 {% set menu = knp_menu_get('MenuModule:MenuBuilder:full', [], {
-                'group': group,
-                'is_admin': true,
+                    'menu': menu,
+                    'is_admin': true,
                 }) %}
 
                 {{ knp_menu_render(menu, {'currentAsLink': true, 'currentClass': 'active', 'compressed': true }) }}
             </div>
             <div class="col-md-6">
-                <h3>Добавить пункт в меню &laquo;{{ group.name }}&raquo;</h3>
+                <h3>Добавить пункт в меню &laquo;{{ menu.name }}&raquo;</h3>
 
-                <form action="{{ path('smart_menu_admin_group', {'group_id': group.id }) }}" {{ form_enctype(form) }} method="post" class="form-horizontal well">
+                <form action="{{ path('smart_module.menu.admin_menu', {'menu_id': menu.id }) }}" {{ form_enctype(form) }} method="post" class="form-horizontal well">
 
                     {{ form_widget(form) }}
                     <div class="control-group">

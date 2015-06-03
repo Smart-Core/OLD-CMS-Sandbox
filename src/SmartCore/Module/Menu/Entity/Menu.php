@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="menu_groups")
+ * @ORM\Table(name="menus")
  */
-class Group
+class Menu
 {
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
@@ -22,7 +22,7 @@ class Group
     /**
      * @var Item[]|ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="group", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="menu", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      */
     protected $items;
 

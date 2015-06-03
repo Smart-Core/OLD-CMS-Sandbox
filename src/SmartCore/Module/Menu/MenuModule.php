@@ -17,18 +17,18 @@ class MenuModule extends ModuleBundle
     {
         $em     = $this->container->get('doctrine.orm.default_entity_manager');
         $r      = $this->container->get('router');
-        $groups = $em->getRepository('MenuModule:Group')->findAll();
+        $menus  = $em->getRepository('MenuModule:Menu')->findAll();
 
         $data = [
             'title' => 'Меню',
             'items' => [],
         ];
 
-        foreach ($groups as $group) {
-            $data['items']['edit_group_'.$group->getId()] = [
-                'title' => 'Редактировать меню: <b>'.$group->getName().'</b>',
+        foreach ($menus as $menu) {
+            $data['items']['edit_menu_'.$menu->getId()] = [
+                'title' => 'Редактировать меню: <b>'.$menu->getName().'</b>',
                 'descr' => '',
-                'url' => $r->generate('smart_menu_admin_group', ['group_id' => $group->getId()]),
+                'url' => $r->generate('smart_module.menu.admin_menu', ['menu_id' => $menu->getId()]),
             ];
         }
 
@@ -51,7 +51,7 @@ class MenuModule extends ModuleBundle
     public function getRequiredParams()
     {
         return [
-            'group_id',
+            'menu_id',
         ];
     }
 }
