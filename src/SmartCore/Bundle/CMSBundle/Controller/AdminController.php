@@ -187,6 +187,14 @@ class AdminController extends Controller
             'hint' => '',
             'warning' => 0,
         ];
+        $data[] = [
+            'title' => 'Server time',
+            'value' => (new \DateTime())->format('Y-m-d H:i:s').' ('.ini_get('date.timezone').')',
+            'required' => '',
+            'recomended' => '',
+            'hint' => '',
+            'warning' => 0,
+        ];
         return $data;
     }
     
