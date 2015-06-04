@@ -96,6 +96,7 @@ class WebFormController extends Controller
                 ->setData($form->getData())
                 ->setUserId($this->getUser())
                 ->setWebForm($webForm)
+                ->setIpAddress($request->server->get('REMOTE_ADDR'))
             ;
             $this->persist($message, true);
 
@@ -192,6 +193,7 @@ class WebFormController extends Controller
                 ->setData($form->getData())
                 ->setUserId($this->getUser())
                 ->setWebForm($webForm)
+                ->setIpAddress($request->server->get('REMOTE_ADDR'))
             ;
             $this->persist($message, true);
 

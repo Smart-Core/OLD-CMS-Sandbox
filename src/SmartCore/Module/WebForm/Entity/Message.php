@@ -13,6 +13,7 @@ class Message
 {
     use ColumnTrait\Id;
     use ColumnTrait\CreatedAt;
+    use ColumnTrait\IpAddress;
     use ColumnTrait\UserId;
 
     const STATUS_NEW         = 0;

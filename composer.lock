@@ -5501,12 +5501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "8fa0fa29112cf7266b3cca759b230794c8ec347c"
+                "reference": "2748e24da6e263c202c74ef00e1977ec0ec106e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/8fa0fa29112cf7266b3cca759b230794c8ec347c",
-                "reference": "8fa0fa29112cf7266b3cca759b230794c8ec347c",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/2748e24da6e263c202c74ef00e1977ec0ec106e4",
+                "reference": "2748e24da6e263c202c74ef00e1977ec0ec106e4",
                 "shasum": ""
             },
             "require": {
@@ -5527,7 +5527,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-03-06 02:17:15"
+            "time": "2015-06-04 23:10:12"
         },
         {
             "name": "smart-core/felib-bundle",
