@@ -15,7 +15,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity()
  * @ORM\Table(name="unicat__configurations",
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(columns={"name"}),
  *          @ORM\UniqueConstraint(columns={"title"}),
  *      }
  * )

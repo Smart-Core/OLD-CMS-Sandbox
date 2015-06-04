@@ -161,7 +161,7 @@ abstract class Kernel extends BaseKernel
             $bundles[] = new \Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             //$bundles[] = new \JMS\DebuggingBundle\JMSDebuggingBundle($this); // "jms/debugging-bundle": "dev-master",
             $bundles[] = new \Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
-            $bundles[] = new \SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle();
+            //$bundles[] = new \SensioLabs\DoctrineQueryStatisticsBundle\SensioLabsDoctrineQueryStatisticsBundle(); // "sensiolabs/doctrine-query-statistics-bundle": "dev-master",
             $bundles[] = new \SmartCore\Bundle\CMSGeneratorBundle\CMSGeneratorBundle();
         }
     }
