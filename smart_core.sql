@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июн 04 2015 г., 04:32
+-- Время создания: Июн 05 2015 г., 04:58
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.9
 
@@ -42,10 +42,10 @@ CREATE TABLE IF NOT EXISTS `blog_articles` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_E42BC34B989D9B62` (`slug`),
-  KEY `IDX_E42BC34BF675F31B` (`author_id`),
-  KEY `IDX_E42BC34B12469DE2` (`category_id`),
-  KEY `created_at` (`created_at`)
+  UNIQUE KEY `UNIQ_CB80154F989D9B62` (`slug`),
+  KEY `IDX_CB80154FF675F31B` (`author_id`),
+  KEY `IDX_CB80154F12469DE2` (`category_id`),
+  KEY `IDX_CB80154F8B8E8428` (`created_at`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS `blog_articles_tags_relations` (
   `article_id` int(11) unsigned NOT NULL,
   `tag_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`article_id`,`tag_id`),
-  KEY `IDX_1994F0217294869C` (`article_id`),
-  KEY `IDX_1994F021BAD26311` (`tag_id`)
+  KEY `IDX_512A6F437294869C` (`article_id`),
+  KEY `IDX_512A6F43BAD26311` (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -139,8 +139,8 @@ CREATE TABLE IF NOT EXISTS `blog_categories` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_D7E9F9CF989D9B62` (`slug`),
-  KEY `IDX_D7E9F9CF3D8E604F` (`parent`)
+  UNIQUE KEY `UNIQ_DC356481989D9B62` (`slug`),
+  KEY `IDX_DC3564813D8E604F` (`parent`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
@@ -176,9 +176,9 @@ CREATE TABLE IF NOT EXISTS `blog_tags` (
   `created_at` datetime NOT NULL,
   `weight` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_DFC6FD1B989D9B62` (`slug`),
-  UNIQUE KEY `UNIQ_DFC6FD1B2B36786B` (`title`),
-  KEY `weight` (`weight`)
+  UNIQUE KEY `UNIQ_8F6C18B6989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_8F6C18B62B36786B` (`title`),
+  KEY `IDX_8F6C18B67CD5541` (`weight`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
@@ -258,9 +258,9 @@ CREATE TABLE IF NOT EXISTS `engine_appearance_history` (
   `user_id` int(10) unsigned NOT NULL,
   `hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `hash` (`hash`),
-  KEY `path` (`path`),
-  KEY `filename` (`filename`)
+  KEY `IDX_9078E776D1B862B8` (`hash`),
+  KEY `IDX_9078E776B548B0F` (`path`),
+  KEY `IDX_9078E7763C0BE965` (`filename`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -296,11 +296,11 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `template_self` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `folder_pid_uri_part` (`folder_pid`,`uri_part`),
-  KEY `IDX_6B4611ABA640A07B` (`folder_pid`),
-  KEY `is_active` (`is_active`),
-  KEY `is_deleted` (`is_deleted`),
-  KEY `position` (`position`)
+  UNIQUE KEY `UNIQ_6C047E64A640A07B79628CD` (`folder_pid`,`uri_part`),
+  KEY `IDX_6C047E64A640A07B` (`folder_pid`),
+  KEY `IDX_6C047E641B5771DD` (`is_active`),
+  KEY `IDX_6C047E64FD07C8FB` (`is_deleted`),
+  KEY `IDX_6C047E64462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
@@ -378,12 +378,12 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `deleted_at` datetime DEFAULT NULL,
   `is_use_eip` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `IDX_F4FF528B162CB942` (`folder_id`),
-  KEY `IDX_F4FF528BE9ED820C` (`region_id`),
-  KEY `is_active` (`is_active`),
-  KEY `position` (`position`),
-  KEY `module` (`module`),
-  KEY `IDX_3055D1B7FD07C8FB` (`is_deleted`)
+  KEY `IDX_3055D1B7FD07C8FB` (`is_deleted`),
+  KEY `IDX_3055D1B7162CB942` (`folder_id`),
+  KEY `IDX_3055D1B71B5771DD` (`is_active`),
+  KEY `IDX_3055D1B7462CE4F5` (`position`),
+  KEY `IDX_3055D1B798260155` (`region_id`),
+  KEY `IDX_3055D1B7C242628` (`module`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
@@ -439,8 +439,8 @@ CREATE TABLE IF NOT EXISTS `engine_regions` (
   `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
-  KEY `position` (`position`)
+  UNIQUE KEY `UNIQ_3054D4985E237E06` (`name`),
+  KEY `IDX_3054D498462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
@@ -466,8 +466,8 @@ CREATE TABLE IF NOT EXISTS `engine_regions_inherit` (
   `region_id` int(10) unsigned NOT NULL,
   `folder_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`region_id`,`folder_id`),
-  KEY `IDX_4B3EA624E9ED820C` (`region_id`),
-  KEY `IDX_4B3EA624162CB942` (`folder_id`)
+  KEY `IDX_41BBC12298260155` (`region_id`),
+  KEY `IDX_41BBC122162CB942` (`folder_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -492,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `engine_roles` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_5FFC79B05E237E06` (`name`)
+  UNIQUE KEY `UNIQ_9B56FA8C5E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -602,8 +602,8 @@ CREATE TABLE IF NOT EXISTS `media_categories` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_A1B938F6727ACA70` (`parent_id`),
-  KEY `slug` (`slug`)
+  KEY `IDX_30D688FC727ACA70` (`parent_id`),
+  KEY `IDX_30D688FC989D9B62` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -629,7 +629,7 @@ CREATE TABLE IF NOT EXISTS `media_collections` (
   `file_relative_path_pattern` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_C40927D314E68FF3` (`default_storage_id`)
+  KEY `IDX_244DA17D14E68FF3` (`default_storage_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -664,10 +664,10 @@ CREATE TABLE IF NOT EXISTS `media_files` (
   `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_D2E50011514956FD` (`collection_id`),
-  KEY `IDX_D2E5001112469DE2` (`category_id`),
-  KEY `IDX_D2E500115CC5DB90` (`storage_id`),
-  KEY `type` (`type`)
+  KEY `IDX_192C84E8514956FD` (`collection_id`),
+  KEY `IDX_192C84E812469DE2` (`category_id`),
+  KEY `IDX_192C84E85CC5DB90` (`storage_id`),
+  KEY `IDX_192C84E88CDE5729` (`type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
@@ -699,10 +699,10 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   `size` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `filter_file_id` (`filter`,`file_id`),
-  KEY `IDX_B0A0921B93CB796C` (`file_id`),
-  KEY `IDX_B0A0921B514956FD` (`collection_id`),
-  KEY `IDX_B0A0921B5CC5DB90` (`storage_id`)
+  UNIQUE KEY `UNIQ_1084B87D7FC45F1D93CB796C` (`filter`,`file_id`),
+  KEY `IDX_1084B87D93CB796C` (`file_id`),
+  KEY `IDX_1084B87D514956FD` (`collection_id`),
+  KEY `IDX_1084B87D5CC5DB90` (`storage_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
@@ -763,7 +763,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
   `created_at` datetime NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_E8E3E5515E237E06` (`name`)
+  UNIQUE KEY `UNIQ_727508CF5E237E06` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
@@ -797,9 +797,9 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `open_in_new_window` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `IDX_D885BF9AFE54D947` (`menu_id`),
-  KEY `IDX_D885BF9A5550C4ED` (`pid`),
-  KEY `IDX_D885BF9A162CB942` (`folder_id`)
+  KEY `IDX_70B2CA2A5550C4ED` (`pid`),
+  KEY `IDX_70B2CA2ACCD7E912` (`menu_id`),
+  KEY `IDX_70B2CA2A162CB942` (`folder_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
@@ -862,8 +862,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
-  KEY `bundle` (`bundle`),
-  KEY `IDX_E545A0C55E237E06` (`name`)
+  KEY `IDX_E545A0C55E237E06` (`name`),
+  KEY `IDX_E545A0C5A57B32FD` (`bundle`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
@@ -900,12 +900,12 @@ CREATE TABLE IF NOT EXISTS `simple_news` (
   `updated_at` datetime DEFAULT NULL,
   `instance_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_33961BA3989D9B62` (`slug`),
-  KEY `is_enabled` (`is_enabled`),
-  KEY `created_at` (`created_at`),
-  KEY `publish_date` (`publish_date`),
-  KEY `end_publish_date` (`end_publish_date`),
-  KEY `IDX_B232FBE93A51721D` (`instance_id`)
+  UNIQUE KEY `UNIQ_B232FBE9989D9B62` (`slug`),
+  KEY `IDX_B232FBE93A51721D` (`instance_id`),
+  KEY `IDX_B232FBE946C53D4C` (`is_enabled`),
+  KEY `IDX_B232FBE98B8E8428` (`created_at`),
+  KEY `IDX_B232FBE978B553BA` (`publish_date`),
+  KEY `IDX_B232FBE9B80531F1` (`end_publish_date`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
@@ -968,8 +968,8 @@ CREATE TABLE IF NOT EXISTS `sitemap_urls` (
   `status` smallint(6) NOT NULL,
   `referer` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_F2FA10BE8852ACDC` (`loc`),
-  KEY `title_hash` (`title_hash`)
+  UNIQUE KEY `UNIQ_365093828852ACDC` (`loc`),
+  KEY `IDX_365093829A62B8C7` (`title_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -1023,10 +1023,10 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `slider_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_56692A96D7DF1668` (`file_name`),
-  KEY `position` (`position`),
-  KEY `user_id` (`user_id`),
-  KEY `IDX_56692A962CCC9638` (`slider_id`)
+  UNIQUE KEY `UNIQ_B8C02091D7DF1668` (`file_name`),
+  KEY `IDX_B8C020912CCC9638` (`slider_id`),
+  KEY `IDX_B8C02091462CE4F5` (`position`),
+  KEY `IDX_B8C02091A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
@@ -1101,8 +1101,8 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
   `created_at` datetime NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `item_id` (`item_id`),
-  KEY `is_deleted` (`is_deleted`)
+  KEY `IDX_82529097126F525E` (`item_id`),
+  KEY `IDX_82529097FD07C8FB` (`is_deleted`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
@@ -1145,13 +1145,13 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_attributes` (
   `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
   `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_CD6A232E5E237E06` (`name`),
-  KEY `IDX_CD6A232EFE54D947` (`group_id`),
-  KEY `IDX_CD6A232E46C53D4C` (`is_enabled`),
-  KEY `IDX_CD6A232EFB9FF2E7` (`show_in_admin`),
-  KEY `IDX_CD6A232E921EA9F` (`show_in_list`),
-  KEY `IDX_CD6A232EB314B909` (`show_in_view`),
-  KEY `IDX_CD6A232E462CE4F5` (`position`)
+  UNIQUE KEY `UNIQ_FE1A5FAD5E237E06` (`name`),
+  KEY `IDX_FE1A5FADFE54D947` (`group_id`),
+  KEY `IDX_FE1A5FAD46C53D4C` (`is_enabled`),
+  KEY `IDX_FE1A5FADFB9FF2E7` (`show_in_admin`),
+  KEY `IDX_FE1A5FAD921EA9F` (`show_in_list`),
+  KEY `IDX_FE1A5FADB314B909` (`show_in_view`),
+  KEY `IDX_FE1A5FAD462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -1179,7 +1179,7 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_attributes_groups` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9E1338C873F32DD8` (`configuration_id`),
-  KEY `IDX_9E1338C82534008B` (`category_id`)
+  KEY `IDX_9E1338C812469DE2` (`category_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1333,13 +1333,13 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes` (
   `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
   `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_36709755E237E06` (`name`),
-  KEY `position` (`position`),
-  KEY `is_enabled` (`is_enabled`),
-  KEY `show_in_admin` (`show_in_admin`),
-  KEY `show_in_list` (`show_in_list`),
-  KEY `show_in_view` (`show_in_view`),
-  KEY `IDX_3670975FE54D947` (`group_id`)
+  UNIQUE KEY `UNIQ_3A3855D25E237E06` (`name`),
+  KEY `IDX_3A3855D2FE54D947` (`group_id`),
+  KEY `IDX_3A3855D246C53D4C` (`is_enabled`),
+  KEY `IDX_3A3855D2FB9FF2E7` (`show_in_admin`),
+  KEY `IDX_3A3855D2921EA9F` (`show_in_list`),
+  KEY `IDX_3A3855D2B314B909` (`show_in_view`),
+  KEY `IDX_3A3855D2462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -1368,8 +1368,8 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes_groups` (
   `category_id` int(10) unsigned DEFAULT NULL,
   `configuration_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_41BAD1D773F32DD8` (`configuration_id`),
-  KEY `IDX_6786BE592534008B` (`category_id`)
+  KEY `IDX_6786BE5912469DE2` (`category_id`),
+  KEY `IDX_6786BE5973F32DD8` (`configuration_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1400,11 +1400,11 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_categories` (
   `structure_id` int(10) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `slug_parent` (`slug`,`parent_id`,`structure_id`),
-  KEY `IDX_A2946812727ACA70` (`parent_id`),
-  KEY `is_enabled` (`is_enabled`),
-  KEY `position` (`position`),
-  KEY `IDX_A29468122534008B` (`structure_id`)
+  UNIQUE KEY `UNIQ_31508DCA989D9B62727ACA702534008B` (`slug`,`parent_id`,`structure_id`),
+  KEY `IDX_31508DCA727ACA70` (`parent_id`),
+  KEY `IDX_31508DCA2534008B` (`structure_id`),
+  KEY `IDX_31508DCA46C53D4C` (`is_enabled`),
+  KEY `IDX_31508DCA462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
@@ -1448,8 +1448,8 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_77A65EF0989D9B62` (`slug`),
-  KEY `position` (`position`)
+  UNIQUE KEY `UNIQ_163452F3989D9B62` (`slug`),
+  KEY `IDX_163452F3462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -1474,8 +1474,8 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items_categories_relations` (
   `item_id` int(11) unsigned NOT NULL,
   `category_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`item_id`,`category_id`),
-  KEY `IDX_29C9DBA5126F525E` (`item_id`),
-  KEY `IDX_29C9DBA512469DE2` (`category_id`)
+  KEY `IDX_749FFFB7126F525E` (`item_id`),
+  KEY `IDX_749FFFB712469DE2` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1503,8 +1503,8 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items_categories_relations_single` (
   `item_id` int(11) unsigned NOT NULL,
   `category_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`item_id`,`category_id`),
-  KEY `IDX_67C1BAA1126F525E` (`item_id`),
-  KEY `IDX_67C1BAA112469DE2` (`category_id`)
+  KEY `IDX_85899D72126F525E` (`item_id`),
+  KEY `IDX_85899D7212469DE2` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1540,10 +1540,10 @@ CREATE TABLE IF NOT EXISTS `unicat__configurations` (
   `user_id` int(10) unsigned NOT NULL,
   `items_per_page` smallint(5) unsigned NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_9D36C6A05E237E06` (`name`),
+  UNIQUE KEY `UNIQ_F622D4625E237E06` (`name`),
   UNIQUE KEY `UNIQ_F622D4622B36786B` (`title`),
-  KEY `IDX_9D36C6A0B52E685C` (`media_collection_id`),
-  KEY `IDX_9D36C6A07E2E521` (`default_structure_id`)
+  KEY `IDX_F622D462B52E685C` (`media_collection_id`),
+  KEY `IDX_F622D4627E2E521` (`default_structure_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
@@ -1576,7 +1576,7 @@ CREATE TABLE IF NOT EXISTS `unicat__structures` (
   `properties` longtext COLLATE utf8_unicode_ci,
   `is_tree` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `IDX_C3D9EB2050C9D4F7` (`configuration_id`)
+  KEY `IDX_B933004773F32DD8` (`configuration_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
@@ -1618,8 +1618,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
-  UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`)
+  UNIQUE KEY `UNIQ_1483A5E992FC23A8` (`username_canonical`),
+  UNIQUE KEY `UNIQ_1483A5E9A0D96FBF` (`email_canonical`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
@@ -1627,7 +1627,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-04 04:30:54', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-05 04:54:35', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1807,15 +1807,15 @@ INSERT INTO `_engine_permissions_groups` (`group_id`, `descr`) VALUES
 -- Ограничения внешнего ключа таблицы `blog_articles`
 --
 ALTER TABLE `blog_articles`
-  ADD CONSTRAINT `FK_CB80154F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`),
-  ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `FK_CB80154F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_articles_tags_relations`
 --
 ALTER TABLE `blog_articles_tags_relations`
-  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`),
-  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`);
+  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`),
+  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_categories`
@@ -1833,15 +1833,15 @@ ALTER TABLE `engine_folders`
 -- Ограничения внешнего ключа таблицы `engine_nodes`
 --
 ALTER TABLE `engine_nodes`
-  ADD CONSTRAINT `FK_3055D1B7162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`);
+  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`),
+  ADD CONSTRAINT `FK_3055D1B7162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_regions_inherit`
 --
 ALTER TABLE `engine_regions_inherit`
-  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `galleries`
@@ -1877,25 +1877,25 @@ ALTER TABLE `media_collections`
 -- Ограничения внешнего ключа таблицы `media_files`
 --
 ALTER TABLE `media_files`
+  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   ADD CONSTRAINT `FK_192C84E812469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
-  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
+  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_files_transformed`
 --
 ALTER TABLE `media_files_transformed`
+  ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_1084B87D514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
-  ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `menu_items`
 --
 ALTER TABLE `menu_items`
+  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`),
   ADD CONSTRAINT `FK_7D053A93162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`),
-  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
+  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `simple_news`
@@ -1959,36 +1959,36 @@ ALTER TABLE `unicat_catalog_attributes`
 -- Ограничения внешнего ключа таблицы `unicat_catalog_attributes_groups`
 --
 ALTER TABLE `unicat_catalog_attributes_groups`
-  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
-  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`);
+  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`),
+  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_categories`
 --
 ALTER TABLE `unicat_catalog_categories`
-  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
-  ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_categories` (`id`);
+  ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_categories` (`id`),
+  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_items_categories_relations`
 --
 ALTER TABLE `unicat_catalog_items_categories_relations`
-  ADD CONSTRAINT `FK_749FFFB712469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_749FFFB7126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_749FFFB7126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_749FFFB712469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_items_categories_relations_single`
 --
 ALTER TABLE `unicat_catalog_items_categories_relations_single`
-  ADD CONSTRAINT `FK_85899D7212469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_85899D72126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_85899D72126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_85899D7212469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `unicat__configurations`
 --
 ALTER TABLE `unicat__configurations`
-  ADD CONSTRAINT `FK_9D36C6A07E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`),
-  ADD CONSTRAINT `FK_9D36C6A0B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
+  ADD CONSTRAINT `FK_9D36C6A0B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`),
+  ADD CONSTRAINT `FK_9D36C6A07E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat__structures`
