@@ -97,8 +97,8 @@ class Slide
      */
     public function __construct()
     {
-        $this->created_at    = new \DateTime();
-        $this->enabled      = true;
+        $this->created_at   = new \DateTime();
+        $this->is_enabled   = true;
         $this->position     = 0;
         $this->properties   = [];
     }
