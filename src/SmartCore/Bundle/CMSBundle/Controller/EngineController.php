@@ -117,7 +117,7 @@ class EngineController extends Controller
 
                 if ($this->get('cms.module')->has($node->getModule())) {
                     $moduleResponse = $this->forward($node->getId(), [
-                        '_route' => 'cms_node_mapper',
+                        '_route' => 'cms_getprocessor',
                         '_route_params' => $request->attributes->get('_route_params'),
                     ], $request->query->all());
                 } else {

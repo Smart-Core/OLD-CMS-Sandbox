@@ -1,4 +1,4 @@
-web_form.index:
+smart_module.web_form.index:
     path: /
     defaults:
         _controller: WebFormModule:WebForm:index

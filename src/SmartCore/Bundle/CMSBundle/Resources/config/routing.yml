@@ -11,7 +11,7 @@ cms_api:
     resource: 'routing_api.yml'
     prefix: /api/
 
-cms_node_mapper:
+cms_getprocessor:
     path: /{slug}
     methods: GET
     defaults:
@@ -20,7 +20,7 @@ cms_node_mapper:
     requirements:
         slug: '.+'
 
-cms_node_postprocessor:
+cms_postprocessor:
     path: /{slug}
     methods: POST
     defaults:
