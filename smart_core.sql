@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июн 05 2015 г., 04:58
--- Версия сервера: 5.6.13
+-- Время создания: Июн 08 2015 г., 01:00
+-- Версия сервера: 5.6.20
 -- Версия PHP: 5.6.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -1627,7 +1627,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-05 04:54:35', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-08 00:59:20', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1807,15 +1807,15 @@ INSERT INTO `_engine_permissions_groups` (`group_id`, `descr`) VALUES
 -- Ограничения внешнего ключа таблицы `blog_articles`
 --
 ALTER TABLE `blog_articles`
-  ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `FK_CB80154F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`);
+  ADD CONSTRAINT `FK_CB80154F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`),
+  ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_articles_tags_relations`
 --
 ALTER TABLE `blog_articles_tags_relations`
-  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`),
-  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`);
+  ADD CONSTRAINT `FK_512A6F437294869C` FOREIGN KEY (`article_id`) REFERENCES `blog_articles` (`id`),
+  ADD CONSTRAINT `FK_512A6F43BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_categories`
@@ -1833,15 +1833,15 @@ ALTER TABLE `engine_folders`
 -- Ограничения внешнего ключа таблицы `engine_nodes`
 --
 ALTER TABLE `engine_nodes`
-  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`),
-  ADD CONSTRAINT `FK_3055D1B7162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`);
+  ADD CONSTRAINT `FK_3055D1B7162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_regions_inherit`
 --
 ALTER TABLE `engine_regions_inherit`
-  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_41BBC122162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_41BBC12298260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `galleries`
@@ -1877,25 +1877,25 @@ ALTER TABLE `media_collections`
 -- Ограничения внешнего ключа таблицы `media_files`
 --
 ALTER TABLE `media_files`
-  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   ADD CONSTRAINT `FK_192C84E812469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
-  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`);
+  ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
+  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_files_transformed`
 --
 ALTER TABLE `media_files_transformed`
-  ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_1084B87D514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
+  ADD CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
+  ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `menu_items`
 --
 ALTER TABLE `menu_items`
-  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`),
   ADD CONSTRAINT `FK_7D053A93162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`);
+  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`),
+  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `simple_news`
@@ -1959,36 +1959,36 @@ ALTER TABLE `unicat_catalog_attributes`
 -- Ограничения внешнего ключа таблицы `unicat_catalog_attributes_groups`
 --
 ALTER TABLE `unicat_catalog_attributes_groups`
-  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`),
-  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
+  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
+  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_categories`
 --
 ALTER TABLE `unicat_catalog_categories`
-  ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_categories` (`id`),
-  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`);
+  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
+  ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_items_categories_relations`
 --
 ALTER TABLE `unicat_catalog_items_categories_relations`
-  ADD CONSTRAINT `FK_749FFFB7126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_749FFFB712469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_749FFFB712469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_749FFFB7126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_items_categories_relations_single`
 --
 ALTER TABLE `unicat_catalog_items_categories_relations_single`
-  ADD CONSTRAINT `FK_85899D72126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_85899D7212469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_85899D7212469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_85899D72126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `unicat__configurations`
 --
 ALTER TABLE `unicat__configurations`
-  ADD CONSTRAINT `FK_9D36C6A0B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_9D36C6A07E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`);
+  ADD CONSTRAINT `FK_9D36C6A07E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`),
+  ADD CONSTRAINT `FK_9D36C6A0B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat__structures`
