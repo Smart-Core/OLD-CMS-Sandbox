@@ -279,7 +279,7 @@ class AdminWebFormController extends Controller
     {
         foreach ($this->get('cms.node')->findByModule('WebForm') as $node) {
             if ($node->getParam('webform_id') === (int) $webForm->getId()) {
-                return $this->generateUrl('web_form.index', [
+                return $this->generateUrl('smart_module.web_form.index', [
                     '_folderPath' => $this->get('cms.folder')->getUri($node),
                 ]);
             }
