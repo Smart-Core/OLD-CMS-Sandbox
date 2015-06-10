@@ -3,7 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Версия сервера: 5.6.13-- Версия PHP: 5.6.9
+-- Время создания: Июн 11 2015 г., 03:00
+-- Версия сервера: 5.6.13
+-- Версия PHP: 5.6.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -1625,6 +1627,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-08 17:20:04', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
@@ -1710,7 +1713,7 @@ CREATE TABLE IF NOT EXISTS `webforms_messages` (
   `ip_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_24719905B75935E3` (`web_form_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `webforms_messages`
@@ -1720,9 +1723,7 @@ INSERT INTO `webforms_messages` (`id`, `data`, `created_at`, `user_id`, `comment
 (1, 'a:3:{s:4:"name";s:4:"1234";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:3:"dfg";}', '2015-03-24 04:17:00', 1, 'nm bnm, bnm,', 1, 1, NULL),
 (2, 'a:3:{s:4:"name";s:6:"222222";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:11:"54555555555";}', '2015-03-24 04:17:42', 0, 'hfgh 3', 0, 1, NULL),
 (3, 'a:3:{s:4:"name";s:3:"dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:4:"dfhj";}', '2015-03-24 04:50:33', 0, NULL, 0, 1, NULL),
-(4, 'a:3:{s:4:"name";s:7:"dfg dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:17:"678 sdfg 547 8fgh";}', '2015-03-24 06:15:54', 1, NULL, 0, 1, NULL),
-(5, 'a:3:{s:4:"name";s:8:"Пётр";s:5:"email";s:13:"piotr@mail.ru";s:4:"text";s:32:"Проверяем IP адрес";}', '2015-06-05 05:16:38', 1, NULL, 0, 1, NULL),
-(6, 'a:3:{s:4:"name";s:8:"Пётр";s:5:"email";s:13:"piotr@mail.ru";s:4:"text";s:34:"Проверяем IP адрес 2";}', '2015-06-05 05:18:34', 1, NULL, 0, 1, '127.0.0.1');
+(4, 'a:3:{s:4:"name";s:7:"dfg dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:17:"678 sdfg 547 8fgh";}', '2015-03-24 06:15:54', 1, NULL, 0, 1, NULL);
 
 -- --------------------------------------------------------
 
