@@ -113,16 +113,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "dbec59551993f3838563980c67b73dd06c6a5247"
+                "reference": "4647fbbc2530dc08cc614909dbe1697cf0031050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dbec59551993f3838563980c67b73dd06c6a5247",
-                "reference": "dbec59551993f3838563980c67b73dd06c6a5247",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4647fbbc2530dc08cc614909dbe1697cf0031050",
+                "reference": "4647fbbc2530dc08cc614909dbe1697cf0031050",
                 "shasum": ""
             },
             "require": {
@@ -139,7 +139,7 @@
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
                 "ext-spl": "*",
-                "phpunit/phpunit": "^4.0"
+                "phpunit/phpunit": "~4.0"
             },
             "suggest": {
                 "ext-curl": "To send requests using cURL",
@@ -181,7 +181,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-06-01 21:33:37"
+            "time": "2015-06-12 00:06:34"
         },
         {
             "name": "dizda/cloud-backup-bundle",
@@ -4540,12 +4540,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "22bc280b9a254caa42c5b44b55f43eb33ab15426"
+                "reference": "4d4b6291b47fc70491a4f92105be39d6bcccbb95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/22bc280b9a254caa42c5b44b55f43eb33ab15426",
-                "reference": "22bc280b9a254caa42c5b44b55f43eb33ab15426",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/4d4b6291b47fc70491a4f92105be39d6bcccbb95",
+                "reference": "4d4b6291b47fc70491a4f92105be39d6bcccbb95",
                 "shasum": ""
             },
             "require": {
@@ -4603,7 +4603,7 @@
                 "form",
                 "template"
             ],
-            "time": "2015-06-07 17:15:45"
+            "time": "2015-06-11 12:44:01"
         },
         {
             "name": "mopa/composer-bridge",
@@ -5290,21 +5290,21 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.30",
+            "version": "v4.0.0",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "f1758b30096202aeede61f79a1dffd69da091517"
+                "reference": "97929c0a642977acead3d911b2c5c1a944739d40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/f1758b30096202aeede61f79a1dffd69da091517",
-                "reference": "f1758b30096202aeede61f79a1dffd69da091517",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/97929c0a642977acead3d911b2c5c1a944739d40",
+                "reference": "97929c0a642977acead3d911b2c5c1a944739d40",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": ">=5.3.9",
                 "sensiolabs/security-checker": "~2.0",
                 "symfony/class-loader": "~2.2",
                 "symfony/framework-bundle": "~2.3",
@@ -5323,7 +5323,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -5346,7 +5346,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-06-05 22:32:22"
+            "time": "2015-06-11 20:55:01"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -5772,12 +5772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "e9f39b7ce83991077f693410b1e17b85d7f4d323"
+                "reference": "84b81f4aeff9e30c52a2cbd9d138159c3dc357bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/e9f39b7ce83991077f693410b1e17b85d7f4d323",
-                "reference": "e9f39b7ce83991077f693410b1e17b85d7f4d323",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/84b81f4aeff9e30c52a2cbd9d138159c3dc357bb",
+                "reference": "84b81f4aeff9e30c52a2cbd9d138159c3dc357bb",
                 "shasum": ""
             },
             "require": {
@@ -5826,7 +5826,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-06-10 18:32:45"
+            "time": "2015-06-11 10:45:29"
         },
         {
             "name": "sp/bower-bundle",
