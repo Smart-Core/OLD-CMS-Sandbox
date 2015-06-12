@@ -6,15 +6,13 @@
     {% set current_class = 'current' %}
 {% endif %}
 
-{% set menu = knp_menu_get('MenuModule:MenuBuilder:full', [], {
-    'group': group,
+{% set menuItems = knp_menu_get('MenuModule:MenuBuilder:full', [], {
+    'menu': menu,
     'css_class': css_class,
     'depth': depth,
 }) %}
 
-{#{{ menu|ld }}#}
-
-{{ knp_menu_render(menu, {
+{{ knp_menu_render(menuItems, {
     'currentAsLink': true,
     'currentClass': current_class,
     'compressed': true,
