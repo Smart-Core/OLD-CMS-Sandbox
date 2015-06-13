@@ -1,5 +1,7 @@
 parameters:
-    liip_theme.file_locator.class: SmartCore\Bundle\CMSBundle\Locator\ModuleThemeLocator
+    liip_theme.file_locator.class: SmartCore\Bundle\CMSBundle\Twig\Locator\ModuleThemeLocator
+    liip_theme.templating_locator.class: SmartCore\Bundle\CMSBundle\Twig\Locator\TemplateLocator
+    liip_theme.filesystem_loader.class: SmartCore\Bundle\CMSBundle\Twig\Loader\FilesystemLoader
     admin_path: admin
     user_path: user
 

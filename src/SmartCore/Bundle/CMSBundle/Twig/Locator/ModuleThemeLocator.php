@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartCore\Bundle\CMSBundle\Locator;
+namespace SmartCore\Bundle\CMSBundle\Twig\Locator;
 
 use Liip\ThemeBundle\Locator\FileLocator;
 

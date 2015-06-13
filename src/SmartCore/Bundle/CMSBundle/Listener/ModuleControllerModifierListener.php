@@ -6,9 +6,7 @@ use SmartCore\Bundle\CMSBundle\Engine\EngineContext;
 use SmartCore\Bundle\CMSBundle\Engine\EngineFolder;
 use SmartCore\Bundle\CMSBundle\Engine\EngineModule;
 use SmartCore\Bundle\CMSBundle\Engine\EngineNode;
-use SmartCore\Bundle\CMSBundle\Locator\ModuleThemeLocator;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use SmartCore\Bundle\CMSBundle\Twig\Loader\FilesystemLoader;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -18,8 +16,6 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class ModuleControllerModifierListener
 {
-    use ContainerAwareTrait;
-
     /** @var EngineContext */
     protected $engineContext;
 
@@ -32,33 +28,28 @@ class ModuleControllerModifierListener
     /** @var EngineNode */
     protected $engineNodeManager;
 
-    /** @var ModuleThemeLocator */
-    protected $moduleThemeLocator;
+    /** @var \SmartCore\Bundle\CMSBundle\Twig\Loader\FilesystemLoader  */
+    protected $twigLoader;
 
     /**
      * @param EngineContext $engineContext
      * @param EngineFolder $engineFolder
      * @param EngineModule $engineModule
      * @param EngineNode $engineNodeManager
-     * @param ModuleThemeLocator $moduleThemeLocator
+     * @param FilesystemLoader $twigLoader
      */
-    public function __construct(EngineContext $engineContext, EngineFolder $engineFolder, EngineModule $engineModule, EngineNode $engineNodeManager, ModuleThemeLocator $moduleThemeLocator)
-    //public function __construct(ContainerInterface $container)
-    {
-        /*
-        $this->container          = $container;
-        $this->engineContext      = $container->get('cms.context');
-        $this->engineFolder       = $container->get('cms.folder');
-        $this->engineModule       = $container->get('cms.module');
-        $this->engineNodeManager  = $container->get('cms.node');
-        $this->moduleThemeLocator = $container->get('liip_theme.file_locator');
-        */
-
+    public function __construct(
+        EngineContext $engineContext,
+        EngineFolder $engineFolder,
+        EngineModule $engineModule,
+        EngineNode $engineNodeManager,
+        FilesystemLoader $twigLoader
+    ) {
         $this->engineContext      = $engineContext;
         $this->engineFolder       = $engineFolder;
         $this->engineModule       = $engineModule;
         $this->engineNodeManager  = $engineNodeManager;
-        $this->moduleThemeLocator = $moduleThemeLocator;
+        $this->twigLoader         = $twigLoader;
     }
 
     public function onView(GetResponseForControllerResultEvent $event)
@@ -111,7 +102,7 @@ class ModuleControllerModifierListener
 
             if (method_exists($controller[0], 'setNode')) {
                 $controller[0]->setNode($node);
-                $this->moduleThemeLocator->setModuleTheme($node->getTemplate());
+                $this->twigLoader->setModuleTheme($node);
             }
 
             $this->engineContext->setCurrentNodeId($node->getId());
@@ -142,6 +133,6 @@ class ModuleControllerModifierListener
     public function onResponse(FilterResponseEvent $event)
     {
         $this->engineContext->setCurrentNodeId(null);
-        $this->moduleThemeLocator->setModuleTheme(null);
+        $this->twigLoader->setModuleTheme(null);
     }
 }
