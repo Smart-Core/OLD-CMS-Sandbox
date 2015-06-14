@@ -5558,12 +5558,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "2748e24da6e263c202c74ef00e1977ec0ec106e4"
+                "reference": "4a6d649736748a6c2113d8b11d229b4d55d4a64d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/2748e24da6e263c202c74ef00e1977ec0ec106e4",
-                "reference": "2748e24da6e263c202c74ef00e1977ec0ec106e4",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/4a6d649736748a6c2113d8b11d229b4d55d4a64d",
+                "reference": "4a6d649736748a6c2113d8b11d229b4d55d4a64d",
                 "shasum": ""
             },
             "require": {
@@ -5584,7 +5584,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-06-04 23:10:12"
+            "time": "2015-06-14 17:53:43"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5772,12 +5772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "84b81f4aeff9e30c52a2cbd9d138159c3dc357bb"
+                "reference": "f064e84e06ebcd2be720e1a8f29357129eb5aa1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/84b81f4aeff9e30c52a2cbd9d138159c3dc357bb",
-                "reference": "84b81f4aeff9e30c52a2cbd9d138159c3dc357bb",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/f064e84e06ebcd2be720e1a8f29357129eb5aa1c",
+                "reference": "f064e84e06ebcd2be720e1a8f29357129eb5aa1c",
                 "shasum": ""
             },
             "require": {
@@ -5826,7 +5826,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-06-11 10:45:29"
+            "time": "2015-06-14 16:46:34"
         },
         {
             "name": "sp/bower-bundle",
