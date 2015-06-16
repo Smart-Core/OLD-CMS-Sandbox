@@ -1,7 +1,7 @@
 {% extends '@Html/base.html.twig' %}
 
 {% set use_libs = {
-    'bootstrap': '3.3.4',
+    'bootstrap': '3',
     'syntaxhighlighter': null,
 } %}
 
@@ -11,7 +11,7 @@
     {{ parent() }}
     <style media="all" type="text/css">
         @import url({{ asset('bundles/cms/css/bootstrap-theme-smart-core.css') }});
-        {#@import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});#}
+        {#@import url({{ asset('bundles/felib/bootstrap/2/css/bootstrap-responsive.min.css') }});#}
         @import url({{ asset('bundles/site/css/screen.css') }});
         @import url({{ asset('bundles/site/css/dark_theme.css') }});
         @import url({{ asset('bundles/site/css/wp-syntax.css') }});

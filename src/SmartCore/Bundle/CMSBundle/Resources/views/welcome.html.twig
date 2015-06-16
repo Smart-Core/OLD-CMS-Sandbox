@@ -7,9 +7,9 @@
 }}{% endblock %}
 
 {% if is_setting('cms', 'twitter_bootstrap_version', 3) %}
-    {% set felib = felib_use('bootstrap', '3.3.4') %}
+    {% set felib = felib_use('bootstrap', '3') %}
 {% else %}
-    {% set felib = felib_use('bootstrap', '2.3.2') %}
+    {% set felib = felib_use('bootstrap', '2') %}
 {% endif %}
 
 {% block styles %}
@@ -18,8 +18,8 @@
         {% if is_setting('cms', 'twitter_bootstrap_version', 3) %}
             @import url({{ asset('bundles/cms/css/bootstrap-theme-smart-core.css') }});
         {% else %}
-            @import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.css') }});
-            {#@import url({{ asset('bundles/felib/bootstrap/2.3.2/css/bootstrap-responsive.min.css') }});#}
+            @import url({{ asset('bundles/felib/bootstrap/2/css/bootstrap-responsive.css') }});
+            {#@import url({{ asset('bundles/felib/bootstrap/2/css/bootstrap-responsive.min.css') }});#}
         {% endif %}
 
         body {

@@ -885,12 +885,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "eaa9eb5ea101dc494d7f57d1a86905e56a211d49"
+                "reference": "e33e07137c43a492589e89d79d36807cbfcf28e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/eaa9eb5ea101dc494d7f57d1a86905e56a211d49",
-                "reference": "eaa9eb5ea101dc494d7f57d1a86905e56a211d49",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/e33e07137c43a492589e89d79d36807cbfcf28e0",
+                "reference": "e33e07137c43a492589e89d79d36807cbfcf28e0",
                 "shasum": ""
             },
             "require": {
@@ -935,7 +935,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2015-05-31 17:38:23"
+            "time": "2015-06-15 17:47:52"
         },
         {
             "name": "doctrine/inflector",
@@ -1006,16 +1006,16 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
-                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
                 "shasum": ""
             },
             "require": {
@@ -1026,7 +1026,7 @@
                 "ext-pdo": "*",
                 "ext-phar": "*",
                 "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "2.0.*@ALPHA"
+                "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
             "extra": {
@@ -1035,8 +1035,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Instantiator\\": "src"
+                "psr-4": {
+                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1056,7 +1056,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2014-10-13 12:58:55"
+            "time": "2015-06-14 21:17:01"
         },
         {
             "name": "doctrine/lexer",
@@ -1668,17 +1668,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "46a18702ad7ea33678c50914512ef5bf530e043b"
+                "reference": "bd233aca63b0965171d60fe4c539afa10d45633e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/46a18702ad7ea33678c50914512ef5bf530e043b",
-                "reference": "46a18702ad7ea33678c50914512ef5bf530e043b",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/bd233aca63b0965171d60fe4c539afa10d45633e",
+                "reference": "bd233aca63b0965171d60fe4c539afa10d45633e",
                 "shasum": ""
             },
             "require": {
@@ -1717,7 +1717,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -1748,7 +1748,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-06-04 07:49:44"
+            "time": "2015-06-15 08:39:23"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -2817,16 +2817,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "79f0a35da7d4f75bb85d9c04513dd5929e21f75e"
+                "reference": "1009557c32205b077e34b2ae611e6316fa423021"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/79f0a35da7d4f75bb85d9c04513dd5929e21f75e",
-                "reference": "79f0a35da7d4f75bb85d9c04513dd5929e21f75e",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/1009557c32205b077e34b2ae611e6316fa423021",
+                "reference": "1009557c32205b077e34b2ae611e6316fa423021",
                 "shasum": ""
             },
             "require": {
@@ -2869,7 +2869,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-05-09 16:06:30"
+            "time": "2015-06-10 17:50:36"
         },
         {
             "name": "jbroadway/urlify",
@@ -3744,12 +3744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "0a7608e6d540d6558e817168329ea4e759b9dbe4"
+                "reference": "8592169d3d05085c69501a86bf51569588fef230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/0a7608e6d540d6558e817168329ea4e759b9dbe4",
-                "reference": "0a7608e6d540d6558e817168329ea4e759b9dbe4",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/8592169d3d05085c69501a86bf51569588fef230",
+                "reference": "8592169d3d05085c69501a86bf51569588fef230",
                 "shasum": ""
             },
             "require": {
@@ -3800,7 +3800,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2015-04-16 19:08:19"
+            "time": "2015-06-15 12:27:53"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -5592,12 +5592,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "287ca7777793d126b0b14191a25016117e88ad84"
+                "reference": "25e5e9fe2a5a9e781fc70b70517f4f7f1b46c06c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/287ca7777793d126b0b14191a25016117e88ad84",
-                "reference": "287ca7777793d126b0b14191a25016117e88ad84",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/25e5e9fe2a5a9e781fc70b70517f4f7f1b46c06c",
+                "reference": "25e5e9fe2a5a9e781fc70b70517f4f7f1b46c06c",
                 "shasum": ""
             },
             "require": {
@@ -5617,7 +5617,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-03-25 04:33:23"
+            "time": "2015-06-16 07:48:56"
         },
         {
             "name": "smart-core/ladybug-bundle",
@@ -5772,12 +5772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "f064e84e06ebcd2be720e1a8f29357129eb5aa1c"
+                "reference": "6d8523253ac367da8782e2aff9a7b40bea03c864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/f064e84e06ebcd2be720e1a8f29357129eb5aa1c",
-                "reference": "f064e84e06ebcd2be720e1a8f29357129eb5aa1c",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/6d8523253ac367da8782e2aff9a7b40bea03c864",
+                "reference": "6d8523253ac367da8782e2aff9a7b40bea03c864",
                 "shasum": ""
             },
             "require": {
@@ -5788,6 +5788,7 @@
                 "twig/twig": "*"
             },
             "require-dev": {
+                "fabpot/php-cs-fixer": "~0.5|~1.0",
                 "sonata-project/user-bundle": "~2.2",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
                 "symfony/security": "~2.2"
@@ -5826,7 +5827,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-06-14 16:46:34"
+            "time": "2015-06-15 21:39:25"
         },
         {
             "name": "sp/bower-bundle",
