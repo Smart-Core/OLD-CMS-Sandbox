@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../src/SmartCore/Bundle/SimpleProfilerBundle/Profiler.php';
+require_once __DIR__.'/../vendor/smart-core/simple-profiler-bundle/Profiler.php';
 
 use SmartCore\Bundle\CMSBundle\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
