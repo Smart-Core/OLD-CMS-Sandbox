@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "362d2177519640d639044e9ef4729b91",
+    "hash": "e3a5753e6f46496633965d9febb2ac0d",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -4726,31 +4726,37 @@
         },
         {
             "name": "pagerfanta/pagerfanta",
-            "version": "v1.0.1",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/Pagerfanta.git",
-                "reference": "9568187b789a39a3933c71e4e28b60fc2c26b70d"
+                "reference": "a874d3612d954dcbbb49e5ffe178890918fb76fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/9568187b789a39a3933c71e4e28b60fc2c26b70d",
-                "reference": "9568187b789a39a3933c71e4e28b60fc2c26b70d",
+                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/a874d3612d954dcbbb49e5ffe178890918fb76fb",
+                "reference": "a874d3612d954dcbbb49e5ffe178890918fb76fb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "doctrine/mongodb-odm": "*",
-                "doctrine/orm": "2.*",
-                "mandango/mandango": "*",
+                "doctrine/orm": "~2.3",
+                "doctrine/phpcr-odm": "1.*",
+                "jackalope/jackalope-doctrine-dbal": "1.*",
+                "jmikola/geojson": "~1.0",
+                "mandango/mandango": "~1.0@dev",
+                "mandango/mondator": "~1.0@dev",
+                "phpunit/phpunit": "~4",
                 "propel/propel1": "~1.6",
-                "solarium/solarium": "dev-develop"
+                "ruflin/elastica": "~1.3",
+                "solarium/solarium": "~3.1"
             },
             "suggest": {
                 "doctrine/mongodb-odm": "To use the DoctrineODMMongoDBAdapter.",
                 "doctrine/orm": "To use the DoctrineORMAdapter.",
+                "doctrine/phpcr-odm": "To use the DoctrineODMPhpcrAdapter. >= 1.1.0",
                 "mandango/mandango": "To use the MandangoAdapter.",
                 "propel/propel1": "To use the PropelAdapter",
                 "solarium/solarium": "To use the SolariumAdapter."
@@ -4773,8 +4779,7 @@
             "authors": [
                 {
                     "name": "Pablo Díez",
-                    "email": "pablodip@gmail.com",
-                    "homepage": "http://github.com/pablodip"
+                    "email": "pablodip@gmail.com"
                 }
             ],
             "description": "Pagination for PHP 5.3",
@@ -4784,7 +4789,7 @@
                 "paginator",
                 "paging"
             ],
-            "time": "2013-09-23 08:06:55"
+            "time": "2014-10-06 10:57:25"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -5424,12 +5429,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "766082936fac3e54e717c582e0aa10dbf041f4c6"
+                "reference": "849c6d1a7377e711d03f3ffaa836b41afcdbd294"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/766082936fac3e54e717c582e0aa10dbf041f4c6",
-                "reference": "766082936fac3e54e717c582e0aa10dbf041f4c6",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/849c6d1a7377e711d03f3ffaa836b41afcdbd294",
+                "reference": "849c6d1a7377e711d03f3ffaa836b41afcdbd294",
                 "shasum": ""
             },
             "require": {
@@ -5464,7 +5469,6 @@
                 "leafo/scssphp": "*",
                 "liip/theme-bundle": "~1.0@dev",
                 "misd/guzzle-bundle": "~1.0",
-                "pagerfanta/pagerfanta": "v1.0.1",
                 "php": ">=5.4.11",
                 "predis/predis": "0.8.*",
                 "rickysu/tagcache-bundle": "~0.1",
@@ -5507,7 +5511,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-26 10:58:50"
+            "time": "2015-06-26 15:42:54"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5786,12 +5790,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Menu.git",
-                "reference": "9452b6efbb68d217eb9954f6d3f6d6d1b3b310ff"
+                "reference": "d5a14c8c2e57261890cbca36ce0f0f6f15ff6622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/9452b6efbb68d217eb9954f6d3f6d6d1b3b310ff",
-                "reference": "9452b6efbb68d217eb9954f6d3f6d6d1b3b310ff",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/d5a14c8c2e57261890cbca36ce0f0f6f15ff6622",
+                "reference": "d5a14c8c2e57261890cbca36ce0f0f6f15ff6622",
                 "shasum": ""
             },
             "require": {
@@ -5804,7 +5808,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 10:29:41"
+            "time": "2015-06-26 13:01:57"
         },
         {
             "name": "smart-core/module-simplenews",

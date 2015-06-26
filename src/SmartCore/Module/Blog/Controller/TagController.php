@@ -4,7 +4,6 @@ namespace SmartCore\Module\Blog\Controller;
 
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
-use Smart\CoreBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,7 +42,7 @@ class TagController extends Controller
             throw $this->createNotFoundException('Запрошенного тега не существует.');
         }
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getFindByTagQuery($tag)));
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($tagService->getFindByTagQuery($tag)));
         $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
 
         try {

@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Blog\Controller\Admin;
 
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
-use Smart\CoreBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class TagController extends Controller
             }
         }
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getFindAllQuery()));
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($tagService->getFindAllQuery()));
         $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
 
         try {

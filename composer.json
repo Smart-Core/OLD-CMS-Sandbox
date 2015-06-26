@@ -18,7 +18,6 @@
         "mremi/templating-extra-bundle": "dev-master",
 
 
-
         "friendsofsymfony/user-bundle": "dev-master",
         "hwi/oauth-bundle": "0.4.*@dev",
         "knplabs/knp-disqus-bundle":"dev-master",

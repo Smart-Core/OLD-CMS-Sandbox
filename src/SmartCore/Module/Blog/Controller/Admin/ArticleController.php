@@ -2,9 +2,9 @@
 
 namespace SmartCore\Module\Blog\Controller\Admin;
 
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
-use Smart\CoreBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +21,7 @@ class ArticleController extends Controller
         /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
         $articleService = $this->get('smart_blog.article');
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoryQuery()));
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($articleService->getFindByCategoryQuery()));
         $pagerfanta->setMaxPerPage($articleService->getItemsCountPerPage());
 
         try {
