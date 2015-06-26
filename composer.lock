@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c53708b67d06deb3f2b5a695411adb04",
+    "hash": "f5ce0b94527545c0bcd27be2eaa138b7",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -5417,6 +5417,36 @@
             "time": "2015-05-27 08:44:56"
         },
         {
+            "name": "smart-core/cms-generator-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
+                "reference": "4dd09f59084f837e891dc415b68b60b4c2ffced1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/4dd09f59084f837e891dc415b68b60b4c2ffced1",
+                "reference": "4dd09f59084f837e891dc415b68b60b4c2ffced1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\CMSGeneratorBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://smart-core.org",
+            "time": "2015-06-26 04:38:30"
+        },
+        {
             "name": "smart-core/core-bundle",
             "version": "dev-master",
             "source": {
@@ -5484,6 +5514,38 @@
             "time": "2015-06-16 07:48:56"
         },
         {
+            "name": "smart-core/html-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/HtmlBundle.git",
+                "reference": "025fa3bbbc192f673a6286ba2a8ac7b5e7121289"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/HtmlBundle/zipball/025fa3bbbc192f673a6286ba2a8ac7b5e7121289",
+                "reference": "025fa3bbbc192f673a6286ba2a8ac7b5e7121289",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\HtmlBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Html boilerplate.",
+            "homepage": "http://smart-core.org",
+            "keywords": [
+                "bundle",
+                "html"
+            ],
+            "time": "2015-06-26 04:32:01"
+        },
+        {
             "name": "smart-core/ladybug-bundle",
             "version": "v0.7.2",
             "target-dir": "RaulFraile/Bundle/LadybugBundle",
@@ -5532,6 +5594,130 @@
                 "twig"
             ],
             "time": "2015-01-17 00:07:02"
+        },
+        {
+            "name": "smart-core/media-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/MediaBundle.git",
+                "reference": "16945d92d53017e2b8d508bb24e894631d35400e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/MediaBundle/zipball/16945d92d53017e2b8d508bb24e894631d35400e",
+                "reference": "16945d92d53017e2b8d508bb24e894631d35400e",
+                "shasum": ""
+            },
+            "require": {
+                "liip/imagine-bundle": "*",
+                "php": ">=5.4.1",
+                "smart-core/core-bundle": "dev-master"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\MediaBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Ryzhkov",
+                    "email": "artem@smart-core.org",
+                    "homepage": "http://smart-core.org"
+                }
+            ],
+            "description": "Symfony Media Cloud Storage Bundle.",
+            "keywords": [
+                "bundle",
+                "media"
+            ],
+            "time": "2015-06-26 04:27:26"
+        },
+        {
+            "name": "smart-core/rich-editor-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/RichEditorBundle.git",
+                "reference": "a6559f39d8b81a29b65af403d17efea8d7574867"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/RichEditorBundle/zipball/a6559f39d8b81a29b65af403d17efea8d7574867",
+                "reference": "a6559f39d8b81a29b65af403d17efea8d7574867",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\RichEditorBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Ryzhkov",
+                    "email": "artem@smart-core.org",
+                    "homepage": "http://smart-core.org"
+                }
+            ],
+            "keywords": [
+                "crawler",
+                "editor"
+            ],
+            "time": "2015-06-26 04:15:24"
+        },
+        {
+            "name": "smart-core/seo-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/SeoBundle.git",
+                "reference": "1eea16c35052f050076b4d22c208b75a4742b962"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/SeoBundle/zipball/1eea16c35052f050076b4d22c208b75a4742b962",
+                "reference": "1eea16c35052f050076b4d22c208b75a4742b962",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\SeoBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Ryzhkov",
+                    "email": "artem@smart-core.org",
+                    "homepage": "http://smart-core.org"
+                }
+            ],
+            "description": "SmartCore SEO Bundle.",
+            "keywords": [
+                "bundle",
+                "seo"
+            ],
+            "time": "2015-06-26 04:10:17"
         },
         {
             "name": "smart-core/session-bundle",
@@ -6915,8 +7101,13 @@
         "mremi/templating-extra-bundle": 20,
         "rickysu/tagcache-bundle": 20,
         "smart-core/accelerator-cache-bundle": 20,
+        "smart-core/cms-generator-bundle": 20,
         "smart-core/core-bundle": 20,
         "smart-core/felib-bundle": 20,
+        "smart-core/html-bundle": 20,
+        "smart-core/media-bundle": 20,
+        "smart-core/rich-editor-bundle": 20,
+        "smart-core/seo-bundle": 20,
         "smart-core/session-bundle": 20,
         "smart-core/settings-bundle": 20,
         "smart-core/simple-profiler-bundle": 20,
