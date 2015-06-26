@@ -16,6 +16,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+            new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
             //new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(), // "abmundi/database-commands-bundle": "dev-master",
             //new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             //new JMS\AopBundle\JMSAopBundle(),
@@ -28,6 +29,7 @@ class AppKernel extends Kernel
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
+            //$bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this); // "jms/debugging-bundle": "dev-master",
             //$bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }
 

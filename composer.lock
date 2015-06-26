@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f5ce0b94527545c0bcd27be2eaa138b7",
+    "hash": "7dc97c6cae7b6f711e2f8e214ea2496e",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -739,16 +739,17 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "dev-master",
+            "version": "v1.0.1",
+            "target-dir": "Doctrine/Bundle/DoctrineCacheBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "9c5a4ebedb583b882062fb8b276b8af5ca9063ac"
+                "reference": "e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/9c5a4ebedb583b882062fb8b276b8af5ca9063ac",
-                "reference": "9c5a4ebedb583b882062fb8b276b8af5ca9063ac",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d",
+                "reference": "e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d",
                 "shasum": ""
             },
             "require": {
@@ -756,18 +757,18 @@
                 "doctrine/inflector": "~1.0",
                 "php": ">=5.3.2",
                 "symfony/doctrine-bridge": "~2.2",
+                "symfony/framework-bundle": "~2.2",
                 "symfony/security": "~2.2"
             },
             "require-dev": {
                 "instaclick/coding-standard": "~1.1",
                 "instaclick/object-calisthenics-sniffs": "dev-master",
                 "instaclick/symfony2-coding-standard": "dev-remaster",
-                "phpunit/phpunit": "~4",
+                "phpunit/phpunit": "~3.7",
                 "satooshi/php-coveralls": "~0.6.1",
-                "squizlabs/php_codesniffer": "~1.5",
+                "squizlabs/php_codesniffer": "dev-master",
                 "symfony/console": "~2.2",
                 "symfony/finder": "~2.2",
-                "symfony/framework-bundle": "~2.2",
                 "symfony/validator": "~2.2",
                 "symfony/yaml": "~2.2"
             },
@@ -778,8 +779,8 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Doctrine\\Bundle\\DoctrineCacheBundle\\": ""
+                "psr-0": {
+                    "Doctrine\\Bundle\\DoctrineCacheBundle": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -818,7 +819,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-03-15 18:50:55"
+            "time": "2014-11-28 09:43:36"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -1521,16 +1522,16 @@
         },
         {
             "name": "elao/web-profiler-extra-bundle",
-            "version": "dev-master",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
-                "reference": "573effda12187afef888e8b5ccb66527efb8d55f"
+                "reference": "b68a3b424096db659878a0f6c2024cc069cfb9b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/573effda12187afef888e8b5ccb66527efb8d55f",
-                "reference": "573effda12187afef888e8b5ccb66527efb8d55f",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/b68a3b424096db659878a0f6c2024cc069cfb9b5",
+                "reference": "b68a3b424096db659878a0f6c2024cc069cfb9b5",
                 "shasum": ""
             },
             "require": {
@@ -1571,11 +1572,11 @@
                 "extra",
                 "profiler"
             ],
-            "time": "2015-06-22 07:52:37"
+            "time": "2015-06-01 07:07:31"
         },
         {
             "name": "fabpot/goutte",
-            "version": "dev-master",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/Goutte.git",
@@ -1623,50 +1624,53 @@
             "time": "2015-06-24 16:11:31"
         },
         {
-            "name": "facebook/php-sdk",
-            "version": "v3.2.3",
+            "name": "facebook/php-sdk-v4",
+            "version": "4.0.23",
             "source": {
                 "type": "git",
-                "url": "https://github.com/facebookarchive/facebook-php-sdk.git",
-                "reference": "6714042fa2f5979d4c64c7d11fb4bcab16bdf6cb"
+                "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
+                "reference": "c82611e05596622c9bd7abfa1cea1512d885c95e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebookarchive/facebook-php-sdk/zipball/6714042fa2f5979d4c64c7d11fb4bcab16bdf6cb",
-                "reference": "6714042fa2f5979d4c64c7d11fb4bcab16bdf6cb",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/c82611e05596622c9bd7abfa1cea1512d885c95e",
+                "reference": "c82611e05596622c9bd7abfa1cea1512d885c95e",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=5.2.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
+                "guzzlehttp/guzzle": "~4.0",
+                "mockery/mockery": "dev-master",
                 "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src"
-                ]
+                "psr-4": {
+                    "Facebook\\": "src/Facebook/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache2"
+                "Facebook Platform"
             ],
             "authors": [
                 {
                     "name": "Facebook",
-                    "homepage": "https://github.com/facebook/facebook-php-sdk/contributors"
+                    "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
                 }
             ],
-            "description": "Facebook PHP SDK",
-            "homepage": "https://github.com/facebook/facebook-php-sdk",
+            "description": "Facebook SDK for PHP",
+            "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
             "keywords": [
                 "facebook",
                 "sdk"
             ],
-            "time": "2013-11-19 23:11:14"
+            "time": "2015-04-03 20:31:47"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -4235,7 +4239,7 @@
         },
         {
             "name": "liip/theme-bundle",
-            "version": "dev-master",
+            "version": "1.3.0",
             "target-dir": "Liip/ThemeBundle",
             "source": {
                 "type": "git",
@@ -5051,7 +5055,7 @@
                 {
                     "name": "Raul Fraile",
                     "email": "raulfraile@gmail.com",
-                    "homepage": "http://www.raulfb.com/",
+                    "homepage": "http://www.raulfrailebeneyto.com/",
                     "role": "Developer"
                 }
             ],
@@ -5109,17 +5113,17 @@
         },
         {
             "name": "rickysu/tagcache-bundle",
-            "version": "dev-master",
+            "version": "v0.1.2",
             "target-dir": "RickySu/TagcacheBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RickySu/tagcache-bundle.git",
-                "reference": "e0af0255c87c8883fb8686746d93e33e722fe428"
+                "reference": "81de043260437bea9ae06edfa73b1a41ba276435"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RickySu/tagcache-bundle/zipball/e0af0255c87c8883fb8686746d93e33e722fe428",
-                "reference": "e0af0255c87c8883fb8686746d93e33e722fe428",
+                "url": "https://api.github.com/repos/RickySu/tagcache-bundle/zipball/81de043260437bea9ae06edfa73b1a41ba276435",
+                "reference": "81de043260437bea9ae06edfa73b1a41ba276435",
                 "shasum": ""
             },
             "require": {
@@ -5150,7 +5154,7 @@
                 "rickysu",
                 "tag"
             ],
-            "time": "2014-02-14 02:08:57"
+            "time": "2014-09-17 02:27:17"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -5362,29 +5366,27 @@
         },
         {
             "name": "smart-core/accelerator-cache-bundle",
-            "version": "dev-master",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/AcceleratorCacheBundle.git",
-                "reference": "b51ab75cb1c920606af54ec1597da4ada772f93b"
+                "reference": "8664ac12da10faab76a3b3cdd861997f88530f01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/b51ab75cb1c920606af54ec1597da4ada772f93b",
-                "reference": "b51ab75cb1c920606af54ec1597da4ada772f93b",
+                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/8664ac12da10faab76a3b3cdd861997f88530f01",
+                "reference": "8664ac12da10faab76a3b3cdd861997f88530f01",
                 "shasum": ""
             },
             "require": {
+                "php": ">=5.4.1",
                 "symfony/framework-bundle": ">=2.1"
-            },
-            "require-dev": {
-                "matthiasnoback/symfony-dependency-injection-test": "^0.7.3",
-                "symfony/console": ">=2.1"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.x-dev"
+                    "dev-1.0": "1.0.x-dev",
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -5414,7 +5416,97 @@
                 "task",
                 "wincache"
             ],
-            "time": "2015-05-27 08:44:56"
+            "time": "2015-01-21 15:47:44"
+        },
+        {
+            "name": "smart-core/cms-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/CMSBundle.git",
+                "reference": "630ae990a586bfc0b9c2f0bb04089e4f0c2cb82e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/630ae990a586bfc0b9c2f0bb04089e4f0c2cb82e",
+                "reference": "630ae990a586bfc0b9c2f0bb04089e4f0c2cb82e",
+                "shasum": ""
+            },
+            "require": {
+                "amazonwebservices/aws-sdk-for-php": "*",
+                "asm89/twig-cache-extension": "*",
+                "aws/aws-sdk-php": "*",
+                "doctrine/doctrine-bundle": "~1.5",
+                "doctrine/doctrine-cache-bundle": "~1.0@dev",
+                "doctrine/orm": "~2.5",
+                "dropbox-php/dropbox-php": "*",
+                "egeloen/ordered-form": "~1.0",
+                "egulias/email-validator": "*",
+                "egulias/listeners-debug-command-bundle": "*",
+                "elao/web-profiler-extra-bundle": "~2.0@dev",
+                "ext-curl": "*",
+                "ext-intl": "*",
+                "facebook/php-sdk-v4": "*",
+                "friendsofsymfony/rest-bundle": "*",
+                "genemu/form-bundle": "*",
+                "hakre/dropbox-uploader": "*",
+                "happyr/google-site-authenticator-bundle": "*",
+                "happyr/slugify-bundle": "*",
+                "helios-ag/fm-elfinder-bundle": "~4.0",
+                "incenteev/composer-parameter-handler": "~2.0",
+                "intervention/image": "*",
+                "jms/di-extra-bundle": "*",
+                "jms/security-extra-bundle": "*",
+                "jms/serializer-bundle": "*",
+                "knplabs/knp-paginator-bundle": "*",
+                "knplabs/rad-bundle": "*",
+                "leafo/lessphp": "*",
+                "leafo/scssphp": "*",
+                "liip/theme-bundle": "~1.0@dev",
+                "misd/guzzle-bundle": "~1.0",
+                "pagerfanta/pagerfanta": "v1.0.1",
+                "php": ">=5.4.11",
+                "predis/predis": "0.8.*",
+                "rickysu/tagcache-bundle": "~0.1",
+                "sensio/distribution-bundle": "*",
+                "sensio/generator-bundle": "*",
+                "smart-core/accelerator-cache-bundle": "~1.0@dev",
+                "snc/redis-bundle": "1.1.*",
+                "sonata-project/intl-bundle": "~2.0@dev",
+                "sp/bower-bundle": "*",
+                "symfony/assetic-bundle": "~2.0@dev",
+                "symfony/monolog-bundle": "*",
+                "symfony/swiftmailer-bundle": "*",
+                "twig/extensions": "~1.0",
+                "white-october/pagerfanta-bundle": "~1.0@dev",
+                "whiteoctober/breadcrumbs-bundle": "~1.0@dev",
+                "zendframework/zend-servicemanager": "*",
+                "zendframework/zend-tag": "*",
+                "zenstruck/imagine-extra-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\CMSBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Artem Ryzhkov",
+                    "email": "artem@smart-core.org",
+                    "homepage": "http://smart-core.org"
+                }
+            ],
+            "description": "Base Bundle of Smart Core CMS.",
+            "homepage": "http://smart-core.org",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "cmf",
+                "cms"
+            ],
+            "time": "2015-06-26 07:48:11"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5486,17 +5578,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "25e5e9fe2a5a9e781fc70b70517f4f7f1b46c06c"
+                "reference": "5950bad5ef4f7f4b3c0e06039c61f520dcc0121d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/25e5e9fe2a5a9e781fc70b70517f4f7f1b46c06c",
-                "reference": "25e5e9fe2a5a9e781fc70b70517f4f7f1b46c06c",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/5950bad5ef4f7f4b3c0e06039c61f520dcc0121d",
+                "reference": "5950bad5ef4f7f4b3c0e06039c61f520dcc0121d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
-                "rickysu/tagcache-bundle": "dev-master",
+                "php": ">=5.4.1",
+                "rickysu/tagcache-bundle": "~0.1",
                 "symfony/framework-bundle": ">=2.1"
             },
             "type": "symfony-bundle",
@@ -5511,7 +5603,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-06-16 07:48:56"
+            "time": "2015-06-26 06:46:15"
         },
         {
             "name": "smart-core/html-bundle",
@@ -5842,16 +5934,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SitemapBundle.git",
-                "reference": "84099d38e468134b1aa47989cb2588e313c69ca9"
+                "reference": "0bde4957921ad9666d1b58435b3088c9944f2a34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SitemapBundle/zipball/84099d38e468134b1aa47989cb2588e313c69ca9",
-                "reference": "84099d38e468134b1aa47989cb2588e313c69ca9",
+                "url": "https://api.github.com/repos/Smart-Core/SitemapBundle/zipball/0bde4957921ad9666d1b58435b3088c9944f2a34",
+                "reference": "0bde4957921ad9666d1b58435b3088c9944f2a34",
                 "shasum": ""
             },
             "require": {
-                "fabpot/goutte": "dev-master",
+                "fabpot/goutte": "~3.0@dev",
                 "php": ">=5.4.1"
             },
             "type": "symfony-bundle",
@@ -5876,7 +5968,7 @@
                 "Sitemap",
                 "crawler"
             ],
-            "time": "2015-06-25 21:22:53"
+            "time": "2015-06-26 06:50:46"
         },
         {
             "name": "snc/redis-bundle",
@@ -5944,16 +6036,16 @@
         },
         {
             "name": "sonata-project/intl-bundle",
-            "version": "dev-master",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "36ff392feb067563d8b93a38b4f8788bec51f502"
+                "reference": "bd45534b8f509781db86c8978ba6b508927c0033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/36ff392feb067563d8b93a38b4f8788bec51f502",
-                "reference": "36ff392feb067563d8b93a38b4f8788bec51f502",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/bd45534b8f509781db86c8978ba6b508927c0033",
+                "reference": "bd45534b8f509781db86c8978ba6b508927c0033",
                 "shasum": ""
             },
             "require": {
@@ -5964,7 +6056,6 @@
                 "twig/twig": "*"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "~0.5|~1.0",
                 "sonata-project/user-bundle": "~2.2",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
                 "symfony/security": "~2.2"
@@ -6003,7 +6094,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-06-17 13:43:40"
+            "time": "2015-06-15 18:30:22"
         },
         {
             "name": "sp/bower-bundle",
@@ -6179,16 +6270,16 @@
         },
         {
             "name": "symfony/assetic-bundle",
-            "version": "dev-master",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "4282ddd31ff2a0f7f91c90d42ef3947b23b8e4a3"
+                "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/4282ddd31ff2a0f7f91c90d42ef3947b23b8e4a3",
-                "reference": "4282ddd31ff2a0f7f91c90d42ef3947b23b8e4a3",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/422b0add2110f0cf9bc7a873a386ea053f4a89f0",
+                "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0",
                 "shasum": ""
             },
             "require": {
@@ -6198,9 +6289,6 @@
                 "symfony/dependency-injection": "~2.3",
                 "symfony/framework-bundle": "~2.3",
                 "symfony/yaml": "~2.3"
-            },
-            "conflict": {
-                "kriswallsmith/spork": "<=0.2"
             },
             "require-dev": {
                 "kriswallsmith/spork": "~0.2",
@@ -6217,7 +6305,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -6243,7 +6331,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2015-05-26 13:09:36"
+            "time": "2015-01-27 12:45:16"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -6589,7 +6677,7 @@
         },
         {
             "name": "white-october/pagerfanta-bundle",
-            "version": "dev-master",
+            "version": "v1.0.3",
             "target-dir": "WhiteOctober/PagerfantaBundle",
             "source": {
                 "type": "git",
@@ -6642,7 +6730,7 @@
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
-            "version": "dev-master",
+            "version": "1.1.0",
             "target-dir": "WhiteOctober/BreadcrumbsBundle",
             "source": {
                 "type": "git",
@@ -7081,26 +7169,21 @@
     "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
-        "symfony/assetic-bundle": 20,
-        "doctrine/doctrine-cache-bundle": 20,
+        "smart-core/cms-bundle": 20,
         "doctrine/migrations": 20,
-        "doctrine/doctrine-migrations-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
+        "doctrine/doctrine-migrations-bundle": 20,
         "dizda/cloud-backup-bundle": 20,
-        "elao/web-profiler-extra-bundle": 20,
-        "fabpot/goutte": 20,
-        "friendsofsymfony/user-bundle": 20,
+        "liip/functional-test-bundle": 20,
         "jms/debugging-bundle": 20,
+        "mremi/templating-extra-bundle": 20,
+        "friendsofsymfony/user-bundle": 20,
         "hwi/oauth-bundle": 20,
         "knplabs/knp-disqus-bundle": 20,
         "knplabs/knp-menu": 20,
         "knplabs/knp-menu-bundle": 20,
-        "liip/functional-test-bundle": 20,
-        "liip/theme-bundle": 20,
         "mopa/bootstrap-bundle": 20,
-        "mremi/templating-extra-bundle": 20,
-        "rickysu/tagcache-bundle": 20,
-        "smart-core/accelerator-cache-bundle": 20,
+        "stfalcon/tinymce-bundle": 20,
         "smart-core/cms-generator-bundle": 20,
         "smart-core/core-bundle": 20,
         "smart-core/felib-bundle": 20,
@@ -7111,18 +7194,10 @@
         "smart-core/session-bundle": 20,
         "smart-core/settings-bundle": 20,
         "smart-core/simple-profiler-bundle": 20,
-        "smart-core/sitemap-bundle": 20,
-        "sonata-project/intl-bundle": 20,
-        "stfalcon/tinymce-bundle": 20,
-        "whiteoctober/breadcrumbs-bundle": 20,
-        "white-october/pagerfanta-bundle": 20
+        "smart-core/sitemap-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": ">=5.4.11",
-        "ext-intl": "*",
-        "ext-curl": "*"
-    },
+    "platform": [],
     "platform-dev": []
 }

@@ -1,7 +1,0 @@
-FOS\UserBundle\Model\User:
-    properties:
-        email:
-            - Symfony\Component\Validator\Constraints\Email:
-                strict: true
-                checkHost: false
-                checkMX: false
