@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7dc97c6cae7b6f711e2f8e214ea2496e",
+    "hash": "362d2177519640d639044e9ef4729b91",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -5424,12 +5424,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "630ae990a586bfc0b9c2f0bb04089e4f0c2cb82e"
+                "reference": "766082936fac3e54e717c582e0aa10dbf041f4c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/630ae990a586bfc0b9c2f0bb04089e4f0c2cb82e",
-                "reference": "630ae990a586bfc0b9c2f0bb04089e4f0c2cb82e",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/766082936fac3e54e717c582e0aa10dbf041f4c6",
+                "reference": "766082936fac3e54e717c582e0aa10dbf041f4c6",
                 "shasum": ""
             },
             "require": {
@@ -5471,6 +5471,7 @@
                 "sensio/distribution-bundle": "*",
                 "sensio/generator-bundle": "*",
                 "smart-core/accelerator-cache-bundle": "~1.0@dev",
+                "smart-core/ladybug-bundle": "~0.7",
                 "snc/redis-bundle": "1.1.*",
                 "sonata-project/intl-bundle": "~2.0@dev",
                 "sp/bower-bundle": "*",
@@ -5506,7 +5507,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-26 07:48:11"
+            "time": "2015-06-26 10:58:50"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5729,6 +5730,260 @@
                 "media"
             ],
             "time": "2015-06-26 04:27:26"
+        },
+        {
+            "name": "smart-core/module-breadcrumbs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Breadcrumbs.git",
+                "reference": "b0d02b659fca34f9fb88ab8b11bcdf358164b5cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Breadcrumbs/zipball/b0d02b659fca34f9fb88ab8b11bcdf358164b5cf",
+                "reference": "b0d02b659fca34f9fb88ab8b11bcdf358164b5cf",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Breadcrumbs\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 10:15:30"
+        },
+        {
+            "name": "smart-core/module-gallery",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Gallery.git",
+                "reference": "59bfd74ecab9ce7171d28c3c3b27b92aacba6adb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/59bfd74ecab9ce7171d28c3c3b27b92aacba6adb",
+                "reference": "59bfd74ecab9ce7171d28c3c3b27b92aacba6adb",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Gallery\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 11:19:37"
+        },
+        {
+            "name": "smart-core/module-menu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Menu.git",
+                "reference": "9452b6efbb68d217eb9954f6d3f6d6d1b3b310ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/9452b6efbb68d217eb9954f6d3f6d6d1b3b310ff",
+                "reference": "9452b6efbb68d217eb9954f6d3f6d6d1b3b310ff",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Menu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 10:29:41"
+        },
+        {
+            "name": "smart-core/module-simplenews",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-SimpleNews.git",
+                "reference": "30fb60ea213e245fd577682084ca598cfcc27439"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/30fb60ea213e245fd577682084ca598cfcc27439",
+                "reference": "30fb60ea213e245fd577682084ca598cfcc27439",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\SimpleNews\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 11:50:25"
+        },
+        {
+            "name": "smart-core/module-slider",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Slider.git",
+                "reference": "47a30d0655926acbd065d6651433c61f9b0ceb1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/47a30d0655926acbd065d6651433c61f9b0ceb1d",
+                "reference": "47a30d0655926acbd065d6651433c61f9b0ceb1d",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Slider\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 11:11:43"
+        },
+        {
+            "name": "smart-core/module-texter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Texter.git",
+                "reference": "d5892b31e3949a7ee056aada6c0a9d156658b3ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/d5892b31e3949a7ee056aada6c0a9d156658b3ab",
+                "reference": "d5892b31e3949a7ee056aada6c0a9d156658b3ab",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Texter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 10:19:41"
+        },
+        {
+            "name": "smart-core/module-unicat",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Unicat.git",
+                "reference": "24791c31288a8d34d381a4e37fd4cfb1b99b6479"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/24791c31288a8d34d381a4e37fd4cfb1b99b6479",
+                "reference": "24791c31288a8d34d381a4e37fd4cfb1b99b6479",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Unicat\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 11:30:14"
+        },
+        {
+            "name": "smart-core/module-user",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-User.git",
+                "reference": "1c4b8da95983ad43c538b6a6828b50d0c9b8d3fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-User/zipball/1c4b8da95983ad43c538b6a6828b50d0c9b8d3fd",
+                "reference": "1c4b8da95983ad43c538b6a6828b50d0c9b8d3fd",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\User\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 10:46:15"
+        },
+        {
+            "name": "smart-core/module-webform",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-WebForm.git",
+                "reference": "be9b86d744a780cb6f757d8b0aa0792f97b23c31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/be9b86d744a780cb6f757d8b0aa0792f97b23c31",
+                "reference": "be9b86d744a780cb6f757d8b0aa0792f97b23c31",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\WebForm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 11:03:32"
+        },
+        {
+            "name": "smart-core/module-widget",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/Module-Widget.git",
+                "reference": "dbb72ce016f078834141f6b1a17f583e87dea2b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Widget/zipball/dbb72ce016f078834141f6b1a17f583e87dea2b6",
+                "reference": "dbb72ce016f078834141f6b1a17f583e87dea2b6",
+                "shasum": ""
+            },
+            "require": {
+                "smart-core/cms-bundle": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Module\\Widget\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-06-26 10:39:24"
         },
         {
             "name": "smart-core/rich-editor-bundle",
@@ -7184,6 +7439,16 @@
         "knplabs/knp-menu-bundle": 20,
         "mopa/bootstrap-bundle": 20,
         "stfalcon/tinymce-bundle": 20,
+        "smart-core/module-breadcrumbs": 20,
+        "smart-core/module-gallery": 20,
+        "smart-core/module-menu": 20,
+        "smart-core/module-simplenews": 20,
+        "smart-core/module-slider": 20,
+        "smart-core/module-texter": 20,
+        "smart-core/module-unicat": 20,
+        "smart-core/module-user": 20,
+        "smart-core/module-webform": 20,
+        "smart-core/module-widget": 20,
         "smart-core/cms-generator-bundle": 20,
         "smart-core/core-bundle": 20,
         "smart-core/felib-bundle": 20,

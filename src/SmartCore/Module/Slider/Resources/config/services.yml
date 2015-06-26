@@ -1,8 +1,0 @@
-
-services:
-    smart_module.slider:
-        class: SmartCore\Module\Slider\Service\SliderService
-        arguments: [@doctrine.orm.entity_manager]
-        calls:
-            - [ setContainer, [ @service_container ] ]
-            - [ initImagesDirectory ]

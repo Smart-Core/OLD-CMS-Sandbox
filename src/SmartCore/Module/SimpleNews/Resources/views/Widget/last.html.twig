@@ -1,6 +1,0 @@
-
-{% for item in news %}
-    <h5><a href="{{ path('smart_module.news.item', {'slug': item.slug}) }}">{{ item.title }}</a></h5>
-    <p><b>{{ item.createdAt|localizeddate('short') }}</b></p>
-    <p>{{ item.annotation }}</p>
-{% endfor %}

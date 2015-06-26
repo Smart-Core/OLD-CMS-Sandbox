@@ -1,5 +1,0 @@
-
-services:
-    smart_module.texter:
-        class: SmartCore\Module\Texter\Service\TexterService
-        arguments: [@tagcache, @doctrine.orm.entity_manager]

@@ -1,8 +1,0 @@
-{
-    "name": "smart-core/module-user",
-    "autoload": {
-        "psr-4": {
-            "SmartCore\\Module\\User\\": ""
-        }
-    }
-}
