@@ -72,6 +72,7 @@
         "smart-core/felib-bundle": "dev-master",
         "smart-core/ladybug-bundle": "~0.7",
         "smart-core/session-bundle": "dev-master",
+        "smart-core/settings-bundle": "dev-master",
         "smart-core/simple-profiler-bundle": "dev-master",
         "smart-core/sitemap-bundle": "dev-master",
 

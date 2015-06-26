@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "43a56cd3748d0c6586dad4a2c4949ef7",
+    "hash": "c53708b67d06deb3f2b5a695411adb04",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -5567,6 +5567,48 @@
             "time": "2014-08-09 02:24:59"
         },
         {
+            "name": "smart-core/settings-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/SettingsBundle.git",
+                "reference": "e08108646048b625d37c5d00fed7ab9da0d707eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/e08108646048b625d37c5d00fed7ab9da0d707eb",
+                "reference": "e08108646048b625d37c5d00fed7ab9da0d707eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1",
+                "smart-core/core-bundle": "dev-master"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\SettingsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Ryzhkov",
+                    "email": "artem@smart-core.org",
+                    "homepage": "http://smart-core.org"
+                }
+            ],
+            "description": "SmartCore Settings Bundle.",
+            "keywords": [
+                "Settings",
+                "bundle"
+            ],
+            "time": "2015-06-26 03:53:02"
+        },
+        {
             "name": "smart-core/simple-profiler-bundle",
             "version": "dev-master",
             "source": {
@@ -6876,6 +6918,7 @@
         "smart-core/core-bundle": 20,
         "smart-core/felib-bundle": 20,
         "smart-core/session-bundle": 20,
+        "smart-core/settings-bundle": 20,
         "smart-core/simple-profiler-bundle": 20,
         "smart-core/sitemap-bundle": 20,
         "sonata-project/intl-bundle": 20,

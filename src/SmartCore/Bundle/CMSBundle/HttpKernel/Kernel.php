@@ -2,6 +2,7 @@
 
 namespace SmartCore\Bundle\CMSBundle\HttpKernel;
 
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -16,7 +17,14 @@ abstract class Kernel extends BaseKernel
 
     public function boot()
     {
+        if (true === $this->booted) {
+            return;
+        }
+
         parent::boot();
+
+        require_once $this->rootDir.'/../vendor/smart-core/simple-profiler-bundle/Profiler.php';
+
         \Profiler::setKernel($this);
     }
 
@@ -147,7 +155,7 @@ abstract class Kernel extends BaseKernel
         $bundles[] = new \SmartCore\Bundle\SitemapBundle\SmartSitemapBundle();
         $bundles[] = new \SmartCore\Bundle\SeoBundle\SmartSeoBundle();
         $bundles[] = new \SmartCore\Bundle\SessionBundle\SmartCoreSessionBundle();
-        $bundles[] = new \SmartCore\Bundle\SettingsBundle\SmartCoreSettingsBundle();
+        $bundles[] = new \SmartCore\Bundle\SettingsBundle\SmartSettingsBundle();
         //$bundles[] = new \SmartCore\Module\Unicat\UnicatBundle();
         $bundles[] = new \Sonata\IntlBundle\SonataIntlBundle();
         $bundles[] = new \Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(); // "stfalcon/tinymce-bundle": "v0.2.1",
@@ -245,6 +253,15 @@ abstract class Kernel extends BaseKernel
         return parent::getContainerBaseClass();
     }
     */
+
+    /**
+     * @param LoaderInterface $loader
+     * @return void
+     */
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load($this->rootDir.'/config/config_'.$this->getEnvironment().'.yml');
+    }
 
     /**
      * Размещение кеша в /var/.

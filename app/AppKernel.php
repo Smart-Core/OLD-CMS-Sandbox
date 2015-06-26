@@ -1,9 +1,6 @@
 <?php
 
-require_once __DIR__.'/../vendor/smart-core/simple-profiler-bundle/Profiler.php';
-
 use SmartCore\Bundle\CMSBundle\HttpKernel\Kernel;
-use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -37,14 +34,5 @@ class AppKernel extends Kernel
         $this->registerSmartCoreCmsBundles($bundles);
 
         return $bundles;
-    }
-
-    /**
-     * @param LoaderInterface $loader
-     * @return void
-     */
-    public function registerContainerConfiguration(LoaderInterface $loader)
-    {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 }
