@@ -1,8 +1,8 @@
 <?php
 
-use SmartCore\Bundle\CMSBundle\HttpKernel\Kernel;
+use SmartCore\Bundle\CMSBundle\CMSAppKernel;
 
-class AppKernel extends Kernel
+class AppKernel extends CMSAppKernel
 {
     /**
      * Если в папке /src/ находится более одного сайт бандла, то необходимо явно указать какой будет использоваться.
@@ -11,12 +11,16 @@ class AppKernel extends Kernel
     //protected $siteName = 'My';
 
     /**
+     * Если требуются, можно зарегистирировать дополнительные бандлы,
+     * но перед return, необходимо вызвать $this->registerSmartCoreCmsBundles($bundles);
+     *
      * @return \Symfony\Component\HttpKernel\Bundle\BundleInterface[]
      */
     public function registerBundles()
     {
         $bundles = array(
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
+            new SmartCore\Bundle\AcceleratorCacheBundle\AcceleratorCacheBundle(),
             //new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(), // "abmundi/database-commands-bundle": "dev-master",
             //new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             //new JMS\AopBundle\JMSAopBundle(),
@@ -37,4 +41,15 @@ class AppKernel extends Kernel
 
         return $bundles;
     }
+
+    /*
+    protected function getContainerBaseClass()
+    {
+        if (in_array($this->getEnvironment(), ['dev', 'test'])) {
+            return '\JMS\DebuggingBundle\DependencyInjection\TraceableContainer';
+        }
+
+        return parent::getContainerBaseClass();
+    }
+    */
 }

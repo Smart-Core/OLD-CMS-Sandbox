@@ -42,17 +42,17 @@ assetic:
         # yui_css:
         #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
-dizda_cloud_backup:
-    output_file_prefix: smart_core_cms
-    cloud_storages:
-        dropbox:
-            user:        %dizda_cloud_dropbox_user%
-            password:    %dizda_cloud_dropbox_password%
-            remote_path: %dizda_cloud_dropbox_remote_path%
-    databases:
-        mysql:
-            all_databases: false        # Only required when no database is set
-            database: %database_name%   # Required if all_databases is false
+#dizda_cloud_backup:
+#    output_file_prefix: smart_core_cms
+#    cloud_storages:
+#        dropbox:
+#            user:        %dizda_cloud_dropbox_user%
+#            password:    %dizda_cloud_dropbox_password%
+#            remote_path: %dizda_cloud_dropbox_remote_path%
+#    databases:
+#        mysql:
+#            all_databases: false        # Only required when no database is set
+#            database: %database_name%   # Required if all_databases is false
 
 # Doctrine Configuration
 doctrine:
@@ -119,4 +119,4 @@ smart_sitemap:
 
 #sp_bower:
 #    bundles:
-        #CMSBundle: ~
+#        CMSBundle: ~
