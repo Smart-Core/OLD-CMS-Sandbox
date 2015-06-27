@@ -190,12 +190,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "0e512707c133c5089a1cc65ba949a4739086cf0a"
+                "reference": "d93b87969e245995a46646ed15f05513452a8010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/0e512707c133c5089a1cc65ba949a4739086cf0a",
-                "reference": "0e512707c133c5089a1cc65ba949a4739086cf0a",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/d93b87969e245995a46646ed15f05513452a8010",
+                "reference": "d93b87969e245995a46646ed15f05513452a8010",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-05-09 09:33:12"
+            "time": "2015-06-27 11:27:58"
         },
         {
             "name": "doctrine/annotations",
@@ -5429,12 +5429,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "849c6d1a7377e711d03f3ffaa836b41afcdbd294"
+                "reference": "5b256a7fccb6ecd71de4259b0b524fac1be65605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/849c6d1a7377e711d03f3ffaa836b41afcdbd294",
-                "reference": "849c6d1a7377e711d03f3ffaa836b41afcdbd294",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/5b256a7fccb6ecd71de4259b0b524fac1be65605",
+                "reference": "5b256a7fccb6ecd71de4259b0b524fac1be65605",
                 "shasum": ""
             },
             "require": {
@@ -5511,7 +5511,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-26 15:42:54"
+            "time": "2015-06-27 18:19:34"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5816,12 +5816,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-SimpleNews.git",
-                "reference": "30fb60ea213e245fd577682084ca598cfcc27439"
+                "reference": "eb818cadbb9f2964e5a52904e67e0548819e0db8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/30fb60ea213e245fd577682084ca598cfcc27439",
-                "reference": "30fb60ea213e245fd577682084ca598cfcc27439",
+                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/eb818cadbb9f2964e5a52904e67e0548819e0db8",
+                "reference": "eb818cadbb9f2964e5a52904e67e0548819e0db8",
                 "shasum": ""
             },
             "require": {
@@ -5834,7 +5834,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 11:50:25"
+            "time": "2015-06-26 16:29:18"
         },
         {
             "name": "smart-core/module-slider",
@@ -5894,12 +5894,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "24791c31288a8d34d381a4e37fd4cfb1b99b6479"
+                "reference": "e7a84e68895cdedfbd3db11e6be1728100b4aaf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/24791c31288a8d34d381a4e37fd4cfb1b99b6479",
-                "reference": "24791c31288a8d34d381a4e37fd4cfb1b99b6479",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/e7a84e68895cdedfbd3db11e6be1728100b4aaf0",
+                "reference": "e7a84e68895cdedfbd3db11e6be1728100b4aaf0",
                 "shasum": ""
             },
             "require": {
@@ -5912,7 +5912,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 11:30:14"
+            "time": "2015-06-26 16:29:18"
         },
         {
             "name": "smart-core/module-user",
@@ -5943,12 +5943,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-WebForm.git",
-                "reference": "be9b86d744a780cb6f757d8b0aa0792f97b23c31"
+                "reference": "7a70342feff7cae6dd54f4795760e4779a0757c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/be9b86d744a780cb6f757d8b0aa0792f97b23c31",
-                "reference": "be9b86d744a780cb6f757d8b0aa0792f97b23c31",
+                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/7a70342feff7cae6dd54f4795760e4779a0757c6",
+                "reference": "7a70342feff7cae6dd54f4795760e4779a0757c6",
                 "shasum": ""
             },
             "require": {
@@ -5961,7 +5961,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 11:03:32"
+            "time": "2015-06-26 16:29:18"
         },
         {
             "name": "smart-core/module-widget",
