@@ -5429,12 +5429,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "fb6096b0bfe9f8edfe7a957380b0c38cc0853576"
+                "reference": "05c3135179dc96769d4b423de70683dd408c8a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/fb6096b0bfe9f8edfe7a957380b0c38cc0853576",
-                "reference": "fb6096b0bfe9f8edfe7a957380b0c38cc0853576",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/05c3135179dc96769d4b423de70683dd408c8a43",
+                "reference": "05c3135179dc96769d4b423de70683dd408c8a43",
                 "shasum": ""
             },
             "require": {
@@ -5511,7 +5511,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-28 19:06:43"
+            "time": "2015-06-28 20:42:22"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5549,12 +5549,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "4a6d649736748a6c2113d8b11d229b4d55d4a64d"
+                "reference": "323930e6e2d1e7a2fa531a6c3578fd3bfcdf70ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/4a6d649736748a6c2113d8b11d229b4d55d4a64d",
-                "reference": "4a6d649736748a6c2113d8b11d229b4d55d4a64d",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/323930e6e2d1e7a2fa531a6c3578fd3bfcdf70ba",
+                "reference": "323930e6e2d1e7a2fa531a6c3578fd3bfcdf70ba",
                 "shasum": ""
             },
             "require": {
@@ -5575,7 +5575,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-06-14 17:53:43"
+            "time": "2015-06-28 20:51:43"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5583,12 +5583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "a7324a8d655a4c5923bdec30a6865c7d0c0e6e98"
+                "reference": "19ec9b800c64a74cad622e2abf1c78de5e1ccf70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/a7324a8d655a4c5923bdec30a6865c7d0c0e6e98",
-                "reference": "a7324a8d655a4c5923bdec30a6865c7d0c0e6e98",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/19ec9b800c64a74cad622e2abf1c78de5e1ccf70",
+                "reference": "19ec9b800c64a74cad622e2abf1c78de5e1ccf70",
                 "shasum": ""
             },
             "require": {
@@ -5608,7 +5608,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-06-28 19:06:43"
+            "time": "2015-06-28 20:41:50"
         },
         {
             "name": "smart-core/html-bundle",
