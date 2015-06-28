@@ -4111,12 +4111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "c40ec57a065a29bb5da047a2397a46e342c0240d"
+                "reference": "6142762ff5f3d8b8c0918c3866bf6b9111d5fce6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/c40ec57a065a29bb5da047a2397a46e342c0240d",
-                "reference": "c40ec57a065a29bb5da047a2397a46e342c0240d",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/6142762ff5f3d8b8c0918c3866bf6b9111d5fce6",
+                "reference": "6142762ff5f3d8b8c0918c3866bf6b9111d5fce6",
                 "shasum": ""
             },
             "require": {
@@ -4160,7 +4160,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2015-05-24 18:31:26"
+            "time": "2015-06-28 17:36:10"
         },
         {
             "name": "liip/imagine-bundle",
@@ -5429,12 +5429,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "a54a4527763b1ae3d1051cc570f719a7895a051d"
+                "reference": "fb6096b0bfe9f8edfe7a957380b0c38cc0853576"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/a54a4527763b1ae3d1051cc570f719a7895a051d",
-                "reference": "a54a4527763b1ae3d1051cc570f719a7895a051d",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/fb6096b0bfe9f8edfe7a957380b0c38cc0853576",
+                "reference": "fb6096b0bfe9f8edfe7a957380b0c38cc0853576",
                 "shasum": ""
             },
             "require": {
@@ -5511,7 +5511,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-28 08:33:01"
+            "time": "2015-06-28 19:06:43"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5583,12 +5583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "d6f8bed0d5aabad67f60c56865f37361c8be1920"
+                "reference": "a7324a8d655a4c5923bdec30a6865c7d0c0e6e98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/d6f8bed0d5aabad67f60c56865f37361c8be1920",
-                "reference": "d6f8bed0d5aabad67f60c56865f37361c8be1920",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/a7324a8d655a4c5923bdec30a6865c7d0c0e6e98",
+                "reference": "a7324a8d655a4c5923bdec30a6865c7d0c0e6e98",
                 "shasum": ""
             },
             "require": {
@@ -5608,7 +5608,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-06-28 08:33:02"
+            "time": "2015-06-28 19:06:43"
         },
         {
             "name": "smart-core/html-bundle",
