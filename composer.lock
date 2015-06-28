@@ -5429,12 +5429,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "ab5231287b9841e3232a4c1fd1a6bd137d55acca"
+                "reference": "a54a4527763b1ae3d1051cc570f719a7895a051d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/ab5231287b9841e3232a4c1fd1a6bd137d55acca",
-                "reference": "ab5231287b9841e3232a4c1fd1a6bd137d55acca",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/a54a4527763b1ae3d1051cc570f719a7895a051d",
+                "reference": "a54a4527763b1ae3d1051cc570f719a7895a051d",
                 "shasum": ""
             },
             "require": {
@@ -5511,7 +5511,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-27 20:42:40"
+            "time": "2015-06-28 08:33:01"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5583,12 +5583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "5950bad5ef4f7f4b3c0e06039c61f520dcc0121d"
+                "reference": "d6f8bed0d5aabad67f60c56865f37361c8be1920"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/5950bad5ef4f7f4b3c0e06039c61f520dcc0121d",
-                "reference": "5950bad5ef4f7f4b3c0e06039c61f520dcc0121d",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/d6f8bed0d5aabad67f60c56865f37361c8be1920",
+                "reference": "d6f8bed0d5aabad67f60c56865f37361c8be1920",
                 "shasum": ""
             },
             "require": {
@@ -5608,7 +5608,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-06-26 06:46:15"
+            "time": "2015-06-28 08:33:02"
         },
         {
             "name": "smart-core/html-bundle",
@@ -5842,12 +5842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Slider.git",
-                "reference": "47a30d0655926acbd065d6651433c61f9b0ceb1d"
+                "reference": "3711a7ef4d9aaf42fb25d49470afc74d641fa93a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/47a30d0655926acbd065d6651433c61f9b0ceb1d",
-                "reference": "47a30d0655926acbd065d6651433c61f9b0ceb1d",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/3711a7ef4d9aaf42fb25d49470afc74d641fa93a",
+                "reference": "3711a7ef4d9aaf42fb25d49470afc74d641fa93a",
                 "shasum": ""
             },
             "require": {
@@ -5860,7 +5860,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 11:11:43"
+            "time": "2015-06-28 08:33:01"
         },
         {
             "name": "smart-core/module-texter",
@@ -5868,12 +5868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "d5892b31e3949a7ee056aada6c0a9d156658b3ab"
+                "reference": "59499f714613cbb05f77d100f3748916a6747e77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/d5892b31e3949a7ee056aada6c0a9d156658b3ab",
-                "reference": "d5892b31e3949a7ee056aada6c0a9d156658b3ab",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/59499f714613cbb05f77d100f3748916a6747e77",
+                "reference": "59499f714613cbb05f77d100f3748916a6747e77",
                 "shasum": ""
             },
             "require": {
@@ -5886,7 +5886,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 10:19:41"
+            "time": "2015-06-28 08:33:02"
         },
         {
             "name": "smart-core/module-unicat",
