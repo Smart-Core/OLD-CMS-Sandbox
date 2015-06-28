@@ -46,8 +46,7 @@
         "smart-core/seo-bundle": "dev-master",
         "smart-core/session-bundle": "dev-master",
         "smart-core/settings-bundle": "dev-master",
-        "smart-core/simple-profiler-bundle": "dev-master",
-        "smart-core/sitemap-bundle": "dev-master"
+        "smart-core/simple-profiler-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e3a5753e6f46496633965d9febb2ac0d",
+    "hash": "df45eca7ec61c1de3cc4ad955a36e012",
     "packages": [
-        {
-            "name": "amazonwebservices/aws-sdk-for-php",
-            "version": "1.6.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
-                "reference": "0507424b05bd191f043375b787640bd1eb4f692b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/amazonwebservices/aws-sdk-for-php/zipball/0507424b05bd191f043375b787640bd1eb4f692b",
-                "reference": "0507424b05bd191f043375b787640bd1eb4f692b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "suggest": {
-                "aws/aws-sdk-php": "You should consider upgrading to version 2 of the AWS SDK for PHP"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "authentication/",
-                    "extensions/",
-                    "lib/",
-                    "services/",
-                    "utilities/",
-                    "sdk.class.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Amazon Web Services",
-                    "homepage": "http://aws.amazon.com"
-                }
-            ],
-            "description": "AWS SDK for PHP",
-            "homepage": "http://aws.amazon.com/sdkforphp/",
-            "keywords": [
-                "amazon",
-                "aws",
-                "dynamodb",
-                "ec2",
-                "s3",
-                "sdk"
-            ],
-            "time": "2014-10-15 20:05:19"
-        },
         {
             "name": "asm89/twig-cache-extension",
             "version": "1.0.0",
@@ -110,78 +57,6 @@
                 "twig"
             ],
             "time": "2014-05-31 13:57:16"
-        },
-        {
-            "name": "aws/aws-sdk-php",
-            "version": "3.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "899ee8b74eedf87d70d2797cb4add7fe22940d51"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/899ee8b74eedf87d70d2797cb4add7fe22940d51",
-                "reference": "899ee8b74eedf87d70d2797cb4add7fe22940d51",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": ">=5.3|~6.0.1|~6.1",
-                "guzzlehttp/promises": "~1.0",
-                "guzzlehttp/psr7": "~1.0",
-                "mtdowling/jmespath.php": "~2.2",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "ext-dom": "*",
-                "ext-json": "*",
-                "ext-openssl": "*",
-                "ext-pcre": "*",
-                "ext-simplexml": "*",
-                "ext-spl": "*",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-curl": "To send requests using cURL",
-                "ext-openssl": "Allows working with CloudFront private distributions and verifying received SNS messages"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Aws\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Amazon Web Services",
-                    "homepage": "http://aws.amazon.com"
-                }
-            ],
-            "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project",
-            "homepage": "http://aws.amazon.com/sdkforphp",
-            "keywords": [
-                "amazon",
-                "aws",
-                "cloud",
-                "dynamodb",
-                "ec2",
-                "glacier",
-                "s3",
-                "sdk"
-            ],
-            "time": "2015-06-24 23:29:34"
         },
         {
             "name": "dizda/cloud-backup-bundle",
@@ -1256,66 +1131,6 @@
             "time": "2015-04-02 20:40:18"
         },
         {
-            "name": "dropbox-php/dropbox-php",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Dropbox-PHP/dropbox-php.git",
-                "reference": "81977a8b021dd5a32b34d84721712f1284029667"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Dropbox-PHP/dropbox-php/zipball/81977a8b021dd5a32b34d84721712f1284029667",
-                "reference": "81977a8b021dd5a32b34d84721712f1284029667",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "suggest": {
-                "http_oauth": ">=1.1.18",
-                "oauth": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Dropbox": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Evert Pot",
-                    "email": "evert@rooftopsolutions.nl",
-                    "homepage": "http://www.rooftopsolutions.nl/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Joe Constant",
-                    "email": "lazyguru@jofee.com",
-                    "homepage": "http://www.joeconstant.me/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Evan Kaufman",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Naoki Sawada",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Dropbox PHP library",
-            "homepage": "http://dropbox-php.com/",
-            "keywords": [
-                "dropbox"
-            ],
-            "time": "2012-09-10 06:07:54"
-        },
-        {
             "name": "egeloen/ordered-form",
             "version": "1.1.1",
             "source": {
@@ -1573,104 +1388,6 @@
                 "profiler"
             ],
             "time": "2015-06-01 07:07:31"
-        },
-        {
-            "name": "fabpot/goutte",
-            "version": "v3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfPHP/Goutte.git",
-                "reference": "d9a5a28782d30e9f4e20176caea58a1d459f2c71"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/d9a5a28782d30e9f4e20176caea58a1d459f2c71",
-                "reference": "d9a5a28782d30e9f4e20176caea58a1d459f2c71",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "symfony/browser-kit": "~2.1",
-                "symfony/css-selector": "~2.1",
-                "symfony/dom-crawler": "~2.1"
-            },
-            "type": "application",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Goutte\\": "Goutte"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "A simple PHP Web Scraper",
-            "homepage": "https://github.com/FriendsOfPHP/Goutte",
-            "keywords": [
-                "scraper"
-            ],
-            "time": "2015-06-24 16:11:31"
-        },
-        {
-            "name": "facebook/php-sdk-v4",
-            "version": "4.0.23",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
-                "reference": "c82611e05596622c9bd7abfa1cea1512d885c95e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/c82611e05596622c9bd7abfa1cea1512d885c95e",
-                "reference": "c82611e05596622c9bd7abfa1cea1512d885c95e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "~4.0",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facebook\\": "src/Facebook/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Facebook Platform"
-            ],
-            "authors": [
-                {
-                    "name": "Facebook",
-                    "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
-                }
-            ],
-            "description": "Facebook SDK for PHP",
-            "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
-            "keywords": [
-                "facebook",
-                "sdk"
-            ],
-            "time": "2015-04-03 20:31:47"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -1986,311 +1703,6 @@
                 "google"
             ],
             "time": "2015-05-21 19:35:32"
-        },
-        {
-            "name": "guzzle/guzzle",
-            "version": "v3.9.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle3.git",
-                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/0645b70d953bc1c067bbc8d5bc53194706b628d9",
-                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.3.3",
-                "symfony/event-dispatcher": "~2.1"
-            },
-            "replace": {
-                "guzzle/batch": "self.version",
-                "guzzle/cache": "self.version",
-                "guzzle/common": "self.version",
-                "guzzle/http": "self.version",
-                "guzzle/inflection": "self.version",
-                "guzzle/iterator": "self.version",
-                "guzzle/log": "self.version",
-                "guzzle/parser": "self.version",
-                "guzzle/plugin": "self.version",
-                "guzzle/plugin-async": "self.version",
-                "guzzle/plugin-backoff": "self.version",
-                "guzzle/plugin-cache": "self.version",
-                "guzzle/plugin-cookie": "self.version",
-                "guzzle/plugin-curlauth": "self.version",
-                "guzzle/plugin-error-response": "self.version",
-                "guzzle/plugin-history": "self.version",
-                "guzzle/plugin-log": "self.version",
-                "guzzle/plugin-md5": "self.version",
-                "guzzle/plugin-mock": "self.version",
-                "guzzle/plugin-oauth": "self.version",
-                "guzzle/service": "self.version",
-                "guzzle/stream": "self.version"
-            },
-            "require-dev": {
-                "doctrine/cache": "~1.3",
-                "monolog/monolog": "~1.0",
-                "phpunit/phpunit": "3.7.*",
-                "psr/log": "~1.0",
-                "symfony/class-loader": "~2.1",
-                "zendframework/zend-cache": "2.*,<2.3",
-                "zendframework/zend-log": "2.*,<2.3"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Guzzle": "src/",
-                    "Guzzle\\Tests": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Guzzle Community",
-                    "homepage": "https://github.com/guzzle/guzzle/contributors"
-                }
-            ],
-            "description": "PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2015-03-18 18:23:50"
-        },
-        {
-            "name": "guzzlehttp/guzzle",
-            "version": "6.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f992b7b487a816c957d317442bed4966409873e0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f992b7b487a816c957d317442bed4966409873e0",
-                "reference": "f992b7b487a816c957d317442bed4966409873e0",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/promises": "^1.0.0",
-                "guzzlehttp/psr7": "^1.0.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "^4.0",
-                "psr/log": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.0-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2015-05-27 16:57:51"
-        },
-        {
-            "name": "guzzlehttp/promises",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/promises.git",
-                "reference": "2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7",
-                "reference": "2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Promise\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle promises library",
-            "keywords": [
-                "promise"
-            ],
-            "time": "2015-06-24 16:16:25"
-        },
-        {
-            "name": "guzzlehttp/psr7",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/psr7.git",
-                "reference": "af0e1758de355eb113917ad79c3c0e3604bce4bd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/af0e1758de355eb113917ad79c3c0e3604bce4bd",
-                "reference": "af0e1758de355eb113917ad79c3c0e3604bce4bd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "PSR-7 message implementation",
-            "keywords": [
-                "http",
-                "message",
-                "stream",
-                "uri"
-            ],
-            "time": "2015-06-24 19:55:15"
-        },
-        {
-            "name": "hakre/dropbox-uploader",
-            "version": "v1.1.22",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hakre/DropboxUploader.git",
-                "reference": "133b6761be11aa913c632582818c56bbba789b69"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hakre/DropboxUploader/zipball/133b6761be11aa913c632582818c56bbba789b69",
-                "reference": "133b6761be11aa913c632582818c56bbba789b69",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "DropboxUploader.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Upload files or strings to Dropbox without the Dropbox API",
-            "homepage": "http://github.com/jakajancar/DropboxUploader",
-            "keywords": [
-                "dropbox",
-                "upload"
-            ],
-            "time": "2015-03-02 23:18:37"
         },
         {
             "name": "happyr/google-site-authenticator-bundle",
@@ -4009,103 +3421,6 @@
             "time": "2015-06-25 17:26:56"
         },
         {
-            "name": "leafo/lessphp",
-            "version": "v0.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leafo/lessphp.git",
-                "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leafo/lessphp/zipball/0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
-                "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "lessc.inc.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Leaf Corcoran",
-                    "email": "leafot@gmail.com",
-                    "homepage": "http://leafo.net"
-                }
-            ],
-            "description": "lessphp is a compiler for LESS written in PHP.",
-            "homepage": "http://leafo.net/lessphp/",
-            "time": "2014-11-24 18:39:20"
-        },
-        {
-            "name": "leafo/scssphp",
-            "version": "v0.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leafo/scssphp.git",
-                "reference": "22b369377e5db5a6a93cdb42485852fc652749c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/22b369377e5db5a6a93cdb42485852fc652749c0",
-                "reference": "22b369377e5db5a6a93cdb42485852fc652749c0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*",
-                "squizlabs/php_codesniffer": "~2.3"
-            },
-            "bin": [
-                "bin/pscss"
-            ],
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "classmap.php"
-                ],
-                "psr-4": {
-                    "Leafo\\ScssPhp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Leaf Corcoran",
-                    "email": "leafot@gmail.com",
-                    "homepage": "http://leafo.net"
-                }
-            ],
-            "description": "scssphp is a compiler for SCSS written in PHP.",
-            "homepage": "http://leafo.net/scssphp/",
-            "keywords": [
-                "css",
-                "less",
-                "sass",
-                "scss",
-                "stylesheet"
-            ],
-            "time": "2015-06-23 02:41:31"
-        },
-        {
             "name": "liip/functional-test-bundle",
             "version": "dev-master",
             "source": {
@@ -4296,78 +3611,6 @@
                 "theming"
             ],
             "time": "2015-06-07 18:06:44"
-        },
-        {
-            "name": "misd/guzzle-bundle",
-            "version": "v1.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/misd-service-development/guzzle-bundle.git",
-                "reference": "555c105ef4ac66597a029fe634dee0fe4f9cb084"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/misd-service-development/guzzle-bundle/zipball/555c105ef4ac66597a029fe634dee0fe4f9cb084",
-                "reference": "555c105ef4ac66597a029fe634dee0fe4f9cb084",
-                "shasum": ""
-            },
-            "require": {
-                "guzzle/guzzle": "~3.0",
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "~2.2"
-            },
-            "conflict": {
-                "jms/serializer-bundle": "<0.11-dev",
-                "sensio/framework-extra-bundle": ">=4.0-dev"
-            },
-            "require-dev": {
-                "doctrine/cache": "~1.0",
-                "jms/serializer-bundle": "~0.11",
-                "phpunit/phpunit": "~4.3",
-                "sensio/framework-extra-bundle": "~2.2",
-                "symfony/monolog-bundle": "~2.2",
-                "symfony/yaml": "~2.2"
-            },
-            "suggest": {
-                "jms/serializer-bundle": "Serialize/deserialize objects to/from XML, JSON and YAML",
-                "sensio/framework-extra-bundle": "Provides a parameter converter",
-                "symfony/monolog-bundle": "Log requests"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Misd\\GuzzleBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Wilkinson",
-                    "email": "chris.wilkinson@admin.cam.ac.uk"
-                }
-            ],
-            "description": "Integrates Guzzle into your Symfony2 application",
-            "homepage": "https://github.com/misd-service-development/guzzle-bundle",
-            "keywords": [
-                "Guzzle",
-                "api",
-                "bundle",
-                "client",
-                "curl",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2014-12-01 08:29:51"
         },
         {
             "name": "monolog/monolog",
@@ -4613,61 +3856,6 @@
             "time": "2015-01-28 08:31:34"
         },
         {
-            "name": "mtdowling/jmespath.php",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jmespath/jmespath.php.git",
-                "reference": "a7d99d0c836e69d27b7bfca1d33ca2759fba3289"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jmespath/jmespath.php/zipball/a7d99d0c836e69d27b7bfca1d33ca2759fba3289",
-                "reference": "a7d99d0c836e69d27b7bfca1d33ca2759fba3289",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "bin": [
-                "bin/jp.php"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JmesPath\\": "src/"
-                },
-                "files": [
-                    "src/JmesPath.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Declaratively specify how to extract elements from a JSON document",
-            "keywords": [
-                "json",
-                "jsonpath"
-            ],
-            "time": "2015-05-27 17:21:31"
-        },
-        {
             "name": "nelmio/alice",
             "version": "1.7.2",
             "source": {
@@ -4889,105 +4077,6 @@
                 "type"
             ],
             "time": "2014-01-09 22:37:17"
-        },
-        {
-            "name": "predis/predis",
-            "version": "v0.8.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nrk/predis.git",
-                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/4123fcd85d61354c6c9900db76c9597dbd129bf6",
-                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-curl": "Allows access to Webdis when paired with phpiredis",
-                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Predis": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniele Alessandri",
-                    "email": "suppakilla@gmail.com",
-                    "homepage": "http://clorophilla.net"
-                }
-            ],
-            "description": "Flexible and feature-complete PHP client library for Redis",
-            "homepage": "http://github.com/nrk/predis",
-            "keywords": [
-                "nosql",
-                "predis",
-                "redis"
-            ],
-            "time": "2014-08-01 09:43:10"
-        },
-        {
-            "name": "psr/http-message",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2015-05-04 20:22:00"
         },
         {
             "name": "psr/log",
@@ -5429,32 +4518,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "05c3135179dc96769d4b423de70683dd408c8a43"
+                "reference": "3e3f7236755ad886a9f13c9fe3d90bb787498ac7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/05c3135179dc96769d4b423de70683dd408c8a43",
-                "reference": "05c3135179dc96769d4b423de70683dd408c8a43",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/3e3f7236755ad886a9f13c9fe3d90bb787498ac7",
+                "reference": "3e3f7236755ad886a9f13c9fe3d90bb787498ac7",
                 "shasum": ""
             },
             "require": {
-                "amazonwebservices/aws-sdk-for-php": "*",
                 "asm89/twig-cache-extension": "*",
-                "aws/aws-sdk-php": "*",
                 "doctrine/doctrine-bundle": "~1.5",
                 "doctrine/doctrine-cache-bundle": "~1.0@dev",
                 "doctrine/orm": "~2.5",
-                "dropbox-php/dropbox-php": "*",
                 "egeloen/ordered-form": "~1.0",
                 "egulias/email-validator": "*",
                 "egulias/listeners-debug-command-bundle": "*",
                 "elao/web-profiler-extra-bundle": "~2.0@dev",
                 "ext-curl": "*",
                 "ext-intl": "*",
-                "facebook/php-sdk-v4": "*",
                 "friendsofsymfony/rest-bundle": "*",
                 "genemu/form-bundle": "*",
-                "hakre/dropbox-uploader": "*",
                 "happyr/google-site-authenticator-bundle": "*",
                 "happyr/slugify-bundle": "*",
                 "helios-ag/fm-elfinder-bundle": "~4.0",
@@ -5465,20 +4549,14 @@
                 "jms/serializer-bundle": "*",
                 "knplabs/knp-paginator-bundle": "*",
                 "knplabs/rad-bundle": "*",
-                "leafo/lessphp": "*",
-                "leafo/scssphp": "*",
                 "liip/theme-bundle": "~1.0@dev",
-                "misd/guzzle-bundle": "~1.0",
                 "php": ">=5.4.11",
-                "predis/predis": "0.8.*",
                 "rickysu/tagcache-bundle": "~0.1",
                 "sensio/distribution-bundle": "*",
                 "sensio/generator-bundle": "*",
                 "smart-core/accelerator-cache-bundle": "~1.0@dev",
                 "smart-core/ladybug-bundle": "~0.7",
-                "snc/redis-bundle": "1.1.*",
                 "sonata-project/intl-bundle": "~2.0@dev",
-                "sp/bower-bundle": "*",
                 "symfony/assetic-bundle": "~2.0@dev",
                 "symfony/monolog-bundle": "*",
                 "symfony/swiftmailer-bundle": "*",
@@ -5511,7 +4589,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-28 20:42:22"
+            "time": "2015-06-28 21:34:36"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -6188,112 +5266,6 @@
             "time": "2015-06-25 21:31:53"
         },
         {
-            "name": "smart-core/sitemap-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/SitemapBundle.git",
-                "reference": "0bde4957921ad9666d1b58435b3088c9944f2a34"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SitemapBundle/zipball/0bde4957921ad9666d1b58435b3088c9944f2a34",
-                "reference": "0bde4957921ad9666d1b58435b3088c9944f2a34",
-                "shasum": ""
-            },
-            "require": {
-                "fabpot/goutte": "~3.0@dev",
-                "php": ">=5.4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\SitemapBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "description": "Symfony Sitemap Crawler Generator Bundle.",
-            "keywords": [
-                "Sitemap",
-                "crawler"
-            ],
-            "time": "2015-06-26 06:50:46"
-        },
-        {
-            "name": "snc/redis-bundle",
-            "version": "1.1.8",
-            "target-dir": "Snc/RedisBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/snc/SncRedisBundle.git",
-                "reference": "52549acbfa4dc3f1bd5e23aad3c92de6de4258d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/snc/SncRedisBundle/zipball/52549acbfa4dc3f1bd5e23aad3c92de6de4258d1",
-                "reference": "52549acbfa4dc3f1bd5e23aad3c92de6de4258d1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": ">=2.1,<3.0",
-                "symfony/yaml": ">=2.1,<3.0"
-            },
-            "require-dev": {
-                "doctrine/cache": "1.*",
-                "predis/predis": "0.8.*",
-                "symfony/console": ">=2.1,<3.0"
-            },
-            "suggest": {
-                "monolog/monolog": "If you want to use the monolog redis handler.",
-                "predis/predis": "If you want to use predis (currently only v0.8.x is supported).",
-                "symfony/console": "If you want to use commands to interact with the redis database"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Snc\\RedisBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Henrik Westphal",
-                    "email": "henrik.westphal@gmail.com"
-                },
-                {
-                    "name": "Community contributors",
-                    "homepage": "https://github.com/snc/SncRedisBundle/contributors"
-                }
-            ],
-            "description": "A Redis bundle for Symfony2",
-            "homepage": "https://github.com/snc/SncRedisBundle",
-            "keywords": [
-                "nosql",
-                "redis",
-                "symfony"
-            ],
-            "time": "2014-02-01 09:46:23"
-        },
-        {
             "name": "sonata-project/intl-bundle",
             "version": "2.2.2",
             "source": {
@@ -6354,67 +5326,6 @@
                 "time"
             ],
             "time": "2015-06-15 18:30:22"
-        },
-        {
-            "name": "sp/bower-bundle",
-            "version": "v0.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Spea/SpBowerBundle.git",
-                "reference": "e492c022755f5b764672f715c7ca3a52c942a2b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Spea/SpBowerBundle/zipball/e492c022755f5b764672f715c7ca3a52c942a2b6",
-                "reference": "e492c022755f5b764672f715c7ca3a52c942a2b6",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/cache": "~1.0",
-                "doctrine/collections": "1.*",
-                "php": ">=5.3.3",
-                "symfony/assetic-bundle": "~2.1",
-                "symfony/framework-bundle": "~2.1",
-                "symfony/process": "~2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.0.*",
-                "symfony/console": "~2.1"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.11-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sp\\BowerBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Martin Parsiegla",
-                    "email": "martin.parsiegla@gmail.com",
-                    "homepage": "http://speanet.info"
-                },
-                {
-                    "name": "Community contributions",
-                    "homepage": "https://github.com/Spea/SpBowerBundle/contributors"
-                }
-            ],
-            "description": "Handle asset dependencies with bower",
-            "keywords": [
-                "asset",
-                "bower",
-                "bower manager",
-                "dependencies"
-            ],
-            "time": "2014-07-14 08:51:16"
         },
         {
             "name": "stfalcon/tinymce-bundle",
@@ -7462,8 +6373,7 @@
         "smart-core/seo-bundle": 20,
         "smart-core/session-bundle": 20,
         "smart-core/settings-bundle": 20,
-        "smart-core/simple-profiler-bundle": 20,
-        "smart-core/sitemap-bundle": 20
+        "smart-core/simple-profiler-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
