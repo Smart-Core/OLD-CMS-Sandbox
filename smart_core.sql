@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июн 28 2015 г., 15:25
+-- Время создания: Июн 29 2015 г., 18:45
 -- Версия сервера: 5.6.13
 -- Версия PHP: 5.6.10
 
@@ -703,25 +703,12 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_1084B87D93CB796C` (`file_id`),
   KEY `IDX_1084B87D514956FD` (`collection_id`),
   KEY `IDX_1084B87D5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
 --
 
-INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storage_id`, `filter`, `size`, `created_at`) VALUES
-(1, 1, 1, 1, '300_300', 28215, '2015-03-09 05:11:54'),
-(2, 3, 1, 1, '300_300', 34430, '2015-03-09 05:11:54'),
-(3, 5, 1, 1, '300_300', 39337, '2015-03-09 05:12:00'),
-(4, 6, 1, 1, '300_300', 46972, '2015-03-09 05:12:00'),
-(5, 8, 2, 1, '200_200', 27695, '2015-03-09 05:14:15'),
-(6, 7, 2, 1, '200_200', 21122, '2015-03-09 05:14:16'),
-(7, 6, 1, 1, '100_100', 8506, '2015-03-09 20:27:01'),
-(8, 1, 1, 1, '100_100', 4622, '2015-03-09 20:27:03'),
-(9, 4, 1, 1, '300_300', 35813, '2015-03-09 20:28:33'),
-(10, 4, 1, 1, '100_100', 6138, '2015-05-21 22:08:47'),
-(11, 3, 1, 1, '100_100', 6289, '2015-05-24 08:12:20'),
-(12, 5, 1, 1, '100_100', 6411, '2015-05-24 08:13:15');
 
 -- --------------------------------------------------------
 
@@ -1073,7 +1060,7 @@ INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1, 0, NULL),
 (6, 'ru', 'Text under menu in <strong>User</strong> folder.\r', 'a:0:{}', '2013-03-25 21:53:12', 1, 1, NULL),
 (7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g\r', 'a:0:{}', '2013-08-10 11:14:55', 1, 1, NULL),
-(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;)<br />\r\n  <br />\r\n  <img style="width: 100%; height: auto;" src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /><br />\r\n  <br />\r\n  <br />\r\n  <br />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1, NULL),
+(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;) 2<br />\r\n  <br />\r\n  <img style="width: 100%; height: auto;" src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /><br />\r\n  <br />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1, NULL),
 (9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>\r', 'a:0:{}', '2014-01-20 03:47:18', 1, 1, NULL),
 (10, 'ru', 'Очень интересные новости ;)', 'a:0:{}', '2014-01-22 19:02:28', 1, 1, NULL),
 (11, 'ru', 'Для жаждущих с Сущностью Вечной слиянья<br />\r\nЕсть йога познанья и йога деянья,<br />\r\n<br />\r\nВ бездействии мы не обрящем блаженства;<br />\r\nКто дела не начал, тот чужд совершенства.<br />\r\n<br />\r\nОднако без действий никто не пребудет:<br />\r\nТы хочешь того иль не хочешь — принудит<br />\r\n<br />\r\nПрирода тебя: нет иного удела,<br />\r\nИ, ей повинуясь, ты делаешь дело.<br />\r\n<br />\r\nКто, чувства поправ, все же помнит впечали<br />\r\nПредметы, что чувства его услаждали,—<br />\r\n<br />\r\nТот, связанный, следует ложной дорогой;<br />\r\nА тот, о сын Кунти, кто, волею строгой<br />\r\n<br />\r\nВсе чувства поправ, йогу действия начал,—<br />\r\nНа правой дороге себя обозначил.<br />\r\n<br />\r\nПоэтому действуй; бездействию дело<br />\r\nВсегда предпочти; отравления тела —<br />\r\n<br />\r\nИ то без усилий свершить невозможно:<br />\r\nДеянье — надежно, бездействие — ложно. &nbsp;\r', 'a:0:{}', '2014-01-29 10:01:55', 1, 1, NULL),
@@ -1627,7 +1614,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-28 14:04:42', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-29 16:04:55', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 
