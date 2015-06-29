@@ -2,7 +2,8 @@ smart_blog.article.index:
     path: /
     defaults: { _controller: BlogModule:Article:index }
 
-smart_blog.article.index.page_1_redirect_TO_index:
+# page 1 redirect to index
+smart_blog.article.index.page1:
     path: /page/
     defaults:
         _controller: BlogModule:Article:index
