@@ -4518,12 +4518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "3e3f7236755ad886a9f13c9fe3d90bb787498ac7"
+                "reference": "f579dbcde0c378f5b175cef8b3873aecd9fab3eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/3e3f7236755ad886a9f13c9fe3d90bb787498ac7",
-                "reference": "3e3f7236755ad886a9f13c9fe3d90bb787498ac7",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/f579dbcde0c378f5b175cef8b3873aecd9fab3eb",
+                "reference": "f579dbcde0c378f5b175cef8b3873aecd9fab3eb",
                 "shasum": ""
             },
             "require": {
@@ -4589,7 +4589,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-28 21:34:36"
+            "time": "2015-06-29 13:12:27"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4661,12 +4661,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "19ec9b800c64a74cad622e2abf1c78de5e1ccf70"
+                "reference": "a0aac9830651244672544cf4846908077ab4b136"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/19ec9b800c64a74cad622e2abf1c78de5e1ccf70",
-                "reference": "19ec9b800c64a74cad622e2abf1c78de5e1ccf70",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/a0aac9830651244672544cf4846908077ab4b136",
+                "reference": "a0aac9830651244672544cf4846908077ab4b136",
                 "shasum": ""
             },
             "require": {
@@ -4686,7 +4686,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-06-28 20:41:50"
+            "time": "2015-06-29 12:34:29"
         },
         {
             "name": "smart-core/html-bundle",
