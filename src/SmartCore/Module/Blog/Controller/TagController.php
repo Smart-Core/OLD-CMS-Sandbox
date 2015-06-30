@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Blog\Controller;
 
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;

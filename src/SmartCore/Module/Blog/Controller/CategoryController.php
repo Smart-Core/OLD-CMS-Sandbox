@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Blog\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Pagerfanta;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
