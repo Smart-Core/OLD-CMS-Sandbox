@@ -108,17 +108,17 @@ accelerator_cache:
     web_dir: %kernel.root_dir%/../web
     mode: curl
 
-#smart_sitemap:
-#    base_url: %base_url%
-#    ignores:
-#        - 'http:'
-#        - 'https:'
-#        - 'javascript:'
-#        - 'mailto:'
-#        - 'skype:'
-#        - /user/
-#        - /admin/
-#        - /api/
+smart_sitemap:
+    base_url: %base_url%
+    ignores:
+        - 'http:'
+        - 'https:'
+        - 'javascript:'
+        - 'mailto:'
+        - 'skype:'
+        - /user/
+        - /admin/
+        - /api/
 
 #sp_bower:
 #    bundles:

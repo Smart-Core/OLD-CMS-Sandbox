@@ -6,6 +6,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
+        "php": ">=5.5.9",
         "symfony/symfony": "~2.7",
         "smart-core/cms-bundle": "dev-master",
 
@@ -46,7 +47,8 @@
         "smart-core/seo-bundle": "dev-master",
         "smart-core/session-bundle": "dev-master",
         "smart-core/settings-bundle": "dev-master",
-        "smart-core/simple-profiler-bundle": "dev-master"
+        "smart-core/simple-profiler-bundle": "dev-master",
+        "smart-core/sitemap-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -74,7 +76,7 @@
         "bin-dir": "bin",
         "preferred-install": "dist"
     },
-    "minimum-stability": "alpha",
+    
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
@@ -82,7 +84,7 @@
         "symfony-web-dir": "web",
         "symfony-assets-install": "symlink",
         "branch-alias": {
-            "dev-master": "2.6-dev"
+            "dev-master": "2.7-dev"
         },
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
