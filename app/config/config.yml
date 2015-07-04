@@ -10,11 +10,10 @@ framework:
         enabled:     true
     default_locale:  %locale%
     esi:             
-        enabled:     false
+        enabled:     true
     form:            true
-    validation:      { enable_annotations: true }
     profiler:
-        enabled:     false
+        enabled:     %kernel.debug%
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     secret:          %secret%
     session:
@@ -22,6 +21,10 @@ framework:
         save_path:   "%kernel.root_dir%/../var/sessions"
     templating:      { engines: ['twig', 'php'] } #assets_version: SomeVersionScheme
     translator:      { fallback: en }
+    validation:
+        enable_annotations: true
+        enabled:    true
+        api:        2.5
 
 # Twig Configuration
 twig:
