@@ -6,7 +6,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "symfony/symfony": "2.6.*",
+        "symfony/symfony": "~2.7",
         "smart-core/cms-bundle": "dev-master",
 
         "doctrine/migrations": "1.0.*@dev",
