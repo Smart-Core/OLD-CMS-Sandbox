@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "df45eca7ec61c1de3cc4ad955a36e012",
+    "hash": "f137655767e86ab68c3b0cc6e24cc0af",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -3302,33 +3302,33 @@
         },
         {
             "name": "knplabs/rad-bundle",
-            "version": "v2.6.3",
+            "version": "v2.6.2",
             "target-dir": "Knp/RadBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpRadBundle.git",
-                "reference": "32cf439eddb865e1a0e5fca0559f088d71e793d9"
+                "reference": "66adb061507e645f1585e617f11059446ae7fae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpRadBundle/zipball/32cf439eddb865e1a0e5fca0559f088d71e793d9",
-                "reference": "32cf439eddb865e1a0e5fca0559f088d71e793d9",
+                "url": "https://api.github.com/repos/KnpLabs/KnpRadBundle/zipball/66adb061507e645f1585e617f11059446ae7fae4",
+                "reference": "66adb061507e645f1585e617f11059446ae7fae4",
                 "shasum": ""
             },
             "require": {
                 "fzaninotto/faker": "~1.2",
                 "nelmio/alice": "~1.5",
                 "php": ">=5.4",
-                "symfony/symfony": "~2.4,<2.7"
+                "symfony/symfony": "~2.4"
             },
             "require-dev": {
-                "behat/behat": "~3.0",
-                "behat/mink-extension": "~2.0",
-                "behat/mink-goutte-driver": "~1.0",
-                "behat/mink-selenium2-driver": "~1.1",
+                "behat/behat": "~3@dev",
+                "behat/mink-extension": "~2@dev",
+                "behat/mink-goutte-driver": "*@dev",
+                "behat/mink-selenium2-driver": "*@dev",
                 "doctrine/doctrine-fixtures-bundle": "*",
                 "doctrine/orm": "~2.4",
-                "phpspec/phpspec": "~2.0",
+                "phpspec/phpspec": "~2@dev",
                 "symfony/swiftmailer-bundle": "~2.3",
                 "twig/twig": "~1"
             },
@@ -3357,7 +3357,7 @@
             ],
             "description": "The \"KnpLabs Rad Edition\" bundle",
             "homepage": "http://rad.knplabs.com",
-            "time": "2015-02-24 09:39:14"
+            "time": "2014-09-04 15:25:41"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -4628,12 +4628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "c151895d7df5ea489365551a0818219467d4a465"
+                "reference": "00ee5dbddebe88e1c93f02b67a99a20ae51504c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/c151895d7df5ea489365551a0818219467d4a465",
-                "reference": "c151895d7df5ea489365551a0818219467d4a465",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/00ee5dbddebe88e1c93f02b67a99a20ae51504c0",
+                "reference": "00ee5dbddebe88e1c93f02b67a99a20ae51504c0",
                 "shasum": ""
             },
             "require": {
@@ -4699,7 +4699,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-06-29 17:35:11"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4886,12 +4886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/MediaBundle.git",
-                "reference": "16945d92d53017e2b8d508bb24e894631d35400e"
+                "reference": "4bf456bc3dcad66f9823a873c6df6cb52122aeaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/MediaBundle/zipball/16945d92d53017e2b8d508bb24e894631d35400e",
-                "reference": "16945d92d53017e2b8d508bb24e894631d35400e",
+                "url": "https://api.github.com/repos/Smart-Core/MediaBundle/zipball/4bf456bc3dcad66f9823a873c6df6cb52122aeaf",
+                "reference": "4bf456bc3dcad66f9823a873c6df6cb52122aeaf",
                 "shasum": ""
             },
             "require": {
@@ -4921,7 +4921,7 @@
                 "bundle",
                 "media"
             ],
-            "time": "2015-06-26 04:27:26"
+            "time": "2015-07-04 12:31:53"
         },
         {
             "name": "smart-core/module-breadcrumbs",
@@ -4952,12 +4952,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Gallery.git",
-                "reference": "59bfd74ecab9ce7171d28c3c3b27b92aacba6adb"
+                "reference": "ea66917fba372236dd1627e270acbf635aeb1030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/59bfd74ecab9ce7171d28c3c3b27b92aacba6adb",
-                "reference": "59bfd74ecab9ce7171d28c3c3b27b92aacba6adb",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/ea66917fba372236dd1627e270acbf635aeb1030",
+                "reference": "ea66917fba372236dd1627e270acbf635aeb1030",
                 "shasum": ""
             },
             "require": {
@@ -4970,7 +4970,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 11:19:37"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/module-menu",
@@ -4978,12 +4978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Menu.git",
-                "reference": "d5a14c8c2e57261890cbca36ce0f0f6f15ff6622"
+                "reference": "af64dd9f59f8efd9e67a68c8777bf3085a9ed069"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/d5a14c8c2e57261890cbca36ce0f0f6f15ff6622",
-                "reference": "d5a14c8c2e57261890cbca36ce0f0f6f15ff6622",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/af64dd9f59f8efd9e67a68c8777bf3085a9ed069",
+                "reference": "af64dd9f59f8efd9e67a68c8777bf3085a9ed069",
                 "shasum": ""
             },
             "require": {
@@ -4996,7 +4996,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 13:01:57"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/module-simplenews",
@@ -5004,12 +5004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-SimpleNews.git",
-                "reference": "eb818cadbb9f2964e5a52904e67e0548819e0db8"
+                "reference": "3ac130237f42915d293145aad0dbc695f7e82de6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/eb818cadbb9f2964e5a52904e67e0548819e0db8",
-                "reference": "eb818cadbb9f2964e5a52904e67e0548819e0db8",
+                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/3ac130237f42915d293145aad0dbc695f7e82de6",
+                "reference": "3ac130237f42915d293145aad0dbc695f7e82de6",
                 "shasum": ""
             },
             "require": {
@@ -5022,7 +5022,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 16:29:18"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/module-slider",
@@ -5030,12 +5030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Slider.git",
-                "reference": "3711a7ef4d9aaf42fb25d49470afc74d641fa93a"
+                "reference": "94873a3c5c4db845a138ae0e0ef02acb51f820df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/3711a7ef4d9aaf42fb25d49470afc74d641fa93a",
-                "reference": "3711a7ef4d9aaf42fb25d49470afc74d641fa93a",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/94873a3c5c4db845a138ae0e0ef02acb51f820df",
+                "reference": "94873a3c5c4db845a138ae0e0ef02acb51f820df",
                 "shasum": ""
             },
             "require": {
@@ -5048,7 +5048,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-28 08:33:01"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/module-texter",
@@ -5056,12 +5056,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "59499f714613cbb05f77d100f3748916a6747e77"
+                "reference": "cfb283dc2bf989bd48a708e40810550189c53426"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/59499f714613cbb05f77d100f3748916a6747e77",
-                "reference": "59499f714613cbb05f77d100f3748916a6747e77",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/cfb283dc2bf989bd48a708e40810550189c53426",
+                "reference": "cfb283dc2bf989bd48a708e40810550189c53426",
                 "shasum": ""
             },
             "require": {
@@ -5074,7 +5074,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-28 08:33:02"
+            "time": "2015-07-04 11:59:52"
         },
         {
             "name": "smart-core/module-unicat",
@@ -5082,12 +5082,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "69dfd2d1494850e4a674687b72ab1781d9d3387b"
+                "reference": "3fb3173434a6b6b8195383601177fbdeaeae8837"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/69dfd2d1494850e4a674687b72ab1781d9d3387b",
-                "reference": "69dfd2d1494850e4a674687b72ab1781d9d3387b",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/3fb3173434a6b6b8195383601177fbdeaeae8837",
+                "reference": "3fb3173434a6b6b8195383601177fbdeaeae8837",
                 "shasum": ""
             },
             "require": {
@@ -5100,7 +5100,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-29 20:48:12"
+            "time": "2015-07-04 12:31:55"
         },
         {
             "name": "smart-core/module-user",
@@ -5108,12 +5108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-User.git",
-                "reference": "1c4b8da95983ad43c538b6a6828b50d0c9b8d3fd"
+                "reference": "9d13adabd939ead0a26b3656d7b67e97fd7932e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-User/zipball/1c4b8da95983ad43c538b6a6828b50d0c9b8d3fd",
-                "reference": "1c4b8da95983ad43c538b6a6828b50d0c9b8d3fd",
+                "url": "https://api.github.com/repos/Smart-Core/Module-User/zipball/9d13adabd939ead0a26b3656d7b67e97fd7932e1",
+                "reference": "9d13adabd939ead0a26b3656d7b67e97fd7932e1",
                 "shasum": ""
             },
             "type": "library",
@@ -5123,7 +5123,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 10:46:15"
+            "time": "2015-07-04 11:59:52"
         },
         {
             "name": "smart-core/module-webform",
@@ -5131,12 +5131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-WebForm.git",
-                "reference": "7a70342feff7cae6dd54f4795760e4779a0757c6"
+                "reference": "734f60109e89fd794b0bf3afe590325f8828881b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/7a70342feff7cae6dd54f4795760e4779a0757c6",
-                "reference": "7a70342feff7cae6dd54f4795760e4779a0757c6",
+                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/734f60109e89fd794b0bf3afe590325f8828881b",
+                "reference": "734f60109e89fd794b0bf3afe590325f8828881b",
                 "shasum": ""
             },
             "require": {
@@ -5149,7 +5149,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 16:29:18"
+            "time": "2015-07-04 12:31:55"
         },
         {
             "name": "smart-core/module-widget",
@@ -5223,12 +5223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SeoBundle.git",
-                "reference": "1eea16c35052f050076b4d22c208b75a4742b962"
+                "reference": "23b52f63e85c3d2d5b625e8cde32d6e631a4342c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SeoBundle/zipball/1eea16c35052f050076b4d22c208b75a4742b962",
-                "reference": "1eea16c35052f050076b4d22c208b75a4742b962",
+                "url": "https://api.github.com/repos/Smart-Core/SeoBundle/zipball/23b52f63e85c3d2d5b625e8cde32d6e631a4342c",
+                "reference": "23b52f63e85c3d2d5b625e8cde32d6e631a4342c",
                 "shasum": ""
             },
             "require": {
@@ -5256,7 +5256,7 @@
                 "bundle",
                 "seo"
             ],
-            "time": "2015-06-26 04:10:17"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/session-bundle",
@@ -5265,12 +5265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SessionBundle.git",
-                "reference": "5d397058f5ada14d22ed4dafa9526eb2a78dcab1"
+                "reference": "d4aaf0e6ba35fec7d3a5e82f2852fe0bfec6e92e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SessionBundle/zipball/5d397058f5ada14d22ed4dafa9526eb2a78dcab1",
-                "reference": "5d397058f5ada14d22ed4dafa9526eb2a78dcab1",
+                "url": "https://api.github.com/repos/Smart-Core/SessionBundle/zipball/d4aaf0e6ba35fec7d3a5e82f2852fe0bfec6e92e",
+                "reference": "d4aaf0e6ba35fec7d3a5e82f2852fe0bfec6e92e",
                 "shasum": ""
             },
             "require": {
@@ -5289,7 +5289,7 @@
             "keywords": [
                 "session"
             ],
-            "time": "2014-08-09 02:24:59"
+            "time": "2015-07-04 11:59:51"
         },
         {
             "name": "smart-core/settings-bundle",
@@ -5297,12 +5297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SettingsBundle.git",
-                "reference": "e08108646048b625d37c5d00fed7ab9da0d707eb"
+                "reference": "8e0968c87c404ec98a1ca8a3f24ad439e798d77c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/e08108646048b625d37c5d00fed7ab9da0d707eb",
-                "reference": "e08108646048b625d37c5d00fed7ab9da0d707eb",
+                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/8e0968c87c404ec98a1ca8a3f24ad439e798d77c",
+                "reference": "8e0968c87c404ec98a1ca8a3f24ad439e798d77c",
                 "shasum": ""
             },
             "require": {
@@ -5331,7 +5331,7 @@
                 "Settings",
                 "bundle"
             ],
-            "time": "2015-06-26 03:53:02"
+            "time": "2015-07-04 12:31:54"
         },
         {
             "name": "smart-core/simple-profiler-bundle",
@@ -5731,25 +5731,26 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.9",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "b06539573ccf64dd3a62852685f052553d02c5ba"
+                "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b06539573ccf64dd3a62852685f052553d02c5ba",
-                "reference": "b06539573ccf64dd3a62852685f052553d02c5ba",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/932b6e7499c670f4db6d0b871477a4a3ca161e74",
+                "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.3",
-                "php": ">=5.3.3",
+                "php": ">=5.3.9",
                 "psr/log": "~1.0",
-                "twig/twig": "~1.12,>=1.12.3"
+                "twig/twig": "~1.18"
             },
             "replace": {
+                "symfony/asset": "self.version",
                 "symfony/browser-kit": "self.version",
                 "symfony/class-loader": "self.version",
                 "symfony/config": "self.version",
@@ -5773,7 +5774,6 @@
                 "symfony/monolog-bridge": "self.version",
                 "symfony/options-resolver": "self.version",
                 "symfony/process": "self.version",
-                "symfony/propel1-bridge": "self.version",
                 "symfony/property-access": "self.version",
                 "symfony/proxy-manager-bridge": "self.version",
                 "symfony/routing": "self.version",
@@ -5804,18 +5804,23 @@
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0",
-                "propel/propel1": "~1.6",
-                "symfony/phpunit-bridge": "~2.7"
+                "symfony/phpunit-bridge": "self.version"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Symfony\\": "src/"
+                "psr-4": {
+                    "Symfony\\Bridge\\Doctrine\\": "src/Symfony/Bridge/Doctrine/",
+                    "Symfony\\Bridge\\Monolog\\": "src/Symfony/Bridge/Monolog/",
+                    "Symfony\\Bridge\\ProxyManager\\": "src/Symfony/Bridge/ProxyManager/",
+                    "Symfony\\Bridge\\Swiftmailer\\": "src/Symfony/Bridge/Swiftmailer/",
+                    "Symfony\\Bridge\\Twig\\": "src/Symfony/Bridge/Twig/",
+                    "Symfony\\Bundle\\": "src/Symfony/Bundle/",
+                    "Symfony\\Component\\": "src/Symfony/Component/"
                 },
                 "classmap": [
                     "src/Symfony/Component/HttpFoundation/Resources/stubs",
@@ -5844,7 +5849,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-05-29 22:55:07"
+            "time": "2015-06-11 21:15:28"
         },
         {
             "name": "twig/extensions",
