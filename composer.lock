@@ -4628,12 +4628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "00ee5dbddebe88e1c93f02b67a99a20ae51504c0"
+                "reference": "79a871da032cabc946b6b19a88b7e3884be18fab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/00ee5dbddebe88e1c93f02b67a99a20ae51504c0",
-                "reference": "00ee5dbddebe88e1c93f02b67a99a20ae51504c0",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/79a871da032cabc946b6b19a88b7e3884be18fab",
+                "reference": "79a871da032cabc946b6b19a88b7e3884be18fab",
                 "shasum": ""
             },
             "require": {
@@ -4699,7 +4699,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-07-04 12:31:54"
+            "time": "2015-07-04 19:30:18"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4978,12 +4978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Menu.git",
-                "reference": "af64dd9f59f8efd9e67a68c8777bf3085a9ed069"
+                "reference": "8cd675c881599c25d7cae68a5930d7f61452cf5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/af64dd9f59f8efd9e67a68c8777bf3085a9ed069",
-                "reference": "af64dd9f59f8efd9e67a68c8777bf3085a9ed069",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/8cd675c881599c25d7cae68a5930d7f61452cf5f",
+                "reference": "8cd675c881599c25d7cae68a5930d7f61452cf5f",
                 "shasum": ""
             },
             "require": {
@@ -4996,7 +4996,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-04 12:31:54"
+            "time": "2015-07-04 19:30:18"
         },
         {
             "name": "smart-core/module-simplenews",
@@ -5082,12 +5082,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "3fb3173434a6b6b8195383601177fbdeaeae8837"
+                "reference": "f15f0617783ccf8fe28c9041020b51e6244a96a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/3fb3173434a6b6b8195383601177fbdeaeae8837",
-                "reference": "3fb3173434a6b6b8195383601177fbdeaeae8837",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/f15f0617783ccf8fe28c9041020b51e6244a96a2",
+                "reference": "f15f0617783ccf8fe28c9041020b51e6244a96a2",
                 "shasum": ""
             },
             "require": {
@@ -5100,7 +5100,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-04 12:31:55"
+            "time": "2015-07-04 18:47:06"
         },
         {
             "name": "smart-core/module-user",
@@ -5265,12 +5265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SessionBundle.git",
-                "reference": "d4aaf0e6ba35fec7d3a5e82f2852fe0bfec6e92e"
+                "reference": "49ecdd767b1fb5919a4d022511446e5f57aac13a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SessionBundle/zipball/d4aaf0e6ba35fec7d3a5e82f2852fe0bfec6e92e",
-                "reference": "d4aaf0e6ba35fec7d3a5e82f2852fe0bfec6e92e",
+                "url": "https://api.github.com/repos/Smart-Core/SessionBundle/zipball/49ecdd767b1fb5919a4d022511446e5f57aac13a",
+                "reference": "49ecdd767b1fb5919a4d022511446e5f57aac13a",
                 "shasum": ""
             },
             "require": {
@@ -5289,7 +5289,7 @@
             "keywords": [
                 "session"
             ],
-            "time": "2015-07-04 11:59:51"
+            "time": "2015-07-04 18:31:17"
         },
         {
             "name": "smart-core/settings-bundle",
