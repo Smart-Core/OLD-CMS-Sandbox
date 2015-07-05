@@ -76,7 +76,6 @@
         "bin-dir": "bin",
         "preferred-install": "dist"
     },
-    
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6532815e529b9855c8dea5d807666595",
+    "hash": "6cd7f59ce4d6f46e81647af32197c47c",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "d93b87969e245995a46646ed15f05513452a8010"
+                "reference": "8f5aa8c50c8196146ee6c28899509765faf67b1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/d93b87969e245995a46646ed15f05513452a8010",
-                "reference": "d93b87969e245995a46646ed15f05513452a8010",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/8f5aa8c50c8196146ee6c28899509765faf67b1a",
+                "reference": "8f5aa8c50c8196146ee6c28899509765faf67b1a",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-06-27 11:27:58"
+            "time": "2015-07-04 22:08:33"
         },
         {
             "name": "doctrine/annotations",
@@ -1757,27 +1757,27 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f992b7b487a816c957d317442bed4966409873e0"
+                "reference": "a8dfeff00eb84616a17fea7a4d72af35e750410f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f992b7b487a816c957d317442bed4966409873e0",
-                "reference": "f992b7b487a816c957d317442bed4966409873e0",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a8dfeff00eb84616a17fea7a4d72af35e750410f",
+                "reference": "a8dfeff00eb84616a17fea7a4d72af35e750410f",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/promises": "^1.0.0",
-                "guzzlehttp/psr7": "^1.0.0",
+                "guzzlehttp/promises": "~1.0",
+                "guzzlehttp/psr7": "~1.1",
                 "php": ">=5.5.0"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0",
-                "psr/log": "^1.0"
+                "phpunit/phpunit": "~4.0",
+                "psr/log": "~1.0"
             },
             "type": "library",
             "extra": {
@@ -1787,7 +1787,7 @@
             },
             "autoload": {
                 "files": [
-                    "src/functions.php"
+                    "src/functions_include.php"
                 ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
@@ -1815,7 +1815,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2015-05-27 16:57:51"
+            "time": "2015-07-04 20:09:24"
         },
         {
             "name": "guzzlehttp/promises",
