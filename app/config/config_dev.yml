@@ -27,7 +27,15 @@ monolog:
 #    auto_help: true
     
 web_profiler_extra:
-    routing:    true
-    container:  true
-    assetic:    true
-    twig:       true
+    routing:
+        enabled: true
+        display_in_wdt: false
+    container:
+        enabled: true
+        display_in_wdt: false
+    assetic:
+        enabled: true
+        display_in_wdt: false
+    twig:
+        enabled: true
+        display_in_wdt: false
