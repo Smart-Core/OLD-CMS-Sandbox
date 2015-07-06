@@ -39,3 +39,9 @@ web_profiler_extra:
     twig:
         enabled: true
         display_in_wdt: false
+
+#services:
+#    data_collector.config:
+#        class: Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector
+#        tags:
+#           - {name: 'data_collector', priority: '0'}
