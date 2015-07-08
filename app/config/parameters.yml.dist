@@ -29,12 +29,13 @@ parameters:
     mailer_user:        ~
     mailer_password:    ~
 
-    knp_disqus.api_key: YOUR_PUBLIC_API_KEY
+    knp_disqus.api_key:    YOUR_PUBLIC_API_KEY
+    knp_disqus.secret_key: YOUR_SECRET_API_KEY      # optional, for SSO auth only
 
     locale: ru
 
-    tagcache_driver: Nullcache # Memcache, Memcached, File, Sqlite, Apc, Nullcache
-    orm_cache_driver: ~ # apc, wincache, xcache
+    tagcache_driver: Nullcache      # Memcache, Memcached, File, Sqlite, Apc, Nullcache
+    orm_cache_driver: ~             # apc, wincache, xcache
 
     registration_email_confirmation: registration-email-confirmation@localhost.org
     email_resetting: no-reply@localhost.org
