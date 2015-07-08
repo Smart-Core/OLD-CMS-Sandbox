@@ -994,12 +994,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "70c580174e4e16a79296a02256fb40a34192731c"
+                "reference": "78954cce4962a4655ff47c0751eb78021fbaf2cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/70c580174e4e16a79296a02256fb40a34192731c",
-                "reference": "70c580174e4e16a79296a02256fb40a34192731c",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/78954cce4962a4655ff47c0751eb78021fbaf2cc",
+                "reference": "78954cce4962a4655ff47c0751eb78021fbaf2cc",
                 "shasum": ""
             },
             "require": {
@@ -1007,9 +1007,6 @@
                 "php": ">=5.4.0",
                 "symfony/console": "~2.3",
                 "symfony/yaml": "~2.3"
-            },
-            "conflict": {
-                "doctrine/orm": "<2.4"
             },
             "require-dev": {
                 "doctrine/coding-standard": "dev-master",
@@ -1053,7 +1050,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-06-29 10:57:05"
+            "time": "2015-07-05 21:24:36"
         },
         {
             "name": "doctrine/orm",
@@ -3918,12 +3915,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "5bf0bf7577dc21e92a6ef399dc69017799a5dedb"
+                "reference": "ee161a9c8ebc41358466076ff065d2df7a852ab7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/5bf0bf7577dc21e92a6ef399dc69017799a5dedb",
-                "reference": "5bf0bf7577dc21e92a6ef399dc69017799a5dedb",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/ee161a9c8ebc41358466076ff065d2df7a852ab7",
+                "reference": "ee161a9c8ebc41358466076ff065d2df7a852ab7",
                 "shasum": ""
             },
             "require": {
@@ -3981,7 +3978,7 @@
                 "form",
                 "template"
             ],
-            "time": "2015-06-24 15:36:04"
+            "time": "2015-07-06 20:47:24"
         },
         {
             "name": "mopa/composer-bridge",
@@ -5244,12 +5241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "5952c5beff11e20daec36fb91286c04c4ae71385"
+                "reference": "5d87ce3518f0341d82cc4fc01edccca0148b7597"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/5952c5beff11e20daec36fb91286c04c4ae71385",
-                "reference": "5952c5beff11e20daec36fb91286c04c4ae71385",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/5d87ce3518f0341d82cc4fc01edccca0148b7597",
+                "reference": "5d87ce3518f0341d82cc4fc01edccca0148b7597",
                 "shasum": ""
             },
             "require": {
@@ -5262,7 +5259,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-06 16:11:55"
+            "time": "2015-07-08 15:42:33"
         },
         {
             "name": "smart-core/module-user",
