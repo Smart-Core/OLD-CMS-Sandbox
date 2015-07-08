@@ -2,6 +2,8 @@
 
 namespace SmartCore\Module\Blog\Controller;
 
+use Pagerfanta\Pagerfanta;
+use Smart\CoreBundle\Pagerfanta\SimpleDoctrineORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
@@ -9,6 +11,23 @@ use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 class BlogWidgetController extends Controller
 {
     use NodeTrait;
+
+    /**
+     * @param Request $requst
+     * @param integer $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function mainAction()
+    {
+        $articleService = $this->get('smart_blog.article');
+
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoryQuery()));
+        $pagerfanta->setMaxPerPage($articleService->getItemsCountPerPage());
+
+        return $this->render('BlogModule:Widget:main.html.twig', [
+            'pagerfanta' => $pagerfanta,
+        ]);
+    }
 
     /**
      * @param int $limit
