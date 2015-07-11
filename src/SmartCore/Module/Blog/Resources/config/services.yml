@@ -83,3 +83,10 @@ services:
         factory_service: doctrine
         factory_method:  getRepository
         arguments:       [%smart_blog.model.category.class%]
+
+    # Listeners
+    smart_blog.listener.article_author:
+        class: SmartCore\Module\Blog\EventListener\ArticleAuthorListener
+        arguments: [@security.context, @logger]
+        tags:
+            - { name: kernel.event_subscriber }
