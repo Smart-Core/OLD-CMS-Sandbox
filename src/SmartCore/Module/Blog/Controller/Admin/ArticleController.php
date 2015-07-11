@@ -79,6 +79,7 @@ class ArticleController extends Controller
         /** @var \SmartCore\Module\Blog\Service\ArticleService $articleService */
         $articleService = $this->get('smart_blog.article');
         $article        = $articleService->create();
+        $article->setAuthor($this->getUser());
 
         $form = $this->createForm($this->get('smart_blog.article.create.form.type'), $article);
         if ($request->isMethod('POST')) {
