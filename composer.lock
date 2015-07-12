@@ -2079,16 +2079,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
-            "version": "2.2.1",
+            "version": "2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/ElFinderPHP.git",
-                "reference": "a0352962c134ec572d52cd2836477abd4c9dc0ba"
+                "reference": "a8026e94fc822ff727b274677230338dec12bf53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/a0352962c134ec572d52cd2836477abd4c9dc0ba",
-                "reference": "a0352962c134ec572d52cd2836477abd4c9dc0ba",
+                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/a8026e94fc822ff727b274677230338dec12bf53",
+                "reference": "a8026e94fc822ff727b274677230338dec12bf53",
                 "shasum": ""
             },
             "require": {
@@ -2128,7 +2128,7 @@
                 "elfinder",
                 "filemanager"
             ],
-            "time": "2015-03-14 15:22:56"
+            "time": "2015-06-19 15:31:14"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -3834,16 +3834,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.14.0",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "b287fbbe1ca27847064beff2bad7fb6920bf08cc"
+                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/b287fbbe1ca27847064beff2bad7fb6920bf08cc",
-                "reference": "b287fbbe1ca27847064beff2bad7fb6920bf08cc",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dc5150cc608f2334c72c3b6a553ec9668a4156b0",
+                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0",
                 "shasum": ""
             },
             "require": {
@@ -3880,7 +3880,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14.x-dev"
+                    "dev-master": "1.15.x-dev"
                 }
             },
             "autoload": {
@@ -3906,7 +3906,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-06-19 13:29:54"
+            "time": "2015-07-12 13:54:09"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -4787,12 +4787,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "603def6811182baa1990159faf7d2c2636349207"
+                "reference": "c6039f8675f60148d718d8f800d1bfd81658f123"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/603def6811182baa1990159faf7d2c2636349207",
-                "reference": "603def6811182baa1990159faf7d2c2636349207",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/c6039f8675f60148d718d8f800d1bfd81658f123",
+                "reference": "c6039f8675f60148d718d8f800d1bfd81658f123",
                 "shasum": ""
             },
             "require": {
@@ -4858,7 +4858,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-07-08 21:54:17"
+            "time": "2015-07-12 22:48:33"
         },
         {
             "name": "smart-core/cms-generator-bundle",
