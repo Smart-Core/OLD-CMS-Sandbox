@@ -5164,12 +5164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-SimpleNews.git",
-                "reference": "ebfb366d2c62baae6075c0f37e1fbba2178a6f0a"
+                "reference": "adb77b8eedfae44607fed9952c3453e994e04641"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/ebfb366d2c62baae6075c0f37e1fbba2178a6f0a",
-                "reference": "ebfb366d2c62baae6075c0f37e1fbba2178a6f0a",
+                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/adb77b8eedfae44607fed9952c3453e994e04641",
+                "reference": "adb77b8eedfae44607fed9952c3453e994e04641",
                 "shasum": ""
             },
             "require": {
@@ -5182,7 +5182,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-06 16:11:55"
+            "time": "2015-07-13 00:27:01"
         },
         {
             "name": "smart-core/module-slider",
@@ -5242,12 +5242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "47400bbcb82090778d7aed31e2b43b10d6289bd0"
+                "reference": "3830b3f0e4dfd7cac69b3569b8c4d411a7959d71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/47400bbcb82090778d7aed31e2b43b10d6289bd0",
-                "reference": "47400bbcb82090778d7aed31e2b43b10d6289bd0",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/3830b3f0e4dfd7cac69b3569b8c4d411a7959d71",
+                "reference": "3830b3f0e4dfd7cac69b3569b8c4d411a7959d71",
                 "shasum": ""
             },
             "require": {
@@ -5260,7 +5260,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-12 23:03:34"
+            "time": "2015-07-13 00:27:01"
         },
         {
             "name": "smart-core/module-user",
