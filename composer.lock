@@ -4787,12 +4787,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "280612345342a264ae8f9fcf453bd701183d305e"
+                "reference": "c365a17811ce76713803f3d393eafa4b66f8d584"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/280612345342a264ae8f9fcf453bd701183d305e",
-                "reference": "280612345342a264ae8f9fcf453bd701183d305e",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/c365a17811ce76713803f3d393eafa4b66f8d584",
+                "reference": "c365a17811ce76713803f3d393eafa4b66f8d584",
                 "shasum": ""
             },
             "require": {
@@ -4859,7 +4859,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-07-12 23:24:21"
+            "time": "2015-07-13 00:00:22"
         },
         {
             "name": "smart-core/cms-generator-bundle",
