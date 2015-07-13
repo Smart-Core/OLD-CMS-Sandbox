@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a90b1d6df3dc694bf754219d26e689fa",
+    "hash": "1fa1e9b93bf3620401d83873eb9d7126",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -2079,16 +2079,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
-            "version": "2.3",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/ElFinderPHP.git",
-                "reference": "a8026e94fc822ff727b274677230338dec12bf53"
+                "reference": "a0352962c134ec572d52cd2836477abd4c9dc0ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/a8026e94fc822ff727b274677230338dec12bf53",
-                "reference": "a8026e94fc822ff727b274677230338dec12bf53",
+                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/a0352962c134ec572d52cd2836477abd4c9dc0ba",
+                "reference": "a0352962c134ec572d52cd2836477abd4c9dc0ba",
                 "shasum": ""
             },
             "require": {
@@ -2128,7 +2128,7 @@
                 "elfinder",
                 "filemanager"
             ],
-            "time": "2015-06-19 15:31:14"
+            "time": "2015-03-14 15:22:56"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -4787,12 +4787,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "c6039f8675f60148d718d8f800d1bfd81658f123"
+                "reference": "280612345342a264ae8f9fcf453bd701183d305e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/c6039f8675f60148d718d8f800d1bfd81658f123",
-                "reference": "c6039f8675f60148d718d8f800d1bfd81658f123",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/280612345342a264ae8f9fcf453bd701183d305e",
+                "reference": "280612345342a264ae8f9fcf453bd701183d305e",
                 "shasum": ""
             },
             "require": {
@@ -4811,6 +4811,7 @@
                 "happyr/google-site-authenticator-bundle": "*",
                 "happyr/slugify-bundle": "*",
                 "helios-ag/fm-elfinder-bundle": "~4.0",
+                "helios-ag/fm-elfinder-php-connector": "v2.2.1",
                 "incenteev/composer-parameter-handler": "~2.0",
                 "intervention/image": "*",
                 "jms/di-extra-bundle": "*",
@@ -4858,7 +4859,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-07-12 22:48:33"
+            "time": "2015-07-12 23:24:21"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5241,12 +5242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "d919eca8438697bc6bfdf2c7b0f6ae28d137b9fb"
+                "reference": "47400bbcb82090778d7aed31e2b43b10d6289bd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/d919eca8438697bc6bfdf2c7b0f6ae28d137b9fb",
-                "reference": "d919eca8438697bc6bfdf2c7b0f6ae28d137b9fb",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/47400bbcb82090778d7aed31e2b43b10d6289bd0",
+                "reference": "47400bbcb82090778d7aed31e2b43b10d6289bd0",
                 "shasum": ""
             },
             "require": {
@@ -5259,7 +5260,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-08 21:54:17"
+            "time": "2015-07-12 23:03:34"
         },
         {
             "name": "smart-core/module-user",

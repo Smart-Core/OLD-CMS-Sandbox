@@ -3,7 +3,10 @@
     "description": "Smart Core CMS Sandbox",
     "license": "MIT",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": {
+            "": "src/",
+            "SmartCore\\": "src/"
+        }
     },
     "require": {
         "php": ">=5.5.9",
