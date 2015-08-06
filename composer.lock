@@ -92,12 +92,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "8f5aa8c50c8196146ee6c28899509765faf67b1a"
+                "reference": "0a975831939aaf1afa2304fda3a236b7f33ef470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/8f5aa8c50c8196146ee6c28899509765faf67b1a",
-                "reference": "8f5aa8c50c8196146ee6c28899509765faf67b1a",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/0a975831939aaf1afa2304fda3a236b7f33ef470",
+                "reference": "0a975831939aaf1afa2304fda3a236b7f33ef470",
                 "shasum": ""
             },
             "require": {
@@ -154,7 +154,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-07-04 22:08:33"
+            "time": "2015-08-05 17:55:44"
         },
         {
             "name": "doctrine/annotations",
@@ -726,16 +726,15 @@
         {
             "name": "doctrine/doctrine-fixtures-bundle",
             "version": "dev-master",
-            "target-dir": "Doctrine/Bundle/FixturesBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "c5ff0542772102ddd4e2fbe173e9ad40ad67c22f"
+                "reference": "817c2d233fde0fe85cb7e4d25d43fbfcd028aef8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c5ff0542772102ddd4e2fbe173e9ad40ad67c22f",
-                "reference": "c5ff0542772102ddd4e2fbe173e9ad40ad67c22f",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/817c2d233fde0fe85cb7e4d25d43fbfcd028aef8",
+                "reference": "817c2d233fde0fe85cb7e4d25d43fbfcd028aef8",
                 "shasum": ""
             },
             "require": {
@@ -751,8 +750,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Bundle\\FixturesBundle": ""
+                "psr-4": {
+                    "Doctrine\\Bundle\\FixturesBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -779,7 +778,7 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2015-01-19 02:21:37"
+            "time": "2015-08-04 22:43:14"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1021,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "1684863fff37db58174ab7e73490076ddc016148"
+                "reference": "087f738cf8f984807efa44e6405d28b5f6009d2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/1684863fff37db58174ab7e73490076ddc016148",
-                "reference": "1684863fff37db58174ab7e73490076ddc016148",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/087f738cf8f984807efa44e6405d28b5f6009d2f",
+                "reference": "087f738cf8f984807efa44e6405d28b5f6009d2f",
                 "shasum": ""
             },
             "require": {
@@ -1080,7 +1079,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-08-02 23:50:17"
+            "time": "2015-08-04 20:34:01"
         },
         {
             "name": "doctrine/orm",
@@ -2167,12 +2166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "28ba40ea8a2463af57be7d70e35707ae5dc59931"
+                "reference": "a5288a44ad526b7a6bea972d2aeb2a024e238978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/28ba40ea8a2463af57be7d70e35707ae5dc59931",
-                "reference": "28ba40ea8a2463af57be7d70e35707ae5dc59931",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/a5288a44ad526b7a6bea972d2aeb2a024e238978",
+                "reference": "a5288a44ad526b7a6bea972d2aeb2a024e238978",
                 "shasum": ""
             },
             "require": {
@@ -2276,7 +2275,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-08-03 13:09:20"
+            "time": "2015-08-04 14:05:45"
         },
         {
             "name": "imagine/imagine",
@@ -4822,12 +4821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "c365a17811ce76713803f3d393eafa4b66f8d584"
+                "reference": "54be938eb60cef5b23aaf5f537a006f98e497ca0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/c365a17811ce76713803f3d393eafa4b66f8d584",
-                "reference": "c365a17811ce76713803f3d393eafa4b66f8d584",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/54be938eb60cef5b23aaf5f537a006f98e497ca0",
+                "reference": "54be938eb60cef5b23aaf5f537a006f98e497ca0",
                 "shasum": ""
             },
             "require": {
@@ -4894,7 +4893,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-07-13 00:00:22"
+            "time": "2015-08-06 20:30:39"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4902,12 +4901,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "4dd09f59084f837e891dc415b68b60b4c2ffced1"
+                "reference": "18eb9b4c40b16b2703257acf5b0353aa883d5f2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/4dd09f59084f837e891dc415b68b60b4c2ffced1",
-                "reference": "4dd09f59084f837e891dc415b68b60b4c2ffced1",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/18eb9b4c40b16b2703257acf5b0353aa883d5f2f",
+                "reference": "18eb9b4c40b16b2703257acf5b0353aa883d5f2f",
                 "shasum": ""
             },
             "require": {
@@ -4924,7 +4923,7 @@
                 "MIT"
             ],
             "homepage": "http://smart-core.org",
-            "time": "2015-06-26 04:38:30"
+            "time": "2015-08-06 20:30:39"
         },
         {
             "name": "smart-core/core-bundle",
