@@ -1020,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "087f738cf8f984807efa44e6405d28b5f6009d2f"
+                "reference": "ed26638d87b8d4f726e97536689c8fe8d9a10f14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/087f738cf8f984807efa44e6405d28b5f6009d2f",
-                "reference": "087f738cf8f984807efa44e6405d28b5f6009d2f",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/ed26638d87b8d4f726e97536689c8fe8d9a10f14",
+                "reference": "ed26638d87b8d4f726e97536689c8fe8d9a10f14",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-08-04 20:34:01"
+            "time": "2015-08-10 16:19:51"
         },
         {
             "name": "doctrine/orm",
@@ -1556,12 +1556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "c2e68acfb2b5786cd455fd9ae3b6d7f255f12646"
+                "reference": "3906465fbaa9d71de3404b8c3667e451d07f9984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/c2e68acfb2b5786cd455fd9ae3b6d7f255f12646",
-                "reference": "c2e68acfb2b5786cd455fd9ae3b6d7f255f12646",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/3906465fbaa9d71de3404b8c3667e451d07f9984",
+                "reference": "3906465fbaa9d71de3404b8c3667e451d07f9984",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-08-03 00:52:58"
+            "time": "2015-08-10 10:51:54"
         },
         {
             "name": "fzaninotto/faker",
@@ -3869,16 +3869,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0"
+                "reference": "c0c0b4bee3aabce7182876b0d912ef2595563db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dc5150cc608f2334c72c3b6a553ec9668a4156b0",
-                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c0c0b4bee3aabce7182876b0d912ef2595563db7",
+                "reference": "c0c0b4bee3aabce7182876b0d912ef2595563db7",
                 "shasum": ""
             },
             "require": {
@@ -3915,7 +3915,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15.x-dev"
+                    "dev-master": "1.16.x-dev"
                 }
             },
             "autoload": {
@@ -3941,7 +3941,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-07-12 13:54:09"
+            "time": "2015-08-09 17:44:44"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -4821,12 +4821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "54be938eb60cef5b23aaf5f537a006f98e497ca0"
+                "reference": "3c8c5ab0169077a6e2f8aa03f338456a18940642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/54be938eb60cef5b23aaf5f537a006f98e497ca0",
-                "reference": "54be938eb60cef5b23aaf5f537a006f98e497ca0",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/3c8c5ab0169077a6e2f8aa03f338456a18940642",
+                "reference": "3c8c5ab0169077a6e2f8aa03f338456a18940642",
                 "shasum": ""
             },
             "require": {
@@ -4840,6 +4840,7 @@
                 "elao/web-profiler-extra-bundle": "~2.0@dev",
                 "ext-curl": "*",
                 "ext-intl": "*",
+                "ext-mbstring": "*",
                 "friendsofsymfony/rest-bundle": "*",
                 "genemu/form-bundle": "*",
                 "happyr/google-site-authenticator-bundle": "*",
@@ -4893,7 +4894,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-08-06 20:30:39"
+            "time": "2015-08-10 23:23:32"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4901,12 +4902,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "18eb9b4c40b16b2703257acf5b0353aa883d5f2f"
+                "reference": "204aa41676feba087fc7763a58126d2a81362409"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/18eb9b4c40b16b2703257acf5b0353aa883d5f2f",
-                "reference": "18eb9b4c40b16b2703257acf5b0353aa883d5f2f",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/204aa41676feba087fc7763a58126d2a81362409",
+                "reference": "204aa41676feba087fc7763a58126d2a81362409",
                 "shasum": ""
             },
             "require": {
@@ -4923,7 +4924,7 @@
                 "MIT"
             ],
             "homepage": "http://smart-core.org",
-            "time": "2015-08-06 20:30:39"
+            "time": "2015-08-10 21:32:46"
         },
         {
             "name": "smart-core/core-bundle",
@@ -5250,12 +5251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "ba7a9bc0509a27090d0bc72630a298a3825d35e8"
+                "reference": "04b95795aa57b5169588aac7bbc9b23efb90fca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/ba7a9bc0509a27090d0bc72630a298a3825d35e8",
-                "reference": "ba7a9bc0509a27090d0bc72630a298a3825d35e8",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/04b95795aa57b5169588aac7bbc9b23efb90fca7",
+                "reference": "04b95795aa57b5169588aac7bbc9b23efb90fca7",
                 "shasum": ""
             },
             "require": {
@@ -5268,7 +5269,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-06 16:11:55"
+            "time": "2015-08-11 01:51:54"
         },
         {
             "name": "smart-core/module-unicat",
