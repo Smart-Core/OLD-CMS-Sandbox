@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Июн 29 2015 г., 18:45
+-- Время создания: Авг 13 2015 г., 22:14
 -- Версия сервера: 5.6.13
--- Версия PHP: 5.6.10
+-- Версия PHP: 5.6.12
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -395,7 +395,7 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (2, 2, 5, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:4;s:6:"editor";b:1;}', 0, 1, 'Правая колонка', 1, '2013-03-20 09:07:33', 0, NULL, 1, 0, NULL, 1),
 (3, 2, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:3;s:6:"editor";b:1;}', 0, 2, 'Левая колонка', 1, '2013-03-21 06:03:37', 0, NULL, 1, 0, NULL, 1),
 (4, 1, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:2;s:6:"editor";b:1;}', 0, 0, 'Главная', 1, '2013-03-11 16:42:33', 0, NULL, 1, 0, NULL, 1),
-(5, 1, 3, 1, 'Menu', 'a:6:{s:5:"depth";N;s:8:"group_id";i:1;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;s:7:"menu_id";i:1;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, 'test', 0, 0, NULL, 1),
+(5, 1, 3, 1, 'Menu', 'a:5:{s:5:"depth";N;s:9:"css_class";s:9:"main_menu";s:20:"selected_inheritance";b:0;s:13:"current_class";N;s:7:"menu_id";i:1;}', 1, 0, NULL, 1, '2013-03-11 16:42:33', 1, 'test', 0, 0, NULL, 1),
 (6, 1, 2, 1, 'Breadcrumbs', 'a:2:{s:9:"delimiter";s:2:"»";s:17:"hide_if_only_home";b:1;}', 0, -255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0, 0, NULL, 1),
 (7, 3, 1, 1, 'User', 'a:2:{s:18:"allow_registration";b:1;s:24:"allow_password_resetting";b:1;}', 0, 255, NULL, 1, '2013-03-11 16:42:33', 0, NULL, 0, 0, NULL, 1),
 (9, 3, 3, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:6;s:6:"editor";b:1;}', 1, 0, 'Текст под меню', 1, '2013-03-25 21:53:12', 0, NULL, 0, 0, NULL, 1),
@@ -703,12 +703,20 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_1084B87D93CB796C` (`file_id`),
   KEY `IDX_1084B87D514956FD` (`collection_id`),
   KEY `IDX_1084B87D5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
 --
 
+INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storage_id`, `filter`, `size`, `created_at`) VALUES
+(1, 1, 1, 1, '300_300', 28215, '2015-07-04 17:58:40'),
+(2, 3, 1, 1, '300_300', 34430, '2015-07-04 17:58:40'),
+(3, 5, 1, 1, '300_300', 39337, '2015-07-04 18:41:54'),
+(4, 6, 1, 1, '300_300', 46972, '2015-07-04 18:41:55'),
+(5, 4, 1, 1, '300_300', 35813, '2015-07-04 18:42:01'),
+(6, 8, 2, 1, '200_200', 27695, '2015-07-04 18:42:49'),
+(7, 6, 1, 1, '100_100', 8506, '2015-07-11 15:09:58');
 
 -- --------------------------------------------------------
 
@@ -847,6 +855,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `value` longtext COLLATE utf8_unicode_ci,
   `serialized` tinyint(1) NOT NULL,
+  `type` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
   KEY `IDX_E545A0C55E237E06` (`name`),
@@ -857,13 +866,13 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Дамп данных таблицы `settings`
 --
 
-INSERT INTO `settings` (`id`, `bundle`, `name`, `value`, `serialized`) VALUES
-(1, 'cms', 'site_full_name', 'Smart Core CMS (based on Symfony2 Framework)', 0),
-(2, 'cms', 'site_short_name', 'Smart Core CMS', 0),
-(3, 'cms', 'html_title_delimiter', '&ndash;', 0),
-(4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0),
-(5, 'cms', 'appearance_editor', 'ace', 0),
-(8, 'cms', 'twitter_bootstrap_version', '3', 0);
+INSERT INTO `settings` (`id`, `bundle`, `name`, `value`, `serialized`, `type`) VALUES
+(1, 'cms', 'site_full_name', 'Smart Core CMS (based on Symfony2 Framework)', 0, 0),
+(2, 'cms', 'site_short_name', 'Smart Core CMS', 0, 0),
+(3, 'cms', 'html_title_delimiter', '&ndash;', 0, 0),
+(4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0, 0),
+(5, 'cms', 'appearance_editor', 'ace', 0, 0),
+(8, 'cms', 'twitter_bootstrap_version', '3', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1060,7 +1069,7 @@ INSERT INTO `texter` (`id`, `locale`, `text`, `meta`, `created_at`, `user_id`, `
 (5, 'ru', 'Текстер №5', 'a:0:{}', '2013-03-21 06:03:37', 1, 0, NULL),
 (6, 'ru', 'Text under menu in <strong>User</strong> folder.\r', 'a:0:{}', '2013-03-25 21:53:12', 1, 1, NULL),
 (7, 'ru', 'sdf gsdfg dsf gsdf gdsfg sdf g\r', 'a:0:{}', '2013-08-10 11:14:55', 1, 1, NULL),
-(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;) 2<br />\r\n  <br />\r\n  <img style="width: 100%; height: auto;" src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /><br />\r\n  <br />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1, NULL),
+(8, 'ru', '<p>\r\n  Нельзя так просто взять и написать цмс-ку ;)<br />\r\n  <br />\r\n  <img style="width: 100%; height: auto;" src="/uploads/images/bscap0001_big.jpg" alt="" width="1680" height="693" /><br />\r\n</p>\r', 'a:0:{}', '2013-12-20 20:11:42', 1, 1, NULL),
 (9, 'ru', 'Powered by <a href="http://symfony.com" target="_blank">Symfony2</a>\r', 'a:0:{}', '2014-01-20 03:47:18', 1, 1, NULL),
 (10, 'ru', 'Очень интересные новости ;)', 'a:0:{}', '2014-01-22 19:02:28', 1, 1, NULL),
 (11, 'ru', 'Для жаждущих с Сущностью Вечной слиянья<br />\r\nЕсть йога познанья и йога деянья,<br />\r\n<br />\r\nВ бездействии мы не обрящем блаженства;<br />\r\nКто дела не начал, тот чужд совершенства.<br />\r\n<br />\r\nОднако без действий никто не пребудет:<br />\r\nТы хочешь того иль не хочешь — принудит<br />\r\n<br />\r\nПрирода тебя: нет иного удела,<br />\r\nИ, ей повинуясь, ты делаешь дело.<br />\r\n<br />\r\nКто, чувства поправ, все же помнит впечали<br />\r\nПредметы, что чувства его услаждали,—<br />\r\n<br />\r\nТот, связанный, следует ложной дорогой;<br />\r\nА тот, о сын Кунти, кто, волею строгой<br />\r\n<br />\r\nВсе чувства поправ, йогу действия начал,—<br />\r\nНа правой дороге себя обозначил.<br />\r\n<br />\r\nПоэтому действуй; бездействию дело<br />\r\nВсегда предпочти; отравления тела —<br />\r\n<br />\r\nИ то без усилий свершить невозможно:<br />\r\nДеянье — надежно, бездействие — ложно. &nbsp;\r', 'a:0:{}', '2014-01-29 10:01:55', 1, 1, NULL),
@@ -1614,7 +1623,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-06-29 16:04:55', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-08-13 22:12:32', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', 0, NULL, '', '', '2014-01-20 00:00:00'),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '2014-01-20 00:00:00');
 

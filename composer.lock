@@ -563,16 +563,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "v1.5.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "0b9e27037c4fdbad515ee5ec89842e9091a6480f"
+                "reference": "8c5cedb4f2f7ebb66a963ae46ad9daa1e31cee01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/0b9e27037c4fdbad515ee5ec89842e9091a6480f",
-                "reference": "0b9e27037c4fdbad515ee5ec89842e9091a6480f",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/8c5cedb4f2f7ebb66a963ae46ad9daa1e31cee01",
+                "reference": "8c5cedb4f2f7ebb66a963ae46ad9daa1e31cee01",
                 "shasum": ""
             },
             "require": {
@@ -580,16 +580,16 @@
                 "doctrine/doctrine-cache-bundle": "~1.0",
                 "jdorn/sql-formatter": "~1.1",
                 "php": ">=5.3.2",
-                "symfony/console": "~2.3",
-                "symfony/doctrine-bridge": "~2.2",
-                "symfony/framework-bundle": "~2.3"
+                "symfony/console": "~2.3|~3.0",
+                "symfony/doctrine-bridge": "~2.2|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0"
             },
             "require-dev": {
                 "doctrine/orm": "~2.3",
                 "phpunit/phpunit": "~4",
                 "satooshi/php-coveralls": "~0.6.1",
-                "symfony/validator": "~2.2",
-                "symfony/yaml": "~2.2",
+                "symfony/validator": "~2.2|~3.0",
+                "symfony/yaml": "~2.2|~3.0",
                 "twig/twig": "~1.10"
             },
             "suggest": {
@@ -637,7 +637,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2015-05-28 12:27:15"
+            "time": "2015-08-12 15:52:00"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -4719,16 +4719,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "8d32035cfe692efb3dddd0d828f8261280ec9006"
+                "reference": "7735fd97ff7303d9df776b8dbc970f949399abc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/8d32035cfe692efb3dddd0d828f8261280ec9006",
-                "reference": "8d32035cfe692efb3dddd0d828f8261280ec9006",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/7735fd97ff7303d9df776b8dbc970f949399abc9",
+                "reference": "7735fd97ff7303d9df776b8dbc970f949399abc9",
                 "shasum": ""
             },
             "require": {
@@ -4759,7 +4759,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-08-03 10:03:32"
+            "time": "2015-08-11 12:11:25"
         },
         {
             "name": "smart-core/accelerator-cache-bundle",
@@ -4932,12 +4932,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "2d346a1f18fdcf206ee35c1ff442670f490b7eda"
+                "reference": "044345d1625880ba2f86100f8501d469fa9928a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/2d346a1f18fdcf206ee35c1ff442670f490b7eda",
-                "reference": "2d346a1f18fdcf206ee35c1ff442670f490b7eda",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/044345d1625880ba2f86100f8501d469fa9928a0",
+                "reference": "044345d1625880ba2f86100f8501d469fa9928a0",
                 "shasum": ""
             },
             "require": {
@@ -4958,7 +4958,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-06-29 17:35:10"
+            "time": "2015-08-12 20:30:11"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5251,12 +5251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "04b95795aa57b5169588aac7bbc9b23efb90fca7"
+                "reference": "1b39d68aae39a9ebe0ef1a4706e7d54aaddeb9c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/04b95795aa57b5169588aac7bbc9b23efb90fca7",
-                "reference": "04b95795aa57b5169588aac7bbc9b23efb90fca7",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/1b39d68aae39a9ebe0ef1a4706e7d54aaddeb9c7",
+                "reference": "1b39d68aae39a9ebe0ef1a4706e7d54aaddeb9c7",
                 "shasum": ""
             },
             "require": {
@@ -5269,7 +5269,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-08-11 01:51:54"
+            "time": "2015-08-12 15:45:19"
         },
         {
             "name": "smart-core/module-unicat",
@@ -5492,12 +5492,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SettingsBundle.git",
-                "reference": "8e0968c87c404ec98a1ca8a3f24ad439e798d77c"
+                "reference": "2401831662d346f268466c360ca455cc2fd08d6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/8e0968c87c404ec98a1ca8a3f24ad439e798d77c",
-                "reference": "8e0968c87c404ec98a1ca8a3f24ad439e798d77c",
+                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/2401831662d346f268466c360ca455cc2fd08d6c",
+                "reference": "2401831662d346f268466c360ca455cc2fd08d6c",
                 "shasum": ""
             },
             "require": {
@@ -5526,7 +5526,7 @@
                 "Settings",
                 "bundle"
             ],
-            "time": "2015-07-04 12:31:54"
+            "time": "2015-08-12 20:30:50"
         },
         {
             "name": "smart-core/simple-profiler-bundle",
@@ -6141,16 +6141,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.19.0",
+            "version": "v1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "edbeaf43b0a606cdaadc32a11d2673614a377b90"
+                "reference": "1ea4e5f81c6d005fe84d0b38e1c4f1955eb86844"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/edbeaf43b0a606cdaadc32a11d2673614a377b90",
-                "reference": "edbeaf43b0a606cdaadc32a11d2673614a377b90",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/1ea4e5f81c6d005fe84d0b38e1c4f1955eb86844",
+                "reference": "1ea4e5f81c6d005fe84d0b38e1c4f1955eb86844",
                 "shasum": ""
             },
             "require": {
@@ -6159,7 +6159,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.19-dev"
+                    "dev-master": "1.20-dev"
                 }
             },
             "autoload": {
@@ -6194,7 +6194,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-07-31 13:45:26"
+            "time": "2015-08-12 15:56:39"
         },
         {
             "name": "white-october/pagerfanta-bundle",
