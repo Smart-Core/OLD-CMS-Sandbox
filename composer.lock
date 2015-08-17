@@ -2166,12 +2166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "a5288a44ad526b7a6bea972d2aeb2a024e238978"
+                "reference": "e6f9814edc7d00c277df0f1f7a025119831fe1f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/a5288a44ad526b7a6bea972d2aeb2a024e238978",
-                "reference": "a5288a44ad526b7a6bea972d2aeb2a024e238978",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/e6f9814edc7d00c277df0f1f7a025119831fe1f6",
+                "reference": "e6f9814edc7d00c277df0f1f7a025119831fe1f6",
                 "shasum": ""
             },
             "require": {
@@ -2275,7 +2275,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-08-04 14:05:45"
+            "time": "2015-08-17 12:08:26"
         },
         {
             "name": "imagine/imagine",
@@ -2387,16 +2387,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "156f9d6f8a186c68b92f0c50084718f02dae1b5f"
+                "reference": "1124ff3c6298f0dcf9edf9156623904d7a5c3428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/156f9d6f8a186c68b92f0c50084718f02dae1b5f",
-                "reference": "156f9d6f8a186c68b92f0c50084718f02dae1b5f",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/1124ff3c6298f0dcf9edf9156623904d7a5c3428",
+                "reference": "1124ff3c6298f0dcf9edf9156623904d7a5c3428",
                 "shasum": ""
             },
             "require": {
@@ -2445,7 +2445,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-07-10 15:03:58"
+            "time": "2015-08-16 15:31:59"
         },
         {
             "name": "jbroadway/urlify",
@@ -5225,12 +5225,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Slider.git",
-                "reference": "94873a3c5c4db845a138ae0e0ef02acb51f820df"
+                "reference": "f4462e4a81019d2ad7f717960e40c60050ecc5c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/94873a3c5c4db845a138ae0e0ef02acb51f820df",
-                "reference": "94873a3c5c4db845a138ae0e0ef02acb51f820df",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/f4462e4a81019d2ad7f717960e40c60050ecc5c3",
+                "reference": "f4462e4a81019d2ad7f717960e40c60050ecc5c3",
                 "shasum": ""
             },
             "require": {
@@ -5243,7 +5243,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-04 12:31:54"
+            "time": "2015-08-17 19:01:21"
         },
         {
             "name": "smart-core/module-texter",
