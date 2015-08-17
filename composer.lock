@@ -1020,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "ed26638d87b8d4f726e97536689c8fe8d9a10f14"
+                "reference": "c36e249aa59e8be98c0ee3889fd4ae8000dd856f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/ed26638d87b8d4f726e97536689c8fe8d9a10f14",
-                "reference": "ed26638d87b8d4f726e97536689c8fe8d9a10f14",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/c36e249aa59e8be98c0ee3889fd4ae8000dd856f",
+                "reference": "c36e249aa59e8be98c0ee3889fd4ae8000dd856f",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-08-10 16:19:51"
+            "time": "2015-08-16 06:31:15"
         },
         {
             "name": "doctrine/orm",
@@ -1556,12 +1556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "3906465fbaa9d71de3404b8c3667e451d07f9984"
+                "reference": "336d9cd8ba0c5a462b3e70be144a7bef5377b219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/3906465fbaa9d71de3404b8c3667e451d07f9984",
-                "reference": "3906465fbaa9d71de3404b8c3667e451d07f9984",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/336d9cd8ba0c5a462b3e70be144a7bef5377b219",
+                "reference": "336d9cd8ba0c5a462b3e70be144a7bef5377b219",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-08-10 10:51:54"
+            "time": "2015-08-14 09:45:59"
         },
         {
             "name": "fzaninotto/faker",
@@ -1845,16 +1845,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7"
+                "reference": "97fe7210def29451ec74923b27e552238defd75a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7",
-                "reference": "2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/97fe7210def29451ec74923b27e552238defd75a",
+                "reference": "97fe7210def29451ec74923b27e552238defd75a",
                 "shasum": ""
             },
             "require": {
@@ -1874,7 +1874,7 @@
                     "GuzzleHttp\\Promise\\": "src/"
                 },
                 "files": [
-                    "src/functions.php"
+                    "src/functions_include.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1892,20 +1892,20 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2015-06-24 16:16:25"
+            "time": "2015-08-15 19:37:21"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "af0e1758de355eb113917ad79c3c0e3604bce4bd"
+                "reference": "4ef919b0cf3b1989523138b60163bbcb7ba1ff7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/af0e1758de355eb113917ad79c3c0e3604bce4bd",
-                "reference": "af0e1758de355eb113917ad79c3c0e3604bce4bd",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/4ef919b0cf3b1989523138b60163bbcb7ba1ff7e",
+                "reference": "4ef919b0cf3b1989523138b60163bbcb7ba1ff7e",
                 "shasum": ""
             },
             "require": {
@@ -1929,7 +1929,7 @@
                     "GuzzleHttp\\Psr7\\": "src/"
                 },
                 "files": [
-                    "src/functions.php"
+                    "src/functions_include.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1950,7 +1950,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2015-06-24 19:55:15"
+            "time": "2015-08-15 19:32:36"
         },
         {
             "name": "happyr/google-site-authenticator-bundle",
@@ -5326,12 +5326,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-WebForm.git",
-                "reference": "e64be572bdbdf9cc4dec165752aaf15a92e53b86"
+                "reference": "e8fc48c29d8024e9a55984d7a5619657e042b5e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/e64be572bdbdf9cc4dec165752aaf15a92e53b86",
-                "reference": "e64be572bdbdf9cc4dec165752aaf15a92e53b86",
+                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/e8fc48c29d8024e9a55984d7a5619657e042b5e6",
+                "reference": "e8fc48c29d8024e9a55984d7a5619657e042b5e6",
                 "shasum": ""
             },
             "require": {
@@ -5344,7 +5344,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-08 21:54:17"
+            "time": "2015-08-15 17:08:31"
         },
         {
             "name": "smart-core/module-widget",
