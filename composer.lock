@@ -1020,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "c36e249aa59e8be98c0ee3889fd4ae8000dd856f"
+                "reference": "27edc388296a3cffc7c30942a7613abb4998701c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/c36e249aa59e8be98c0ee3889fd4ae8000dd856f",
-                "reference": "c36e249aa59e8be98c0ee3889fd4ae8000dd856f",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/27edc388296a3cffc7c30942a7613abb4998701c",
+                "reference": "27edc388296a3cffc7c30942a7613abb4998701c",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-08-16 06:31:15"
+            "time": "2015-08-19 08:37:47"
         },
         {
             "name": "doctrine/orm",
@@ -2166,12 +2166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "e6f9814edc7d00c277df0f1f7a025119831fe1f6"
+                "reference": "d0b9a9ef41b819f7daad27062036c67269fdc8bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/e6f9814edc7d00c277df0f1f7a025119831fe1f6",
-                "reference": "e6f9814edc7d00c277df0f1f7a025119831fe1f6",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/d0b9a9ef41b819f7daad27062036c67269fdc8bf",
+                "reference": "d0b9a9ef41b819f7daad27062036c67269fdc8bf",
                 "shasum": ""
             },
             "require": {
@@ -2275,7 +2275,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-08-17 12:08:26"
+            "time": "2015-08-21 12:02:30"
         },
         {
             "name": "imagine/imagine",
@@ -3319,12 +3319,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "c3578e1dd4230f1827e37699e7ca4012341f0696"
+                "reference": "79387e6e7c3b7fb2563c68ecc88878bb8923ee58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/c3578e1dd4230f1827e37699e7ca4012341f0696",
-                "reference": "c3578e1dd4230f1827e37699e7ca4012341f0696",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/79387e6e7c3b7fb2563c68ecc88878bb8923ee58",
+                "reference": "79387e6e7c3b7fb2563c68ecc88878bb8923ee58",
                 "shasum": ""
             },
             "require": {
@@ -3375,7 +3375,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2015-07-17 20:59:47"
+            "time": "2015-08-19 17:23:46"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -3383,12 +3383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "7c0d579ca58f1c7cb3747a84b681fe273f00ffec"
+                "reference": "5c5b01905d671134efde7dd5d769fee4934a164a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/7c0d579ca58f1c7cb3747a84b681fe273f00ffec",
-                "reference": "7c0d579ca58f1c7cb3747a84b681fe273f00ffec",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/5c5b01905d671134efde7dd5d769fee4934a164a",
+                "reference": "5c5b01905d671134efde7dd5d769fee4934a164a",
                 "shasum": ""
             },
             "require": {
@@ -3431,7 +3431,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-06-16 12:38:43"
+            "time": "2015-08-20 12:52:01"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -4966,12 +4966,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "3b14e7d47bf0e79e970db926d8fb9305988ed695"
+                "reference": "73cc411514096d2e3d5351ccee1b53827674a139"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/3b14e7d47bf0e79e970db926d8fb9305988ed695",
-                "reference": "3b14e7d47bf0e79e970db926d8fb9305988ed695",
+                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/73cc411514096d2e3d5351ccee1b53827674a139",
+                "reference": "73cc411514096d2e3d5351ccee1b53827674a139",
                 "shasum": ""
             },
             "require": {
@@ -4991,7 +4991,7 @@
             ],
             "description": "Font-End Library Managment Bundle",
             "homepage": "http://smart-core.org",
-            "time": "2015-07-10 17:43:51"
+            "time": "2015-08-24 16:55:44"
         },
         {
             "name": "smart-core/html-bundle",
@@ -6089,20 +6089,20 @@
         },
         {
             "name": "twig/extensions",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig-extensions.git",
-                "reference": "8cf4b9fe04077bd54fc73f4fde83347040c3b8cd"
+                "reference": "449e3c8a9ffad7c2479c7864557275a32b037499"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/8cf4b9fe04077bd54fc73f4fde83347040c3b8cd",
-                "reference": "8cf4b9fe04077bd54fc73f4fde83347040c3b8cd",
+                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/449e3c8a9ffad7c2479c7864557275a32b037499",
+                "reference": "449e3c8a9ffad7c2479c7864557275a32b037499",
                 "shasum": ""
             },
             "require": {
-                "twig/twig": "~1.12"
+                "twig/twig": "~1.20|~2.0"
             },
             "require-dev": {
                 "symfony/translation": "~2.3"
@@ -6113,7 +6113,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -6137,29 +6137,33 @@
                 "i18n",
                 "text"
             ],
-            "time": "2014-10-30 14:30:03"
+            "time": "2015-08-22 16:38:35"
         },
         {
             "name": "twig/twig",
-            "version": "v1.20.0",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "1ea4e5f81c6d005fe84d0b38e1c4f1955eb86844"
+                "reference": "913d282caca9ee0e8d05940c6caa486d58810dd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/1ea4e5f81c6d005fe84d0b38e1c4f1955eb86844",
-                "reference": "1ea4e5f81c6d005fe84d0b38e1c4f1955eb86844",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/913d282caca9ee0e8d05940c6caa486d58810dd4",
+                "reference": "913d282caca9ee0e8d05940c6caa486d58810dd4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.7"
             },
+            "require-dev": {
+                "symfony/debug": "~2.7",
+                "symfony/phpunit-bridge": "~2.7"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.20-dev"
+                    "dev-master": "1.21-dev"
                 }
             },
             "autoload": {
@@ -6194,7 +6198,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-08-12 15:56:39"
+            "time": "2015-08-24 09:51:18"
         },
         {
             "name": "white-october/pagerfanta-bundle",
