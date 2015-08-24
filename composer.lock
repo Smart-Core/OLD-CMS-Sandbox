@@ -5326,12 +5326,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-WebForm.git",
-                "reference": "e8fc48c29d8024e9a55984d7a5619657e042b5e6"
+                "reference": "94ab7ec88f23a7b8711a09f40bcb836daddecf0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/e8fc48c29d8024e9a55984d7a5619657e042b5e6",
-                "reference": "e8fc48c29d8024e9a55984d7a5619657e042b5e6",
+                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/94ab7ec88f23a7b8711a09f40bcb836daddecf0f",
+                "reference": "94ab7ec88f23a7b8711a09f40bcb836daddecf0f",
                 "shasum": ""
             },
             "require": {
@@ -5344,7 +5344,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-08-15 17:08:31"
+            "time": "2015-08-24 19:51:15"
         },
         {
             "name": "smart-core/module-widget",
