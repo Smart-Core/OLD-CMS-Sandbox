@@ -13,7 +13,7 @@ framework:
         enabled:     true
     form:            true
     profiler:
-        enabled:     %kernel.debug%
+        enabled:     false
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     secret:          %secret%
     session:
