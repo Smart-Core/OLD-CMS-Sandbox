@@ -1020,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "a97d1f4140c6c96e6e706b248e4105d242d16ac9"
+                "reference": "6f40d16de7a4da2fff883f2de92fdbf17e61d75d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/a97d1f4140c6c96e6e706b248e4105d242d16ac9",
-                "reference": "a97d1f4140c6c96e6e706b248e4105d242d16ac9",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/6f40d16de7a4da2fff883f2de92fdbf17e61d75d",
+                "reference": "6f40d16de7a4da2fff883f2de92fdbf17e61d75d",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-09-13 17:28:16"
+            "time": "2015-09-15 13:41:30"
         },
         {
             "name": "doctrine/orm",
@@ -1556,12 +1556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "1b13cfdeaea2b277d5e8dd6232cf3eaac25e6b2f"
+                "reference": "d5b28c367d393f9d9fbc48c4138b2a74d51c0c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/1b13cfdeaea2b277d5e8dd6232cf3eaac25e6b2f",
-                "reference": "1b13cfdeaea2b277d5e8dd6232cf3eaac25e6b2f",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/d5b28c367d393f9d9fbc48c4138b2a74d51c0c83",
+                "reference": "d5b28c367d393f9d9fbc48c4138b2a74d51c0c83",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-09-15 12:27:56"
+            "time": "2015-09-15 13:15:07"
         },
         {
             "name": "fzaninotto/faker",
@@ -3963,12 +3963,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "c43c1c3b230cccfaa2548b55a7ddca5a5af8eaff"
+                "reference": "cc093b4f10f5598f9c5d77acd365c0e61283e8e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/c43c1c3b230cccfaa2548b55a7ddca5a5af8eaff",
-                "reference": "c43c1c3b230cccfaa2548b55a7ddca5a5af8eaff",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/cc093b4f10f5598f9c5d77acd365c0e61283e8e7",
+                "reference": "cc093b4f10f5598f9c5d77acd365c0e61283e8e7",
                 "shasum": ""
             },
             "require": {
@@ -4026,7 +4026,7 @@
                 "form",
                 "template"
             ],
-            "time": "2015-09-10 17:23:40"
+            "time": "2015-09-15 16:51:21"
         },
         {
             "name": "mopa/composer-bridge",
@@ -4835,12 +4835,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "53922056663c5c28d900a1e0a53a48899db8df07"
+                "reference": "2731c59c628475a68bdbbf0417045449d9661e92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/53922056663c5c28d900a1e0a53a48899db8df07",
-                "reference": "53922056663c5c28d900a1e0a53a48899db8df07",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/2731c59c628475a68bdbbf0417045449d9661e92",
+                "reference": "2731c59c628475a68bdbbf0417045449d9661e92",
                 "shasum": ""
             },
             "require": {
@@ -4911,7 +4911,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-09-15 12:42:14"
+            "time": "2015-09-15 20:15:09"
         },
         {
             "name": "smart-core/cms-generator-bundle",
