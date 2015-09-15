@@ -1556,12 +1556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "757fc8f1b1362970328568114e8fca35cdbe1df2"
+                "reference": "1b13cfdeaea2b277d5e8dd6232cf3eaac25e6b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/757fc8f1b1362970328568114e8fca35cdbe1df2",
-                "reference": "757fc8f1b1362970328568114e8fca35cdbe1df2",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/1b13cfdeaea2b277d5e8dd6232cf3eaac25e6b2f",
+                "reference": "1b13cfdeaea2b277d5e8dd6232cf3eaac25e6b2f",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-09-14 10:50:16"
+            "time": "2015-09-15 12:27:56"
         },
         {
             "name": "fzaninotto/faker",
@@ -4835,12 +4835,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "2e038efaa7fb0a470fb8cbb5a2899b9e88bcce4f"
+                "reference": "53922056663c5c28d900a1e0a53a48899db8df07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/2e038efaa7fb0a470fb8cbb5a2899b9e88bcce4f",
-                "reference": "2e038efaa7fb0a470fb8cbb5a2899b9e88bcce4f",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/53922056663c5c28d900a1e0a53a48899db8df07",
+                "reference": "53922056663c5c28d900a1e0a53a48899db8df07",
                 "shasum": ""
             },
             "require": {
@@ -4911,7 +4911,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-09-15 07:39:51"
+            "time": "2015-09-15 12:42:14"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5164,12 +5164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Gallery.git",
-                "reference": "ea66917fba372236dd1627e270acbf635aeb1030"
+                "reference": "51c30154d1f872ebb029281586aead2fb568be12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/ea66917fba372236dd1627e270acbf635aeb1030",
-                "reference": "ea66917fba372236dd1627e270acbf635aeb1030",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/51c30154d1f872ebb029281586aead2fb568be12",
+                "reference": "51c30154d1f872ebb029281586aead2fb568be12",
                 "shasum": ""
             },
             "require": {
@@ -5182,7 +5182,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-04 12:31:54"
+            "time": "2015-09-15 12:15:50"
         },
         {
             "name": "smart-core/module-menu",
