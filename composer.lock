@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "1fa1e9b93bf3620401d83873eb9d7126",
+    "content-hash": "aa504692c41d94e9fb9a1cc27ef03df8",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -492,16 +493,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "628c2256b646ae2417d44e063bce8aec5199d48d"
+                "reference": "01dbcbc5cd0a913d751418e635434a18a2f2a75c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/628c2256b646ae2417d44e063bce8aec5199d48d",
-                "reference": "628c2256b646ae2417d44e063bce8aec5199d48d",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/01dbcbc5cd0a913d751418e635434a18a2f2a75c",
+                "reference": "01dbcbc5cd0a913d751418e635434a18a2f2a75c",
                 "shasum": ""
             },
             "require": {
@@ -559,7 +560,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2015-01-12 21:52:47"
+            "time": "2015-09-16 16:29:33"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1020,12 +1021,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "6f40d16de7a4da2fff883f2de92fdbf17e61d75d"
+                "reference": "6c527d8ccbccec5257bb2c92bca973653b1e3976"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/6f40d16de7a4da2fff883f2de92fdbf17e61d75d",
-                "reference": "6f40d16de7a4da2fff883f2de92fdbf17e61d75d",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/6c527d8ccbccec5257bb2c92bca973653b1e3976",
+                "reference": "6c527d8ccbccec5257bb2c92bca973653b1e3976",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1080,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-09-15 13:41:30"
+            "time": "2015-09-21 09:51:07"
         },
         {
             "name": "doctrine/orm",
@@ -3327,22 +3328,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "620a9e4b53a940cee370e51cd4e3457a819af815"
+                "reference": "c6ad49933babd06a27b2f962a3469601ec9038b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/620a9e4b53a940cee370e51cd4e3457a819af815",
-                "reference": "620a9e4b53a940cee370e51cd4e3457a819af815",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/c6ad49933babd06a27b2f962a3469601ec9038b8",
+                "reference": "c6ad49933babd06a27b2f962a3469601ec9038b8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "pimple/pimple": "1.0.*",
+                "pimple/pimple": "~1.0",
                 "silex/silex": "~1.0",
                 "symfony/phpunit-bridge": "~2.7",
-                "twig/twig": "~1.12|~2.0"
+                "twig/twig": "~1.16|~2.0"
             },
             "suggest": {
                 "pimple/pimple": "for the built-in implementations of the menu provider and renderer provider",
@@ -3384,7 +3385,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2015-08-27 10:59:34"
+            "time": "2015-09-20 08:23:47"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -3392,25 +3393,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "ec727eee47b7365e8a82d8b8cefe8096e6cd2590"
+                "reference": "dddaec754e7edd004f3c964c33c2eb5903f5ffdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/ec727eee47b7365e8a82d8b8cefe8096e6cd2590",
-                "reference": "ec727eee47b7365e8a82d8b8cefe8096e6cd2590",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/dddaec754e7edd004f3c964c33c2eb5903f5ffdb",
+                "reference": "dddaec754e7edd004f3c964c33c2eb5903f5ffdb",
                 "shasum": ""
             },
             "require": {
-                "knplabs/knp-menu": "~2.0",
+                "knplabs/knp-menu": "~2.1",
                 "symfony/framework-bundle": "~2.3"
             },
             "require-dev": {
-                "symfony/expression-language": "~2.4"
+                "symfony/expression-language": "~2.4",
+                "symfony/phpunit-bridge": "~2.7"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -3440,27 +3442,27 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-08-28 07:44:30"
+            "time": "2015-09-21 12:23:00"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "2.4.2",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "800eb12f225573869b6f04d77a6e329a6da9110f"
+                "reference": "4a1daf55560ca7cf9c13b357135d72f4dc13375f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/800eb12f225573869b6f04d77a6e329a6da9110f",
-                "reference": "800eb12f225573869b6f04d77a6e329a6da9110f",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/4a1daf55560ca7cf9c13b357135d72f4dc13375f",
+                "reference": "4a1daf55560ca7cf9c13b357135d72f4dc13375f",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-components": "~1.2",
                 "php": ">=5.3.3",
-                "symfony/framework-bundle": "~2.0",
-                "twig/twig": "~1.5"
+                "symfony/framework-bundle": "~2.3",
+                "twig/twig": "~1.12"
             },
             "require-dev": {
                 "symfony/expression-language": "~2.4"
@@ -3501,7 +3503,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2015-05-20 15:09:02"
+            "time": "2015-09-07 04:31:31"
         },
         {
             "name": "knplabs/rad-bundle",
@@ -3694,12 +3696,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "e53b4b8b57b637e8243c17ace55b96a9441e25f2"
+                "reference": "4d9114d49796b23b599d4b7cb63f8d8a918a6d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/e53b4b8b57b637e8243c17ace55b96a9441e25f2",
-                "reference": "e53b4b8b57b637e8243c17ace55b96a9441e25f2",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/4d9114d49796b23b599d4b7cb63f8d8a918a6d44",
+                "reference": "4d9114d49796b23b599d4b7cb63f8d8a918a6d44",
                 "shasum": ""
             },
             "require": {
@@ -3743,7 +3745,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2015-07-22 12:04:35"
+            "time": "2015-09-16 12:43:53"
         },
         {
             "name": "liip/imagine-bundle",
@@ -6225,28 +6227,27 @@
         },
         {
             "name": "white-october/pagerfanta-bundle",
-            "version": "v1.0.3",
-            "target-dir": "WhiteOctober/PagerfantaBundle",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "6001a8101a71892c3ddbeb89cbe0d666a36dd383"
+                "reference": "f329d7bbd9cb97edaac418ef94807d9e376f8880"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/6001a8101a71892c3ddbeb89cbe0d666a36dd383",
-                "reference": "6001a8101a71892c3ddbeb89cbe0d666a36dd383",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/f329d7bbd9cb97edaac418ef94807d9e376f8880",
+                "reference": "f329d7bbd9cb97edaac418ef94807d9e376f8880",
                 "shasum": ""
             },
             "require": {
                 "pagerfanta/pagerfanta": "1.0.*",
-                "symfony/framework-bundle": "~2.2",
-                "symfony/property-access": "~2.2",
-                "symfony/twig-bundle": "~2.2"
+                "symfony/framework-bundle": "~2.3",
+                "symfony/property-access": "~2.3",
+                "symfony/twig-bundle": "~2.3"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7",
-                "symfony/symfony": "~2.2"
+                "symfony/symfony": "~2.3"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -6255,8 +6256,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "WhiteOctober\\PagerfantaBundle": ""
+                "psr-4": {
+                    "WhiteOctober\\PagerfantaBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6274,7 +6275,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2015-04-29 21:29:00"
+            "time": "2015-09-01 16:19:36"
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
