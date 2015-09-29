@@ -1021,12 +1021,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "6c527d8ccbccec5257bb2c92bca973653b1e3976"
+                "reference": "d196ddc229f50c66c5a015c158adb78a2dfb4351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/6c527d8ccbccec5257bb2c92bca973653b1e3976",
-                "reference": "6c527d8ccbccec5257bb2c92bca973653b1e3976",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/d196ddc229f50c66c5a015c158adb78a2dfb4351",
+                "reference": "d196ddc229f50c66c5a015c158adb78a2dfb4351",
                 "shasum": ""
             },
             "require": {
@@ -1052,7 +1052,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "v1.0.x-dev"
+                    "dev-master": "v1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1080,7 +1080,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-09-21 09:51:07"
+            "time": "2015-09-29 11:13:06"
         },
         {
             "name": "doctrine/orm",
@@ -2288,16 +2288,16 @@
         },
         {
             "name": "imagine/imagine",
-            "version": "0.6.2",
+            "version": "v0.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/avalanche123/Imagine.git",
-                "reference": "83ca8babede0e54f935ec09d55a726bf4b0a3f7c"
+                "reference": "149041d2a1b517107bfe270ca2b1a17aa341715d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/83ca8babede0e54f935ec09d55a726bf4b0a3f7c",
-                "reference": "83ca8babede0e54f935ec09d55a726bf4b0a3f7c",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/149041d2a1b517107bfe270ca2b1a17aa341715d",
+                "reference": "149041d2a1b517107bfe270ca2b1a17aa341715d",
                 "shasum": ""
             },
             "require": {
@@ -2341,7 +2341,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2014-11-11 11:36:02"
+            "time": "2015-09-19 16:54:05"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -3394,12 +3394,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "dddaec754e7edd004f3c964c33c2eb5903f5ffdb"
+                "reference": "2246a70109bdd313a105d2a7ef464a763aacf0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/dddaec754e7edd004f3c964c33c2eb5903f5ffdb",
-                "reference": "dddaec754e7edd004f3c964c33c2eb5903f5ffdb",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/2246a70109bdd313a105d2a7ef464a763aacf0cd",
+                "reference": "2246a70109bdd313a105d2a7ef464a763aacf0cd",
                 "shasum": ""
             },
             "require": {
@@ -3443,7 +3443,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-09-21 12:23:00"
+            "time": "2015-09-28 15:23:54"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -4838,12 +4838,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "2731c59c628475a68bdbbf0417045449d9661e92"
+                "reference": "64b64b5cd11b855156827bb61ed7437d707af731"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/2731c59c628475a68bdbbf0417045449d9661e92",
-                "reference": "2731c59c628475a68bdbbf0417045449d9661e92",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/64b64b5cd11b855156827bb61ed7437d707af731",
+                "reference": "64b64b5cd11b855156827bb61ed7437d707af731",
                 "shasum": ""
             },
             "require": {
@@ -4914,7 +4914,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-09-15 20:15:09"
+            "time": "2015-09-28 18:15:05"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5144,12 +5144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Breadcrumbs.git",
-                "reference": "b0d02b659fca34f9fb88ab8b11bcdf358164b5cf"
+                "reference": "45f573de1070614db384c1d54403da8ac6bb9979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Breadcrumbs/zipball/b0d02b659fca34f9fb88ab8b11bcdf358164b5cf",
-                "reference": "b0d02b659fca34f9fb88ab8b11bcdf358164b5cf",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Breadcrumbs/zipball/45f573de1070614db384c1d54403da8ac6bb9979",
+                "reference": "45f573de1070614db384c1d54403da8ac6bb9979",
                 "shasum": ""
             },
             "type": "library",
@@ -5159,7 +5159,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 10:15:30"
+            "time": "2015-09-28 18:15:05"
         },
         {
             "name": "smart-core/module-gallery",
@@ -5297,12 +5297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "3830b3f0e4dfd7cac69b3569b8c4d411a7959d71"
+                "reference": "2c4d2c0f2ca1dd6f3654233386ef5033a3d0d1ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/3830b3f0e4dfd7cac69b3569b8c4d411a7959d71",
-                "reference": "3830b3f0e4dfd7cac69b3569b8c4d411a7959d71",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/2c4d2c0f2ca1dd6f3654233386ef5033a3d0d1ba",
+                "reference": "2c4d2c0f2ca1dd6f3654233386ef5033a3d0d1ba",
                 "shasum": ""
             },
             "require": {
@@ -5315,7 +5315,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-13 00:27:01"
+            "time": "2015-09-28 12:19:44"
         },
         {
             "name": "smart-core/module-user",
@@ -5877,34 +5877,34 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v2.7.1",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
+                "reference": "78883d8c1cfa523ac3a28a482b7793036b243f7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
-                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/78883d8c1cfa523ac3a28a482b7793036b243f7d",
+                "reference": "78883d8c1cfa523ac3a28a482b7793036b243f7d",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "~1.8",
                 "php": ">=5.3.2",
-                "symfony/config": "~2.3",
-                "symfony/dependency-injection": "~2.3",
-                "symfony/http-kernel": "~2.3",
-                "symfony/monolog-bridge": "~2.3"
+                "symfony/config": "~2.3|3.*",
+                "symfony/dependency-injection": "~2.3|3.*",
+                "symfony/http-kernel": "~2.3|3.*",
+                "symfony/monolog-bridge": "~2.3|3.*"
             },
             "require-dev": {
-                "symfony/console": "~2.3",
+                "symfony/console": "~2.3|3.*",
                 "symfony/yaml": "~2.3"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7.x-dev"
+                    "dev-master": "2.8.x-dev"
                 }
             },
             "autoload": {
@@ -5932,7 +5932,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-01-04 20:21:17"
+            "time": "2015-09-29 17:13:11"
         },
         {
             "name": "symfony/swiftmailer-bundle",

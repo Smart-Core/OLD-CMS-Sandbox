@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Сен 16 2015 г., 02:26
--- Версия сервера: 5.6.13
+-- Время создания: Сен 30 2015 г., 00:58
+-- Версия сервера: 5.6.26
 -- Версия PHP: 5.6.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -1242,8 +1242,10 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `user_id` int(10) unsigned NOT NULL,
+  `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_69D20251989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_69D20251D17F50A6` (`uuid`),
   KEY `IDX_69D20251462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
@@ -1251,8 +1253,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
 -- Дамп данных таблицы `unicat_blog_items`
 --
 
-INSERT INTO `unicat_blog_items` (`id`, `slug`, `meta`, `attributes`, `is_enabled`, `created_at`, `position`, `user_id`) VALUES
-(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:653:"<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1);
+INSERT INTO `unicat_blog_items` (`id`, `slug`, `meta`, `attributes`, `is_enabled`, `created_at`, `position`, `user_id`, `uuid`) VALUES
+(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:653:"<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1336,7 +1338,7 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes` (
   KEY `IDX_3A3855D2921EA9F` (`show_in_list`),
   KEY `IDX_3A3855D2B314B909` (`show_in_view`),
   KEY `IDX_3A3855D2462CE4F5` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `unicat_catalog_attributes`
@@ -1347,7 +1349,8 @@ INSERT INTO `unicat_catalog_attributes` (`id`, `is_enabled`, `is_dedicated_table
 (2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL, 1, 0, '<p>', '</p>'),
 (3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL, 1, 0, '<p>', '</p>'),
 (4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 1, 1, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL, 1, 0, '<p>', '</p>'),
-(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:1:{s:6:"filter";s:7:"300_300";}', 1, 'filter: 300_300', 1, 0, '<p>', '</p>');
+(5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:1:{s:6:"filter";s:7:"300_300";}', 1, 'filter: 300_300', 1, 0, '<p>', '</p>'),
+(6, 1, 0, 0, 0, 'text', 'picture', '---- Картинка ---', 0, 1, 1, 1, '2015-09-27 15:55:28', 'a:0:{}', 1, NULL, 1, 0, '<p>', '</p>');
 
 -- --------------------------------------------------------
 
@@ -1443,8 +1446,10 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
   `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
+  `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_163452F3989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_163452F3D17F50A6` (`uuid`),
   KEY `IDX_163452F3462CE4F5` (`position`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
@@ -1452,12 +1457,12 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
 -- Дамп данных таблицы `unicat_catalog_items`
 --
 
-INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`) VALUES
-(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;}', 0, '2014-02-14 07:48:18', 0),
-(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;}', 0, '2014-02-14 13:13:57', 1),
-(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;}', 0, '2014-02-17 01:19:23', 0),
-(4, 1, 'canon-650d', 'N;', 'a:4:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;}', 1, '2014-02-17 22:09:56', 0),
-(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;}', 1, '2014-03-06 16:35:40', 0);
+INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`, `uuid`) VALUES
+(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;s:7:"picture";N;}', 0, '2014-02-14 07:48:18', 0, NULL),
+(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;s:7:"picture";N;}', 0, '2014-02-14 13:13:57', 1, NULL),
+(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;s:7:"picture";N;}', 0, '2014-02-17 01:19:23', 0, NULL),
+(4, 1, 'canon-650d', 'N;', 'a:5:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;s:7:"picture";N;}', 1, '2014-02-17 22:09:56', 0, NULL),
+(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;s:7:"picture";N;}', 1, '2014-03-06 16:35:40', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1623,7 +1628,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-08-13 22:12:32', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-09-27 11:24:56', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0);
 
