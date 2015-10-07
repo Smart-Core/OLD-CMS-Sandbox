@@ -93,16 +93,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "9645a65edad8d0730606bfeb64d3fbc44c86699b"
+                "reference": "6aaf2203b4ffe7cae591dfbe0c057e9898527028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/9645a65edad8d0730606bfeb64d3fbc44c86699b",
-                "reference": "9645a65edad8d0730606bfeb64d3fbc44c86699b",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/6aaf2203b4ffe7cae591dfbe0c057e9898527028",
+                "reference": "6aaf2203b4ffe7cae591dfbe0c057e9898527028",
                 "shasum": ""
             },
             "require": {
-                "knplabs/knp-gaufrette-bundle": "<0.3.0",
                 "php": ">=5.3.2",
                 "symfony/framework-bundle": ">=2.1",
                 "symfony/monolog-bundle": "~2.3"
@@ -112,8 +111,9 @@
                 "symfony/symfony": "^2.3.25"
             },
             "suggest": {
-                "hakre/dropbox-uploader": "To support upload to Dropbox",
+                "dropbox/dropbox-sdk": "To enable upload to Dropbox",
                 "happyr/google-site-authenticator-bundle": "To enable upload dumps on google drive.",
+                "knplabs/knp-gaufrette-bundle": "To use Gaufrette as a cloud storage",
                 "matthiasplappert/cloudapp-api": "To support upload to CloudApp"
             },
             "type": "symfony-bundle",
@@ -155,7 +155,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2015-09-09 03:57:14"
+            "time": "2015-10-02 02:21:22"
         },
         {
             "name": "doctrine/annotations",
@@ -1017,16 +1017,16 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "d196ddc229f50c66c5a015c158adb78a2dfb4351"
+                "reference": "3a787de7c4a64460436dc2eb2e3cde8920d5fadd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/d196ddc229f50c66c5a015c158adb78a2dfb4351",
-                "reference": "d196ddc229f50c66c5a015c158adb78a2dfb4351",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/3a787de7c4a64460436dc2eb2e3cde8920d5fadd",
+                "reference": "3a787de7c4a64460436dc2eb2e3cde8920d5fadd",
                 "shasum": ""
             },
             "require": {
@@ -1052,12 +1052,12 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "v1.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Doctrine\\DBAL\\Migrations\\": "lib/Doctrine/DBAL/Migrations"
+                "psr-0": {
+                    "Doctrine\\DBAL\\Migrations": "lib"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1080,7 +1080,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-09-29 11:13:06"
+            "time": "2015-07-29 20:43:19"
         },
         {
             "name": "doctrine/orm",
@@ -2168,12 +2168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "39666f7d31e50e8f6cd10fc6e997e968623d8937"
+                "reference": "2f8027f85ef137f25dd3291860807c3697acfa3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/39666f7d31e50e8f6cd10fc6e997e968623d8937",
-                "reference": "39666f7d31e50e8f6cd10fc6e997e968623d8937",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/2f8027f85ef137f25dd3291860807c3697acfa3e",
+                "reference": "2f8027f85ef137f25dd3291860807c3697acfa3e",
                 "shasum": ""
             },
             "require": {
@@ -2284,7 +2284,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-09-11 15:08:33"
+            "time": "2015-09-30 09:11:03"
         },
         {
             "name": "imagine/imagine",
@@ -3057,16 +3057,16 @@
         },
         {
             "name": "knplabs/gaufrette",
-            "version": "v0.1.9",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/Gaufrette.git",
-                "reference": "4c73bb66ff41d7c9beb57372a82047cf5dcc6d1c"
+                "reference": "9d52413665284f9c96e0cef399fc14e68ac0aa5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/4c73bb66ff41d7c9beb57372a82047cf5dcc6d1c",
-                "reference": "4c73bb66ff41d7c9beb57372a82047cf5dcc6d1c",
+                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/9d52413665284f9c96e0cef399fc14e68ac0aa5a",
+                "reference": "9d52413665284f9c96e0cef399fc14e68ac0aa5a",
                 "shasum": ""
             },
             "require": {
@@ -3137,7 +3137,7 @@
                 "filesystem",
                 "media"
             ],
-            "time": "2015-03-09 08:06:57"
+            "time": "2015-05-26 08:25:40"
         },
         {
             "name": "knplabs/knp-components",
@@ -3265,25 +3265,24 @@
         },
         {
             "name": "knplabs/knp-gaufrette-bundle",
-            "version": "v0.1.7",
-            "target-dir": "Knp/Bundle/GaufretteBundle",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpGaufretteBundle.git",
-                "reference": "f33008584345452c3122bb4eaac0ded1d6084c51"
+                "reference": "7edea6cfcc4718573f9cbd7bd1adcaf3c2319e8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/f33008584345452c3122bb4eaac0ded1d6084c51",
-                "reference": "f33008584345452c3122bb4eaac0ded1d6084c51",
+                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/7edea6cfcc4718573f9cbd7bd1adcaf3c2319e8b",
+                "reference": "7edea6cfcc4718573f9cbd7bd1adcaf3c2319e8b",
                 "shasum": ""
             },
             "require": {
-                "knplabs/gaufrette": "~0.1.7",
+                "knplabs/gaufrette": "~0.1.7|0.2.*@dev",
                 "symfony/framework-bundle": "2.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*",
+                "phpunit/phpunit": "~4.2",
                 "symfony/console": "2.*",
                 "symfony/yaml": "2.*"
             },
@@ -3294,8 +3293,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Knp\\Bundle\\GaufretteBundle": ""
+                "psr-4": {
+                    "Knp\\Bundle\\GaufretteBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3304,13 +3303,12 @@
             ],
             "authors": [
                 {
-                    "name": "Antoine Hérault",
-                    "email": "antoine.herault@gmail.com",
-                    "homepage": "https://github.com/Herzult"
-                },
-                {
                     "name": "The contributors",
                     "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
+                },
+                {
+                    "name": "Antoine Hérault",
+                    "email": "antoine.herault@gmail.com"
                 }
             ],
             "description": "Allows to easily use the Gaufrette library in a Symfony project",
@@ -3321,7 +3319,7 @@
                 "filesystem",
                 "media"
             ],
-            "time": "2014-03-24 22:15:03"
+            "time": "2015-09-18 12:09:25"
         },
         {
             "name": "knplabs/knp-menu",
@@ -3394,12 +3392,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "2246a70109bdd313a105d2a7ef464a763aacf0cd"
+                "reference": "f8c6b24a846e3713899f02e72604a78d80bb1b37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/2246a70109bdd313a105d2a7ef464a763aacf0cd",
-                "reference": "2246a70109bdd313a105d2a7ef464a763aacf0cd",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/f8c6b24a846e3713899f02e72604a78d80bb1b37",
+                "reference": "f8c6b24a846e3713899f02e72604a78d80bb1b37",
                 "shasum": ""
             },
             "require": {
@@ -3443,7 +3441,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-09-28 15:23:54"
+            "time": "2015-10-01 08:23:01"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -4033,16 +4031,16 @@
         },
         {
             "name": "mopa/composer-bridge",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaComposerBridge.git",
-                "reference": "6f64e2f626bcdf2a6cab5d5c1be1d46a53905c13"
+                "reference": "58661a5c588ce9c3eff7d36c4030f6caa4de1ae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaComposerBridge/zipball/6f64e2f626bcdf2a6cab5d5c1be1d46a53905c13",
-                "reference": "6f64e2f626bcdf2a6cab5d5c1be1d46a53905c13",
+                "url": "https://api.github.com/repos/phiamo/MopaComposerBridge/zipball/58661a5c588ce9c3eff7d36c4030f6caa4de1ae2",
+                "reference": "58661a5c588ce9c3eff7d36c4030f6caa4de1ae2",
                 "shasum": ""
             },
             "require": {
@@ -4080,7 +4078,7 @@
                 "Symfony2",
                 "composer"
             ],
-            "time": "2015-02-23 10:26:44"
+            "time": "2015-10-01 19:20:19"
         },
         {
             "name": "mremi/templating-extra-bundle",
@@ -4838,12 +4836,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "64b64b5cd11b855156827bb61ed7437d707af731"
+                "reference": "63fab9f102295d9a485e80310c89bbafbb8cfe27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/64b64b5cd11b855156827bb61ed7437d707af731",
-                "reference": "64b64b5cd11b855156827bb61ed7437d707af731",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/63fab9f102295d9a485e80310c89bbafbb8cfe27",
+                "reference": "63fab9f102295d9a485e80310c89bbafbb8cfe27",
                 "shasum": ""
             },
             "require": {
@@ -4872,6 +4870,7 @@
                 "jms/di-extra-bundle": "*",
                 "jms/security-extra-bundle": "*",
                 "jms/serializer-bundle": "*",
+                "knplabs/knp-gaufrette-bundle": "*",
                 "knplabs/knp-paginator-bundle": "*",
                 "knplabs/rad-bundle": "*",
                 "liip/theme-bundle": "~1.0@dev",
@@ -4914,7 +4913,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-09-28 18:15:05"
+            "time": "2015-10-07 09:07:54"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5297,12 +5296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "2c4d2c0f2ca1dd6f3654233386ef5033a3d0d1ba"
+                "reference": "f955187c1ce118f7ec235d1644a490083320d352"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/2c4d2c0f2ca1dd6f3654233386ef5033a3d0d1ba",
-                "reference": "2c4d2c0f2ca1dd6f3654233386ef5033a3d0d1ba",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/f955187c1ce118f7ec235d1644a490083320d352",
+                "reference": "f955187c1ce118f7ec235d1644a490083320d352",
                 "shasum": ""
             },
             "require": {
@@ -5315,7 +5314,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-09-28 12:19:44"
+            "time": "2015-09-30 15:08:18"
         },
         {
             "name": "smart-core/module-user",
@@ -5877,16 +5876,16 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v2.8.0",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "78883d8c1cfa523ac3a28a482b7793036b243f7d"
+                "reference": "7117b9a145722e3c5768db4585f6ad0643ed5c4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/78883d8c1cfa523ac3a28a482b7793036b243f7d",
-                "reference": "78883d8c1cfa523ac3a28a482b7793036b243f7d",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/7117b9a145722e3c5768db4585f6ad0643ed5c4a",
+                "reference": "7117b9a145722e3c5768db4585f6ad0643ed5c4a",
                 "shasum": ""
             },
             "require": {
@@ -5932,7 +5931,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-09-29 17:13:11"
+            "time": "2015-10-02 11:51:59"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -6363,16 +6362,16 @@
         },
         {
             "name": "willdurand/negotiation",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "8a84c5956e765f432542fc52a8c6e9aff4508eb3"
+                "reference": "2a59f2376557303e3fa91465ab691abb82945edf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/8a84c5956e765f432542fc52a8c6e9aff4508eb3",
-                "reference": "8a84c5956e765f432542fc52a8c6e9aff4508eb3",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/2a59f2376557303e3fa91465ab691abb82945edf",
+                "reference": "2a59f2376557303e3fa91465ab691abb82945edf",
                 "shasum": ""
             },
             "require": {
@@ -6381,7 +6380,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -6408,7 +6407,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2015-07-28 13:10:50"
+            "time": "2015-10-01 07:42:40"
         },
         {
             "name": "zendframework/zend-escaper",
