@@ -1,0 +1,4 @@
+#shop.api:
+#    path: /
+#    defaults:
+#        _controller: ShopModule:Shop:api

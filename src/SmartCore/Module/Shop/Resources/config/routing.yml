@@ -1,0 +1,4 @@
+#shop.index:
+#    path: /
+#    defaults:
+#        _controller: ShopModule:Shop:index

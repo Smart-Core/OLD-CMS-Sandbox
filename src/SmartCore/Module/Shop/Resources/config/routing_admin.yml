@@ -1,0 +1,4 @@
+smart_module.shop.admin:
+    path: /
+    defaults:
+        _controller: ShopModule:AdminShop:index

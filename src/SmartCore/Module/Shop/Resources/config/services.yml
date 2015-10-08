@@ -1,0 +1,7 @@
+parameters:
+#    shop.example.class: SmartCore\Module\Shop\Example
+
+services:
+#    shop.example:
+#        class: %shop.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
