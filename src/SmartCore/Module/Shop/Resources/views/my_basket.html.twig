@@ -19,7 +19,10 @@
                             {{ smart_media_img(orderItem.item.attr('image'), '100_100') }}
                             {{ orderItem.item.attr('title') }}
                         </td>
-                        <td><button class="btn btn-default" onclick="alert('@todo: Сделать как у OZON.')">{{ orderItem.quantity }}</button></td>
+                        <td>
+                            <button class="btn btn-default" onclick="alert('@todo: Сделать как у OZON.')">{{ orderItem.quantity }}</button>
+                            <button class="btn btn-danger" onclick="alert('@todo')" title="Удалить">X</button>
+                        </td>
                         <td>{{ orderItem.item.attr('price') }}</td>
                         <td>{{ orderItem.amount }}</td>
                         <td>{{ orderItem.createdAt|date('Y-m-d H:i:s') }}</td>
