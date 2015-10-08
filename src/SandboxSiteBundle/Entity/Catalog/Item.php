@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Module\Unicat\Model\ItemModel;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SmartCore\Module\Unicat\Model\ItemRepository")
  * @ORM\Table(name="unicat_catalog_items",
  *      indexes={
  *          @ORM\Index(columns={"position"}),
