@@ -1,0 +1,10 @@
+<h3>Моя корзина</h3>
+
+{% if is_granted('ROLE_USER') %}
+
+{% else %}
+    <p><i>Пожалуйста <a href="{{ path('fos_user_registration_register') }}">зарегистрируйтесь</a>
+            или <a href="{{ path('fos_user_profile_show') }}">войдите</a>
+            для получения возможности оформлять заказы в интернет магазине.
+        </i></p>
+{% endif %}

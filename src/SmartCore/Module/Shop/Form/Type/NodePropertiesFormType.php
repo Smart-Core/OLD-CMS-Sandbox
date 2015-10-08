@@ -10,7 +10,13 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('some_value')
+            ->add('basket_node_id', null, ['required' => false, 'attr' => ['autofocus' => 'autofocus']])
+            ->add('mode', 'choice', [
+                'choices' => [
+                    'basket_widget' => 'Basket widget',
+                    'basket' => 'Basket full',
+                ],
+            ])
         ;
     }
 

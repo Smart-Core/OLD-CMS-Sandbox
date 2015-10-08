@@ -2,3 +2,8 @@ smart_module.shop.admin:
     path: /
     defaults:
         _controller: ShopModule:AdminShop:index
+
+smart_module.shop.admin.settings:
+    path: /settings/
+    defaults:
+        _controller: ShopModule:AdminShop:settings

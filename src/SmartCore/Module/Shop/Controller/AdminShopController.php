@@ -12,4 +12,9 @@ class AdminShopController extends Controller
 
         return $this->render('ShopModule:Admin:index.html.twig', []);
     }
+
+    public function settingsAction(Request $request)
+    {
+        return $this->render('ShopModule:Admin:settings.html.twig', []);
+    }
 }

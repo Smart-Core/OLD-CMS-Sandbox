@@ -1,0 +1,15 @@
+
+{% if is_granted('ROLE_USER') %}
+    <form action="{{ basket_url }}" method="post">
+        <input type="hidden" name="_node_id" value="{{ basket_node_id }}" />
+        <input type="hidden" name="item_id" value="{{ item_id }}" />
+        <button class="btn btn-primary" title="id: {{ item_id }}">Добавить в корзину</button>
+    </form>
+{% else %}
+    <button class="btn btn-default" title="id: {{ item_id }}" disabled="disabled">Добавить в корзину</button>
+    <p><i><span class="asterisk" style="color: rgba(255, 83, 72, 0.66);">*</span>
+        Пожалуйста <a href="{{ path('fos_user_registration_register') }}">зарегистрируйтесь</a>
+        или <a href="{{ path('fos_user_profile_show') }}">войдите</a>
+        для получения возможности оформлять заказы в интернет магазине.
+    </i></p>
+{% endif %}

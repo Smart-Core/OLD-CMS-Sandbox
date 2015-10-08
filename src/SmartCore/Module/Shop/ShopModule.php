@@ -37,6 +37,17 @@ class ShopModule extends ModuleBundle
                 'route' => 'smart_module.shop.admin',
                 'routeParameters' => ['page' => 'baskets'],
             ])->setExtras(['beforeCode' => '<i class="fa fa-cart-arrow-down"></i>']);
+
+            /*
+            $submenu->addChild('Settings', [
+                'route' => 'smart_module.shop.admin.settings',
+            ])->setExtras(['beforeCode' => '<i class="fa fa-cogs"></i>']);
+            */
+
+            $submenu->addChild('Catalog', [
+                'route' => 'unicat_admin.configuration',
+                'routeParameters' => ['configuration' => $this->container->get('settings')->get('shopmodule', 'catalog')],
+            ])->setExtras(['beforeCode' => '<i class="fa fa-angle-right"></i>']);
         }
 
         return $menu;
