@@ -4836,12 +4836,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "63fab9f102295d9a485e80310c89bbafbb8cfe27"
+                "reference": "a8999af9c0be1e5ff4a8e3fc2c25b6d12caf0552"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/63fab9f102295d9a485e80310c89bbafbb8cfe27",
-                "reference": "63fab9f102295d9a485e80310c89bbafbb8cfe27",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/a8999af9c0be1e5ff4a8e3fc2c25b6d12caf0552",
+                "reference": "a8999af9c0be1e5ff4a8e3fc2c25b6d12caf0552",
                 "shasum": ""
             },
             "require": {
@@ -4913,7 +4913,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-07 09:07:54"
+            "time": "2015-10-08 05:57:50"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5296,12 +5296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "f955187c1ce118f7ec235d1644a490083320d352"
+                "reference": "2a0dacef49fb6eba6e4b60886b0fe1f2bbc874fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/f955187c1ce118f7ec235d1644a490083320d352",
-                "reference": "f955187c1ce118f7ec235d1644a490083320d352",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/2a0dacef49fb6eba6e4b60886b0fe1f2bbc874fe",
+                "reference": "2a0dacef49fb6eba6e4b60886b0fe1f2bbc874fe",
                 "shasum": ""
             },
             "require": {
@@ -5314,7 +5314,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-09-30 15:08:18"
+            "time": "2015-10-08 05:57:50"
         },
         {
             "name": "smart-core/module-user",
