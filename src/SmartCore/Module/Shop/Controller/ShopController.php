@@ -7,6 +7,7 @@ use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Shop\Entity\Order;
 use SmartCore\Module\Shop\Entity\OrderItem;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class ShopController extends Controller
 {
@@ -63,10 +64,17 @@ class ShopController extends Controller
 
     public function basketWidgetAction()
     {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em      = $this->get('doctrine.orm.entity_manager');
+        if ($this->getUser() instanceof UserInterface) {
+            /** @var \Doctrine\ORM\EntityManager $em */
+            $em      = $this->get('doctrine.orm.entity_manager');
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+            $order = $em->getRepository('ShopModule:Order')->findOneBy([
+                'status'  => Order::STATUS_PENDING,
+                'user_id' => $this->getUser()->getId(),
+            ]);
+        } else {
+            $order = null;
+        }
 
         $qty = 0;
 
@@ -112,7 +120,10 @@ class ShopController extends Controller
             $session->add('error', "Товар id: <b>{$item_id}</b> не доступен для заказа.");
         }
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+        $order = $em->getRepository('ShopModule:Order')->findOneBy([
+            'status'  => Order::STATUS_PENDING,
+            'user_id' => $this->getUser()->getId(),
+        ]);
 
         if (empty($order)) {
             $order = new Order();
