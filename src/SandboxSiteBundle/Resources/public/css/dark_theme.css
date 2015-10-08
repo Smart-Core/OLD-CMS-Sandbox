@@ -80,3 +80,8 @@ ul.dropdown-menu a:hover {
 .ladybug label {
     color: black !important;
 }
+
+
+.table-hover > tbody > tr:hover {
+    background-color: #606060;
+}

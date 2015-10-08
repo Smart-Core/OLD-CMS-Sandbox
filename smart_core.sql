@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Сен 30 2015 г., 00:58
+-- Время создания: Окт 09 2015 г., 05:10
 -- Версия сервера: 5.6.26
--- Версия PHP: 5.6.13
+-- Версия PHP: 5.6.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   KEY `IDX_6C047E641B5771DD` (`is_active`),
   KEY `IDX_6C047E64FD07C8FB` (`is_deleted`),
   KEY `IDX_6C047E64462CE4F5` (`position`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Дамп данных таблицы `engine_folders`
@@ -323,7 +323,8 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (15, 1, 'Каталог', 0, 0, 'catalog', 1, 0, NULL, 'a:0:{}', NULL, 28, 'N;', 'N;', NULL, 1, '2014-02-12 16:12:18', NULL, NULL),
 (16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, 0, NULL, 'a:0:{}', NULL, 32, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL, NULL),
 (17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, 0, NULL, 'a:0:{}', NULL, 31, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL, NULL),
-(18, 1, 'Веб-форма', 0, 0, 'web-form', 1, 0, NULL, 'a:0:{}', NULL, 34, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL, NULL);
+(18, 1, 'Веб-форма', 0, 0, 'web-form', 1, 0, NULL, 'a:0:{}', NULL, 34, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL, NULL),
+(19, 1, 'Моя корзина', 0, 0, 'basket', 1, 0, NULL, 'a:0:{}', NULL, NULL, 'N;', 'N;', '', 1, '2015-10-09 01:11:07', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -384,7 +385,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   KEY `IDX_3055D1B7462CE4F5` (`position`),
   KEY `IDX_3055D1B798260155` (`region_id`),
   KEY `IDX_3055D1B7C242628` (`module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
 
 --
 -- Дамп данных таблицы `engine_nodes`
@@ -416,13 +417,15 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL, 1, 0, NULL, 1),
 (26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL, 0, 0, NULL, 1),
 (27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, 'Nivo', 1, '2014-02-10 08:13:18', 0, NULL, 1, 0, NULL, 1),
-(28, 15, 1, 1, 'Unicat', 'a:2:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, NULL, 1, 0, NULL, 1),
+(28, 15, 1, 1, 'Unicat', 'a:3:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;s:19:"use_item_id_as_slug";b:0;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, 'catalog', 1, 0, NULL, 1),
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0, 0, NULL, 1),
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, 'Тесты с каталогом', 1, '2014-07-01 13:42:20', 0, NULL, 0, 1, '2015-03-02 03:42:04', 1),
 (31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, 0, NULL, 1),
 (32, 16, 1, 1, 'Unicat', 'a:1:{s:16:"configuration_id";i:2;}', 0, 0, NULL, 1, '2015-03-02 11:37:36', 0, NULL, 1, 0, NULL, 1),
 (33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, 0, NULL, 1),
-(34, 18, 1, 1, 'WebForm', 'a:1:{s:10:"webform_id";i:1;}', 0, 0, NULL, 1, '2015-03-24 03:18:10', 0, NULL, 1, 0, NULL, 1);
+(34, 18, 1, 1, 'WebForm', 'a:1:{s:10:"webform_id";i:1;}', 0, 0, NULL, 1, '2015-03-24 03:18:10', 0, NULL, 1, 0, NULL, 1),
+(35, 1, 3, 1, 'Shop', 'a:2:{s:4:"mode";s:13:"basket_widget";s:14:"basket_node_id";s:2:"36";}', 0, 0, 'Виджет корзинки', 1, '2015-10-09 00:50:43', 0, NULL, 0, 0, NULL, 1),
+(36, 19, 1, 1, 'Shop', 'a:1:{s:4:"mode";s:6:"basket";}', 0, 0, NULL, 1, '2015-10-09 01:11:27', 0, NULL, 1, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -703,7 +706,7 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_1084B87D93CB796C` (`file_id`),
   KEY `IDX_1084B87D514956FD` (`collection_id`),
   KEY `IDX_1084B87D5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
@@ -716,7 +719,9 @@ INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storag
 (4, 6, 1, 1, '300_300', 46972, '2015-07-04 18:41:55'),
 (5, 4, 1, 1, '300_300', 35813, '2015-07-04 18:42:01'),
 (6, 8, 2, 1, '200_200', 27695, '2015-07-04 18:42:49'),
-(7, 6, 1, 1, '100_100', 8506, '2015-07-11 15:09:58');
+(7, 6, 1, 1, '100_100', 8506, '2015-07-11 15:09:58'),
+(8, 5, 1, 1, '100_100', 6411, '2015-10-09 00:39:32'),
+(9, 3, 1, 1, '100_100', 6289, '2015-10-09 01:52:42');
 
 -- --------------------------------------------------------
 
@@ -860,7 +865,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
   KEY `IDX_E545A0C55E237E06` (`name`),
   KEY `IDX_E545A0C5A57B32FD` (`bundle`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `settings`
@@ -872,7 +877,68 @@ INSERT INTO `settings` (`id`, `bundle`, `name`, `value`, `serialized`, `type`) V
 (3, 'cms', 'html_title_delimiter', '&ndash;', 0, 0),
 (4, 'cms', 'appearance_editor_theme', 'idle_fingers', 0, 0),
 (5, 'cms', 'appearance_editor', 'ace', 0, 0),
-(8, 'cms', 'twitter_bootstrap_version', '3', 0, 0);
+(8, 'cms', 'twitter_bootstrap_version', '3', 0, 0),
+(9, 'shopmodule', 'catalog', 'catalog', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `shop_orders`
+--
+
+DROP TABLE IF EXISTS `shop_orders`;
+CREATE TABLE IF NOT EXISTS `shop_orders` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `amount` double NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '0',
+  `payment_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shipping_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_608DDB6C8B8E8428` (`created_at`),
+  KEY `IDX_608DDB6C5E38FE8A` (`payment_status`),
+  KEY `IDX_608DDB6C505AA053` (`shipping_status`),
+  KEY `IDX_608DDB6CA76ED395` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `shop_orders`
+--
+
+INSERT INTO `shop_orders` (`id`, `amount`, `status`, `payment_status`, `shipping_status`, `created_at`, `expires_at`, `updated_at`, `user_id`) VALUES
+(1, 65000, 0, NULL, NULL, '2015-10-09 04:20:55', NULL, '2015-10-09 04:20:55', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `shop_orders_items`
+--
+
+DROP TABLE IF EXISTS `shop_orders_items`;
+CREATE TABLE IF NOT EXISTS `shop_orders_items` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned DEFAULT NULL,
+  `item_id` int(11) NOT NULL,
+  `amount` double NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BDD1217E8D9F6D38` (`order_id`),
+  KEY `IDX_BDD1217E8B8E8428` (`created_at`),
+  KEY `IDX_BDD1217E126F525E` (`item_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `shop_orders_items`
+--
+
+INSERT INTO `shop_orders_items` (`id`, `order_id`, `item_id`, `amount`, `quantity`, `price`, `created_at`) VALUES
+(1, 1, 4, 25000, 1, 25000, '2015-10-09 04:20:55'),
+(2, 1, 5, 40000, 2, 20000, '2015-10-09 04:34:05');
 
 -- --------------------------------------------------------
 
@@ -1243,6 +1309,7 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
   `position` smallint(6) DEFAULT '0',
   `user_id` int(10) unsigned NOT NULL,
   `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_69D20251989D9B62` (`slug`),
   UNIQUE KEY `UNIQ_69D20251D17F50A6` (`uuid`),
@@ -1253,8 +1320,8 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
 -- Дамп данных таблицы `unicat_blog_items`
 --
 
-INSERT INTO `unicat_blog_items` (`id`, `slug`, `meta`, `attributes`, `is_enabled`, `created_at`, `position`, `user_id`, `uuid`) VALUES
-(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:653:"<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1, NULL);
+INSERT INTO `unicat_blog_items` (`id`, `slug`, `meta`, `attributes`, `is_enabled`, `created_at`, `position`, `user_id`, `uuid`, `type`) VALUES
+(1, 'twig_in_symfony2_work_with_date_and_time', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:3:{s:5:"title";s:65:"Twig в Symfony2: работа с датой и временем.";s:10:"annotation";s:319:"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>";s:4:"text";s:653:"<p>Форматирование даты:</p>\r\n<pre class="brush: php;">	var_date|date("d.m.y")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class="brush: php;">	"new"|date("d.m.y")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class="brush: yaml;">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: "twig.extension" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class="brush: twig;">	{{ item.date|localizeddate("none", "none", null, null, "dd. LLLL YYYY") }}\r\n</pre>";}', 1, '2015-03-02 11:36:24', 0, 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1345,12 +1412,12 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_attributes` (
 --
 
 INSERT INTO `unicat_catalog_attributes` (`id`, `is_enabled`, `is_dedicated_table`, `is_required`, `position`, `type`, `name`, `title`, `show_in_admin`, `show_in_list`, `show_in_view`, `user_id`, `created_at`, `params`, `group_id`, `params_yaml`, `is_show_title`, `is_link`, `open_tag`, `close_tag`) VALUES
-(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 1, 0, '2014-02-13 20:37:50', 'N;', 1, NULL, 1, 1, '<h1>', '</h1>'),
+(1, 1, 0, 1, 1, 'text', 'title', 'Заголовок', 1, 1, 1, 0, '2014-02-13 20:37:50', 'N;', 1, NULL, 1, 1, '<h3>', '</h3>'),
 (2, 1, 0, 0, 3, 'textarea', 'description', 'Описание', 0, 1, 1, 0, '2014-02-13 21:03:59', 'N;', 1, NULL, 1, 0, '<p>', '</p>'),
 (3, 1, 0, 0, 999, 'integer', 'price', 'Цена', 1, 1, 1, 0, '2014-02-13 22:29:43', 'N;', 1, NULL, 1, 0, '<p>', '</p>'),
 (4, 1, 0, 0, 4, 'checkbox', 'in_sight', 'В наличии', 0, 1, 1, 0, '2014-02-13 23:19:31', 'a:0:{}', 1, NULL, 1, 0, '<p>', '</p>'),
 (5, 1, 0, 0, 2, 'image', 'image', 'Картинка', 0, 1, 1, 0, '2014-02-15 20:54:17', 'a:1:{s:6:"filter";s:7:"300_300";}', 1, 'filter: 300_300', 1, 0, '<p>', '</p>'),
-(6, 1, 0, 0, 0, 'text', 'picture', '---- Картинка ---', 0, 1, 1, 1, '2015-09-27 15:55:28', 'a:0:{}', 1, NULL, 1, 0, '<p>', '</p>');
+(6, 0, 0, 0, 0, 'text', 'picture', '---- Картинка ---', 0, 0, 0, 1, '2015-09-27 15:55:28', 'a:0:{}', 1, NULL, 1, 0, '<p>', '</p>');
 
 -- --------------------------------------------------------
 
@@ -1447,6 +1514,7 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_163452F3989D9B62` (`slug`),
   UNIQUE KEY `UNIQ_163452F3D17F50A6` (`uuid`),
@@ -1457,12 +1525,12 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
 -- Дамп данных таблицы `unicat_catalog_items`
 --
 
-INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`, `uuid`) VALUES
-(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;s:7:"picture";N;}', 0, '2014-02-14 07:48:18', 0, NULL),
-(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;s:7:"picture";N;}', 0, '2014-02-14 13:13:57', 1, NULL),
-(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;s:7:"picture";N;}', 0, '2014-02-17 01:19:23', 0, NULL),
-(4, 1, 'canon-650d', 'N;', 'a:5:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;s:7:"picture";N;}', 1, '2014-02-17 22:09:56', 0, NULL),
-(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;s:7:"picture";N;}', 1, '2014-03-06 16:35:40', 0, NULL);
+INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`, `uuid`, `type`) VALUES
+(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;s:7:"picture";N;}', 0, '2014-02-14 07:48:18', 0, NULL, 0),
+(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;s:7:"picture";N;}', 0, '2014-02-14 13:13:57', 1, NULL, 0),
+(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;s:7:"picture";N;}', 0, '2014-02-17 01:19:23', 0, NULL, 0),
+(4, 1, 'canon-650d', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;s:7:"picture";N;}', 1, '2014-02-17 22:09:56', 0, NULL, 0),
+(5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;s:7:"picture";N;}', 1, '2014-03-06 16:35:40', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1628,7 +1696,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-09-27 11:24:56', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-10-09 02:34:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
 (3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0);
 
@@ -1898,6 +1966,12 @@ ALTER TABLE `menu_items`
   ADD CONSTRAINT `FK_7D053A93162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
   ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`),
   ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `shop_orders_items`
+--
+ALTER TABLE `shop_orders_items`
+  ADD CONSTRAINT `FK_BDD1217E8D9F6D38` FOREIGN KEY (`order_id`) REFERENCES `shop_orders` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `simple_news`

@@ -1,4 +1,9 @@
 
 <div id="basket_widget" style="margin-bottom: 20px;">
-    Ваша <a href="/basket/">корзина</a> пуста
+    {% if qty %}
+        В вашей <a href="{{ basket_url }}">корзине</a> {{ qty }} товара
+        <br/>на сумму {{ order.amount }} рублей
+    {% else %}
+        Ваша <a href="{{ basket_url }}">корзина</a> пуста
+    {% endif %}
 </div>

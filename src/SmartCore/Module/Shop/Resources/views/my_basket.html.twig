@@ -1,7 +1,41 @@
 <h3>Моя корзина</h3>
 
 {% if is_granted('ROLE_USER') %}
+    {% if items %}
+    <div class="row">
+        <div class="span12 col-sm-12">
+            <table class="table table-bordered table-hover">
+                <thead><tr>
+                    <th>Товар</th>
+                    <th>Кол-во</th>
+                    <th>Цена</th>
+                    <th>Сумма</th>
+                    <th>Дата</th>
+                </tr></thead>
+                <tbody>
+                {% for orderItem in items %}
+                    <tr>
+                        <td>
+                            {{ smart_media_img(orderItem.item.attr('image'), '100_100') }}
+                            {{ orderItem.item.attr('title') }}
+                        </td>
+                        <td><button class="btn btn-default" onclick="alert('@todo: Сделать как у OZON.')">{{ orderItem.quantity }}</button></td>
+                        <td>{{ orderItem.item.attr('price') }}</td>
+                        <td>{{ orderItem.amount }}</td>
+                        <td>{{ orderItem.createdAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
+            <p>Итого: <b>{{ order.amount }}</b> рублей</p>
+
+            <p><button class="btn btn-success" href="order/">Оформить заказ</button></p>
+        </div>
+    </div>
+    {% else %}
+        <p>Корзина пуста.</p>
+    {% endif %}
 {% else %}
     <p><i>Пожалуйста <a href="{{ path('fos_user_registration_register') }}">зарегистрируйтесь</a>
             или <a href="{{ path('fos_user_profile_show') }}">войдите</a>
