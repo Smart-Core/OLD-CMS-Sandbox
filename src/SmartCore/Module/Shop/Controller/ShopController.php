@@ -128,7 +128,7 @@ class ShopController extends Controller
         if (empty($order)) {
             $order = new Order();
             $order
-                ->setUserId($this->getUser()->getId())
+                ->setUser($this->getUser())
                 ->setUpdatedAt(new \DateTime())
             ;
 

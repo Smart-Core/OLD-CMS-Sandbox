@@ -24,7 +24,7 @@ class Order
     use ColumnTrait\CreatedAt;
     use ColumnTrait\ExpiresAt;
     use ColumnTrait\UpdatedAt;
-    use ColumnTrait\UserId;
+    use ColumnTrait\FosUser;
 
     const STATUS_PENDING    = 0;
     const STATUS_PROCESSING = 1;

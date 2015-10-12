@@ -1,8 +1,13 @@
 parameters:
     #admin_path: control_panel
 
-#fos_user:
-#    user_class: SandboxSiteBundle\Entity\User
+doctrine:
+    orm:
+        resolve_target_entities:
+            FOS\UserBundle\Model\UserInterface: SandboxSiteBundle\Entity\User
+
+fos_user:
+    user_class: SandboxSiteBundle\Entity\User
 
 liip_imagine:
     filter_sets:
