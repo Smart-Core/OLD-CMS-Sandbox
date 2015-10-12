@@ -133,12 +133,10 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em      = $this->get('doctrine.orm.entity_manager');
         $session = $this->get('session')->getFlashBag();
-        //$ucm     = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
 
         $orderItem = $em->find('ShopModule:OrderItem', $request->request->get('order_item_id'));
 
         if ($orderItem) {
-            //$item  = $ucm->findItem($orderItem->getItemId());
             $order = $orderItem->getOrder();
 
             $this->remove($orderItem, true);
@@ -160,6 +158,7 @@ class ShopController extends Controller
         } else {
             $session->add('error', "Ошибка при удалении товара из корзины.");
         }
+
 
         $http_referer = $request->server->get('HTTP_REFERER');
         if (!empty($http_referer)) {
@@ -221,9 +220,10 @@ class ShopController extends Controller
                 ->setQuantity(1)
                 ->setPrice($item->getAttr('price'))
                 ->setAmount($item->getAttr('price'))
-                ->setOrder($order)
             ;
         }
+
+        $order->addOrderItem($orderItem);
 
         $this->persist($orderItem, true);
 
@@ -231,11 +231,13 @@ class ShopController extends Controller
 
         // Пересчёт общей суммы заказа.
         $amount = 0;
+
         foreach ($order->getOrderItems() as $orderItem) {
             $amount += $orderItem->getAmount();
         }
         $order->setAmount($amount);
         $this->persist($order, true);
+
 
         $http_referer = $request->server->get('HTTP_REFERER');
         if (!empty($http_referer)) {
