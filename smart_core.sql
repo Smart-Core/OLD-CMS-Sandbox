@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Окт 09 2015 г., 05:10
+-- Время создания: Окт 13 2015 г., 03:28
 -- Версия сервера: 5.6.26
 -- Версия PHP: 5.6.14
 
@@ -255,18 +255,21 @@ CREATE TABLE IF NOT EXISTS `engine_appearance_history` (
   `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `code` longtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9078E776D1B862B8` (`hash`),
   KEY `IDX_9078E776B548B0F` (`path`),
-  KEY `IDX_9078E7763C0BE965` (`filename`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  KEY `IDX_9078E7763C0BE965` (`filename`),
+  KEY `IDX_9078E776A76ED395` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `engine_appearance_history`
 --
 
+INSERT INTO `engine_appearance_history` (`id`, `path`, `filename`, `code`, `created_at`, `user_id`, `hash`) VALUES
+(1, '/Resources/views/', '_example.html.twig', '{% extends ''@Html/base.html.twig'' %}\r\n\r\n{% block title %}{{ cms_html_title({\r\n    ''delimiter'': ''&ndash;'',\r\n    ''site_full_name'': ''Новый сайт 2'',\r\n    ''site_short_name'': ''Новый сайт''\r\n}) }}{% endblock %}\r\n\r\n{% block styles %}\r\n    {{ parent() }}\r\n{% endblock %}\r\n\r\n{% block scripts %}\r\n    {{ parent() }}\r\n{% endblock %}\r\n\r\n{% block body %}\r\n<div class="container">\r\n    <div class="row-fluid">\r\n        <div class="span3">\r\n            {{ main_menu }}\r\n        </div>\r\n\r\n        <div class="span9">\r\n            <div id="breadcrumbs">\r\n                {{ breadcrumbs }}\r\n            </div>\r\n\r\n            {% include ''@SmartCore/flash_messages.html.twig'' %}\r\n\r\n            <div id="content">\r\n                {% block content content %}\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class="row-fluid" id="footer">\r\n        <div class="span12">\r\n            {{ footer }}\r\n        </div>\r\n    </div>\r\n</div>\r\n{% endblock body %}\r\n', '2015-10-12 00:31:51', 1, 'faf4d807b635f0856a9765b9ffa7db90');
 
 -- --------------------------------------------------------
 
@@ -291,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   `permissions` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `lockout_nodes` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `template_inheritable` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `template_self` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
@@ -300,7 +303,8 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   KEY `IDX_6C047E64A640A07B` (`folder_pid`),
   KEY `IDX_6C047E641B5771DD` (`is_active`),
   KEY `IDX_6C047E64FD07C8FB` (`is_deleted`),
-  KEY `IDX_6C047E64462CE4F5` (`position`)
+  KEY `IDX_6C047E64462CE4F5` (`position`),
+  KEY `IDX_6C047E64A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
@@ -370,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   `position` smallint(6) DEFAULT '0',
   `priority` smallint(6) NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `is_cached` tinyint(1) NOT NULL,
   `template` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -384,7 +388,8 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   KEY `IDX_3055D1B71B5771DD` (`is_active`),
   KEY `IDX_3055D1B7462CE4F5` (`position`),
   KEY `IDX_3055D1B798260155` (`region_id`),
-  KEY `IDX_3055D1B7C242628` (`module`)
+  KEY `IDX_3055D1B7C242628` (`module`),
+  KEY `IDX_3055D1B7A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
 
 --
@@ -439,11 +444,12 @@ CREATE TABLE IF NOT EXISTS `engine_regions` (
   `position` smallint(6) DEFAULT '0',
   `name` varchar(50) NOT NULL,
   `description` longtext,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_3054D4985E237E06` (`name`),
-  KEY `IDX_3054D498462CE4F5` (`position`)
+  KEY `IDX_3054D498462CE4F5` (`position`),
+  KEY `IDX_3054D498A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
@@ -518,11 +524,12 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `media_collection_id` int(11) unsigned NOT NULL,
   `order_albums_by` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_F70E6EB7B52E685C` (`media_collection_id`)
+  KEY `IDX_F70E6EB7B52E685C` (`media_collection_id`),
+  KEY `IDX_F70E6EB7A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -545,7 +552,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `cover_image_id` int(11) DEFAULT NULL,
   `photos_count` int(11) NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -553,7 +560,8 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `last_image_id` int(11) DEFAULT NULL,
   `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `IDX_5661ABED4E7AF8F` (`gallery_id`)
+  KEY `IDX_5661ABED4E7AF8F` (`gallery_id`),
+  KEY `IDX_5661ABEDA76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
@@ -577,10 +585,11 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `album_id` int(11) unsigned DEFAULT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `position` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `IDX_AAF50C7B1137ABCF` (`album_id`)
+  KEY `IDX_AAF50C7B1137ABCF` (`album_id`),
+  KEY `IDX_AAF50C7BA76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
@@ -664,27 +673,28 @@ CREATE TABLE IF NOT EXISTS `media_files` (
   `mime_type` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `original_size` int(11) NOT NULL,
   `size` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_192C84E8514956FD` (`collection_id`),
   KEY `IDX_192C84E812469DE2` (`category_id`),
   KEY `IDX_192C84E85CC5DB90` (`storage_id`),
-  KEY `IDX_192C84E88CDE5729` (`type`)
+  KEY `IDX_192C84E88CDE5729` (`type`),
+  KEY `IDX_192C84E8A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `media_files`
 --
 
-INSERT INTO `media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `is_preuploaded`, `relative_path`, `filename`, `original_filename`, `type`, `mime_type`, `original_size`, `size`, `user_id`, `created_at`) VALUES
-(1, 1, NULL, 1, 0, '/2014/02/16', '00_52_bbc4f846f6.jpeg', 'samsung-np900x3c-a02ru-1.jpg', 'image', 'image/jpeg', 131476, 131476, 0, '2014-02-16 00:52:17'),
-(3, 1, NULL, 1, 0, '/2014/02/17', '01_19_53bd2543df.jpeg', '154655_0.1362072510.jpg', 'image', 'image/jpeg', 29693, 29693, 0, '2014-02-17 01:19:23'),
-(4, 1, NULL, 1, 0, '/2014/02/17', '01_41_ec3e194bc1.jpeg', 'pic_18468_1.jpg', 'image', 'image/jpeg', 364655, 364655, 0, '2014-02-17 01:41:47'),
-(5, 1, NULL, 1, 0, '/2014/02/17', '22_11_083fd66af8.jpeg', 'EOS_650D.jpg', 'image', 'image/jpeg', 1695916, 1695916, 0, '2014-02-17 22:11:20'),
-(6, 1, NULL, 1, 1, '/2014/03/06', '16_38_725b3ca498.jpg', '3.jpg', 'image', 'image/jpeg', 897389, 897389, 0, '2014-03-06 16:38:36'),
-(7, 2, NULL, 1, 1, '/2014/07/15', '23_49_f6f9679959.jpg', 'patanjali.jpg', 'image', 'image/jpeg', 18412, 18412, 0, '2014-07-15 23:49:51'),
-(8, 2, NULL, 1, 1, '/2014/07/15', '23_54_519f730985.jpg', 'Code Complete.jpg', 'image', 'image/jpeg', 45971, 45971, 0, '2014-07-15 23:54:05');
+INSERT INTO `media_files` (`id`, `collection_id`, `category_id`, `storage_id`, `is_preuploaded`, `relative_path`, `filename`, `original_filename`, `type`, `mime_type`, `original_size`, `size`, `created_at`, `user_id`) VALUES
+(1, 1, NULL, 1, 0, '/2014/02/16', '00_52_bbc4f846f6.jpeg', 'samsung-np900x3c-a02ru-1.jpg', 'image', 'image/jpeg', 131476, 131476, '2014-02-16 00:52:17', NULL),
+(3, 1, NULL, 1, 0, '/2014/02/17', '01_19_53bd2543df.jpeg', '154655_0.1362072510.jpg', 'image', 'image/jpeg', 29693, 29693, '2014-02-17 01:19:23', NULL),
+(4, 1, NULL, 1, 0, '/2014/02/17', '01_41_ec3e194bc1.jpeg', 'pic_18468_1.jpg', 'image', 'image/jpeg', 364655, 364655, '2014-02-17 01:41:47', NULL),
+(5, 1, NULL, 1, 0, '/2014/02/17', '22_11_083fd66af8.jpeg', 'EOS_650D.jpg', 'image', 'image/jpeg', 1695916, 1695916, '2014-02-17 22:11:20', NULL),
+(6, 1, NULL, 1, 1, '/2014/03/06', '16_38_725b3ca498.jpg', '3.jpg', 'image', 'image/jpeg', 897389, 897389, '2014-03-06 16:38:36', NULL),
+(7, 2, NULL, 1, 1, '/2014/07/15', '23_49_f6f9679959.jpg', 'patanjali.jpg', 'image', 'image/jpeg', 18412, 18412, '2014-07-15 23:49:51', NULL),
+(8, 2, NULL, 1, 1, '/2014/07/15', '23_54_519f730985.jpg', 'Code Complete.jpg', 'image', 'image/jpeg', 45971, 45971, '2014-07-15 23:54:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -706,7 +716,7 @@ CREATE TABLE IF NOT EXISTS `media_files_transformed` (
   KEY `IDX_1084B87D93CB796C` (`file_id`),
   KEY `IDX_1084B87D514956FD` (`collection_id`),
   KEY `IDX_1084B87D5CC5DB90` (`storage_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `media_files_transformed`
@@ -721,7 +731,8 @@ INSERT INTO `media_files_transformed` (`id`, `file_id`, `collection_id`, `storag
 (6, 8, 2, 1, '200_200', 27695, '2015-07-04 18:42:49'),
 (7, 6, 1, 1, '100_100', 8506, '2015-07-11 15:09:58'),
 (8, 5, 1, 1, '100_100', 6411, '2015-10-09 00:39:32'),
-(9, 3, 1, 1, '100_100', 6289, '2015-10-09 01:52:42');
+(9, 3, 1, 1, '100_100', 6289, '2015-10-09 01:52:42'),
+(10, 7, 2, 1, '200_200', 21122, '2015-10-13 03:21:05');
 
 -- --------------------------------------------------------
 
@@ -759,11 +770,12 @@ CREATE TABLE IF NOT EXISTS `menus` (
   `position` smallint(6) DEFAULT '0',
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `properties` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_727508CF5E237E06` (`name`)
+  UNIQUE KEY `UNIQ_727508CF5E237E06` (`name`),
+  KEY `IDX_727508CFA76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
@@ -790,7 +802,7 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `pid` int(11) unsigned DEFAULT NULL,
@@ -799,7 +811,8 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   PRIMARY KEY (`id`),
   KEY `IDX_70B2CA2A5550C4ED` (`pid`),
   KEY `IDX_70B2CA2ACCD7E912` (`menu_id`),
-  KEY `IDX_70B2CA2A162CB942` (`folder_id`)
+  KEY `IDX_70B2CA2A162CB942` (`folder_id`),
+  KEY `IDX_70B2CA2AA76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
@@ -896,7 +909,7 @@ CREATE TABLE IF NOT EXISTS `shop_orders` (
   `created_at` datetime NOT NULL,
   `expires_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_608DDB6C8B8E8428` (`created_at`),
   KEY `IDX_608DDB6C5E38FE8A` (`payment_status`),
@@ -1081,7 +1094,7 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `position` smallint(6) DEFAULT '0',
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `slider_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
@@ -1117,10 +1130,11 @@ CREATE TABLE IF NOT EXISTS `texter` (
   `text` longtext,
   `meta` longtext NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `editor` smallint(6) NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `IDX_2B51D144A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
@@ -1161,10 +1175,11 @@ CREATE TABLE IF NOT EXISTS `texter_history` (
   `text` longtext COLLATE utf8_unicode_ci,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_82529097126F525E` (`item_id`),
-  KEY `IDX_82529097FD07C8FB` (`is_deleted`)
+  KEY `IDX_82529097FD07C8FB` (`is_deleted`),
+  KEY `IDX_82529097A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
@@ -1270,13 +1285,14 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_categories` (
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_F57287B5989D9B62727ACA702534008B` (`slug`,`parent_id`,`structure_id`),
   KEY `IDX_F57287B5727ACA70` (`parent_id`),
   KEY `IDX_F57287B52534008B` (`structure_id`),
   KEY `IDX_F57287B546C53D4C` (`is_enabled`),
-  KEY `IDX_F57287B5462CE4F5` (`position`)
+  KEY `IDX_F57287B5462CE4F5` (`position`),
+  KEY `IDX_F57287B5A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
@@ -1307,13 +1323,14 @@ CREATE TABLE IF NOT EXISTS `unicat_blog_items` (
   `is_enabled` tinyint(1) DEFAULT '1',
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_69D20251989D9B62` (`slug`),
   UNIQUE KEY `UNIQ_69D20251D17F50A6` (`uuid`),
-  KEY `IDX_69D20251462CE4F5` (`position`)
+  KEY `IDX_69D20251462CE4F5` (`position`),
+  KEY `IDX_69D20251A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1460,42 +1477,43 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_categories` (
   `is_inheritance` tinyint(1) NOT NULL DEFAULT '1',
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
   `is_enabled` tinyint(1) DEFAULT '1',
   `position` smallint(6) DEFAULT '0',
   `structure_id` int(10) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_31508DCA989D9B62727ACA702534008B` (`slug`,`parent_id`,`structure_id`),
   KEY `IDX_31508DCA727ACA70` (`parent_id`),
   KEY `IDX_31508DCA2534008B` (`structure_id`),
   KEY `IDX_31508DCA46C53D4C` (`is_enabled`),
-  KEY `IDX_31508DCA462CE4F5` (`position`)
+  KEY `IDX_31508DCA462CE4F5` (`position`),
+  KEY `IDX_31508DCAA76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `unicat_catalog_categories`
 --
 
-INSERT INTO `unicat_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `user_id`, `is_enabled`, `position`, `structure_id`, `properties`) VALUES
-(1, NULL, 'connection', 'Техника для связи', 0, 'N;', '2014-02-10 09:29:09', 0, 1, 0, 1, NULL),
-(2, 1, 'smartphones', 'Смартфоны', 0, 'a:0:{}', '2014-02-12 21:19:29', 0, 1, 1, 1, 'a:1:{s:11:"description";N;}'),
-(3, 1, 'signal_amplifiers', 'Усилители сигнала', 0, 'a:0:{}', '2014-02-12 22:12:43', 0, 1, 0, 1, 'a:1:{s:11:"description";N;}'),
-(4, NULL, 'pc', 'Компьютерная техника', 0, 'N;', '2014-02-12 22:14:33', 0, 1, 0, 1, NULL),
-(5, 4, 'notebooks', 'Ноутбуки', 0, 'N;', '2014-02-12 22:15:02', 0, 1, 0, 1, NULL),
-(6, 4, 'notebooks_stuff', 'Комплектующие для ноутбуков', 0, 'N;', '2014-02-12 22:15:26', 0, 1, 0, 1, NULL),
-(7, 6, 'ram', 'Модули памяти', 0, 'N;', '2014-02-12 22:15:42', 0, 1, 0, 1, NULL),
-(8, 6, 'hdd25', 'Жесткие диски 2.5', 0, 'N;', '2014-02-12 22:15:59', 0, 1, 0, 1, NULL),
-(9, NULL, 'samsung', 'Samsung', 0, 'N;', '2014-02-12 22:17:02', 0, 1, 0, 2, NULL),
-(10, 4, 'monitors', 'Мониторы', 0, 'N;', '2014-02-12 22:18:24', 0, 1, 0, 1, NULL),
-(11, NULL, 'office', 'Офисная техника', 0, 'N;', '2014-02-12 22:19:07', 0, 1, 0, 1, NULL),
-(12, 11, 'printers', 'Принтеры', 0, 'N;', '2014-02-12 22:19:27', 0, 1, 0, 1, NULL),
-(13, 11, 'scanners', 'Сканеры', 0, 'N;', '2014-02-12 22:19:43', 0, 1, 0, 1, NULL),
-(14, NULL, 'sony', 'Sony', 0, 'N;', '2014-02-12 22:20:07', 0, 1, 0, 2, NULL),
-(15, 14, 'vaio', 'Vaio', 1, 'N;', '2014-02-17 21:37:57', 0, 1, 0, 2, NULL),
-(16, NULL, 'canon', 'Canon', 1, 'N;', '2014-02-17 21:38:32', 0, 1, 0, 2, NULL),
-(17, NULL, 'portable', 'Портативная электроника', 0, 'N;', '2014-02-17 22:00:09', 0, 1, 0, 1, NULL),
-(18, 17, 'reflex_cameras', 'Зеркальные фотоаппараты', 1, 'N;', '2014-02-17 22:08:49', 1, 1, 0, 1, NULL);
+INSERT INTO `unicat_catalog_categories` (`id`, `parent_id`, `slug`, `title`, `is_inheritance`, `meta`, `created_at`, `is_enabled`, `position`, `structure_id`, `properties`, `user_id`) VALUES
+(1, NULL, 'connection', 'Техника для связи', 0, 'N;', '2014-02-10 09:29:09', 1, 0, 1, NULL, 1),
+(2, 1, 'smartphones', 'Смартфоны', 0, 'a:0:{}', '2014-02-12 21:19:29', 1, 1, 1, 'a:1:{s:11:"description";N;}', 1),
+(3, 1, 'signal_amplifiers', 'Усилители сигнала', 0, 'a:0:{}', '2014-02-12 22:12:43', 1, 0, 1, 'a:1:{s:11:"description";N;}', 1),
+(4, NULL, 'pc', 'Компьютерная техника', 0, 'N;', '2014-02-12 22:14:33', 1, 0, 1, NULL, 1),
+(5, 4, 'notebooks', 'Ноутбуки', 0, 'N;', '2014-02-12 22:15:02', 1, 0, 1, NULL, 1),
+(6, 4, 'notebooks_stuff', 'Комплектующие для ноутбуков', 0, 'N;', '2014-02-12 22:15:26', 1, 0, 1, NULL, 1),
+(7, 6, 'ram', 'Модули памяти', 0, 'N;', '2014-02-12 22:15:42', 1, 0, 1, NULL, 1),
+(8, 6, 'hdd25', 'Жесткие диски 2.5', 0, 'N;', '2014-02-12 22:15:59', 1, 0, 1, NULL, 1),
+(9, NULL, 'samsung', 'Samsung', 0, 'N;', '2014-02-12 22:17:02', 1, 0, 2, NULL, 1),
+(10, 4, 'monitors', 'Мониторы', 0, 'N;', '2014-02-12 22:18:24', 1, 0, 1, NULL, 1),
+(11, NULL, 'office', 'Офисная техника', 0, 'N;', '2014-02-12 22:19:07', 1, 0, 1, NULL, 1),
+(12, 11, 'printers', 'Принтеры', 0, 'N;', '2014-02-12 22:19:27', 1, 0, 1, NULL, 1),
+(13, 11, 'scanners', 'Сканеры', 0, 'N;', '2014-02-12 22:19:43', 1, 0, 1, NULL, 1),
+(14, NULL, 'sony', 'Sony', 0, 'N;', '2014-02-12 22:20:07', 1, 0, 2, NULL, 1),
+(15, 14, 'vaio', 'Vaio', 1, 'N;', '2014-02-17 21:37:57', 1, 0, 2, NULL, 1),
+(16, NULL, 'canon', 'Canon', 1, 'N;', '2014-02-17 21:38:32', 1, 0, 2, NULL, 1),
+(17, NULL, 'portable', 'Портативная электроника', 0, 'N;', '2014-02-17 22:00:09', 1, 0, 1, NULL, 1),
+(18, 17, 'reflex_cameras', 'Зеркальные фотоаппараты', 1, 'N;', '2014-02-17 22:08:49', 1, 0, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1510,7 +1528,7 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
   `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `attributes` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1518,7 +1536,8 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_163452F3989D9B62` (`slug`),
   UNIQUE KEY `UNIQ_163452F3D17F50A6` (`uuid`),
-  KEY `IDX_163452F3462CE4F5` (`position`)
+  KEY `IDX_163452F3462CE4F5` (`position`),
+  KEY `IDX_163452F3A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -1526,9 +1545,9 @@ CREATE TABLE IF NOT EXISTS `unicat_catalog_items` (
 --
 
 INSERT INTO `unicat_catalog_items` (`id`, `is_enabled`, `slug`, `meta`, `attributes`, `user_id`, `created_at`, `position`, `uuid`, `type`) VALUES
-(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;s:7:"picture";N;}', 0, '2014-02-14 07:48:18', 0, NULL, 0),
-(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;s:7:"picture";N;}', 0, '2014-02-14 13:13:57', 1, NULL, 0),
-(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;s:7:"picture";N;}', 0, '2014-02-17 01:19:23', 0, NULL, 0),
+(1, 1, 'np900', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:13:"Samsung NP900";s:11:"description";s:18:"Ультрабук";s:8:"in_sight";b:0;s:5:"price";i:5451;s:5:"image";i:1;s:7:"picture";N;}', 1, '2014-02-14 07:48:18', 0, NULL, 0),
+(2, 1, 'galaxy-s4', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:6:{s:5:"title";s:17:"Samsung Galaxy S4";s:8:"in_sight";b:1;s:5:"price";i:19000;s:5:"image";i:4;s:11:"description";N;s:7:"picture";N;}', 1, '2014-02-14 13:13:57', 1, NULL, 0),
+(3, 1, 'seagate-500g', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:4:{s:5:"title";s:13:"Seagate 500Gb";s:5:"image";i:3;s:8:"in_sight";b:1;s:7:"picture";N;}', 1, '2014-02-17 01:19:23', 0, NULL, 0),
 (4, 1, 'canon-650d', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:10:"Canon 650D";s:8:"in_sight";b:1;s:5:"price";i:25000;s:5:"image";i:5;s:7:"picture";N;}', 1, '2014-02-17 22:09:56', 0, NULL, 0),
 (5, 1, 'htc-one', 'a:2:{s:11:"description";N;s:8:"keywords";N;}', 'a:5:{s:5:"title";s:7:"HTC One";s:8:"in_sight";b:1;s:5:"image";i:6;s:5:"price";i:20000;s:7:"picture";N;}', 1, '2014-03-06 16:35:40', 0, NULL, 0);
 
@@ -1606,13 +1625,14 @@ CREATE TABLE IF NOT EXISTS `unicat__configurations` (
   `created_at` datetime NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `items_per_page` smallint(5) unsigned NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_F622D4625E237E06` (`name`),
   UNIQUE KEY `UNIQ_F622D4622B36786B` (`title`),
   KEY `IDX_F622D462B52E685C` (`media_collection_id`),
-  KEY `IDX_F622D4627E2E521` (`default_structure_id`)
+  KEY `IDX_F622D4627E2E521` (`default_structure_id`),
+  KEY `IDX_F622D462A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
@@ -1637,7 +1657,7 @@ CREATE TABLE IF NOT EXISTS `unicat__structures` (
   `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_required` tinyint(1) DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title_form` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1645,7 +1665,8 @@ CREATE TABLE IF NOT EXISTS `unicat__structures` (
   `properties` longtext COLLATE utf8_unicode_ci,
   `is_tree` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `IDX_B933004773F32DD8` (`configuration_id`)
+  KEY `IDX_B933004773F32DD8` (`configuration_id`),
+  KEY `IDX_B9330047A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
@@ -1655,8 +1676,8 @@ CREATE TABLE IF NOT EXISTS `unicat__structures` (
 INSERT INTO `unicat__structures` (`id`, `configuration_id`, `position`, `entries`, `title`, `is_required`, `user_id`, `created_at`, `name`, `title_form`, `is_default_inheritance`, `properties`, `is_tree`) VALUES
 (1, 1, 1, 'single', 'Категории', 1, 1, '2014-02-11 23:44:56', 'categories', 'Категория', 0, 'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced', 1),
 (2, 1, 2, 'multi', 'Облаго тэгов', 0, 1, '2014-02-11 23:45:18', 'tags', 'Тэги', 0, '', 0),
-(3, 2, 0, 'single', 'Категории', 0, 0, '2015-03-02 10:43:54', 'categories', 'Категория', 1, NULL, 1),
-(4, 2, 0, 'multi', 'Тэги', 0, 0, '2015-03-08 14:24:38', 'tags', 'Тэги', 1, NULL, 0);
+(3, 2, 0, 'single', 'Категории', 0, 1, '2015-03-02 10:43:54', 'categories', 'Категория', 1, NULL, 1),
+(4, 2, 0, 'multi', 'Тэги', 0, 1, '2015-03-08 14:24:38', 'tags', 'Тэги', 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1681,24 +1702,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext NOT NULL COMMENT '(DC2Type:array)',
   `credentials_expire_at` datetime DEFAULT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `expired` tinyint(1) NOT NULL,
   `credentials_expired` tinyint(1) NOT NULL,
+  `patronymic` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_1483A5E992FC23A8` (`username_canonical`),
-  UNIQUE KEY `UNIQ_1483A5E9A0D96FBF` (`email_canonical`)
+  UNIQUE KEY `UNIQ_1483A5E9A0D96FBF` (`email_canonical`),
+  KEY `IDX_1483A5E983A00E68` (`firstname`),
+  KEY `IDX_1483A5E93124B5B6` (`lastname`),
+  KEY `IDX_1483A5E9E42A05AB` (`patronymic`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-10-09 02:34:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
-(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0),
-(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0);
+INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`, `patronymic`) VALUES
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-10-13 02:43:51', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL),
+(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL),
+(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1711,7 +1736,7 @@ CREATE TABLE IF NOT EXISTS `webforms` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` datetime NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_use_captcha` tinyint(1) NOT NULL DEFAULT '0',
   `send_button_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1720,7 +1745,8 @@ CREATE TABLE IF NOT EXISTS `webforms` (
   `from_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_ajax` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_641866195E237E06` (`name`)
+  UNIQUE KEY `UNIQ_641866195E237E06` (`name`),
+  KEY `IDX_64186619A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1743,7 +1769,7 @@ CREATE TABLE IF NOT EXISTS `webforms_fields` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `web_form_id` int(10) unsigned DEFAULT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `params_yaml` longtext COLLATE utf8_unicode_ci,
@@ -1752,7 +1778,8 @@ CREATE TABLE IF NOT EXISTS `webforms_fields` (
   `is_enabled` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_4FE98D465E237E06` (`name`),
-  KEY `IDX_4FE98D46B75935E3` (`web_form_id`)
+  KEY `IDX_4FE98D46B75935E3` (`web_form_id`),
+  KEY `IDX_4FE98D46A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -1775,13 +1802,14 @@ CREATE TABLE IF NOT EXISTS `webforms_messages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `comment` longtext COLLATE utf8_unicode_ci,
   `status` smallint(6) NOT NULL DEFAULT '0',
   `web_form_id` int(10) unsigned DEFAULT NULL,
   `ip_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_24719905B75935E3` (`web_form_id`)
+  KEY `IDX_24719905B75935E3` (`web_form_id`),
+  KEY `IDX_24719905A76ED395` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
@@ -1790,8 +1818,8 @@ CREATE TABLE IF NOT EXISTS `webforms_messages` (
 
 INSERT INTO `webforms_messages` (`id`, `data`, `created_at`, `user_id`, `comment`, `status`, `web_form_id`, `ip_address`) VALUES
 (1, 'a:3:{s:4:"name";s:4:"1234";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:3:"dfg";}', '2015-03-24 04:17:00', 1, 'nm bnm, bnm,', 1, 1, NULL),
-(2, 'a:3:{s:4:"name";s:6:"222222";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:11:"54555555555";}', '2015-03-24 04:17:42', 0, 'hfgh 3', 0, 1, NULL),
-(3, 'a:3:{s:4:"name";s:3:"dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:4:"dfhj";}', '2015-03-24 04:50:33', 0, NULL, 0, 1, NULL),
+(2, 'a:3:{s:4:"name";s:6:"222222";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:11:"54555555555";}', '2015-03-24 04:17:42', NULL, 'hfgh 3', 0, 1, NULL),
+(3, 'a:3:{s:4:"name";s:3:"dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:4:"dfhj";}', '2015-03-24 04:50:33', NULL, NULL, 0, 1, NULL),
 (4, 'a:3:{s:4:"name";s:7:"dfg dfg";s:5:"email";s:12:"root@mail.ru";s:4:"text";s:17:"678 sdfg 547 8fgh";}', '2015-03-24 06:15:54', 1, NULL, 0, 1, NULL);
 
 -- --------------------------------------------------------
@@ -1878,7 +1906,7 @@ INSERT INTO `_engine_permissions_groups` (`group_id`, `descr`) VALUES
 --
 ALTER TABLE `blog_articles`
   ADD CONSTRAINT `FK_CB80154F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`),
-  ADD CONSTRAINT `FK_E42BC34BF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `FK_CB80154FF675F31B` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `blog_articles_tags_relations`
@@ -1894,17 +1922,31 @@ ALTER TABLE `blog_categories`
   ADD CONSTRAINT `FK_DC3564813D8E604F` FOREIGN KEY (`parent`) REFERENCES `blog_categories` (`id`);
 
 --
+-- Ограничения внешнего ключа таблицы `engine_appearance_history`
+--
+ALTER TABLE `engine_appearance_history`
+  ADD CONSTRAINT `FK_9078E776A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `engine_folders`
 --
 ALTER TABLE `engine_folders`
-  ADD CONSTRAINT `FK_6C047E64A640A07B` FOREIGN KEY (`folder_pid`) REFERENCES `engine_folders` (`id`);
+  ADD CONSTRAINT `FK_6C047E64A640A07B` FOREIGN KEY (`folder_pid`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_6C047E64A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_nodes`
 --
 ALTER TABLE `engine_nodes`
   ADD CONSTRAINT `FK_3055D1B7162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`);
+  ADD CONSTRAINT `FK_3055D1B798260155` FOREIGN KEY (`region_id`) REFERENCES `engine_regions` (`id`),
+  ADD CONSTRAINT `FK_3055D1B7A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `engine_regions`
+--
+ALTER TABLE `engine_regions`
+  ADD CONSTRAINT `FK_3054D498A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `engine_regions_inherit`
@@ -1917,19 +1959,22 @@ ALTER TABLE `engine_regions_inherit`
 -- Ограничения внешнего ключа таблицы `galleries`
 --
 ALTER TABLE `galleries`
+  ADD CONSTRAINT `FK_F70E6EB7A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `FK_F70E6EB7B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `gallery_albums`
 --
 ALTER TABLE `gallery_albums`
-  ADD CONSTRAINT `FK_5661ABED4E7AF8F` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`);
+  ADD CONSTRAINT `FK_5661ABED4E7AF8F` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`),
+  ADD CONSTRAINT `FK_5661ABEDA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `gallery_photos`
 --
 ALTER TABLE `gallery_photos`
-  ADD CONSTRAINT `FK_AAF50C7B1137ABCF` FOREIGN KEY (`album_id`) REFERENCES `gallery_albums` (`id`);
+  ADD CONSTRAINT `FK_AAF50C7B1137ABCF` FOREIGN KEY (`album_id`) REFERENCES `gallery_albums` (`id`),
+  ADD CONSTRAINT `FK_AAF50C7BA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_categories`
@@ -1949,7 +1994,8 @@ ALTER TABLE `media_collections`
 ALTER TABLE `media_files`
   ADD CONSTRAINT `FK_192C84E812469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
   ADD CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
-  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`);
+  ADD CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
+  ADD CONSTRAINT `FK_192C84E8A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `media_files_transformed`
@@ -1960,12 +2006,25 @@ ALTER TABLE `media_files_transformed`
   ADD CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE;
 
 --
+-- Ограничения внешнего ключа таблицы `menus`
+--
+ALTER TABLE `menus`
+  ADD CONSTRAINT `FK_727508CFA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `menu_items`
 --
 ALTER TABLE `menu_items`
-  ADD CONSTRAINT `FK_7D053A93162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
-  ADD CONSTRAINT `FK_7D053A935550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`),
-  ADD CONSTRAINT `FK_7D053A93FE54D947` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
+  ADD CONSTRAINT `FK_70B2CA2A162CB942` FOREIGN KEY (`folder_id`) REFERENCES `engine_folders` (`id`),
+  ADD CONSTRAINT `FK_70B2CA2A5550C4ED` FOREIGN KEY (`pid`) REFERENCES `menu_items` (`id`),
+  ADD CONSTRAINT `FK_70B2CA2AA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `FK_70B2CA2ACCD7E912` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `shop_orders`
+--
+ALTER TABLE `shop_orders`
+  ADD CONSTRAINT `FK_608DDB6CA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `shop_orders_items`
@@ -1989,25 +2048,33 @@ ALTER TABLE `simple_news_instances`
 -- Ограничения внешнего ключа таблицы `slides`
 --
 ALTER TABLE `slides`
-  ADD CONSTRAINT `FK_B8C020912CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `sliders` (`id`);
+  ADD CONSTRAINT `FK_B8C020912CCC9638` FOREIGN KEY (`slider_id`) REFERENCES `sliders` (`id`),
+  ADD CONSTRAINT `FK_B8C02091A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `texter`
+--
+ALTER TABLE `texter`
+  ADD CONSTRAINT `FK_2B51D144A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `texter_history`
 --
 ALTER TABLE `texter_history`
-  ADD CONSTRAINT `FK_82529097126F525E` FOREIGN KEY (`item_id`) REFERENCES `texter` (`id`);
+  ADD CONSTRAINT `FK_82529097126F525E` FOREIGN KEY (`item_id`) REFERENCES `texter` (`id`),
+  ADD CONSTRAINT `FK_82529097A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_blog_attributes`
 --
 ALTER TABLE `unicat_blog_attributes`
-  ADD CONSTRAINT `FK_CD6A232EFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_blog_attributes_groups` (`id`);
+  ADD CONSTRAINT `FK_FE1A5FADFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_blog_attributes_groups` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_blog_attributes_groups`
 --
 ALTER TABLE `unicat_blog_attributes_groups`
-  ADD CONSTRAINT `FK_9E1338C82534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_blog_categories` (`id`),
+  ADD CONSTRAINT `FK_9E1338C812469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_blog_categories` (`id`),
   ADD CONSTRAINT `FK_9E1338C873F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
 
 --
@@ -2015,7 +2082,14 @@ ALTER TABLE `unicat_blog_attributes_groups`
 --
 ALTER TABLE `unicat_blog_categories`
   ADD CONSTRAINT `FK_F57287B52534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
-  ADD CONSTRAINT `FK_F57287B5727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_blog_categories` (`id`);
+  ADD CONSTRAINT `FK_F57287B5727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_blog_categories` (`id`),
+  ADD CONSTRAINT `FK_F57287B5A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `unicat_blog_items`
+--
+ALTER TABLE `unicat_blog_items`
+  ADD CONSTRAINT `FK_69D20251A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_blog_items_categories_relations`
@@ -2035,21 +2109,28 @@ ALTER TABLE `unicat_blog_items_categories_relations_single`
 -- Ограничения внешнего ключа таблицы `unicat_catalog_attributes`
 --
 ALTER TABLE `unicat_catalog_attributes`
-  ADD CONSTRAINT `FK_32E9C31CFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_catalog_attributes_groups` (`id`);
+  ADD CONSTRAINT `FK_3A3855D2FE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_catalog_attributes_groups` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_attributes_groups`
 --
 ALTER TABLE `unicat_catalog_attributes_groups`
-  ADD CONSTRAINT `FK_41BAD1D773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
-  ADD CONSTRAINT `FK_6786BE592534008B` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`);
+  ADD CONSTRAINT `FK_6786BE5912469DE2` FOREIGN KEY (`category_id`) REFERENCES `unicat_catalog_categories` (`id`),
+  ADD CONSTRAINT `FK_6786BE5973F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_categories`
 --
 ALTER TABLE `unicat_catalog_categories`
-  ADD CONSTRAINT `FK_8FD9B4B32534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
-  ADD CONSTRAINT `FK_8FD9B4B3727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_categories` (`id`);
+  ADD CONSTRAINT `FK_31508DCA2534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
+  ADD CONSTRAINT `FK_31508DCA727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_categories` (`id`),
+  ADD CONSTRAINT `FK_31508DCAA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `unicat_catalog_items`
+--
+ALTER TABLE `unicat_catalog_items`
+  ADD CONSTRAINT `FK_163452F3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat_catalog_items_categories_relations`
@@ -2069,23 +2150,33 @@ ALTER TABLE `unicat_catalog_items_categories_relations_single`
 -- Ограничения внешнего ключа таблицы `unicat__configurations`
 --
 ALTER TABLE `unicat__configurations`
-  ADD CONSTRAINT `FK_9D36C6A07E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`),
-  ADD CONSTRAINT `FK_9D36C6A0B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
+  ADD CONSTRAINT `FK_F622D4627E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`),
+  ADD CONSTRAINT `FK_F622D462A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `FK_F622D462B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `unicat__structures`
 --
 ALTER TABLE `unicat__structures`
-  ADD CONSTRAINT `FK_239D6D8E73F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`);
+  ADD CONSTRAINT `FK_B933004773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
+  ADD CONSTRAINT `FK_B9330047A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `webforms`
+--
+ALTER TABLE `webforms`
+  ADD CONSTRAINT `FK_64186619A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `webforms_fields`
 --
 ALTER TABLE `webforms_fields`
+  ADD CONSTRAINT `FK_4FE98D46A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `FK_4FE98D46B75935E3` FOREIGN KEY (`web_form_id`) REFERENCES `webforms` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `webforms_messages`
 --
 ALTER TABLE `webforms_messages`
+  ADD CONSTRAINT `FK_24719905A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `FK_24719905B75935E3` FOREIGN KEY (`web_form_id`) REFERENCES `webforms` (`id`);

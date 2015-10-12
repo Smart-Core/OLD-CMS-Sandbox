@@ -6,9 +6,6 @@
         "psr-0": {
             "": "src/",
             "SmartCore\\": "src/"
-        },
-        "psr-4": {
-            "SmartCore\\Bundle\\CMSBundle\\": "src/SmartCore/Bundle/CMSBundle"
         }
     },
     "require": {

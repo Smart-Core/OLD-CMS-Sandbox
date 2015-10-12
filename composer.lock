@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7abe1c9201dfdd7080f328429970f8b7",
+    "hash": "1fa1e9b93bf3620401d83873eb9d7126",
     "content-hash": "aa504692c41d94e9fb9a1cc27ef03df8",
     "packages": [
         {
@@ -4836,12 +4836,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "29348d9d9e641bd259bb8ee83f9651a33858f2cb"
+                "reference": "a868e28a6cf84dc862efec7c692ab4607845e158"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/29348d9d9e641bd259bb8ee83f9651a33858f2cb",
-                "reference": "29348d9d9e641bd259bb8ee83f9651a33858f2cb",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/a868e28a6cf84dc862efec7c692ab4607845e158",
+                "reference": "a868e28a6cf84dc862efec7c692ab4607845e158",
                 "shasum": ""
             },
             "require": {
@@ -4913,7 +4913,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-12 16:55:15"
+            "time": "2015-10-12 21:24:08"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4951,12 +4951,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "0ab02cdb7df28b3eeb0436517bb6c4e44120a2e8"
+                "reference": "91870293c12b96b364e9667a76dbcbdfc58946ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/0ab02cdb7df28b3eeb0436517bb6c4e44120a2e8",
-                "reference": "0ab02cdb7df28b3eeb0436517bb6c4e44120a2e8",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/91870293c12b96b364e9667a76dbcbdfc58946ea",
+                "reference": "91870293c12b96b364e9667a76dbcbdfc58946ea",
                 "shasum": ""
             },
             "require": {
@@ -4977,7 +4977,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-10-08 23:12:22"
+            "time": "2015-10-12 21:27:06"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5100,12 +5100,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/MediaBundle.git",
-                "reference": "4bf456bc3dcad66f9823a873c6df6cb52122aeaf"
+                "reference": "98c5adca5e1f407aaf61c9f8922d604530a0d3fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/MediaBundle/zipball/4bf456bc3dcad66f9823a873c6df6cb52122aeaf",
-                "reference": "4bf456bc3dcad66f9823a873c6df6cb52122aeaf",
+                "url": "https://api.github.com/repos/Smart-Core/MediaBundle/zipball/98c5adca5e1f407aaf61c9f8922d604530a0d3fb",
+                "reference": "98c5adca5e1f407aaf61c9f8922d604530a0d3fb",
                 "shasum": ""
             },
             "require": {
@@ -5135,7 +5135,7 @@
                 "bundle",
                 "media"
             ],
-            "time": "2015-07-04 12:31:53"
+            "time": "2015-10-12 21:24:09"
         },
         {
             "name": "smart-core/module-breadcrumbs",
@@ -5166,12 +5166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Gallery.git",
-                "reference": "489ce1de9cf2375ee0d330643c860235d8d96830"
+                "reference": "9fb950a82f00ec972f1cd583dda4e288b4ae2e52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/489ce1de9cf2375ee0d330643c860235d8d96830",
-                "reference": "489ce1de9cf2375ee0d330643c860235d8d96830",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/9fb950a82f00ec972f1cd583dda4e288b4ae2e52",
+                "reference": "9fb950a82f00ec972f1cd583dda4e288b4ae2e52",
                 "shasum": ""
             },
             "require": {
@@ -5184,7 +5184,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-08 09:08:30"
+            "time": "2015-10-12 21:24:09"
         },
         {
             "name": "smart-core/module-menu",
@@ -5192,12 +5192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Menu.git",
-                "reference": "0148a9ef5e49471e07798be6800bad4e84054534"
+                "reference": "beadb3143de3bbcc5fa1f6460641dcec34b8c0e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/0148a9ef5e49471e07798be6800bad4e84054534",
-                "reference": "0148a9ef5e49471e07798be6800bad4e84054534",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/beadb3143de3bbcc5fa1f6460641dcec34b8c0e7",
+                "reference": "beadb3143de3bbcc5fa1f6460641dcec34b8c0e7",
                 "shasum": ""
             },
             "require": {
@@ -5210,7 +5210,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-08 09:08:29"
+            "time": "2015-10-12 21:24:07"
         },
         {
             "name": "smart-core/module-simplenews",
@@ -5244,12 +5244,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Slider.git",
-                "reference": "b26ce9d2bf0b0e5111763ed82a1ff3d4cf23afc6"
+                "reference": "c1f3ed59001425a894ca46d1e67be2c9f914d9c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/b26ce9d2bf0b0e5111763ed82a1ff3d4cf23afc6",
-                "reference": "b26ce9d2bf0b0e5111763ed82a1ff3d4cf23afc6",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/c1f3ed59001425a894ca46d1e67be2c9f914d9c5",
+                "reference": "c1f3ed59001425a894ca46d1e67be2c9f914d9c5",
                 "shasum": ""
             },
             "require": {
@@ -5262,7 +5262,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-08 09:08:29"
+            "time": "2015-10-12 21:24:07"
         },
         {
             "name": "smart-core/module-texter",
@@ -5270,12 +5270,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "6bd9ae72710cdaa4cde55aa91af7ec989ba4e202"
+                "reference": "bb04c4677eda5f82b022965b12a21384401a2504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/6bd9ae72710cdaa4cde55aa91af7ec989ba4e202",
-                "reference": "6bd9ae72710cdaa4cde55aa91af7ec989ba4e202",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/bb04c4677eda5f82b022965b12a21384401a2504",
+                "reference": "bb04c4677eda5f82b022965b12a21384401a2504",
                 "shasum": ""
             },
             "require": {
@@ -5288,7 +5288,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-08 09:08:30"
+            "time": "2015-10-12 21:24:07"
         },
         {
             "name": "smart-core/module-unicat",
@@ -5296,12 +5296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "11c34ff90c6c12da524f1b1ae2493b21e22c4f0b"
+                "reference": "41a6cb23eea1aecb659633325d6d713bc59d3f68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/11c34ff90c6c12da524f1b1ae2493b21e22c4f0b",
-                "reference": "11c34ff90c6c12da524f1b1ae2493b21e22c4f0b",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/41a6cb23eea1aecb659633325d6d713bc59d3f68",
+                "reference": "41a6cb23eea1aecb659633325d6d713bc59d3f68",
                 "shasum": ""
             },
             "require": {
@@ -5314,7 +5314,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-08 20:54:11"
+            "time": "2015-10-12 21:24:08"
         },
         {
             "name": "smart-core/module-user",
