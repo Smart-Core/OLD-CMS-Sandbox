@@ -1,6 +1,9 @@
 parameters:
     #admin_path: control_panel
 
+#fos_user:
+#    user_class: SandboxSiteBundle\Entity\User
+
 liip_imagine:
     filter_sets:
         demo_site_thumb:
