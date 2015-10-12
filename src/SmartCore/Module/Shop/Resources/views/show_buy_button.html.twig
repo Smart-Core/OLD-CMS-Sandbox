@@ -3,7 +3,7 @@
     <form action="{{ basket_url }}" method="post">
         <input type="hidden" name="_node_id" value="{{ basket_node_id }}" />
         <input type="hidden" name="item_id" value="{{ item_id }}" />
-        <button class="btn btn-primary" title="id: {{ item_id }}">Добавить в корзину</button>
+        <button class="btn btn-primary" title="id: {{ item_id }}" name="add">Добавить в корзину</button>
     </form>
 {% else %}
     <button class="btn btn-default" title="id: {{ item_id }}" disabled="disabled">Добавить в корзину</button>

@@ -57,8 +57,9 @@ class ShopController extends Controller
         }
 
         return $this->render('ShopModule::my_basket.html.twig', [
-            'order' => $order,
-            'items' => $items,
+            'order'   => $order,
+            'items'   => $items,
+            'node_id' => $this->node->getId(),
         ]);
     }
 
@@ -108,10 +109,79 @@ class ShopController extends Controller
      */
     public function postAction(Request $request)
     {
+        if ($request->request->has('remove') and $request->request->has('order_item_id')) {
+            return $this->removeItemToBasketAction($request);
+        } elseif ($request->request->has('add')) {
+            return $this->addItemToBasketAction($request);
+        }
+
+        $http_referer = $request->server->get('HTTP_REFERER');
+        if (!empty($http_referer)) {
+            return $this->redirect($http_referer);
+        }
+
+        return $this->redirect($request->getRequestUri());
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeItemToBasketAction(Request $request)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em      = $this->get('doctrine.orm.entity_manager');
+        $session = $this->get('session')->getFlashBag();
+        //$ucm     = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+
+        $orderItem = $em->find('ShopModule:OrderItem', $request->request->get('order_item_id'));
+
+        if ($orderItem) {
+            //$item  = $ucm->findItem($orderItem->getItemId());
+            $order = $orderItem->getOrder();
+
+            $this->remove($orderItem, true);
+
+            $session->add('success', "Товар удалён из корзины.");
+
+            // Пересчёт общей суммы заказа.
+            if ($order and $order->getOrderItems()->count() == 0) {
+                $order->setStatus(Order::STATUS_DELETED);
+            } else {
+                $amount = 0;
+                foreach ($order->getOrderItems() as $orderItem) {
+                    $amount += $orderItem->getAmount();
+                }
+                $order->setAmount($amount);
+            }
+
+            $this->persist($order, true);
+        } else {
+            $session->add('error', "Ошибка при удалении товара из корзины.");
+        }
+
+        $http_referer = $request->server->get('HTTP_REFERER');
+        if (!empty($http_referer)) {
+            return $this->redirect($http_referer);
+        }
+
+        return $this->redirect($request->getRequestUri());
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addItemToBasketAction(Request $request)
+    {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em      = $this->get('doctrine.orm.entity_manager');
         $session = $this->get('session')->getFlashBag();
         $ucm     = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+
+        $order = null;
 
         $item_id = $request->request->get('item_id');
         $item    = $ucm->findItem($item_id);
@@ -157,6 +227,8 @@ class ShopController extends Controller
 
         $this->persist($orderItem, true);
 
+        $session->add('success', "Товар <b>{$item->getAttr('title')}</b> на сумму <b>{$item->getAttr('price')}</b> добавлен в корзину.");
+
         // Пересчёт общей суммы заказа.
         $amount = 0;
         foreach ($order->getOrderItems() as $orderItem) {
@@ -164,8 +236,6 @@ class ShopController extends Controller
         }
         $order->setAmount($amount);
         $this->persist($order, true);
-
-        $session->add('success', "Товар <b>{$item->getAttr('title')}</b> на сумму <b>{$item->getAttr('price')}</b> добавлен в корзину.");
 
         $http_referer = $request->server->get('HTTP_REFERER');
         if (!empty($http_referer)) {

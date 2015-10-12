@@ -21,7 +21,11 @@
                         </td>
                         <td>
                             <button class="btn btn-default" onclick="alert('@todo: Сделать как у OZON.')">{{ orderItem.quantity }}</button>
-                            <button class="btn btn-danger" onclick="alert('@todo')" title="Удалить">X</button>
+                            <form action="" method="post" style="display: inline-block;">
+                                <input type="hidden" name="_node_id" value="{{ node_id }}" />
+                                <input type="hidden" name="order_item_id" value="{{ orderItem.id }}" />
+                                <button class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить товар из корзиты?')" name="remove" title="Удалить">X</button>
+                            </form>
                         </td>
                         <td>{{ orderItem.item.attr('price') }}</td>
                         <td>{{ orderItem.amount }}</td>

@@ -29,8 +29,9 @@ class Order
     const STATUS_PENDING    = 0;
     const STATUS_PROCESSING = 1;
     const STATUS_SHIPPING   = 2;
-    const STATUS_CANCELLED   = 3;
+    const STATUS_CANCELLED  = 3;
     const STATUS_FINISHED   = 4;
+    const STATUS_DELETED    = 5;
 
     const PAYMENT_STATUS_NEW       = 0;
     const PAYMENT_STATUS_ABORTED   = 1;
