@@ -69,8 +69,8 @@ class ShopController extends Controller
             $em      = $this->get('doctrine.orm.entity_manager');
 
             $order = $em->getRepository('ShopModule:Order')->findOneBy([
-                'status'  => Order::STATUS_PENDING,
-                'user_id' => $this->getUser()->getId(),
+                'status' => Order::STATUS_PENDING,
+                'user'   => $this->getUser(),
             ]);
         } else {
             $order = null;
@@ -121,8 +121,8 @@ class ShopController extends Controller
         }
 
         $order = $em->getRepository('ShopModule:Order')->findOneBy([
-            'status'  => Order::STATUS_PENDING,
-            'user_id' => $this->getUser()->getId(),
+            'status' => Order::STATUS_PENDING,
+            'user'   => $this->getUser(),
         ]);
 
         if (empty($order)) {
