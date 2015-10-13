@@ -6,6 +6,7 @@ use Knp\RadBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Shop\Entity\Order;
 use SmartCore\Module\Shop\Entity\OrderItem;
+use SmartCore\Module\Shop\Form\Type\OrderConfirmFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -16,6 +17,9 @@ class ShopController extends Controller
     protected $mode;
     protected $basket_node_id = 36; // @todo глобальную настройку ноды корзинки
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         switch ($this->mode) {
@@ -26,6 +30,48 @@ class ShopController extends Controller
         }
 
         return $this->render('ShopModule::index.html.twig', []);
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function orderAction(Request $request)
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+
+        if (empty($order)) {
+            return $this->redirectToRoute('shop.index');
+        }
+
+        $items = [];
+
+        if ($order) {
+            $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+
+            foreach ($order->getOrderItems() as $orderItem) {
+                $item = $ucm->findItem($orderItem->getItemId());
+
+                if ($item) {
+                    $orderItem->setItem($item);
+                    $items[] = $orderItem;
+                } else {
+                    ld('Товар '.$orderItem->getItemId().' из заказа '.$order->getId().'не доступен!'); // @todo обработку ошибок.
+                }
+            }
+        }
+
+        $form = $this->createForm(new OrderConfirmFormType($order));
+
+        return $this->render('ShopModule::order.html.twig', [
+            'form'  => $form->createView(),
+            'items' => $items,
+            'order' => $order,
+        ]);
     }
 
     /**
@@ -63,6 +109,10 @@ class ShopController extends Controller
         ]);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
     public function basketWidgetAction()
     {
         if ($this->getUser() instanceof UserInterface) {
@@ -95,9 +145,9 @@ class ShopController extends Controller
     public function showBuyButtonAction(Request $request, $item_id)
     {
         return $this->render('ShopModule::show_buy_button.html.twig', [
-            'item_id' => $item_id,
+            'item_id'        => $item_id,
             'basket_node_id' => $this->basket_node_id,
-            'basket_url' => $this->get('cms.folder')->getUri($this->get('cms.node')->get($this->basket_node_id)),
+            'basket_url'     => $this->get('cms.folder')->getUri($this->get('cms.node')->get($this->basket_node_id)),
         ]);
     }
 

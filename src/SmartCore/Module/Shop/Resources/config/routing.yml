@@ -1,4 +1,9 @@
-#shop.index:
-#    path: /
-#    defaults:
-#        _controller: ShopModule:Shop:index
+shop.index:
+    path: /
+    defaults:
+        _controller: ShopModule:Shop:index
+
+shop.order:
+    path: /order/
+    defaults:
+        _controller: ShopModule:Shop:order

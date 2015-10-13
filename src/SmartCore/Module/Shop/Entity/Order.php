@@ -12,6 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="shop_orders",
  *      indexes={
  *          @ORM\Index(columns={"created_at"}),
+ *          @ORM\Index(columns={"phone"}),
+ *          @ORM\Index(columns={"payment_date"}),
  *          @ORM\Index(columns={"payment_status"}),
  *          @ORM\Index(columns={"shipping_status"}),
  *          @ORM\Index(columns={"user_id"}),
@@ -21,6 +23,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Order
 {
     use ColumnTrait\Id;
+    use ColumnTrait\Address;
+    use ColumnTrait\Comment;
+    use ColumnTrait\Email;
+    use ColumnTrait\Name;
+    use ColumnTrait\Phone;
     use ColumnTrait\CreatedAt;
     use ColumnTrait\ExpiresAt;
     use ColumnTrait\UpdatedAt;
@@ -64,6 +71,13 @@ class Order
      * @ORM\Column(type="string", nullable=true)
      */
     protected $payment_status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $payment_date;
 
     /**
      * @var string
@@ -149,6 +163,26 @@ class Order
     public function setOrderItems($order_items)
     {
         $this->order_items = $order_items;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getPaymentDate()
+    {
+        return $this->payment_date;
+    }
+
+    /**
+     * @param \DateTime|null $payment_date
+     *
+     * @return $this
+     */
+    public function setPaymentDate(\DateTime $payment_date = null)
+    {
+        $this->payment_date = $payment_date;
 
         return $this;
     }

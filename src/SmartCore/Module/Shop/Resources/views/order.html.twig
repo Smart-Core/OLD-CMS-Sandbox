@@ -1,0 +1,68 @@
+
+<h2>Оформление заказа</h2>
+
+<h4>Товары</h4>
+
+<table class="table table-bordered table-hover">
+    <thead><tr>
+        <th>Товар</th>
+        <th>Цена</th>
+        <th>Кол-во</th>
+        <th>Сумма</th>
+    </tr></thead>
+    <tbody>
+    {% for orderItem in items %}
+        <tr>
+            <td>
+                {{ orderItem.item.attr('title') }}
+            </td>
+            <td>{{ orderItem.item.attr('price') }}</td>
+            <td>{{ orderItem.quantity }} шт.</td>
+            <td>{{ orderItem.amount }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<p style="float: right;">Итого: <b>{{ order.amount }}</b> рублей</p>
+
+<div style="clear: both;"></div>
+
+{% if form is defined %}
+    {% form_theme form '@CMS/Form/bootstrap_wide.html.twig' %}
+{% endif %}
+
+<style media="all" type="text/css">
+    .form-button {
+        margin: 3px 0px 5px 20px;
+        float: left;
+    }
+    label span {
+        color: red;
+    }
+    .form-horizontal {
+        margin: 5px 0 5px;
+    }
+    .form-horizontal .control-group {
+        margin-bottom: 12px;
+    }
+    .form-horizontal .control-label {
+        float: left;
+        width: 200px;
+        padding-right: 5px;
+    }
+    .form-horizontal .controls {
+        margin-left: 210px;
+    }
+    .form-horizontal option[selected=selected] {
+        color: blue;
+        font-weight: bold;
+    }
+    .form-vertical .checkbox,
+    label.checkbox
+    {
+        margin-left: 20px;
+    }
+</style>
+
+{{ form(form, {'attr':{'class': '__form-horizontal'}}) }}

@@ -37,7 +37,7 @@
 
             <p>Итого: <b>{{ order.amount }}</b> рублей</p>
 
-            <p><button class="btn btn-success" href="order/">Оформить заказ</button></p>
+            <p><a class="btn btn-success" href="{{ path('shop.order') }}">Оформить заказ</a></p>
         </div>
     </div>
     {% else %}

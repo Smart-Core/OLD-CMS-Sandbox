@@ -30,4 +30,14 @@ class Shipping
     {
         $this->created_at   = new \DateTime();
     }
+
+    /**
+     * @see getName
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
 }
