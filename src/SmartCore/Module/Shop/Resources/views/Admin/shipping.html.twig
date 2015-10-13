@@ -1,0 +1,23 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'Shipping'|trans }} / {{ parent() }}{% endblock %}
+
+{% set page_header = 'Shipping'|trans %}
+{% set page_description = 'Интернет-магазин'|trans %}
+
+{% block nav %}
+    {{ knp_menu_render('ShopModule:Admin:shipping', {
+            'currentClass': 'active',
+            'clear_matcher': false,
+        })
+    }}
+{% endblock nav %}
+
+{% block content %}
+
+    {#<h2>{{ 'Shipping'|trans }}</h2>#}
+
+
+    {#{{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}#}
+
+{% endblock content %}

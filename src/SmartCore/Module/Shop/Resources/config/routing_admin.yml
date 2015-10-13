@@ -7,3 +7,28 @@ smart_module.shop.admin.settings:
     path: /settings/
     defaults:
         _controller: ShopModule:AdminShop:settings
+
+smart_module.shop.admin.payment:
+    path: /payment/
+    defaults:
+        _controller: ShopModule:AdminShop:payment
+
+smart_module.shop.admin.shipping:
+    path: /shipping/
+    defaults:
+        _controller: ShopModule:AdminShop:shipping
+
+smart_module.shop.admin.shipping.active:
+    path: /shipping/active/
+    defaults:
+        _controller: ShopModule:AdminShop:shippingActive
+
+smart_module.shop.admin.shipping.finished:
+    path: /shipping/finished/
+    defaults:
+        _controller: ShopModule:AdminShop:shippingFinished
+
+smart_module.shop.admin.shipping.settings:
+    path: /shipping/settings/
+    defaults:
+        _controller: ShopModule:AdminShop:shippingSettings

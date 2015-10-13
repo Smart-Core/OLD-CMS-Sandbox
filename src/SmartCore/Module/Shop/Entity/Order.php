@@ -81,6 +81,13 @@ class Order
     protected $order_items;
 
     /**
+     * @var Shipping
+     *
+     * @ORM\ManyToOne(targetEntity="Shipping")
+     */
+    protected $shipping;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -202,6 +209,26 @@ class Order
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Shipping
+     */
+    public function getShipping()
+    {
+        return $this->shipping;
+    }
+
+    /**
+     * @param Shipping $shipping
+     *
+     * @return $this
+     */
+    public function setShipping($shipping)
+    {
+        $this->shipping = $shipping;
 
         return $this;
     }

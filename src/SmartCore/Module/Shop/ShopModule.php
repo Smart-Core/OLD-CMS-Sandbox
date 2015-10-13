@@ -38,6 +38,14 @@ class ShopModule extends ModuleBundle
                 'routeParameters' => ['page' => 'baskets'],
             ])->setExtras(['beforeCode' => '<i class="fa fa-cart-arrow-down"></i>']);
 
+            $submenu->addChild('Доставка', [
+                'route' => 'smart_module.shop.admin.shipping',
+            ])->setExtras(['beforeCode' => '<i class="fa fa-truck"></i>']);
+
+            $submenu->addChild('Оплата', [
+                'route' => 'smart_module.shop.admin.payment',
+            ])->setExtras(['beforeCode' => '<i class="fa fa-usd"></i>']);
+
             /*
             $submenu->addChild('Settings', [
                 'route' => 'smart_module.shop.admin.settings',

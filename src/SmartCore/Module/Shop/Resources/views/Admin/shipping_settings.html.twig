@@ -1,0 +1,58 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'Shipping'|trans }} / {{ parent() }}{% endblock %}
+
+{% set page_header = 'Shipping'|trans %}
+{% set page_description = 'Интернет-магазин'|trans %}
+
+{% block nav %}
+    {{ knp_menu_render('ShopModule:Admin:shipping', {
+            'currentClass': 'active',
+            'clear_matcher': false,
+        })
+    }}
+{% endblock nav %}
+
+{% block content %}
+
+    <h4>{{ 'Delivery modes'|trans }}</h4>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+
+    {#{{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}#}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'Title'|trans }}</th>
+                <th>{{ 'Is enabled'|trans }}</th>
+                <th>{{ 'User'|trans }}</th>
+                <th>{{ 'Created at'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in pagerfanta.currentPageResults %}
+                <tr>
+                    <td>{{ entity.id }}</td>
+                    <td>{{ entity.title }}</td>
+                    <td>{{ entity.isEnabledAsText|trans }}</td>
+                    <td>{{ entity.user }}</td>
+                    <td>{{ entity.createdAt | localizeddate('medium') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if pagerfanta.haveToPaginate %}
+            {{ pagerfanta(pagerfanta, 'twitter_bootstrap3_translated', {
+                    'css_container_class': 'pagination pagination-centered',
+                })
+            }}
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock content %}
