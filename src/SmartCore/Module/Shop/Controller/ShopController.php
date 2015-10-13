@@ -50,18 +50,16 @@ class ShopController extends Controller
 
         $items = [];
 
-        if ($order) {
-            $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+        $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
 
-            foreach ($order->getOrderItems() as $orderItem) {
-                $item = $ucm->findItem($orderItem->getItemId());
+        foreach ($order->getOrderItems() as $orderItem) {
+            $item = $ucm->findItem($orderItem->getItemId());
 
-                if ($item) {
-                    $orderItem->setItem($item);
-                    $items[] = $orderItem;
-                } else {
-                    ld('Товар '.$orderItem->getItemId().' из заказа '.$order->getId().'не доступен!'); // @todo обработку ошибок.
-                }
+            if ($item) {
+                $orderItem->setItem($item);
+                $items[] = $orderItem;
+            } else {
+                ld('Товар '.$orderItem->getItemId().' из заказа '.$order->getId().'не доступен!'); // @todo обработку ошибок.
             }
         }
 

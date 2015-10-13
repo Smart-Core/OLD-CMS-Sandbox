@@ -4,7 +4,6 @@ namespace SmartCore\Module\Shop\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Smart\CoreBundle\Doctrine\ColumnTrait;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="SmartCore\Module\Shop\Entity\ShippingRepository")
@@ -32,7 +31,7 @@ class Shipping
     }
 
     /**
-     * @see getName
+     * @see getTitle
      *
      * @return string
      */
