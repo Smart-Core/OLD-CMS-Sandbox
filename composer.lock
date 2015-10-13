@@ -4836,12 +4836,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "78321b91ea3e5ed574ddebfd53ec2af953d37411"
+                "reference": "e6fc1cf1b9e3b239419f5b00f0fe81939cb6cfd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/78321b91ea3e5ed574ddebfd53ec2af953d37411",
-                "reference": "78321b91ea3e5ed574ddebfd53ec2af953d37411",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/e6fc1cf1b9e3b239419f5b00f0fe81939cb6cfd7",
+                "reference": "e6fc1cf1b9e3b239419f5b00f0fe81939cb6cfd7",
                 "shasum": ""
             },
             "require": {
@@ -4913,7 +4913,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-13 14:05:05"
+            "time": "2015-10-13 19:41:37"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4951,12 +4951,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "d72b41d1bb13e0bab5d368aca01f88159d1d3701"
+                "reference": "02b1caf15484b9d9786d5c530cdce1f00aa0edfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/d72b41d1bb13e0bab5d368aca01f88159d1d3701",
-                "reference": "d72b41d1bb13e0bab5d368aca01f88159d1d3701",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/02b1caf15484b9d9786d5c530cdce1f00aa0edfc",
+                "reference": "02b1caf15484b9d9786d5c530cdce1f00aa0edfc",
                 "shasum": ""
             },
             "require": {
@@ -4977,7 +4977,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-10-13 13:15:53"
+            "time": "2015-10-13 19:41:12"
         },
         {
             "name": "smart-core/felib-bundle",
