@@ -26,7 +26,7 @@ class Order
     use ColumnTrait\Address;
     use ColumnTrait\Comment;
     use ColumnTrait\Email;
-    use ColumnTrait\Name;
+    use ColumnTrait\NameNotBlank;
     use ColumnTrait\Phone;
     use ColumnTrait\CreatedAt;
     use ColumnTrait\ExpiresAt;

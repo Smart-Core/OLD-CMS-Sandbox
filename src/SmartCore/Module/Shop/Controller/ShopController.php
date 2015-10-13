@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Shop\Controller;
 
 use Knp\RadBundle\Controller\Controller;
+use SmartCore\Bundle\CMSBundle\Model\UserModel;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Shop\Entity\Order;
 use SmartCore\Module\Shop\Entity\OrderItem;
@@ -63,7 +64,27 @@ class ShopController extends Controller
             }
         }
 
-        $form = $this->createForm(new OrderConfirmFormType($order));
+        /** @var UserModel $user */
+        $user = $this->getUser();
+
+        $order->setEmail($user->getEmailCanonical());
+        $order->setName($user->getFirstname().' '.$user->getLastname());
+
+        if (method_exists($user, 'getPhone')) {
+            $order->setPhone($user->getPhone());
+        }
+
+        $form = $this->createForm(new OrderConfirmFormType(), $order);
+
+        $form_data = $this->getFlashBag()->get('smart_shop_order_confirm_data');
+        if (!empty($form_data)) {
+            if ($form_data[0] instanceof \Knp\RadBundle\Flash\Message) { // @todo упростить
+                $form_data[0] = $form_data[0]->getTemplate();
+            }
+
+            $form->submit(new Request($form_data[0]));
+            $form->isValid();
+        }
 
         return $this->render('ShopModule::order.html.twig', [
             'form'  => $form->createView(),
@@ -83,8 +104,8 @@ class ShopController extends Controller
 
         $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
 
+        // @todo вынести в сервис получение списка товаров в заказе.
         $items = [];
-
         if ($order) {
             $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
 
@@ -140,6 +161,13 @@ class ShopController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param int $item_id
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
     public function showBuyButtonAction(Request $request, $item_id)
     {
         return $this->render('ShopModule::show_buy_button.html.twig', [
@@ -157,7 +185,28 @@ class ShopController extends Controller
      */
     public function postAction(Request $request)
     {
-        if ($request->request->has('remove') and $request->request->has('order_item_id')) {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        if ($request->request->has('smart_shop_order_confirm')) {
+            $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+
+            $form = $this->createForm(new OrderConfirmFormType(), $order);
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                /** @var Order $order */
+                $order = $form->getData();
+                $order->setStatus(Order::STATUS_PROCESSING);
+
+                $this->persist($order, true);
+                $this->addFlash('success', 'Заказ оформлен.');
+            } else {
+                $this->addFlash('smart_shop_order_confirm_data', $request->request->all());
+            }
+
+            return $this->redirectToRoute('shop.order');
+        } elseif ($request->request->has('remove') and $request->request->has('order_item_id')) {
             return $this->removeItemToBasketAction($request);
         } elseif ($request->request->has('add')) {
             return $this->addItemToBasketAction($request);

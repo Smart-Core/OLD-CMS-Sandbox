@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Окт 13 2015 г., 19:13
+-- Время создания: Окт 14 2015 г., 01:40
 -- Версия сервера: 5.6.26
 -- Версия PHP: 5.6.14
 
@@ -327,7 +327,7 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, NULL, 'a:0:{}', NULL, 32, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL, NULL),
 (17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, NULL, 'a:0:{}', NULL, 31, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL, NULL),
 (18, 1, 'Веб-форма', 0, 0, 'web-form', 1, NULL, 'a:0:{}', NULL, 34, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL, NULL),
-(19, 1, 'Моя корзина', 0, 0, 'basket', 1, NULL, 'a:0:{}', NULL, NULL, 'N;', 'N;', '', 1, '2015-10-09 01:11:07', '', NULL);
+(19, 1, 'Моя корзина', 0, 0, 'basket', 1, NULL, 'a:0:{}', NULL, 36, 'N;', 'N;', '', 1, '2015-10-09 01:11:07', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -910,26 +910,34 @@ CREATE TABLE IF NOT EXISTS `shop_orders` (
   `updated_at` datetime DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `shipping_id` int(10) unsigned DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `payment_date` datetime DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `IDX_608DDB6C8B8E8428` (`created_at`),
   KEY `IDX_608DDB6C5E38FE8A` (`payment_status`),
   KEY `IDX_608DDB6C505AA053` (`shipping_status`),
   KEY `IDX_608DDB6CA76ED395` (`user_id`),
-  KEY `IDX_608DDB6C4887F3F8` (`shipping_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+  KEY `IDX_608DDB6C4887F3F8` (`shipping_id`),
+  KEY `IDX_608DDB6C444F97DD` (`phone`),
+  KEY `IDX_608DDB6C8B1DA00E` (`payment_date`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `shop_orders`
 --
 
-INSERT INTO `shop_orders` (`id`, `amount`, `status`, `payment_status`, `shipping_status`, `created_at`, `expires_at`, `updated_at`, `user_id`, `shipping_id`) VALUES
-(5, 0, 5, NULL, NULL, '2015-10-13 04:10:18', NULL, '2015-10-13 04:10:18', 1, NULL),
-(6, 0, 5, NULL, NULL, '2015-10-13 04:12:09', NULL, '2015-10-13 04:12:09', 1, NULL),
-(7, 40000, 5, NULL, NULL, '2015-10-13 04:20:17', NULL, '2015-10-13 04:20:17', 1, NULL),
-(8, 0, 5, NULL, NULL, '2015-10-13 04:23:38', NULL, '2015-10-13 04:23:38', 1, NULL),
-(9, 20000, 5, NULL, NULL, '2015-10-13 04:27:23', NULL, '2015-10-13 04:27:23', 1, NULL),
-(10, 25000, 5, NULL, NULL, '2015-10-13 04:35:03', NULL, '2015-10-13 04:35:03', 1, NULL),
-(11, 39000, 0, NULL, NULL, '2015-10-13 04:35:34', NULL, '2015-10-13 04:35:34', 1, NULL);
+INSERT INTO `shop_orders` (`id`, `amount`, `status`, `payment_status`, `shipping_status`, `created_at`, `expires_at`, `updated_at`, `user_id`, `shipping_id`, `address`, `phone`, `payment_date`, `email`, `name`, `comment`) VALUES
+(5, 0, 5, NULL, NULL, '2015-10-13 04:10:18', NULL, '2015-10-13 04:10:18', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(6, 0, 5, NULL, NULL, '2015-10-13 04:12:09', NULL, '2015-10-13 04:12:09', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(7, 40000, 5, NULL, NULL, '2015-10-13 04:20:17', NULL, '2015-10-13 04:20:17', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(8, 0, 5, NULL, NULL, '2015-10-13 04:23:38', NULL, '2015-10-13 04:23:38', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(9, 20000, 5, NULL, NULL, '2015-10-13 04:27:23', NULL, '2015-10-13 04:27:23', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(10, 25000, 5, NULL, NULL, '2015-10-13 04:35:03', NULL, '2015-10-13 04:35:03', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(11, 39000, 1, NULL, NULL, '2015-10-13 04:35:34', NULL, '2015-10-13 04:35:34', 1, 2, '5555555555', '+7-923-123-12-34', NULL, 'artem@mail.ru', 'Piotr', '123');
 
 -- --------------------------------------------------------
 
@@ -1742,7 +1750,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` datetime NOT NULL,
   `expired` tinyint(1) NOT NULL,
   `credentials_expired` tinyint(1) NOT NULL,
-  `patronymic` varchar(255) DEFAULT NULL,
+  `patronymic` varchar(32) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_1483A5E992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_1483A5E9A0D96FBF` (`email_canonical`),
@@ -1755,10 +1764,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`, `patronymic`) VALUES
-(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-10-13 03:51:17', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL),
-(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL),
-(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL);
+INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`, `patronymic`, `phone`) VALUES
+(1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-10-14 01:16:10', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, '+7-923-123-12-34'),
+(2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, NULL),
+(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 

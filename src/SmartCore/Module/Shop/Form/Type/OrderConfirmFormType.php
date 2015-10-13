@@ -15,6 +15,7 @@ class OrderConfirmFormType extends AbstractType
             ->add('phone')
             ->add('name')
             ->add('shipping')
+            ->add('address')
             ->add('comment')
             ->add('confirm', 'submit', [
                 'attr' => ['class' => 'btn btn-success'],

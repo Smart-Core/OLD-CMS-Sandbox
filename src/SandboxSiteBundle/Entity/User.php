@@ -4,6 +4,7 @@ namespace SandboxSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Bundle\CMSBundle\Model\UserModel;
+use Smart\CoreBundle\Doctrine\ColumnTrait;
 
 /**
  * @ORM\Entity
@@ -17,10 +18,12 @@ use SmartCore\Bundle\CMSBundle\Model\UserModel;
  */
 class User extends UserModel
 {
+    use ColumnTrait\Phone;
+
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     protected $patronymic;
 
