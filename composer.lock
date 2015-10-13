@@ -4836,12 +4836,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "a868e28a6cf84dc862efec7c692ab4607845e158"
+                "reference": "78321b91ea3e5ed574ddebfd53ec2af953d37411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/a868e28a6cf84dc862efec7c692ab4607845e158",
-                "reference": "a868e28a6cf84dc862efec7c692ab4607845e158",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/78321b91ea3e5ed574ddebfd53ec2af953d37411",
+                "reference": "78321b91ea3e5ed574ddebfd53ec2af953d37411",
                 "shasum": ""
             },
             "require": {
@@ -4913,7 +4913,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-12 21:24:08"
+            "time": "2015-10-13 14:05:05"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4951,12 +4951,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "91870293c12b96b364e9667a76dbcbdfc58946ea"
+                "reference": "d72b41d1bb13e0bab5d368aca01f88159d1d3701"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/91870293c12b96b364e9667a76dbcbdfc58946ea",
-                "reference": "91870293c12b96b364e9667a76dbcbdfc58946ea",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/d72b41d1bb13e0bab5d368aca01f88159d1d3701",
+                "reference": "d72b41d1bb13e0bab5d368aca01f88159d1d3701",
                 "shasum": ""
             },
             "require": {
@@ -4977,7 +4977,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-10-12 21:27:06"
+            "time": "2015-10-13 13:15:53"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5270,12 +5270,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "bb04c4677eda5f82b022965b12a21384401a2504"
+                "reference": "e47331d908a85c867b11198dcd1a092f30581794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/bb04c4677eda5f82b022965b12a21384401a2504",
-                "reference": "bb04c4677eda5f82b022965b12a21384401a2504",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/e47331d908a85c867b11198dcd1a092f30581794",
+                "reference": "e47331d908a85c867b11198dcd1a092f30581794",
                 "shasum": ""
             },
             "require": {
@@ -5288,7 +5288,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-12 21:24:07"
+            "time": "2015-10-13 13:17:12"
         },
         {
             "name": "smart-core/module-unicat",
@@ -6166,16 +6166,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.22.2",
+            "version": "v1.22.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "79249fc8c9ff62e41e217e0c630e2e00bcadda6a"
+                "reference": "ebfc36b7e77b0c1175afe30459cf943010245540"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/79249fc8c9ff62e41e217e0c630e2e00bcadda6a",
-                "reference": "79249fc8c9ff62e41e217e0c630e2e00bcadda6a",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ebfc36b7e77b0c1175afe30459cf943010245540",
+                "reference": "ebfc36b7e77b0c1175afe30459cf943010245540",
                 "shasum": ""
             },
             "require": {
@@ -6223,7 +6223,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-09-22 13:59:32"
+            "time": "2015-10-13 07:07:02"
         },
         {
             "name": "white-october/pagerfanta-bundle",
