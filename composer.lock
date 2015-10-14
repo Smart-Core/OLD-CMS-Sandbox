@@ -5297,12 +5297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "66f9d049890adaf1e7df4176e38a7942b1965666"
+                "reference": "89460bdf0cce5df648cf7dd9dc76c87e71f05f7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/66f9d049890adaf1e7df4176e38a7942b1965666",
-                "reference": "66f9d049890adaf1e7df4176e38a7942b1965666",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/89460bdf0cce5df648cf7dd9dc76c87e71f05f7a",
+                "reference": "89460bdf0cce5df648cf7dd9dc76c87e71f05f7a",
                 "shasum": ""
             },
             "require": {
@@ -5315,7 +5315,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-14 15:05:57"
+            "time": "2015-10-14 16:41:10"
         },
         {
             "name": "smart-core/module-user",
