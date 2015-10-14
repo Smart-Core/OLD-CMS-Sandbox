@@ -1956,17 +1956,17 @@
         },
         {
             "name": "happyr/google-site-authenticator-bundle",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "target-dir": "Happyr/GoogleSiteAuthenticatorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Happyr/GoogleSiteAuthenticatorBundle.git",
-                "reference": "e409bebf3512385805743f918ac5b9e72fdb9a26"
+                "reference": "2464861c40cd49bbb6b287e11f72d3f232305e58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Happyr/GoogleSiteAuthenticatorBundle/zipball/e409bebf3512385805743f918ac5b9e72fdb9a26",
-                "reference": "e409bebf3512385805743f918ac5b9e72fdb9a26",
+                "url": "https://api.github.com/repos/Happyr/GoogleSiteAuthenticatorBundle/zipball/2464861c40cd49bbb6b287e11f72d3f232305e58",
+                "reference": "2464861c40cd49bbb6b287e11f72d3f232305e58",
                 "shasum": ""
             },
             "require": {
@@ -2000,7 +2000,7 @@
                 "api",
                 "google"
             ],
-            "time": "2015-06-03 13:26:41"
+            "time": "2015-10-14 13:26:05"
         },
         {
             "name": "happyr/slugify-bundle",
@@ -3883,16 +3883,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.17.1",
+            "version": "1.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "0524c87587ab85bc4c2d6f5b41253ccb930a5422"
+                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/0524c87587ab85bc4c2d6f5b41253ccb930a5422",
-                "reference": "0524c87587ab85bc4c2d6f5b41253ccb930a5422",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
+                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
                 "shasum": ""
             },
             "require": {
@@ -3906,10 +3906,11 @@
                 "aws/aws-sdk-php": "^2.4.9",
                 "doctrine/couchdb": "~1.0@dev",
                 "graylog2/gelf-php": "~1.0",
+                "jakub-onderka/php-parallel-lint": "0.9",
                 "php-console/php-console": "^3.1.3",
                 "phpunit/phpunit": "~4.5",
                 "phpunit/phpunit-mock-objects": "2.3.0",
-                "raven/raven": "~0.11",
+                "raven/raven": "^0.13",
                 "ruflin/elastica": ">=0.90 <3.0",
                 "swiftmailer/swiftmailer": "~5.3",
                 "videlalvaro/php-amqplib": "~2.4"
@@ -3955,7 +3956,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-08-31 09:17:37"
+            "time": "2015-10-14 12:51:02"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -4836,12 +4837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "c4a5474344ef1a1544fbb6e6b5f531385e333758"
+                "reference": "5c669835960b23264453c4b4f6605cc629e97930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/c4a5474344ef1a1544fbb6e6b5f531385e333758",
-                "reference": "c4a5474344ef1a1544fbb6e6b5f531385e333758",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/5c669835960b23264453c4b4f6605cc629e97930",
+                "reference": "5c669835960b23264453c4b4f6605cc629e97930",
                 "shasum": ""
             },
             "require": {
@@ -4913,7 +4914,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-14 07:20:52"
+            "time": "2015-10-14 13:17:42"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4921,12 +4922,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "78b907f6314e350e38cd4e8aef535b7ad6895361"
+                "reference": "8a7482d56f4cc1ee13a868c0642edb2cab570a91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/78b907f6314e350e38cd4e8aef535b7ad6895361",
-                "reference": "78b907f6314e350e38cd4e8aef535b7ad6895361",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/8a7482d56f4cc1ee13a868c0642edb2cab570a91",
+                "reference": "8a7482d56f4cc1ee13a868c0642edb2cab570a91",
                 "shasum": ""
             },
             "require": {
@@ -4943,7 +4944,7 @@
                 "MIT"
             ],
             "homepage": "http://smart-core.org",
-            "time": "2015-10-12 22:45:50"
+            "time": "2015-10-14 12:49:18"
         },
         {
             "name": "smart-core/core-bundle",
@@ -4951,12 +4952,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "e7854bb884d8113b42e3e3e25d9c264da24631a2"
+                "reference": "62663c194626f819115c95831c3dfc097717f59d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/e7854bb884d8113b42e3e3e25d9c264da24631a2",
-                "reference": "e7854bb884d8113b42e3e3e25d9c264da24631a2",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/62663c194626f819115c95831c3dfc097717f59d",
+                "reference": "62663c194626f819115c95831c3dfc097717f59d",
                 "shasum": ""
             },
             "require": {
@@ -4977,7 +4978,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-10-14 07:57:47"
+            "time": "2015-10-14 15:05:10"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5296,12 +5297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "aca83c6d6eeabab8e896a06be7ea0451391a782c"
+                "reference": "66f9d049890adaf1e7df4176e38a7942b1965666"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/aca83c6d6eeabab8e896a06be7ea0451391a782c",
-                "reference": "aca83c6d6eeabab8e896a06be7ea0451391a782c",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/66f9d049890adaf1e7df4176e38a7942b1965666",
+                "reference": "66f9d049890adaf1e7df4176e38a7942b1965666",
                 "shasum": ""
             },
             "require": {
@@ -5314,7 +5315,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-14 07:20:52"
+            "time": "2015-10-14 15:05:57"
         },
         {
             "name": "smart-core/module-user",
