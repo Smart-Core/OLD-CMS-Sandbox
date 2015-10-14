@@ -28,9 +28,59 @@ class ShopController extends Controller
                 return $this->basketWidgetAction();
             case 'basket':
                 return $this->myBasketAction();
+            case 'my_orders':
+                return $this->redirectToRoute('shop.orders.active');
         }
 
         return $this->render('ShopModule::index.html.twig', []);
+    }
+
+    public function ordersAllAction()
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $orders = $em->getRepository('ShopModule:Order')->findAllVisible($this->getUser());
+
+        return $this->render('ShopModule::orders.html.twig', [
+            'orders' => $orders,
+        ]);
+    }
+    
+    public function ordersActiveAction()
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $orders = $em->getRepository('ShopModule:Order')->findActive($this->getUser());
+
+        return $this->render('ShopModule::orders.html.twig', [
+            'orders' => $orders,
+        ]);
+    }
+
+    public function ordersCompletedAction()
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_FINISHED, 'user' => $this->getUser()]);
+
+        return $this->render('ShopModule::orders.html.twig', [
+            'orders' => $orders,
+        ]);
+    }
+
+    public function ordersCancelledAction()
+    {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_CANCELLED, 'user' => $this->getUser()]);
+
+        return $this->render('ShopModule::orders.html.twig', [
+            'orders' => $orders,
+        ]);
     }
 
     /**
@@ -38,12 +88,12 @@ class ShopController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function orderAction(Request $request)
+    public function checkoutAction(Request $request)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
 
         if (empty($order)) {
             return $this->redirectToRoute('shop.index');
@@ -108,7 +158,7 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
 
         // @todo вынести в сервис получение списка товаров в заказе.
         $items = [];
@@ -195,7 +245,7 @@ class ShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         if ($request->request->has('smart_shop_order_confirm')) {
-            $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING]);
+            $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
 
             $form = $this->createForm(new OrderConfirmFormType(), $order);
             $form->handleRequest($request);
@@ -211,7 +261,7 @@ class ShopController extends Controller
                 $this->addFlash('smart_shop_order_confirm_data', $request->request->all());
             }
 
-            return $this->redirectToRoute('shop.order');
+            return $this->redirectToRoute('shop.checkout');
         } elseif ($request->request->has('remove') and $request->request->has('order_item_id')) {
             return $this->removeItemToBasketAction($request);
         } elseif ($request->request->has('add')) {
@@ -300,8 +350,8 @@ class ShopController extends Controller
         if (empty($order)) {
             $order = new Order();
             $order
-                ->setUser($this->getUser())
                 ->setName($this->getUser()->getUsername())
+                ->setUser($this->getUser())
                 ->setUpdatedAt(new \DateTime())
             ;
 
@@ -324,6 +374,8 @@ class ShopController extends Controller
                 ->setQuantity(1)
                 ->setPrice($item->getAttr('price'))
                 ->setAmount($item->getAttr('price'))
+                ->setTitle($item->getAttr('title'))
+                ->setUser($this->getUser())
             ;
         }
 

@@ -1,0 +1,38 @@
+<h3>Мои заказы</h3>
+
+{{ knp_menu_render('ShopModule:Client:orders', {
+        'currentClass': 'active',
+        'clear_matcher': false,
+    })
+}}
+
+<div class="row">
+    <div class="span12 col-sm-12">
+        <table class="table table-bordered table-hover">
+            <thead><tr>
+                <th>Id</th>
+                <th>Товары</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th>Дата</th>
+            </tr></thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>
+                        <ol>
+                        {% for item in order.orderitems %}
+                            <li>{{ item.title }} ({{ item.quantity }} шт по {{ item.price }} руб.)</li>
+                        {% endfor %}
+                        </ol>
+                    </td>
+                    <td>{{ order.amount }}</td>
+                    <td>{{ order.statusAsText }}</td>
+                    <td>{{ order.createdAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

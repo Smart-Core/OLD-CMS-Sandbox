@@ -33,12 +33,12 @@ class Order
     use ColumnTrait\UpdatedAt;
     use ColumnTrait\FosUser;
 
-    const STATUS_PENDING    = 0;
+    const STATUS_PENDING    = 0; // Ожидается - находится в корзинке.
     const STATUS_PROCESSING = 1;
     const STATUS_SHIPPING   = 2;
     const STATUS_CANCELLED  = 3;
     const STATUS_FINISHED   = 4;
-    const STATUS_DELETED    = 5;
+    const STATUS_DELETED    = 5; // Удалён - в корзине были удалены все товары.
 
     const PAYMENT_STATUS_NEW       = 0;
     const PAYMENT_STATUS_ABORTED   = 1;
@@ -245,6 +245,35 @@ class Order
         $this->status = $status;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusAsText()
+    {
+        switch ($this->status) {
+            case self::STATUS_PENDING:
+                return 'Pending';
+                break;
+            case self::STATUS_PROCESSING:
+                return 'Processing';
+                break;
+            case self::STATUS_SHIPPING:
+                return 'Shipping';
+                break;
+            case self::STATUS_FINISHED:
+                return 'Finished';
+                break;
+            case self::STATUS_CANCELLED:
+                return 'Cancelled';
+                break;
+            case self::STATUS_DELETED:
+                return 'Deleted';
+                break;
+            default:
+                return 'N/A';
+        }
     }
 
     /**

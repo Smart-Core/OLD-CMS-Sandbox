@@ -19,7 +19,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class OrderItem
 {
     use ColumnTrait\Id;
+    use ColumnTrait\TitleNotBlank;
     use ColumnTrait\CreatedAt;
+    use ColumnTrait\FosUser; // @todo в прицнипе можно искать купленные или товары ещё в корзине через JOIN orders
 
     /**
      * @var int

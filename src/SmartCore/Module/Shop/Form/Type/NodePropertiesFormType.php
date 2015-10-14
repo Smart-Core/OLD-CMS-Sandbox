@@ -15,6 +15,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
                 'choices' => [
                     'basket_widget' => 'Basket widget',
                     'basket' => 'Basket full',
+                    'my_orders' => 'My_orders',
                 ],
             ])
         ;

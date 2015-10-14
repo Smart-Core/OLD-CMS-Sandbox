@@ -3,7 +3,27 @@ shop.index:
     defaults:
         _controller: ShopModule:Shop:index
 
-shop.order:
-    path: /order/
+shop.checkout:
+    path: /checkout/
     defaults:
-        _controller: ShopModule:Shop:order
+        _controller: ShopModule:Shop:checkout
+
+shop.orders.all:
+    path: /all/
+    defaults:
+        _controller: ShopModule:Shop:ordersAll
+
+shop.orders.active:
+    path: /active/
+    defaults:
+        _controller: ShopModule:Shop:ordersActive
+
+shop.orders.completed:
+    path: /completed/
+    defaults:
+        _controller: ShopModule:Shop:ordersCompleted
+
+shop.orders.canceled:
+    path: /cancelled/
+    defaults:
+        _controller: ShopModule:Shop:ordersCancelled

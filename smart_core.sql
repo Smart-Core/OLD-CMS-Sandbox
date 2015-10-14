@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Окт 14 2015 г., 01:40
+-- Время создания: Окт 14 2015 г., 21:03
 -- Версия сервера: 5.6.26
 -- Версия PHP: 5.6.14
 
@@ -304,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
   KEY `IDX_6C047E64462CE4F5` (`position`),
   KEY `IDX_6C047E64A76ED395` (`user_id`),
   KEY `IDX_6C047E644AF38FD1` (`deleted_at`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
 -- Дамп данных таблицы `engine_folders`
@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `engine_folders` (
 INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`, `uri_part`, `is_active`, `description`, `meta`, `redirect_to`, `router_node_id`, `permissions`, `lockout_nodes`, `template_inheritable`, `user_id`, `created_at`, `template_self`, `deleted_at`) VALUES
 (1, NULL, 'Главная', 0, 0, NULL, 1, ':)', 'a:4:{s:8:"keywords";s:3:"cms";s:11:"description";s:3:"cms";s:6:"robots";s:3:"all";s:6:"author";s:10:"Артём";}', NULL, NULL, NULL, NULL, 'main', 1, '2013-03-19 00:44:38', NULL, NULL),
 (2, 1, 'О компании', 0, 10, 'about', 1, NULL, 'a:0:{}', NULL, NULL, NULL, NULL, 'inner', 1, '2013-03-11 16:42:33', NULL, NULL),
-(3, 1, 'Аккаунт пользователя', 0, 255, 'user', 1, NULL, 'a:0:{}', NULL, 7, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:06', NULL, NULL),
+(3, 1, 'Личный кабинет', 0, 255, 'user', 1, NULL, 'a:0:{}', NULL, 7, 'N;', 'N;', '', 1, '2013-03-18 01:15:06', '', NULL),
 (4, 8, 'Вложенная', 0, 0, 'under_news', 1, NULL, 'a:0:{}', NULL, NULL, 'N;', 'N;', NULL, 1, '2013-03-18 01:15:27', NULL, NULL),
 (5, 1, 'Так просто ;)', 0, 3, 'simple', 1, NULL, 'N;', NULL, NULL, 'N;', 'N;', 'main', 1, '2013-03-19 04:43:50', NULL, NULL),
 (6, 2, 'Вложенная папка', 0, 0, 'inner', 1, NULL, 'a:0:{}', NULL, NULL, 'N;', 'N;', NULL, 1, '2013-03-19 04:47:22', NULL, NULL),
@@ -327,7 +327,8 @@ INSERT INTO `engine_folders` (`id`, `folder_pid`, `title`, `is_file`, `position`
 (16, 1, 'Блог на юникате', 0, 0, 'unicat_blog', 1, NULL, 'a:0:{}', NULL, 32, 'N;', 'N;', NULL, 1, '2014-07-01 13:34:57', NULL, NULL),
 (17, 1, 'Фотогалерея', 0, 0, 'gallery', 1, NULL, 'a:0:{}', NULL, 31, 'N;', 'N;', NULL, 1, '2014-07-15 03:28:01', NULL, NULL),
 (18, 1, 'Веб-форма', 0, 0, 'web-form', 1, NULL, 'a:0:{}', NULL, 34, 'N;', 'N;', NULL, 1, '2015-03-24 03:17:14', NULL, NULL),
-(19, 1, 'Моя корзина', 0, 0, 'basket', 1, NULL, 'a:0:{}', NULL, 36, 'N;', 'N;', '', 1, '2015-10-09 01:11:07', '', NULL);
+(19, 3, 'Моя корзина', 0, 0, 'basket', 1, NULL, 'a:0:{}', NULL, 36, 'N;', 'N;', '', 1, '2015-10-09 01:11:07', '', NULL),
+(20, 3, 'История заказов', 0, 0, 'orders', 1, NULL, 'a:0:{}', NULL, 37, 'N;', 'N;', '', 1, '2015-10-14 17:25:33', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -388,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `engine_nodes` (
   KEY `IDX_3055D1B7C242628` (`module`),
   KEY `IDX_3055D1B7A76ED395` (`user_id`),
   KEY `IDX_3055D1B74AF38FD1` (`deleted_at`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=38 ;
 
 --
 -- Дамп данных таблицы `engine_nodes`
@@ -420,7 +421,7 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (25, 4, 1, 1, 'Texter', 'a:2:{s:12:"text_item_id";i:16;s:6:"editor";b:1;}', 29, 0, NULL, 1, '2014-02-08 21:04:03', 0, NULL, 1, NULL, 1),
 (26, 13, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"22";s:10:"controller";s:23:"BlogWidget:categoryTree";s:6:"params";N;s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 20, 0, 'Категории блога', 1, '2014-02-08 21:04:50', 0, NULL, 0, NULL, 1),
 (27, 14, 1, 1, 'Slider', 'a:1:{s:9:"slider_id";i:6;}', 0, 0, 'Nivo', 1, '2014-02-10 08:13:18', 0, NULL, 1, NULL, 1),
-(28, 15, 1, 1, 'Unicat', 'a:3:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;s:19:"use_item_id_as_slug";b:0;}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, 'catalog', 1, NULL, 1),
+(28, 15, 1, 1, 'Unicat', 'a:4:{s:13:"repository_id";i:1;s:16:"configuration_id";i:1;s:19:"use_item_id_as_slug";b:0;s:20:"use_layout_for_items";s:5:"inner";}', 0, 0, NULL, 1, '2014-02-12 16:23:22', 0, 'catalog', 1, NULL, 1),
 (29, 15, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"28";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 1";s:8:"open_tag";s:50:"<hr /><h4>Категории каталога</h4>";s:9:"close_tag";N;}', 0, 0, 'Виджет категорий каталога', 1, '2014-03-06 12:24:51', 0, NULL, 0, NULL, 1),
 (30, 16, 1, 1, 'Catalog2', 'a:1:{s:13:"repository_id";i:3;}', 0, 0, 'Тесты с каталогом', 1, '2014-07-01 13:42:20', 0, NULL, 0, '2015-03-02 03:42:04', 1),
 (31, 17, 1, 1, 'Gallery', 'a:1:{s:10:"gallery_id";i:1;}', 0, 0, NULL, 1, '2014-07-15 03:38:38', 0, NULL, 1, NULL, 1),
@@ -428,7 +429,8 @@ INSERT INTO `engine_nodes` (`id`, `folder_id`, `region_id`, `is_active`, `module
 (33, 16, 3, 1, 'Widget', 'a:5:{s:7:"node_id";s:2:"32";s:10:"controller";s:25:"UnicatWidget:categoryTree";s:6:"params";s:12:"structure: 3";s:8:"open_tag";s:44:"<hr /><h4>Категории блога</h4>";s:9:"close_tag";N;}', 0, 0, NULL, 1, '2015-03-02 11:58:06', 0, NULL, 1, NULL, 1),
 (34, 18, 1, 1, 'WebForm', 'a:1:{s:10:"webform_id";i:1;}', 0, 0, NULL, 1, '2015-03-24 03:18:10', 0, NULL, 1, NULL, 1),
 (35, 1, 3, 1, 'Shop', 'a:2:{s:4:"mode";s:13:"basket_widget";s:14:"basket_node_id";s:2:"36";}', 0, 0, 'Виджет корзинки', 1, '2015-10-09 00:50:43', 0, NULL, 0, NULL, 1),
-(36, 19, 1, 1, 'Shop', 'a:1:{s:4:"mode";s:6:"basket";}', 0, 0, NULL, 1, '2015-10-09 01:11:27', 0, NULL, 1, NULL, 1);
+(36, 19, 1, 1, 'Shop', 'a:1:{s:4:"mode";s:6:"basket";}', 0, 0, NULL, 1, '2015-10-09 01:11:27', 0, NULL, 1, NULL, 1),
+(37, 20, 1, 1, 'Shop', 'a:2:{s:14:"basket_node_id";s:2:"36";s:4:"mode";s:9:"my_orders";}', 0, 0, 'Мои заказы', 1, '2015-10-14 19:51:05', 0, NULL, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -812,7 +814,7 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   KEY `IDX_70B2CA2ACCD7E912` (`menu_id`),
   KEY `IDX_70B2CA2A162CB942` (`folder_id`),
   KEY `IDX_70B2CA2AA76ED395` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Дамп данных таблицы `menu_items`
@@ -835,7 +837,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `folder_id`, `is_active`, `position`,
 (17, 1, 17, 1, 2, NULL, NULL, NULL, 1, '2014-07-15 03:28:34', NULL, NULL, 'N;', 0),
 (18, 2, 7, 1, 0, NULL, NULL, NULL, 1, '2015-02-15 21:41:46', NULL, NULL, 'N;', 0),
 (19, 1, NULL, 1, 255, 'Ссылка на яндекс', 'Откроется в новом окне', 'http://ya.ru', 1, '2015-02-15 23:07:04', '2015-02-21 01:29:55', NULL, 'N;', 1),
-(20, 1, 18, 1, 4, NULL, NULL, NULL, 1, '2015-03-24 03:17:53', NULL, NULL, 'N;', 0);
+(20, 1, 18, 1, 4, NULL, NULL, NULL, 1, '2015-03-24 03:17:53', NULL, NULL, 'N;', 0),
+(21, 1, 20, 1, 0, NULL, NULL, NULL, 1, '2015-10-14 17:28:58', NULL, 3, 'N;', 0),
+(22, 1, 19, 1, 0, NULL, NULL, NULL, 1, '2015-10-14 20:54:15', NULL, 3, 'N;', 0);
 
 -- --------------------------------------------------------
 
@@ -924,7 +928,7 @@ CREATE TABLE IF NOT EXISTS `shop_orders` (
   KEY `IDX_608DDB6C4887F3F8` (`shipping_id`),
   KEY `IDX_608DDB6C444F97DD` (`phone`),
   KEY `IDX_608DDB6C8B1DA00E` (`payment_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Дамп данных таблицы `shop_orders`
@@ -937,7 +941,9 @@ INSERT INTO `shop_orders` (`id`, `amount`, `status`, `payment_status`, `shipping
 (8, 0, 5, NULL, NULL, '2015-10-13 04:23:38', NULL, '2015-10-13 04:23:38', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (9, 20000, 5, NULL, NULL, '2015-10-13 04:27:23', NULL, '2015-10-13 04:27:23', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (10, 25000, 5, NULL, NULL, '2015-10-13 04:35:03', NULL, '2015-10-13 04:35:03', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
-(11, 39000, 1, NULL, NULL, '2015-10-13 04:35:34', NULL, '2015-10-13 04:35:34', 1, 2, '5555555555', '+7-923-123-12-34', NULL, 'artem@mail.ru', 'Piotr', '123');
+(11, 39000, 1, NULL, NULL, '2015-10-13 04:35:34', NULL, '2015-10-13 04:35:34', 1, 2, '5555555555', '+7-923-123-12-34', NULL, 'artem@mail.ru', 'Piotr', '123'),
+(13, 20000, 5, NULL, NULL, '2015-10-14 16:34:22', NULL, '2015-10-14 16:34:22', 1, NULL, NULL, NULL, NULL, NULL, 'root', NULL),
+(14, 25000, 0, NULL, NULL, '2015-10-14 16:35:51', NULL, '2015-10-14 16:35:51', 1, NULL, NULL, NULL, NULL, NULL, 'root', NULL);
 
 -- --------------------------------------------------------
 
@@ -954,19 +960,23 @@ CREATE TABLE IF NOT EXISTS `shop_orders_items` (
   `quantity` int(11) NOT NULL,
   `price` double NOT NULL,
   `created_at` datetime NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_BDD1217E8D9F6D38` (`order_id`),
   KEY `IDX_BDD1217E8B8E8428` (`created_at`),
-  KEY `IDX_BDD1217E126F525E` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+  KEY `IDX_BDD1217E126F525E` (`item_id`),
+  KEY `IDX_BDD1217EA76ED395` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Дамп данных таблицы `shop_orders_items`
 --
 
-INSERT INTO `shop_orders_items` (`id`, `order_id`, `item_id`, `amount`, `quantity`, `price`, `created_at`) VALUES
-(10, 11, 5, 20000, 1, 20000, '2015-10-13 04:35:34'),
-(11, 11, 2, 19000, 1, 19000, '2015-10-13 04:35:42');
+INSERT INTO `shop_orders_items` (`id`, `order_id`, `item_id`, `amount`, `quantity`, `price`, `created_at`, `user_id`, `title`) VALUES
+(10, 11, 5, 20000, 1, 20000, '2015-10-13 04:35:34', 1, 'HTC One'),
+(11, 11, 2, 19000, 1, 19000, '2015-10-13 04:35:42', 1, 'Canon 650D'),
+(13, 14, 4, 25000, 1, 25000, '2015-10-14 16:35:51', 1, 'Samsung Galaxy S4');
 
 -- --------------------------------------------------------
 
@@ -2075,7 +2085,8 @@ ALTER TABLE `shop_orders`
 -- Ограничения внешнего ключа таблицы `shop_orders_items`
 --
 ALTER TABLE `shop_orders_items`
-  ADD CONSTRAINT `FK_BDD1217E8D9F6D38` FOREIGN KEY (`order_id`) REFERENCES `shop_orders` (`id`);
+  ADD CONSTRAINT `FK_BDD1217E8D9F6D38` FOREIGN KEY (`order_id`) REFERENCES `shop_orders` (`id`),
+  ADD CONSTRAINT `FK_BDD1217EA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `shop_shippings`
