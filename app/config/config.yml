@@ -83,11 +83,6 @@ doctrine:
                 #user:     %database2_user%
                 #password: %database2_password%
                 #unix_socket: %database2_socket%
-    orm:
-        auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
-        resolve_target_entities:
-            FOS\UserBundle\Model\UserInterface: %user_class%
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -106,8 +101,9 @@ swiftmailer:
 #    load_controllers: false
 
 accelerator_cache:
-    host: %base_url%
-    web_dir: %kernel.root_dir%/../web
+    host: '%base_url%'
+    web_dir: '%web_dir%' # %kernel.root_dir%/../web
+    #web_dir: "@=container.hasParameter('web_dir') ? parameter('web_dir') : '%kernel.root_dir%/../web'"
     mode: curl
 
 smart_sitemap:
@@ -121,7 +117,3 @@ smart_sitemap:
         - /user/
         - /admin/
         - /api/
-
-#sp_bower:
-#    bundles:
-#        CMSBundle: ~
