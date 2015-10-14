@@ -52,6 +52,9 @@ security:
         - { path: ^/%admin_path%, roles: ROLE_ADMIN }
         - { path: ^/efconnect, role: ROLE_ADMIN }
         - { path: ^/elfinder, role: ROLE_ADMIN }
-        #- { path: ^/user, roles: ROLE_USER }
+        - { path: ^/%user_path%/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%user_path%/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%user_path%/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%user_path%, roles: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
