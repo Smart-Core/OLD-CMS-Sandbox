@@ -72,6 +72,7 @@ class OrderItem
     public function __construct()
     {
         $this->created_at = new \DateTime();
+        $this->amount     = 0;
         $this->quantity   = 1;
     }
 

@@ -360,20 +360,22 @@ class ShopController extends Controller
 
         $orderItem = $em->getRepository('ShopModule:OrderItem')->findOneBy(['order' => $order, 'item_id' => $item_id]);
 
+        $price = $item->getAttr('price', 0);
+
         if ($orderItem) {
             $qty = $orderItem->getQuantity() + 1;
             $orderItem
                 ->setQuantity($qty)
-                ->setPrice($item->getAttr('price'))
-                ->setAmount($item->getAttr('price') * $qty)
+                ->setPrice($price)
+                ->setAmount($price * $qty)
             ;
         } else {
             $orderItem = new OrderItem();
             $orderItem
                 ->setItemId($item_id)
                 ->setQuantity(1)
-                ->setPrice($item->getAttr('price'))
-                ->setAmount($item->getAttr('price'))
+                ->setPrice($price)
+                ->setAmount($price)
                 ->setTitle($item->getAttr('title'))
                 ->setUser($this->getUser())
             ;
