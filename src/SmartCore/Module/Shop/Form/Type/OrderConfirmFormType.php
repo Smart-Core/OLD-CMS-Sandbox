@@ -14,7 +14,7 @@ class OrderConfirmFormType extends AbstractType
             ->add('email')
             ->add('phone')
             ->add('name')
-            ->add('shipping')
+            ->add('shipping', null, ['required' => true])
             ->add('address')
             ->add('comment')
             ->add('confirm', 'submit', [
