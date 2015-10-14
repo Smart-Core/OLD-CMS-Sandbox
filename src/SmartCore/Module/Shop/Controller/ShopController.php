@@ -68,7 +68,13 @@ class ShopController extends Controller
         $user = $this->getUser();
 
         $order->setEmail($user->getEmailCanonical());
-        $order->setName($user->getFirstname().' '.$user->getLastname());
+
+        $fio = $user->getFirstname().' '.$user->getLastname();
+        if (empty(trim($fio))) {
+            $order->setName($user->getUsername());
+        } else {
+            $order->setName($fio);
+        }
 
         if (method_exists($user, 'getPhone')) {
             $order->setPhone($user->getPhone());
@@ -295,6 +301,7 @@ class ShopController extends Controller
             $order = new Order();
             $order
                 ->setUser($this->getUser())
+                ->setName($this->getUser()->getUsername())
                 ->setUpdatedAt(new \DateTime())
             ;
 
