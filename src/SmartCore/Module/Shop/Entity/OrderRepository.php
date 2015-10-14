@@ -23,6 +23,7 @@ class OrderRepository extends EntityRepository
         $qb
             ->where('e.status != :PENDING')
             ->andWhere('e.status != :DELETED')
+            ->orderBy('e.id', 'DESC')
             ->setParameter('PENDING', Order::STATUS_PENDING)
             ->setParameter('DELETED', Order::STATUS_DELETED)
         ;
@@ -49,6 +50,7 @@ class OrderRepository extends EntityRepository
                 $qb->expr()->eq('e.status', ':PROCESSING'),
                 $qb->expr()->eq('e.status', ':SHIPPING')
             ))
+            ->orderBy('e.id', 'DESC')
             ->setParameter('PROCESSING', Order::STATUS_PROCESSING)
             ->setParameter('SHIPPING',   Order::STATUS_SHIPPING)
         ;

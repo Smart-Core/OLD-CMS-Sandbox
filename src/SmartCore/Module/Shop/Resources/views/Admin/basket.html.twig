@@ -1,0 +1,20 @@
+{% extends '@CMS/Admin/module.html.twig' %}
+
+{% block title %}{{ 'Baskets'|trans }} / {{ parent() }}{% endblock %}
+
+{% set page_header = 'Baskets'|trans %}
+{% set page_description = 'e-shop'|trans %}
+
+{% block content %}
+
+    <h4>{{ 'Basket details'|trans }} №{{ order.id }}</h4>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+
+        {{ order|ld }}
+
+    </div>
+</div>
+
+{% endblock content %}

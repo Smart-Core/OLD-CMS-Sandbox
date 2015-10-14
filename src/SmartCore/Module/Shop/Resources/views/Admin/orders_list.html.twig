@@ -1,12 +1,12 @@
 {% extends '@CMS/Admin/module.html.twig' %}
 
-{% block title %}{{ 'Shipping'|trans }} / {{ parent() }}{% endblock %}
+{% block title %}{{ 'Orders'|trans }} / {{ parent() }}{% endblock %}
 
-{% set page_header = 'Shipping'|trans %}
+{% set page_header = 'Orders'|trans %}
 {% set page_description = 'e-shop'|trans %}
 
 {% block nav %}
-    {{ knp_menu_render('ShopModule:Admin:shipping', {
+    {{ knp_menu_render('ShopModule:Admin:orders', {
             'currentClass': 'active',
             'clear_matcher': false,
         })
@@ -15,29 +15,33 @@
 
 {% block content %}
 
-    <h4>{{ 'Delivery modes'|trans }}</h4>
-
 <div class="box box-primary">
     <div class="box-header with-border">
-
-    {#{{ form(form, {'attr': {'class': 'form-horizontal well'}} ) }}#}
 
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>{{ 'Title'|trans }}</th>
-                <th>{{ 'Is enabled'|trans }}</th>
+                <th>{{ 'Товары'|trans }}</th>
+                <th>{{ 'Сумма'|trans }}</th>
+                <th>{{ 'Статус'|trans }}</th>
                 <th>{{ 'User'|trans }}</th>
                 <th>{{ 'Created at'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for entity in pagerfanta.currentPageResults %}
+            {% for entity in pagerfanta %} {# .currentPageResults #}
                 <tr>
-                    <td>{{ entity.id }}</td>
-                    <td>{{ entity.title }}</td>
-                    <td>{{ entity.isEnabledAsText|trans }}</td>
+                    <td><a href="{{ path('smart_module.shop.admin.order.show', {'id': entity.id}) }}">{{ entity.id }}</a></td>
+                    <td>
+                        <ol>
+                            {% for item in entity.orderitems %}
+                                <li>{{ item.title }} ({{ item.quantity }} шт по {{ item.price }} руб.)</li>
+                            {% endfor %}
+                        </ol>
+                    </td>
+                    <td>{{ entity.amount }}</td>
+                    <td>{{ entity.statusAsText|trans }}</td>
                     <td>{{ entity.user }}</td>
                     <td>{{ entity.createdAt | localizeddate('medium') }}</td>
                 </tr>

@@ -3,6 +3,56 @@ smart_module.shop.admin:
     defaults:
         _controller: ShopModule:AdminShop:index
 
+smart_module.shop.admin.baskets:
+    path: /baskets/
+    defaults:
+        _controller: ShopModule:AdminShop:baskets
+
+smart_module.shop.admin.basket.show:
+    path: /baskets/{id}/
+    defaults:
+        _controller: ShopModule:AdminShop:basket
+    requirements:
+        id: \d+
+
+smart_module.shop.admin.orders:
+    path: /orders/
+    defaults:
+        _controller: ShopModule:AdminShop:orders
+
+smart_module.shop.admin.order.show:
+    path: /orders/{id}/
+    defaults:
+        _controller: ShopModule:AdminShop:order
+    requirements:
+        id: \d+
+
+smart_module.shop.admin.orders.all:
+    path: /orders/all/
+    defaults:
+        _controller: ShopModule:AdminShop:ordersAll
+
+smart_module.shop.admin.orders.active:
+    path: /orders/active/
+    defaults:
+        _controller: ShopModule:AdminShop:ordersActive
+
+smart_module.shop.admin.orders.completed:
+    path: /orders/completed/
+    defaults:
+        _controller: ShopModule:AdminShop:ordersCompleted
+
+smart_module.shop.admin.orders.cancelled:
+    path: /orders/cancelled/
+    defaults:
+        _controller: ShopModule:AdminShop:ordersCancelled
+
+smart_module.shop.admin.orders.shipping:
+    path: /orders/shipping/
+    defaults:
+        _controller: ShopModule:AdminShop:ordersShipping
+
+# ------------------------------------------------------
 smart_module.shop.admin.settings:
     path: /settings/
     defaults:
@@ -11,7 +61,7 @@ smart_module.shop.admin.settings:
 smart_module.shop.admin.payment:
     path: /payment/
     defaults:
-        _controller: ShopModule:AdminShop:payment
+        _controller: ShopModule:AdminShop:index
 
 smart_module.shop.admin.shipping:
     path: /shipping/

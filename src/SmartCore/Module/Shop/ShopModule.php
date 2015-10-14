@@ -29,13 +29,12 @@ class ShopModule extends ModuleBundle
             $submenu->setChildrenAttribute('class', 'treeview-menu');
 
             $submenu->addChild('Заказы', [
-                'route' => 'smart_module.shop.admin',
-                'routeParameters' => ['page' => 'orders'],
+                'route' => 'smart_module.shop.admin.orders',
             ])->setExtras(['beforeCode' => '<i class="fa fa-credit-card"></i>']);
 
             $submenu->addChild('Корзины', [
-                'route' => 'smart_module.shop.admin',
-                'routeParameters' => ['page' => 'baskets'],
+                'route' => 'smart_module.shop.admin.baskets',
+                //'routeParameters' => ['page' => 'baskets'],
             ])->setExtras(['beforeCode' => '<i class="fa fa-cart-arrow-down"></i>']);
 
             $submenu->addChild('Доставка', [

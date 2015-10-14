@@ -29,7 +29,7 @@ class ShopController extends Controller
             case 'basket':
                 return $this->myBasketAction();
             case 'my_orders':
-                return $this->redirectToRoute('shop.orders.active');
+                return $this->redirectToRoute('smart_module.shop.orders.active');
         }
 
         return $this->render('ShopModule::index.html.twig', []);
@@ -64,7 +64,7 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_FINISHED, 'user' => $this->getUser()]);
+        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_FINISHED, 'user' => $this->getUser()], ['id' => 'DESC']);
 
         return $this->render('ShopModule::orders.html.twig', [
             'orders' => $orders,
@@ -76,7 +76,7 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_CANCELLED, 'user' => $this->getUser()]);
+        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_CANCELLED, 'user' => $this->getUser()], ['id' => 'DESC']);
 
         return $this->render('ShopModule::orders.html.twig', [
             'orders' => $orders,
@@ -93,10 +93,10 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
+        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()], ['id' => 'DESC']);
 
         if (empty($order)) {
-            return $this->redirectToRoute('shop.index');
+            return $this->redirectToRoute('smart_module.shop.index');
         }
 
         $items = [];
@@ -261,7 +261,7 @@ class ShopController extends Controller
                 $this->addFlash('smart_shop_order_confirm_data', $request->request->all());
             }
 
-            return $this->redirectToRoute('shop.checkout');
+            return $this->redirectToRoute('smart_module.shop.checkout');
         } elseif ($request->request->has('remove') and $request->request->has('order_item_id')) {
             return $this->removeItemToBasketAction($request);
         } elseif ($request->request->has('add')) {

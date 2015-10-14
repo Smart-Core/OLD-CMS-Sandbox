@@ -1,29 +1,29 @@
-shop.index:
+smart_module.shop.index:
     path: /
     defaults:
         _controller: ShopModule:Shop:index
 
-shop.checkout:
+smart_module.shop.checkout:
     path: /checkout/
     defaults:
         _controller: ShopModule:Shop:checkout
 
-shop.orders.all:
+smart_module.shop.orders.all:
     path: /all/
     defaults:
         _controller: ShopModule:Shop:ordersAll
 
-shop.orders.active:
+smart_module.shop.orders.active:
     path: /active/
     defaults:
         _controller: ShopModule:Shop:ordersActive
 
-shop.orders.completed:
+smart_module.shop.orders.completed:
     path: /completed/
     defaults:
         _controller: ShopModule:Shop:ordersCompleted
 
-shop.orders.canceled:
+smart_module.shop.orders.canceled:
     path: /cancelled/
     defaults:
         _controller: ShopModule:Shop:ordersCancelled

@@ -19,10 +19,10 @@ class Client extends ContainerAware
 
         $menu->setChildrenAttribute('class', isset($options['class']) ? $options['class'] : 'nav nav-pills');
 
-        $menu->addChild('Все заказы',   ['route' => 'shop.orders.all']);
-        $menu->addChild('Aктивные',     ['route' => 'shop.orders.active']);
-        $menu->addChild('Выполненные',  ['route' => 'shop.orders.completed']);
-        $menu->addChild('Отмененные',   ['route' => 'shop.orders.canceled']);
+        $menu->addChild('Все заказы',   ['route' => 'smart_module.shop.orders.all']);
+        $menu->addChild('Aктивные',     ['route' => 'smart_module.shop.orders.active']);
+        $menu->addChild('Выполненные',  ['route' => 'smart_module.shop.orders.completed']);
+        $menu->addChild('Отменённые',   ['route' => 'smart_module.shop.orders.canceled']);
 
         return $menu;
     }

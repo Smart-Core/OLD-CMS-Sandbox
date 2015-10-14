@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Окт 14 2015 г., 21:03
+-- Время создания: Окт 14 2015 г., 22:23
 -- Версия сервера: 5.6.26
 -- Версия PHP: 5.6.14
 
@@ -928,7 +928,7 @@ CREATE TABLE IF NOT EXISTS `shop_orders` (
   KEY `IDX_608DDB6C4887F3F8` (`shipping_id`),
   KEY `IDX_608DDB6C444F97DD` (`phone`),
   KEY `IDX_608DDB6C8B1DA00E` (`payment_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `shop_orders`
@@ -943,7 +943,8 @@ INSERT INTO `shop_orders` (`id`, `amount`, `status`, `payment_status`, `shipping
 (10, 25000, 5, NULL, NULL, '2015-10-13 04:35:03', NULL, '2015-10-13 04:35:03', 1, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (11, 39000, 1, NULL, NULL, '2015-10-13 04:35:34', NULL, '2015-10-13 04:35:34', 1, 2, '5555555555', '+7-923-123-12-34', NULL, 'artem@mail.ru', 'Piotr', '123'),
 (13, 20000, 5, NULL, NULL, '2015-10-14 16:34:22', NULL, '2015-10-14 16:34:22', 1, NULL, NULL, NULL, NULL, NULL, 'root', NULL),
-(14, 25000, 0, NULL, NULL, '2015-10-14 16:35:51', NULL, '2015-10-14 16:35:51', 1, NULL, NULL, NULL, NULL, NULL, 'root', NULL);
+(14, 25000, 0, NULL, NULL, '2015-10-14 16:35:51', NULL, '2015-10-14 16:35:51', 1, NULL, NULL, NULL, NULL, NULL, 'root', NULL),
+(15, 25000, 0, NULL, NULL, '2015-10-14 21:13:24', NULL, '2015-10-14 21:13:24', 3, NULL, NULL, NULL, NULL, NULL, 'aaa', NULL);
 
 -- --------------------------------------------------------
 
@@ -967,7 +968,7 @@ CREATE TABLE IF NOT EXISTS `shop_orders_items` (
   KEY `IDX_BDD1217E8B8E8428` (`created_at`),
   KEY `IDX_BDD1217E126F525E` (`item_id`),
   KEY `IDX_BDD1217EA76ED395` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Дамп данных таблицы `shop_orders_items`
@@ -976,7 +977,8 @@ CREATE TABLE IF NOT EXISTS `shop_orders_items` (
 INSERT INTO `shop_orders_items` (`id`, `order_id`, `item_id`, `amount`, `quantity`, `price`, `created_at`, `user_id`, `title`) VALUES
 (10, 11, 5, 20000, 1, 20000, '2015-10-13 04:35:34', 1, 'HTC One'),
 (11, 11, 2, 19000, 1, 19000, '2015-10-13 04:35:42', 1, 'Canon 650D'),
-(13, 14, 4, 25000, 1, 25000, '2015-10-14 16:35:51', 1, 'Samsung Galaxy S4');
+(13, 14, 4, 25000, 1, 25000, '2015-10-14 16:35:51', 1, 'Samsung Galaxy S4'),
+(14, 15, 4, 25000, 1, 25000, '2015-10-14 21:13:24', 3, 'Canon 650D');
 
 -- --------------------------------------------------------
 
@@ -1777,7 +1779,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expire_at`, `firstname`, `lastname`, `created_at`, `expired`, `credentials_expired`, `patronymic`, `phone`) VALUES
 (1, 'root', 'root', 'artem@mail.ru', 'artem@mail.ru', 1, 'rvmppg4hla80gw0c88wwkogkc8cg88c', 'pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==', '2015-10-14 01:16:10', 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_ROOT";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, '+7-923-123-12-34'),
 (2, 'demo', 'demo', 'demo@mail.com', 'demo@mail.com', 1, '15lr4t5s1pdwowoc8k88goc88k00w8', 'k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==', '2015-05-22 00:28:12', 0, NULL, NULL, NULL, 'a:1:{i:0;s:14:"ROLE_NEWSMAKER";}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, NULL),
-(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2014-01-19 18:41:30', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, NULL);
+(3, 'aaa', 'aaa', 'aaa@aaa.ru', 'aaa@aaa.ru', 1, 'teyhcartb3ks0kw4sw0co0k8ko0gk48', '+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==', '2015-10-14 21:13:16', 0, NULL, NULL, NULL, 'a:0:{}', NULL, '', '', '2014-01-20 00:00:00', 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
