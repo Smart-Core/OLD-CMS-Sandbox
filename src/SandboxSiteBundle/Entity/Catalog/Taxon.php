@@ -3,11 +3,12 @@
 namespace SandboxSiteBundle\Entity\Catalog;
 
 use Doctrine\ORM\Mapping as ORM;
-use SmartCore\Module\Unicat\Model\CategoryModel;
+use SmartCore\Module\Unicat\Model\TaxonModel;
+
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="unicat_catalog_categories",
+ * @ORM\Table(name="unicat_catalog_taxons",
  *      indexes={
  *          @ORM\Index(columns={"is_enabled"}),
  *          @ORM\Index(columns={"position"})
@@ -17,6 +18,6 @@ use SmartCore\Module\Unicat\Model\CategoryModel;
  *      }
  * )
  */
-class Category extends CategoryModel
+class Taxon extends TaxonModel
 {
 }

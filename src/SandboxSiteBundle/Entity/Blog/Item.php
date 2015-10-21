@@ -16,18 +16,18 @@ use SmartCore\Module\Unicat\Model\ItemModel;
 class Item extends ItemModel
 {
     /**
-     * @var Category[]
+     * @var Taxon[]
      *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="items", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(name="unicat_blog_items_categories_relations")
+     * @ORM\ManyToMany(targetEntity="Taxon", inversedBy="items", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="unicat_blog_items_taxons_relations")
      */
-    protected $categories;
+    protected $taxons;
 
     /**
-     * @var Category[]
+     * @var Taxon[]
      *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="itemsSingle", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(name="unicat_blog_items_categories_relations_single")
+     * @ORM\ManyToMany(targetEntity="Taxon", inversedBy="itemsSingle", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="unicat_blog_items_taxons_relations_single")
      */
-    protected $categoriesSingle;
+    protected $taxonsSingle;
 }
