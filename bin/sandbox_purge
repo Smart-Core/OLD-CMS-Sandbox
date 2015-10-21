@@ -8,17 +8,27 @@ case $response in
         then
             echo "Vendors already installed"
         else
+            if [ -d "app/Entity" ]
+            then
+                echo ""
+            else
+                mkdir app/Entity
+            fi
+
             echo "Install vendors"
-            mkdir app/Entity
             composer.phar install
         fi
 
         if [ -d "src/SandboxSiteBundle" ]
         then
-            echo "Start purging..."
+            if [ -d "app/Entity" ]
+            then
+                echo ""
+            else
+                mkdir app/Entity
+            fi
 
-            mkdir app/Entity
-            cp vendor/smart-core/cms-generator-bundle/Resources/skeleton/User.php app/Entity/User.php
+            echo "Start purging..."
 
             app/console doctrine:schema:drop --force
 
@@ -26,9 +36,11 @@ case $response in
             find web/_media/* -type d -exec rm -rf {} \;
             find web/images/* -type d -exec rm -rf {} \;
 
+            cp vendor/smart-core/cms-generator-bundle/Resources/skeleton/User.php app/Entity/User.php
+
             app/console cms:generate:sitebundle
 
-            rm -rf app/Entity/User.php
+            rm -rf app/Entity
 
             bin/init_var;
             bin/clear_cache;
