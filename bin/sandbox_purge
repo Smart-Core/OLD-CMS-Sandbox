@@ -21,13 +21,6 @@ case $response in
 
         if [ -d "src/SandboxSiteBundle" ]
         then
-            if [ -d "app/Entity" ]
-            then
-                echo ""
-            else
-                mkdir app/Entity
-            fi
-
             echo "Start purging..."
 
             app/console doctrine:schema:drop --force
@@ -40,7 +33,7 @@ case $response in
 
             app/console cms:generate:sitebundle
 
-            rm -rf app/Entity
+            rm -rf app/Entity/User.php
 
             bin/init_var;
             bin/clear_cache;
