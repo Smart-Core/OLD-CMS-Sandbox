@@ -15,6 +15,10 @@ case $response in
         if [ -d "src/SandboxSiteBundle" ]
         then
             echo "Start purging..."
+
+            mkdir app/Entity
+            cp vendor/smart-core/cms-generator-bundle/Resources/skeleton/User.php app/Entity/User.php
+
             app/console doctrine:schema:drop --force
 
             rm -rf dist src/SandboxSiteBundle smart_core.sql;
@@ -22,6 +26,8 @@ case $response in
             find web/images/* -type d -exec rm -rf {} \;
 
             app/console cms:generate:sitebundle
+
+            rm -rf app/Entity/User.php
 
             bin/init_var;
             bin/clear_cache;
