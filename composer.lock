@@ -3392,12 +3392,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "f8c6b24a846e3713899f02e72604a78d80bb1b37"
+                "reference": "a07920b10a3b888abe7c47c7aecf56f69553f707"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/f8c6b24a846e3713899f02e72604a78d80bb1b37",
-                "reference": "f8c6b24a846e3713899f02e72604a78d80bb1b37",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/a07920b10a3b888abe7c47c7aecf56f69553f707",
+                "reference": "a07920b10a3b888abe7c47c7aecf56f69553f707",
                 "shasum": ""
             },
             "require": {
@@ -3441,7 +3441,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-10-01 08:23:01"
+            "time": "2015-10-22 10:06:42"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -4837,12 +4837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "edf37a0f57af27b14fc6d57863005eaaa5f1002f"
+                "reference": "4c6b515486e2f8341b14d8f78d0b3cacdf2a0760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/edf37a0f57af27b14fc6d57863005eaaa5f1002f",
-                "reference": "edf37a0f57af27b14fc6d57863005eaaa5f1002f",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/4c6b515486e2f8341b14d8f78d0b3cacdf2a0760",
+                "reference": "4c6b515486e2f8341b14d8f78d0b3cacdf2a0760",
                 "shasum": ""
             },
             "require": {
@@ -4914,7 +4914,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-21 21:14:00"
+            "time": "2015-10-24 12:48:28"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4922,12 +4922,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "8a7482d56f4cc1ee13a868c0642edb2cab570a91"
+                "reference": "aeccf5119ed46e1a9013fdf6eaa4e33a0bb59620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/8a7482d56f4cc1ee13a868c0642edb2cab570a91",
-                "reference": "8a7482d56f4cc1ee13a868c0642edb2cab570a91",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/aeccf5119ed46e1a9013fdf6eaa4e33a0bb59620",
+                "reference": "aeccf5119ed46e1a9013fdf6eaa4e33a0bb59620",
                 "shasum": ""
             },
             "require": {
@@ -4944,7 +4944,7 @@
                 "MIT"
             ],
             "homepage": "http://smart-core.org",
-            "time": "2015-10-14 12:49:18"
+            "time": "2015-10-24 12:48:28"
         },
         {
             "name": "smart-core/core-bundle",
