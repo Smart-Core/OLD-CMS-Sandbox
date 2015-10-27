@@ -1742,16 +1742,16 @@
         },
         {
             "name": "google/apiclient",
-            "version": "1.1.5",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "2bc00ec4e8fa1a5eec793d800fac339f30b730db"
+                "reference": "a25dc9d5c109ebb02945ba1ff6336cc937c27628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/2bc00ec4e8fa1a5eec793d800fac339f30b730db",
-                "reference": "2bc00ec4e8fa1a5eec793d800fac339f30b730db",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/a25dc9d5c109ebb02945ba1ff6336cc937c27628",
+                "reference": "a25dc9d5c109ebb02945ba1ff6336cc937c27628",
                 "shasum": ""
             },
             "require": {
@@ -1781,7 +1781,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2015-09-23 04:19:33"
+            "time": "2015-10-16 22:11:08"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3695,19 +3695,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "3de5ac111f245b51455dbf748b73450bb2213912"
+                "reference": "58bb1d2c6717d08ddd2cc3b90ba3567c55942aa9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/3de5ac111f245b51455dbf748b73450bb2213912",
-                "reference": "3de5ac111f245b51455dbf748b73450bb2213912",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/58bb1d2c6717d08ddd2cc3b90ba3567c55942aa9",
+                "reference": "58bb1d2c6717d08ddd2cc3b90ba3567c55942aa9",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "2.*",
-                "php": ">=5.3.2",
-                "symfony/browser-kit": "~2.0",
-                "symfony/framework-bundle": "~2.0"
+                "doctrine/common": "~2.0",
+                "php": "^5.3.9|^7.0",
+                "symfony/browser-kit": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0"
             },
             "suggest": {
                 "doctrine/dbal": "Required when using the fixture loading functionality with an ORM and SQLite",
@@ -3744,7 +3744,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2015-10-19 06:15:27"
+            "time": "2015-10-25 18:05:00"
         },
         {
             "name": "liip/imagine-bundle",
@@ -4572,17 +4572,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "6f5d663a1a34b5116c69009895feb81fb37a8875"
+                "reference": "2d061c01e708c83ede4720e2551d9449bf606c0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/6f5d663a1a34b5116c69009895feb81fb37a8875",
-                "reference": "6f5d663a1a34b5116c69009895feb81fb37a8875",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/2d061c01e708c83ede4720e2551d9449bf606c0a",
+                "reference": "2d061c01e708c83ede4720e2551d9449bf606c0a",
                 "shasum": ""
             },
             "require": {
@@ -4628,7 +4628,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-10-20 06:54:18"
+            "time": "2015-10-27 18:48:08"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4837,12 +4837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "4c6b515486e2f8341b14d8f78d0b3cacdf2a0760"
+                "reference": "ac34c0eb747864d05867d15127e1b837b03f4916"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/4c6b515486e2f8341b14d8f78d0b3cacdf2a0760",
-                "reference": "4c6b515486e2f8341b14d8f78d0b3cacdf2a0760",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/ac34c0eb747864d05867d15127e1b837b03f4916",
+                "reference": "ac34c0eb747864d05867d15127e1b837b03f4916",
                 "shasum": ""
             },
             "require": {
@@ -4914,7 +4914,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-10-24 12:48:28"
+            "time": "2015-10-27 18:38:33"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -5019,12 +5019,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/HtmlBundle.git",
-                "reference": "025fa3bbbc192f673a6286ba2a8ac7b5e7121289"
+                "reference": "395762c2a46a079c46aa3e6572765558ea0974dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/HtmlBundle/zipball/025fa3bbbc192f673a6286ba2a8ac7b5e7121289",
-                "reference": "025fa3bbbc192f673a6286ba2a8ac7b5e7121289",
+                "url": "https://api.github.com/repos/Smart-Core/HtmlBundle/zipball/395762c2a46a079c46aa3e6572765558ea0974dd",
+                "reference": "395762c2a46a079c46aa3e6572765558ea0974dd",
                 "shasum": ""
             },
             "require": {
@@ -5043,7 +5043,7 @@
                 "bundle",
                 "html"
             ],
-            "time": "2015-06-26 04:32:01"
+            "time": "2015-10-25 05:33:37"
         },
         {
             "name": "smart-core/ladybug-bundle",
@@ -5297,12 +5297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "f67ae1ac618d0f88f6717d1fcdc391687cf2e511"
+                "reference": "9547b42426f5c23720913a9ea0396f4285c82c22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/f67ae1ac618d0f88f6717d1fcdc391687cf2e511",
-                "reference": "f67ae1ac618d0f88f6717d1fcdc391687cf2e511",
+                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/9547b42426f5c23720913a9ea0396f4285c82c22",
+                "reference": "9547b42426f5c23720913a9ea0396f4285c82c22",
                 "shasum": ""
             },
             "require": {
@@ -5315,7 +5315,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-21 21:12:32"
+            "time": "2015-10-27 18:22:20"
         },
         {
             "name": "smart-core/module-user",
@@ -5993,16 +5993,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.5",
+            "version": "v2.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "619528a274647cffc1792063c3ea04c4fa8266a0"
+                "reference": "66b2e9662c44d478b69e48278aa54079a006eb42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/619528a274647cffc1792063c3ea04c4fa8266a0",
-                "reference": "619528a274647cffc1792063c3ea04c4fa8266a0",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/66b2e9662c44d478b69e48278aa54079a006eb42",
+                "reference": "66b2e9662c44d478b69e48278aa54079a006eb42",
                 "shasum": ""
             },
             "require": {
@@ -6065,8 +6065,7 @@
                 "egulias/email-validator": "~1.2",
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0",
-                "symfony/phpunit-bridge": "self.version"
+                "ocramius/proxy-manager": "~0.4|~1.0"
             },
             "type": "library",
             "extra": {
@@ -6111,7 +6110,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-09-25 11:16:52"
+            "time": "2015-10-27 19:07:24"
         },
         {
             "name": "twig/extensions",
