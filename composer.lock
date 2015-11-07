@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1fa1e9b93bf3620401d83873eb9d7126",
+    "hash": "2133e17db09e99e298d97fe634ddac06",
     "content-hash": "aa504692c41d94e9fb9a1cc27ef03df8",
     "packages": [
         {
@@ -4783,27 +4783,29 @@
         },
         {
             "name": "smart-core/accelerator-cache-bundle",
-            "version": "1.0.6",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/AcceleratorCacheBundle.git",
-                "reference": "8664ac12da10faab76a3b3cdd861997f88530f01"
+                "reference": "9ba8758a0bf0e0229a61021855fcde16cdd6e312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/8664ac12da10faab76a3b3cdd861997f88530f01",
-                "reference": "8664ac12da10faab76a3b3cdd861997f88530f01",
+                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/9ba8758a0bf0e0229a61021855fcde16cdd6e312",
+                "reference": "9ba8758a0bf0e0229a61021855fcde16cdd6e312",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.1",
                 "symfony/framework-bundle": ">=2.1"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.3",
+                "symfony/console": ">=2.1"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-1.0": "1.0.x-dev",
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -4833,7 +4835,7 @@
                 "task",
                 "wincache"
             ],
-            "time": "2015-01-21 15:47:44"
+            "time": "2015-11-07 20:33:19"
         },
         {
             "name": "smart-core/cms-bundle",
@@ -4926,12 +4928,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "aeccf5119ed46e1a9013fdf6eaa4e33a0bb59620"
+                "reference": "c85e81526267d410916d323dba5bea753229b28b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/aeccf5119ed46e1a9013fdf6eaa4e33a0bb59620",
-                "reference": "aeccf5119ed46e1a9013fdf6eaa4e33a0bb59620",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/c85e81526267d410916d323dba5bea753229b28b",
+                "reference": "c85e81526267d410916d323dba5bea753229b28b",
                 "shasum": ""
             },
             "require": {
@@ -4948,7 +4950,7 @@
                 "MIT"
             ],
             "homepage": "http://smart-core.org",
-            "time": "2015-10-24 12:48:28"
+            "time": "2015-11-07 15:43:14"
         },
         {
             "name": "smart-core/core-bundle",
@@ -4956,12 +4958,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "fcbed9681545ba8332e94ead727d80f9e95f7851"
+                "reference": "c2dd93c1ee2a922c60f6fa5a15e4e8b0076dba7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/fcbed9681545ba8332e94ead727d80f9e95f7851",
-                "reference": "fcbed9681545ba8332e94ead727d80f9e95f7851",
+                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/c2dd93c1ee2a922c60f6fa5a15e4e8b0076dba7c",
+                "reference": "c2dd93c1ee2a922c60f6fa5a15e4e8b0076dba7c",
                 "shasum": ""
             },
             "require": {
@@ -4982,7 +4984,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-11-01 00:34:35"
+            "time": "2015-11-07 17:42:57"
         },
         {
             "name": "smart-core/felib-bundle",

@@ -21,7 +21,6 @@
         "jms/debugging-bundle": "dev-master",
         "mremi/templating-extra-bundle": "dev-master",
 
-
         "friendsofsymfony/user-bundle": "dev-master",
         "hwi/oauth-bundle": "0.4.*@dev",
         "knplabs/knp-disqus-bundle":"dev-master",
@@ -62,7 +61,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "SmartCore\\Bundle\\AcceleratorCacheBundle\\Composer\\ScriptHandler::clearCache",
-            "php app/console doctrine:schema:update"
+            "Smart\\CoreBundle\\Composer\\ScriptHandler::doctrineSchemaCheck"
         ],
         "post-update-cmd": [
             "sh bin/init_var",
@@ -72,7 +71,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "SmartCore\\Bundle\\AcceleratorCacheBundle\\Composer\\ScriptHandler::clearCache",
-            "php app/console doctrine:schema:update"
+            "Smart\\CoreBundle\\Composer\\ScriptHandler::doctrineSchemaCheck"
         ]
     },
     "config": {
