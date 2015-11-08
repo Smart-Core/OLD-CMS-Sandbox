@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2133e17db09e99e298d97fe634ddac06",
-    "content-hash": "aa504692c41d94e9fb9a1cc27ef03df8",
+    "hash": "f35927601c931b23f8a4bfa4b255b7c5",
+    "content-hash": "e1690a3c65b46b3f5521005cf62d5ac5",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -87,7 +87,7 @@
         },
         {
             "name": "dizda/cloud-backup-bundle",
-            "version": "dev-master",
+            "version": "3.1.0",
             "target-dir": "Dizda/CloudBackupBundle",
             "source": {
                 "type": "git",
@@ -782,17 +782,16 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "dev-master",
-            "target-dir": "Doctrine/Bundle/MigrationsBundle",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "861d3564c03b3867845ffd87d9b19f49dc673c69"
+                "reference": "303a576e2124efb07ec215e34ea2480b841cf5e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/861d3564c03b3867845ffd87d9b19f49dc673c69",
-                "reference": "861d3564c03b3867845ffd87d9b19f49dc673c69",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/303a576e2124efb07ec215e34ea2480b841cf5e4",
+                "reference": "303a576e2124efb07ec215e34ea2480b841cf5e4",
                 "shasum": ""
             },
             "require": {
@@ -804,12 +803,12 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Bundle\\MigrationsBundle": ""
+                "psr-4": {
+                    "Doctrine\\Bundle\\MigrationsBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -837,7 +836,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2015-06-16 12:48:54"
+            "time": "2015-11-04 13:45:30"
         },
         {
             "name": "doctrine/inflector",
@@ -4843,12 +4842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "72104dbee55c6951427e86d1413dcdafc49b92fc"
+                "reference": "70dde9ea1bd97c51e2092104180de00e757ec775"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/72104dbee55c6951427e86d1413dcdafc49b92fc",
-                "reference": "72104dbee55c6951427e86d1413dcdafc49b92fc",
+                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/70dde9ea1bd97c51e2092104180de00e757ec775",
+                "reference": "70dde9ea1bd97c51e2092104180de00e757ec775",
                 "shasum": ""
             },
             "require": {
@@ -4920,7 +4919,7 @@
                 "cmf",
                 "cms"
             ],
-            "time": "2015-11-06 22:08:53"
+            "time": "2015-11-08 10:37:31"
         },
         {
             "name": "smart-core/cms-generator-bundle",
@@ -4928,12 +4927,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "c85e81526267d410916d323dba5bea753229b28b"
+                "reference": "f0921ce5e2a1ec48d3240b1d47c2d4dd8b2eb7a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/c85e81526267d410916d323dba5bea753229b28b",
-                "reference": "c85e81526267d410916d323dba5bea753229b28b",
+                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/f0921ce5e2a1ec48d3240b1d47c2d4dd8b2eb7a9",
+                "reference": "f0921ce5e2a1ec48d3240b1d47c2d4dd8b2eb7a9",
                 "shasum": ""
             },
             "require": {
@@ -4950,7 +4949,7 @@
                 "MIT"
             ],
             "homepage": "http://smart-core.org",
-            "time": "2015-11-07 15:43:14"
+            "time": "2015-11-08 09:11:07"
         },
         {
             "name": "smart-core/core-bundle",
@@ -4985,6 +4984,38 @@
             ],
             "homepage": "https://github.com/Smart-Core/CoreBundle",
             "time": "2015-11-07 17:42:57"
+        },
+        {
+            "name": "smart-core/db-dumper-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smart-Core/DbDumperBundle.git",
+                "reference": "70f3f09f263069dbacbe6a4306935ece391c1a82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smart-Core/DbDumperBundle/zipball/70f3f09f263069dbacbe6a4306935ece391c1a82",
+                "reference": "70f3f09f263069dbacbe6a4306935ece391c1a82",
+                "shasum": ""
+            },
+            "require": {
+                "dizda/cloud-backup-bundle": "*",
+                "php": ">=5.4.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SmartCore\\Bundle\\DbDumperBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Smart and simple database dumper for Symfony2",
+            "homepage": "http://smart-core.org",
+            "time": "2015-11-08 20:42:16"
         },
         {
             "name": "smart-core/felib-bundle",
@@ -5518,12 +5549,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SettingsBundle.git",
-                "reference": "4a5c95340220d4e56023efc1a0a2a40768d6fc48"
+                "reference": "b62cc243a10a1485ff6385ebc1a88e5552ec79db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/4a5c95340220d4e56023efc1a0a2a40768d6fc48",
-                "reference": "4a5c95340220d4e56023efc1a0a2a40768d6fc48",
+                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/b62cc243a10a1485ff6385ebc1a88e5552ec79db",
+                "reference": "b62cc243a10a1485ff6385ebc1a88e5552ec79db",
                 "shasum": ""
             },
             "require": {
@@ -5552,7 +5583,7 @@
                 "Settings",
                 "bundle"
             ],
-            "time": "2015-09-01 18:55:37"
+            "time": "2015-11-08 13:33:30"
         },
         {
             "name": "smart-core/simple-profiler-bundle",
@@ -6786,8 +6817,6 @@
         "smart-core/cms-bundle": 20,
         "doctrine/migrations": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
-        "doctrine/doctrine-migrations-bundle": 20,
-        "dizda/cloud-backup-bundle": 20,
         "liip/functional-test-bundle": 20,
         "jms/debugging-bundle": 20,
         "mremi/templating-extra-bundle": 20,
@@ -6810,6 +6839,7 @@
         "smart-core/module-widget": 20,
         "smart-core/cms-generator-bundle": 20,
         "smart-core/core-bundle": 20,
+        "smart-core/db-dumper-bundle": 20,
         "smart-core/felib-bundle": 20,
         "smart-core/html-bundle": 20,
         "smart-core/media-bundle": 20,

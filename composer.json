@@ -16,7 +16,7 @@
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "dizda/cloud-backup-bundle": "dev-master",
+        "dizda/cloud-backup-bundle": "*",
         "liip/functional-test-bundle": "dev-master",
         "jms/debugging-bundle": "dev-master",
         "mremi/templating-extra-bundle": "dev-master",
@@ -42,6 +42,7 @@
 
         "smart-core/cms-generator-bundle": "dev-master",
         "smart-core/core-bundle": "dev-master",
+        "smart-core/db-dumper-bundle": "dev-master",
         "smart-core/felib-bundle": "dev-master",
         "smart-core/html-bundle": "dev-master",
         "smart-core/media-bundle": "dev-master",
