@@ -15,7 +15,7 @@
 
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
+        "doctrine/doctrine-migrations-bundle": "^1.0",
         "dizda/cloud-backup-bundle": "dev-master",
         "liip/functional-test-bundle": "dev-master",
         "jms/debugging-bundle": "dev-master",
