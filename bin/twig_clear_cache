@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -d "var/cache/prod/twig" ]
+then
+    echo "Clearing var/cache/prod/twig..."
+    rm -rf var/cache/prod/twig
+fi
