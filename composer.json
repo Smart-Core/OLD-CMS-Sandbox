@@ -11,12 +11,11 @@
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "~2.7",
-        "smart-core/cms-bundle": "dev-master",
 
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "dizda/cloud-backup-bundle": "*",
+
         "liip/functional-test-bundle": "dev-master",
         "jms/debugging-bundle": "dev-master",
         "mremi/templating-extra-bundle": "dev-master",
@@ -28,6 +27,68 @@
         "knplabs/knp-menu-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "dev-master",
         "stfalcon/tinymce-bundle": "dev-master",
+
+
+
+
+        "dizda/cloud-backup-bundle": "*",
+        "liip/imagine-bundle": "*",
+        "fabpot/goutte": "*",
+
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-xml": "*",
+        "ext-json": "*",
+
+        "symfony/assetic-bundle": "~2.0@dev",
+        "symfony/swiftmailer-bundle": "*",
+        "symfony/monolog-bundle": "*",
+        "sensio/distribution-bundle": "v5.0.0",
+        "sensio/generator-bundle": "*",
+
+        "twig/extensions": "~1.0",
+
+        "doctrine/orm": "~2.5",
+        "doctrine/doctrine-cache-bundle": "~1.0@dev",
+        "doctrine/doctrine-bundle": "~1.5",
+
+        "asm89/twig-cache-extension": "*",
+        "egeloen/ordered-form": "~1.0",
+        "egulias/email-validator": "*",
+        "egulias/listeners-debug-command-bundle": "*",
+        "elao/web-profiler-extra-bundle": "~2.0@dev",
+        "friendsofsymfony/rest-bundle": "*",
+        "genemu/form-bundle": "*",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "intervention/image": "*",
+        "jms/di-extra-bundle": "*",
+        "jms/serializer-bundle": "*",
+        "jms/security-extra-bundle": "*",
+        "happyr/google-site-authenticator-bundle": "*",
+        "happyr/slugify-bundle": "*",
+        "helios-ag/fm-elfinder-bundle": "~4.0",
+        "helios-ag/fm-elfinder-php-connector": "v2.2.1",
+        "knplabs/knp-gaufrette-bundle": "*",
+        "knplabs/knp-paginator-bundle": "*",
+        "knplabs/rad-bundle": "*",
+        "liip/theme-bundle": "~1.0@dev",
+        "rickysu/tagcache-bundle": "~0.1",
+
+        "smart-core/accelerator-cache-bundle": "~1.0@dev",
+        "smart-core/ladybug-bundle": "~0.7",
+
+        "sonata-project/intl-bundle": "~2.0@dev",
+        "whiteoctober/breadcrumbs-bundle": "~1.0@dev",
+        "white-october/pagerfanta-bundle": "~1.0@dev",
+        "zendframework/zend-servicemanager": "*",
+        "zendframework/zend-tag": "*",
+        "zenstruck/imagine-extra-bundle": "*",
+
+
+
+
 
         "smart-core/module-breadcrumbs": "dev-master",
         "smart-core/module-gallery": "dev-master",
@@ -42,7 +103,6 @@
 
         "smart-core/cms-generator-bundle": "dev-master",
         "smart-core/core-bundle": "dev-master",
-        "smart-core/db-dumper-bundle": "dev-master",
         "smart-core/felib-bundle": "dev-master",
         "smart-core/html-bundle": "dev-master",
         "smart-core/media-bundle": "dev-master",
