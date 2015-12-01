@@ -2,49 +2,32 @@
 
 DIR="var"
 
-if [ -d "$DIR" ]
-then
-    echo "  $DIR directory exists!"
-else
+if [ ! -d "$DIR" ]; then
     mkdir $DIR
     mkdir $DIR/cache
     mkdir $DIR/logs
     mkdir $DIR/mailspool
-    echo "  $DIR directory created!"
+    echo "  $DIR directory created"
 fi
 
-if [ -d "$DIR/sessions" ];
-then
-    echo "  Sessions directory exists!"
-else
+if [ ! -d "$DIR/sessions" ]; then
     mkdir $DIR/sessions
-    echo "  Sessions directory created!"
+    echo "  Sessions directory created"
 fi
 
-chmod -R 0777 $DIR
-
-if [ -d "web/uploads" ]
-then
-    echo "  web/uploads exists!"
-else
+if [ ! -d "web/uploads" ]; then
     mkdir web/uploads
     echo "Options -Indexes" > web/uploads/.htaccess
     echo "  web/uploads created"
 fi
 
-if [ -d "web/images" ]
-then
-    echo "  web/images exists!"
-else
+if [ ! -d "web/images" ]; then
     mkdir web/images
     echo "Options -Indexes" > web/images/.htaccess
     echo "  web/images created"
 fi
 
-if [ -d "web/_media" ]
-then
-    echo "  web/_media exists!"
-else
+if [ ! -d "web/_media" ]; then
     mkdir web/_media
     echo "Options -Indexes" > web/_media/.htaccess
     echo "  web/_media created"
@@ -58,6 +41,7 @@ find web/images -type d -exec chmod 777 {} \;
 find web/uploads -type d -exec chmod 777 {} \;
 
 # update files permissions
+chmod -R 0777 $DIR
 chmod 777 app/console
 find bin -type f -exec chmod 777 {} \;
 find src/*SiteBundle/Resources/public/css -type f -exec chmod 666 {} \;
