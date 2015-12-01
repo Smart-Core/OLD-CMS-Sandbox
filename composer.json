@@ -10,7 +10,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "~2.7",
+        "symfony/symfony": "~2.8",
 
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
@@ -124,7 +124,7 @@
         "symfony-web-dir": "web",
         "symfony-assets-install": "symlink",
         "branch-alias": {
-            "dev-master": "2.7-dev"
+            "dev-master": "2.8-dev"
         },
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
