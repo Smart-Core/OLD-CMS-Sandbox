@@ -8,10 +8,8 @@ case $response in
         then
             echo "Vendors already installed"
         else
-            if [ -d "app/Entity" ]
+            if [ ! -d "app/Entity" ]
             then
-                echo ""
-            else
                 mkdir app/Entity
             fi
 
