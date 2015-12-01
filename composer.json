@@ -89,29 +89,7 @@
 
 
 
-
-        "smart-core/module-breadcrumbs": "dev-master",
-        "smart-core/module-gallery": "dev-master",
-        "smart-core/module-menu": "dev-master",
-        "smart-core/module-simplenews": "dev-master",
-        "smart-core/module-slider": "dev-master",
-        "smart-core/module-texter": "dev-master",
-        "smart-core/module-unicat": "dev-master",
-        "smart-core/module-user": "dev-master",
-        "smart-core/module-webform": "dev-master",
-        "smart-core/module-widget": "dev-master",
-
-        "smart-core/cms-generator-bundle": "dev-master",
-        "smart-core/core-bundle": "dev-master",
-        "smart-core/felib-bundle": "dev-master",
-        "smart-core/html-bundle": "dev-master",
-        "smart-core/media-bundle": "dev-master",
-        "smart-core/rich-editor-bundle": "dev-master",
-        "smart-core/seo-bundle": "dev-master",
-        "smart-core/session-bundle": "dev-master",
-        "smart-core/settings-bundle": "dev-master",
-        "smart-core/simple-profiler-bundle": "dev-master",
-        "smart-core/sitemap-bundle": "dev-master"
+        "smart-core/simple-profiler-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

@@ -1,0 +1,66 @@
+[submodule "src/SmartCore/Bundle/CMSBundle"]
+	path = src/SmartCore/Bundle/CMSBundle
+	url = git@github.com:Smart-Core/CMSBundle.git
+[submodule "src/SmartCore/Bundle/DbDumperBundle"]
+	path = src/SmartCore/Bundle/DbDumperBundle
+	url = git@github.com:Smart-Core/DbDumperBundle.git
+[submodule "src/SmartCore/Bundle/SettingsBundle"]
+	path = src/SmartCore/Bundle/SettingsBundle
+	url = git@github.com:Smart-Core/SettingsBundle.git
+[submodule "src/SmartCore/Bundle/CMSGeneratorBundle"]
+	path = src/SmartCore/Bundle/CMSGeneratorBundle
+	url = git@github.com:Smart-Core/CMSGeneratorBundle.git
+[submodule "src/SmartCore/Bundle/FelibBundle"]
+	path = src/SmartCore/Bundle/FelibBundle
+	url = git@github.com:Smart-Core/FelibBundle.git
+[submodule "src/SmartCore/Bundle/MediaBundle"]
+	path = src/SmartCore/Bundle/MediaBundle
+	url = git@github.com:Smart-Core/MediaBundle.git
+[submodule "src/SmartCore/Bundle/SessionBundle"]
+	path = src/SmartCore/Bundle/SessionBundle
+	url = git@github.com:Smart-Core/SessionBundle.git
+[submodule "src/SmartCore/Bundle/SeoBundle"]
+	path = src/SmartCore/Bundle/SeoBundle
+	url = git@github.com:Smart-Core/SeoBundle.git
+[submodule "src/SmartCore/Bundle/SitemapBundle"]
+	path = src/SmartCore/Bundle/SitemapBundle
+	url = git@github.com:Smart-Core/SitemapBundle.git
+[submodule "src/SmartCore/Bundle/RichEditorBundle"]
+	path = src/SmartCore/Bundle/RichEditorBundle
+	url = git@github.com:Smart-Core/RichEditorBundle.git
+[submodule "src/SmartCore/Bundle/HtmlBundle"]
+	path = src/SmartCore/Bundle/HtmlBundle
+	url = git@github.com:Smart-Core/HtmlBundle.git
+[submodule "src/Smart/CoreBundle"]
+	path = src/Smart/CoreBundle
+	url = git@github.com:Smart-Core/CoreBundle.git
+[submodule "src/SmartCore/Module/Unicat"]
+	path = src/SmartCore/Module/Unicat
+	url = git@github.com:Smart-Core/Module-Unicat.git
+[submodule "src/SmartCore/Module/Menu"]
+	path = src/SmartCore/Module/Menu
+	url = git@github.com:Smart-Core/Module-Menu.git
+[submodule "src/SmartCore/Module/Gallery"]
+	path = src/SmartCore/Module/Gallery
+	url = git@github.com:Smart-Core/Module-Gallery.git
+[submodule "src/SmartCore/Module/SimpleNews"]
+	path = src/SmartCore/Module/SimpleNews
+	url = git@github.com:Smart-Core/Module-SimpleNews.git
+[submodule "src/SmartCore/Module/Slider"]
+	path = src/SmartCore/Module/Slider
+	url = git@github.com:Smart-Core/Module-Slider.git
+[submodule "src/SmartCore/Module/WebForm"]
+	path = src/SmartCore/Module/WebForm
+	url = git@github.com:Smart-Core/Module-WebForm.git
+[submodule "src/SmartCore/Module/Texter"]
+	path = src/SmartCore/Module/Texter
+	url = git@github.com:Smart-Core/Module-Texter.git
+[submodule "src/SmartCore/Module/Breadcrumbs"]
+	path = src/SmartCore/Module/Breadcrumbs
+	url = git@github.com:Smart-Core/Module-Breadcrumbs.git
+[submodule "src/SmartCore/Module/User"]
+	path = src/SmartCore/Module/User
+	url = git@github.com:Smart-Core/Module-User.git
+[submodule "src/SmartCore/Module/Widget"]
+	path = src/SmartCore/Module/Widget
+	url = git@github.com:Smart-Core/Module-Widget.git

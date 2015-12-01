@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f35927601c931b23f8a4bfa4b255b7c5",
-    "content-hash": "e1690a3c65b46b3f5521005cf62d5ac5",
+    "hash": "f27a5eb2dd3fb59f69e0e26421272609",
+    "content-hash": "6406fd612ac28e0434c386cfdd3bd9e9",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -636,24 +636,23 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.2.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "3233bc78e222d528ca89a6a47d48d6f37888e95e"
+                "reference": "030ff41ef1db66370b36467086bfb817a661fe6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/3233bc78e222d528ca89a6a47d48d6f37888e95e",
-                "reference": "3233bc78e222d528ca89a6a47d48d6f37888e95e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/030ff41ef1db66370b36467086bfb817a661fe6a",
+                "reference": "030ff41ef1db66370b36467086bfb817a661fe6a",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.4.2",
                 "doctrine/inflector": "~1.0",
                 "php": ">=5.3.2",
-                "symfony/doctrine-bridge": "~2.2|~3.0",
-                "symfony/security-acl": "~2.3|~3.0"
+                "symfony/doctrine-bridge": "~2.2|~3.0"
             },
             "require-dev": {
                 "instaclick/coding-standard": "~1.1",
@@ -666,13 +665,17 @@
                 "symfony/finder": "~2.2|~3.0",
                 "symfony/framework-bundle": "~2.2|~3.0",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/security-acl": "~2.3|~3.0",
                 "symfony/validator": "~2.2|~3.0",
                 "symfony/yaml": "~2.2|~3.0"
+            },
+            "suggest": {
+                "symfony/security-acl": "For using this bundle to cache ACLs"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -716,7 +719,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-11-05 13:48:27"
+            "time": "2015-11-27 04:59:07"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -1359,16 +1362,16 @@
         },
         {
             "name": "elao/web-profiler-extra-bundle",
-            "version": "v2.3.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
-                "reference": "573effda12187afef888e8b5ccb66527efb8d55f"
+                "reference": "31f686a63ab0f54ae9367acd20f1fe474c2204ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/573effda12187afef888e8b5ccb66527efb8d55f",
-                "reference": "573effda12187afef888e8b5ccb66527efb8d55f",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/31f686a63ab0f54ae9367acd20f1fe474c2204ff",
+                "reference": "31f686a63ab0f54ae9367acd20f1fe474c2204ff",
                 "shasum": ""
             },
             "require": {
@@ -1409,7 +1412,7 @@
                 "extra",
                 "profiler"
             ],
-            "time": "2015-06-22 07:52:37"
+            "time": "2015-11-02 10:58:33"
         },
         {
             "name": "fabpot/goutte",
@@ -2390,16 +2393,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.2",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "1124ff3c6298f0dcf9edf9156623904d7a5c3428"
+                "reference": "a67ee32df0c6820cc6e861ad4144ee0ef9c74aa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/1124ff3c6298f0dcf9edf9156623904d7a5c3428",
-                "reference": "1124ff3c6298f0dcf9edf9156623904d7a5c3428",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/a67ee32df0c6820cc6e861ad4144ee0ef9c74aa3",
+                "reference": "a67ee32df0c6820cc6e861ad4144ee0ef9c74aa3",
                 "shasum": ""
             },
             "require": {
@@ -2448,7 +2451,49 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-08-16 15:31:59"
+            "time": "2015-11-30 17:03:21"
+        },
+        {
+            "name": "ircmaxell/password-compat",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/password_compat.git",
+                "reference": "5c5cde8822a69545767f7c7f3058cb15ff84614c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/5c5cde8822a69545767f7c7f3058cb15ff84614c",
+                "reference": "5c5cde8822a69545767f7c7f3058cb15ff84614c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/password.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@php.net",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
+            "homepage": "https://github.com/ircmaxell/password_compat",
+            "keywords": [
+                "hashing",
+                "password"
+            ],
+            "time": "2014-11-20 16:49:30"
         },
         {
             "name": "jbroadway/urlify",
@@ -3821,41 +3866,40 @@
         },
         {
             "name": "liip/theme-bundle",
-            "version": "1.3.0",
-            "target-dir": "Liip/ThemeBundle",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "4d1843cb3ad9eb491fe9700b4bb9d3b704a2152d"
+                "reference": "f6a0abff3ff3f9bb1b12f5c61b13b7d88cd96d35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/4d1843cb3ad9eb491fe9700b4bb9d3b704a2152d",
-                "reference": "4d1843cb3ad9eb491fe9700b4bb9d3b704a2152d",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/f6a0abff3ff3f9bb1b12f5c61b13b7d88cd96d35",
+                "reference": "f6a0abff3ff3f9bb1b12f5c61b13b7d88cd96d35",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": "^5.3.9|^7.0",
                 "psr/log": "~1.0",
-                "symfony/framework-bundle": "~2.3"
+                "symfony/framework-bundle": "~2.3|~3.0"
             },
             "require-dev": {
                 "kriswallsmith/assetic": "~1.1",
-                "phpunit/php-code-coverage": "@stable",
+                "phpunit/php-code-coverage": "~2.2@stable",
                 "phpunit/phpunit": "~4.5@stable",
-                "symfony/console": "~2.0",
-                "symfony/expression-language": "~2.6",
-                "twig/twig": "~1.0"
+                "symfony/console": "~2.3|~3.0",
+                "symfony/expression-language": "~2.6|~3.0",
+                "twig/twig": "~1.4"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Liip\\ThemeBundle": ""
+                "psr-4": {
+                    "Liip\\ThemeBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3877,7 +3921,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2015-06-07 18:06:44"
+            "time": "2015-10-26 09:46:41"
         },
         {
             "name": "monolog/monolog",
@@ -3963,12 +4007,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "a0a1c1a4aa19be91cd909a71e9d1baf157e78687"
+                "reference": "0205959643168208f3b313b2e00ca643441850b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/a0a1c1a4aa19be91cd909a71e9d1baf157e78687",
-                "reference": "a0a1c1a4aa19be91cd909a71e9d1baf157e78687",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/0205959643168208f3b313b2e00ca643441850b4",
+                "reference": "0205959643168208f3b313b2e00ca643441850b4",
                 "shasum": ""
             },
             "require": {
@@ -4026,7 +4070,7 @@
                 "form",
                 "template"
             ],
-            "time": "2015-11-26 19:04:12"
+            "time": "2015-11-27 15:18:23"
         },
         {
             "name": "mopa/composer-bridge",
@@ -4246,6 +4290,54 @@
                 "paging"
             ],
             "time": "2014-10-06 10:57:25"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "19f765b66c6fbb56ee3b11bc16d52e38eebdc295"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/19f765b66c6fbb56ee3b11bc16d52e38eebdc295",
+                "reference": "19f765b66c6fbb56ee3b11bc16d52e38eebdc295",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/random.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "pseudorandom",
+                "random"
+            ],
+            "time": "2015-11-10 00:45:41"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -4773,16 +4865,16 @@
         },
         {
             "name": "smart-core/accelerator-cache-bundle",
-            "version": "1.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/AcceleratorCacheBundle.git",
-                "reference": "9ba8758a0bf0e0229a61021855fcde16cdd6e312"
+                "reference": "559d1f1d05d702c36ebe98d4a531f2a04fcae547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/9ba8758a0bf0e0229a61021855fcde16cdd6e312",
-                "reference": "9ba8758a0bf0e0229a61021855fcde16cdd6e312",
+                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/559d1f1d05d702c36ebe98d4a531f2a04fcae547",
+                "reference": "559d1f1d05d702c36ebe98d4a531f2a04fcae547",
                 "shasum": ""
             },
             "require": {
@@ -4825,253 +4917,7 @@
                 "task",
                 "wincache"
             ],
-            "time": "2015-11-07 20:33:19"
-        },
-        {
-            "name": "smart-core/cms-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/CMSBundle.git",
-                "reference": "bb1592c5faf99abb14fdf968f2c466a16177d6f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSBundle/zipball/bb1592c5faf99abb14fdf968f2c466a16177d6f3",
-                "reference": "bb1592c5faf99abb14fdf968f2c466a16177d6f3",
-                "shasum": ""
-            },
-            "require": {
-                "asm89/twig-cache-extension": "*",
-                "doctrine/doctrine-bundle": "~1.5",
-                "doctrine/doctrine-cache-bundle": "~1.0@dev",
-                "doctrine/orm": "~2.5",
-                "egeloen/ordered-form": "~1.0",
-                "egulias/email-validator": "*",
-                "egulias/listeners-debug-command-bundle": "*",
-                "elao/web-profiler-extra-bundle": "~2.0@dev",
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "ext-intl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-xml": "*",
-                "friendsofsymfony/rest-bundle": "*",
-                "genemu/form-bundle": "*",
-                "happyr/google-site-authenticator-bundle": "*",
-                "happyr/slugify-bundle": "*",
-                "helios-ag/fm-elfinder-bundle": "~4.0",
-                "helios-ag/fm-elfinder-php-connector": "v2.2.1",
-                "incenteev/composer-parameter-handler": "~2.0",
-                "intervention/image": "*",
-                "jms/di-extra-bundle": "*",
-                "jms/security-extra-bundle": "*",
-                "jms/serializer-bundle": "*",
-                "knplabs/knp-gaufrette-bundle": "*",
-                "knplabs/knp-paginator-bundle": "*",
-                "knplabs/rad-bundle": "*",
-                "liip/theme-bundle": "~1.0@dev",
-                "php": ">=5.4.11",
-                "rickysu/tagcache-bundle": "~0.1",
-                "sensio/distribution-bundle": "v5.0.0",
-                "sensio/generator-bundle": "*",
-                "smart-core/accelerator-cache-bundle": "~1.0@dev",
-                "smart-core/ladybug-bundle": "~0.7",
-                "sonata-project/intl-bundle": "~2.0@dev",
-                "symfony/assetic-bundle": "~2.0@dev",
-                "symfony/monolog-bundle": "*",
-                "symfony/swiftmailer-bundle": "*",
-                "twig/extensions": "~1.0",
-                "white-october/pagerfanta-bundle": "~1.0@dev",
-                "whiteoctober/breadcrumbs-bundle": "~1.0@dev",
-                "zendframework/zend-servicemanager": "*",
-                "zendframework/zend-tag": "*",
-                "zenstruck/imagine-extra-bundle": "*"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\CMSBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "description": "Base Bundle of Smart Core CMS.",
-            "homepage": "http://smart-core.org",
-            "keywords": [
-                "Symfony2",
-                "bundle",
-                "cmf",
-                "cms"
-            ],
-            "time": "2015-11-27 02:58:39"
-        },
-        {
-            "name": "smart-core/cms-generator-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/CMSGeneratorBundle.git",
-                "reference": "f0921ce5e2a1ec48d3240b1d47c2d4dd8b2eb7a9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CMSGeneratorBundle/zipball/f0921ce5e2a1ec48d3240b1d47c2d4dd8b2eb7a9",
-                "reference": "f0921ce5e2a1ec48d3240b1d47c2d4dd8b2eb7a9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\CMSGeneratorBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "homepage": "http://smart-core.org",
-            "time": "2015-11-08 09:11:07"
-        },
-        {
-            "name": "smart-core/core-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/CoreBundle.git",
-                "reference": "c2dd93c1ee2a922c60f6fa5a15e4e8b0076dba7c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/CoreBundle/zipball/c2dd93c1ee2a922c60f6fa5a15e4e8b0076dba7c",
-                "reference": "c2dd93c1ee2a922c60f6fa5a15e4e8b0076dba7c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1",
-                "symfony/framework-bundle": ">=2.1"
-            },
-            "suggest": {
-                "knplabs/rad-bundle": "*"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Smart\\CoreBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "homepage": "https://github.com/Smart-Core/CoreBundle",
-            "time": "2015-11-07 17:42:57"
-        },
-        {
-            "name": "smart-core/db-dumper-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/DbDumperBundle.git",
-                "reference": "8c63dedc66ee9c62380c6018ba9ad5f6e1e1257a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/DbDumperBundle/zipball/8c63dedc66ee9c62380c6018ba9ad5f6e1e1257a",
-                "reference": "8c63dedc66ee9c62380c6018ba9ad5f6e1e1257a",
-                "shasum": ""
-            },
-            "require": {
-                "dizda/cloud-backup-bundle": "*",
-                "php": ">=5.4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\DbDumperBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Smart and simple database dumper for Symfony2",
-            "homepage": "http://smart-core.org",
-            "time": "2015-11-09 07:33:52"
-        },
-        {
-            "name": "smart-core/felib-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/FelibBundle.git",
-                "reference": "82624f5350c2e539af687036257491debfbe5f24"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/FelibBundle/zipball/82624f5350c2e539af687036257491debfbe5f24",
-                "reference": "82624f5350c2e539af687036257491debfbe5f24",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1",
-                "rickysu/tagcache-bundle": "~0.1",
-                "symfony/framework-bundle": ">=2.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\FelibBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Font-End Library Managment Bundle",
-            "homepage": "http://smart-core.org",
-            "time": "2015-10-08 08:51:03"
-        },
-        {
-            "name": "smart-core/html-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/HtmlBundle.git",
-                "reference": "395762c2a46a079c46aa3e6572765558ea0974dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/HtmlBundle/zipball/395762c2a46a079c46aa3e6572765558ea0974dd",
-                "reference": "395762c2a46a079c46aa3e6572765558ea0974dd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\HtmlBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Html boilerplate.",
-            "homepage": "http://smart-core.org",
-            "keywords": [
-                "bundle",
-                "html"
-            ],
-            "time": "2015-10-25 05:33:37"
+            "time": "2015-11-26 11:28:34"
         },
         {
             "name": "smart-core/ladybug-bundle",
@@ -5124,459 +4970,6 @@
             "time": "2015-01-17 00:07:02"
         },
         {
-            "name": "smart-core/media-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/MediaBundle.git",
-                "reference": "98c5adca5e1f407aaf61c9f8922d604530a0d3fb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/MediaBundle/zipball/98c5adca5e1f407aaf61c9f8922d604530a0d3fb",
-                "reference": "98c5adca5e1f407aaf61c9f8922d604530a0d3fb",
-                "shasum": ""
-            },
-            "require": {
-                "liip/imagine-bundle": "*",
-                "php": ">=5.4.1",
-                "smart-core/core-bundle": "dev-master"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\MediaBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "description": "Symfony Media Cloud Storage Bundle.",
-            "keywords": [
-                "bundle",
-                "media"
-            ],
-            "time": "2015-10-12 21:24:09"
-        },
-        {
-            "name": "smart-core/module-breadcrumbs",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Breadcrumbs.git",
-                "reference": "45f573de1070614db384c1d54403da8ac6bb9979"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Breadcrumbs/zipball/45f573de1070614db384c1d54403da8ac6bb9979",
-                "reference": "45f573de1070614db384c1d54403da8ac6bb9979",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Breadcrumbs\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-09-28 18:15:05"
-        },
-        {
-            "name": "smart-core/module-gallery",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Gallery.git",
-                "reference": "b0dfbac4064da5702aabc8010bf7853ecf427f70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Gallery/zipball/b0dfbac4064da5702aabc8010bf7853ecf427f70",
-                "reference": "b0dfbac4064da5702aabc8010bf7853ecf427f70",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Gallery\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-11-06 22:08:52"
-        },
-        {
-            "name": "smart-core/module-menu",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Menu.git",
-                "reference": "9b0c23e0d37da2bc11a7b2cf97875e397a8144ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Menu/zipball/9b0c23e0d37da2bc11a7b2cf97875e397a8144ec",
-                "reference": "9b0c23e0d37da2bc11a7b2cf97875e397a8144ec",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Menu\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-11-06 22:08:53"
-        },
-        {
-            "name": "smart-core/module-simplenews",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-SimpleNews.git",
-                "reference": "cc997edeab94d21546dcd7406cb4096725f43d93"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-SimpleNews/zipball/cc997edeab94d21546dcd7406cb4096725f43d93",
-                "reference": "cc997edeab94d21546dcd7406cb4096725f43d93",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\SimpleNews\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-11-06 22:08:53"
-        },
-        {
-            "name": "smart-core/module-slider",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Slider.git",
-                "reference": "c75de8b899a7dc308fd700a4c69ee9c47bea3bb1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Slider/zipball/c75de8b899a7dc308fd700a4c69ee9c47bea3bb1",
-                "reference": "c75de8b899a7dc308fd700a4c69ee9c47bea3bb1",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Slider\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-11-06 22:08:53"
-        },
-        {
-            "name": "smart-core/module-texter",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Texter.git",
-                "reference": "e47331d908a85c867b11198dcd1a092f30581794"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Texter/zipball/e47331d908a85c867b11198dcd1a092f30581794",
-                "reference": "e47331d908a85c867b11198dcd1a092f30581794",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Texter\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-10-13 13:17:12"
-        },
-        {
-            "name": "smart-core/module-unicat",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Unicat.git",
-                "reference": "4f636681cdf776b19691a372c5cd79d39e7b54cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Unicat/zipball/4f636681cdf776b19691a372c5cd79d39e7b54cd",
-                "reference": "4f636681cdf776b19691a372c5cd79d39e7b54cd",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Unicat\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-11-06 22:08:52"
-        },
-        {
-            "name": "smart-core/module-user",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-User.git",
-                "reference": "9d13adabd939ead0a26b3656d7b67e97fd7932e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-User/zipball/9d13adabd939ead0a26b3656d7b67e97fd7932e1",
-                "reference": "9d13adabd939ead0a26b3656d7b67e97fd7932e1",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\User\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-04 11:59:52"
-        },
-        {
-            "name": "smart-core/module-webform",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-WebForm.git",
-                "reference": "0210884fdb1bb6f58a6a742391f33ca8ab05c62a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-WebForm/zipball/0210884fdb1bb6f58a6a742391f33ca8ab05c62a",
-                "reference": "0210884fdb1bb6f58a6a742391f33ca8ab05c62a",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\WebForm\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-11-06 22:08:52"
-        },
-        {
-            "name": "smart-core/module-widget",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/Module-Widget.git",
-                "reference": "dbb72ce016f078834141f6b1a17f583e87dea2b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/Module-Widget/zipball/dbb72ce016f078834141f6b1a17f583e87dea2b6",
-                "reference": "dbb72ce016f078834141f6b1a17f583e87dea2b6",
-                "shasum": ""
-            },
-            "require": {
-                "smart-core/cms-bundle": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Module\\Widget\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-06-26 10:39:24"
-        },
-        {
-            "name": "smart-core/rich-editor-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/RichEditorBundle.git",
-                "reference": "a6559f39d8b81a29b65af403d17efea8d7574867"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/RichEditorBundle/zipball/a6559f39d8b81a29b65af403d17efea8d7574867",
-                "reference": "a6559f39d8b81a29b65af403d17efea8d7574867",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\RichEditorBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "keywords": [
-                "crawler",
-                "editor"
-            ],
-            "time": "2015-06-26 04:15:24"
-        },
-        {
-            "name": "smart-core/seo-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/SeoBundle.git",
-                "reference": "23b52f63e85c3d2d5b625e8cde32d6e631a4342c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SeoBundle/zipball/23b52f63e85c3d2d5b625e8cde32d6e631a4342c",
-                "reference": "23b52f63e85c3d2d5b625e8cde32d6e631a4342c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\SeoBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "description": "SmartCore SEO Bundle.",
-            "keywords": [
-                "bundle",
-                "seo"
-            ],
-            "time": "2015-07-04 12:31:54"
-        },
-        {
-            "name": "smart-core/session-bundle",
-            "version": "dev-master",
-            "target-dir": "SmartCore/Bundle/SessionBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/SessionBundle.git",
-                "reference": "922b248d5bab8b4363d9f5c9b822cddc09484108"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SessionBundle/zipball/922b248d5bab8b4363d9f5c9b822cddc09484108",
-                "reference": "922b248d5bab8b4363d9f5c9b822cddc09484108",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": ">=2.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "SmartCore\\Bundle\\SessionBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Doctrine ORM Session Storage Handler",
-            "homepage": "http://smart-core.org",
-            "keywords": [
-                "session"
-            ],
-            "time": "2015-07-08 21:17:00"
-        },
-        {
-            "name": "smart-core/settings-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Smart-Core/SettingsBundle.git",
-                "reference": "b62cc243a10a1485ff6385ebc1a88e5552ec79db"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SettingsBundle/zipball/b62cc243a10a1485ff6385ebc1a88e5552ec79db",
-                "reference": "b62cc243a10a1485ff6385ebc1a88e5552ec79db",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.1",
-                "smart-core/core-bundle": "dev-master"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\SettingsBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "description": "SmartCore Settings Bundle.",
-            "keywords": [
-                "Settings",
-                "bundle"
-            ],
-            "time": "2015-11-08 13:33:30"
-        },
-        {
             "name": "smart-core/simple-profiler-bundle",
             "version": "dev-master",
             "source": {
@@ -5619,72 +5012,32 @@
             "time": "2015-06-25 21:31:53"
         },
         {
-            "name": "smart-core/sitemap-bundle",
+            "name": "sonata-project/intl-bundle",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Smart-Core/SitemapBundle.git",
-                "reference": "04cbad7d3bf253d9b16a9f5570762257625b93ac"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SitemapBundle/zipball/04cbad7d3bf253d9b16a9f5570762257625b93ac",
-                "reference": "04cbad7d3bf253d9b16a9f5570762257625b93ac",
-                "shasum": ""
-            },
-            "require": {
-                "fabpot/goutte": "*"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "SmartCore\\Bundle\\SitemapBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Ryzhkov",
-                    "email": "artem@smart-core.org",
-                    "homepage": "http://smart-core.org"
-                }
-            ],
-            "description": "Symfony Sitemap Crawler Generator Bundle.",
-            "keywords": [
-                "Sitemap",
-                "crawler"
-            ],
-            "time": "2015-06-28 21:20:46"
-        },
-        {
-            "name": "sonata-project/intl-bundle",
-            "version": "2.2.3",
-            "source": {
-                "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "c50bda8f661aee2336aab1b9f61db9a93e5bf1cb"
+                "reference": "8ab0b0ecefe6c2202c2d930480fbf2b88b3fc2cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/c50bda8f661aee2336aab1b9f61db9a93e5bf1cb",
-                "reference": "c50bda8f661aee2336aab1b9f61db9a93e5bf1cb",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/8ab0b0ecefe6c2202c2d930480fbf2b88b3fc2cb",
+                "reference": "8ab0b0ecefe6c2202c2d930480fbf2b88b3fc2cb",
                 "shasum": ""
             },
             "require": {
-                "symfony/dependency-injection": "~2.2",
-                "symfony/http-kernel": "~2.2",
-                "symfony/locale": "~2.2",
-                "symfony/templating": "~2.2",
+                "symfony/dependency-injection": "~2.2|~3.0",
+                "symfony/http-kernel": "~2.2|~3.0",
+                "symfony/intl": "^2.3.21|~3.0",
+                "symfony/templating": "~2.2|~3.0",
                 "twig/twig": "~1.12"
             },
             "require-dev": {
                 "fabpot/php-cs-fixer": "~0.5|~1.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.6",
                 "sonata-project/user-bundle": "~2.2",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
-                "symfony/security": "~2.2"
+                "symfony/security": "~2.2|~3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -5720,7 +5073,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2015-08-26 14:55:43"
+            "time": "2015-11-26 16:35:30"
         },
         {
             "name": "stfalcon/tinymce-bundle",
@@ -5835,7 +5188,7 @@
         },
         {
             "name": "symfony/assetic-bundle",
-            "version": "v2.7.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/assetic-bundle.git",
@@ -5963,29 +5316,481 @@
             "time": "2015-11-17 10:02:29"
         },
         {
-            "name": "symfony/swiftmailer-bundle",
-            "version": "v2.3.8",
+            "name": "symfony/polyfill-intl-icu",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "970b13d01871207e81d17b17ddda025e7e21e797"
+                "url": "https://github.com/symfony/polyfill-intl-icu.git",
+                "reference": "2deb44160e1c886241c06602b12b98779f728177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/970b13d01871207e81d17b17ddda025e7e21e797",
-                "reference": "970b13d01871207e81d17b17ddda025e7e21e797",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/2deb44160e1c886241c06602b12b98779f728177",
+                "reference": "2deb44160e1c886241c06602b12b98779f728177",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/intl": "~2.3|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's ICU-related data and classes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "icu",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "0b6a8940385311a24e060ec1fe35680e17c74497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/0b6a8940385311a24e060ec1fe35680e17c74497",
+                "reference": "0b6a8940385311a24e060ec1fe35680e17c74497",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-php54",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php54.git",
+                "reference": "2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc",
+                "reference": "2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php54\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.4+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-php55",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php55.git",
+                "reference": "3adc962a6250c02adb508e85ecfa6fcfee9eec47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/3adc962a6250c02adb508e85ecfa6fcfee9eec47",
+                "reference": "3adc962a6250c02adb508e85ecfa6fcfee9eec47",
+                "shasum": ""
+            },
+            "require": {
+                "ircmaxell/password-compat": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php55\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.5+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-php56",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php56.git",
+                "reference": "a6bd4770a6967517e6610529e14afaa3111094a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/a6bd4770a6967517e6610529e14afaa3111094a3",
+                "reference": "a6bd4770a6967517e6610529e14afaa3111094a3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-util": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php56\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-php70",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php70.git",
+                "reference": "7f7f3c9c2b9f17722e0cd64fdb4f957330c53146"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/7f7f3c9c2b9f17722e0cd64fdb4f957330c53146",
+                "reference": "7f7f3c9c2b9f17722e0cd64fdb4f957330c53146",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php70\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-util",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-util.git",
+                "reference": "4271c55cbc0a77b2641f861b978123e46b3da969"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/4271c55cbc0a77b2641f861b978123e46b3da969",
+                "reference": "4271c55cbc0a77b2641f861b978123e46b3da969",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Util\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony utilities for portability of PHP codes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/security-acl",
+            "version": "v2.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/security-acl.git",
+                "reference": "9aec8062e33fca5e08d2a78669b2222252e8c3b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/security-acl/zipball/9aec8062e33fca5e08d2a78669b2222252e8c3b6",
+                "reference": "9aec8062e33fca5e08d2a78669b2222252e8c3b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/security-core": "~2.4"
+            },
+            "require-dev": {
+                "doctrine/common": "~2.2",
+                "doctrine/dbal": "~2.2",
+                "psr/log": "~1.0"
+            },
+            "suggest": {
+                "doctrine/dbal": "For using the built-in ACL implementation",
+                "symfony/class-loader": "For using the ACL generateSql script",
+                "symfony/finder": "For using the ACL generateSql script"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Security\\Acl\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Security Component - ACL (Access Control List)",
+            "homepage": "https://symfony.com",
+            "time": "2015-11-18 13:41:01"
+        },
+        {
+            "name": "symfony/swiftmailer-bundle",
+            "version": "v2.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/swiftmailer-bundle.git",
+                "reference": "3d21ada19f23631f558ad6df653b168e35362e78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/3d21ada19f23631f558ad6df653b168e35362e78",
+                "reference": "3d21ada19f23631f558ad6df653b168e35362e78",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
                 "swiftmailer/swiftmailer": ">=4.2.0,~5.0",
-                "symfony/swiftmailer-bridge": "~2.1"
+                "symfony/config": "~2.3|~3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/http-kernel": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0"
             },
             "require-dev": {
-                "symfony/config": "~2.1",
-                "symfony/dependency-injection": "~2.1",
-                "symfony/http-kernel": "~2.1",
-                "symfony/yaml": "~2.1"
+                "symfony/phpunit-bridge": "~2.7|~3.0"
             },
             "suggest": {
                 "psr/log": "Allows logging"
@@ -6017,27 +5822,38 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2014-12-01 17:44:50"
+            "time": "2015-11-28 10:59:29"
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.7",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "cc69dbd24b4b2e6de60b2414ef95da2794f459a2"
+                "reference": "5615b92cd452cd54f1433a3f53de87c096a1107f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/cc69dbd24b4b2e6de60b2414ef95da2794f459a2",
-                "reference": "cc69dbd24b4b2e6de60b2414ef95da2794f459a2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/5615b92cd452cd54f1433a3f53de87c096a1107f",
+                "reference": "5615b92cd452cd54f1433a3f53de87c096a1107f",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
+                "symfony/polyfill-intl-icu": "~1.0",
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/polyfill-php54": "~1.0",
+                "symfony/polyfill-php55": "~1.0",
+                "symfony/polyfill-php56": "~1.0",
+                "symfony/polyfill-php70": "~1.0",
+                "symfony/polyfill-util": "~1.0",
+                "symfony/security-acl": "~2.7",
                 "twig/twig": "~1.23|~2.0"
+            },
+            "conflict": {
+                "phpdocumentor/reflection": "<1.0.7"
             },
             "replace": {
                 "symfony/asset": "self.version",
@@ -6060,18 +5876,20 @@
                 "symfony/http-foundation": "self.version",
                 "symfony/http-kernel": "self.version",
                 "symfony/intl": "self.version",
+                "symfony/ldap": "self.version",
                 "symfony/locale": "self.version",
                 "symfony/monolog-bridge": "self.version",
                 "symfony/options-resolver": "self.version",
                 "symfony/process": "self.version",
                 "symfony/property-access": "self.version",
+                "symfony/property-info": "self.version",
                 "symfony/proxy-manager-bridge": "self.version",
                 "symfony/routing": "self.version",
                 "symfony/security": "self.version",
-                "symfony/security-acl": "self.version",
                 "symfony/security-bundle": "self.version",
                 "symfony/security-core": "self.version",
                 "symfony/security-csrf": "self.version",
+                "symfony/security-guard": "self.version",
                 "symfony/security-http": "self.version",
                 "symfony/serializer": "self.version",
                 "symfony/stopwatch": "self.version",
@@ -6091,14 +5909,14 @@
                 "doctrine/doctrine-bundle": "~1.2",
                 "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2",
-                "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0"
+                "ocramius/proxy-manager": "~0.4|~1.0",
+                "phpdocumentor/reflection": "^1.0.7"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -6112,11 +5930,7 @@
                     "Symfony\\Component\\": "src/Symfony/Component/"
                 },
                 "classmap": [
-                    "src/Symfony/Component/HttpFoundation/Resources/stubs",
                     "src/Symfony/Component/Intl/Resources/stubs"
-                ],
-                "files": [
-                    "src/Symfony/Component/Intl/Resources/stubs/functions.php"
                 ],
                 "exclude-from-classmap": [
                     "**/Tests/"
@@ -6141,7 +5955,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-11-23 11:58:08"
+            "time": "2015-11-30 17:26:10"
         },
         {
             "name": "twig/extensions",
@@ -6258,7 +6072,7 @@
         },
         {
             "name": "white-october/pagerfanta-bundle",
-            "version": "v1.0.4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
@@ -6808,7 +6622,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "smart-core/cms-bundle": 20,
         "doctrine/migrations": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "liip/functional-test-bundle": 20,
@@ -6821,33 +6634,26 @@
         "knplabs/knp-menu-bundle": 20,
         "mopa/bootstrap-bundle": 20,
         "stfalcon/tinymce-bundle": 20,
-        "smart-core/module-breadcrumbs": 20,
-        "smart-core/module-gallery": 20,
-        "smart-core/module-menu": 20,
-        "smart-core/module-simplenews": 20,
-        "smart-core/module-slider": 20,
-        "smart-core/module-texter": 20,
-        "smart-core/module-unicat": 20,
-        "smart-core/module-user": 20,
-        "smart-core/module-webform": 20,
-        "smart-core/module-widget": 20,
-        "smart-core/cms-generator-bundle": 20,
-        "smart-core/core-bundle": 20,
-        "smart-core/db-dumper-bundle": 20,
-        "smart-core/felib-bundle": 20,
-        "smart-core/html-bundle": 20,
-        "smart-core/media-bundle": 20,
-        "smart-core/rich-editor-bundle": 20,
-        "smart-core/seo-bundle": 20,
-        "smart-core/session-bundle": 20,
-        "smart-core/settings-bundle": 20,
-        "smart-core/simple-profiler-bundle": 20,
-        "smart-core/sitemap-bundle": 20
+        "symfony/assetic-bundle": 20,
+        "doctrine/doctrine-cache-bundle": 20,
+        "elao/web-profiler-extra-bundle": 20,
+        "liip/theme-bundle": 20,
+        "smart-core/accelerator-cache-bundle": 20,
+        "sonata-project/intl-bundle": 20,
+        "whiteoctober/breadcrumbs-bundle": 20,
+        "white-october/pagerfanta-bundle": 20,
+        "smart-core/simple-profiler-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9"
+        "php": ">=5.5.9",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-xml": "*",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
