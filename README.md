@@ -4,6 +4,11 @@ Smart Core CMS Sandbox
 
 The modern system for creating and managing web projects with open source, based on the Symfony2 Framework.
 
+Получение последней версии песочницы:
+```
+    git pull
+    git submodule update --init
+``` 
 
 Пока не созданы тэги, для проектов использовать следующий набор пакетов в `composer.json`:
 ```
