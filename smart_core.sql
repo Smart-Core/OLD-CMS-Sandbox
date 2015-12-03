@@ -1894,7 +1894,6 @@ CREATE TABLE `webforms_fields` (
   `is_required` tinyint(1) NOT NULL DEFAULT '0',
   `is_enabled` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_4FE98D465E237E06` (`name`),
   KEY `IDX_4FE98D46B75935E3` (`web_form_id`),
   KEY `IDX_4FE98D46A76ED395` (`user_id`),
   CONSTRAINT `FK_4FE98D46A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
@@ -1955,4 +1954,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-09  3:53:31
+-- Dump completed on 2015-12-03 13:46:41

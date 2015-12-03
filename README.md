@@ -10,6 +10,11 @@ The modern system for creating and managing web projects with open source, based
     git submodule update --init
 ``` 
 
+Обновление подмодулей из удалённых репозиториев:
+```
+    git submodule update --remote
+``` 
+
 Пока не созданы тэги, для проектов использовать следующий набор пакетов в `composer.json`:
 ```
     "smart-core/module-breadcrumbs": "dev-master",
