@@ -6,8 +6,7 @@ The modern system for creating and managing web projects with open source, based
 
 Получение последней версии песочницы:
 ```
-    git pull
-    git submodule update --init
+    git pull;git submodule update --init
 ``` 
 
 Обновление подмодулей из удалённых репозиториев:
