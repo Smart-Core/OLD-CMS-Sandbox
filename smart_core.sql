@@ -740,7 +740,7 @@ CREATE TABLE `media_files_transformed` (
   CONSTRAINT `FK_1084B87D514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
   CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -749,7 +749,7 @@ CREATE TABLE `media_files_transformed` (
 
 LOCK TABLES `media_files_transformed` WRITE;
 /*!40000 ALTER TABLE `media_files_transformed` DISABLE KEYS */;
-INSERT INTO `media_files_transformed` VALUES (1,1,1,1,'300_300',28215,'2015-07-04 17:58:40'),(2,3,1,1,'300_300',34430,'2015-07-04 17:58:40'),(3,5,1,1,'300_300',39337,'2015-07-04 18:41:54'),(4,6,1,1,'300_300',46972,'2015-07-04 18:41:55'),(5,4,1,1,'300_300',35813,'2015-07-04 18:42:01'),(6,8,2,1,'200_200',27695,'2015-07-04 18:42:49'),(7,6,1,1,'100_100',8506,'2015-07-11 15:09:58'),(8,5,1,1,'100_100',6411,'2015-10-09 00:39:32'),(9,3,1,1,'100_100',6289,'2015-10-09 01:52:42'),(10,7,2,1,'200_200',21122,'2015-10-13 03:21:05'),(11,4,1,1,'100_100',6138,'2015-10-13 04:35:45');
+INSERT INTO `media_files_transformed` VALUES (1,1,1,1,'300_300',28215,'2015-07-04 17:58:40'),(2,3,1,1,'300_300',34430,'2015-07-04 17:58:40'),(3,5,1,1,'300_300',39337,'2015-07-04 18:41:54'),(4,6,1,1,'300_300',46972,'2015-07-04 18:41:55'),(5,4,1,1,'300_300',35813,'2015-07-04 18:42:01'),(6,8,2,1,'200_200',27695,'2015-07-04 18:42:49'),(7,6,1,1,'100_100',8506,'2015-07-11 15:09:58'),(8,5,1,1,'100_100',6411,'2015-10-09 00:39:32'),(9,3,1,1,'100_100',6289,'2015-10-09 01:52:42'),(10,7,2,1,'200_200',21122,'2015-10-13 03:21:05'),(11,4,1,1,'100_100',6138,'2015-10-13 04:35:45'),(12,1,1,1,'100_100',4622,'2015-12-08 18:56:46');
 /*!40000 ALTER TABLE `media_files_transformed` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1324,7 +1324,7 @@ CREATE TABLE `unicat__structures` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `configuration_id` int(11) unsigned DEFAULT NULL,
   `position` smallint(6) DEFAULT '0',
-  `entries` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `is_multiple_entries` tinyint(1) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_required` tinyint(1) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -1348,7 +1348,7 @@ CREATE TABLE `unicat__structures` (
 
 LOCK TABLES `unicat__structures` WRITE;
 /*!40000 ALTER TABLE `unicat__structures` DISABLE KEYS */;
-INSERT INTO `unicat__structures` VALUES (1,1,1,'single','Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,'multi','Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0),(3,2,0,'single','Категории',0,1,'2015-03-02 10:43:54','categories','Категория',1,NULL,1),(4,2,0,'multi','Тэги',0,1,'2015-03-08 14:24:38','tags','Тэги',1,NULL,0);
+INSERT INTO `unicat__structures` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0),(3,2,0,0,'Категории',0,1,'2015-03-02 10:43:54','categories','Категория',1,NULL,1),(4,2,0,1,'Тэги',0,1,'2015-03-08 14:24:38','tags','Тэги',1,NULL,0);
 /*!40000 ALTER TABLE `unicat__structures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1502,31 +1502,31 @@ INSERT INTO `unicat_blog_items_taxons_relations` VALUES (1,6),(1,7);
 UNLOCK TABLES;
 
 --
--- Table structure for table `unicat_blog_items_taxons_relations_single`
+-- Table structure for table `unicat_blog_items_taxons_single_relations`
 --
 
-DROP TABLE IF EXISTS `unicat_blog_items_taxons_relations_single`;
+DROP TABLE IF EXISTS `unicat_blog_items_taxons_single_relations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_items_taxons_relations_single` (
+CREATE TABLE `unicat_blog_items_taxons_single_relations` (
   `item_id` int(10) unsigned NOT NULL,
   `taxon_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`item_id`,`taxon_id`),
-  KEY `IDX_C2398468126F525E` (`item_id`),
-  KEY `IDX_C2398468DE13F470` (`taxon_id`),
+  KEY `IDX_EA3154E7126F525E` (`item_id`),
+  KEY `IDX_EA3154E7DE13F470` (`taxon_id`),
   CONSTRAINT `FK_C2398468126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_blog_items` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_C2398468DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_blog_taxons` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `unicat_blog_items_taxons_relations_single`
+-- Dumping data for table `unicat_blog_items_taxons_single_relations`
 --
 
-LOCK TABLES `unicat_blog_items_taxons_relations_single` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_items_taxons_relations_single` DISABLE KEYS */;
-INSERT INTO `unicat_blog_items_taxons_relations_single` VALUES (1,6),(1,7);
-/*!40000 ALTER TABLE `unicat_blog_items_taxons_relations_single` ENABLE KEYS */;
+LOCK TABLES `unicat_blog_items_taxons_single_relations` WRITE;
+/*!40000 ALTER TABLE `unicat_blog_items_taxons_single_relations` DISABLE KEYS */;
+INSERT INTO `unicat_blog_items_taxons_single_relations` VALUES (1,6),(1,7);
+/*!40000 ALTER TABLE `unicat_blog_items_taxons_single_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1689,7 +1689,7 @@ CREATE TABLE `unicat_catalog_items` (
 
 LOCK TABLES `unicat_catalog_items` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items` VALUES (1,1,'np900','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:13:\"Samsung NP900\";s:11:\"description\";s:18:\"Ультрабук\";s:8:\"in_sight\";b:0;s:5:\"price\";i:5451;s:5:\"image\";i:1;s:7:\"picture\";N;}',1,'2014-02-14 07:48:18',0,NULL,0),(2,1,'galaxy-s4','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:17:\"Samsung Galaxy S4\";s:8:\"in_sight\";b:1;s:5:\"price\";i:19000;s:5:\"image\";i:4;s:11:\"description\";N;s:7:\"picture\";N;}',1,'2014-02-14 13:13:57',1,NULL,0),(3,1,'seagate-500g','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:4:{s:5:\"title\";s:13:\"Seagate 500Gb\";s:5:\"image\";i:3;s:8:\"in_sight\";b:1;s:7:\"picture\";N;}',1,'2014-02-17 01:19:23',0,NULL,0),(4,1,'canon-650d','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:10:\"Canon 650D\";s:8:\"in_sight\";b:1;s:5:\"price\";i:25000;s:5:\"image\";i:5;s:7:\"picture\";N;}',1,'2014-02-17 22:09:56',0,NULL,0),(5,1,'htc-one','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:7:\"HTC One\";s:8:\"in_sight\";b:1;s:5:\"image\";i:6;s:5:\"price\";i:20000;s:7:\"picture\";N;}',1,'2014-03-06 16:35:40',0,NULL,0);
+INSERT INTO `unicat_catalog_items` VALUES (1,1,'np900','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:13:\"Samsung NP900\";s:11:\"description\";s:18:\"Ультрабук\";s:8:\"in_sight\";b:0;s:5:\"price\";i:5451;s:5:\"image\";i:1;s:7:\"picture\";N;}',1,'2014-02-14 07:48:18',0,NULL,0),(2,1,'galaxy-s4','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:17:\"Samsung Galaxy S4\";s:8:\"in_sight\";b:1;s:5:\"price\";i:19000;s:5:\"image\";i:4;s:11:\"description\";N;s:7:\"picture\";N;}',1,'2014-02-14 13:13:57',1,NULL,0),(3,1,'seagate-500g','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:4:{s:5:\"title\";s:13:\"Seagate 500Gb\";s:5:\"image\";i:3;s:8:\"in_sight\";b:1;s:7:\"picture\";N;}',1,'2014-02-17 01:19:23',0,NULL,0),(4,1,'canon-650d','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:10:\"Canon 650D\";s:8:\"in_sight\";b:1;s:5:\"price\";i:25000;s:5:\"image\";i:5;s:7:\"picture\";N;}',1,'2014-02-17 22:09:56',0,NULL,0),(5,1,'htc-one','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:7:\"HTC One\";s:8:\"in_sight\";b:1;s:5:\"image\";i:6;s:5:\"price\";i:20000;s:7:\"picture\";s:3:\"123\";}',1,'2014-03-06 16:35:40',0,NULL,0);
 /*!40000 ALTER TABLE `unicat_catalog_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1722,31 +1722,31 @@ INSERT INTO `unicat_catalog_items_taxons_relations` VALUES (1,5),(1,9),(2,2),(2,
 UNLOCK TABLES;
 
 --
--- Table structure for table `unicat_catalog_items_taxons_relations_single`
+-- Table structure for table `unicat_catalog_items_taxons_single_relations`
 --
 
-DROP TABLE IF EXISTS `unicat_catalog_items_taxons_relations_single`;
+DROP TABLE IF EXISTS `unicat_catalog_items_taxons_single_relations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_catalog_items_taxons_relations_single` (
+CREATE TABLE `unicat_catalog_items_taxons_single_relations` (
   `item_id` int(11) unsigned NOT NULL,
   `taxon_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`item_id`,`taxon_id`),
-  KEY `IDX_B7C083AB126F525E` (`item_id`),
-  KEY `IDX_B7C083ABDE13F470` (`taxon_id`),
+  KEY `IDX_9FC85324126F525E` (`item_id`),
+  KEY `IDX_9FC85324DE13F470` (`taxon_id`),
   CONSTRAINT `FK_B7C083AB126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_B7C083ABDE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_catalog_taxons` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `unicat_catalog_items_taxons_relations_single`
+-- Dumping data for table `unicat_catalog_items_taxons_single_relations`
 --
 
-LOCK TABLES `unicat_catalog_items_taxons_relations_single` WRITE;
-/*!40000 ALTER TABLE `unicat_catalog_items_taxons_relations_single` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items_taxons_relations_single` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2);
-/*!40000 ALTER TABLE `unicat_catalog_items_taxons_relations_single` ENABLE KEYS */;
+LOCK TABLES `unicat_catalog_items_taxons_single_relations` WRITE;
+/*!40000 ALTER TABLE `unicat_catalog_items_taxons_single_relations` DISABLE KEYS */;
+INSERT INTO `unicat_catalog_items_taxons_single_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2);
+/*!40000 ALTER TABLE `unicat_catalog_items_taxons_single_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1958,4 +1958,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-08 15:37:08
+-- Dump completed on 2015-12-08 18:59:00
