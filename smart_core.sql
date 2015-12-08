@@ -1375,7 +1375,7 @@ CREATE TABLE `unicat_blog_attributes` (
   `position` smallint(6) DEFAULT '0',
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
   `is_link` tinyint(1) NOT NULL DEFAULT '0',
   `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
@@ -1388,6 +1388,8 @@ CREATE TABLE `unicat_blog_attributes` (
   KEY `IDX_FE1A5FAD921EA9F` (`show_in_list`),
   KEY `IDX_FE1A5FADB314B909` (`show_in_view`),
   KEY `IDX_FE1A5FAD462CE4F5` (`position`),
+  KEY `IDX_FE1A5FADA76ED395` (`user_id`),
+  CONSTRAINT `FK_FE1A5FADA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `FK_FE1A5FADFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_blog_attributes_groups` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1589,7 +1591,7 @@ CREATE TABLE `unicat_catalog_attributes` (
   `show_in_admin` tinyint(1) NOT NULL,
   `show_in_list` tinyint(1) NOT NULL,
   `show_in_view` tinyint(1) NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `group_id` int(10) unsigned DEFAULT NULL,
@@ -1606,6 +1608,8 @@ CREATE TABLE `unicat_catalog_attributes` (
   KEY `IDX_3A3855D2921EA9F` (`show_in_list`),
   KEY `IDX_3A3855D2B314B909` (`show_in_view`),
   KEY `IDX_3A3855D2462CE4F5` (`position`),
+  KEY `IDX_3A3855D2A76ED395` (`user_id`),
+  CONSTRAINT `FK_3A3855D2A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `FK_3A3855D2FE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_catalog_attributes_groups` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1616,7 +1620,7 @@ CREATE TABLE `unicat_catalog_attributes` (
 
 LOCK TABLES `unicat_catalog_attributes` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_attributes` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,0,'2014-02-13 20:37:50','N;',1,NULL,1,1,'<h3>','</h3>'),(2,1,0,0,3,'textarea','description','Описание',0,1,1,0,'2014-02-13 21:03:59','N;',1,NULL,1,0,'<p>','</p>'),(3,1,0,0,999,'integer','price','Цена',1,1,1,0,'2014-02-13 22:29:43','N;',1,NULL,1,0,'<p>','</p>'),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,0,'2014-02-13 23:19:31','a:0:{}',1,NULL,1,0,'<p>','</p>'),(5,1,0,0,2,'image','image','Картинка',0,1,1,0,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',1,'filter: 300_300',1,0,'<p>','</p>'),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',1,NULL,1,0,'<p>','</p>');
+INSERT INTO `unicat_catalog_attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',1,NULL,1,1,'<h3>','</h3>'),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',1,NULL,1,0,'<p>','</p>'),(3,1,0,0,999,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',1,NULL,1,0,'<p>','</p>'),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',1,NULL,1,0,'<p>','</p>'),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',1,'filter: 300_300',1,0,'<p>','</p>'),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',1,NULL,1,0,'<p>','</p>');
 /*!40000 ALTER TABLE `unicat_catalog_attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1954,4 +1958,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-03 13:46:41
+-- Dump completed on 2015-12-08 15:37:08
