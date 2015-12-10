@@ -2,9 +2,6 @@ parameters:
     user_class: SandboxSiteBundle\Entity\User
     #admin_path: control_panel
 
-smart_db_dumper:
-    filename: smart_core
-
 liip_imagine:
     filter_sets:
         demo_site_thumb:
@@ -13,3 +10,6 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [207, 177], mode: inset }
+
+smart_db_dumper:
+    filename: smart_core

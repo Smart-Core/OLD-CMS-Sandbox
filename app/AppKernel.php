@@ -28,6 +28,7 @@ class AppKernel extends CMSAppKernel
         $bundles = array(
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
             new SmartCore\Bundle\AcceleratorCacheBundle\AcceleratorCacheBundle(),
+            new SmartCore\Bundle\DbDumperBundle\SmartDbDumperBundle(),
             new SmartCore\Bundle\SitemapBundle\SmartSitemapBundle(),
 
             //new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(), // "abmundi/database-commands-bundle": "dev-master",
@@ -42,7 +43,6 @@ class AppKernel extends CMSAppKernel
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
-            $bundles[] = new SmartCore\Bundle\DbDumperBundle\SmartDbDumperBundle();
             //$bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this); // "jms/debugging-bundle": "dev-master",
             //$bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }
