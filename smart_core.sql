@@ -338,7 +338,7 @@ CREATE TABLE `engine_folders` (
 
 LOCK TABLES `engine_folders` WRITE;
 /*!40000 ALTER TABLE `engine_folders` DISABLE KEYS */;
-INSERT INTO `engine_folders` VALUES (1,NULL,'Главная',0,0,NULL,1,':)','a:4:{s:8:\"keywords\";s:3:\"cms\";s:11:\"description\";s:3:\"cms\";s:6:\"robots\";s:3:\"all\";s:6:\"author\";s:10:\"Артём\";}',NULL,NULL,NULL,NULL,'main',1,'2013-03-19 00:44:38',NULL,NULL),(2,1,'О компании',0,10,'about',1,NULL,'a:0:{}',NULL,NULL,NULL,NULL,'inner',1,'2013-03-11 16:42:33',NULL,NULL),(3,1,'Личный кабинет',0,255,'user',1,NULL,'a:0:{}',NULL,7,'N;','N;','',1,'2013-03-18 01:15:06','',NULL),(4,8,'Вложенная',0,0,'under_news',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2013-03-18 01:15:27',NULL,NULL),(5,1,'Так просто ;)',0,3,'simple',1,NULL,'N;',NULL,NULL,'N;','N;','main',1,'2013-03-19 04:43:50',NULL,NULL),(6,2,'Вложенная папка',0,0,'inner',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2013-03-19 04:47:22',NULL,NULL),(7,1,'22222222222222',0,10,'22222222',0,'22','N;',NULL,NULL,'N;','N;',NULL,1,'2013-08-10 11:14:06',NULL,NULL),(8,1,'Новости',0,0,'news',1,NULL,'a:0:{}',NULL,12,'N;','N;',NULL,1,'2013-12-22 21:45:42',NULL,NULL),(11,6,'Еще одна вложенная',0,0,'in2',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2014-01-29 10:30:42',NULL,NULL),(12,1,'Слайдер',0,0,'slider',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-01-30 20:38:12',NULL,NULL),(13,1,'Блог',0,0,'blog',1,NULL,'N;',NULL,22,'N;','N;',NULL,1,'2014-02-07 18:01:54',NULL,NULL),(14,12,'Nivo',0,0,'nivo',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-02-10 07:55:59',NULL,NULL),(15,1,'Каталог',0,0,'catalog',1,NULL,'a:0:{}',NULL,28,'N;','N;',NULL,1,'2014-02-12 16:12:18',NULL,NULL),(16,1,'Блог на юникате',0,0,'unicat_blog',1,NULL,'a:0:{}',NULL,32,'N;','N;',NULL,1,'2014-07-01 13:34:57',NULL,NULL),(17,1,'Фотогалерея',0,0,'gallery',1,NULL,'a:0:{}',NULL,31,'N;','N;',NULL,1,'2014-07-15 03:28:01',NULL,NULL),(18,1,'Веб-форма',0,0,'web-form',1,NULL,'a:0:{}',NULL,34,'N;','N;',NULL,1,'2015-03-24 03:17:14',NULL,NULL),(19,3,'Моя корзина',0,0,'basket',1,NULL,'a:0:{}',NULL,36,'N;','N;','',1,'2015-10-09 01:11:07','',NULL),(20,3,'История заказов',0,0,'orders',1,NULL,'a:0:{}',NULL,37,'N;','N;','',1,'2015-10-14 17:25:33','',NULL);
+INSERT INTO `engine_folders` VALUES (1,NULL,'Главная',0,0,NULL,1,':)','a:4:{s:8:\"keywords\";s:3:\"cms\";s:11:\"description\";s:3:\"cms\";s:6:\"robots\";s:3:\"all\";s:6:\"author\";s:10:\"Артём\";}',NULL,NULL,NULL,NULL,'',1,'2013-03-19 00:44:38','',NULL),(2,1,'О компании',0,10,'about',1,NULL,'a:0:{}',NULL,NULL,NULL,NULL,'inner',1,'2013-03-11 16:42:33','default',NULL),(3,1,'Личный кабинет',0,255,'user',1,NULL,'a:0:{}',NULL,7,'N;','N;','',1,'2013-03-18 01:15:06','',NULL),(4,8,'Вложенная',0,0,'under_news',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2013-03-18 01:15:27',NULL,NULL),(5,1,'Так просто ;)',0,3,'simple',1,NULL,'N;',NULL,NULL,'N;','N;','main',1,'2013-03-19 04:43:50',NULL,NULL),(6,2,'Вложенная папка',0,0,'inner',1,NULL,'a:0:{}',NULL,NULL,'N;','N;','',1,'2013-03-19 04:47:22','default',NULL),(7,1,'22222222222222',0,10,'22222222',0,'22','N;',NULL,NULL,'N;','N;',NULL,1,'2013-08-10 11:14:06',NULL,NULL),(8,1,'Новости',0,0,'news',1,NULL,'a:0:{}',NULL,12,'N;','N;',NULL,1,'2013-12-22 21:45:42',NULL,NULL),(11,6,'Еще одна вложенная',0,0,'in2',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2014-01-29 10:30:42',NULL,NULL),(12,1,'Слайдер',0,0,'slider',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-01-30 20:38:12',NULL,NULL),(13,1,'Блог',0,0,'blog',1,NULL,'N;',NULL,22,'N;','N;',NULL,1,'2014-02-07 18:01:54',NULL,NULL),(14,12,'Nivo',0,0,'nivo',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-02-10 07:55:59',NULL,NULL),(15,1,'Каталог',0,0,'catalog',1,NULL,'a:0:{}',NULL,28,'N;','N;','',1,'2014-02-12 16:12:18','inner',NULL),(16,1,'Блог на юникате',0,0,'unicat_blog',1,NULL,'a:0:{}',NULL,32,'N;','N;',NULL,1,'2014-07-01 13:34:57',NULL,NULL),(17,1,'Фотогалерея',0,0,'gallery',1,NULL,'a:0:{}',NULL,31,'N;','N;',NULL,1,'2014-07-15 03:28:01',NULL,NULL),(18,1,'Веб-форма',0,0,'web-form',1,NULL,'a:0:{}',NULL,34,'N;','N;',NULL,1,'2015-03-24 03:17:14',NULL,NULL),(19,3,'Моя корзина',0,0,'basket',1,NULL,'a:0:{}',NULL,36,'N;','N;','',1,'2015-10-09 01:11:07','',NULL),(20,3,'История заказов',0,0,'orders',1,NULL,'a:0:{}',NULL,37,'N;','N;','',1,'2015-10-14 17:25:33','',NULL);
 /*!40000 ALTER TABLE `engine_folders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1680,7 +1680,7 @@ CREATE TABLE `unicat_catalog_items` (
   KEY `IDX_163452F3462CE4F5` (`position`),
   KEY `IDX_163452F3A76ED395` (`user_id`),
   CONSTRAINT `FK_163452F3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1689,7 +1689,7 @@ CREATE TABLE `unicat_catalog_items` (
 
 LOCK TABLES `unicat_catalog_items` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items` VALUES (1,1,'np900','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:13:\"Samsung NP900\";s:11:\"description\";s:18:\"Ультрабук\";s:8:\"in_sight\";b:0;s:5:\"price\";i:5451;s:5:\"image\";i:1;s:7:\"picture\";N;}',1,'2014-02-14 07:48:18',0,NULL,0),(2,1,'galaxy-s4','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:17:\"Samsung Galaxy S4\";s:8:\"in_sight\";b:1;s:5:\"price\";i:19000;s:5:\"image\";i:4;s:11:\"description\";N;s:7:\"picture\";N;}',1,'2014-02-14 13:13:57',1,NULL,0),(3,1,'seagate-500g','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:4:{s:5:\"title\";s:13:\"Seagate 500Gb\";s:5:\"image\";i:3;s:8:\"in_sight\";b:1;s:7:\"picture\";N;}',1,'2014-02-17 01:19:23',0,NULL,0),(4,1,'canon-650d','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:10:\"Canon 650D\";s:8:\"in_sight\";b:1;s:5:\"price\";i:25000;s:5:\"image\";i:5;s:7:\"picture\";N;}',1,'2014-02-17 22:09:56',0,NULL,0),(5,1,'htc-one','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:7:\"HTC One\";s:8:\"in_sight\";b:1;s:5:\"image\";i:6;s:5:\"price\";i:20000;s:7:\"picture\";s:3:\"123\";}',1,'2014-03-06 16:35:40',0,NULL,0);
+INSERT INTO `unicat_catalog_items` VALUES (1,1,'np900','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:13:\"Samsung NP900\";s:11:\"description\";s:18:\"Ультрабук\";s:8:\"in_sight\";b:0;s:5:\"price\";i:5451;s:5:\"image\";i:1;s:7:\"picture\";N;}',1,'2014-02-14 07:48:18',0,NULL,0),(2,1,'galaxy-s4','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:17:\"Samsung Galaxy S4\";s:8:\"in_sight\";b:1;s:5:\"price\";i:19000;s:5:\"image\";i:4;s:11:\"description\";N;s:7:\"picture\";N;}',1,'2014-02-14 13:13:57',1,NULL,0),(3,1,'seagate-500g','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:4:{s:5:\"title\";s:13:\"Seagate 500Gb\";s:5:\"image\";i:3;s:8:\"in_sight\";b:1;s:7:\"picture\";N;}',1,'2014-02-17 01:19:23',0,NULL,0),(4,1,'canon-650d','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:10:\"Canon 650D\";s:8:\"in_sight\";b:1;s:5:\"price\";i:25000;s:5:\"image\";i:5;s:7:\"picture\";N;}',1,'2014-02-17 22:09:56',0,NULL,0),(5,1,'htc-one','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:7:\"HTC One\";s:8:\"in_sight\";b:1;s:5:\"image\";i:6;s:5:\"price\";i:20000;s:7:\"picture\";s:3:\"123\";}',1,'2014-03-06 16:35:40',0,NULL,0),(6,1,'aaa','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:3:{s:5:\"title\";s:3:\"aaa\";s:8:\"in_sight\";b:0;s:5:\"image\";N;}',1,'2015-12-10 19:32:00',0,NULL,0);
 /*!40000 ALTER TABLE `unicat_catalog_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1717,7 +1717,7 @@ CREATE TABLE `unicat_catalog_items_taxons_relations` (
 
 LOCK TABLES `unicat_catalog_items_taxons_relations` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_relations` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items_taxons_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2);
+INSERT INTO `unicat_catalog_items_taxons_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2),(6,4),(6,5),(6,9);
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1745,7 +1745,7 @@ CREATE TABLE `unicat_catalog_items_taxons_single_relations` (
 
 LOCK TABLES `unicat_catalog_items_taxons_single_relations` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_single_relations` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items_taxons_single_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2);
+INSERT INTO `unicat_catalog_items_taxons_single_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2),(6,5),(6,9);
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_single_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1837,7 +1837,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'rvmppg4hla80gw0c88wwkogkc8cg88c','pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==','2015-11-07 03:10:57',0,NULL,NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'15lr4t5s1pdwowoc8k88goc88k00w8','k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==','2015-05-22 00:28:12',0,NULL,NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'teyhcartb3ks0kw4sw0co0k8ko0gk48','+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==','2015-10-14 21:13:16',0,NULL,NULL,NULL,'a:0:{}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'rvmppg4hla80gw0c88wwkogkc8cg88c','pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==','2015-12-12 07:54:11',0,NULL,NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'15lr4t5s1pdwowoc8k88goc88k00w8','k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==','2015-05-22 00:28:12',0,NULL,NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'teyhcartb3ks0kw4sw0co0k8ko0gk48','+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==','2015-10-14 21:13:16',0,NULL,NULL,NULL,'a:0:{}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1958,4 +1958,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-08 18:59:00
+-- Dump completed on 2015-12-12 10:20:00
