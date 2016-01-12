@@ -65,7 +65,6 @@
         "intervention/image": "*",
         "jms/di-extra-bundle": "*",
         "jms/serializer-bundle": "*",
-        "jms/security-extra-bundle": "*",
         "happyr/google-site-authenticator-bundle": "*",
         "happyr/slugify-bundle": "*",
         "helios-ag/fm-elfinder-bundle": "~4.0",

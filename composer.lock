@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "303afaeb15ef86b5781f5a7545ed4952",
-    "content-hash": "3a74ced6121847be4fc344d7714c1066",
+    "hash": "b7d695ac17c9b8fcb3126a05ccae501f",
+    "content-hash": "35d2e4fdafeef9207114621a0a4bfc89",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -2905,76 +2905,6 @@
             ],
             "description": "A library for easily creating recursive-descent parsers.",
             "time": "2012-11-18 18:08:43"
-        },
-        {
-            "name": "jms/security-extra-bundle",
-            "version": "1.5.2",
-            "target-dir": "JMS/SecurityExtraBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/JMSSecurityExtraBundle.git",
-                "reference": "bbd5eb78da4d510478f1bb60959feefac083d474"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSecurityExtraBundle/zipball/bbd5eb78da4d510478f1bb60959feefac083d474",
-                "reference": "bbd5eb78da4d510478f1bb60959feefac083d474",
-                "shasum": ""
-            },
-            "require": {
-                "jms/aop-bundle": "~1.0",
-                "jms/di-extra-bundle": "~1.3",
-                "jms/metadata": "~1.0",
-                "jms/parser-lib": "~1.0",
-                "php": "~5.3",
-                "symfony/framework-bundle": "~2.1",
-                "symfony/security-bundle": "*"
-            },
-            "require-dev": {
-                "doctrine/doctrine-bundle": "*",
-                "doctrine/orm": "*",
-                "sensio/framework-extra-bundle": "*",
-                "symfony/browser-kit": "*",
-                "symfony/class-loader": "*",
-                "symfony/css-selector": "*",
-                "symfony/finder": "*",
-                "symfony/form": "*",
-                "symfony/process": "*",
-                "symfony/twig-bundle": "*",
-                "symfony/validator": "*",
-                "symfony/yaml": "*"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "JMS\\SecurityExtraBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache2"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Enhances the Symfony2 Security Component by adding several new features",
-            "homepage": "http://jmsyst.com/bundles/JMSSecurityExtraBundle",
-            "keywords": [
-                "annotations",
-                "authorization",
-                "expression",
-                "secure",
-                "security"
-            ],
-            "time": "2015-12-17 19:00:10"
         },
         {
             "name": "jms/serializer",
