@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0599b43da50e45cc0157e0059498e42",
-    "content-hash": "a86f1d3f634aba8e1173a2003d2dc6f8",
+    "hash": "09eb94b03ec3de810641ffd98999e6d4",
+    "content-hash": "3a74ced6121847be4fc344d7714c1066",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1556,12 +1556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "e5e7a2b8984da8dfedaf44adc7e5f60a62ad280c"
+                "reference": "6ccff96434c0ac7fee077d1dce90966341dfd278"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/e5e7a2b8984da8dfedaf44adc7e5f60a62ad280c",
-                "reference": "e5e7a2b8984da8dfedaf44adc7e5f60a62ad280c",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/6ccff96434c0ac7fee077d1dce90966341dfd278",
+                "reference": "6ccff96434c0ac7fee077d1dce90966341dfd278",
                 "shasum": ""
             },
             "require": {
@@ -1617,7 +1617,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-12-28 18:02:43"
+            "time": "2016-01-08 10:46:39"
         },
         {
             "name": "fzaninotto/faker",
@@ -2168,12 +2168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "d008f958e99b4d45a69f7c2bdb895db28e54d521"
+                "reference": "6e404aa32537274fecfe39da981ffa50281cb7fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/d008f958e99b4d45a69f7c2bdb895db28e54d521",
-                "reference": "d008f958e99b4d45a69f7c2bdb895db28e54d521",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/6e404aa32537274fecfe39da981ffa50281cb7fd",
+                "reference": "6e404aa32537274fecfe39da981ffa50281cb7fd",
                 "shasum": ""
             },
             "require": {
@@ -2300,7 +2300,7 @@
                 "yandex",
                 "youtube"
             ],
-            "time": "2015-12-29 16:34:21"
+            "time": "2016-01-11 19:07:25"
         },
         {
             "name": "imagine/imagine",
@@ -3391,12 +3391,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "18253a4467d60614735321387f250b0bc7b0ecad"
+                "reference": "9917b999a3c3d3901386d60c4888b07679291031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/18253a4467d60614735321387f250b0bc7b0ecad",
-                "reference": "18253a4467d60614735321387f250b0bc7b0ecad",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/9917b999a3c3d3901386d60c4888b07679291031",
+                "reference": "9917b999a3c3d3901386d60c4888b07679291031",
                 "shasum": ""
             },
             "require": {
@@ -3449,7 +3449,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2015-12-05 17:59:31"
+            "time": "2016-01-08 15:42:54"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -3457,12 +3457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "4f8504404eb3d4f067eba9768922e04461a40cd0"
+                "reference": "96a6b9630e0f150f38ae167b3ef22955d8cdfab5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/4f8504404eb3d4f067eba9768922e04461a40cd0",
-                "reference": "4f8504404eb3d4f067eba9768922e04461a40cd0",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/96a6b9630e0f150f38ae167b3ef22955d8cdfab5",
+                "reference": "96a6b9630e0f150f38ae167b3ef22955d8cdfab5",
                 "shasum": ""
             },
             "require": {
@@ -3506,7 +3506,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2015-12-31 11:52:24"
+            "time": "2016-01-11 09:37:38"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -3759,12 +3759,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "d3c9977288031ee01849515369a5c91be1b1474c"
+                "reference": "6fa6f857fda2b86953b45ef8c91b03b8dcfce8e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/d3c9977288031ee01849515369a5c91be1b1474c",
-                "reference": "d3c9977288031ee01849515369a5c91be1b1474c",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/6fa6f857fda2b86953b45ef8c91b03b8dcfce8e3",
+                "reference": "6fa6f857fda2b86953b45ef8c91b03b8dcfce8e3",
                 "shasum": ""
             },
             "require": {
@@ -3776,6 +3776,7 @@
             "require-dev": {
                 "doctrine/doctrine-fixtures-bundle": "~2.3",
                 "doctrine/orm": "^2.4.8",
+                "nelmio/alice": "~1.7|~2.0",
                 "phpunit/phpunit": "4.8.*|5.1.*",
                 "symfony/assetic-bundle": "~2.3",
                 "symfony/monolog-bundle": "~2.4",
@@ -3792,7 +3793,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -3818,7 +3819,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-01-06 21:42:35"
+            "time": "2016-01-12 12:32:56"
         },
         {
             "name": "liip/imagine-bundle",
@@ -4322,16 +4323,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
                 "shasum": ""
             },
             "require": {
@@ -4366,7 +4367,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-12-10 14:48:13"
+            "time": "2016-01-06 13:31:20"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -6044,16 +6045,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.23.1",
+            "version": "v1.23.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6"
+                "reference": "ae53fc2c312fdee63773b75cb570304f85388b08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
-                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ae53fc2c312fdee63773b75cb570304f85388b08",
+                "reference": "ae53fc2c312fdee63773b75cb570304f85388b08",
                 "shasum": ""
             },
             "require": {
@@ -6101,7 +6102,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-11-05 12:49:06"
+            "time": "2016-01-11 14:02:19"
         },
         {
             "name": "white-october/pagerfanta-bundle",

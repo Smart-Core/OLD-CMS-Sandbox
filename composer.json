@@ -82,10 +82,7 @@
         "sonata-project/intl-bundle": "~2.0@dev",
         "whiteoctober/breadcrumbs-bundle": "~1.0@dev",
         "white-october/pagerfanta-bundle": "~1.0@dev",
-        "zendframework/zend-servicemanager": "*",
-        "zendframework/zend-tag": "*",
         "zenstruck/imagine-extra-bundle": "*",
-
 
 
 
