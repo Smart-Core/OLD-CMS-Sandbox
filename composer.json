@@ -20,7 +20,7 @@
         "jms/debugging-bundle": "dev-master",
         "mremi/templating-extra-bundle": "dev-master",
 
-        "friendsofsymfony/user-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "v2.0.0-alpha3",
         "hwi/oauth-bundle": "0.4.*@dev",
         "knplabs/knp-disqus-bundle":"dev-master",
         "knplabs/knp-menu": "dev-master",
