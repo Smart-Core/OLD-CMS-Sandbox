@@ -1621,33 +1621,29 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3|^7.0"
             },
             "require-dev": {
+                "ext-intl": "*",
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
-            "suggest": {
-                "ext-intl": "*"
-            },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5.x-dev"
-                }
+                "branch-alias": []
             },
             "autoload": {
                 "psr-4": {
@@ -1669,46 +1665,47 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-29 06:29:14"
+            "time": "2016-04-29 12:21:54"
         },
         {
             "name": "genemu/form-bundle",
-            "version": "v2.2.2",
+            "version": "v2.3.0",
             "target-dir": "Genemu/Bundle/FormBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/genemu/GenemuFormBundle.git",
-                "reference": "9fecbe7a12fba1761228909e843301c4d1a11e7c"
+                "reference": "1bcc635d7604a409fbce569af709ea691d60b8e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/9fecbe7a12fba1761228909e843301c4d1a11e7c",
-                "reference": "9fecbe7a12fba1761228909e843301c4d1a11e7c",
+                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/1bcc635d7604a409fbce569af709ea691d60b8e1",
+                "reference": "1bcc635d7604a409fbce569af709ea691d60b8e1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/form": "~2.3",
-                "symfony/framework-bundle": "~2.3"
+                "symfony/form": "~2.6",
+                "symfony/framework-bundle": "~2.6",
+                "twig/twig": "~1.14"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "1.*",
                 "doctrine/mongodb-odm-bundle": "*",
                 "doctrine/orm": "2.*",
                 "propel/propel-bundle": "*",
-                "symfony/doctrine-bridge": "~2.3",
+                "symfony/doctrine-bridge": "~2.6",
                 "symfony/finder": "2.*"
             },
             "suggest": {
-                "symfony/doctrine-bundle": "In order to use some form types with Doctrine",
+                "doctrine/doctrine-bundle": "In order to use some form types with Doctrine",
+                "doctrine/mongodb-odm-bundle": "For MongoDB integration",
                 "symfony/finder": "For an image type",
-                "symfony/mongodb-odm-bundle": "For MongoDB integration",
                 "symfony/twig-bridge": "For integration into Twig templates"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -1739,7 +1736,7 @@
                 "extra form",
                 "form"
             ],
-            "time": "2014-03-23 12:12:05"
+            "time": "2016-01-27 16:52:41"
         },
         {
             "name": "google/apiclient",
@@ -2412,16 +2409,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "e368d262887dbb2fdfaf710880571ede51e9c0e6"
+                "reference": "22088b04728a039bd1fc32f7e79a89a118b78698"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/e368d262887dbb2fdfaf710880571ede51e9c0e6",
-                "reference": "e368d262887dbb2fdfaf710880571ede51e9c0e6",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/22088b04728a039bd1fc32f7e79a89a118b78698",
+                "reference": "22088b04728a039bd1fc32f7e79a89a118b78698",
                 "shasum": ""
             },
             "require": {
@@ -2470,7 +2467,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2016-02-26 18:18:19"
+            "time": "2016-04-26 14:08:40"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -2756,21 +2753,22 @@
         },
         {
             "name": "jms/di-extra-bundle",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSDiExtraBundle.git",
-                "reference": "85a989bedcf22495c03bf94339ddc5e856bd9b46"
+                "reference": "27c3fc7150550ccc0731290b2c1ceb57449f909d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/85a989bedcf22495c03bf94339ddc5e856bd9b46",
-                "reference": "85a989bedcf22495c03bf94339ddc5e856bd9b46",
+                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/27c3fc7150550ccc0731290b2c1ceb57449f909d",
+                "reference": "27c3fc7150550ccc0731290b2c1ceb57449f909d",
                 "shasum": ""
             },
             "require": {
                 "jms/aop-bundle": "~1.1",
                 "jms/metadata": "~1.0",
+                "php": "~5.3|~7.0",
                 "symfony/dependency-injection": "~2.3|~3.0",
                 "symfony/finder": "~2.3|~3.0",
                 "symfony/framework-bundle": "~2.3|~3.0",
@@ -2781,7 +2779,7 @@
             "require-dev": {
                 "doctrine/doctrine-bundle": "~1.5",
                 "doctrine/orm": "~2.3",
-                "jms/security-extra-bundle": "~1.0@dev",
+                "jms/security-extra-bundle": "~1.0",
                 "phpcollection/phpcollection": ">=0.2,<0.3-dev",
                 "sensio/framework-extra-bundle": "~2.0|~3.0",
                 "symfony/browser-kit": "~2.3|~3.0",
@@ -2820,7 +2818,7 @@
                 "annotations",
                 "dependency injection"
             ],
-            "time": "2016-02-21 22:14:09"
+            "time": "2016-04-18 22:27:09"
         },
         {
             "name": "jms/metadata",
@@ -3390,12 +3388,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "5e7c44cb084b5c4f842f94ab443fb5dbb3f7a44c"
+                "reference": "8b68a6710392f82b007648c6aba4fdfd19b4bf9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/5e7c44cb084b5c4f842f94ab443fb5dbb3f7a44c",
-                "reference": "5e7c44cb084b5c4f842f94ab443fb5dbb3f7a44c",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/8b68a6710392f82b007648c6aba4fdfd19b4bf9f",
+                "reference": "8b68a6710392f82b007648c6aba4fdfd19b4bf9f",
                 "shasum": ""
             },
             "require": {
@@ -3439,20 +3437,20 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2016-03-11 18:13:54"
+            "time": "2016-04-25 22:07:03"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "2.5.1",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "5147740faff4d32e6f42acf64475314c35320fa4"
+                "reference": "c988761005504007c6c87d6a557641281194a0e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/5147740faff4d32e6f42acf64475314c35320fa4",
-                "reference": "5147740faff4d32e6f42acf64475314c35320fa4",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/c988761005504007c6c87d6a557641281194a0e5",
+                "reference": "c988761005504007c6c87d6a557641281194a0e5",
                 "shasum": ""
             },
             "require": {
@@ -3467,7 +3465,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4.x-dev"
+                    "dev-master": "2.5.x-dev"
                 }
             },
             "autoload": {
@@ -3500,7 +3498,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2015-11-23 17:51:40"
+            "time": "2016-04-20 11:40:30"
         },
         {
             "name": "knplabs/rad-bundle",
@@ -3692,12 +3690,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "7401da84b3da42cbde1fab51f26503ae9d6b8f02"
+                "reference": "6ab2fafaa646313eeea346a7376ee5c1ae84f713"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/7401da84b3da42cbde1fab51f26503ae9d6b8f02",
-                "reference": "7401da84b3da42cbde1fab51f26503ae9d6b8f02",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/6ab2fafaa646313eeea346a7376ee5c1ae84f713",
+                "reference": "6ab2fafaa646313eeea346a7376ee5c1ae84f713",
                 "shasum": ""
             },
             "require": {
@@ -3759,7 +3757,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-04-15 09:58:44"
+            "time": "2016-04-30 15:56:46"
         },
         {
             "name": "liip/imagine-bundle",
@@ -3979,12 +3977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "97d36b8d3917c9fac88ec0089056368ac195a50e"
+                "reference": "04c608d09513d33f1761439ab9a939737705eec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/97d36b8d3917c9fac88ec0089056368ac195a50e",
-                "reference": "97d36b8d3917c9fac88ec0089056368ac195a50e",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/04c608d09513d33f1761439ab9a939737705eec4",
+                "reference": "04c608d09513d33f1761439ab9a939737705eec4",
                 "shasum": ""
             },
             "require": {
@@ -4042,7 +4040,7 @@
                 "form",
                 "template"
             ],
-            "time": "2016-03-31 12:22:04"
+            "time": "2016-04-28 14:33:56"
         },
         {
             "name": "mopa/composer-bridge",
@@ -4991,12 +4989,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "c701d0ec4f7ad6691a99d632b678d22c09c5ad8b"
+                "reference": "4675e188e92441dfb7d5972c951b0e28ba1c9855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/c701d0ec4f7ad6691a99d632b678d22c09c5ad8b",
-                "reference": "c701d0ec4f7ad6691a99d632b678d22c09c5ad8b",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/4675e188e92441dfb7d5972c951b0e28ba1c9855",
+                "reference": "4675e188e92441dfb7d5972c951b0e28ba1c9855",
                 "shasum": ""
             },
             "require": {
@@ -5047,7 +5045,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2016-04-08 16:19:50"
+            "time": "2016-04-28 09:43:25"
         },
         {
             "name": "stfalcon/tinymce-bundle",
