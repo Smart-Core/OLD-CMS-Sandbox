@@ -7,6 +7,8 @@ if (!defined('START_MEMORY')) {
     define('START_MEMORY', memory_get_usage());
 }
 
+require_once 'autoload.php';
+
 use SmartCore\Bundle\CMSBundle\CMSAppKernel;
 
 class AppKernel extends CMSAppKernel
