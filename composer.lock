@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dff824d1588f54974eb09e9ba19ec9db",
-    "content-hash": "b8bb7249405440646afddefce09f8929",
+    "hash": "8d9c12ce331b33549a2b82d545b37531",
+    "content-hash": "d5c2ad3072510c07114bc2c29741c94d",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -87,17 +87,17 @@
         },
         {
             "name": "dizda/cloud-backup-bundle",
-            "version": "3.2.4",
+            "version": "3.3.0",
             "target-dir": "Dizda/CloudBackupBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "26c7e9c99130e3ffa1edf5947407ee3d9a88c66f"
+                "reference": "4a46434a384824cfae9bafa8f432241530bfb0f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/26c7e9c99130e3ffa1edf5947407ee3d9a88c66f",
-                "reference": "26c7e9c99130e3ffa1edf5947407ee3d9a88c66f",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/4a46434a384824cfae9bafa8f432241530bfb0f0",
+                "reference": "4a46434a384824cfae9bafa8f432241530bfb0f0",
                 "shasum": ""
             },
             "require": {
@@ -114,7 +114,8 @@
                 "happyr/google-site-authenticator-bundle": "To enable upload dumps on google drive.",
                 "jongotlin/deadmanssnitch-bundle": "To report your successful backups to deadmanssnitch.com",
                 "knplabs/knp-gaufrette-bundle": "To use Gaufrette as a cloud storage",
-                "matthiasplappert/cloudapp-api": "To support upload to CloudApp"
+                "matthiasplappert/cloudapp-api": "To support upload to CloudApp",
+                "oneup/flysystem-bundle": "To use Flysystem as a cloud storage"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -150,7 +151,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2016-01-25 11:30:48"
+            "time": "2016-05-23 13:17:45"
         },
         {
             "name": "doctrine/annotations",
@@ -1468,17 +1469,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.7.8",
+            "version": "1.7.9",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "691e7c52d7cf9df266c6404180eda1e47cc64f59"
+                "reference": "9449e451074e98ee6fdc45c18fa857c71baf1dfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/691e7c52d7cf9df266c6404180eda1e47cc64f59",
-                "reference": "691e7c52d7cf9df266c6404180eda1e47cc64f59",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/9449e451074e98ee6fdc45c18fa857c71baf1dfe",
+                "reference": "9449e451074e98ee6fdc45c18fa857c71baf1dfe",
                 "shasum": ""
             },
             "require": {
@@ -1551,7 +1552,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2016-03-03 17:30:37"
+            "time": "2016-05-15 23:18:24"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3694,12 +3695,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "f3606bff7fcf7208a482f88d4cd216ebf4af194e"
+                "reference": "51210d0b54810b95543dd930186ec77202c8700f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/f3606bff7fcf7208a482f88d4cd216ebf4af194e",
-                "reference": "f3606bff7fcf7208a482f88d4cd216ebf4af194e",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/51210d0b54810b95543dd930186ec77202c8700f",
+                "reference": "51210d0b54810b95543dd930186ec77202c8700f",
                 "shasum": ""
             },
             "require": {
@@ -3761,7 +3762,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-05-10 22:04:27"
+            "time": "2016-05-22 11:03:47"
         },
         {
             "name": "liip/imagine-bundle",
@@ -3981,12 +3982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "17efa8b36a9becf6a8367d25a2e3eb765178a16c"
+                "reference": "5f05310a402a1df686da090808a160ab627507d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/17efa8b36a9becf6a8367d25a2e3eb765178a16c",
-                "reference": "17efa8b36a9becf6a8367d25a2e3eb765178a16c",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/5f05310a402a1df686da090808a160ab627507d3",
+                "reference": "5f05310a402a1df686da090808a160ab627507d3",
                 "shasum": ""
             },
             "require": {
@@ -4044,7 +4045,7 @@
                 "form",
                 "template"
             ],
-            "time": "2016-05-20 14:55:45"
+            "time": "2016-05-23 15:22:39"
         },
         {
             "name": "mopa/composer-bridge",
@@ -4989,36 +4990,43 @@
         },
         {
             "name": "sonata-project/intl-bundle",
-            "version": "dev-master",
+            "version": "2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "4675e188e92441dfb7d5972c951b0e28ba1c9855"
+                "reference": "c27e597a6d5758d5ff78703d7d4e813205f9e3da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/4675e188e92441dfb7d5972c951b0e28ba1c9855",
-                "reference": "4675e188e92441dfb7d5972c951b0e28ba1c9855",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/c27e597a6d5758d5ff78703d7d4e813205f9e3da",
+                "reference": "c27e597a6d5758d5ff78703d7d4e813205f9e3da",
                 "shasum": ""
             },
             "require": {
-                "symfony/dependency-injection": "~2.2|~3.0",
-                "symfony/http-kernel": "~2.2|~3.0",
-                "symfony/intl": "^2.3.21|~3.0",
-                "symfony/templating": "~2.2|~3.0",
-                "twig/twig": "~1.12"
+                "php": "^5.3 || ^7.0",
+                "symfony/dependency-injection": "^2.2 || ^3.0",
+                "symfony/http-kernel": "^2.2 || ^3.0",
+                "symfony/intl": "^2.3.21 || ^3.0",
+                "symfony/templating": "^2.2 || ^3.0",
+                "twig/twig": "^1.12"
+            },
+            "conflict": {
+                "sonata-project/user-bundle": "<2.0 || >=4.0"
             },
             "require-dev": {
                 "matthiasnoback/symfony-dependency-injection-test": "^0.7.6",
-                "sonata-project/user-bundle": "~2.2",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
-                "symfony/security": "~2.2|~3.0",
-                "symfony/security-acl": "~2.2|~3.0"
+                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0",
+                "symfony/security": "^2.2 || ^3.0",
+                "symfony/security-acl": "^2.2 || ^3.0"
+            },
+            "suggest": {
+                "sonata-project/user-bundle": "For user timezone detection"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -5049,11 +5057,11 @@
                 "sonata",
                 "time"
             ],
-            "time": "2016-04-28 09:43:25"
+            "time": "2016-05-30 07:55:09"
         },
         {
             "name": "stfalcon/tinymce-bundle",
-            "version": "dev-master",
+            "version": "v2.1",
             "target-dir": "Stfalcon/Bundle/TinymceBundle",
             "source": {
                 "type": "git",
@@ -6051,16 +6059,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.0",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8"
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
                 "shasum": ""
             },
             "require": {
@@ -6108,7 +6116,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-01-25 21:22:18"
+            "time": "2016-05-30 09:11:59"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -6676,7 +6684,6 @@
         "knplabs/knp-menu": 20,
         "knplabs/knp-menu-bundle": 20,
         "mopa/bootstrap-bundle": 20,
-        "stfalcon/tinymce-bundle": 20,
         "symfony/assetic-bundle": 20,
         "doctrine/doctrine-cache-bundle": 20,
         "elao/web-profiler-extra-bundle": 20,
