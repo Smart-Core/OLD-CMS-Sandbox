@@ -2,8 +2,7 @@
 
 namespace SandboxSiteBundle;
 
-//use Knp\RadBundle\AppBundle\Bundle;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Smart\CoreBundle\AppBundle\Bundle;
 
 class SiteBundle extends Bundle
 {
