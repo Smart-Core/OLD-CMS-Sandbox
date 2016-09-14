@@ -10,9 +10,5 @@ _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix:   /_profiler
 
-_knp_rad_assistant:
-    resource: "@KnpRadBundle/Resources/config/routing/assistant.xml"
-    prefix:   /_assistant
-
 _main:
     resource: routing.yml

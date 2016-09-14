@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Shop\Controller;
 
-use Knp\RadBundle\Controller\Controller;
+use Smart\CoreBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminShippingController extends Controller

@@ -2,7 +2,7 @@
 
 namespace SmartCore\Module\Shop\Controller;
 
-use Knp\RadBundle\Controller\Controller;
+use Smart\CoreBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Model\UserModel;
 use SmartCore\Bundle\CMSBundle\Module\NodeTrait;
 use SmartCore\Module\Shop\Entity\Order;
