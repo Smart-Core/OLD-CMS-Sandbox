@@ -71,7 +71,6 @@
         "helios-ag/fm-elfinder-php-connector": "v2.2.1",
         "knplabs/knp-gaufrette-bundle": "*",
         "knplabs/knp-paginator-bundle": "*",
-        "knplabs/rad-bundle": "*",
         "liip/theme-bundle": "~1.0@dev",
         "rickysu/tagcache-bundle": "~0.1",
 
