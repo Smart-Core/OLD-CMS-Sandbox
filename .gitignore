@@ -6,11 +6,11 @@
 /bin/symfony_requirements
 /bin/phpspec*
 /bin/pscss
-/components
 /public_html
 /var/
 /vendor/
 /web/_media/
+/web/assets/
 /web/bundles/
 /web/uploads/
 /web/sitemap.xml
