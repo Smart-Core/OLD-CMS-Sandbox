@@ -10,17 +10,15 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "v2.8.x",
+        "symfony/symfony": "v3.x",
 
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "^1.0",
 
         "liip/functional-test-bundle": "dev-master",
-        "jms/debugging-bundle": "dev-master",
-        "mremi/templating-extra-bundle": "dev-master",
 
-        "friendsofsymfony/user-bundle": "v2.0.0-alpha3",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
         "hwi/oauth-bundle": "0.4.*@dev",
         "knplabs/knp-disqus-bundle":"dev-master",
         "knplabs/knp-menu": "dev-master",
@@ -60,15 +58,14 @@
         "egulias/listeners-debug-command-bundle": "*",
         "elao/web-profiler-extra-bundle": "~2.0@dev",
         "friendsofsymfony/rest-bundle": "*",
-        "genemu/form-bundle": "*",
+        "genemu/form-bundle": "^3.0@dev",
         "incenteev/composer-parameter-handler": "~2.0",
         "intervention/image": "*",
         "jms/di-extra-bundle": "*",
         "jms/serializer-bundle": "*",
         "happyr/google-site-authenticator-bundle": "*",
-        "happyr/slugify-bundle": "*",
-        "helios-ag/fm-elfinder-bundle": "~4.0",
-        "helios-ag/fm-elfinder-php-connector": "v2.2.1",
+        "helios-ag/fm-elfinder-bundle": "~6",
+        "helios-ag/fm-elfinder-php-connector": "*",
         "knplabs/knp-gaufrette-bundle": "*",
         "knplabs/knp-paginator-bundle": "*",
         "liip/theme-bundle": "~1.0@dev",
@@ -82,7 +79,6 @@
         "white-october/pagerfanta-bundle": "~1.0@dev",
         "zendframework/zend-servicemanager": "2.6.0",
         "zendframework/zend-tag": "2.5.1",
-        "zenstruck/imagine-extra-bundle": "*",
 
 
 

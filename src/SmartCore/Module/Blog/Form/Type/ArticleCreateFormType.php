@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Blog\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ArticleCreateFormType extends ArticleFormType
@@ -10,7 +11,7 @@ class ArticleCreateFormType extends ArticleFormType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('create', 'submit', [
+        $builder->add('create', SubmitType::class, [
             'attr' => [
                 'class' => 'btn btn-primary',
             ],

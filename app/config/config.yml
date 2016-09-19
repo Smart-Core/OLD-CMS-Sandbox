@@ -1,42 +1,41 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: '@CMSBundle/Resources/config/config.yml' }
+    - { resource: "@CMSBundle/Resources/config/config.yml" }
 
 framework:
     annotations:
-        debug:       %kernel.debug%
+        debug:       "%kernel.debug%"
     csrf_protection:
         enabled:     true
-    default_locale:  %locale%
+    default_locale:  "%locale%"
     esi:             
         enabled:     true
     form:            true
     profiler:
         enabled:     false
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
-    secret:          %secret%
+    secret:          "%secret%"
     session:
-        handler_id:  %session_handler%
+        handler_id:  "%session_handler%"
         save_path:   "%kernel.root_dir%/../var/sessions"
     templating:      { engines: ['twig', 'php'] } #assets_version: SomeVersionScheme
     translator:      { fallback: en }
     validation:
         enable_annotations: true
         enabled:    true
-        api:        2.5
 
 # Twig Configuration
 twig:
-    debug:            %kernel.debug%
+    debug:            "%kernel.debug%"
     strict_variables: false
     autoescape:       false
 
 # Assetic Configuration
 assetic:
-    debug:          %kernel.debug%
+    debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        ['FMElfinderBundle']
+    bundles:        [ 'FMElfinderBundle' ]
     # java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -64,14 +63,14 @@ doctrine:
         connections:
             default:
                 charset:  UTF8
-                driver:   %database_driver%
-                host:     %database_host%
-                port:     %database_port%
-                dbname:   %database_name%
-                user:     %database_user%
-                password: %database_password%
-                unix_socket: %database_socket%
-                logging:  %kernel.debug%
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                unix_socket: "%database_socket%"
+                logging:  "%kernel.debug%"
                 mapping_types:
                     enum: string
                 #options:
@@ -86,13 +85,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
     spool:
         type:  memory # file
-        path:  %kernel.root_dir%/../var/mailspool
+        path:  "%kernel.root_dir%/../var/mailspool"
 
 #liip_theme:
 #    themes: ['web', 'tablet', 'phone']
@@ -101,19 +100,19 @@ swiftmailer:
 #    load_controllers: false
 
 accelerator_cache:
-    host: '%base_url%'
-    web_dir: '%web_dir%' # %kernel.root_dir%/../web
+    host: "%base_url%"
+    web_dir: "%web_dir%" # %kernel.root_dir%/../web
     #web_dir: "@=container.hasParameter('web_dir') ? parameter('web_dir') : '%kernel.root_dir%/../web'"
     mode: curl
 
 smart_sitemap:
-    base_url: %base_url%
+    base_url: "%base_url%"
     ignores:
         - 'http:'
         - 'https:'
         - 'javascript:'
         - 'mailto:'
         - 'skype:'
-        - /user/
-        - /admin/
-        - /api/
+        - '/user/'
+        - '/admin/'
+        - '/api/'

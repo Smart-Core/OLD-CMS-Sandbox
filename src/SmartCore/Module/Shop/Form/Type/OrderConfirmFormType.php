@@ -2,7 +2,9 @@
 
 namespace SmartCore\Module\Shop\Form\Type;
 
+use SmartCore\Module\Shop\Entity\Order;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +19,7 @@ class OrderConfirmFormType extends AbstractType
             ->add('shipping', null, ['required' => true])
             ->add('address')
             ->add('comment')
-            ->add('confirm', 'submit', [
+            ->add('confirm', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-success'],
                 'label' => 'Оформить заказ',
             ]);
@@ -26,7 +28,7 @@ class OrderConfirmFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\Shop\Entity\Order',
+            'data_class' => Order::class,
         ]);
     }
 

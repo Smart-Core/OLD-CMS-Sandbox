@@ -130,7 +130,7 @@ class ShopController extends Controller
             $order->setPhone($user->getPhone());
         }
 
-        $form = $this->createForm(new OrderConfirmFormType(), $order);
+        $form = $this->createForm(OrderConfirmFormType::class, $order);
 
         $form_data = $this->getFlashBag()->get('smart_shop_order_confirm_data');
         if (!empty($form_data)) {
@@ -247,7 +247,7 @@ class ShopController extends Controller
         if ($request->request->has('smart_shop_order_confirm')) {
             $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
 
-            $form = $this->createForm(new OrderConfirmFormType(), $order);
+            $form = $this->createForm(OrderConfirmFormType::class, $order);
             $form->handleRequest($request);
 
             if ($form->isValid()) {

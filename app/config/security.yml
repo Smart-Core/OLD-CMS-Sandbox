@@ -22,7 +22,7 @@ security:
             logout:
                 path: /%admin_path%/logout
             remember_me:
-                key: '%secret%'
+                secret: "%secret%"
                 name: SMART_CORE_REMEMBER_ME
                 lifetime: 31536000 # 365 days in seconds
                 path: /
@@ -32,14 +32,14 @@ security:
             context: smart_core_cms
             pattern: ^/
             form_login:
-                csrf_provider: form.csrf_provider
+                # csrf_provider: form.csrf_provider # @deprecated in 3.x
                 check_path: /%user_path%/login_check
                 login_path: /%user_path%/
                 default_target_path: /%user_path%/
             logout:
                 path: /%user_path%/logout
             remember_me:
-                key: '%secret%'
+                secret: "%secret%"
                 name: SMART_CORE_REMEMBER_ME
                 lifetime: 31536000 # 365 days in seconds
                 path: /

@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Blog\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class CategoryEditFormType extends CategoryFormType
@@ -10,7 +11,7 @@ class CategoryEditFormType extends CategoryFormType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('save', 'submit', [
+        $builder->add('save', SubmitType::class, [
             'attr' => [
                 'class' => 'btn btn-primary',
             ],
