@@ -44,7 +44,7 @@ class AppKernel extends CMSAppKernel
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle();
+            //$bundles[] = new Mremi\TemplatingExtraBundle\MremiTemplatingExtraBundle(); // "mremi/templating-extra-bundle": "dev-master",
             //$bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this); // "jms/debugging-bundle": "dev-master",
             //$bundles[] = new Alb\TwigReflectionBundle\AlbTwigReflectionBundle(); // "alb/twig-reflection-bundle": "*",
         }

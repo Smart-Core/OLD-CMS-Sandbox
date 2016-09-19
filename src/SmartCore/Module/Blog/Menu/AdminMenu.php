@@ -3,10 +3,12 @@
 namespace SmartCore\Module\Blog\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class AdminMenu extends ContainerAware
+class AdminMenu
 {
+    use ContainerAwareTrait;
+
     /**
      * @param FactoryInterface $factory
      * @param array $options

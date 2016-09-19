@@ -7,15 +7,16 @@ use SmartCore\Module\Blog\Event\FilterArticleEvent;
 use SmartCore\Module\Blog\Model\SignedArticleInterface;
 use SmartCore\Module\Blog\SmartBlogEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Security\Core\SecurityContext;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Security;
 
+/**
+ * @todo FIX IT !!!
+ */
 class ArticleAuthorListener implements EventSubscriberInterface
 {
     /**
-     * @var SecurityContext
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * @var LoggerInterface
@@ -23,14 +24,13 @@ class ArticleAuthorListener implements EventSubscriberInterface
     protected $logger;
 
     /**
-     * Constructor.
-     *
-     * @param SecurityContextInterface $securityContext
+     * @param                      $tokenStorage
+     * @param LoggerInterface|null $logger
      */
-    public function __construct(SecurityContextInterface $securityContext, LoggerInterface $logger = null)
+    public function __construct($tokenStorage, LoggerInterface $logger = null)
     {
-        $this->securityContext = $securityContext;
-        $this->logger          = $logger;
+        $this->tokenStorage = $tokenStorage;
+        $this->logger       = $logger;
     }
 
     /**
@@ -38,7 +38,7 @@ class ArticleAuthorListener implements EventSubscriberInterface
      */
     public function setArticleAuthor(FilterArticleEvent $event)
     {
-        if (null === $this->securityContext) {
+        if (null === $this->tokenStorage) {
             if ($this->logger) {
                 $this->logger->debug('The security.context service is NULL.');
             }
@@ -46,7 +46,7 @@ class ArticleAuthorListener implements EventSubscriberInterface
             return;
         }
 
-        if (null === $this->securityContext->getToken()) {
+        if (null === $this->tokenStorage->getToken()) {
             if ($this->logger) {
                 $this->logger->debug('No authentication information is available, please configure a firewall for this route.');
             }
@@ -65,8 +65,8 @@ class ArticleAuthorListener implements EventSubscriberInterface
             return;
         }
 
-        if (null === $article->getAuthor() and $this->securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $article->setAuthor($this->securityContext->getToken()->getUser());
+        if (null === $article->getAuthor() and $this->tokenStorage->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $article->setAuthor($this->tokenStorage->getToken()->getUser());
         }
     }
 

@@ -3,10 +3,12 @@
 namespace SmartCore\Module\Shop\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class Client extends ContainerAware
+class Client
 {
+    use ContainerAwareTrait;
+
     /**
      * @param FactoryInterface $factory
      * @param array $options
