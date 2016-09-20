@@ -12,9 +12,8 @@
         "php": ">=5.5.9",
         "symfony/symfony": "v3.x",
 
-        "doctrine/migrations": "1.0.*@dev",
-        "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "doctrine/doctrine-migrations-bundle": "^1.0",
+        "doctrine/doctrine-fixtures-bundle": "*",
+        "doctrine/doctrine-migrations-bundle": "*",
 
         "liip/functional-test-bundle": "dev-master",
 
