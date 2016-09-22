@@ -6,8 +6,9 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use SmartCore\Module\Blog\Model\CategoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class Category
+class Category implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 

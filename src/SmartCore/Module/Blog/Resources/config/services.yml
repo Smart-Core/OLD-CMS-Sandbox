@@ -67,22 +67,19 @@ services:
         arguments: [ "%smart_blog.model.tag.class%" ]
 
     smart_blog.article.repository:
-        class:           SmartCore\Module\Blog\Repository\ArticleRepository
-        factory_service: doctrine
-        factory_method:  getRepository
-        arguments:       [ "%smart_blog.model.article.class%" ]
+        class:      SmartCore\Module\Blog\Repository\ArticleRepository
+        factory:    ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:  [ "%smart_blog.model.article.class%" ]
 
     smart_blog.tag.repository:
-        class:           SmartCore\Module\Blog\Repository\TagRepository
-        factory_service: doctrine
-        factory_method:  getRepository
-        arguments:       [ "%smart_blog.model.tag.class%" ]
+        class:      SmartCore\Module\Blog\Repository\TagRepository
+        factory:    ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:  [ "%smart_blog.model.tag.class%" ]
 
     smart_blog.category.repository:
-        class:           SmartCore\Module\Blog\Repository\CategoryRepository
-        factory_service: doctrine
-        factory_method:  getRepository
-        arguments:       [ "%smart_blog.model.category.class%" ]
+        class:      SmartCore\Module\Blog\Repository\CategoryRepository
+        factory:    ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:  [ "%smart_blog.model.category.class%" ]
 
     # Listeners
     smart_blog.listener.article_author:

@@ -4,8 +4,9 @@ namespace SmartCore\Module\Blog\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class AdminMenu
+class AdminMenu implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
