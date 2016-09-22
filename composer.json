@@ -107,7 +107,7 @@
     },
     "config": {
         "bin-dir": "bin",
-        "component-dir": "web/assets",
+        "component-dir": "web/bundles/components",
         "preferred-install": "dist"
     },
     "extra": {
