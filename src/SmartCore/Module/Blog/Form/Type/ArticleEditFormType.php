@@ -20,7 +20,7 @@ class ArticleEditFormType extends ArticleFormType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_blog_article_edit';
     }

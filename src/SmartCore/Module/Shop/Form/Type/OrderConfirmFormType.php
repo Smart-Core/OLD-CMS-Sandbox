@@ -32,7 +32,7 @@ class OrderConfirmFormType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_shop_order_confirm';
     }

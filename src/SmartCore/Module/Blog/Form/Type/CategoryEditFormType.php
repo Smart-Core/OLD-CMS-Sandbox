@@ -18,7 +18,7 @@ class CategoryEditFormType extends CategoryFormType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_blog_category_edit';
     }

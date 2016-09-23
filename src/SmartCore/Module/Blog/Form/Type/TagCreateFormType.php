@@ -18,7 +18,7 @@ class TagCreateFormType extends TagFormType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_blog_tag_create';
     }

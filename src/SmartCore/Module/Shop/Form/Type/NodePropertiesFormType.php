@@ -14,15 +14,15 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
             ->add('basket_node_id', null, ['required' => false, 'attr' => ['autofocus' => 'autofocus']])
             ->add('mode', ChoiceType::class, [
                 'choices' => [
-                    'basket_widget' => 'Basket widget',
-                    'basket' => 'Basket full',
-                    'my_orders' => 'My_orders',
+                    'Basket widget' => 'basket_widget',
+                    'Basket full' => 'basket',
+                    'My_orders' => 'my_orders',
                 ],
             ])
         ;
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'shop_node_properties';
     }

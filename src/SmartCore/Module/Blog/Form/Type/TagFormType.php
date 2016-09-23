@@ -33,7 +33,7 @@ class TagFormType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_blog_tag';
     }

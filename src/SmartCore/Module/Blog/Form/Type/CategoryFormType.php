@@ -34,7 +34,7 @@ class CategoryFormType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_blog_category';
     }

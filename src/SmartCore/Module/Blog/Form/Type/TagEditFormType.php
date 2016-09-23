@@ -18,7 +18,7 @@ class TagEditFormType extends TagFormType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_blog_tag_edit';
     }
