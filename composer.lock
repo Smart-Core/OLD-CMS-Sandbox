@@ -1706,12 +1706,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "9f86fe2d69df11159fca9ec44b529cb1df5e14aa"
+                "reference": "cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/9f86fe2d69df11159fca9ec44b529cb1df5e14aa",
-                "reference": "9f86fe2d69df11159fca9ec44b529cb1df5e14aa",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1",
+                "reference": "cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1",
                 "shasum": ""
             },
             "require": {
@@ -1773,7 +1773,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-09-28 09:10:06"
+            "time": "2016-09-30 08:33:06"
         },
         {
             "name": "genemu/form-bundle",
