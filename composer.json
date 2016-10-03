@@ -18,13 +18,11 @@
         "liip/functional-test-bundle": "dev-master",
 
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "hwi/oauth-bundle": "0.4.*@dev",
-        "knplabs/knp-disqus-bundle":"dev-master",
-        "knplabs/knp-menu": "dev-master",
+        "hwi/oauth-bundle": "0.5.*@dev",
         "knplabs/knp-menu-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "dev-master",
         "stfalcon/tinymce-bundle": "v2.1",
-
+        "genemu/form-bundle": "^3.0@dev",
 
 
 
@@ -42,22 +40,21 @@
         "symfony/assetic-bundle": "~2.0@dev",
         "symfony/swiftmailer-bundle": "*",
         "symfony/monolog-bundle": "*",
-        "sensio/distribution-bundle": "*",
+        "sensio/distribution-bundle": ">=5.0.6",
         "sensio/generator-bundle": "*",
 
         "twig/extensions": "~1.0",
 
         "doctrine/orm": "~2.5",
         "doctrine/doctrine-cache-bundle": "~1.0@dev",
-        "doctrine/doctrine-bundle": "~1.5",
+        "doctrine/doctrine-bundle": "~1.6",
 
         "asm89/twig-cache-extension": "*",
-        "egeloen/ordered-form": "~1.0",
-        "egulias/email-validator": "*",
+        "egeloen/ordered-form": "*",
+        "egulias/email-validator": "~1.2",
         "egulias/listeners-debug-command-bundle": "*",
         "elao/web-profiler-extra-bundle": "~2.0@dev",
         "friendsofsymfony/rest-bundle": "*",
-        "genemu/form-bundle": "^3.0@dev",
         "incenteev/composer-parameter-handler": "~2.0",
         "intervention/image": "*",
         "jms/di-extra-bundle": "*",
@@ -76,8 +73,9 @@
         "sonata-project/intl-bundle": "~2.0@dev",
         "whiteoctober/breadcrumbs-bundle": "~1.0@dev",
         "white-october/pagerfanta-bundle": "~1.0@dev",
-        "zendframework/zend-servicemanager": "2.6.0",
-        "zendframework/zend-tag": "2.5.1",
+        "zendframework/zend-servicemanager": "~3.0",
+        "zendframework/zend-tag": "~2.0",
+
 
 
 
@@ -108,7 +106,10 @@
     "config": {
         "bin-dir": "bin",
         "component-dir": "web/bundles/components",
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "platform": {
+            "php": "5.6.26"
+        }
     },
     "extra": {
         "symfony-app-dir": "app",

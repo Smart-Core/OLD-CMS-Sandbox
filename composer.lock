@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cd69ed8a97fdb65843a0df4e55cec72b",
-    "content-hash": "a891bbb26af361de4d056609ccea4333",
+    "hash": "390bf0b238bde687dcc8bbba11e88f17",
+    "content-hash": "16313584630082d87ec6bf7a82b27093",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1360,34 +1360,36 @@
         },
         {
             "name": "egeloen/ordered-form",
-            "version": "1.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/ivory-ordered-form.git",
-                "reference": "e6e3094ab74695170944c6c83eb4c7f3c3d77902"
+                "reference": "a978c7a4065db659e8380c24f4cbd98eae82438e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/ivory-ordered-form/zipball/e6e3094ab74695170944c6c83eb4c7f3c3d77902",
-                "reference": "e6e3094ab74695170944c6c83eb4c7f3c3d77902",
+                "url": "https://api.github.com/repos/egeloen/ivory-ordered-form/zipball/a978c7a4065db659e8380c24f4cbd98eae82438e",
+                "reference": "a978c7a4065db659e8380c24f4cbd98eae82438e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "symfony/form": ">=2.3"
+                "php": ">=5.3.3",
+                "symfony/form": "^2.3|^3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "^4.0",
+                "satooshi/php-coveralls": "^0.6",
+                "symfony/phpunit-bridge": "^2.7|^3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Ivory\\OrderedForm": "src/"
+                "psr-4": {
+                    "Ivory\\OrderedForm\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1406,33 +1408,28 @@
                 "form",
                 "order"
             ],
-            "time": "2013-12-29 17:18:59"
+            "time": "2015-12-12 18:18:22"
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.1",
+            "version": "1.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "30562b69fc6c8e9740645877a98063b3842204b2"
+                "reference": "b8bb147f46cc9790326ce2440a13be06cc5a63bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/30562b69fc6c8e9740645877a98063b3842204b2",
-                "reference": "30562b69fc6c8e9740645877a98063b3842204b2",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/b8bb147f46cc9790326ce2440a13be06cc5a63bb",
+                "reference": "b8bb147f46cc9790326ce2440a13be06cc5a63bb",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
-                "php": ">= 5.5"
+                "php": ">= 5.3.3"
             },
             "require-dev": {
-                "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.0",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "suggest": {
-                "ext/php-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+                "phpunit/phpunit": "^4.8.24"
             },
             "type": "library",
             "extra": {
@@ -1441,8 +1438,8 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Egulias\\EmailValidator\\": "EmailValidator"
+                "psr-0": {
+                    "Egulias\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1454,7 +1451,7 @@
                     "name": "Eduardo Gulias Davis"
                 }
             ],
-            "description": "A library for validating emails against several RFCs",
+            "description": "A library for validating emails",
             "homepage": "https://github.com/egulias/EmailValidator",
             "keywords": [
                 "email",
@@ -1463,7 +1460,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-08-07 21:18:59"
+            "time": "2016-07-03 21:52:18"
         },
         {
             "name": "egulias/listeners-debug-command-bundle",
@@ -2236,12 +2233,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "6e404aa32537274fecfe39da981ffa50281cb7fd"
+                "reference": "58924e0a044a0126d333a6f08a9d0a29dbda7c8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/6e404aa32537274fecfe39da981ffa50281cb7fd",
-                "reference": "6e404aa32537274fecfe39da981ffa50281cb7fd",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/58924e0a044a0126d333a6f08a9d0a29dbda7c8b",
+                "reference": "58924e0a044a0126d333a6f08a9d0a29dbda7c8b",
                 "shasum": ""
             },
             "require": {
@@ -2258,12 +2255,14 @@
             },
             "require-dev": {
                 "doctrine/orm": "~2.3",
+                "fabpot/php-cs-fixer": "~1.11",
                 "friendsofsymfony/user-bundle": "~1.3|~2.0",
-                "phpunit/phpunit": "~4.8",
-                "symfony/phpunit-bridge": "~2.7",
-                "symfony/property-access": "~2.3",
-                "symfony/twig-bundle": "~2.3",
-                "symfony/validator": "~2.3"
+                "phpunit/phpunit": "~4.8|~5.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/property-access": "~2.3|~3.0",
+                "symfony/stopwatch": "~2.5|~3.0",
+                "symfony/twig-bundle": "~2.3|~3.0",
+                "symfony/validator": "~2.3|~3.0"
             },
             "suggest": {
                 "doctrine/doctrine-bundle": "to use Doctrine user provider",
@@ -2274,13 +2273,16 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4-dev"
+                    "dev-master": "0.5-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "HWI\\Bundle\\OAuthBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2312,12 +2314,14 @@
                 "Deezer",
                 "EVE Online",
                 "amazon",
+                "asana",
                 "auth0",
                 "azure",
                 "bitbucket",
                 "bitly",
                 "box",
                 "bufferapp",
+                "clever",
                 "dailymotion",
                 "deviantart",
                 "discogs",
@@ -2333,6 +2337,7 @@
                 "google",
                 "hubic",
                 "instagram",
+                "jawbone",
                 "jira",
                 "linkedin",
                 "mail.ru",
@@ -2363,12 +2368,13 @@
                 "wechat",
                 "windows live",
                 "wordpress",
+                "wunderlist",
                 "xing",
                 "yahoo",
                 "yandex",
                 "youtube"
             ],
-            "time": "2016-01-11 19:07:25"
+            "time": "2016-09-28 09:58:48"
         },
         {
             "name": "imagine/imagine",
@@ -3144,62 +3150,6 @@
             "time": "2016-04-21 06:26:20"
         },
         {
-            "name": "knplabs/knp-disqus-bundle",
-            "version": "dev-master",
-            "target-dir": "Knp/Bundle/DisqusBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KnpLabs/KnpDisqusBundle.git",
-                "reference": "1629ff7ae27e41736d539ba22856e03c1a687458"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpDisqusBundle/zipball/1629ff7ae27e41736d539ba22856e03c1a687458",
-                "reference": "1629ff7ae27e41736d539ba22856e03c1a687458",
-                "shasum": ""
-            },
-            "require": {
-                "kriswallsmith/buzz": "~0.7",
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "^2.3|^3.0"
-            },
-            "require-dev": {
-                "symfony/yaml": "^2.3|^3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Knp\\Bundle\\DisqusBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "KnpLabs Team",
-                    "homepage": "http://knplabs.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://github.com/KnpLabs/KnpDisqusBundle/contributors"
-                }
-            ],
-            "homepage": "http://github.com/KnpLabs/KnpDisqusBundle",
-            "keywords": [
-                "comments",
-                "disqus",
-                "forum"
-            ],
-            "time": "2016-08-07 14:08:32"
-        },
-        {
             "name": "knplabs/knp-gaufrette-bundle",
             "version": "0.3.0",
             "source": {
@@ -3259,7 +3209,7 @@
         },
         {
             "name": "knplabs/knp-menu",
-            "version": "dev-master",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
@@ -5790,16 +5740,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.25.0",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6"
+                "reference": "81c2b5fd36581370c7731387f05dcdb577050513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
-                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/81c2b5fd36581370c7731387f05dcdb577050513",
+                "reference": "81c2b5fd36581370c7731387f05dcdb577050513",
                 "shasum": ""
             },
             "require": {
@@ -5812,7 +5762,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.25-dev"
+                    "dev-master": "1.26-dev"
                 }
             },
             "autoload": {
@@ -5847,7 +5797,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-09-21 23:05:12"
+            "time": "2016-10-02 16:19:13"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -6187,96 +6137,41 @@
             "time": "2016-02-18 20:53:00"
         },
         {
-            "name": "zendframework/zend-hydrator",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-hydrator.git",
-                "reference": "22652e1661a5a10b3f564cf7824a2206cf5a4a65"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/22652e1661a5a10b3f564cf7824a2206cf5a4a65",
-                "reference": "22652e1661a5a10b3f564cf7824a2206cf5a4a65",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-stdlib": "^2.7 || ^3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "^2.0@dev",
-                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
-                "zendframework/zend-filter": "^2.6",
-                "zendframework/zend-inputfilter": "^2.6",
-                "zendframework/zend-serializer": "^2.6.1",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
-            },
-            "suggest": {
-                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0, to support aggregate hydrator usage",
-                "zendframework/zend-filter": "^2.6, to support naming strategy hydrator usage",
-                "zendframework/zend-serializer": "^2.6.1, to use the SerializableStrategy",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to support hydrator plugin manager usage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-release-1.0": "1.0-dev",
-                    "dev-release-1.1": "1.1-dev",
-                    "dev-master": "2.0-dev",
-                    "dev-develop": "2.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Hydrator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "homepage": "https://github.com/zendframework/zend-hydrator",
-            "keywords": [
-                "hydrator",
-                "zf2"
-            ],
-            "time": "2016-02-18 22:38:26"
-        },
-        {
             "name": "zendframework/zend-servicemanager",
-            "version": "2.6.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-servicemanager.git",
-                "reference": "1dc33f23bd0a7f4d8ba743b915fae523d356027a"
+                "reference": "f701b0d322741b0c8d8ca1288f249a49438029cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/1dc33f23bd0a7f4d8ba743b915fae523d356027a",
-                "reference": "1dc33f23bd0a7f4d8ba743b915fae523d356027a",
+                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/f701b0d322741b0c8d8ca1288f249a49438029cd",
+                "reference": "f701b0d322741b0c8d8ca1288f249a49438029cd",
                 "shasum": ""
             },
             "require": {
                 "container-interop/container-interop": "~1.0",
-                "php": ">=5.5"
+                "php": "^5.5 || ^7.0"
+            },
+            "provide": {
+                "container-interop/container-interop-implementation": "^1.1"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "~4.0",
-                "zendframework/zend-di": "~2.5",
-                "zendframework/zend-mvc": "~2.5"
+                "ocramius/proxy-manager": "^1.0 || ^2.0",
+                "phpbench/phpbench": "^0.10.0",
+                "phpunit/phpunit": "^4.6 || ^5.2.10",
+                "squizlabs/php_codesniffer": "^2.5.1"
             },
             "suggest": {
-                "ocramius/proxy-manager": "ProxyManager 0.5.* to handle lazy initialization of services",
-                "zendframework/zend-di": "Zend\\Di component"
+                "ocramius/proxy-manager": "ProxyManager 1.* to handle lazy initialization of services",
+                "zendframework/zend-stdlib": "zend-stdlib ^2.5 if you wish to use the MergeReplaceKey or MergeRemoveKey features in Config instances"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev",
-                    "dev-develop": "2.7-dev"
+                    "dev-master": "3.1-dev",
+                    "dev-develop": "3.2-dev"
                 }
             },
             "autoload": {
@@ -6290,52 +6185,39 @@
             ],
             "homepage": "https://github.com/zendframework/zend-servicemanager",
             "keywords": [
+                "service-manager",
                 "servicemanager",
-                "zf2"
+                "zf"
             ],
-            "time": "2015-07-23 21:49:08"
+            "time": "2016-07-15 14:59:51"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.7.7",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "0e44eb46788f65e09e077eb7f44d2659143bcc1f"
+                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/0e44eb46788f65e09e077eb7f44d2659143bcc1f",
-                "reference": "0e44eb46788f65e09e077eb7f44d2659143bcc1f",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/debedcfc373a293f9250cc9aa03cf121428c8e78",
+                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-hydrator": "~1.1"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1",
-                "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.0",
-                "zendframework/zend-config": "~2.5",
-                "zendframework/zend-eventmanager": "~2.5",
-                "zendframework/zend-filter": "~2.5",
-                "zendframework/zend-inputfilter": "~2.5",
-                "zendframework/zend-serializer": "~2.5",
-                "zendframework/zend-servicemanager": "~2.5"
-            },
-            "suggest": {
-                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
-                "zendframework/zend-filter": "To support naming strategy hydrator usage",
-                "zendframework/zend-serializer": "Zend\\Serializer component",
-                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+                "squizlabs/php_codesniffer": "^2.6.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-release-2.7": "2.7-dev",
-                    "dev-master": "3.0-dev",
-                    "dev-develop": "3.1-dev"
+                    "dev-master": "3.1-dev",
+                    "dev-develop": "3.2-dev"
                 }
             },
             "autoload": {
@@ -6352,32 +6234,31 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2016-04-12 21:17:31"
+            "time": "2016-09-13 14:38:50"
         },
         {
             "name": "zendframework/zend-tag",
-            "version": "2.5.1",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-tag.git",
-                "reference": "08661ac808e848d1aea1796af01230c2814855b4"
+                "reference": "4429ca5016361f12eff920370170391a0f4adbff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-tag/zipball/08661ac808e848d1aea1796af01230c2814855b4",
-                "reference": "08661ac808e848d1aea1796af01230c2814855b4",
+                "url": "https://api.github.com/repos/zendframework/zend-tag/zipball/4429ca5016361f12eff920370170391a0f4adbff",
+                "reference": "4429ca5016361f12eff920370170391a0f4adbff",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23",
-                "zendframework/zend-escaper": "~2.5",
-                "zendframework/zend-stdlib": "~2.5"
+                "php": "^5.5 || ^7.0",
+                "zendframework/zend-escaper": "^2.5",
+                "zendframework/zend-stdlib": "^2.7 || ^3.0"
             },
             "require-dev": {
                 "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.0",
-                "zendframework/zend-config": "~2.5",
-                "zendframework/zend-servicemanager": "~2.5"
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
             },
             "suggest": {
                 "zendframework/zend-servicemanager": "Zend\\ServiceManager component"
@@ -6385,8 +6266,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev",
-                    "dev-develop": "2.6-dev"
+                    "dev-master": "2.6-dev",
+                    "dev-develop": "2.7-dev"
                 }
             },
             "autoload": {
@@ -6404,7 +6285,7 @@
                 "tag",
                 "zf2"
             ],
-            "time": "2015-06-03 15:32:03"
+            "time": "2016-02-04 14:32:00"
         }
     ],
     "packages-dev": [],
@@ -6414,14 +6295,12 @@
         "liip/functional-test-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "hwi/oauth-bundle": 20,
-        "knplabs/knp-disqus-bundle": 20,
-        "knplabs/knp-menu": 20,
         "knplabs/knp-menu-bundle": 20,
         "mopa/bootstrap-bundle": 20,
+        "genemu/form-bundle": 20,
         "symfony/assetic-bundle": 20,
         "doctrine/doctrine-cache-bundle": 20,
         "elao/web-profiler-extra-bundle": 20,
-        "genemu/form-bundle": 20,
         "liip/theme-bundle": 20,
         "smart-core/accelerator-cache-bundle": 20,
         "sonata-project/intl-bundle": 20,
@@ -6440,5 +6319,8 @@
         "ext-xml": "*",
         "ext-json": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.6.26"
+    }
 }
