@@ -1703,12 +1703,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "47e4de9d8b6fed521729fb38107d9413863fe4ce"
+                "reference": "962a7f3603cce63dae2a84839f030ddb748d890b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/47e4de9d8b6fed521729fb38107d9413863fe4ce",
-                "reference": "47e4de9d8b6fed521729fb38107d9413863fe4ce",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/962a7f3603cce63dae2a84839f030ddb748d890b",
+                "reference": "962a7f3603cce63dae2a84839f030ddb748d890b",
                 "shasum": ""
             },
             "require": {
@@ -1770,7 +1770,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-10-03 14:55:29"
+            "time": "2016-10-07 07:55:07"
         },
         {
             "name": "genemu/form-bundle",
@@ -3672,12 +3672,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "ce7985960c384a98aad167f4618ca675d67bf1a4"
+                "reference": "b1797a8f2ab7662f63013ef8ec0e7fe329eebc92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/ce7985960c384a98aad167f4618ca675d67bf1a4",
-                "reference": "ce7985960c384a98aad167f4618ca675d67bf1a4",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/b1797a8f2ab7662f63013ef8ec0e7fe329eebc92",
+                "reference": "b1797a8f2ab7662f63013ef8ec0e7fe329eebc92",
                 "shasum": ""
             },
             "require": {
@@ -3692,6 +3692,7 @@
                 "phpunit/phpunit": "~4.5@stable",
                 "symfony/console": "~2.3|~3.0",
                 "symfony/expression-language": "~2.6|~3.0",
+                "symfony/templating": "~2.3|~3.0",
                 "twig/twig": "~1.4|~2.0@dev"
             },
             "type": "symfony-bundle",
@@ -3724,7 +3725,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2016-07-14 14:40:57"
+            "time": "2016-10-05 08:53:44"
         },
         {
             "name": "monolog/monolog",
@@ -5741,16 +5742,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.26.0",
+            "version": "v1.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "81c2b5fd36581370c7731387f05dcdb577050513"
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/81c2b5fd36581370c7731387f05dcdb577050513",
-                "reference": "81c2b5fd36581370c7731387f05dcdb577050513",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
                 "shasum": ""
             },
             "require": {
@@ -5798,7 +5799,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-10-02 16:19:13"
+            "time": "2016-10-05 18:57:41"
         },
         {
             "name": "white-october/pagerfanta-bundle",
