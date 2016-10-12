@@ -53,7 +53,7 @@ class ShopModule extends ModuleBundle
 
             $submenu->addChild('Catalog', [
                 'route' => 'unicat_admin.configuration',
-                'routeParameters' => ['configuration' => $this->container->get('settings')->get('shopmodule', 'catalog')],
+                'routeParameters' => ['configuration' => $this->container->get('settings')->get('shopmodule:catalog')],
             ])->setExtras(['beforeCode' => '<i class="fa fa-angle-right"></i>']);
         }
 

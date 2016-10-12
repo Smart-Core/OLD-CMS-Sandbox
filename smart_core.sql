@@ -225,42 +225,6 @@ INSERT INTO `blog_tags` VALUES (2,'breadcrumbs','Breadcrumbs','2014-02-08 20:57:
 UNLOCK TABLES;
 
 --
--- Table structure for table `elfinder_file`
---
-
-DROP TABLE IF EXISTS `elfinder_file`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `elfinder_file` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `content` longblob NOT NULL,
-  `size` int(11) NOT NULL,
-  `mtime` int(11) NOT NULL,
-  `mime` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `read` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `write` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `locked` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `hidden` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `width` int(11) NOT NULL,
-  `height` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `parent_name` (`parent_id`,`name`),
-  KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `elfinder_file`
---
-
-LOCK TABLES `elfinder_file` WRITE;
-/*!40000 ALTER TABLE `elfinder_file` DISABLE KEYS */;
-/*!40000 ALTER TABLE `elfinder_file` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `engine_appearance_history`
 --
 
@@ -892,17 +856,18 @@ DROP TABLE IF EXISTS `settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `bundle` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `value` longtext COLLATE utf8_unicode_ci,
-  `serialized` tinyint(1) NOT NULL,
-  `type` smallint(6) NOT NULL DEFAULT '0',
+  `is_serialized` tinyint(1) NOT NULL,
+  `category` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
-  KEY `IDX_E545A0C55E237E06` (`name`),
-  KEY `IDX_E545A0C5A57B32FD` (`bundle`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `IDX_E545A0C564C19C1` (`category`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -911,7 +876,7 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based on Symfony2 Framework)',0,0),(2,'cms','site_short_name','Smart Core CMS',0,0),(3,'cms','html_title_delimiter','&ndash;',0,0),(4,'cms','appearance_editor_theme','idle_fingers',0,0),(5,'cms','appearance_editor','ace',0,0),(8,'cms','twitter_bootstrap_version','3',0,0),(9,'shopmodule','catalog','catalog',0,0);
+INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based on Symfony2 Framework)',0,NULL,'0000-00-00 00:00:00',NULL),(2,'cms','site_short_name','Smart Core CMS',0,NULL,'0000-00-00 00:00:00',NULL),(3,'cms','html_title_delimiter','&ndash;',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:23:49'),(4,'cms','appearance_editor_theme','idle_fingers',0,NULL,'0000-00-00 00:00:00',NULL),(5,'cms','appearance_editor','ace',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:22:54'),(8,'cms','twitter_bootstrap_version','3',0,NULL,'0000-00-00 00:00:00',NULL),(10,'shopmodule','catalog','catalog',0,'default','2016-10-12 06:03:56',NULL),(11,'cms','timezone','Asia/Novosibirsk',0,'default','2016-10-12 06:37:52','2016-10-11 20:12:29');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1959,4 +1924,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-01  2:53:22
+-- Dump completed on 2016-10-12  7:13:46

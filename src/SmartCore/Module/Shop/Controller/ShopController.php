@@ -101,7 +101,7 @@ class ShopController extends Controller
 
         $items = [];
 
-        $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+        $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule:catalog'));
 
         foreach ($order->getOrderItems() as $orderItem) {
             $item = $ucm->findItem($orderItem->getItemId());
@@ -163,7 +163,7 @@ class ShopController extends Controller
         // @todo вынести в сервис получение списка товаров в заказе.
         $items = [];
         if ($order) {
-            $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+            $ucm = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule:catalog'));
 
             foreach ($order->getOrderItems() as $orderItem) {
                 $item = $ucm->findItem($orderItem->getItemId());
@@ -331,7 +331,7 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em      = $this->get('doctrine.orm.entity_manager');
         $session = $this->get('session')->getFlashBag();
-        $ucm     = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule', 'catalog'));
+        $ucm     = $this->get('unicat')->getConfigurationManager($this->get('settings')->get('shopmodule:catalog'));
 
         $order = null;
 
