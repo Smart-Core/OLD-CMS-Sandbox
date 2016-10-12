@@ -1,5 +1,12 @@
 <?php
 
+if (!defined('START_TIME')) {
+    define('START_TIME', microtime(true));
+}
+if (!defined('START_MEMORY')) {
+    define('START_MEMORY', memory_get_usage());
+}
+
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Composer\Autoload\ClassLoader;
 
