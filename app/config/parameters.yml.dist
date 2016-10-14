@@ -31,7 +31,7 @@ parameters:
     locale: ru
 
     tagcache_driver: Nullcache      # Memcache, Memcached, File, Sqlite, Apc, Nullcache
-    orm_cache_driver: ~             # apc, wincache, xcache
+    orm_cache_driver: ~             # apc, apcu, wincache, xcache
 
     registration_email_confirmation: registration-email-confirmation@localhost.org
     email_resetting: no-reply@localhost.org
