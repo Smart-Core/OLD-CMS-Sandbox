@@ -1,7 +1,4 @@
 <?php
-define('START_TIME', microtime(true));
-define('START_MEMORY', memory_get_usage());
-
 use Symfony\Component\HttpFoundation\Request;
 
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
@@ -18,8 +15,8 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
     exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 }
 
-$loader = require_once __DIR__.'/../var/bootstrap.php.cache';
-require_once __DIR__.'/../app/AppKernel.php';
+$loader = require __DIR__.'/../app/autoload.php';
+include_once __DIR__.'/../var/bootstrap.php.cache';
 
 $kernel = new AppKernel('dev', true);
 $kernel->loadClassCache();
