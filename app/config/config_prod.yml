@@ -14,10 +14,17 @@ doctrine:
 
 monolog:
     handlers:
+        security:
+            # log all messages (since debug is the lowest level)
+            level:    debug
+            type:     stream
+            path:     '%kernel.logs_dir%/security.log'
+            channels: [ security ]
         main:
             type:         fingers_crossed
             action_level: error
             handler:      nested
+            channels:     ['!security']
         nested:
             type:  stream
             path:  %kernel.logs_dir%/%kernel.environment%.log
