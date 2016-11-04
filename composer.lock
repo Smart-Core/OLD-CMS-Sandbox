@@ -5264,17 +5264,17 @@
         },
         {
             "name": "smart-core/ladybug-bundle",
-            "version": "v0.7.2",
+            "version": "v0.7.3",
             "target-dir": "RaulFraile/Bundle/LadybugBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/LadybugBundle.git",
-                "reference": "f504de8e16c1f354c5c754435189892bc993cb10"
+                "reference": "a82e01dad5ea96b8e4c3628ec4582f3e52c9deda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/LadybugBundle/zipball/f504de8e16c1f354c5c754435189892bc993cb10",
-                "reference": "f504de8e16c1f354c5c754435189892bc993cb10",
+                "url": "https://api.github.com/repos/Smart-Core/LadybugBundle/zipball/a82e01dad5ea96b8e4c3628ec4582f3e52c9deda",
+                "reference": "a82e01dad5ea96b8e4c3628ec4582f3e52c9deda",
                 "shasum": ""
             },
             "require": {
@@ -5310,7 +5310,7 @@
                 "tree",
                 "twig"
             ],
-            "time": "2015-01-17 00:07:02"
+            "time": "2016-11-04 12:46:26"
         },
         {
             "name": "smart-core/simple-profiler-bundle",
@@ -5318,12 +5318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SimpleProfilerBundle.git",
-                "reference": "8c5065377c2082c3b29a207d0d321e9e87f5d4c3"
+                "reference": "f9b1fe1d677b1962944bfc4c8ad2ee0de30f4dbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SimpleProfilerBundle/zipball/8c5065377c2082c3b29a207d0d321e9e87f5d4c3",
-                "reference": "8c5065377c2082c3b29a207d0d321e9e87f5d4c3",
+                "url": "https://api.github.com/repos/Smart-Core/SimpleProfilerBundle/zipball/f9b1fe1d677b1962944bfc4c8ad2ee0de30f4dbe",
+                "reference": "f9b1fe1d677b1962944bfc4c8ad2ee0de30f4dbe",
                 "shasum": ""
             },
             "require": {
@@ -5352,7 +5352,7 @@
             "keywords": [
                 "profiler"
             ],
-            "time": "2015-06-25 21:31:53"
+            "time": "2016-11-04 11:24:06"
         },
         {
             "name": "sonata-project/intl-bundle",
