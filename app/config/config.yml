@@ -101,7 +101,7 @@ swiftmailer:
 
 accelerator_cache:
     host: "%base_url%"
-    web_dir: "%web_dir%" # %kernel.root_dir%/../web
+    #web_dir: "%web_dir%" # %kernel.root_dir%/../web
     #web_dir: "@=container.hasParameter('web_dir') ? parameter('web_dir') : '%kernel.root_dir%/../web'"
     mode: curl
 

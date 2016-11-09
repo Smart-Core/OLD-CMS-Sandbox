@@ -1,8 +1,6 @@
 parameters:
     base_url:           http://smart-core.org
 
-    web_dir:            '%kernel.root_dir%/../web'
-
     database_driver:    pdo_mysql
     database_host:      127.0.0.1
     database_port:      ~
