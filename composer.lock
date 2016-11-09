@@ -1961,12 +1961,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "f3002436abeac555104069f4562d284d23d06dab"
+                "reference": "3015f0965b74704362f9b2006646781d4613bcdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f3002436abeac555104069f4562d284d23d06dab",
-                "reference": "f3002436abeac555104069f4562d284d23d06dab",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/3015f0965b74704362f9b2006646781d4613bcdd",
+                "reference": "3015f0965b74704362f9b2006646781d4613bcdd",
                 "shasum": ""
             },
             "require": {
@@ -2030,7 +2030,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-11-03 15:42:43"
+            "time": "2016-11-08 13:35:42"
         },
         {
             "name": "genemu/form-bundle",
@@ -2435,16 +2435,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/ElFinderPHP.git",
-                "reference": "9c4249766702a306ecc143d9ba13c2452451a423"
+                "reference": "49034befab7629521f6e4e8d9a18bfe40ad5ef82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/9c4249766702a306ecc143d9ba13c2452451a423",
-                "reference": "9c4249766702a306ecc143d9ba13c2452451a423",
+                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/49034befab7629521f6e4e8d9a18bfe40ad5ef82",
+                "reference": "49034befab7629521f6e4e8d9a18bfe40ad5ef82",
                 "shasum": ""
             },
             "require": {
@@ -2485,7 +2485,7 @@
                 "elfinder",
                 "filemanager"
             ],
-            "time": "2016-09-11 03:04:36"
+            "time": "2016-11-07 13:03:50"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -4139,12 +4139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "d2a3b25b63c2ae28d7c71959abe21e1f31ca7dce"
+                "reference": "5ee09c87f173c9be2eda9d50b4b3bd353e30ef91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/d2a3b25b63c2ae28d7c71959abe21e1f31ca7dce",
-                "reference": "d2a3b25b63c2ae28d7c71959abe21e1f31ca7dce",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/5ee09c87f173c9be2eda9d50b4b3bd353e30ef91",
+                "reference": "5ee09c87f173c9be2eda9d50b4b3bd353e30ef91",
                 "shasum": ""
             },
             "require": {
@@ -4202,7 +4202,7 @@
                 "form",
                 "template"
             ],
-            "time": "2016-10-27 18:09:24"
+            "time": "2016-11-07 16:51:30"
         },
         {
             "name": "mopa/composer-bridge",
@@ -4387,16 +4387,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -4431,7 +4431,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -5110,16 +5110,16 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v3.0.11",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "b9be7f1b3b2e8bcfc1debefc901b71da923a5e5c"
+                "reference": "0d3c9c4864142dc6a368fa0d952a8b83215e8740"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/b9be7f1b3b2e8bcfc1debefc901b71da923a5e5c",
-                "reference": "b9be7f1b3b2e8bcfc1debefc901b71da923a5e5c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/0d3c9c4864142dc6a368fa0d952a8b83215e8740",
+                "reference": "0d3c9c4864142dc6a368fa0d952a8b83215e8740",
                 "shasum": ""
             },
             "require": {
@@ -5136,7 +5136,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "3.1.x-dev"
                 }
             },
             "autoload": {
@@ -5158,7 +5158,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2016-10-10 14:17:42"
+            "time": "2016-11-07 19:48:31"
         },
         {
             "name": "sensiolabs/security-checker",
@@ -5318,12 +5318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/SimpleProfilerBundle.git",
-                "reference": "f9b1fe1d677b1962944bfc4c8ad2ee0de30f4dbe"
+                "reference": "2851cdd2a4092f2921b7797ee867015c77769b4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/SimpleProfilerBundle/zipball/f9b1fe1d677b1962944bfc4c8ad2ee0de30f4dbe",
-                "reference": "f9b1fe1d677b1962944bfc4c8ad2ee0de30f4dbe",
+                "url": "https://api.github.com/repos/Smart-Core/SimpleProfilerBundle/zipball/2851cdd2a4092f2921b7797ee867015c77769b4d",
+                "reference": "2851cdd2a4092f2921b7797ee867015c77769b4d",
                 "shasum": ""
             },
             "require": {
@@ -5352,7 +5352,7 @@
             "keywords": [
                 "profiler"
             ],
-            "time": "2016-11-04 11:24:06"
+            "time": "2016-11-09 04:50:35"
         },
         {
             "name": "sonata-project/intl-bundle",
@@ -5613,16 +5613,16 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "2.11.1",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "e7caf4936c7be82bc6d68df87f1d23a0d5bf6e00"
+                "reference": "6acef3bd201c4f35e42e52dedf1fe088f30e07e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/e7caf4936c7be82bc6d68df87f1d23a0d5bf6e00",
-                "reference": "e7caf4936c7be82bc6d68df87f1d23a0d5bf6e00",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/6acef3bd201c4f35e42e52dedf1fe088f30e07e8",
+                "reference": "6acef3bd201c4f35e42e52dedf1fe088f30e07e8",
                 "shasum": ""
             },
             "require": {
@@ -5669,7 +5669,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2016-04-13 16:21:01"
+            "time": "2016-11-06 18:54:50"
         },
         {
             "name": "symfony/polyfill-intl-icu",
