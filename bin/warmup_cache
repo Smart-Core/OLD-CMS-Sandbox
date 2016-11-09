@@ -32,7 +32,7 @@ class Warmuper
             self::$interpreter = 'sudo -u '.$user;
         }
 
-        system(sprintf("%s %s cache:warmup --env=$env $debug", self::$interpreter, escapeshellarg(self::$rootDir.'/app/console')));
+        system(sprintf("%s %s cache:warmup --env=$env $debug", self::$interpreter, escapeshellarg(self::$rootDir.'/bin/console')));
 
         if (!defined('PHP_WINDOWS_VERSION_BUILD') and !empty(self::$user)) {
             system('chown -hR '.self::$user.':'.self::$user.' '.self::$rootDir."/var/cache/$env/");
