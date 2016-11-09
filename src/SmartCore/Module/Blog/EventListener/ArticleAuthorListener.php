@@ -7,6 +7,7 @@ use SmartCore\Module\Blog\Event\FilterArticleEvent;
 use SmartCore\Module\Blog\Model\SignedArticleInterface;
 use SmartCore\Module\Blog\SmartBlogEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -24,10 +25,11 @@ class ArticleAuthorListener implements EventSubscriberInterface
     protected $logger;
 
     /**
-     * @param                      $tokenStorage
-     * @param LoggerInterface|null $logger
+     * @param                               $tokenStorage
+     * @param AuthorizationCheckerInterface $authorizationChecker
+     * @param LoggerInterface|null          $logger
      */
-    public function __construct($tokenStorage, LoggerInterface $logger = null)
+    public function __construct($tokenStorage, AuthorizationCheckerInterface $authorizationChecker, LoggerInterface $logger = null)
     {
         $this->tokenStorage = $tokenStorage;
         $this->logger       = $logger;
