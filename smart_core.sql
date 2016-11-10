@@ -1803,7 +1803,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'rvmppg4hla80gw0c88wwkogkc8cg88c','pSRvk1iSFWol6tPyvrt8ULb6A03pa3jT8LNsVv9eYC9DSQMFLL91dzHBNvPFUFuICMMvFqzYBnyDVaW+Eg3eRg==','2016-10-01 02:43:02',0,NULL,NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'15lr4t5s1pdwowoc8k88goc88k00w8','k92fZzuVqY4hkumXP9B7EM4pJMNqFLcCKVu2/dRyNPToPjmk9BJneaEszgy4eWjly4hEPp9Tcj5qRAapOQHwJA==','2015-05-22 00:28:12',0,NULL,NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'teyhcartb3ks0kw4sw0co0k8ko0gk48','+Qtvl5uc9knUH6z2ZB/7qqZLueaGSfs1yS7TVt4h6CQtNY/a/wG4gdDV+hxR/eSnotc4PGGrRvqnHfdzOmyJNA==','2016-09-20 02:49:13',0,NULL,NULL,NULL,'a:0:{}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2016-11-11 04:29:27',0,NULL,NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',0,NULL,NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',0,NULL,NULL,NULL,'a:0:{}',NULL,'','','2014-01-20 00:00:00',0,0,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1924,4 +1924,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-12  7:13:46
+-- Dump completed on 2016-11-11  4:29:54
