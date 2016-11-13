@@ -10,8 +10,8 @@
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "require": {
-        "php": ">=5.5.9",
-        "symfony/symfony": "v3.x",
+        "php": "^7.0.7",
+        "symfony/symfony": "^3.1",
 
         "doctrine/doctrine-fixtures-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
@@ -113,10 +113,7 @@
     "config": {
         "bin-dir": "bin",
         "component-dir": "web/bundles/components",
-        "preferred-install": "dist",
-        "platform": {
-            "php": "5.6.26"
-        }
+        "preferred-install": "dist"
     },
     "extra": {
         "symfony-app-dir": "app",
