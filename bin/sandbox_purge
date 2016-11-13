@@ -21,7 +21,7 @@ case $response in
         then
             echo "Start purging..."
 
-            app/console doctrine:schema:drop --force
+            bin/console doctrine:schema:drop --force
 
             rm -rf dist src/SandboxSiteBundle smart_core.sql;
             find web/_media/* -type d -exec rm -rf {} \;
@@ -29,19 +29,19 @@ case $response in
 
             cp vendor/smart-core/cms-generator-bundle/Resources/skeleton/User.php app/Entity/User.php
 
-            app/console cms:generate:sitebundle
+            bin/console cms:generate:sitebundle
 
             rm -rf app/Entity/User.php
 
             bin/init_var;
             bin/clear_cache;
 
-            app/console doctrine:schema:update --force --complete
+            bin/console doctrine:schema:update --force --complete
 
-            app/console assets:install web --symlink
+            bin/console assets:install web --symlink
 
             echo "Create super admin user:"
-            app/console fos:user:create --super-admin
+            bin/console fos:user:create --super-admin
         else
             echo "This is not CMS Sandbox"
         fi
