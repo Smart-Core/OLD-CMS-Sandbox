@@ -44,7 +44,6 @@ find web/uploads -type d -exec chmod 777 {} \;
 
 # update files permissions
 chmod -R 0777 $DIR
-chmod 777 app/console
 find bin -type f -exec chmod 777 {} \;
 find src/*SiteBundle/Resources/public/css -type f -exec chmod 666 {} \;
 find src/*SiteBundle/Resources/views -type f -exec chmod 666 {} \;
