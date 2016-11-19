@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+$start_time = microtime(true);
+
 file_put_contents('var/rebuild_cache.lock', time());
 
 $fc = file_get_contents('web/app.php');
@@ -29,6 +31,7 @@ if (false === strpos($fc, 'rebuild_cache.lock')) {
 
 system('sh bin/clear_cache');
 system('php bin/warmup_cache prod');
+system('php bin/console cache:accelerator:clear');
 system('mv var/app.php web/app.php');
 system('rm var/rebuild_cache.lock');
 
@@ -38,3 +41,7 @@ if ($env == 'dev') {
 }
 
 system('chmod 644 web/app.php');
+
+$time = round(microtime(true) - $start_time, 2);
+
+echo "Cache rebuilds in $time sec.\n\n";
