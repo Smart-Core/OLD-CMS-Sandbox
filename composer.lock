@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fa7956744b6074d57273f86999b6a3b2",
-    "content-hash": "daef8f4d9b095a2620dbe9516f9b8778",
+    "hash": "5f0537700f4ef5900aa5251b587ac734",
+    "content-hash": "da9b2e4a644f7e77b5aaa38af2f99196",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -1868,6 +1868,90 @@
             "time": "2016-11-15 16:27:29"
         },
         {
+            "name": "friendsofsymfony/elastica-bundle",
+            "version": "v3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSElasticaBundle.git",
+                "reference": "70ea4d0cb0ebdac011d6dc978bfec59ff5e927bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSElasticaBundle/zipball/70ea4d0cb0ebdac011d6dc978bfec59ff5e927bb",
+                "reference": "70ea4d0cb0ebdac011d6dc978bfec59ff5e927bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "psr/log": "~1.0",
+                "ruflin/elastica": "~2.1",
+                "symfony/console": "~2.1|~3.0",
+                "symfony/form": "~2.1|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/property-access": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.2",
+                "doctrine/orm": "~2.4",
+                "doctrine/phpcr-bundle": "~1.2",
+                "jackalope/jackalope-doctrine-dbal": "~1.1",
+                "jms/serializer-bundle": "@stable",
+                "knplabs/knp-components": "~1.2",
+                "knplabs/knp-paginator-bundle": "~2.4",
+                "pagerfanta/pagerfanta": "~1.0",
+                "phpunit/phpunit": "~4.1",
+                "propel/propel1": "1.6.*",
+                "symfony/browser-kit": "~2.3|~3.0",
+                "symfony/expression-language": "~2.4|~3.0",
+                "symfony/serializer": "~2.7|~3.0",
+                "symfony/twig-bundle": "~2.3|~3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\ElasticaBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Nagel",
+                    "email": "tim@nagel.com.au"
+                },
+                {
+                    "name": "Richard Miller",
+                    "email": "richard.miller@limethinking.co.uk"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/FriendsOfSymfony/FOSElasticaBundle/contributors"
+                },
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                }
+            ],
+            "description": "Elasticsearch PHP integration for your Symfony2 project using Elastica",
+            "homepage": "https://github.com/FriendsOfSymfony/FOSElasticaBundle",
+            "keywords": [
+                "doctrine2",
+                "elastica",
+                "elasticsearch",
+                "mongodb",
+                "propel",
+                "search"
+            ],
+            "time": "2016-10-04 12:27:23"
+        },
+        {
             "name": "friendsofsymfony/http-cache",
             "version": "1.4.2",
             "source": {
@@ -1938,6 +2022,86 @@
                 "varnish"
             ],
             "time": "2016-02-02 12:07:34"
+        },
+        {
+            "name": "friendsofsymfony/http-cache-bundle",
+            "version": "1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSHttpCacheBundle.git",
+                "reference": "04247810151f8721740069f2376bf933ed9a7971"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSHttpCacheBundle/zipball/04247810151f8721740069f2376bf933ed9a7971",
+                "reference": "04247810151f8721740069f2376bf933ed9a7971",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofsymfony/http-cache": "~1.4",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "^2.3||^3.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.12.0"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.4",
+                "mockery/mockery": "0.9.*",
+                "monolog/monolog": "*",
+                "polishsymfonycommunity/symfony-mocker-container": "^1.0",
+                "sensio/framework-extra-bundle": "^2.3||^3.0",
+                "symfony/expression-language": "^2.4||^3.0",
+                "symfony/monolog-bundle": "^2.3||^3.0",
+                "symfony/phpunit-bridge": "^2.7||^3.0",
+                "symfony/symfony": "^2.3.4||^3.0"
+            },
+            "suggest": {
+                "sensio/framework-extra-bundle": "For Tagged Cache Invalidation",
+                "symfony/console": "To send invalidation requests from the command line",
+                "symfony/expression-language": "For Tagged Cache Invalidation"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\HttpCacheBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Liip AG",
+                    "homepage": "http://www.liip.ch/"
+                },
+                {
+                    "name": "Driebit",
+                    "email": "tech@driebit.nl",
+                    "homepage": "http://www.driebit.nl"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/friendsofsymfony/FOSHttpCacheBundle/contributors"
+                }
+            ],
+            "description": "Set path based HTTP cache headers and send invalidation requests to your HTTP cache",
+            "homepage": "https://github.com/FriendsOfSymfony/FOSHttpCacheBundle",
+            "keywords": [
+                "caching",
+                "esi",
+                "http",
+                "invalidation",
+                "purge",
+                "varnish"
+            ],
+            "time": "2016-09-06 11:30:45"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -2805,6 +2969,55 @@
                 "youtube"
             ],
             "time": "2016-11-23 07:18:24"
+        },
+        {
+            "name": "iakumai/sphinxsearch-bundle",
+            "version": "dev-master",
+            "target-dir": "IAkumaI/SphinxsearchBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IAkumaI/SphinxsearchBundle.git",
+                "reference": "cf622949f64a7d10b5e5abc9e4d95f280095e43d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IAkumaI/SphinxsearchBundle/zipball/cf622949f64a7d10b5e5abc9e4d95f280095e43d",
+                "reference": "cf622949f64a7d10b5e5abc9e4d95f280095e43d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "IAkumaI\\SphinxsearchBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valery Ozarnichuk",
+                    "email": "meru.no.akuma@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Sphinx search bundle for Symfony 2",
+            "homepage": "https://github.com/IAkumaI/SphinxsearchBundle",
+            "keywords": [
+                "Symfony2",
+                "sphinx",
+                "sphinxsearch"
+            ],
+            "time": "2016-03-11 05:59:35"
         },
         {
             "name": "imagine/imagine",
@@ -5076,6 +5289,63 @@
             "time": "2015-08-10 12:35:38"
         },
         {
+            "name": "ruflin/elastica",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruflin/Elastica.git",
+                "reference": "0df1d7b513960ba11d3075652dcd71fcab8dd37a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/0df1d7b513960ba11d3075652dcd71fcab8dd37a",
+                "reference": "0df1d7b513960ba11d3075652dcd71fcab8dd37a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "5.3.*",
+                "munkie/elasticsearch-thrift-php": "1.4.*"
+            },
+            "suggest": {
+                "egeloen/http-adapter": "Allow using httpadapter transport",
+                "guzzlehttp/guzzle": "Allow using guzzle 5.3.x as the http transport (Requires php 5.4)",
+                "monolog/monolog": "Logging request",
+                "munkie/elasticsearch-thrift-php": "Allow using thrift transport"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elastica\\": "lib/Elastica/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Ruflin",
+                    "homepage": "http://ruflin.com/"
+                }
+            ],
+            "description": "Elasticsearch Client",
+            "homepage": "http://elastica.io/",
+            "keywords": [
+                "client",
+                "search"
+            ],
+            "time": "2015-10-19 07:09:10"
+        },
+        {
             "name": "seld/cli-prompt",
             "version": "1.0.2",
             "source": {
@@ -6428,16 +6698,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.28.1",
+            "version": "v1.28.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "fff80c4a7ae1d47a81dfec10c76cbcb939170b45"
+                "reference": "b22ce0eb070e41f7cba65d78fe216de29726459c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/fff80c4a7ae1d47a81dfec10c76cbcb939170b45",
-                "reference": "fff80c4a7ae1d47a81dfec10c76cbcb939170b45",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/b22ce0eb070e41f7cba65d78fe216de29726459c",
+                "reference": "b22ce0eb070e41f7cba65d78fe216de29726459c",
                 "shasum": ""
             },
             "require": {
@@ -6445,7 +6715,7 @@
             },
             "require-dev": {
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~2.7"
+                "symfony/phpunit-bridge": "~3.2@dev"
             },
             "type": "library",
             "extra": {
@@ -6485,7 +6755,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-11-19 05:52:49"
+            "time": "2016-11-23 18:41:40"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -6990,6 +7260,7 @@
         "symfony/assetic-bundle": 20,
         "doctrine/doctrine-cache-bundle": 20,
         "elao/web-profiler-extra-bundle": 20,
+        "iakumai/sphinxsearch-bundle": 20,
         "liip/theme-bundle": 20,
         "smart-core/accelerator-cache-bundle": 20,
         "sonata-project/intl-bundle": 20,
