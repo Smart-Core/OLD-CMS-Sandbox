@@ -881,6 +881,36 @@ INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based o
 UNLOCK TABLES;
 
 --
+-- Table structure for table `settings_history`
+--
+
+DROP TABLE IF EXISTS `settings_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings_history` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `setting_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `value` longtext COLLATE utf8_unicode_ci,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_99BED87BEE35BD72` (`setting_id`),
+  KEY `IDX_99BED87BA76ED395` (`user_id`),
+  CONSTRAINT `FK_99BED87BA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FK_99BED87BEE35BD72` FOREIGN KEY (`setting_id`) REFERENCES `settings` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `settings_history`
+--
+
+LOCK TABLES `settings_history` WRITE;
+/*!40000 ALTER TABLE `settings_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `settings_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `shop_orders`
 --
 
@@ -1923,4 +1953,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-20  2:57:11
+-- Dump completed on 2016-11-24  0:27:03
