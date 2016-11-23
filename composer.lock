@@ -1941,25 +1941,33 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "c2ab644087d3ce234e2cbe6a7aa114e8bc721174"
+                "reference": "5a399bb434045c2b579cfe55472fff100373f4ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/c2ab644087d3ce234e2cbe6a7aa114e8bc721174",
-                "reference": "c2ab644087d3ce234e2cbe6a7aa114e8bc721174",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/5a399bb434045c2b579cfe55472fff100373f4ec",
+                "reference": "5a399bb434045c2b579cfe55472fff100373f4ec",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^1.0",
                 "php": "^5.5.9|~7.0",
                 "psr/log": "^1.0",
+                "symfony/config": "^2.7|^3.0",
+                "symfony/debug": "^2.7|^3.0",
+                "symfony/dependency-injection": "^2.7|^3.0",
+                "symfony/event-dispatcher": "^2.7|^3.0",
                 "symfony/finder": "^2.7|^3.0",
                 "symfony/framework-bundle": "^2.7|^3.0",
+                "symfony/http-foundation": "^2.7|^3.0",
+                "symfony/http-kernel": "^2.7|^3.0",
                 "symfony/routing": "^2.7|^3.0",
+                "symfony/security-core": "^2.7|^3.0",
+                "symfony/templating": "^2.7|^3.0",
                 "willdurand/jsonp-callback-validator": "^1.0",
                 "willdurand/negotiation": "^2.0"
             },
@@ -1970,6 +1978,7 @@
             "require-dev": {
                 "jms/serializer-bundle": "^1.0",
                 "phpoption/phpoption": "^1.1",
+                "psr/http-message": "^1.0",
                 "sensio/framework-extra-bundle": "^3.0.13",
                 "symfony/browser-kit": "^2.7|^3.0",
                 "symfony/css-selector": "^2.7|^3.0",
@@ -2025,7 +2034,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2016-09-07 15:10:55"
+            "time": "2016-11-23 12:09:05"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -2033,12 +2042,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "12db0ce31769b19597be741a568fe9352fc1baba"
+                "reference": "c62c727dc7a387edc16df32d2ee4181e620ad35f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/12db0ce31769b19597be741a568fe9352fc1baba",
-                "reference": "12db0ce31769b19597be741a568fe9352fc1baba",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/c62c727dc7a387edc16df32d2ee4181e620ad35f",
+                "reference": "c62c727dc7a387edc16df32d2ee4181e620ad35f",
                 "shasum": ""
             },
             "require": {
@@ -2059,11 +2068,7 @@
                 "symfony/console": "^2.7 || ^3.0",
                 "symfony/phpunit-bridge": "^2.7 || ^3.0",
                 "symfony/validator": "^2.7 || ^3.0",
-                "symfony/yaml": "^2.7 || ^3.0",
-                "willdurand/propel-typehintable-behavior": "^1.0"
-            },
-            "suggest": {
-                "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
+                "symfony/yaml": "^2.7 || ^3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2102,7 +2107,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-11-22 09:44:42"
+            "time": "2016-11-22 12:21:39"
         },
         {
             "name": "genemu/form-bundle",
@@ -2658,12 +2663,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "429ae3fe1641a54ea0934bb06dac355affc41f8d"
+                "reference": "ebcbbda941c38b020838e4abd3e87fd9f0a0ce91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/429ae3fe1641a54ea0934bb06dac355affc41f8d",
-                "reference": "429ae3fe1641a54ea0934bb06dac355affc41f8d",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/ebcbbda941c38b020838e4abd3e87fd9f0a0ce91",
+                "reference": "ebcbbda941c38b020838e4abd3e87fd9f0a0ce91",
                 "shasum": ""
             },
             "require": {
@@ -2799,7 +2804,7 @@
                 "yandex",
                 "youtube"
             ],
-            "time": "2016-10-03 14:27:17"
+            "time": "2016-11-23 07:18:24"
         },
         {
             "name": "imagine/imagine",
@@ -4164,12 +4169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "77a768ed04e806ea8ca14d62e95a1d360500ef8c"
+                "reference": "2071de99dab1cf431260c6612238698e4fdb0ba4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/77a768ed04e806ea8ca14d62e95a1d360500ef8c",
-                "reference": "77a768ed04e806ea8ca14d62e95a1d360500ef8c",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/2071de99dab1cf431260c6612238698e4fdb0ba4",
+                "reference": "2071de99dab1cf431260c6612238698e4fdb0ba4",
                 "shasum": ""
             },
             "require": {
@@ -4217,7 +4222,7 @@
                 "themes",
                 "theming"
             ],
-            "time": "2016-11-01 12:01:09"
+            "time": "2016-11-23 11:01:59"
         },
         {
             "name": "monolog/monolog",
@@ -5761,12 +5766,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/assetic-bundle.git",
-                "reference": "1de96db7b2d1fb4a01c0db54b6185917abc424c2"
+                "reference": "0241b135ff64c6031048c6425cd833a8300da46b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/1de96db7b2d1fb4a01c0db54b6185917abc424c2",
-                "reference": "1de96db7b2d1fb4a01c0db54b6185917abc424c2",
+                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/0241b135ff64c6031048c6425cd833a8300da46b",
+                "reference": "0241b135ff64c6031048c6425cd833a8300da46b",
                 "shasum": ""
             },
             "require": {
@@ -5823,7 +5828,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2016-11-22 10:53:51"
+            "time": "2016-11-22 11:42:57"
         },
         {
             "name": "symfony/monolog-bundle",
