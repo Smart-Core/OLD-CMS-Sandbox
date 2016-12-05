@@ -1802,15 +1802,12 @@ CREATE TABLE `users` (
   `email` varchar(180) NOT NULL,
   `email_canonical` varchar(180) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
-  `salt` varchar(255) NOT NULL,
+  `salt` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `last_login` datetime DEFAULT NULL,
-  `locked` tinyint(1) NOT NULL,
-  `expires_at` datetime DEFAULT NULL,
   `confirmation_token` varchar(180) DEFAULT NULL,
   `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext NOT NULL COMMENT '(DC2Type:array)',
-  `credentials_expire_at` datetime DEFAULT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -1832,7 +1829,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2016-11-14 05:52:13',0,NULL,NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}',NULL,'','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',0,NULL,NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}',NULL,'','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',0,NULL,NULL,NULL,'a:0:{}',NULL,'','','2014-01-20 00:00:00',NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2016-12-06 01:38:02',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1953,4 +1950,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-24  0:27:03
+-- Dump completed on 2016-12-06  1:46:55

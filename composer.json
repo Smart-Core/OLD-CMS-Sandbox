@@ -11,7 +11,7 @@
     },
     "require": {
         "php": "^7.0.7",
-        "symfony/symfony": "^3.1",
+        "symfony/symfony": "^3.2",
 
         "doctrine/doctrine-fixtures-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
@@ -54,7 +54,6 @@
 
         "asm89/twig-cache-extension": "*",
         "egeloen/ordered-form": "*",
-        "egulias/email-validator": "~1.2",
         "egulias/listeners-debug-command-bundle": "*",
         "elao/web-profiler-extra-bundle": "~2.0@dev",
         "friendsofsymfony/elastica-bundle": "*",
