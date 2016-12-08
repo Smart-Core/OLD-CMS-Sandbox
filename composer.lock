@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "436182b4de8d8b34671e48c45b3cdf20",
-    "content-hash": "d12c52997177b08ee9c275a1e5cf09d8",
+    "hash": "7bb864fe2505106d049ee2fb7c629255",
+    "content-hash": "f9dfbe7c2503e0ea3f3ef83de5ffeb7c",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -305,16 +305,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "e7f19286a7e7f940950c9069a0f549d483c30ba7"
+                "reference": "7895e4a7e0e05b06e0ebfae96fc154c6a2ba75f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/e7f19286a7e7f940950c9069a0f549d483c30ba7",
-                "reference": "e7f19286a7e7f940950c9069a0f549d483c30ba7",
+                "url": "https://api.github.com/repos/composer/composer/zipball/7895e4a7e0e05b06e0ebfae96fc154c6a2ba75f0",
+                "reference": "7895e4a7e0e05b06e0ebfae96fc154c6a2ba75f0",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2016-12-01 13:33:53"
+            "time": "2016-12-06 21:00:51"
         },
         {
             "name": "composer/semver",
@@ -532,17 +532,17 @@
         },
         {
             "name": "dizda/cloud-backup-bundle",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "target-dir": "Dizda/CloudBackupBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dizda/CloudBackupBundle.git",
-                "reference": "276258762cee75f2e19e1b61cc85b738ea9fe27c"
+                "reference": "07bad5ba87c31e772e47cb133646777472172890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/276258762cee75f2e19e1b61cc85b738ea9fe27c",
-                "reference": "276258762cee75f2e19e1b61cc85b738ea9fe27c",
+                "url": "https://api.github.com/repos/dizda/CloudBackupBundle/zipball/07bad5ba87c31e772e47cb133646777472172890",
+                "reference": "07bad5ba87c31e772e47cb133646777472172890",
                 "shasum": ""
             },
             "require": {
@@ -596,7 +596,7 @@
                 "mysql",
                 "symfony"
             ],
-            "time": "2016-10-18 11:48:02"
+            "time": "2016-11-18 12:05:32"
         },
         {
             "name": "doctrine/annotations",
@@ -1233,16 +1233,16 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "0b89ee55bceb53c60bc4ba32924ac5053e377abb"
+                "reference": "6276139e0b913a4e5120fc36bb5b0eae8ac549bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/0b89ee55bceb53c60bc4ba32924ac5053e377abb",
-                "reference": "0b89ee55bceb53c60bc4ba32924ac5053e377abb",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/6276139e0b913a4e5120fc36bb5b0eae8ac549bc",
+                "reference": "6276139e0b913a4e5120fc36bb5b0eae8ac549bc",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1257,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -1290,7 +1290,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2016-06-30 19:26:35"
+            "time": "2016-12-05 18:36:37"
         },
         {
             "name": "doctrine/inflector",
@@ -1667,6 +1667,63 @@
                 "order"
             ],
             "time": "2015-12-12 18:18:22"
+        },
+        {
+            "name": "egulias/email-validator",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "30562b69fc6c8e9740645877a98063b3842204b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/30562b69fc6c8e9740645877a98063b3842204b2",
+                "reference": "30562b69fc6c8e9740645877a98063b3842204b2",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "^1.0.1",
+                "php": ">= 5.5"
+            },
+            "require-dev": {
+                "dominicsayers/isemail": "dev-master",
+                "phpunit/phpunit": "^4.8.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "suggest": {
+                "ext/php-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\": "EmailValidator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails against several RFCs",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "emailvalidation",
+                "emailvalidator",
+                "validation",
+                "validator"
+            ],
+            "time": "2016-08-07 21:18:59"
         },
         {
             "name": "egulias/listeners-debug-command-bundle",
@@ -3739,16 +3796,16 @@
         },
         {
             "name": "knplabs/knp-components",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/knp-components.git",
-                "reference": "bc49e739d1cce94d783b1e23bc5b263b38dc47da"
+                "reference": "f98bcc6d348fbe863a224b468e11fb5e91e28f2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/bc49e739d1cce94d783b1e23bc5b263b38dc47da",
-                "reference": "bc49e739d1cce94d783b1e23bc5b263b38dc47da",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/f98bcc6d348fbe863a224b468e11fb5e91e28f2a",
+                "reference": "f98bcc6d348fbe863a224b468e11fb5e91e28f2a",
                 "shasum": ""
             },
             "require": {
@@ -3806,7 +3863,7 @@
                 "pager",
                 "paginator"
             ],
-            "time": "2016-04-21 06:26:20"
+            "time": "2016-12-06 18:10:24"
         },
         {
             "name": "knplabs/knp-gaufrette-bundle",
@@ -4181,12 +4238,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "e75c1315db4c6976177d89398d51e788874835c0"
+                "reference": "feb8b5b896bca78e984ee38670729b27f4a62e8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/e75c1315db4c6976177d89398d51e788874835c0",
-                "reference": "e75c1315db4c6976177d89398d51e788874835c0",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/feb8b5b896bca78e984ee38670729b27f4a62e8c",
+                "reference": "feb8b5b896bca78e984ee38670729b27f4a62e8c",
                 "shasum": ""
             },
             "require": {
@@ -4248,7 +4305,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-12-01 12:52:26"
+            "time": "2016-12-07 22:31:25"
         },
         {
             "name": "liip/imagine-bundle",
@@ -5434,16 +5491,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.14",
+            "version": "v5.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "e64947de9ebc37732a62f5115164484a9bee7fa6"
+                "reference": "d294b0665cf09c799e9c1993d5c776a5bf55cb85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/e64947de9ebc37732a62f5115164484a9bee7fa6",
-                "reference": "e64947de9ebc37732a62f5115164484a9bee7fa6",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/d294b0665cf09c799e9c1993d5c776a5bf55cb85",
+                "reference": "d294b0665cf09c799e9c1993d5c776a5bf55cb85",
                 "shasum": ""
             },
             "require": {
@@ -5482,7 +5539,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-10-30 23:18:01"
+            "time": "2016-12-06 07:29:27"
         },
         {
             "name": "sensio/framework-extra-bundle",
