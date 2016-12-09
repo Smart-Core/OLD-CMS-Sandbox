@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7bb864fe2505106d049ee2fb7c629255",
-    "content-hash": "f9dfbe7c2503e0ea3f3ef83de5ffeb7c",
+    "hash": "415c1c8ec9ec5134591b0735ee4cf803",
+    "content-hash": "0c95b1d915d7b33345a5075aa497e6c9",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -2211,12 +2211,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "7261f7aa143b4bfdb0b7ddc5df208067fa7be698"
+                "reference": "03ce036476ac45fac6f84cec7542062b12900ecb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/7261f7aa143b4bfdb0b7ddc5df208067fa7be698",
-                "reference": "7261f7aa143b4bfdb0b7ddc5df208067fa7be698",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/03ce036476ac45fac6f84cec7542062b12900ecb",
+                "reference": "03ce036476ac45fac6f84cec7542062b12900ecb",
                 "shasum": ""
             },
             "require": {
@@ -2278,7 +2278,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-12-03 17:42:44"
+            "time": "2016-12-08 14:40:38"
         },
         {
             "name": "genemu/form-bundle",
@@ -2834,12 +2834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "1972b57e7bf2bdac7c5aa44c63d4b1dd569da755"
+                "reference": "e23b7a84d47cc033c69f8c70d70791703a9b262d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/1972b57e7bf2bdac7c5aa44c63d4b1dd569da755",
-                "reference": "1972b57e7bf2bdac7c5aa44c63d4b1dd569da755",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/e23b7a84d47cc033c69f8c70d70791703a9b262d",
+                "reference": "e23b7a84d47cc033c69f8c70d70791703a9b262d",
                 "shasum": ""
             },
             "require": {
@@ -2849,6 +2849,7 @@
                 "symfony/framework-bundle": "~2.3|~3.0",
                 "symfony/options-resolver": "~2.3|~3.0",
                 "symfony/security-bundle": "~2.3|~3.0",
+                "symfony/templating": "~2.7|~3.0",
                 "symfony/yaml": "~2.3|~3.0"
             },
             "conflict": {
@@ -2975,7 +2976,7 @@
                 "yandex",
                 "youtube"
             ],
-            "time": "2016-12-02 11:45:20"
+            "time": "2016-12-08 14:26:12"
         },
         {
             "name": "iakumai/sphinxsearch-bundle",

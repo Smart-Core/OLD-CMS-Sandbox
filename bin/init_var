@@ -2,6 +2,12 @@
 
 DIR="var"
 
+if [ ! -d "src" ]; then
+    mkdir src
+    cp vendor/smart-core/cms-generator-bundle/Resources/skeleton/User.php app/Entity/User.php
+    echo "  src created"
+fi
+
 if [ ! -d "$DIR" ]; then
     mkdir $DIR
     mkdir $DIR/cache
