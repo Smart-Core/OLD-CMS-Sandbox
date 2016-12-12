@@ -1,0 +1,11 @@
+# @todo в скрипте CMSGeneratorBundle удалять этот файл, вместе с папкой app/Entity
+# т.е. используется только при инсталляции.
+doctrine:
+    orm:
+        mappings:
+            model:
+                type: annotation
+                dir: "%kernel.root_dir%/Entity"
+                prefix: App
+                #alias: User
+                is_bundle: false

@@ -1,0 +1,8 @@
+security:
+    firewalls:
+        admin:
+            remember_me:
+                name: SANDBOX_SITE_REMEMBER_ME
+        main:
+            remember_me:
+                name: SANDBOX_SITE_REMEMBER_ME

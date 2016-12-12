@@ -10,26 +10,26 @@ parameters:
     database_socket:    /var/run/mysqld/mysqld.sock    # /var/run/postgresql/.s.PGSQL.5432
     database_table_prefix: ~
 
-    #database2_driver:   pdo_mysql
-    #database2_host:     127.0.0.1
-    #database2_port:     ~
-    #database2_name:     smart_core_db2
-    #database2_user:     root
-    #database2_password: ~
-    #database2_socket:   /var/run/mysqld/mysqld.sock
+    # database2_driver:   pdo_mysql
+    # database2_host:     127.0.0.1
+    # database2_port:     ~
+    # database2_name:     smart_core_db2
+    # database2_user:     root
+    # database2_password: ~
+    # database2_socket:   /var/run/mysqld/mysqld.sock
 
     mailer_transport:   mail
     mailer_host:        127.0.0.1
     mailer_user:        ~
     mailer_password:    ~
 
-    knp_disqus.api_key:    YOUR_PUBLIC_API_KEY
-    knp_disqus.secret_key: YOUR_SECRET_API_KEY      # optional, for SSO auth only
+    # knp_disqus.api_key:    YOUR_PUBLIC_API_KEY
+    # knp_disqus.secret_key: YOUR_SECRET_API_KEY      # optional, for SSO auth only
 
     locale: ru
 
     tagcache_driver: Nullcache      # Memcache, Memcached, File, Sqlite, Apc, Nullcache
-    orm_cache_driver: apcu          # apc, apcu, wincache, xcache
+    orm_cache_driver: apcu          # apc, apcu, wincache, xcache or ~
 
     registration_email_confirmation: registration-email-confirmation@localhost.org
     email_resetting: no-reply@localhost.org
