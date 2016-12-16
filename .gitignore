@@ -7,9 +7,12 @@
 /bin/phpspec*
 /bin/pscss
 /public_html
+bower_components/
+node_modules/
 /var/
 /vendor/
 /web/_media/
+/web/images/
 /web/bundles/
 /web/uploads/
 /web/sitemap.xml
