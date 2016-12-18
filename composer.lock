@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "341c92c3c6d79896022ebef077873e11",
-    "content-hash": "8007823927acd23e2655ad53909094f1",
+    "hash": "65236c10e77a2477ece31e899973ad67",
+    "content-hash": "598bd6f03430063d515fa40737813864",
     "packages": [
         {
             "name": "api-platform/core",
@@ -157,6 +157,761 @@
                 "twig"
             ],
             "time": "2016-06-14 09:16:57"
+        },
+        {
+            "name": "cache/adapter-bundle",
+            "version": "0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/adapter-bundle.git",
+                "reference": "c3d344ce03d9c78995ec0b9e515376ac7e772954"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/adapter-bundle/zipball/c3d344ce03d9c78995ec0b9e515376ac7e772954",
+                "reference": "c3d344ce03d9c78995ec0b9e515376ac7e772954",
+                "shasum": ""
+            },
+            "require": {
+                "cache/namespaced-cache": "^0.1",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0",
+                "symfony/options-resolver": "^2.7 || ^3.0"
+            },
+            "require-dev": {
+                "cache/array-adapter": "@stable",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0",
+                "phpunit/phpunit": "5.0.* || ^4.0",
+                "symfony/symfony": "^2.7 || ^3.0"
+            },
+            "suggest": {
+                "cache/*-adapter": "A actual implementation of PSR-6 cache",
+                "cache/cache-bundle": "To integrate with the symfony framework"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\AdapterBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A bundle that registers cache implementations as Symfony services supporting PSR-6 and tagging",
+            "homepage": "https://github.com/php-cache/adapter-bundle",
+            "time": "2016-11-14 23:45:09"
+        },
+        {
+            "name": "cache/adapter-common",
+            "version": "0.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/adapter-common.git",
+                "reference": "874256105aefaa52b60599ab02858a4575e61095"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/adapter-common/zipball/874256105aefaa52b60599ab02858a4575e61095",
+                "reference": "874256105aefaa52b60599ab02858a4575e61095",
+                "shasum": ""
+            },
+            "require": {
+                "cache/taggable-cache": "^0.4",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.10",
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Adapter\\Common\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "Common classes for PSR-6 adapters",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "psr-6",
+                "tag"
+            ],
+            "time": "2016-07-31 18:10:41"
+        },
+        {
+            "name": "cache/apcu-adapter",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/apcu-adapter.git",
+                "reference": "c3bf73c3a146aca3a5d4f39f8fe7e1053d4babb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/apcu-adapter/zipball/c3bf73c3a146aca3a5d4f39f8fe7e1053d4babb3",
+                "reference": "c3bf73c3a146aca3a5d4f39f8fe7e1053d4babb3",
+                "shasum": ""
+            },
+            "require": {
+                "cache/adapter-common": "^0.3",
+                "cache/taggable-cache": "^0.4",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "^1.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.11",
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "suggest": {
+                "ext-apcu": "The extension required to use this pool."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Adapter\\Apcu\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A PSR-6 cache implementation using apcu. This implementation supports tags",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "apcu",
+                "cache",
+                "psr-6"
+            ],
+            "time": "2016-08-07 14:49:33"
+        },
+        {
+            "name": "cache/cache-bundle",
+            "version": "0.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/cache-bundle.git",
+                "reference": "c711fe1599d628ba73525abd4dc5bbfe3d6ccb98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/cache-bundle/zipball/c711fe1599d628ba73525abd4dc5bbfe3d6ccb98",
+                "reference": "c711fe1599d628ba73525abd4dc5bbfe3d6ccb98",
+                "shasum": ""
+            },
+            "require": {
+                "cache/session-handler": "^0.1",
+                "cache/taggable-cache": "^0.4.3",
+                "php": "^5.5 || ^7.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0"
+            },
+            "require-dev": {
+                "cache/array-adapter": "^0.4",
+                "cache/psr-6-doctrine-bridge": "^2.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0",
+                "phpunit/phpunit": "^5.1 || ^4.0",
+                "symfony/symfony": "^2.7 || ^3.0"
+            },
+            "suggest": {
+                "cache/adapter-bundle": "To register PSR-6 compliant cache implementations as services.",
+                "cache/psr-6-doctrine-bridge": "To be able to use Doctrine query, result and metadata cache."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\CacheBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "Symfony 2 bundle providing integration between PSR-6 compliant cache services and the framework. It supports cache for sessions, routing and Doctrine",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "doctrine",
+                "psr6",
+                "router",
+                "session"
+            ],
+            "time": "2016-08-16 13:41:00"
+        },
+        {
+            "name": "cache/filesystem-adapter",
+            "version": "0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/filesystem-adapter.git",
+                "reference": "eeb6a2b60fdcb4984c90113fd37f17a36c13ac02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/filesystem-adapter/zipball/eeb6a2b60fdcb4984c90113fd37f17a36c13ac02",
+                "reference": "eeb6a2b60fdcb4984c90113fd37f17a36c13ac02",
+                "shasum": ""
+            },
+            "require": {
+                "cache/adapter-common": "^0.3",
+                "cache/taggable-cache": "^0.4",
+                "league/flysystem": "^1.0",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "^1.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.11",
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Adapter\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A PSR-6 cache implementation using filesystem. This implementation supports tags",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "filesystem",
+                "psr-6",
+                "tag"
+            ],
+            "time": "2016-10-19 18:54:43"
+        },
+        {
+            "name": "cache/hierarchical-cache",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/hierarchical-cache.git",
+                "reference": "783e179acc3c9d47c469513a2380219022bfa0bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/hierarchical-cache/zipball/783e179acc3c9d47c469513a2380219022bfa0bc",
+                "reference": "783e179acc3c9d47c469513a2380219022bfa0bc",
+                "shasum": ""
+            },
+            "require": {
+                "cache/taggable-cache": "^0.4",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Hierarchy\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A helper trait and interface to your PSR-6 cache to support hierarchical keys.",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "hierarchical",
+                "psr-6",
+                "tag"
+            ],
+            "time": "2016-08-07 14:49:33"
+        },
+        {
+            "name": "cache/memcache-adapter",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/memcache-adapter.git",
+                "reference": "ed8f80e76e1ef483dbd201afaeb5574ad71ace33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/memcache-adapter/zipball/ed8f80e76e1ef483dbd201afaeb5574ad71ace33",
+                "reference": "ed8f80e76e1ef483dbd201afaeb5574ad71ace33",
+                "shasum": ""
+            },
+            "require": {
+                "cache/adapter-common": "^0.3",
+                "cache/taggable-cache": "^0.4",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "^1.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.11",
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "suggest": {
+                "ext-memcache": "The extension required to use this pool."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Adapter\\Memcache\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A PSR-6 cache implementation using memcache. This implementation supports tags",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "memcache",
+                "psr-6",
+                "tag"
+            ],
+            "time": "2016-08-07 14:49:33"
+        },
+        {
+            "name": "cache/memcached-adapter",
+            "version": "0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/memcached-adapter.git",
+                "reference": "ab360d0d8a8a9b3ebd1e5aa237e9d90302f8d93b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/memcached-adapter/zipball/ab360d0d8a8a9b3ebd1e5aa237e9d90302f8d93b",
+                "reference": "ab360d0d8a8a9b3ebd1e5aa237e9d90302f8d93b",
+                "shasum": ""
+            },
+            "require": {
+                "cache/adapter-common": "^0.3",
+                "cache/hierarchical-cache": "^0.3",
+                "cache/taggable-cache": "^0.4",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "^1.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.11",
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "suggest": {
+                "ext-memcached": "The extension required to use this pool."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Adapter\\Memcached\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A PSR-6 cache implementation using Memcached. This implementation supports tags",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "memcached",
+                "psr-6",
+                "tag"
+            ],
+            "time": "2016-08-07 15:04:55"
+        },
+        {
+            "name": "cache/namespaced-cache",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/namespaced-cache.git",
+                "reference": "d9676de26613ab7c7df8e59b38f6fd9626330662"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/namespaced-cache/zipball/d9676de26613ab7c7df8e59b38f6fd9626330662",
+                "reference": "d9676de26613ab7c7df8e59b38f6fd9626330662",
+                "shasum": ""
+            },
+            "require": {
+                "cache/hierarchical-cache": "^0.3",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Namespaced\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A decorator that makes your cache support namespaces",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "namespace",
+                "psr-6"
+            ],
+            "time": "2016-08-07 15:04:55"
+        },
+        {
+            "name": "cache/prefixed-cache",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/prefixed-cache.git",
+                "reference": "8a3868da48d2f6dff943f33ceca2a3ec3db64116"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/prefixed-cache/zipball/8a3868da48d2f6dff943f33ceca2a3ec3db64116",
+                "reference": "8a3868da48d2f6dff943f33ceca2a3ec3db64116",
+                "shasum": ""
+            },
+            "require": {
+                "cache/hierarchical-cache": "^0.3",
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Prefixed\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "A decorator that makes your cache support prefix",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "prefix",
+                "psr-6"
+            ],
+            "time": "2016-10-17 08:49:47"
+        },
+        {
+            "name": "cache/psr-6-doctrine-bridge",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/doctrine-bridge.git",
+                "reference": "dcdb269a72e8d7c451f749b617c748ead42b78f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/doctrine-bridge/zipball/dcdb269a72e8d7c451f749b617c748ead42b78f8",
+                "reference": "dcdb269a72e8d7c451f749b617c748ead42b78f8",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "^1.3",
+                "php": "^5.5 || ^7.0",
+                "psr/cache-implementation": "^1.0"
+            },
+            "require-dev": {
+                "cache/doctrine-adapter": "^0.5",
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^4.0 || ^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Bridge\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                }
+            ],
+            "description": "PSR-6 Doctrine bridge",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "doctrine",
+                "psr-6"
+            ],
+            "time": "2016-08-07 14:49:33"
+        },
+        {
+            "name": "cache/session-handler",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/session-handler.git",
+                "reference": "edb96d23d8206324095f8cc392dd3c5a85c7b078"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/session-handler/zipball/edb96d23d8206324095f8cc392dd3c5a85c7b078",
+                "reference": "edb96d23d8206324095f8cc392dd3c5a85c7b078",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5|^7.0",
+                "psr/cache": "~1.0"
+            },
+            "require-dev": {
+                "cache/array-adapter": "@stable",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.1|^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\SessionHandler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "An implementation of PHP's SessionHandlerInterface that allows PSR-6",
+            "homepage": "https://github.com/php-cache/session-handler",
+            "keywords": [
+                "cache",
+                "psr-6",
+                "session handler"
+            ],
+            "time": "2016-01-23 12:40:20"
+        },
+        {
+            "name": "cache/taggable-cache",
+            "version": "0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/taggable-cache.git",
+                "reference": "8ae3042edd1ac9546c9eae1020dc2b438ef10742"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/taggable-cache/zipball/8ae3042edd1ac9546c9eae1020dc2b438ef10742",
+                "reference": "8ae3042edd1ac9546c9eae1020dc2b438ef10742",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.11",
+                "phpunit/phpunit": "^4.0 || ^5.1",
+                "symfony/cache": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cache\\Taggable\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com",
+                    "homepage": "https://github.com/aequasi"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                }
+            ],
+            "description": "Add tag support to your PSR-6 cache implementation",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "Taggable",
+                "cache",
+                "psr6",
+                "tag"
+            ],
+            "time": "2016-08-08 17:20:09"
         },
         {
             "name": "components/elfinder",
@@ -1712,6 +2467,45 @@
                 "orm"
             ],
             "time": "2016-09-10 18:51:13"
+        },
+        {
+            "name": "dropbox/dropbox-sdk",
+            "version": "v1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dropbox/dropbox-sdk-php.git",
+                "reference": "0f1a178ca9c0271bca6426dde8f5a2241578deae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dropbox/dropbox-sdk-php/zipball/0f1a178ca9c0271bca6426dde8f5a2241578deae",
+                "reference": "0f1a178ca9c0271bca6426dde8f5a2241578deae",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">= 5.3"
+            },
+            "require-dev": {
+                "apigen/apigen": "4.1.2",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "2.0.0RC3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Dropbox": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Dropbox SDK for PHP",
+            "keywords": [
+                "dropbox"
+            ],
+            "time": "2016-08-08 23:48:49"
         },
         {
             "name": "egeloen/ordered-form",
@@ -4473,6 +5267,135 @@
             "time": "2015-06-25 17:26:56"
         },
         {
+            "name": "league/flysystem",
+            "version": "1.0.32",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "conflict": {
+                "league/flysystem-sftp": "<1.0.6"
+            },
+            "require-dev": {
+                "ext-fileinfo": "*",
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "^2.2",
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-fileinfo": "Required for MimeType",
+                "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
+                "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
+                "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
+                "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+                "league/flysystem-copy": "Allows you to use Copy.com storage",
+                "league/flysystem-dropbox": "Allows you to use Dropbox storage",
+                "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
+                "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+                "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
+                "league/flysystem-webdav": "Allows you to use WebDAV storage",
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Filesystem abstraction: Many filesystems, one API.",
+            "keywords": [
+                "Cloud Files",
+                "WebDAV",
+                "abstraction",
+                "aws",
+                "cloud",
+                "copy.com",
+                "dropbox",
+                "file systems",
+                "files",
+                "filesystem",
+                "filesystems",
+                "ftp",
+                "rackspace",
+                "remote",
+                "s3",
+                "sftp",
+                "storage"
+            ],
+            "time": "2016-10-19 20:38:46"
+        },
+        {
+            "name": "league/flysystem-dropbox",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-dropbox.git",
+                "reference": "939f91ca00d0255d9b3aa313e191480d00f09382"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-dropbox/zipball/939f91ca00d0255d9b3aa313e191480d00f09382",
+                "reference": "939f91ca00d0255d9b3aa313e191480d00f09382",
+                "shasum": ""
+            },
+            "require": {
+                "dropbox/dropbox-sdk": "~1.1",
+                "league/flysystem": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\Dropbox\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Flysystem adapter for Dropbox",
+            "time": "2016-04-25 18:51:39"
+        },
+        {
             "name": "liip/functional-test-bundle",
             "version": "dev-master",
             "source": {
@@ -4995,6 +5918,85 @@
                 "service proxies"
             ],
             "time": "2016-11-04 15:53:15"
+        },
+        {
+            "name": "oneup/flysystem-bundle",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1up-lab/OneupFlysystemBundle.git",
+                "reference": "5b8b5896d6981127b5c55e7620d10dabb86778bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1up-lab/OneupFlysystemBundle/zipball/5b8b5896d6981127b5c55e7620d10dabb86778bc",
+                "reference": "5b8b5896d6981127b5c55e7620d10dabb86778bc",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^1.0.14",
+                "php": ">=5.4.0",
+                "symfony/framework-bundle": "~2.0|~3.0"
+            },
+            "require-dev": {
+                "league/flysystem-aws-s3-v2": "~1.0",
+                "league/flysystem-cached-adapter": "~1.0",
+                "league/flysystem-copy": "~1.0",
+                "league/flysystem-dropbox": "~1.0",
+                "league/flysystem-gridfs": "~1.0",
+                "league/flysystem-memory": "~1.0",
+                "league/flysystem-rackspace": "~1.0",
+                "league/flysystem-sftp": "~1.0",
+                "league/flysystem-webdav": "~1.0",
+                "league/flysystem-ziparchive": "~1.0",
+                "litipk/flysystem-fallback-adapter": "~0.1",
+                "phpunit/phpunit": "4.4.*",
+                "symfony/browser-kit": "~2.0|~3.0",
+                "symfony/finder": "~2.0|~3.0",
+                "twistor/flysystem-stream-wrapper": "~1.0"
+            },
+            "suggest": {
+                "ext-fileinfo": "Required for MimeType",
+                "league/flysystem-aws-s3-v2": "Use S3 storage with AWS SDK v2",
+                "league/flysystem-aws-s3-v3": "Use S3 storage with AWS SDK v3",
+                "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+                "league/flysystem-copy": "Allows you to use Copy.com storage",
+                "league/flysystem-dropbox": "Use Dropbox storage",
+                "league/flysystem-gridfs": "Allows you to use GridFS adapter",
+                "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+                "league/flysystem-sftp": "Allows SFTP server storage via phpseclib",
+                "league/flysystem-webdav": "Allows you to use WebDAV storage",
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
+                "litipk/flysystem-fallback-adapter": "Allows you to use a fallback filesystem",
+                "twistor/flysystem-stream-wrapper": "Allows you to use stream wrapper"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Oneup\\FlysystemBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Schmid",
+                    "email": "js@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrates Flysystem filesystem abstraction library to your Symfony2 project.",
+            "homepage": "http://1up.io",
+            "keywords": [
+                "Flysystem",
+                "Symfony2",
+                "abstraction",
+                "filesystem"
+            ],
+            "time": "2016-12-04 12:16:31"
         },
         {
             "name": "pagerfanta/pagerfanta",
