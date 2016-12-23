@@ -1,6 +1,8 @@
 /app/config/parameters.yml
 /bin/*.bat
 /bin/doctrine*
+/bin/generate-deps*
+/bin/generate-factory*
 /bin/jp.php
 /bin/security*
 /bin/symfony_requirements
