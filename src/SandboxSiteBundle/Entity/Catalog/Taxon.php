@@ -5,7 +5,6 @@ namespace SandboxSiteBundle\Entity\Catalog;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Module\Unicat\Model\TaxonModel;
 
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="unicat_catalog_taxons",
@@ -14,7 +13,7 @@ use SmartCore\Module\Unicat\Model\TaxonModel;
  *          @ORM\Index(columns={"position"})
  *      },
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(columns={"slug", "parent_id", "structure_id"}),
+ *          @ORM\UniqueConstraint(columns={"slug", "parent_id", "taxonomy_id"}),
  *      }
  * )
  */

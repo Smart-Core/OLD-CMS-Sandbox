@@ -867,7 +867,7 @@ CREATE TABLE `settings` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
   KEY `IDX_E545A0C564C19C1` (`category`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -876,7 +876,7 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based on Symfony2 Framework)',0,NULL,'0000-00-00 00:00:00',NULL),(2,'cms','site_short_name','Smart Core CMS',0,NULL,'0000-00-00 00:00:00',NULL),(3,'cms','html_title_delimiter','&ndash;',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:23:49'),(4,'cms','appearance_editor_theme','idle_fingers',0,NULL,'0000-00-00 00:00:00',NULL),(5,'cms','appearance_editor','ace',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:22:54'),(8,'cms','twitter_bootstrap_version','3',0,NULL,'0000-00-00 00:00:00',NULL),(10,'shopmodule','catalog','catalog',0,'default','2016-10-12 06:03:56',NULL),(11,'cms','timezone','Asia/Novosibirsk',0,'default','2016-10-12 06:37:52','2016-10-11 20:12:29');
+INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based on Symfony2 Framework)',0,NULL,'0000-00-00 00:00:00',NULL),(2,'cms','site_short_name','Smart Core CMS',0,NULL,'0000-00-00 00:00:00',NULL),(3,'cms','html_title_delimiter','&ndash;',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:23:49'),(4,'cms','appearance_editor_theme','idle_fingers',0,NULL,'0000-00-00 00:00:00',NULL),(5,'cms','appearance_editor','ace',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:22:54'),(8,'cms','twitter_bootstrap_version','3',0,NULL,'0000-00-00 00:00:00',NULL),(10,'shopmodule','catalog','catalog',0,'default','2016-10-12 06:03:56',NULL),(11,'cms','timezone','Asia/Novosibirsk',0,'default','2016-10-12 06:37:52','2016-10-11 20:12:29'),(12,'cms','languages','a:2:{i:0;s:2:\"ru\";i:1;s:2:\"en\";}',1,'default','2016-12-28 03:00:56','2016-12-28 03:03:20');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -893,12 +893,14 @@ CREATE TABLE `settings_history` (
   `user_id` int(11) DEFAULT NULL,
   `value` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
+  `is_personal` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_99BED87BEE35BD72` (`setting_id`),
   KEY `IDX_99BED87BA76ED395` (`user_id`),
+  KEY `IDX_99BED87B64231B80` (`is_personal`),
   CONSTRAINT `FK_99BED87BA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `FK_99BED87BEE35BD72` FOREIGN KEY (`setting_id`) REFERENCES `settings` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -907,7 +909,40 @@ CREATE TABLE `settings_history` (
 
 LOCK TABLES `settings_history` WRITE;
 /*!40000 ALTER TABLE `settings_history` DISABLE KEYS */;
+INSERT INTO `settings_history` VALUES (1,12,1,'a:2:{i:0;s:2:\"ru\";i:1;s:2:\"en\";}','2016-12-28 03:01:12',0),(2,12,1,'a:0:{}','2016-12-28 03:01:27',0),(3,12,1,'a:1:{i:0;s:2:\"ru\";}','2016-12-28 03:03:09',0),(4,12,1,'a:2:{i:0;s:2:\"ru\";i:1;s:2:\"en\";}','2016-12-28 03:03:20',0),(5,12,1,'a:2:{i:1;s:2:\"en\";i:0;s:2:\"ru\";}','2016-12-28 03:12:09',1),(6,12,1,'a:0:{}','2016-12-28 03:12:24',1),(7,12,1,'a:2:{i:0;s:2:\"ru\";i:1;s:2:\"en\";}','2016-12-28 03:12:30',1);
 /*!40000 ALTER TABLE `settings_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `settings_personal`
+--
+
+DROP TABLE IF EXISTS `settings_personal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings_personal` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `setting_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `value` longtext COLLATE utf8_unicode_ci,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_D7ED5980EE35BD72A76ED395` (`setting_id`,`user_id`),
+  KEY `IDX_D7ED5980EE35BD72` (`setting_id`),
+  KEY `IDX_D7ED5980A76ED395` (`user_id`),
+  CONSTRAINT `FK_D7ED5980A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FK_D7ED5980EE35BD72` FOREIGN KEY (`setting_id`) REFERENCES `settings` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `settings_personal`
+--
+
+LOCK TABLES `settings_personal` WRITE;
+/*!40000 ALTER TABLE `settings_personal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `settings_personal` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1279,7 +1314,7 @@ DROP TABLE IF EXISTS `unicat__configurations`;
 CREATE TABLE `unicat__configurations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `media_collection_id` int(10) unsigned DEFAULT NULL,
-  `default_structure_id` int(10) unsigned DEFAULT NULL,
+  `default_taxonomy_id` int(10) unsigned DEFAULT NULL,
   `entities_namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_inheritance` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
@@ -1291,9 +1326,9 @@ CREATE TABLE `unicat__configurations` (
   UNIQUE KEY `UNIQ_F622D4625E237E06` (`name`),
   UNIQUE KEY `UNIQ_F622D4622B36786B` (`title`),
   KEY `IDX_F622D462B52E685C` (`media_collection_id`),
-  KEY `IDX_F622D4627E2E521` (`default_structure_id`),
   KEY `IDX_F622D462A76ED395` (`user_id`),
-  CONSTRAINT `FK_F622D4627E2E521` FOREIGN KEY (`default_structure_id`) REFERENCES `unicat__structures` (`id`),
+  KEY `IDX_F622D46241A4F540` (`default_taxonomy_id`),
+  CONSTRAINT `FK_F622D46241A4F540` FOREIGN KEY (`default_taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
   CONSTRAINT `FK_F622D462A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `FK_F622D462B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1310,13 +1345,13 @@ INSERT INTO `unicat__configurations` VALUES (1,1,1,'SandboxSiteBundle\\Entity\\C
 UNLOCK TABLES;
 
 --
--- Table structure for table `unicat__structures`
+-- Table structure for table `unicat__taxonomies`
 --
 
-DROP TABLE IF EXISTS `unicat__structures`;
+DROP TABLE IF EXISTS `unicat__taxonomies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat__structures` (
+CREATE TABLE `unicat__taxonomies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `configuration_id` int(11) unsigned DEFAULT NULL,
   `position` smallint(6) DEFAULT '0',
@@ -1331,21 +1366,21 @@ CREATE TABLE `unicat__structures` (
   `properties` longtext COLLATE utf8_unicode_ci,
   `is_tree` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `IDX_B933004773F32DD8` (`configuration_id`),
-  KEY `IDX_B9330047A76ED395` (`user_id`),
-  CONSTRAINT `FK_B933004773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
-  CONSTRAINT `FK_B9330047A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  KEY `IDX_C1A645E473F32DD8` (`configuration_id`),
+  KEY `IDX_C1A645E4A76ED395` (`user_id`),
+  CONSTRAINT `FK_C1A645E473F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
+  CONSTRAINT `FK_C1A645E4A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `unicat__structures`
+-- Dumping data for table `unicat__taxonomies`
 --
 
-LOCK TABLES `unicat__structures` WRITE;
-/*!40000 ALTER TABLE `unicat__structures` DISABLE KEYS */;
-INSERT INTO `unicat__structures` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0),(3,2,0,0,'Категории',0,1,'2015-03-02 10:43:54','categories','Категория',1,NULL,1),(4,2,0,1,'Тэги',0,1,'2015-03-08 14:24:38','tags','Тэги',1,NULL,0);
-/*!40000 ALTER TABLE `unicat__structures` ENABLE KEYS */;
+LOCK TABLES `unicat__taxonomies` WRITE;
+/*!40000 ALTER TABLE `unicat__taxonomies` DISABLE KEYS */;
+INSERT INTO `unicat__taxonomies` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0),(3,2,0,0,'Категории',0,1,'2015-03-02 10:43:54','categories','Категория',1,NULL,1),(4,2,0,1,'Тэги',0,1,'2015-03-08 14:24:38','tags','Тэги',1,NULL,0);
+/*!40000 ALTER TABLE `unicat__taxonomies` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1535,7 +1570,7 @@ DROP TABLE IF EXISTS `unicat_blog_taxons`;
 CREATE TABLE `unicat_blog_taxons` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned DEFAULT NULL,
-  `structure_id` int(10) unsigned DEFAULT NULL,
+  `taxonomy_id` int(10) unsigned DEFAULT NULL,
   `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `is_inheritance` tinyint(1) NOT NULL DEFAULT '1',
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
@@ -1546,13 +1581,13 @@ CREATE TABLE `unicat_blog_taxons` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_4ED842EC989D9B62727ACA702534008B` (`slug`,`parent_id`,`structure_id`),
+  UNIQUE KEY `UNIQ_4ED842EC989D9B62727ACA709557E6F6` (`slug`,`parent_id`,`taxonomy_id`),
   KEY `IDX_4ED842EC727ACA70` (`parent_id`),
-  KEY `IDX_4ED842EC2534008B` (`structure_id`),
   KEY `IDX_4ED842ECA76ED395` (`user_id`),
   KEY `IDX_4ED842EC46C53D4C` (`is_enabled`),
   KEY `IDX_4ED842EC462CE4F5` (`position`),
-  CONSTRAINT `FK_4ED842EC2534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
+  KEY `IDX_4ED842EC9557E6F6` (`taxonomy_id`),
+  CONSTRAINT `FK_4ED842EC2534008B` FOREIGN KEY (`taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
   CONSTRAINT `FK_4ED842EC727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_blog_taxons` (`id`),
   CONSTRAINT `FK_4ED842ECA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1762,17 +1797,17 @@ CREATE TABLE `unicat_catalog_taxons` (
   `created_at` datetime NOT NULL,
   `is_enabled` tinyint(1) DEFAULT '1',
   `position` smallint(6) DEFAULT '0',
-  `structure_id` int(10) unsigned DEFAULT NULL,
+  `taxonomy_id` int(10) unsigned DEFAULT NULL,
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_767F6678989D9B62727ACA702534008B` (`slug`,`parent_id`,`structure_id`),
+  UNIQUE KEY `UNIQ_767F6678989D9B62727ACA709557E6F6` (`slug`,`parent_id`,`taxonomy_id`),
   KEY `IDX_767F6678727ACA70` (`parent_id`),
-  KEY `IDX_767F66782534008B` (`structure_id`),
   KEY `IDX_767F6678A76ED395` (`user_id`),
   KEY `IDX_767F667846C53D4C` (`is_enabled`),
   KEY `IDX_767F6678462CE4F5` (`position`),
-  CONSTRAINT `FK_767F66782534008B` FOREIGN KEY (`structure_id`) REFERENCES `unicat__structures` (`id`),
+  KEY `IDX_767F66789557E6F6` (`taxonomy_id`),
+  CONSTRAINT `FK_767F66782534008B` FOREIGN KEY (`taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
   CONSTRAINT `FK_767F6678727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_taxons` (`id`),
   CONSTRAINT `FK_767F6678A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1829,7 +1864,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2016-12-06 01:38:02',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2016-12-31 01:16:55',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1950,4 +1985,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-06  1:46:55
+-- Dump completed on 2016-12-31  4:34:48
