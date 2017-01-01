@@ -1748,7 +1748,7 @@ CREATE TABLE `unicat_catalog_items_taxons_relations` (
 
 LOCK TABLES `unicat_catalog_items_taxons_relations` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_relations` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items_taxons_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2),(6,4),(6,5),(6,9);
+INSERT INTO `unicat_catalog_items_taxons_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2),(6,4),(6,5),(6,14),(6,15);
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1776,7 +1776,7 @@ CREATE TABLE `unicat_catalog_items_taxons_single_relations` (
 
 LOCK TABLES `unicat_catalog_items_taxons_single_relations` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_single_relations` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items_taxons_single_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2),(6,5),(6,9);
+INSERT INTO `unicat_catalog_items_taxons_single_relations` VALUES (1,5),(1,9),(2,2),(2,9),(3,8),(4,16),(4,18),(5,2),(6,5),(6,15);
 /*!40000 ALTER TABLE `unicat_catalog_items_taxons_single_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1985,4 +1985,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-31  4:34:48
+-- Dump completed on 2017-01-02  6:42:06
