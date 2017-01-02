@@ -3,8 +3,8 @@
 namespace SandboxSiteBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
+use Smart\CoreBundle\Controller\Controller;
 use SmartCore\Bundle\CMSBundle\Entity\Node;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
@@ -12,8 +12,7 @@ class HelloController extends Controller
 {
     public function indexAction()
     {
-        /** @var $em EntityManager */
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->get('doctrine.orm.entity_manager');
 
         $this->get('html')
             ->doctype('xhtml')
