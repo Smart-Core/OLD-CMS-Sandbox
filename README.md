@@ -14,6 +14,11 @@ The modern system for creating and managing web projects with open source, based
     git submodule update --remote
 ``` 
 
+Решение проблемы с detached head, переключение всех подмодулей в master:
+```
+    git submodule foreach 'git checkout master'
+``` 
+
 Пока не созданы тэги, для проектов использовать следующий набор пакетов в `composer.json`:
 ```
     "smart-core/module-breadcrumbs": "dev-master",
