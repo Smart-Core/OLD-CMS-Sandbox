@@ -5707,12 +5707,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "fe7141a8180d825f3ca1ee34a052a3e1534b7e28"
+                "reference": "89832a17feb6a34b04ac59e0bce6546763371e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/fe7141a8180d825f3ca1ee34a052a3e1534b7e28",
-                "reference": "fe7141a8180d825f3ca1ee34a052a3e1534b7e28",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/89832a17feb6a34b04ac59e0bce6546763371e38",
+                "reference": "89832a17feb6a34b04ac59e0bce6546763371e38",
                 "shasum": ""
             },
             "require": {
@@ -5721,13 +5721,15 @@
                 "symfony/form": "~2.3|~3.0",
                 "symfony/framework-bundle": "~2.3|~3.0",
                 "symfony/twig-bundle": "~2.3|~3.0",
-                "twig/twig": "^1.14.2"
+                "twig/twig": "^1.14.2|^2.0"
             },
             "conflict": {
                 "symfony/twig-bridge": "<2.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.6"
+                "phpunit/phpunit": "~4.6",
+                "symfony/security-bundle": "~2.3|~3.0",
+                "symfony/translation": "~2.3|~3.0"
             },
             "suggest": {
                 "craue/formflow-bundle": "~2.0",
@@ -5770,7 +5772,7 @@
                 "form",
                 "template"
             ],
-            "time": "2017-02-03T11:31:44+00:00"
+            "time": "2017-02-03T22:09:44+00:00"
         },
         {
             "name": "mopa/composer-bridge",
@@ -7269,12 +7271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "7a42437e63c9608a3c9dfa9a48520ca032eb0da2"
+                "reference": "6cd2728f1e9ca302379b2398b60510e5551e28ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/7a42437e63c9608a3c9dfa9a48520ca032eb0da2",
-                "reference": "7a42437e63c9608a3c9dfa9a48520ca032eb0da2",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/6cd2728f1e9ca302379b2398b60510e5551e28ee",
+                "reference": "6cd2728f1e9ca302379b2398b60510e5551e28ee",
                 "shasum": ""
             },
             "require": {
@@ -7335,7 +7337,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2017-02-02T12:46:50+00:00"
+            "time": "2017-02-04T01:58:36+00:00"
         },
         {
             "name": "stfalcon/tinymce-bundle",
