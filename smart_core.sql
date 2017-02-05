@@ -302,7 +302,7 @@ CREATE TABLE `engine_folders` (
 
 LOCK TABLES `engine_folders` WRITE;
 /*!40000 ALTER TABLE `engine_folders` DISABLE KEYS */;
-INSERT INTO `engine_folders` VALUES (1,NULL,'Главная',0,0,NULL,1,':)','a:4:{s:8:\"keywords\";s:3:\"cms\";s:11:\"description\";s:3:\"cms\";s:6:\"robots\";s:3:\"all\";s:6:\"author\";s:10:\"Артём\";}',NULL,NULL,NULL,NULL,'',1,'2013-03-19 00:44:38','',NULL),(2,1,'О компании',0,10,'about',1,NULL,'a:0:{}',NULL,NULL,NULL,NULL,'inner',1,'2013-03-11 16:42:33','inner',NULL),(3,1,'Личный кабинет',0,255,'user',1,NULL,'a:0:{}',NULL,7,'N;','N;','',1,'2013-03-18 01:15:06','',NULL),(4,8,'Вложенная',0,0,'under_news',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2013-03-18 01:15:27',NULL,NULL),(5,1,'Так просто ;)',0,3,'simple',1,NULL,'a:0:{}',NULL,NULL,'N;','N;','',1,'2013-03-19 04:43:50','',NULL),(6,2,'Вложенная папка',0,0,'inner',1,NULL,'a:0:{}',NULL,NULL,'N;','N;','',1,'2013-03-19 04:47:22','default',NULL),(7,1,'22222222222222',0,10,'22222222',0,'22','N;',NULL,NULL,'N;','N;',NULL,1,'2013-08-10 11:14:06',NULL,NULL),(8,1,'Новости',0,0,'news',1,NULL,'a:0:{}',NULL,12,'N;','N;',NULL,1,'2013-12-22 21:45:42',NULL,NULL),(11,6,'Еще одна вложенная',0,0,'in2',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2014-01-29 10:30:42',NULL,NULL),(12,1,'Слайдер',0,0,'slider',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-01-30 20:38:12',NULL,NULL),(13,1,'Блог',0,0,'blog',1,NULL,'N;',NULL,22,'N;','N;',NULL,1,'2014-02-07 18:01:54',NULL,NULL),(14,12,'Nivo',0,0,'nivo',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-02-10 07:55:59',NULL,NULL),(15,1,'Каталог',0,0,'catalog',1,NULL,'a:0:{}',NULL,28,'N;','N;','',1,'2014-02-12 16:12:18','inner',NULL),(16,1,'Блог на юникате',0,0,'unicat_blog',1,NULL,'a:0:{}',NULL,32,'N;','N;',NULL,1,'2014-07-01 13:34:57',NULL,NULL),(17,1,'Фотогалерея',0,0,'gallery',1,NULL,'a:0:{}',NULL,31,'N;','N;',NULL,1,'2014-07-15 03:28:01',NULL,NULL),(18,1,'Веб-форма',0,0,'web-form',1,NULL,'a:0:{}',NULL,34,'N;','N;',NULL,1,'2015-03-24 03:17:14',NULL,NULL),(19,3,'Моя корзина',0,0,'basket',1,NULL,'a:0:{}',NULL,36,'N;','N;','',1,'2015-10-09 01:11:07','',NULL),(20,3,'История заказов',0,0,'orders',1,NULL,'a:0:{}',NULL,37,'N;','N;','',1,'2015-10-14 17:25:33','',NULL);
+INSERT INTO `engine_folders` VALUES (1,NULL,'Главная',0,0,NULL,1,':)','a:4:{s:8:\"keywords\";s:3:\"cms\";s:11:\"description\";s:3:\"cms\";s:6:\"robots\";s:3:\"all\";s:6:\"author\";s:10:\"Артём\";}',NULL,NULL,NULL,NULL,'',1,'2013-03-19 00:44:38','',NULL),(2,1,'О компании',0,10,'about',1,NULL,'a:0:{}',NULL,NULL,NULL,NULL,'inner',1,'2013-03-11 16:42:33','inner',NULL),(3,1,'Личный кабинет',0,255,'user',1,NULL,'a:0:{}',NULL,7,'N;','N;','',1,'2013-03-18 01:15:06','',NULL),(4,8,'Вложенная',0,0,'under_news',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2013-03-18 01:15:27',NULL,NULL),(5,1,'Так просто ;)',0,3,'simple',1,NULL,'a:0:{}',NULL,NULL,'N;','N;','',1,'2013-03-19 04:43:50','',NULL),(6,2,'Вложенная папка',0,0,'inner',1,NULL,'a:0:{}',NULL,NULL,'N;','N;','',1,'2013-03-19 04:47:22','default',NULL),(7,1,'22222222222222',0,10,'22222222',0,'22','N;',NULL,NULL,'N;','N;',NULL,1,'2013-08-10 11:14:06',NULL,NULL),(8,1,'Новости',0,0,'news',1,NULL,'a:0:{}',NULL,12,'N;','N;',NULL,1,'2013-12-22 21:45:42',NULL,NULL),(11,6,'Еще одна вложенная',0,0,'in2',1,NULL,'a:0:{}',NULL,NULL,'N;','N;',NULL,1,'2014-01-29 10:30:42',NULL,NULL),(12,1,'Слайдер',0,0,'slider',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-01-30 20:38:12',NULL,NULL),(13,1,'Блог',0,0,'blog',1,NULL,'N;',NULL,22,'N;','N;',NULL,1,'2014-02-07 18:01:54',NULL,NULL),(14,12,'Nivo',0,0,'nivo',1,NULL,'N;',NULL,NULL,'N;','N;',NULL,1,'2014-02-10 07:55:59',NULL,NULL),(15,1,'Каталог',0,0,'catalog',1,NULL,'a:0:{}',NULL,28,'N;','N;','',1,'2014-02-12 16:12:18','inner',NULL),(16,1,'Блог на юникате',0,0,'unicat_blog',0,NULL,'a:0:{}',NULL,NULL,'N;','N;','',1,'2014-07-01 13:34:57','',NULL),(17,1,'Фотогалерея',0,0,'gallery',1,NULL,'a:0:{}',NULL,31,'N;','N;',NULL,1,'2014-07-15 03:28:01',NULL,NULL),(18,1,'Веб-форма',0,0,'web-form',1,NULL,'a:0:{}',NULL,34,'N;','N;',NULL,1,'2015-03-24 03:17:14',NULL,NULL),(19,3,'Моя корзина',0,0,'basket',1,NULL,'a:0:{}',NULL,36,'N;','N;','',1,'2015-10-09 01:11:07','',NULL),(20,3,'История заказов',0,0,'orders',1,NULL,'a:0:{}',NULL,37,'N;','N;','',1,'2015-10-14 17:25:33','',NULL);
 /*!40000 ALTER TABLE `engine_folders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,7 +381,7 @@ CREATE TABLE `engine_nodes` (
 
 LOCK TABLES `engine_nodes` WRITE;
 /*!40000 ALTER TABLE `engine_nodes` DISABLE KEYS */;
-INSERT INTO `engine_nodes` VALUES (1,1,4,1,'Texter','a:2:{s:12:\"text_item_id\";i:1;s:6:\"editor\";b:1;}',20,0,'Футер',1,'2013-03-20 05:46:40',0,NULL,0,NULL,1),(2,2,5,1,'Texter','a:2:{s:12:\"text_item_id\";i:4;s:6:\"editor\";b:1;}',0,1,'Правая колонка',1,'2013-03-20 09:07:33',0,NULL,1,NULL,1),(3,2,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:3;s:6:\"editor\";b:1;}',0,2,'Левая колонка',1,'2013-03-21 06:03:37',0,NULL,1,NULL,1),(4,1,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:2;s:6:\"editor\";b:1;}',0,0,'Главная',1,'2013-03-11 16:42:33',0,NULL,1,NULL,1),(5,1,3,1,'Menu','a:5:{s:5:\"depth\";N;s:9:\"css_class\";s:9:\"main_menu\";s:20:\"selected_inheritance\";b:0;s:13:\"current_class\";N;s:7:\"menu_id\";i:1;}',1,0,NULL,1,'2013-03-11 16:42:33',1,'test',0,NULL,1),(6,1,2,1,'Breadcrumbs','a:2:{s:9:\"delimiter\";s:2:\"»\";s:17:\"hide_if_only_home\";b:1;}',0,-255,NULL,1,'2013-03-11 16:42:33',0,NULL,0,NULL,1),(7,3,1,1,'User','a:2:{s:18:\"allow_registration\";b:1;s:24:\"allow_password_resetting\";b:1;}',0,255,NULL,1,'2013-03-11 16:42:33',0,NULL,0,NULL,1),(9,3,3,1,'Texter','a:2:{s:12:\"text_item_id\";i:6;s:6:\"editor\";b:1;}',1,0,'Текст под меню',1,'2013-03-25 21:53:12',0,NULL,0,NULL,1),(10,7,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:7;s:6:\"editor\";b:1;}',0,0,NULL,1,'2013-08-10 11:14:55',0,NULL,0,NULL,1),(11,5,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:8;s:6:\"editor\";b:1;}',0,0,NULL,1,'2013-12-20 20:11:41',0,NULL,1,NULL,1),(12,8,1,1,'SimpleNews','a:1:{s:14:\"items_per_page\";i:3;}',1,0,NULL,1,'2013-12-22 21:58:57',0,NULL,1,NULL,1),(13,1,6,1,'Texter','a:2:{s:12:\"text_item_id\";i:9;s:6:\"editor\";b:1;}',0,0,NULL,1,'2014-01-20 03:47:18',0,NULL,0,NULL,1),(15,8,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:10;s:6:\"editor\";b:1;}',0,0,'Текст над новостями',1,'2014-01-22 19:02:27',0,NULL,0,NULL,1),(16,6,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:11;s:6:\"editor\";b:1;}',0,0,NULL,1,'2014-01-29 10:01:55',0,NULL,1,NULL,1),(17,1,1,1,'Widget','a:5:{s:7:\"node_id\";s:2:\"12\";s:10:\"controller\";s:15:\"NewsWidget:last\";s:6:\"params\";s:8:\"count: 3\";s:8:\"open_tag\";s:48:\"<hr /><h3>Последние новости</h3>\";s:9:\"close_tag\";N;}',10,0,NULL,1,'2014-01-29 18:27:59',0,NULL,0,NULL,1),(18,1,3,0,'Texter','a:2:{s:12:\"text_item_id\";i:12;s:6:\"editor\";b:1;}',9,0,'Последние новости',1,'2014-01-29 19:43:16',0,NULL,0,NULL,1),(19,1,3,0,'Texter','a:2:{s:12:\"text_item_id\";i:13;s:6:\"editor\";b:1;}',0,0,'Надпись над меню',1,'2014-01-29 19:45:52',0,NULL,0,NULL,1),(20,11,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:14;s:6:\"editor\";b:1;}',0,0,NULL,1,'2014-01-29 20:16:33',0,NULL,1,NULL,1),(21,12,1,1,'Slider','a:1:{s:9:\"slider_id\";i:1;}',0,0,'Цветочки!',1,'2014-01-30 20:38:27',0,NULL,1,NULL,1),(22,13,1,1,'Blog','a:0:{}',0,0,NULL,1,'2014-02-07 18:02:37',0,NULL,1,NULL,1),(23,13,3,1,'Widget','a:5:{s:7:\"node_id\";s:2:\"22\";s:10:\"controller\";s:19:\"BlogWidget:tagCloud\";s:6:\"params\";N;s:8:\"open_tag\";s:34:\"<hr /><h4>Тэги блога</h4>\";s:9:\"close_tag\";N;}',30,0,'Тэги блога',1,'2014-02-07 22:55:10',0,NULL,0,NULL,1),(24,1,3,0,'Texter','a:2:{s:12:\"text_item_id\";i:15;s:6:\"editor\";b:1;}',19,0,NULL,1,'2014-02-08 21:01:35',0,NULL,0,NULL,1),(25,4,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:16;s:6:\"editor\";b:1;}',29,0,NULL,1,'2014-02-08 21:04:03',0,NULL,1,NULL,1),(26,13,3,1,'Widget','a:6:{s:7:\"node_id\";s:2:\"22\";s:10:\"controller\";s:23:\"BlogWidget:categoryTree\";s:6:\"params\";N;s:8:\"open_tag\";s:44:\"<hr /><h4>Категории блога</h4>\";s:9:\"close_tag\";N;s:14:\"tamplate_theme\";N;}',20,0,'Категории блога',1,'2014-02-08 21:04:50',0,NULL,0,NULL,1),(27,14,1,1,'Slider','a:1:{s:9:\"slider_id\";i:6;}',0,0,'Nivo',1,'2014-02-10 08:13:18',0,NULL,1,NULL,1),(28,15,1,1,'Unicat','a:4:{s:13:\"repository_id\";i:1;s:16:\"configuration_id\";i:1;s:19:\"use_item_id_as_slug\";b:0;s:20:\"use_layout_for_items\";s:5:\"inner\";}',0,0,NULL,1,'2014-02-12 16:23:22',0,'catalog',1,NULL,1),(29,15,3,1,'Widget','a:6:{s:7:\"node_id\";s:2:\"28\";s:10:\"controller\";s:22:\"UnicatWidget:taxonTree\";s:6:\"params\";s:41:\"structure: 1\r\nselected_inheritance: false\";s:8:\"open_tag\";s:50:\"<hr /><h4>Категории каталога</h4>\";s:9:\"close_tag\";N;s:14:\"tamplate_theme\";N;}',0,0,'Виджет категорий каталога',1,'2014-03-06 12:24:51',0,NULL,0,NULL,1),(30,16,1,1,'Catalog2','a:1:{s:13:\"repository_id\";i:3;}',0,0,'Тесты с каталогом',1,'2014-07-01 13:42:20',0,NULL,0,'2015-03-02 03:42:04',1),(31,17,1,1,'Gallery','a:1:{s:10:\"gallery_id\";i:1;}',0,0,NULL,1,'2014-07-15 03:38:38',0,NULL,1,NULL,1),(32,16,1,1,'Unicat','a:1:{s:16:\"configuration_id\";i:2;}',0,0,NULL,1,'2015-03-02 11:37:36',0,NULL,1,NULL,1),(33,16,3,1,'Widget','a:6:{s:7:\"node_id\";s:2:\"32\";s:10:\"controller\";s:22:\"UnicatWidget:taxonTree\";s:6:\"params\";s:12:\"structure: 3\";s:8:\"open_tag\";s:44:\"<hr /><h4>Категории блога</h4>\";s:9:\"close_tag\";N;s:14:\"tamplate_theme\";N;}',0,0,NULL,1,'2015-03-02 11:58:06',0,NULL,1,NULL,1),(34,18,1,1,'WebForm','a:1:{s:10:\"webform_id\";i:1;}',0,0,NULL,1,'2015-03-24 03:18:10',0,NULL,1,NULL,1),(35,1,3,1,'Shop','a:2:{s:4:\"mode\";s:13:\"basket_widget\";s:14:\"basket_node_id\";s:2:\"36\";}',0,0,'Виджет корзинки',1,'2015-10-09 00:50:43',0,NULL,0,NULL,1),(36,19,1,1,'Shop','a:1:{s:4:\"mode\";s:6:\"basket\";}',0,0,NULL,1,'2015-10-09 01:11:27',0,NULL,1,NULL,1),(37,20,1,1,'Shop','a:2:{s:14:\"basket_node_id\";s:2:\"36\";s:4:\"mode\";s:9:\"my_orders\";}',0,0,'Мои заказы',1,'2015-10-14 19:51:05',0,NULL,1,NULL,1);
+INSERT INTO `engine_nodes` VALUES (1,1,4,1,'Texter','a:2:{s:12:\"text_item_id\";i:1;s:6:\"editor\";b:1;}',20,0,'Футер',1,'2013-03-20 05:46:40',0,NULL,0,NULL,1),(2,2,5,1,'Texter','a:2:{s:12:\"text_item_id\";i:4;s:6:\"editor\";b:1;}',0,1,'Правая колонка',1,'2013-03-20 09:07:33',0,NULL,1,NULL,1),(3,2,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:3;s:6:\"editor\";b:1;}',0,2,'Левая колонка',1,'2013-03-21 06:03:37',0,NULL,1,NULL,1),(4,1,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:2;s:6:\"editor\";b:1;}',0,0,'Главная',1,'2013-03-11 16:42:33',0,NULL,1,NULL,1),(5,1,3,1,'Menu','a:5:{s:5:\"depth\";N;s:9:\"css_class\";s:9:\"main_menu\";s:20:\"selected_inheritance\";b:0;s:13:\"current_class\";N;s:7:\"menu_id\";i:1;}',1,0,NULL,1,'2013-03-11 16:42:33',1,'test',0,NULL,1),(6,1,2,1,'Breadcrumbs','a:2:{s:9:\"delimiter\";s:2:\"»\";s:17:\"hide_if_only_home\";b:1;}',0,-255,NULL,1,'2013-03-11 16:42:33',0,NULL,0,NULL,1),(7,3,1,1,'User','a:2:{s:18:\"allow_registration\";b:1;s:24:\"allow_password_resetting\";b:1;}',0,255,NULL,1,'2013-03-11 16:42:33',0,NULL,0,NULL,1),(9,3,3,1,'Texter','a:2:{s:12:\"text_item_id\";i:6;s:6:\"editor\";b:1;}',1,0,'Текст под меню',1,'2013-03-25 21:53:12',0,NULL,0,NULL,1),(10,7,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:7;s:6:\"editor\";b:1;}',0,0,NULL,1,'2013-08-10 11:14:55',0,NULL,0,NULL,1),(11,5,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:8;s:6:\"editor\";b:1;}',0,0,NULL,1,'2013-12-20 20:11:41',0,NULL,1,NULL,1),(12,8,1,1,'SimpleNews','a:1:{s:14:\"items_per_page\";i:3;}',1,0,NULL,1,'2013-12-22 21:58:57',0,NULL,1,NULL,1),(13,1,6,1,'Texter','a:2:{s:12:\"text_item_id\";i:9;s:6:\"editor\";b:1;}',0,0,NULL,1,'2014-01-20 03:47:18',0,NULL,0,NULL,1),(15,8,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:10;s:6:\"editor\";b:1;}',0,0,'Текст над новостями',1,'2014-01-22 19:02:27',0,NULL,0,NULL,1),(16,6,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:11;s:6:\"editor\";b:1;}',0,0,NULL,1,'2014-01-29 10:01:55',0,NULL,1,NULL,1),(17,1,1,1,'Widget','a:5:{s:7:\"node_id\";s:2:\"12\";s:10:\"controller\";s:15:\"NewsWidget:last\";s:6:\"params\";s:8:\"count: 3\";s:8:\"open_tag\";s:48:\"<hr /><h3>Последние новости</h3>\";s:9:\"close_tag\";N;}',10,0,NULL,1,'2014-01-29 18:27:59',0,NULL,0,NULL,1),(18,1,3,0,'Texter','a:2:{s:12:\"text_item_id\";i:12;s:6:\"editor\";b:1;}',9,0,'Последние новости',1,'2014-01-29 19:43:16',0,NULL,0,NULL,1),(19,1,3,0,'Texter','a:2:{s:12:\"text_item_id\";i:13;s:6:\"editor\";b:1;}',0,0,'Надпись над меню',1,'2014-01-29 19:45:52',0,NULL,0,NULL,1),(20,11,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:14;s:6:\"editor\";b:1;}',0,0,NULL,1,'2014-01-29 20:16:33',0,NULL,1,NULL,1),(21,12,1,1,'Slider','a:1:{s:9:\"slider_id\";i:1;}',0,0,'Цветочки!',1,'2014-01-30 20:38:27',0,NULL,1,NULL,1),(22,13,1,1,'Blog','a:0:{}',0,0,NULL,1,'2014-02-07 18:02:37',0,NULL,1,NULL,1),(23,13,3,1,'Widget','a:5:{s:7:\"node_id\";s:2:\"22\";s:10:\"controller\";s:19:\"BlogWidget:tagCloud\";s:6:\"params\";N;s:8:\"open_tag\";s:34:\"<hr /><h4>Тэги блога</h4>\";s:9:\"close_tag\";N;}',30,0,'Тэги блога',1,'2014-02-07 22:55:10',0,NULL,0,NULL,1),(24,1,3,0,'Texter','a:2:{s:12:\"text_item_id\";i:15;s:6:\"editor\";b:1;}',19,0,NULL,1,'2014-02-08 21:01:35',0,NULL,0,NULL,1),(25,4,1,1,'Texter','a:2:{s:12:\"text_item_id\";i:16;s:6:\"editor\";b:1;}',29,0,NULL,1,'2014-02-08 21:04:03',0,NULL,1,NULL,1),(26,13,3,1,'Widget','a:6:{s:7:\"node_id\";s:2:\"22\";s:10:\"controller\";s:23:\"BlogWidget:categoryTree\";s:6:\"params\";N;s:8:\"open_tag\";s:44:\"<hr /><h4>Категории блога</h4>\";s:9:\"close_tag\";N;s:14:\"tamplate_theme\";N;}',20,0,'Категории блога',1,'2014-02-08 21:04:50',0,NULL,0,NULL,1),(27,14,1,1,'Slider','a:1:{s:9:\"slider_id\";i:6;}',0,0,'Nivo',1,'2014-02-10 08:13:18',0,NULL,1,NULL,1),(28,15,1,1,'Unicat','a:4:{s:13:\"repository_id\";i:1;s:16:\"configuration_id\";i:1;s:19:\"use_item_id_as_slug\";b:0;s:20:\"use_layout_for_items\";s:5:\"inner\";}',0,0,NULL,1,'2014-02-12 16:23:22',0,'catalog',1,NULL,1),(29,15,3,1,'Widget','a:6:{s:7:\"node_id\";s:2:\"28\";s:10:\"controller\";s:22:\"UnicatWidget:taxonTree\";s:6:\"params\";s:41:\"structure: 1\r\nselected_inheritance: false\";s:8:\"open_tag\";s:50:\"<hr /><h4>Категории каталога</h4>\";s:9:\"close_tag\";N;s:14:\"tamplate_theme\";N;}',0,0,'Виджет категорий каталога',1,'2014-03-06 12:24:51',0,NULL,0,NULL,1),(30,16,1,1,'Catalog2','a:1:{s:13:\"repository_id\";i:3;}',0,0,'Тесты с каталогом',1,'2014-07-01 13:42:20',0,NULL,0,'2015-03-02 03:42:04',1),(31,17,1,1,'Gallery','a:1:{s:10:\"gallery_id\";i:1;}',0,0,NULL,1,'2014-07-15 03:38:38',0,NULL,1,NULL,1),(32,16,1,0,'Unicat','a:2:{s:16:\"configuration_id\";N;s:19:\"use_item_id_as_slug\";b:0;}',0,0,NULL,1,'2015-03-02 11:37:36',0,NULL,1,NULL,1),(33,16,3,1,'Widget','a:6:{s:7:\"node_id\";s:2:\"32\";s:10:\"controller\";s:22:\"UnicatWidget:taxonTree\";s:6:\"params\";s:12:\"structure: 3\";s:8:\"open_tag\";s:44:\"<hr /><h4>Категории блога</h4>\";s:9:\"close_tag\";N;s:14:\"tamplate_theme\";N;}',0,0,NULL,1,'2015-03-02 11:58:06',0,NULL,1,NULL,1),(34,18,1,1,'WebForm','a:1:{s:10:\"webform_id\";i:1;}',0,0,NULL,1,'2015-03-24 03:18:10',0,NULL,1,NULL,1),(35,1,3,1,'Shop','a:2:{s:4:\"mode\";s:13:\"basket_widget\";s:14:\"basket_node_id\";s:2:\"36\";}',0,0,'Виджет корзинки',1,'2015-10-09 00:50:43',0,NULL,0,NULL,1),(36,19,1,1,'Shop','a:1:{s:4:\"mode\";s:6:\"basket\";}',0,0,NULL,1,'2015-10-09 01:11:27',0,NULL,1,NULL,1),(37,20,1,1,'Shop','a:2:{s:14:\"basket_node_id\";s:2:\"36\";s:4:\"mode\";s:9:\"my_orders\";}',0,0,'Мои заказы',1,'2015-10-14 19:51:05',0,NULL,1,NULL,1);
 /*!40000 ALTER TABLE `engine_nodes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1305,6 +1305,91 @@ INSERT INTO `texter_history` VALUES (1,2,'ru',1,'<h1>Главная страни
 UNLOCK TABLES;
 
 --
+-- Table structure for table `unicat__attributes`
+--
+
+DROP TABLE IF EXISTS `unicat__attributes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unicat__attributes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `is_enabled` tinyint(1) DEFAULT '1',
+  `is_dedicated_table` tinyint(1) NOT NULL DEFAULT '0',
+  `is_required` tinyint(1) NOT NULL DEFAULT '0',
+  `position` smallint(6) DEFAULT '0',
+  `type` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `show_in_admin` tinyint(1) NOT NULL,
+  `show_in_list` tinyint(1) NOT NULL,
+  `show_in_view` tinyint(1) NOT NULL,
+  `user_id` int(10) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `group_id` int(10) unsigned DEFAULT NULL,
+  `params_yaml` longtext COLLATE utf8_unicode_ci,
+  `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
+  `is_link` tinyint(1) NOT NULL DEFAULT '0',
+  `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
+  `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
+  `configuration_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_D3165B6D5E237E0673F32DD8` (`name`,`configuration_id`),
+  KEY `IDX_D3165B6D73F32DD8` (`configuration_id`),
+  KEY `IDX_D3165B6DFE54D947` (`group_id`),
+  KEY `IDX_D3165B6DA76ED395` (`user_id`),
+  KEY `IDX_D3165B6D46C53D4C` (`is_enabled`),
+  KEY `IDX_D3165B6DFB9FF2E7` (`show_in_admin`),
+  KEY `IDX_D3165B6D921EA9F` (`show_in_list`),
+  KEY `IDX_D3165B6DB314B909` (`show_in_view`),
+  KEY `IDX_D3165B6D462CE4F5` (`position`),
+  CONSTRAINT `FK_D3165B6D73F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
+  CONSTRAINT `FK_D3165B6DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FK_D3165B6DFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat__attributes_groups` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unicat__attributes`
+--
+
+LOCK TABLES `unicat__attributes` WRITE;
+/*!40000 ALTER TABLE `unicat__attributes` DISABLE KEYS */;
+INSERT INTO `unicat__attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',1,NULL,1,1,'<h3>','</h3>',1),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',1,NULL,1,0,'<p>','</p>',1),(3,1,0,0,999,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',1,NULL,1,0,'<p>','</p>',1),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',1,NULL,1,0,'<p>','</p>',1),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',1,'filter: 300_300',1,0,'<p>','</p>',1),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',1,NULL,1,0,'<p>','</p>',1);
+/*!40000 ALTER TABLE `unicat__attributes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unicat__attributes_groups`
+--
+
+DROP TABLE IF EXISTS `unicat__attributes_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unicat__attributes_groups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `configuration_id` int(10) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_5E377FB75E237E0673F32DD8` (`name`,`configuration_id`),
+  KEY `IDX_5E377FB773F32DD8` (`configuration_id`),
+  CONSTRAINT `FK_5E377FB773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unicat__attributes_groups`
+--
+
+LOCK TABLES `unicat__attributes_groups` WRITE;
+/*!40000 ALTER TABLE `unicat__attributes_groups` DISABLE KEYS */;
+INSERT INTO `unicat__attributes_groups` VALUES (1,1,'2017-02-02 10:54:09','wares_description','Описание товара');
+/*!40000 ALTER TABLE `unicat__attributes_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `unicat__configurations`
 --
 
@@ -1340,8 +1425,40 @@ CREATE TABLE `unicat__configurations` (
 
 LOCK TABLES `unicat__configurations` WRITE;
 /*!40000 ALTER TABLE `unicat__configurations` DISABLE KEYS */;
-INSERT INTO `unicat__configurations` VALUES (1,1,1,'SandboxSiteBundle\\Entity\\Catalog\\',1,'2015-02-28 03:01:59','catalog','Каталог товаров',1,2),(2,3,3,'SandboxSiteBundle\\Entity\\Blog\\',1,'2015-03-02 05:23:03','blog','Блог',1,1);
+INSERT INTO `unicat__configurations` VALUES (1,1,1,'SandboxSiteBundle\\Entity\\Catalog\\',1,'2015-02-28 03:01:59','catalog','Каталог товаров',1,2);
 /*!40000 ALTER TABLE `unicat__configurations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unicat__items_types`
+--
+
+DROP TABLE IF EXISTS `unicat__items_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unicat__items_types` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `configuration_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `position` smallint(6) DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3E08A29773F32DD8` (`configuration_id`),
+  KEY `IDX_3E08A297A76ED395` (`user_id`),
+  CONSTRAINT `FK_3E08A29773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
+  CONSTRAINT `FK_3E08A297A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unicat__items_types`
+--
+
+LOCK TABLES `unicat__items_types` WRITE;
+/*!40000 ALTER TABLE `unicat__items_types` DISABLE KEYS */;
+/*!40000 ALTER TABLE `unicat__items_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1379,312 +1496,8 @@ CREATE TABLE `unicat__taxonomies` (
 
 LOCK TABLES `unicat__taxonomies` WRITE;
 /*!40000 ALTER TABLE `unicat__taxonomies` DISABLE KEYS */;
-INSERT INTO `unicat__taxonomies` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0),(3,2,0,0,'Категории',0,1,'2015-03-02 10:43:54','categories','Категория',1,NULL,1),(4,2,0,1,'Тэги',0,1,'2015-03-08 14:24:38','tags','Тэги',1,NULL,0);
+INSERT INTO `unicat__taxonomies` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0);
 /*!40000 ALTER TABLE `unicat__taxonomies` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_blog_attributes`
---
-
-DROP TABLE IF EXISTS `unicat_blog_attributes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_attributes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `group_id` int(10) unsigned DEFAULT NULL,
-  `is_dedicated_table` tinyint(1) NOT NULL DEFAULT '0',
-  `is_required` tinyint(1) NOT NULL DEFAULT '0',
-  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `show_in_admin` tinyint(1) NOT NULL,
-  `show_in_list` tinyint(1) NOT NULL,
-  `show_in_view` tinyint(1) NOT NULL,
-  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `params_yaml` longtext COLLATE utf8_unicode_ci,
-  `is_enabled` tinyint(1) DEFAULT '1',
-  `created_at` datetime NOT NULL,
-  `position` smallint(6) DEFAULT '0',
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
-  `is_link` tinyint(1) NOT NULL DEFAULT '0',
-  `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
-  `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_FE1A5FAD5E237E06` (`name`),
-  KEY `IDX_FE1A5FADFE54D947` (`group_id`),
-  KEY `IDX_FE1A5FAD46C53D4C` (`is_enabled`),
-  KEY `IDX_FE1A5FADFB9FF2E7` (`show_in_admin`),
-  KEY `IDX_FE1A5FAD921EA9F` (`show_in_list`),
-  KEY `IDX_FE1A5FADB314B909` (`show_in_view`),
-  KEY `IDX_FE1A5FAD462CE4F5` (`position`),
-  KEY `IDX_FE1A5FADA76ED395` (`user_id`),
-  CONSTRAINT `FK_FE1A5FADA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `FK_FE1A5FADFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_blog_attributes_groups` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_blog_attributes`
---
-
-LOCK TABLES `unicat_blog_attributes` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_attributes` DISABLE KEYS */;
-INSERT INTO `unicat_blog_attributes` VALUES (1,1,0,1,'text',1,1,1,'a:0:{}',NULL,1,'2015-03-02 11:06:53',0,'title','Заголовок',1,0,1,'<h1>','</h1>'),(2,1,0,0,'textarea',0,1,0,'a:1:{s:4:\"form\";a:1:{s:4:\"attr\";a:2:{s:5:\"class\";s:7:\"wysiwyg\";s:10:\"data-theme\";s:8:\"advanced\";}}}','form:\r\n    attr:\r\n        class: \'wysiwyg\'\r\n        data-theme: \'advanced\'',1,'2015-03-02 11:07:46',0,'annotation','Аннотация',1,0,0,'<p>','</p>'),(3,1,0,0,'textarea',0,0,1,'a:1:{s:4:\"form\";a:1:{s:4:\"attr\";a:2:{s:5:\"class\";s:7:\"wysiwyg\";s:10:\"data-theme\";s:8:\"advanced\";}}}','form:\r\n    attr:\r\n        class: \'wysiwyg\'\r\n        data-theme: \'advanced\'',1,'2015-03-02 11:19:18',0,'text','Текст',1,0,0,'<p>','</p>');
-/*!40000 ALTER TABLE `unicat_blog_attributes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_blog_attributes_groups`
---
-
-DROP TABLE IF EXISTS `unicat_blog_attributes_groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_attributes_groups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `taxon_id` int(10) unsigned DEFAULT NULL,
-  `configuration_id` int(10) unsigned DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_9E1338C873F32DD8` (`configuration_id`),
-  KEY `IDX_9E1338C8DE13F470` (`taxon_id`),
-  CONSTRAINT `FK_9E1338C873F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
-  CONSTRAINT `FK_9E1338C8DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_blog_taxons` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_blog_attributes_groups`
---
-
-LOCK TABLES `unicat_blog_attributes_groups` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_attributes_groups` DISABLE KEYS */;
-INSERT INTO `unicat_blog_attributes_groups` VALUES (1,NULL,2,'2015-03-02 10:54:09','common','Основные свойства');
-/*!40000 ALTER TABLE `unicat_blog_attributes_groups` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_blog_items`
---
-
-DROP TABLE IF EXISTS `unicat_blog_items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_items` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `attributes` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `is_enabled` tinyint(1) DEFAULT '1',
-  `created_at` datetime NOT NULL,
-  `position` smallint(6) DEFAULT '0',
-  `user_id` int(11) DEFAULT NULL,
-  `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` smallint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_69D20251989D9B62` (`slug`),
-  UNIQUE KEY `UNIQ_69D20251D17F50A6` (`uuid`),
-  KEY `IDX_69D20251462CE4F5` (`position`),
-  KEY `IDX_69D20251A76ED395` (`user_id`),
-  CONSTRAINT `FK_69D20251A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_blog_items`
---
-
-LOCK TABLES `unicat_blog_items` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_items` DISABLE KEYS */;
-INSERT INTO `unicat_blog_items` VALUES (1,'twig_in_symfony2_work_with_date_and_time','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:3:{s:5:\"title\";s:65:\"Twig в Symfony2: работа с датой и временем.\";s:10:\"annotation\";s:319:\"<p>Поначалу возник недоуменный вопрос: как в twig отдать дату в нужном формате? Неужели дату можно форматировать только в контролере? Но погуглив, нашел ответы на свои вопросы.</p>\";s:4:\"text\";s:653:\"<p>Форматирование даты:</p>\r\n<pre class=\"brush: php;\">	var_date|date(\"d.m.y\")\r\n</pre>\r\n<p>Получение текущей даты:</p>\r\n<pre class=\"brush: php;\">	\"new\"|date(\"d.m.y\")\r\n</pre>\r\n<p>Интернационализация:</p>\r\n<p>1. Подключаем сервис в конфиге Symfony2</p>\r\n<pre class=\"brush: yaml;\">	services:\r\n        twig_extension.intl:\r\n            class: Twig_Extensions_Extension_Intl\r\n            tags: [{ name: \"twig.extension\" }]\r\n</pre>\r\n<p>2. Пример вызова</p>\r\n<pre class=\"brush: twig;\">	{{ item.date|localizeddate(\"none\", \"none\", null, null, \"dd. LLLL YYYY\") }}\r\n</pre>\";}',1,'2015-03-02 11:36:24',0,1,NULL,0);
-/*!40000 ALTER TABLE `unicat_blog_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_blog_items_taxons_relations`
---
-
-DROP TABLE IF EXISTS `unicat_blog_items_taxons_relations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_items_taxons_relations` (
-  `item_id` int(10) unsigned NOT NULL,
-  `taxon_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`item_id`,`taxon_id`),
-  KEY `IDX_5986C743126F525E` (`item_id`),
-  KEY `IDX_5986C743DE13F470` (`taxon_id`),
-  CONSTRAINT `FK_5986C743126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_blog_items` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_5986C743DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_blog_taxons` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_blog_items_taxons_relations`
---
-
-LOCK TABLES `unicat_blog_items_taxons_relations` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_items_taxons_relations` DISABLE KEYS */;
-INSERT INTO `unicat_blog_items_taxons_relations` VALUES (1,6),(1,7);
-/*!40000 ALTER TABLE `unicat_blog_items_taxons_relations` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_blog_items_taxons_single_relations`
---
-
-DROP TABLE IF EXISTS `unicat_blog_items_taxons_single_relations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_items_taxons_single_relations` (
-  `item_id` int(10) unsigned NOT NULL,
-  `taxon_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`item_id`,`taxon_id`),
-  KEY `IDX_EA3154E7126F525E` (`item_id`),
-  KEY `IDX_EA3154E7DE13F470` (`taxon_id`),
-  CONSTRAINT `FK_C2398468126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_blog_items` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_C2398468DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_blog_taxons` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_blog_items_taxons_single_relations`
---
-
-LOCK TABLES `unicat_blog_items_taxons_single_relations` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_items_taxons_single_relations` DISABLE KEYS */;
-INSERT INTO `unicat_blog_items_taxons_single_relations` VALUES (1,6),(1,7);
-/*!40000 ALTER TABLE `unicat_blog_items_taxons_single_relations` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_blog_taxons`
---
-
-DROP TABLE IF EXISTS `unicat_blog_taxons`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_blog_taxons` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) unsigned DEFAULT NULL,
-  `taxonomy_id` int(10) unsigned DEFAULT NULL,
-  `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `is_inheritance` tinyint(1) NOT NULL DEFAULT '1',
-  `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
-  `is_enabled` tinyint(1) DEFAULT '1',
-  `created_at` datetime NOT NULL,
-  `position` smallint(6) DEFAULT '0',
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_4ED842EC989D9B62727ACA709557E6F6` (`slug`,`parent_id`,`taxonomy_id`),
-  KEY `IDX_4ED842EC727ACA70` (`parent_id`),
-  KEY `IDX_4ED842ECA76ED395` (`user_id`),
-  KEY `IDX_4ED842EC46C53D4C` (`is_enabled`),
-  KEY `IDX_4ED842EC462CE4F5` (`position`),
-  KEY `IDX_4ED842EC9557E6F6` (`taxonomy_id`),
-  CONSTRAINT `FK_4ED842EC2534008B` FOREIGN KEY (`taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
-  CONSTRAINT `FK_4ED842EC727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_blog_taxons` (`id`),
-  CONSTRAINT `FK_4ED842ECA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_blog_taxons`
---
-
-LOCK TABLES `unicat_blog_taxons` WRITE;
-/*!40000 ALTER TABLE `unicat_blog_taxons` DISABLE KEYS */;
-INSERT INTO `unicat_blog_taxons` VALUES (1,NULL,3,'programing',0,'a:0:{}','N;',1,'2015-03-02 10:44:16',0,'Программирование',1),(2,NULL,3,'os',0,'a:0:{}','N;',1,'2015-03-02 10:44:40',0,'Операционные системы',1),(3,NULL,3,'imposition',0,'a:0:{}','N;',1,'2015-03-02 10:44:52',0,'Верстка',1),(4,NULL,3,'soft',0,'a:0:{}','N;',1,'2015-03-02 10:45:07',0,'Программы (софт)',1),(5,NULL,3,'other',0,'a:0:{}','N;',1,'2015-03-02 10:45:17',0,'Другое',1),(6,NULL,4,'php',1,'a:0:{}','N;',1,'2015-03-08 14:29:47',0,'PHP',1),(7,1,3,'php',1,'a:0:{}','N;',1,'2015-03-08 14:32:35',0,'PHP',1);
-/*!40000 ALTER TABLE `unicat_blog_taxons` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_catalog_attributes`
---
-
-DROP TABLE IF EXISTS `unicat_catalog_attributes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_catalog_attributes` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `is_enabled` tinyint(1) DEFAULT '1',
-  `is_dedicated_table` tinyint(1) NOT NULL DEFAULT '0',
-  `is_required` tinyint(1) NOT NULL DEFAULT '0',
-  `position` smallint(6) DEFAULT '0',
-  `type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `show_in_admin` tinyint(1) NOT NULL,
-  `show_in_list` tinyint(1) NOT NULL,
-  `show_in_view` tinyint(1) NOT NULL,
-  `user_id` int(10) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `group_id` int(10) unsigned DEFAULT NULL,
-  `params_yaml` longtext COLLATE utf8_unicode_ci,
-  `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
-  `is_link` tinyint(1) NOT NULL DEFAULT '0',
-  `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
-  `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_3A3855D25E237E06` (`name`),
-  KEY `IDX_3A3855D2FE54D947` (`group_id`),
-  KEY `IDX_3A3855D246C53D4C` (`is_enabled`),
-  KEY `IDX_3A3855D2FB9FF2E7` (`show_in_admin`),
-  KEY `IDX_3A3855D2921EA9F` (`show_in_list`),
-  KEY `IDX_3A3855D2B314B909` (`show_in_view`),
-  KEY `IDX_3A3855D2462CE4F5` (`position`),
-  KEY `IDX_3A3855D2A76ED395` (`user_id`),
-  CONSTRAINT `FK_3A3855D2A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `FK_3A3855D2FE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat_catalog_attributes_groups` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_catalog_attributes`
---
-
-LOCK TABLES `unicat_catalog_attributes` WRITE;
-/*!40000 ALTER TABLE `unicat_catalog_attributes` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',1,NULL,1,1,'<h3>','</h3>'),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',1,NULL,1,0,'<p>','</p>'),(3,1,0,0,999,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',1,NULL,1,0,'<p>','</p>'),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',1,NULL,1,0,'<p>','</p>'),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',1,'filter: 300_300',1,0,'<p>','</p>'),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',1,NULL,1,0,'<p>','</p>');
-/*!40000 ALTER TABLE `unicat_catalog_attributes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `unicat_catalog_attributes_groups`
---
-
-DROP TABLE IF EXISTS `unicat_catalog_attributes_groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `unicat_catalog_attributes_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `taxon_id` int(10) unsigned DEFAULT NULL,
-  `configuration_id` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_6786BE5973F32DD8` (`configuration_id`),
-  KEY `IDX_6786BE59DE13F470` (`taxon_id`),
-  CONSTRAINT `FK_6786BE5973F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
-  CONSTRAINT `FK_6786BE59DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_catalog_taxons` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unicat_catalog_attributes_groups`
---
-
-LOCK TABLES `unicat_catalog_attributes_groups` WRITE;
-/*!40000 ALTER TABLE `unicat_catalog_attributes_groups` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_attributes_groups` VALUES (1,'wares_description','Описание товара','2014-02-12 19:24:52',NULL,1);
-/*!40000 ALTER TABLE `unicat_catalog_attributes_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1765,8 +1578,8 @@ CREATE TABLE `unicat_catalog_items_taxons_single_relations` (
   PRIMARY KEY (`item_id`,`taxon_id`),
   KEY `IDX_9FC85324126F525E` (`item_id`),
   KEY `IDX_9FC85324DE13F470` (`taxon_id`),
-  CONSTRAINT `FK_B7C083AB126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_B7C083ABDE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_catalog_taxons` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_9FC85324126F525E` FOREIGN KEY (`item_id`) REFERENCES `unicat_catalog_items` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_9FC85324DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `unicat_catalog_taxons` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1807,8 +1620,8 @@ CREATE TABLE `unicat_catalog_taxons` (
   KEY `IDX_767F667846C53D4C` (`is_enabled`),
   KEY `IDX_767F6678462CE4F5` (`position`),
   KEY `IDX_767F66789557E6F6` (`taxonomy_id`),
-  CONSTRAINT `FK_767F66782534008B` FOREIGN KEY (`taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
   CONSTRAINT `FK_767F6678727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `unicat_catalog_taxons` (`id`),
+  CONSTRAINT `FK_767F66789557E6F6` FOREIGN KEY (`taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
   CONSTRAINT `FK_767F6678A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1985,4 +1798,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-04 17:41:07
+-- Dump completed on 2017-02-06  3:18:29
