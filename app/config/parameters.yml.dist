@@ -31,6 +31,9 @@ parameters:
     tagcache_driver: Nullcache      # Memcache, Memcached, File, Sqlite, Apc, Nullcache
     orm_cache_driver: apcu          # apc, apcu, wincache, xcache or ~
 
+    fos_from_email_address: from@localhost.org
+    fos_from_email_sender_name: Hello
+
     registration_email_confirmation: registration-email-confirmation@localhost.org
     email_resetting: no-reply@localhost.org
 
