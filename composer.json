@@ -29,6 +29,7 @@
 
         "dizda/cloud-backup-bundle": "*",
         "liip/imagine-bundle": "*",
+        "yamilovs/sypex-geo-bundle": "*",
 
         "ext-curl": "*",
         "ext-dom": "*",

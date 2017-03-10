@@ -20,6 +20,7 @@ class AppKernel extends CMSAppKernel
     {
         $bundles = array(
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
+            new YamilovS\SypexGeoBundle\YamilovsSypexGeoBundle(),
             new SmartCore\Bundle\AcceleratorCacheBundle\AcceleratorCacheBundle(),
             new SmartCore\Bundle\DbDumperBundle\SmartDbDumperBundle(),
             new SmartCore\Bundle\SitemapBundle\SmartSitemapBundle(),
