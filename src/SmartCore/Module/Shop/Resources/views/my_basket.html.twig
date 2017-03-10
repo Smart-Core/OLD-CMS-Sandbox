@@ -16,7 +16,7 @@
                 {% for orderItem in items %}
                     <tr>
                         <td>
-                            {{ smart_media_img(orderItem.item.attr('image'), '100_100') }}
+                            {{ smart_media_img(orderItem.item.attr('image'), '100x100') }}
                             {{ orderItem.item.attr('title') }}
                         </td>
                         <td>
