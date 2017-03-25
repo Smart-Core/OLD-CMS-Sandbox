@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dab514297ce585340918881a44a0e3bb",
+    "content-hash": "548c1fead212063038f4ddb6983418f8",
     "packages": [
         {
             "name": "api-platform/core",
@@ -216,29 +216,35 @@
         },
         {
             "name": "cache/adapter-common",
-            "version": "0.3.3",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/adapter-common.git",
-                "reference": "874256105aefaa52b60599ab02858a4575e61095"
+                "reference": "2adecd1375fe2ce15b1679349965d7fa73f2676b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/adapter-common/zipball/874256105aefaa52b60599ab02858a4575e61095",
-                "reference": "874256105aefaa52b60599ab02858a4575e61095",
+                "url": "https://api.github.com/repos/php-cache/adapter-common/zipball/2adecd1375fe2ce15b1679349965d7fa73f2676b",
+                "reference": "2adecd1375fe2ce15b1679349965d7fa73f2676b",
                 "shasum": ""
             },
             "require": {
-                "cache/taggable-cache": "^0.4",
-                "php": "^5.5 || ^7.0",
+                "cache/tag-interop": "^1.0",
+                "php": "^5.6 || ^7.0",
                 "psr/cache": "^1.0",
-                "psr/log": "^1.0"
+                "psr/log": "^1.0",
+                "psr/simple-cache": "^1.0"
             },
             "require-dev": {
-                "cache/integration-tests": "^0.10",
+                "cache/integration-tests": "^0.16",
                 "phpunit/phpunit": "^4.0 || ^5.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cache\\Adapter\\Common\\": ""
@@ -267,39 +273,44 @@
                 "psr-6",
                 "tag"
             ],
-            "time": "2016-07-31T18:10:41+00:00"
+            "time": "2017-03-13T08:24:04+00:00"
         },
         {
             "name": "cache/apcu-adapter",
-            "version": "0.2.2",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/apcu-adapter.git",
-                "reference": "c3bf73c3a146aca3a5d4f39f8fe7e1053d4babb3"
+                "reference": "6a8bd01d2357fa0af13f625da400c79b2031bebb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/apcu-adapter/zipball/c3bf73c3a146aca3a5d4f39f8fe7e1053d4babb3",
-                "reference": "c3bf73c3a146aca3a5d4f39f8fe7e1053d4babb3",
+                "url": "https://api.github.com/repos/php-cache/apcu-adapter/zipball/6a8bd01d2357fa0af13f625da400c79b2031bebb",
+                "reference": "6a8bd01d2357fa0af13f625da400c79b2031bebb",
                 "shasum": ""
             },
             "require": {
-                "cache/adapter-common": "^0.3",
-                "cache/taggable-cache": "^0.4",
-                "php": "^5.5 || ^7.0",
-                "psr/cache": "^1.0"
+                "cache/adapter-common": "^0.4",
+                "php": "^5.6 || ^7.0",
+                "psr/cache": "^1.0",
+                "psr/simple-cache": "^1.0"
             },
             "provide": {
                 "psr/cache-implementation": "^1.0"
             },
             "require-dev": {
-                "cache/integration-tests": "^0.11",
+                "cache/integration-tests": "^0.16",
                 "phpunit/phpunit": "^4.0 || ^5.1"
             },
             "suggest": {
                 "ext-apcu": "The extension required to use this pool."
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cache\\Adapter\\Apcu\\": ""
@@ -331,7 +342,7 @@
                 "cache",
                 "psr-6"
             ],
-            "time": "2016-08-07T14:49:33+00:00"
+            "time": "2017-03-13T09:25:46+00:00"
         },
         {
             "name": "cache/cache-bundle",
@@ -399,33 +410,38 @@
         },
         {
             "name": "cache/filesystem-adapter",
-            "version": "0.3.3",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/filesystem-adapter.git",
-                "reference": "b05c31ea76dbe2650817e92265952a5d8b7fb070"
+                "reference": "98ee81842156d18dade449f4dd5b3a89f9a9fcc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/filesystem-adapter/zipball/b05c31ea76dbe2650817e92265952a5d8b7fb070",
-                "reference": "b05c31ea76dbe2650817e92265952a5d8b7fb070",
+                "url": "https://api.github.com/repos/php-cache/filesystem-adapter/zipball/98ee81842156d18dade449f4dd5b3a89f9a9fcc9",
+                "reference": "98ee81842156d18dade449f4dd5b3a89f9a9fcc9",
                 "shasum": ""
             },
             "require": {
-                "cache/adapter-common": "^0.3",
-                "cache/taggable-cache": "^0.4",
+                "cache/adapter-common": "^0.4",
                 "league/flysystem": "^1.0",
-                "php": "^5.5 || ^7.0",
-                "psr/cache": "^1.0"
+                "php": "^5.6 || ^7.0",
+                "psr/cache": "^1.0",
+                "psr/simple-cache": "^1.0"
             },
             "provide": {
                 "psr/cache-implementation": "^1.0"
             },
             "require-dev": {
-                "cache/integration-tests": "^0.11",
+                "cache/integration-tests": "^0.16",
                 "phpunit/phpunit": "^4.0 || ^5.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cache\\Adapter\\Filesystem\\": ""
@@ -458,31 +474,36 @@
                 "psr-6",
                 "tag"
             ],
-            "time": "2016-12-25T09:15:25+00:00"
+            "time": "2017-03-13T09:25:46+00:00"
         },
         {
             "name": "cache/hierarchical-cache",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/hierarchical-cache.git",
-                "reference": "783e179acc3c9d47c469513a2380219022bfa0bc"
+                "reference": "201c6d67ff451642ce62d3bab193936361618776"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/hierarchical-cache/zipball/783e179acc3c9d47c469513a2380219022bfa0bc",
-                "reference": "783e179acc3c9d47c469513a2380219022bfa0bc",
+                "url": "https://api.github.com/repos/php-cache/hierarchical-cache/zipball/201c6d67ff451642ce62d3bab193936361618776",
+                "reference": "201c6d67ff451642ce62d3bab193936361618776",
                 "shasum": ""
             },
             "require": {
-                "cache/taggable-cache": "^0.4",
-                "php": "^5.5 || ^7.0",
+                "cache/adapter-common": "^0.4",
+                "php": "^5.6 || ^7.0",
                 "psr/cache": "^1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.0 || ^5.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cache\\Hierarchy\\": ""
@@ -512,42 +533,47 @@
             "keywords": [
                 "cache",
                 "hierarchical",
-                "psr-6",
-                "tag"
+                "hierarchy",
+                "psr-6"
             ],
-            "time": "2016-08-07T14:49:33+00:00"
+            "time": "2017-03-13T10:43:18+00:00"
         },
         {
             "name": "cache/memcache-adapter",
-            "version": "0.2.2",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/memcache-adapter.git",
-                "reference": "ed8f80e76e1ef483dbd201afaeb5574ad71ace33"
+                "reference": "92e6d1bdcd33d611701290dd396d354e8c421772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/memcache-adapter/zipball/ed8f80e76e1ef483dbd201afaeb5574ad71ace33",
-                "reference": "ed8f80e76e1ef483dbd201afaeb5574ad71ace33",
+                "url": "https://api.github.com/repos/php-cache/memcache-adapter/zipball/92e6d1bdcd33d611701290dd396d354e8c421772",
+                "reference": "92e6d1bdcd33d611701290dd396d354e8c421772",
                 "shasum": ""
             },
             "require": {
-                "cache/adapter-common": "^0.3",
-                "cache/taggable-cache": "^0.4",
-                "php": "^5.5 || ^7.0",
-                "psr/cache": "^1.0"
+                "cache/adapter-common": "^0.4",
+                "php": "^5.6 || ^7.0",
+                "psr/cache": "^1.0",
+                "psr/simple-cache": "^1.0"
             },
             "provide": {
                 "psr/cache-implementation": "^1.0"
             },
             "require-dev": {
-                "cache/integration-tests": "^0.11",
+                "cache/integration-tests": "^0.16",
                 "phpunit/phpunit": "^4.0 || ^5.1"
             },
             "suggest": {
                 "ext-memcache": "The extension required to use this pool."
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cache\\Adapter\\Memcache\\": ""
@@ -577,40 +603,45 @@
                 "psr-6",
                 "tag"
             ],
-            "time": "2016-08-07T14:49:33+00:00"
+            "time": "2017-03-13T09:25:46+00:00"
         },
         {
             "name": "cache/memcached-adapter",
-            "version": "0.3.2",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/memcached-adapter.git",
-                "reference": "ab360d0d8a8a9b3ebd1e5aa237e9d90302f8d93b"
+                "reference": "fa1630e6c03c641704809f41282eb36faf6b46fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/memcached-adapter/zipball/ab360d0d8a8a9b3ebd1e5aa237e9d90302f8d93b",
-                "reference": "ab360d0d8a8a9b3ebd1e5aa237e9d90302f8d93b",
+                "url": "https://api.github.com/repos/php-cache/memcached-adapter/zipball/fa1630e6c03c641704809f41282eb36faf6b46fe",
+                "reference": "fa1630e6c03c641704809f41282eb36faf6b46fe",
                 "shasum": ""
             },
             "require": {
-                "cache/adapter-common": "^0.3",
-                "cache/hierarchical-cache": "^0.3",
-                "cache/taggable-cache": "^0.4",
-                "php": "^5.5 || ^7.0",
-                "psr/cache": "^1.0"
+                "cache/adapter-common": "^0.4",
+                "cache/hierarchical-cache": "^0.4",
+                "php": "^5.6 || ^7.0",
+                "psr/cache": "^1.0",
+                "psr/simple-cache": "^1.0"
             },
             "provide": {
                 "psr/cache-implementation": "^1.0"
             },
             "require-dev": {
-                "cache/integration-tests": "^0.11",
+                "cache/integration-tests": "^0.16",
                 "phpunit/phpunit": "^4.0 || ^5.1"
             },
             "suggest": {
                 "ext-memcached": "The extension required to use this pool."
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cache\\Adapter\\Memcached\\": ""
@@ -643,7 +674,7 @@
                 "psr-6",
                 "tag"
             ],
-            "time": "2016-08-07T15:04:55+00:00"
+            "time": "2017-03-13T09:25:46+00:00"
         },
         {
             "name": "cache/namespaced-cache",
@@ -700,63 +731,6 @@
                 "psr-6"
             ],
             "time": "2017-03-18T07:02:05+00:00"
-        },
-        {
-            "name": "cache/prefixed-cache",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/prefixed-cache.git",
-                "reference": "e72c1a0007c8f8d3a439b61d2fdd4a532cddbe9e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/prefixed-cache/zipball/e72c1a0007c8f8d3a439b61d2fdd4a532cddbe9e",
-                "reference": "e72c1a0007c8f8d3a439b61d2fdd4a532cddbe9e",
-                "shasum": ""
-            },
-            "require": {
-                "cache/hierarchical-cache": "^0.3",
-                "php": "^5.6 || ^7.0",
-                "psr/cache": "^1.0"
-            },
-            "require-dev": {
-                "cache/integration-tests": "^0.16",
-                "phpunit/phpunit": "^4.0 || ^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\Prefixed\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
-                }
-            ],
-            "description": "A decorator that makes your cache support prefix",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "cache",
-                "prefix",
-                "psr-6"
-            ],
-            "time": "2017-03-13T10:43:18+00:00"
         },
         {
             "name": "cache/psr-6-doctrine-bridge",
@@ -869,6 +843,61 @@
                 "session handler"
             ],
             "time": "2016-01-23T12:40:20+00:00"
+        },
+        {
+            "name": "cache/tag-interop",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-cache/tag-interop.git",
+                "reference": "c7496dd81530f538af27b4f2713cde97bc292832"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-cache/tag-interop/zipball/c7496dd81530f538af27b4f2713cde97bc292832",
+                "reference": "c7496dd81530f538af27b4f2713cde97bc292832",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "psr/cache": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cache\\TagInterop\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/nyholm"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com",
+                    "homepage": "https://github.com/nicolas-grekas"
+                }
+            ],
+            "description": "Framework interoperable interfaces for tags",
+            "homepage": "http://www.php-cache.com/en/latest/",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr6",
+                "tag"
+            ],
+            "time": "2017-03-13T09:14:27+00:00"
         },
         {
             "name": "cache/taggable-cache",
@@ -6631,6 +6660,54 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/753fa598e8f3b9966c886fe13f370baa45ef0e24",
+                "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "time": "2017-01-02T13:31:39+00:00"
         },
         {
             "name": "raulfraile/ladybug",
