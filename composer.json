@@ -22,7 +22,6 @@
         "hwi/oauth-bundle": "0.5.*@dev",
         "knplabs/knp-menu-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "dev-master",
-        "stfalcon/tinymce-bundle": "v2.1",
         "genemu/form-bundle": "^3.0@dev",
 
 
