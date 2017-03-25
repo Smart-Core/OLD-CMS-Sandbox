@@ -59,7 +59,6 @@
         "cache/memcache-adapter": "*",
         "cache/memcached-adapter": "*",
         "cache/namespaced-cache": "*",
-        "cache/prefixed-cache": "*",
         "cache/psr-6-doctrine-bridge": "*",
         "egeloen/ordered-form": "*",
         "egulias/email-validator": "*",
