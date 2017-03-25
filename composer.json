@@ -56,7 +56,6 @@
         "cache/apcu-adapter": "*",
         "cache/cache-bundle": "*",
         "cache/filesystem-adapter": "*",
-        "cache/hierarchical-cache": "*",
         "cache/memcache-adapter": "*",
         "cache/memcached-adapter": "*",
         "cache/namespaced-cache": "*",
