@@ -23,6 +23,7 @@
         "knplabs/knp-menu-bundle": "dev-master",
         "mopa/bootstrap-bundle":  "dev-master",
         "genemu/form-bundle": "^3.0@dev",
+        "iakumai/sphinxsearch-bundle": "dev-master",
 
 
 
@@ -84,10 +85,12 @@
         "knplabs/knp-gaufrette-bundle": "*",
         "knplabs/knp-paginator-bundle": "*",
         "league/flysystem-dropbox": "*",
+        "liip/imagine-bundle": "*",
         "liip/theme-bundle": "~1.0@dev",
         "oneup/flysystem-bundle": "*",
         "phpdocumentor/reflection-docblock": "*",
         "rickysu/tagcache-bundle": "~0.1",
+        "stfalcon/tinymce-bundle": "v2.1",
 
         "smart-core/accelerator-cache-bundle": "~1.0@dev",
         "smart-core/ladybug-bundle": "~0.7",
