@@ -667,6 +667,7 @@ CREATE TABLE `media_files` (
   KEY `IDX_192C84E85CC5DB90` (`storage_id`),
   KEY `IDX_192C84E88CDE5729` (`type`),
   KEY `IDX_192C84E8A76ED395` (`user_id`),
+  KEY `IDX_192C84E8F7C0246A` (`size`),
   CONSTRAINT `FK_192C84E812469DE2` FOREIGN KEY (`category_id`) REFERENCES `media_categories` (`id`),
   CONSTRAINT `FK_192C84E8514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
   CONSTRAINT `FK_192C84E85CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
@@ -1895,4 +1896,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-28  3:10:01
+-- Dump completed on 2017-03-28  3:18:01
