@@ -2,11 +2,13 @@
 
 namespace SandboxSiteBundle\Entity\Catalog;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SmartCore\Module\Unicat\Model\ItemModel;
 
 /**
  * @ORM\Entity(repositoryClass="SmartCore\Module\Unicat\Model\ItemRepository")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="unicat_catalog_items",
  *      indexes={
  *          @ORM\Index(columns={"position"}),
@@ -30,4 +32,12 @@ class Item extends ItemModel
      * @ORM\JoinTable(name="unicat_catalog_items_taxons_single_relations")
      */
     protected $taxonsSingle;
+
+    /**
+     * ItemModel constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();                                                
+    }                                                
 }

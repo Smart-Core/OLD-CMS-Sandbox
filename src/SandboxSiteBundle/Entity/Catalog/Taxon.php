@@ -13,7 +13,8 @@ use SmartCore\Module\Unicat\Model\TaxonModel;
  *          @ORM\Index(columns={"position"})
  *      },
  *      uniqueConstraints={
- *          @ORM\UniqueConstraint(columns={"slug", "parent_id", "taxonomy_id"}),
+ *          @ORM\UniqueConstraint(name="slug_parent_taxonomy", columns={"slug", "parent_id", "taxonomy_id"}),
+ *          @ORM\UniqueConstraint(name="title_parent_taxonomy", columns={"title", "parent_id", "taxonomy_id"}),
  *      }
  * )
  */

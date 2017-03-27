@@ -1328,26 +1328,29 @@ CREATE TABLE `unicat__attributes` (
   `user_id` int(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `params` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `group_id` int(10) unsigned DEFAULT NULL,
+  `items_type_id` int(10) unsigned DEFAULT NULL,
   `params_yaml` longtext COLLATE utf8_unicode_ci,
   `is_show_title` tinyint(1) NOT NULL DEFAULT '1',
   `is_link` tinyint(1) NOT NULL DEFAULT '0',
   `open_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '<p>',
   `close_tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT '</p>',
   `configuration_id` int(10) unsigned DEFAULT NULL,
+  `is_primary` tinyint(1) NOT NULL DEFAULT '1',
+  `is_items_type_many2many` tinyint(1) NOT NULL DEFAULT '0',
+  `description` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_D3165B6D5E237E0673F32DD8` (`name`,`configuration_id`),
   KEY `IDX_D3165B6D73F32DD8` (`configuration_id`),
-  KEY `IDX_D3165B6DFE54D947` (`group_id`),
   KEY `IDX_D3165B6DA76ED395` (`user_id`),
   KEY `IDX_D3165B6D46C53D4C` (`is_enabled`),
   KEY `IDX_D3165B6DFB9FF2E7` (`show_in_admin`),
   KEY `IDX_D3165B6D921EA9F` (`show_in_list`),
   KEY `IDX_D3165B6DB314B909` (`show_in_view`),
   KEY `IDX_D3165B6D462CE4F5` (`position`),
+  KEY `IDX_D3165B6DB9CCD492` (`items_type_id`),
   CONSTRAINT `FK_D3165B6D73F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
   CONSTRAINT `FK_D3165B6DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `FK_D3165B6DFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat__attributes_groups` (`id`)
+  CONSTRAINT `FK_D3165B6DB9CCD492` FOREIGN KEY (`items_type_id`) REFERENCES `unicat__items_types` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1357,7 +1360,7 @@ CREATE TABLE `unicat__attributes` (
 
 LOCK TABLES `unicat__attributes` WRITE;
 /*!40000 ALTER TABLE `unicat__attributes` DISABLE KEYS */;
-INSERT INTO `unicat__attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',1,NULL,1,1,'<h3>','</h3>',1),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',1,NULL,1,0,'<p>','</p>',1),(3,1,0,0,999,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',1,NULL,1,0,'<p>','</p>',1),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',1,NULL,1,0,'<p>','</p>',1),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',1,'filter: 300_300',1,0,'<p>','</p>',1),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',1,NULL,1,0,'<p>','</p>',1);
+INSERT INTO `unicat__attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',NULL,NULL,1,1,'<h3>','</h3>',1,1,0,NULL),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(3,1,0,0,255,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',NULL,'filter: 300_300',1,0,'<p>','</p>',1,1,0,NULL),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL);
 /*!40000 ALTER TABLE `unicat__attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1378,7 +1381,7 @@ CREATE TABLE `unicat__attributes_groups` (
   UNIQUE KEY `UNIQ_5E377FB75E237E0673F32DD8` (`name`,`configuration_id`),
   KEY `IDX_5E377FB773F32DD8` (`configuration_id`),
   CONSTRAINT `FK_5E377FB773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1389,6 +1392,34 @@ LOCK TABLES `unicat__attributes_groups` WRITE;
 /*!40000 ALTER TABLE `unicat__attributes_groups` DISABLE KEYS */;
 INSERT INTO `unicat__attributes_groups` VALUES (1,1,'2017-02-02 10:54:09','wares_description','Описание товара');
 /*!40000 ALTER TABLE `unicat__attributes_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unicat__attributes_groups_relations`
+--
+
+DROP TABLE IF EXISTS `unicat__attributes_groups_relations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unicat__attributes_groups_relations` (
+  `attribute_id` int(10) unsigned NOT NULL,
+  `group_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`attribute_id`,`group_id`),
+  KEY `IDX_E6224AAFB6E62EFA` (`attribute_id`),
+  KEY `IDX_E6224AAFFE54D947` (`group_id`),
+  CONSTRAINT `FK_E6224AAFB6E62EFA` FOREIGN KEY (`attribute_id`) REFERENCES `unicat__attributes` (`id`),
+  CONSTRAINT `FK_E6224AAFFE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat__attributes_groups` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unicat__attributes_groups_relations`
+--
+
+LOCK TABLES `unicat__attributes_groups_relations` WRITE;
+/*!40000 ALTER TABLE `unicat__attributes_groups_relations` DISABLE KEYS */;
+INSERT INTO `unicat__attributes_groups_relations` VALUES (1,1),(2,1),(3,1),(4,1),(5,1);
+/*!40000 ALTER TABLE `unicat__attributes_groups_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1418,7 +1449,7 @@ CREATE TABLE `unicat__configurations` (
   CONSTRAINT `FK_F622D46241A4F540` FOREIGN KEY (`default_taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
   CONSTRAINT `FK_F622D462A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `FK_F622D462B52E685C` FOREIGN KEY (`media_collection_id`) REFERENCES `media_collections` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1446,12 +1477,13 @@ CREATE TABLE `unicat__items_types` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `to_string_pattern` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3E08A29773F32DD8` (`configuration_id`),
   KEY `IDX_3E08A297A76ED395` (`user_id`),
   CONSTRAINT `FK_3E08A29773F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
   CONSTRAINT `FK_3E08A297A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1460,7 +1492,64 @@ CREATE TABLE `unicat__items_types` (
 
 LOCK TABLES `unicat__items_types` WRITE;
 /*!40000 ALTER TABLE `unicat__items_types` DISABLE KEYS */;
+INSERT INTO `unicat__items_types` VALUES (1,1,1,'2017-03-28 02:41:35','wares',0,'Товары',NULL);
 /*!40000 ALTER TABLE `unicat__items_types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unicat__items_types_attributes_groups_relations`
+--
+
+DROP TABLE IF EXISTS `unicat__items_types_attributes_groups_relations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unicat__items_types_attributes_groups_relations` (
+  `attribute_id` int(10) unsigned NOT NULL,
+  `group_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`attribute_id`,`group_id`),
+  KEY `IDX_927D1F27B6E62EFA` (`attribute_id`),
+  KEY `IDX_927D1F27FE54D947` (`group_id`),
+  CONSTRAINT `FK_927D1F27B6E62EFA` FOREIGN KEY (`attribute_id`) REFERENCES `unicat__items_types` (`id`),
+  CONSTRAINT `FK_927D1F27FE54D947` FOREIGN KEY (`group_id`) REFERENCES `unicat__attributes_groups` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unicat__items_types_attributes_groups_relations`
+--
+
+LOCK TABLES `unicat__items_types_attributes_groups_relations` WRITE;
+/*!40000 ALTER TABLE `unicat__items_types_attributes_groups_relations` DISABLE KEYS */;
+INSERT INTO `unicat__items_types_attributes_groups_relations` VALUES (1,1);
+/*!40000 ALTER TABLE `unicat__items_types_attributes_groups_relations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unicat__items_types_taxonomies_relations`
+--
+
+DROP TABLE IF EXISTS `unicat__items_types_taxonomies_relations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unicat__items_types_taxonomies_relations` (
+  `attribute_id` int(10) unsigned NOT NULL,
+  `taxonomy_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`attribute_id`,`taxonomy_id`),
+  KEY `IDX_FC6EEED5B6E62EFA` (`attribute_id`),
+  KEY `IDX_FC6EEED59557E6F6` (`taxonomy_id`),
+  CONSTRAINT `FK_FC6EEED59557E6F6` FOREIGN KEY (`taxonomy_id`) REFERENCES `unicat__taxonomies` (`id`),
+  CONSTRAINT `FK_FC6EEED5B6E62EFA` FOREIGN KEY (`attribute_id`) REFERENCES `unicat__items_types` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unicat__items_types_taxonomies_relations`
+--
+
+LOCK TABLES `unicat__items_types_taxonomies_relations` WRITE;
+/*!40000 ALTER TABLE `unicat__items_types_taxonomies_relations` DISABLE KEYS */;
+INSERT INTO `unicat__items_types_taxonomies_relations` VALUES (1,1),(1,2);
+/*!40000 ALTER TABLE `unicat__items_types_taxonomies_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1489,7 +1578,7 @@ CREATE TABLE `unicat__taxonomies` (
   KEY `IDX_C1A645E4A76ED395` (`user_id`),
   CONSTRAINT `FK_C1A645E473F32DD8` FOREIGN KEY (`configuration_id`) REFERENCES `unicat__configurations` (`id`),
   CONSTRAINT `FK_C1A645E4A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1512,20 +1601,24 @@ DROP TABLE IF EXISTS `unicat_catalog_items`;
 CREATE TABLE `unicat_catalog_items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `is_enabled` tinyint(1) DEFAULT '1',
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `attributes` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `position` smallint(6) DEFAULT '0',
   `uuid` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` smallint(6) NOT NULL DEFAULT '0',
+  `type_id` int(10) unsigned DEFAULT NULL,
+  `hidden_extra` longtext COLLATE utf8_unicode_ci,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_163452F3989D9B62` (`slug`),
   UNIQUE KEY `UNIQ_163452F3D17F50A6` (`uuid`),
   KEY `IDX_163452F3462CE4F5` (`position`),
   KEY `IDX_163452F3A76ED395` (`user_id`),
-  CONSTRAINT `FK_163452F3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  KEY `IDX_163452F3C54C8C93` (`type_id`),
+  CONSTRAINT `FK_163452F3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FK_163452F3C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `unicat__items_types` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1535,7 +1628,7 @@ CREATE TABLE `unicat_catalog_items` (
 
 LOCK TABLES `unicat_catalog_items` WRITE;
 /*!40000 ALTER TABLE `unicat_catalog_items` DISABLE KEYS */;
-INSERT INTO `unicat_catalog_items` VALUES (1,1,'np900','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:13:\"Samsung NP900\";s:11:\"description\";s:18:\"Ультрабук\";s:8:\"in_sight\";b:0;s:5:\"price\";i:5451;s:5:\"image\";i:1;s:7:\"picture\";N;}',1,'2014-02-14 07:48:18',0,NULL,0),(2,1,'galaxy-s4','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:17:\"Samsung Galaxy S4\";s:8:\"in_sight\";b:1;s:5:\"price\";i:19000;s:5:\"image\";i:4;s:11:\"description\";N;s:7:\"picture\";N;}',1,'2014-02-14 13:13:57',1,NULL,0),(3,1,'seagate-500g','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:4:{s:5:\"title\";s:13:\"Seagate 500Gb\";s:5:\"image\";i:3;s:8:\"in_sight\";b:1;s:7:\"picture\";N;}',1,'2014-02-17 01:19:23',0,NULL,0),(4,1,'canon-650d','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:10:\"Canon 650D\";s:8:\"in_sight\";b:1;s:5:\"price\";i:25000;s:5:\"image\";i:5;s:7:\"picture\";N;}',1,'2014-02-17 22:09:56',0,NULL,0),(5,1,'htc-one','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:7:\"HTC One\";s:8:\"in_sight\";b:1;s:5:\"image\";i:6;s:5:\"price\";i:20000;s:7:\"picture\";s:3:\"123\";}',1,'2014-03-06 16:35:40',0,NULL,0),(6,0,'aaa','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:3:{s:5:\"title\";s:3:\"aaa\";s:8:\"in_sight\";b:0;s:5:\"image\";N;}',1,'2015-12-10 19:32:00',0,NULL,0);
+INSERT INTO `unicat_catalog_items` VALUES (1,1,'np900','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:13:\"Samsung NP900\";s:11:\"description\";s:18:\"Ультрабук\";s:8:\"in_sight\";b:0;s:5:\"price\";i:5451;s:5:\"image\";i:1;s:7:\"picture\";N;}',1,'2014-02-14 07:48:18',0,NULL,1,NULL,NULL),(2,1,'galaxy-s4','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:6:{s:5:\"title\";s:17:\"Samsung Galaxy S4\";s:8:\"in_sight\";b:1;s:5:\"price\";i:19000;s:5:\"image\";i:4;s:11:\"description\";N;s:7:\"picture\";N;}',1,'2014-02-14 13:13:57',1,NULL,1,NULL,NULL),(3,1,'seagate-500g','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:4:{s:5:\"title\";s:13:\"Seagate 500Gb\";s:5:\"image\";i:3;s:8:\"in_sight\";b:1;s:7:\"picture\";N;}',1,'2014-02-17 01:19:23',0,NULL,1,NULL,NULL),(4,1,'canon-650d','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:10:\"Canon 650D\";s:8:\"in_sight\";b:1;s:5:\"price\";i:25000;s:5:\"image\";i:5;s:7:\"picture\";N;}',1,'2014-02-17 22:09:56',0,NULL,1,NULL,NULL),(5,1,'htc-one','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:5:{s:5:\"title\";s:7:\"HTC One\";s:8:\"in_sight\";b:1;s:5:\"image\";i:6;s:5:\"price\";i:20000;s:7:\"picture\";s:3:\"123\";}',1,'2014-03-06 16:35:40',0,NULL,1,NULL,NULL),(6,0,'aaa','a:2:{s:11:\"description\";N;s:8:\"keywords\";N;}','a:3:{s:5:\"title\";s:3:\"aaa\";s:8:\"in_sight\";b:0;s:5:\"image\";N;}',1,'2015-12-10 19:32:00',0,NULL,1,NULL,NULL);
 /*!40000 ALTER TABLE `unicat_catalog_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1606,7 +1699,7 @@ CREATE TABLE `unicat_catalog_taxons` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned DEFAULT NULL,
   `slug` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_inheritance` tinyint(1) NOT NULL DEFAULT '1',
   `meta` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
@@ -1616,7 +1709,8 @@ CREATE TABLE `unicat_catalog_taxons` (
   `properties` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_767F6678989D9B62727ACA709557E6F6` (`slug`,`parent_id`,`taxonomy_id`),
+  UNIQUE KEY `title_parent_taxonomy` (`title`,`parent_id`,`taxonomy_id`),
+  UNIQUE KEY `slug_parent_taxonomy` (`slug`,`parent_id`,`taxonomy_id`),
   KEY `IDX_767F6678727ACA70` (`parent_id`),
   KEY `IDX_767F6678A76ED395` (`user_id`),
   KEY `IDX_767F667846C53D4C` (`is_enabled`),
@@ -1679,7 +1773,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2017-01-02 09:15:30',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2017-03-28 02:33:58',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1800,4 +1894,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-20 19:29:45
+-- Dump completed on 2017-03-28  3:01:40
