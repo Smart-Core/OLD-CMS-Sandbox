@@ -660,6 +660,7 @@ CREATE TABLE `media_files` (
   `size` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `IDX_192C84E8514956FD` (`collection_id`),
   KEY `IDX_192C84E812469DE2` (`category_id`),
@@ -679,7 +680,7 @@ CREATE TABLE `media_files` (
 
 LOCK TABLES `media_files` WRITE;
 /*!40000 ALTER TABLE `media_files` DISABLE KEYS */;
-INSERT INTO `media_files` VALUES (1,1,NULL,1,0,'/2014/02/16','00_52_bbc4f846f6.jpeg','samsung-np900x3c-a02ru-1.jpg','image','image/jpeg',131476,131476,'2014-02-16 00:52:17',NULL),(3,1,NULL,1,0,'/2014/02/17','01_19_53bd2543df.jpeg','154655_0.1362072510.jpg','image','image/jpeg',29693,29693,'2014-02-17 01:19:23',NULL),(4,1,NULL,1,0,'/2014/02/17','01_41_ec3e194bc1.jpeg','pic_18468_1.jpg','image','image/jpeg',364655,364655,'2014-02-17 01:41:47',NULL),(5,1,NULL,1,0,'/2014/02/17','22_11_083fd66af8.jpeg','EOS_650D.jpg','image','image/jpeg',1695916,1695916,'2014-02-17 22:11:20',NULL),(6,1,NULL,1,1,'/2014/03/06','16_38_725b3ca498.jpg','3.jpg','image','image/jpeg',897389,897389,'2014-03-06 16:38:36',NULL),(7,2,NULL,1,1,'/2014/07/15','23_49_f6f9679959.jpg','patanjali.jpg','image','image/jpeg',18412,18412,'2014-07-15 23:49:51',NULL),(8,2,NULL,1,1,'/2014/07/15','23_54_519f730985.jpg','Code Complete.jpg','image','image/jpeg',45971,45971,'2014-07-15 23:54:05',NULL);
+INSERT INTO `media_files` VALUES (1,1,NULL,1,0,'/2014/02/16','00_52_bbc4f846f6.jpeg','samsung-np900x3c-a02ru-1.jpg','image','image/jpeg',131476,131476,'2014-02-16 00:52:17',NULL,NULL),(3,1,NULL,1,0,'/2014/02/17','01_19_53bd2543df.jpeg','154655_0.1362072510.jpg','image','image/jpeg',29693,29693,'2014-02-17 01:19:23',NULL,NULL),(4,1,NULL,1,0,'/2014/02/17','01_41_ec3e194bc1.jpeg','pic_18468_1.jpg','image','image/jpeg',364655,364655,'2014-02-17 01:41:47',NULL,NULL),(5,1,NULL,1,0,'/2014/02/17','22_11_083fd66af8.jpeg','EOS_650D.jpg','image','image/jpeg',1695916,1695916,'2014-02-17 22:11:20',NULL,NULL),(6,1,NULL,1,1,'/2014/03/06','16_38_725b3ca498.jpg','3.jpg','image','image/jpeg',897389,897389,'2014-03-06 16:38:36',NULL,NULL),(7,2,NULL,1,1,'/2014/07/15','23_49_f6f9679959.jpg','patanjali.jpg','image','image/jpeg',18412,18412,'2014-07-15 23:49:51',NULL,NULL),(8,2,NULL,1,1,'/2014/07/15','23_54_519f730985.jpg','Code Complete.jpg','image','image/jpeg',45971,45971,'2014-07-15 23:54:05',NULL,NULL);
 /*!40000 ALTER TABLE `media_files` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1894,4 +1895,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-28  3:01:40
+-- Dump completed on 2017-03-28  3:10:01
