@@ -708,7 +708,7 @@ CREATE TABLE `media_files_transformed` (
   CONSTRAINT `FK_1084B87D514956FD` FOREIGN KEY (`collection_id`) REFERENCES `media_collections` (`id`),
   CONSTRAINT `FK_1084B87D5CC5DB90` FOREIGN KEY (`storage_id`) REFERENCES `media_storages` (`id`),
   CONSTRAINT `FK_1084B87D93CB796C` FOREIGN KEY (`file_id`) REFERENCES `media_files` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -717,7 +717,7 @@ CREATE TABLE `media_files_transformed` (
 
 LOCK TABLES `media_files_transformed` WRITE;
 /*!40000 ALTER TABLE `media_files_transformed` DISABLE KEYS */;
-INSERT INTO `media_files_transformed` VALUES (1,1,1,1,'300_300',28215,'2015-07-04 17:58:40'),(2,3,1,1,'300_300',34430,'2015-07-04 17:58:40'),(3,5,1,1,'300_300',39337,'2015-07-04 18:41:54'),(4,6,1,1,'300_300',46972,'2015-07-04 18:41:55'),(5,4,1,1,'300_300',35813,'2015-07-04 18:42:01'),(6,8,2,1,'200_200',27695,'2015-07-04 18:42:49'),(7,6,1,1,'100_100',8506,'2015-07-11 15:09:58'),(8,5,1,1,'100_100',6411,'2015-10-09 00:39:32'),(9,3,1,1,'100_100',6289,'2015-10-09 01:52:42'),(10,7,2,1,'200_200',21122,'2015-10-13 03:21:05'),(11,4,1,1,'100_100',6138,'2015-10-13 04:35:45'),(12,1,1,1,'100_100',4622,'2015-12-08 18:56:46');
+INSERT INTO `media_files_transformed` VALUES (1,1,1,1,'300_300',28215,'2015-07-04 17:58:40'),(2,3,1,1,'300_300',34430,'2015-07-04 17:58:40'),(3,5,1,1,'300_300',39337,'2015-07-04 18:41:54'),(4,6,1,1,'300_300',46972,'2015-07-04 18:41:55'),(5,4,1,1,'300_300',35813,'2015-07-04 18:42:01'),(6,8,2,1,'200_200',27695,'2015-07-04 18:42:49'),(7,6,1,1,'100_100',8506,'2015-07-11 15:09:58'),(8,5,1,1,'100_100',6411,'2015-10-09 00:39:32'),(9,3,1,1,'100_100',6289,'2015-10-09 01:52:42'),(10,7,2,1,'200_200',21122,'2015-10-13 03:21:05'),(11,4,1,1,'100_100',6138,'2015-10-13 04:35:45'),(12,1,1,1,'100_100',4622,'2015-12-08 18:56:46'),(13,6,1,1,'300x300',46972,'2017-04-01 01:13:33'),(14,5,1,1,'300x300',39337,'2017-04-01 01:13:34');
 /*!40000 ALTER TABLE `media_files_transformed` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1362,7 +1362,7 @@ CREATE TABLE `unicat__attributes` (
 
 LOCK TABLES `unicat__attributes` WRITE;
 /*!40000 ALTER TABLE `unicat__attributes` DISABLE KEYS */;
-INSERT INTO `unicat__attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',NULL,NULL,1,1,'<h3>','</h3>',1,1,0,NULL),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(3,1,0,0,255,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300_300\";}',NULL,'filter: 300_300',1,0,'<p>','</p>',1,1,0,NULL),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL);
+INSERT INTO `unicat__attributes` VALUES (1,1,0,1,1,'text','title','Заголовок',1,1,1,1,'2014-02-13 20:37:50','N;',NULL,NULL,1,1,'<h3>','</h3>',1,1,0,NULL),(2,1,0,0,3,'textarea','description','Описание',0,1,1,1,'2014-02-13 21:03:59','N;',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(3,1,0,0,255,'integer','price','Цена',1,1,1,1,'2014-02-13 22:29:43','N;',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(4,1,0,0,4,'checkbox','in_sight','В наличии',0,1,1,1,'2014-02-13 23:19:31','a:0:{}',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL),(5,1,0,0,2,'image','image','Картинка',0,1,1,1,'2014-02-15 20:54:17','a:1:{s:6:\"filter\";s:7:\"300x300\";}',NULL,'filter: 300x300',1,0,'<p>','</p>',1,1,0,NULL),(6,0,0,0,0,'text','picture','---- Картинка ---',0,0,0,1,'2015-09-27 15:55:28','a:0:{}',NULL,NULL,1,0,'<p>','</p>',1,1,0,NULL);
 /*!40000 ALTER TABLE `unicat__attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1435,7 +1435,7 @@ CREATE TABLE `unicat__configurations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `media_collection_id` int(10) unsigned DEFAULT NULL,
   `default_taxonomy_id` int(10) unsigned DEFAULT NULL,
-  `entities_namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `entities_namespace` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_inheritance` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1775,7 +1775,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2017-03-28 02:33:58',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2017-04-01 00:58:21',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1896,4 +1896,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-28  3:18:01
+-- Dump completed on 2017-04-01  1:15:47
