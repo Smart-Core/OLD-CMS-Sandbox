@@ -2,3 +2,7 @@
 site_hi:
     path:  /hi/
     defaults: { _controller: SiteBundle:Hello:index }
+
+site.images:
+    resource: "@SmartMediaBundle/Resources/config/routing.yml"
+    prefix: /_media/
