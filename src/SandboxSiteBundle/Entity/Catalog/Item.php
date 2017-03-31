@@ -22,6 +22,7 @@ class Item extends ItemModel
      *
      * @ORM\ManyToMany(targetEntity="Taxon", inversedBy="items", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="unicat_catalog_items_taxons_relations")
+     * @ORM\OrderBy({"position" = "ASC", "id" = "ASC"})
      */
     protected $taxons;
 
@@ -30,6 +31,7 @@ class Item extends ItemModel
      *
      * @ORM\ManyToMany(targetEntity="Taxon", inversedBy="itemsSingle", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="unicat_catalog_items_taxons_single_relations")
+     * @ORM\OrderBy({"position" = "ASC", "id" = "ASC"})
      */
     protected $taxonsSingle;
 
