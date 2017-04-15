@@ -82,6 +82,7 @@
         "league/flysystem-dropbox": "*",
         "liip/imagine-bundle": "*",
         "liip/theme-bundle": "~1.0@dev",
+        "misd/phone-number-bundle": "*",
         "oneup/flysystem-bundle": "*",
         "phpdocumentor/reflection-docblock": "*",
         "rickysu/tagcache-bundle": "~0.1",
