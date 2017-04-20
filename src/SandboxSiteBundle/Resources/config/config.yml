@@ -6,13 +6,13 @@ parameters:
 #    output_file_prefix: smart_core_cms
 #    cloud_storages:
 #        dropbox:
-#            user:        %dizda_cloud_dropbox_user%
-#            password:    %dizda_cloud_dropbox_password%
-#            remote_path: %dizda_cloud_dropbox_remote_path%
+#            user:        "%dizda_cloud_dropbox_user%"
+#            password:    "%dizda_cloud_dropbox_password%"
+#            remote_path: "%dizda_cloud_dropbox_remote_path%"
 #    databases:
 #        mysql:
 #            all_databases: false        # Only required when no database is set
-#            database: %database_name%   # Required if all_databases is false
+#            database: "%database_name%" # Required if all_databases is false
 
 #knp_disqus:
 #    api_key: "%knp_disqus.api_key%"

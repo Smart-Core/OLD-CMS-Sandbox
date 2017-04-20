@@ -3,5 +3,5 @@ parameters:
 
 services:
 #    shop.example:
-#        class: %shop.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+#        class: "%shop.example.class%"
+#        arguments: [@service_id, "plain_value", "%parameter%"]
