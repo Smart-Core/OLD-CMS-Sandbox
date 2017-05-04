@@ -19,12 +19,15 @@ parameters:
 
 liip_imagine:
     filter_sets:
-        demo_site_thumb:
+        demo-site-thumb:
             format: jpeg
-            jpeg_quality: 100
-            quality: 100
+            jpeg_quality: 86
+            quality: 86
             filters:
-                thumbnail: { size: [207, 177], mode: inset }
+                strip: ~
+                upscale:
+                    min: [525, 525]
+                thumbnail: { size: [525, 525], mode: outbound }
 
 smart_db_dumper:
     filename: smart_core
