@@ -697,7 +697,7 @@ CREATE TABLE `media_files_transformed` (
   `file_id` int(11) unsigned NOT NULL,
   `collection_id` int(11) unsigned NOT NULL,
   `storage_id` int(11) unsigned NOT NULL,
-  `filter` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `filter` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `size` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -1574,6 +1574,7 @@ CREATE TABLE `unicat__taxonomies` (
   `is_default_inheritance` tinyint(1) NOT NULL DEFAULT '0',
   `properties` longtext COLLATE utf8_unicode_ci,
   `is_tree` tinyint(1) NOT NULL DEFAULT '1',
+  `is_show_in_admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_C1A645E473F32DD8` (`configuration_id`),
   KEY `IDX_C1A645E4A76ED395` (`user_id`),
@@ -1588,7 +1589,7 @@ CREATE TABLE `unicat__taxonomies` (
 
 LOCK TABLES `unicat__taxonomies` WRITE;
 /*!40000 ALTER TABLE `unicat__taxonomies` DISABLE KEYS */;
-INSERT INTO `unicat__taxonomies` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0);
+INSERT INTO `unicat__taxonomies` VALUES (1,1,1,0,'Категории',1,1,'2014-02-11 23:44:56','categories','Категория',0,'description: #textarea\r\n    type: textarea\r\n    attr:\r\n        class: wysiwyg\r\n        data-theme: advanced',1,0),(2,1,2,1,'Облаго тэгов',0,1,'2014-02-11 23:45:18','tags','Тэги',0,'',0,0);
 /*!40000 ALTER TABLE `unicat__taxonomies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1895,4 +1896,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-27  7:15:09
+-- Dump completed on 2017-05-05  2:59:48
