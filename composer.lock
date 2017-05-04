@@ -3237,16 +3237,16 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "5a399bb434045c2b579cfe55472fff100373f4ec"
+                "reference": "d62a6c0f4bc699f899865d7e7bc7a4186aef9a86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/5a399bb434045c2b579cfe55472fff100373f4ec",
-                "reference": "5a399bb434045c2b579cfe55472fff100373f4ec",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d62a6c0f4bc699f899865d7e7bc7a4186aef9a86",
+                "reference": "d62a6c0f4bc699f899865d7e7bc7a4186aef9a86",
                 "shasum": ""
             },
             "require": {
@@ -3276,12 +3276,13 @@
                 "phpoption/phpoption": "^1.1",
                 "psr/http-message": "^1.0",
                 "sensio/framework-extra-bundle": "^3.0.13",
+                "symfony/asset": "^2.7|^3.0",
                 "symfony/browser-kit": "^2.7|^3.0",
                 "symfony/css-selector": "^2.7|^3.0",
                 "symfony/dependency-injection": "^2.7|^3.0",
                 "symfony/expression-language": "~2.7|^3.0",
                 "symfony/form": "^2.7|^3.0",
-                "symfony/phpunit-bridge": "~2.7|^3.0",
+                "symfony/phpunit-bridge": "^3.2",
                 "symfony/security-bundle": "^2.7|^3.0",
                 "symfony/serializer": "^2.7.11|^3.0.4",
                 "symfony/twig-bundle": "^2.7|^3.0",
@@ -3299,13 +3300,16 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "FOS\\RestBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3330,7 +3334,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2016-11-23T12:09:05+00:00"
+            "time": "2017-04-06T12:55:03+00:00"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3474,16 +3478,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.4.1",
+            "version": "8.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "eeb3835c8afc6ab35427bc9771ffc7851ce4ed8f"
+                "reference": "01c72a52c38a0a55e4aebb972d65124f618d570a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/eeb3835c8afc6ab35427bc9771ffc7851ce4ed8f",
-                "reference": "eeb3835c8afc6ab35427bc9771ffc7851ce4ed8f",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/01c72a52c38a0a55e4aebb972d65124f618d570a",
+                "reference": "01c72a52c38a0a55e4aebb972d65124f618d570a",
                 "shasum": ""
             },
             "require": {
@@ -3538,7 +3542,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2017-04-11T20:52:21+00:00"
+            "time": "2017-04-25T12:16:41+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -5500,16 +5504,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.38",
+            "version": "1.0.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "4ba6e13f5116204b21c3afdf400ecf2b9eb1c482"
+                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4ba6e13f5116204b21c3afdf400ecf2b9eb1c482",
-                "reference": "4ba6e13f5116204b21c3afdf400ecf2b9eb1c482",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3828f0b24e2c1918bb362d57a53205d6dc8fde61",
+                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61",
                 "shasum": ""
             },
             "require": {
@@ -5579,7 +5583,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-04-22T18:59:19+00:00"
+            "time": "2017-04-28T10:15:08+00:00"
         },
         {
             "name": "league/flysystem-dropbox",
@@ -5634,12 +5638,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "fac05bc216c88e8cc855e0cd5fb3e2e81e54593a"
+                "reference": "073d313b957bf76f96b6845f0327a529bbc3422b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/fac05bc216c88e8cc855e0cd5fb3e2e81e54593a",
-                "reference": "fac05bc216c88e8cc855e0cd5fb3e2e81e54593a",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/073d313b957bf76f96b6845f0327a529bbc3422b",
+                "reference": "073d313b957bf76f96b6845f0327a529bbc3422b",
                 "shasum": ""
             },
             "require": {
@@ -5664,7 +5668,7 @@
                 "symfony/monolog-bundle": "~2.4",
                 "symfony/phpunit-bridge": "^2.7|~3.0",
                 "symfony/symfony": "~2.3.27|~2.7|~3.0",
-                "twig/twig": "~1.12"
+                "twig/twig": "~1.12|~2.0"
             },
             "suggest": {
                 "brianium/paratest": "Required when using paratest to parallelize tests",
@@ -5704,7 +5708,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2017-04-21T17:22:21+00:00"
+            "time": "2017-04-30T11:49:45+00:00"
         },
         {
             "name": "liip/imagine-bundle",
@@ -7697,12 +7701,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "fb56027d6a82ded15797a5d78003bd9a703f6a72"
+                "reference": "27dcf2cf357e2a18a6b318d19f7ded527dbe0fde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/fb56027d6a82ded15797a5d78003bd9a703f6a72",
-                "reference": "fb56027d6a82ded15797a5d78003bd9a703f6a72",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/27dcf2cf357e2a18a6b318d19f7ded527dbe0fde",
+                "reference": "27dcf2cf357e2a18a6b318d19f7ded527dbe0fde",
                 "shasum": ""
             },
             "require": {
@@ -7763,7 +7767,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2017-04-20T01:05:11+00:00"
+            "time": "2017-04-28T01:20:07+00:00"
         },
         {
             "name": "stfalcon/tinymce-bundle",
@@ -8354,16 +8358,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.2.7",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "1631040ea8fc5e0e405c00d35cbf2c0b7b555f64"
+                "reference": "85959c2abbe4d2f050f950f39c9c3cf83819f3df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/1631040ea8fc5e0e405c00d35cbf2c0b7b555f64",
-                "reference": "1631040ea8fc5e0e405c00d35cbf2c0b7b555f64",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/85959c2abbe4d2f050f950f39c9c3cf83819f3df",
+                "reference": "85959c2abbe4d2f050f950f39c9c3cf83819f3df",
                 "shasum": ""
             },
             "require": {
@@ -8494,7 +8498,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-04-05T12:52:29+00:00"
+            "time": "2017-05-01T17:47:03+00:00"
         },
         {
             "name": "twig/extensions",
@@ -8797,16 +8801,16 @@
         },
         {
             "name": "willdurand/negotiation",
-            "version": "v2.2.1",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "1f210db45723b21edd69f39794662b8d64656b93"
+                "reference": "2ba90aa46b5e77f87b55f149cfd544b8434941d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/1f210db45723b21edd69f39794662b8d64656b93",
-                "reference": "1f210db45723b21edd69f39794662b8d64656b93",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/2ba90aa46b5e77f87b55f149cfd544b8434941d9",
+                "reference": "2ba90aa46b5e77f87b55f149cfd544b8434941d9",
                 "shasum": ""
             },
             "require": {
@@ -8818,7 +8822,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -8845,7 +8849,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2016-10-14T09:17:47+00:00"
+            "time": "2017-05-04T12:15:48+00:00"
         },
         {
             "name": "yamilovs/sypex-geo-bundle",
