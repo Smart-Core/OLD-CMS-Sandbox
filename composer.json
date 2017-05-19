@@ -79,7 +79,7 @@
         "helios-ag/fm-elfinder-php-connector": "*",
         "knplabs/knp-gaufrette-bundle": "*",
         "knplabs/knp-paginator-bundle": "*",
-        "league/flysystem-dropbox": "*",
+        "spatie/flysystem-dropbox": "*",
         "liip/imagine-bundle": "*",
         "liip/theme-bundle": "~1.0@dev",
         "misd/phone-number-bundle": "*",
