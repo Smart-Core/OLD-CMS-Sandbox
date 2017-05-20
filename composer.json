@@ -37,7 +37,7 @@
         "ext-json": "*",
 
         "symfony/assetic-bundle": "~2.0@dev",
-        "symfony/swiftmailer-bundle": "*",
+        "symfony/swiftmailer-bundle": "~2.0",
         "symfony/monolog-bundle": "*",
         "sensio/distribution-bundle": ">=5.0.6",
         "sensio/generator-bundle": "*",
