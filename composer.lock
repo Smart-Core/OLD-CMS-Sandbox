@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0527cfdb8f1aadaa7cbc8895264f0279",
+    "content-hash": "8e3ae35f22c9e17e443951fbc92f8ad4",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1539,35 +1539,35 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.2.7",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535"
+                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
-                "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/54cacc9b81758b14e3ce750f205a393d52339e97",
+                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "1.*",
-                "php": ">=5.3.2"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
                 "doctrine/cache": "1.*",
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Annotations\\": "lib/"
+                "psr-4": {
+                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1603,7 +1603,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2015-08-31T12:32:49+00:00"
+            "time": "2017-02-24T16:22:25+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -7742,16 +7742,16 @@
         },
         {
             "name": "spatie/flysystem-dropbox",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/flysystem-dropbox.git",
-                "reference": "e8472050e887286691941a42f1a715fee7759091"
+                "reference": "9d40c891b889df0c4d88a7c51a655355d7a6aae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/flysystem-dropbox/zipball/e8472050e887286691941a42f1a715fee7759091",
-                "reference": "e8472050e887286691941a42f1a715fee7759091",
+                "url": "https://api.github.com/repos/spatie/flysystem-dropbox/zipball/9d40c891b889df0c4d88a7c51a655355d7a6aae2",
+                "reference": "9d40c891b889df0c4d88a7c51a655355d7a6aae2",
                 "shasum": ""
             },
             "require": {
@@ -7790,7 +7790,7 @@
                 "spatie",
                 "v2"
             ],
-            "time": "2017-05-18T15:22:54+00:00"
+            "time": "2017-05-20T12:03:57+00:00"
         },
         {
             "name": "stfalcon/tinymce-bundle",
