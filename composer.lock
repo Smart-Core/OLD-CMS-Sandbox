@@ -7569,12 +7569,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smart-Core/AcceleratorCacheBundle.git",
-                "reference": "f34417af9880f7dcf70865a5858d614a3c342faa"
+                "reference": "3cf5d4610b0941e60a6acd18a05ef47cba4d9763"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/f34417af9880f7dcf70865a5858d614a3c342faa",
-                "reference": "f34417af9880f7dcf70865a5858d614a3c342faa",
+                "url": "https://api.github.com/repos/Smart-Core/AcceleratorCacheBundle/zipball/3cf5d4610b0941e60a6acd18a05ef47cba4d9763",
+                "reference": "3cf5d4610b0941e60a6acd18a05ef47cba4d9763",
                 "shasum": ""
             },
             "require": {
@@ -7619,7 +7619,7 @@
                 "task",
                 "wincache"
             ],
-            "time": "2016-05-11 04:54:09"
+            "time": "2017-06-02 12:34:51"
         },
         {
             "name": "smart-core/ladybug-bundle",
