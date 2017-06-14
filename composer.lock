@@ -5472,27 +5472,27 @@
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "2.5.4",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "1618a19a871ba1245dc68e462b35e7df07dcfcc3"
+                "reference": "293abb6a2f1ae53ace5796d0ef3e5ae1b8f92371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/1618a19a871ba1245dc68e462b35e7df07dcfcc3",
-                "reference": "1618a19a871ba1245dc68e462b35e7df07dcfcc3",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/293abb6a2f1ae53ace5796d0ef3e5ae1b8f92371",
+                "reference": "293abb6a2f1ae53ace5796d0ef3e5ae1b8f92371",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-components": "~1.2",
                 "php": ">=5.3.3",
-                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.7|~3.0",
                 "twig/twig": "~1.12|~2"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8",
-                "symfony/expression-language": "~2.4|~3.0"
+                "symfony/expression-language": "~2.7|~3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -5530,7 +5530,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2017-03-21T09:45:46+00:00"
+            "time": "2017-06-09T15:25:39+00:00"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -6368,16 +6368,16 @@
         },
         {
             "name": "oneup/flysystem-bundle",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/1up-lab/OneupFlysystemBundle.git",
-                "reference": "0984d82d682b24d5017b0d8fc54090651baa71b0"
+                "reference": "1224bd9f50b5c655fea312a10f624d029768d3ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/1up-lab/OneupFlysystemBundle/zipball/0984d82d682b24d5017b0d8fc54090651baa71b0",
-                "reference": "0984d82d682b24d5017b0d8fc54090651baa71b0",
+                "url": "https://api.github.com/repos/1up-lab/OneupFlysystemBundle/zipball/1224bd9f50b5c655fea312a10f624d029768d3ff",
+                "reference": "1224bd9f50b5c655fea312a10f624d029768d3ff",
                 "shasum": ""
             },
             "require": {
@@ -6393,6 +6393,7 @@
                 "league/flysystem-gridfs": "^1.0",
                 "league/flysystem-memory": "^1.0",
                 "league/flysystem-rackspace": "^1.0",
+                "league/flysystem-replicate-adapter": "^1.0",
                 "league/flysystem-sftp": "^1.0",
                 "league/flysystem-webdav": "^1.0",
                 "league/flysystem-ziparchive": "^1.0",
@@ -6416,6 +6417,7 @@
                 "league/flysystem-dropbox": "Use Dropbox storage",
                 "league/flysystem-gridfs": "Allows you to use GridFS adapter",
                 "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+                "league/flysystem-replicate-adapter": "Allows you to use the Replica adapter from Flysystem",
                 "league/flysystem-sftp": "Allows SFTP server storage via phpseclib",
                 "league/flysystem-webdav": "Allows you to use WebDAV storage",
                 "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
@@ -6449,7 +6451,7 @@
                 "abstraction",
                 "filesystem"
             ],
-            "time": "2017-04-24T08:44:27+00:00"
+            "time": "2017-06-13T08:16:42+00:00"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -8373,21 +8375,21 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "2d6e2b20d457603eefb6e614286c22efca30fdb4"
+                "reference": "3191cbe0ce64987bd382daf6724af31c53daae01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/2d6e2b20d457603eefb6e614286c22efca30fdb4",
-                "reference": "2d6e2b20d457603eefb6e614286c22efca30fdb4",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/3191cbe0ce64987bd382daf6724af31c53daae01",
+                "reference": "3191cbe0ce64987bd382daf6724af31c53daae01",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/intl": "~2.3|~3.0"
+                "symfony/intl": "~2.3|~3.0|~4.0"
             },
             "suggest": {
                 "ext-intl": "For best performance"
@@ -8395,7 +8397,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -8427,20 +8429,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
-                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
                 "shasum": ""
             },
             "require": {
@@ -8452,7 +8454,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -8486,20 +8488,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T14:24:12+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "1dd42b9b89556f18092f3d1ada22cb05ac85383c"
+                "reference": "bc0b7d6cb36b10cfabb170a3e359944a95174929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/1dd42b9b89556f18092f3d1ada22cb05ac85383c",
-                "reference": "1dd42b9b89556f18092f3d1ada22cb05ac85383c",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/bc0b7d6cb36b10cfabb170a3e359944a95174929",
+                "reference": "bc0b7d6cb36b10cfabb170a3e359944a95174929",
                 "shasum": ""
             },
             "require": {
@@ -8509,7 +8511,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -8542,20 +8544,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "13ce343935f0f91ca89605a2f6ca6f5c2f3faac2"
+                "reference": "032fd647d5c11a9ceab8ee8747e13b5448e93874"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/13ce343935f0f91ca89605a2f6ca6f5c2f3faac2",
-                "reference": "13ce343935f0f91ca89605a2f6ca6f5c2f3faac2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/032fd647d5c11a9ceab8ee8747e13b5448e93874",
+                "reference": "032fd647d5c11a9ceab8ee8747e13b5448e93874",
                 "shasum": ""
             },
             "require": {
@@ -8565,7 +8567,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -8601,20 +8603,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T14:24:12+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "746bce0fca664ac0a575e465f65c6643faddf7fb"
+                "reference": "ebccbde4aad410f6438d86d7d261c6b4d2b9a51d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/746bce0fca664ac0a575e465f65c6643faddf7fb",
-                "reference": "746bce0fca664ac0a575e465f65c6643faddf7fb",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/ebccbde4aad410f6438d86d7d261c6b4d2b9a51d",
+                "reference": "ebccbde4aad410f6438d86d7d261c6b4d2b9a51d",
                 "shasum": ""
             },
             "require": {
@@ -8623,7 +8625,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -8653,7 +8655,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -8869,16 +8871,16 @@
         },
         {
             "name": "twig/extensions",
-            "version": "v1.5.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig-extensions.git",
-                "reference": "d6d74d6f3213a9574c460c4390c25a1a67c17cc3"
+                "reference": "d188c76168b853481cc75879ea045bf93d718e9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/d6d74d6f3213a9574c460c4390c25a1a67c17cc3",
-                "reference": "d6d74d6f3213a9574c460c4390c25a1a67c17cc3",
+                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/d188c76168b853481cc75879ea045bf93d718e9c",
+                "reference": "d188c76168b853481cc75879ea045bf93d718e9c",
                 "shasum": ""
             },
             "require": {
@@ -8921,20 +8923,20 @@
                 "i18n",
                 "text"
             ],
-            "time": "2017-05-24T06:24:07+00:00"
+            "time": "2017-06-08T18:19:53+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v1.34.2",
+            "version": "v1.34.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "55e4beb721a044db9e31ae0470024fc205b6a008"
+                "reference": "451c6f4197e113e24c1c85bc3fc8c2d77adeff2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/55e4beb721a044db9e31ae0470024fc205b6a008",
-                "reference": "55e4beb721a044db9e31ae0470024fc205b6a008",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/451c6f4197e113e24c1c85bc3fc8c2d77adeff2e",
+                "reference": "451c6f4197e113e24c1c85bc3fc8c2d77adeff2e",
                 "shasum": ""
             },
             "require": {
@@ -8986,7 +8988,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-06T03:56:50+00:00"
+            "time": "2017-06-07T18:45:17+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -9044,12 +9046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "040d2372db1535c37e9cf92ee979f5cae590ef2d"
+                "reference": "2f024c9e066a767a4458f536b7bbadbe1d5200c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/040d2372db1535c37e9cf92ee979f5cae590ef2d",
-                "reference": "040d2372db1535c37e9cf92ee979f5cae590ef2d",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/2f024c9e066a767a4458f536b7bbadbe1d5200c9",
+                "reference": "2f024c9e066a767a4458f536b7bbadbe1d5200c9",
                 "shasum": ""
             },
             "require": {
@@ -9088,7 +9090,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2017-05-23T16:03:01+00:00"
+            "time": "2017-06-13T14:58:04+00:00"
         },
         {
             "name": "whiteoctober/breadcrumbs-bundle",
