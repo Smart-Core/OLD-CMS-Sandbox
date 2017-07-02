@@ -25,7 +25,6 @@
         "iakumai/sphinxsearch-bundle": "dev-master",
 
 
-
         "dizda/cloud-backup-bundle": "*",
 
         "ext-curl": "*",
@@ -84,6 +83,7 @@
         "liip/theme-bundle": "~1.0@dev",
         "misd/phone-number-bundle": "*",
         "oneup/flysystem-bundle": "*",
+        "piwik/device-detector": "*",
         "phpdocumentor/reflection-docblock": "*",
         "rickysu/tagcache-bundle": "~0.1",
         "spatie/flysystem-dropbox": "*",
