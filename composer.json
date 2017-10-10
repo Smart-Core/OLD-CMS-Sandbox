@@ -86,6 +86,7 @@
         "piwik/device-detector": "*",
         "phpdocumentor/reflection-docblock": "*",
         "rickysu/tagcache-bundle": "~0.1",
+        "sendpulse/rest-api": "*",
         "spatie/flysystem-dropbox": "*",
         "stfalcon/tinymce-bundle": "v2.1",
 
