@@ -2106,12 +2106,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "cfc629363a4a1d7b3f21c4689c53aa05519eed52"
+                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/cfc629363a4a1d7b3f21c4689c53aa05519eed52",
-                "reference": "cfc629363a4a1d7b3f21c4689c53aa05519eed52",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
+                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
                 "shasum": ""
             },
             "require": {
@@ -2186,7 +2186,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2017-09-29T14:39:10+00:00"
+            "time": "2017-10-12T17:23:29+00:00"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -3840,16 +3840,16 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-auth-library-php.git",
-                "reference": "db8e3022a308cb0e988026d38e67b91a42b41622"
+                "reference": "548d27d670f0236dc5258fa4cdde6e7b63464cfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/db8e3022a308cb0e988026d38e67b91a42b41622",
-                "reference": "db8e3022a308cb0e988026d38e67b91a42b41622",
+                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/548d27d670f0236dc5258fa4cdde6e7b63464cfd",
+                "reference": "548d27d670f0236dc5258fa4cdde6e7b63464cfd",
                 "shasum": ""
             },
             "require": {
@@ -3866,9 +3866,6 @@
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ],
                 "psr-4": {
                     "Google\\Auth\\": "src"
                 }
@@ -3884,7 +3881,7 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2017-07-31T16:34:40+00:00"
+            "time": "2017-10-10T17:01:45+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -8284,16 +8281,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v5.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "112a03ddd1376de878f808fef7935495b29c890b"
+                "reference": "9e3fa14aa959f703961bc9e4ab00110d617bcfdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/112a03ddd1376de878f808fef7935495b29c890b",
-                "reference": "112a03ddd1376de878f808fef7935495b29c890b",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/9e3fa14aa959f703961bc9e4ab00110d617bcfdd",
+                "reference": "9e3fa14aa959f703961bc9e4ab00110d617bcfdd",
                 "shasum": ""
             },
             "require": {
@@ -8349,7 +8346,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2017-10-06T15:57:05+00:00"
+            "time": "2017-10-12T17:37:44+00:00"
         },
         {
             "name": "sensio/generator-bundle",
@@ -8606,31 +8603,31 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "2624e135944c8a213587101b6272fa0763d4d763"
+                "reference": "48e11364a2fd5441eed3409d466ad6bf1ab82aca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/2624e135944c8a213587101b6272fa0763d4d763",
-                "reference": "2624e135944c8a213587101b6272fa0763d4d763",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/48e11364a2fd5441eed3409d466ad6bf1ab82aca",
+                "reference": "48e11364a2fd5441eed3409d466ad6bf1ab82aca",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3 || ^7.0",
-                "symfony/dependency-injection": "^2.2 || ^3.0",
-                "symfony/http-kernel": "^2.2 || ^3.0",
-                "symfony/intl": "^2.3.21 || ^3.0",
-                "symfony/templating": "^2.2 || ^3.0",
+                "php": "^7.1",
+                "symfony/dependency-injection": "^2.8 || ^3.2",
+                "symfony/http-kernel": "^2.8 || ^3.2",
+                "symfony/intl": "^2.8 || ^3.2",
+                "symfony/templating": "^2.8 || ^3.2",
                 "twig/twig": "^1.12 || ^2.0"
             },
             "conflict": {
                 "sonata-project/user-bundle": "<2.0 || >=5.0"
             },
             "require-dev": {
-                "matthiasnoback/symfony-dependency-injection-test": "^0.7.6 || ^1.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-                "symfony/phpunit-bridge": "^2.7 || ^3.0",
-                "symfony/security": "^2.2 || ^3.0",
-                "symfony/security-acl": "^2.2 || ^3.0"
+                "symfony/phpunit-bridge": "^3.3",
+                "symfony/security": "^2.8 || ^3.2",
+                "symfony/security-acl": "^2.8 || ^3.0"
             },
             "suggest": {
                 "sonata-project/user-bundle": "For user timezone detection"
@@ -8672,7 +8669,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2017-10-08T17:30:22+00:00"
+            "time": "2017-10-14T08:13:23+00:00"
         },
         {
             "name": "spatie/dropbox-api",
