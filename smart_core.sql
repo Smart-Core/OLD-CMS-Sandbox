@@ -1484,6 +1484,7 @@ CREATE TABLE `unicat__items_types` (
   `to_string_pattern` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `order_by_attr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `order_by_direction` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content_min_width` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3E08A29773F32DD8` (`configuration_id`),
   KEY `IDX_3E08A297A76ED395` (`user_id`),
@@ -1499,7 +1500,7 @@ CREATE TABLE `unicat__items_types` (
 
 LOCK TABLES `unicat__items_types` WRITE;
 /*!40000 ALTER TABLE `unicat__items_types` DISABLE KEYS */;
-INSERT INTO `unicat__items_types` VALUES (1,1,1,'2017-03-28 02:41:35','wares',0,'Товары',NULL,NULL,NULL);
+INSERT INTO `unicat__items_types` VALUES (1,1,1,'2017-03-28 02:41:35','wares',0,'Товары',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `unicat__items_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1782,7 +1783,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2017-06-19 23:23:34',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
+INSERT INTO `users` VALUES (1,'root','root','artem@mail.ru','artem@mail.ru',1,'','$2y$15$Iy.ZKMFPgunfwgr8A.Tc6u8ix/71u/kk8qO2icqe.jhtOItSAh./G','2017-10-17 00:34:19',NULL,NULL,'a:1:{i:0;s:9:\"ROLE_ROOT\";}','','','2014-01-20 00:00:00',NULL,'+7-923-123-12-34'),(2,'demo','demo','demo@mail.com','demo@mail.com',1,'','$2y$15$Z28c3UHszCiJGqNwteJED.aBZTYP74lBdDk3T0eyn2ImhFVBEgsfG','2015-05-22 00:28:12',NULL,NULL,'a:1:{i:0;s:14:\"ROLE_NEWSMAKER\";}','','','2014-01-20 00:00:00',NULL,NULL),(3,'aaa','aaa','aaa@aaa.ru','aaa@aaa.ru',1,'','$2y$15$W339oBgss/qxoIitAUyIHem/cZe6pNDZvihuXcsrzYzmRhwRSTUV6','2016-09-20 02:49:13',NULL,NULL,'a:0:{}','','','2014-01-20 00:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1903,4 +1904,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-20  3:26:40
+-- Dump completed on 2017-10-18  8:18:33
