@@ -14,6 +14,7 @@ node_modules/
 /vendor/
 /web/_media/
 /web/images/
+/web/components/
 /web/bundles/
 /web/uploads/
 /web/sitemap.xml
