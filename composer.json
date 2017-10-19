@@ -133,7 +133,7 @@
     },
     "config": {
         "bin-dir": "bin",
-        "component-dir": "web/bundles/components",
+        "component-dir": "web/components",
         "preferred-install": "dist"
     },
     "extra": {
