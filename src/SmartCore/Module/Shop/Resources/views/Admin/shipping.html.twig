@@ -6,7 +6,7 @@
 {% set page_description = 'e-shop'|trans %}
 
 {% block nav %}
-    {{ knp_menu_render('ShopModule:Admin:shipping', {
+    {{ knp_menu_render('ShopModuleBundle:Admin:shipping', {
             'currentClass': 'active',
             'clear_matcher': false,
         })

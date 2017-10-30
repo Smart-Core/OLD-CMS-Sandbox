@@ -23,7 +23,7 @@ class TagController extends Controller
             ->setUri($this->generateUrl('smart_blog_admin_tag'))
             ->setIsDefault(true);
 
-        return $this->render('BlogModule:Tag:index.html.twig', [
+        return $this->render('BlogModuleBundle:Tag:index.html.twig', [
             'cloud' => $this->getTagService()->getCloud('smart_blog_tag'),
         ]);
     }
@@ -56,7 +56,7 @@ class TagController extends Controller
             ->setTitle('Редактировать тэги')
             ->setUri($this->generateUrl('smart_blog_admin_tag'));
 
-        return $this->render('BlogModule:Tag:show_articles.html.twig', [
+        return $this->render('BlogModuleBundle:Tag:show_articles.html.twig', [
             'pagerfanta' => $pagerfanta,
             'tag'        => $tag,
         ]);

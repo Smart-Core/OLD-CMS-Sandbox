@@ -1,29 +1,29 @@
 smart_module.shop.index:
     path: /
     defaults:
-        _controller: ShopModule:Shop:index
+        _controller: ShopModuleBundle:Shop:index
 
 smart_module.shop.checkout:
     path: /checkout/
     defaults:
-        _controller: ShopModule:Shop:checkout
+        _controller: ShopModuleBundle:Shop:checkout
 
 smart_module.shop.orders.all:
     path: /all/
     defaults:
-        _controller: ShopModule:Shop:ordersAll
+        _controller: ShopModuleBundle:Shop:ordersAll
 
 smart_module.shop.orders.active:
     path: /active/
     defaults:
-        _controller: ShopModule:Shop:ordersActive
+        _controller: ShopModuleBundle:Shop:ordersActive
 
 smart_module.shop.orders.completed:
     path: /completed/
     defaults:
-        _controller: ShopModule:Shop:ordersCompleted
+        _controller: ShopModuleBundle:Shop:ordersCompleted
 
 smart_module.shop.orders.canceled:
     path: /cancelled/
     defaults:
-        _controller: ShopModule:Shop:ordersCancelled
+        _controller: ShopModuleBundle:Shop:ordersCancelled

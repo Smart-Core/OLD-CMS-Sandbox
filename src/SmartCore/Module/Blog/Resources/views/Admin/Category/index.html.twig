@@ -1,4 +1,4 @@
-{% extends 'BlogModule:Admin:layout.html.twig' %}
+{% extends 'BlogModuleBundle:Admin:layout.html.twig' %}
 
 {% block title %} {{ 'Categories'|trans }} / {{ parent() }} {% endblock %}
 
@@ -13,7 +13,7 @@
     </div>
 
     <div class="span8 col-md-8">
-        {% set menuItem = knp_menu_get('BlogModule:Category:adminTree', [], {'categoryClass': categoryClass}) %}
+        {% set menuItem = knp_menu_get('BlogModuleBundle:Category:adminTree', [], {'categoryClass': categoryClass}) %}
         {{ knp_menu_render(menuItem, {
             'currentClass': 'active',
             'clear_matcher': false,

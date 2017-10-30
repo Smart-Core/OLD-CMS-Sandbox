@@ -41,7 +41,7 @@ class TagController extends Controller
             return $this->redirect($this->generateUrl('smart_blog_admin_tag'));
         }
 
-        return $this->render('BlogModule:Admin/Tag:index.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Tag:index.html.twig', [
             'form'       => $form->createView(),
             'pagerfanta' => $pagerfanta,
         ]);
@@ -75,7 +75,7 @@ class TagController extends Controller
             }
         }
 
-        return $this->render('BlogModule:Admin/Tag:edit.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Tag:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }

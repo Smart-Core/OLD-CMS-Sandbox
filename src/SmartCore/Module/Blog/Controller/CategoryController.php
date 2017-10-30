@@ -73,7 +73,7 @@ class CategoryController extends Controller
             ->setTitle('Редактировать категории')
             ->setUri($this->generateUrl('smart_blog_admin_category'));
 
-        return $this->render('BlogModule:Category:articles.html.twig', [
+        return $this->render('BlogModuleBundle:Category:articles.html.twig', [
             'categories'    => $requestedCategories,
             'lastCategory'  => $lastCategory,
             'pagerfanta'    => $pagerfanta,

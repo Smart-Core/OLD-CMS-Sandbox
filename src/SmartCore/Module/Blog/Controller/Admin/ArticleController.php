@@ -30,7 +30,7 @@ class ArticleController extends Controller
             return $this->redirect($this->generateUrl('smart_blog_admin_article'));
         }
 
-        return $this->render('BlogModule:Admin/Article:index.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,
         ]);
     }
@@ -64,7 +64,7 @@ class ArticleController extends Controller
             }
         }
 
-        return $this->render('BlogModule:Admin/Article:edit.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Article:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -91,7 +91,7 @@ class ArticleController extends Controller
             }
         }
 
-        return $this->render('BlogModule:Admin/Article:create.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Article:create.html.twig', [
             'form' => $form->createView(),
         ]);
     }

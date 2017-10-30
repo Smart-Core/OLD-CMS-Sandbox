@@ -24,7 +24,7 @@ class BlogWidgetController extends Controller
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoryQuery()));
         $pagerfanta->setMaxPerPage($articleService->getItemsCountPerPage());
 
-        return $this->render('BlogModule:Widget:main.html.twig', [
+        return $this->render('BlogModuleBundle:Widget:main.html.twig', [
             'pagerfanta' => $pagerfanta,
         ]);
     }
@@ -40,7 +40,7 @@ class BlogWidgetController extends Controller
         $articleService = $this->get('smart_blog.article');
 
         if (false === $archive = $articleService->getCache()->fetch('archive_monthly')) {
-            $archive = $this->get('twig')->render('BlogModule:Widget:archive_articles.html.twig', [
+            $archive = $this->get('twig')->render('BlogModuleBundle:Widget:archive_articles.html.twig', [
                 'archiveMonthly' => $articleService->getArchiveMonthly($limit),
             ]);
 
@@ -59,7 +59,7 @@ class BlogWidgetController extends Controller
         $categoryService = $this->get('smart_blog.category');
 
         if (false === $categoryTree = $categoryService->getCache()->fetch('knp_menu_category_tree')) {
-            $categoryTree = $this->get('twig')->render('BlogModule:Widget:category_tree.html.twig', [
+            $categoryTree = $this->get('twig')->render('BlogModuleBundle:Widget:category_tree.html.twig', [
                 'categoryClass' => $categoryService->getCategoryClass(),
             ]);
             $categoryService->getCache()->save('knp_menu_category_tree', $categoryTree);

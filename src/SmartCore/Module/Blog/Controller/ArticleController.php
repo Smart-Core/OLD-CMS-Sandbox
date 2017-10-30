@@ -42,7 +42,7 @@ class ArticleController extends Controller
             ->setUri($this->generateUrl('smart_blog_admin_article_edit', ['id' => $article->getId()]))
             ->setIsDefault(true);
 
-        return $this->render('BlogModule:Article:show.html.twig', [
+        return $this->render('BlogModuleBundle:Article:show.html.twig', [
             'article' => $article,
         ]);
     }
@@ -74,7 +74,7 @@ class ArticleController extends Controller
             ->setTitle('Добавить статью')
             ->setUri($this->generateUrl('smart_blog_admin_article_create'));
 
-        return $this->render('BlogModule:Article:index.html.twig', [
+        return $this->render('BlogModuleBundle:Article:index.html.twig', [
             'pagerfanta' => $pagerfanta,
         ]);
     }
@@ -111,7 +111,7 @@ class ArticleController extends Controller
         $breadchumbs = $this->get('cms.breadcrumbs');
         $breadchumbs->add('Archive', 'Архив статей за '.$date_archive);
 
-        return $this->render('BlogModule:Article:archive_list.html.twig', [
+        return $this->render('BlogModuleBundle:Article:archive_list.html.twig', [
             'pagerfanta' => $pagerfanta,
             'year'       => $year,
             'month'      => $month,
@@ -157,7 +157,7 @@ class ArticleController extends Controller
         $breadchumbs->add($this->generateUrl('smart_blog.article.show', ['slug' => $article->getSlug()]), $article->getTitle());
         $breadchumbs->add('Редактирование', 'Редактирование');
 
-        return $this->render('BlogModule:Article:edit.html.twig', [
+        return $this->render('BlogModuleBundle:Article:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -184,7 +184,7 @@ class ArticleController extends Controller
             }
         }
 
-        return $this->render('BlogModule:Article:create.html.twig', [
+        return $this->render('BlogModuleBundle:Article:create.html.twig', [
             'form' => $form->createView(),
         ]);
     }

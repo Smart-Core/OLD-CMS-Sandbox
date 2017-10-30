@@ -1,4 +1,4 @@
 #shop.api:
 #    path: /
 #    defaults:
-#        _controller: ShopModule:Shop:api
+#        _controller: ShopModuleBundle:Shop:api

@@ -6,7 +6,7 @@
     {% set current_class = 'current' %}
 {% endif %}
 
-{% set menuItems = knp_menu_get('MenuModule:MenuBuilder:full', [], {
+{% set menuItems = knp_menu_get('MenuModuleBundle:MenuBuilder:full', [], {
     'menu': menu,
     'css_class': css_class,
     'depth': depth,

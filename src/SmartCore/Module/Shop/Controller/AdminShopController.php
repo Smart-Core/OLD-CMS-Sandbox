@@ -14,7 +14,7 @@ class AdminShopController extends Controller
     public function indexAction(Request $request)
     {
 
-        return $this->render('ShopModule:Admin:index.html.twig', []);
+        return $this->render('ShopModuleBundle:Admin:index.html.twig', []);
     }
 
 
@@ -26,7 +26,7 @@ class AdminShopController extends Controller
 
     public function basketAction(Order $order)
     {
-        return $this->render('ShopModule:Admin:basket.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:basket.html.twig', [
             'order' => $order,
         ]);
     }
@@ -34,7 +34,7 @@ class AdminShopController extends Controller
 
     public function orderAction(Order $order)
     {
-        return $this->render('ShopModule:Admin:order_show.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:order_show.html.twig', [
             'order' => $order,
         ]);
     }
@@ -46,9 +46,9 @@ class AdminShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         // @todo пагинацию
-        $orders = $em->getRepository('ShopModule:Order')->findAllVisible();
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findAllVisible();
 
-        return $this->render('ShopModule:Admin:orders_list.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:orders_list.html.twig', [
             'pagerfanta' => $orders,
         ]);
     }
@@ -60,9 +60,9 @@ class AdminShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         // @todo пагинацию
-        $orders = $em->getRepository('ShopModule:Order')->findActive();
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findActive();
 
-        return $this->render('ShopModule:Admin:orders_list.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:orders_list.html.twig', [
             'pagerfanta' => $orders,
         ]);
     }
@@ -74,9 +74,9 @@ class AdminShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         // @todo пагинацию
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_FINISHED], ['id' => 'DESC']);
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findBy(['status' => Order::STATUS_FINISHED], ['id' => 'DESC']);
 
-        return $this->render('ShopModule:Admin:orders_list.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:orders_list.html.twig', [
             'pagerfanta' => $orders,
         ]);
     }
@@ -88,9 +88,9 @@ class AdminShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         // @todo пагинацию
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_CANCELLED], ['id' => 'DESC']);
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findBy(['status' => Order::STATUS_CANCELLED], ['id' => 'DESC']);
 
-        return $this->render('ShopModule:Admin:orders_list.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:orders_list.html.twig', [
             'pagerfanta' => $orders,
         ]);
     }
@@ -102,9 +102,9 @@ class AdminShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         // @todo пагинацию
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_SHIPPING], ['id' => 'DESC']);
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findBy(['status' => Order::STATUS_SHIPPING], ['id' => 'DESC']);
 
-        return $this->render('ShopModule:Admin:orders_list.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:orders_list.html.twig', [
             'pagerfanta' => $orders,
         ]);
     }
@@ -116,9 +116,9 @@ class AdminShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         // @todo пагинацию
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_PENDING], ['id' => 'DESC']);
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findBy(['status' => Order::STATUS_PENDING], ['id' => 'DESC']);
 
-        return $this->render('ShopModule:Admin:baskets.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:baskets.html.twig', [
             'pagerfanta' => $orders,
         ]);
     }
@@ -126,7 +126,7 @@ class AdminShopController extends Controller
 
     public function settingsAction()
     {
-        return $this->render('ShopModule:Admin:settings.html.twig', []);
+        return $this->render('ShopModuleBundle:Admin:settings.html.twig', []);
     }
 
     public function shippingAction()
@@ -137,13 +137,13 @@ class AdminShopController extends Controller
 
     public function shippingActiveAction()
     {
-        return $this->render('ShopModule:Admin:shipping.html.twig', []);
+        return $this->render('ShopModuleBundle:Admin:shipping.html.twig', []);
     }
 
 
     public function shippingFinishedAction()
     {
-        return $this->render('ShopModule:Admin:shipping.html.twig', []);
+        return $this->render('ShopModuleBundle:Admin:shipping.html.twig', []);
     }
 
 
@@ -152,7 +152,7 @@ class AdminShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($em->getRepository('ShopModule:Shipping')->getFindByQuery([])));
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($em->getRepository('ShopModuleBundle:Shipping')->getFindByQuery([])));
         $pagerfanta->setMaxPerPage(10);
 
         try {
@@ -161,7 +161,7 @@ class AdminShopController extends Controller
             return $this->redirect($this->generateUrl('smart_module.shop.admin.shipping.settings'));
         }
 
-        return $this->render('ShopModule:Admin:shipping_settings.html.twig', [
+        return $this->render('ShopModuleBundle:Admin:shipping_settings.html.twig', [
             'pagerfanta' => $pagerfanta,
         ]);
     }

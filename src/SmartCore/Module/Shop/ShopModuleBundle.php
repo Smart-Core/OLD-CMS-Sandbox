@@ -5,7 +5,7 @@ namespace SmartCore\Module\Shop;
 use Knp\Menu\MenuItem;
 use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class ShopModule extends ModuleBundle
+class ShopModuleBundle extends ModuleBundle
 {
     /**
      * @param MenuItem $menu

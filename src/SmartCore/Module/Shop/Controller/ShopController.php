@@ -32,7 +32,7 @@ class ShopController extends Controller
                 return $this->redirectToRoute('smart_module.shop.orders.active');
         }
 
-        return $this->render('ShopModule::index.html.twig', []);
+        return $this->render('ShopModuleBundle::index.html.twig', []);
     }
 
     public function ordersAllAction()
@@ -40,9 +40,9 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $orders = $em->getRepository('ShopModule:Order')->findAllVisible($this->getUser());
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findAllVisible($this->getUser());
 
-        return $this->render('ShopModule::orders.html.twig', [
+        return $this->render('ShopModuleBundle::orders.html.twig', [
             'orders' => $orders,
         ]);
     }
@@ -52,9 +52,9 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $orders = $em->getRepository('ShopModule:Order')->findActive($this->getUser());
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findActive($this->getUser());
 
-        return $this->render('ShopModule::orders.html.twig', [
+        return $this->render('ShopModuleBundle::orders.html.twig', [
             'orders' => $orders,
         ]);
     }
@@ -64,9 +64,9 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_FINISHED, 'user' => $this->getUser()], ['id' => 'DESC']);
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findBy(['status' => Order::STATUS_FINISHED, 'user' => $this->getUser()], ['id' => 'DESC']);
 
-        return $this->render('ShopModule::orders.html.twig', [
+        return $this->render('ShopModuleBundle::orders.html.twig', [
             'orders' => $orders,
         ]);
     }
@@ -76,9 +76,9 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $orders = $em->getRepository('ShopModule:Order')->findBy(['status' => Order::STATUS_CANCELLED, 'user' => $this->getUser()], ['id' => 'DESC']);
+        $orders = $em->getRepository('ShopModuleBundle:Order')->findBy(['status' => Order::STATUS_CANCELLED, 'user' => $this->getUser()], ['id' => 'DESC']);
 
-        return $this->render('ShopModule::orders.html.twig', [
+        return $this->render('ShopModuleBundle::orders.html.twig', [
             'orders' => $orders,
         ]);
     }
@@ -93,7 +93,7 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()], ['id' => 'DESC']);
+        $order = $em->getRepository('ShopModuleBundle:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()], ['id' => 'DESC']);
 
         if (empty($order)) {
             return $this->redirectToRoute('smart_module.shop.index');
@@ -142,7 +142,7 @@ class ShopController extends Controller
             $form->isValid();
         }
 
-        return $this->render('ShopModule::order.html.twig', [
+        return $this->render('ShopModuleBundle::order.html.twig', [
             'form'  => $form->createView(),
             'items' => $items,
             'order' => $order,
@@ -158,7 +158,7 @@ class ShopController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
+        $order = $em->getRepository('ShopModuleBundle:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
 
         // @todo вынести в сервис получение списка товаров в заказе.
         $items = [];
@@ -177,7 +177,7 @@ class ShopController extends Controller
             }
         }
 
-        return $this->render('ShopModule::my_basket.html.twig', [
+        return $this->render('ShopModuleBundle::my_basket.html.twig', [
             'order'   => $order,
             'items'   => $items,
             'node_id' => $this->node->getId(),
@@ -194,7 +194,7 @@ class ShopController extends Controller
             /** @var \Doctrine\ORM\EntityManager $em */
             $em      = $this->get('doctrine.orm.entity_manager');
 
-            $order = $em->getRepository('ShopModule:Order')->findOneBy([
+            $order = $em->getRepository('ShopModuleBundle:Order')->findOneBy([
                 'status' => Order::STATUS_PENDING,
                 'user'   => $this->getUser(),
             ]);
@@ -210,7 +210,7 @@ class ShopController extends Controller
             }
         }
 
-        return $this->render('ShopModule::basket_widget.html.twig', [
+        return $this->render('ShopModuleBundle::basket_widget.html.twig', [
             'basket_url' => $this->get('cms.folder')->getUri($this->get('cms.node')->get($this->basket_node_id)),
             'order' => $order,
             'qty'   => $qty,
@@ -226,7 +226,7 @@ class ShopController extends Controller
      */
     public function showBuyButtonAction(Request $request, $item_id)
     {
-        return $this->render('ShopModule::show_buy_button.html.twig', [
+        return $this->render('ShopModuleBundle::show_buy_button.html.twig', [
             'item_id'        => $item_id,
             'basket_node_id' => $this->basket_node_id,
             'basket_url'     => $this->get('cms.folder')->getUri($this->get('cms.node')->get($this->basket_node_id)),
@@ -245,7 +245,7 @@ class ShopController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
 
         if ($request->request->has('smart_shop_order_confirm')) {
-            $order = $em->getRepository('ShopModule:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
+            $order = $em->getRepository('ShopModuleBundle:Order')->findOneBy(['status' => Order::STATUS_PENDING, 'user' => $this->getUser()]);
 
             $form = $this->createForm(OrderConfirmFormType::class, $order);
             $form->handleRequest($request);
@@ -287,7 +287,7 @@ class ShopController extends Controller
         $em      = $this->get('doctrine.orm.entity_manager');
         $session = $this->get('session')->getFlashBag();
 
-        $orderItem = $em->find('ShopModule:OrderItem', $request->request->get('order_item_id'));
+        $orderItem = $em->find('ShopModuleBundle:OrderItem', $request->request->get('order_item_id'));
 
         if ($orderItem) {
             $order = $orderItem->getOrder();
@@ -342,7 +342,7 @@ class ShopController extends Controller
             $session->add('error', "Товар id: <b>{$item_id}</b> не доступен для заказа.");
         }
 
-        $order = $em->getRepository('ShopModule:Order')->findOneBy([
+        $order = $em->getRepository('ShopModuleBundle:Order')->findOneBy([
             'status' => Order::STATUS_PENDING,
             'user'   => $this->getUser(),
         ]);
@@ -358,7 +358,7 @@ class ShopController extends Controller
             $this->persist($order, true);
         }
 
-        $orderItem = $em->getRepository('ShopModule:OrderItem')->findOneBy(['order' => $order, 'item_id' => $item_id]);
+        $orderItem = $em->getRepository('ShopModuleBundle:OrderItem')->findOneBy(['order' => $order, 'item_id' => $item_id]);
 
         $price = $item->getAttr('price', 0);
 

@@ -29,7 +29,7 @@ class CategoryController extends Controller
             }
         }
 
-        return $this->render('BlogModule:Admin/Category:index.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Category:index.html.twig', [
             'categoryClass' => get_class($category),
             'form'          => $form->createView(),
         ]);
@@ -63,7 +63,7 @@ class CategoryController extends Controller
             }
         }
 
-        return $this->render('BlogModule:Admin/Category:edit.html.twig', [
+        return $this->render('BlogModuleBundle:Admin/Category:edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
