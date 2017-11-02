@@ -1,7 +1,0 @@
-<h3>{{ 'All tags'|trans }}</h3>
-
-<hr/>
-
-{% for data in cloud %}
-    <p><a href="{{ path('smart_blog_tag', {'slug': data.tag.slug }) }}">{{ data.tag }}</a> ({{ data.weight }})</p>
-{% endfor %}
