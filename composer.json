@@ -103,7 +103,8 @@
 
 
 
-        "smart-core/simple-profiler-bundle": "dev-master"
+        "smart-core/simple-profiler-bundle": "dev-master",
+        "vich/uploader-bundle": "^1.6"
     },
     "scripts": {
         "init-scripts": [
