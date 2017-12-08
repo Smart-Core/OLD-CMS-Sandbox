@@ -10,7 +10,7 @@
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "require": {
-        "symfony/symfony": "^3.3",
+        "symfony/symfony": "3.3.x",
 
         "doctrine/doctrine-fixtures-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
