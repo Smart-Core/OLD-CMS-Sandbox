@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.26, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.20, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: smart_core
 -- ------------------------------------------------------
--- Server version	5.6.26-log
+-- Server version	5.7.20-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -868,6 +868,7 @@ CREATE TABLE `settings` (
   `category` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `is_hidden` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E545A0C5A57B32FD5E237E06` (`bundle`,`name`),
   KEY `IDX_E545A0C564C19C1` (`category`)
@@ -880,7 +881,7 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based on Symfony2 Framework)',0,NULL,'0000-00-00 00:00:00',NULL),(2,'cms','site_short_name','Smart Core CMS',0,NULL,'0000-00-00 00:00:00',NULL),(3,'cms','html_title_delimiter','&ndash;',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:23:49'),(4,'cms','appearance_editor_theme','idle_fingers',0,NULL,'0000-00-00 00:00:00',NULL),(5,'cms','appearance_editor','ace',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:22:54'),(8,'cms','twitter_bootstrap_version','3',0,NULL,'0000-00-00 00:00:00',NULL),(10,'shopmodule','catalog','catalog',0,'default','2016-10-12 06:03:56',NULL),(11,'cms','timezone','Asia/Novosibirsk',0,'default','2016-10-12 06:37:52','2016-10-11 20:12:29'),(12,'cms','languages','a:2:{i:0;s:2:\"ru\";i:1;s:2:\"en\";}',1,'default','2016-12-28 03:00:56','2016-12-28 03:03:20');
+INSERT INTO `settings` VALUES (1,'cms','site_full_name','Smart Core CMS (based on Symfony2 Framework)',0,NULL,'0000-00-00 00:00:00',NULL,0),(2,'cms','site_short_name','Smart Core CMS',0,NULL,'0000-00-00 00:00:00',NULL,0),(3,'cms','html_title_delimiter','&ndash;',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:23:49',0),(4,'cms','appearance_editor_theme','idle_fingers',0,NULL,'0000-00-00 00:00:00',NULL,0),(5,'cms','appearance_editor','ace',0,NULL,'0000-00-00 00:00:00','2016-10-12 06:22:54',0),(8,'cms','twitter_bootstrap_version','3',0,NULL,'0000-00-00 00:00:00',NULL,0),(10,'shopmodule','catalog','catalog',0,'default','2016-10-12 06:03:56',NULL,0),(11,'cms','timezone','Asia/Novosibirsk',0,'default','2016-10-12 06:37:52','2016-10-11 20:12:29',0),(12,'cms','languages','a:2:{i:0;s:2:\"ru\";i:1;s:2:\"en\";}',1,'default','2016-12-28 03:00:56','2016-12-28 03:03:20',0);
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1806,6 +1807,7 @@ CREATE TABLE `webforms` (
   `final_text` longtext COLLATE utf8_unicode_ci,
   `from_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_ajax` tinyint(1) NOT NULL DEFAULT '0',
+  `last_message_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_641866195E237E06` (`name`),
   KEY `IDX_64186619A76ED395` (`user_id`),
@@ -1819,7 +1821,7 @@ CREATE TABLE `webforms` (
 
 LOCK TABLES `webforms` WRITE;
 /*!40000 ALTER TABLE `webforms` DISABLE KEYS */;
-INSERT INTO `webforms` VALUES (1,'2015-03-17 02:36:43','Обратная связь',1,'feedback',1,NULL,NULL,'Сообщение отправлено','noreply@smart-core.org',1);
+INSERT INTO `webforms` VALUES (1,'2015-03-17 02:36:43','Обратная связь',1,'feedback',1,NULL,NULL,'Сообщение отправлено','noreply@smart-core.org',1,NULL);
 /*!40000 ALTER TABLE `webforms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1904,4 +1906,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-18  8:18:33
+-- Dump completed on 2017-12-09  0:16:17
